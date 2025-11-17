@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+
+##############################################################################
+# Python imports.
+from pathlib import Path
+
+##############################################################################
+# Jinja2 imports.
+from jinja2 import Environment, FileSystemLoader
+
+##############################################################################
+# NGDB imports.
+from ngdb import NortonGuide
+
+##############################################################################
+def main() -> None:
+    """The main entry point."""
+    env = Environment(loader=FileSystemLoader("templates/index"))
+    env.globals = {"guides": [NortonGuide(guide) for guide in sorted(Path("guides").glob("*.ng"))]}
+    Path("docs/index.html").open("w", encoding="utf8").write(
+        env.get_template("index.html").render()
+    )
+
+##############################################################################
+if __name__ == "__main__":
+    main()
