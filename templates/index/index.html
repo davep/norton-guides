@@ -4,15 +4,20 @@
 <html>
 
   <head>
+    <link rel="stylesheet" type="text/css" href="index.css">
     <title>davep's Public Norton Guide Collection</title>
   </head>
 
   <body>
-    <ul>
-      {%- for guide in guides %}
-        <li><a href="{{guide.path.stem}}/index.html">{{guide.title}}</a></li>
-      {%- endfor %}
-    </ul>
+    <section>
+      <nav class="menu box">
+        <ul>
+          {%- for guide in guides %}
+            <li><a href="{{guide.path.stem}}/index.html">{{guide.title}}</a></li>
+          {%- endfor %}
+        </ul>
+      </nav>
+    </section>
   </body>
 
 </html>

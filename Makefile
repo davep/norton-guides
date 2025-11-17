@@ -11,7 +11,7 @@ $(OUTPUT)/%: $(GUIDES)/%.ng
 	@mkdir -p $@
 	uv run ng2web --index --templates=templates/guides/ --output $@ $<
 
-$(INDEX): $(NG_FILES) mkindex templates/index/index.html
+$(INDEX): $(NG_FILES) mkindex templates/index/index.html templates/index/index.css
 	uv run ./mkindex
 
 .PHONY: clean
