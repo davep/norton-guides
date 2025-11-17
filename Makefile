@@ -8,7 +8,7 @@ all: $(OUTPUT_DIRS)
 
 $(OUTPUT)/%: $(GUIDES)/%.ng
 	@mkdir -p $@
-	ng2web --index --output $@ $<
+	uv run ng2web --index --templates=templates/guides/ --output $@ $<
 
 .PHONY: clean
 clean:
