@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="vista-style.css">
+    <title>db_VISTA III » Functions » Functions descriptions</title>
+    <meta name="description" content="db_VISTA III">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="vista-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Functions</li>
+            <ul>
+              <li><a href="index.html">Functions descriptions</a></li>
+              
+            </ul>
+            <li>Codes</li>
+            <ul>
+              <li><a href="vista-6446.html">Function status codes</a></li>
+              <li><a href="vista-7989.html">System errors codes</a></li>
+              <li><a href="vista-14319.html">User errors codes</a></li>
+              <li><a href="vista-21058.html">Code&#39;s listing</a></li>
+              
+            </ul>
+            <li>Credits</li>
+            <ul>
+              <li><a href="vista-22437.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">   D_ENCODE_DBA</span><br /><span class="line"></span><br /><span class="line">SUMMARY</span><br /><span class="line">   d_encode_dba (file,slot,dba)</span><br /><span class="line">   int file;</span><br /><span class="line">   long slot;</span><br /><span class="line">   DB_ADDR *dba;</span><br /><span class="line"></span><br /><span class="line">ARGUMENTS</span><br /><span class="line"></span><br /><span class="line">   file        The file number of the database to be formed.</span><br /><span class="line"></span><br /><span class="line">   slot        The slot number of the database to be formed.</span><br /><span class="line"></span><br /><span class="line">   dba         A pointer to DB_ADDR variable to which the encoded database</span><br /><span class="line">               address will be returned.</span><br /><span class="line"></span><br /><span class="line">DESCRIPTION</span><br /><span class="line">   Function d_encode_dba forms a database address from file number file and</span><br /><span class="line">   slot number slot. The encoded database address is returbed in a DB_ADDR</span><br /><span class="line">   variable pointed to by dba. The format of a database address is decribed</span><br /><span class="line">   in Section  11.2.2.1 and the use of d_decode_dba is explained in</span><br /><span class="line">   Section 6.4.3 of the USER&#39;s Guide.</span><br /><span class="line"></span><br /><span class="line">CURRENCY CHANGES</span><br /><span class="line">   None</span><br /><span class="line"></span><br /><span class="line">RETURN CODES</span><br /><span class="line">   No special codes.</span><br /><span class="line"></span><br /><span class="line">EXAMPLE</span><br /><span class="line">   DB_ADDR dba;   /* database address                   */</span><br /><span class="line">   int file;      /* file number                        */</span><br /><span class="line">   long slot;     /* slot number                        */</span><br /><span class="line">   struct record rec;   /* db_VISTA record buffer       */</span><br /><span class="line">   ....</span><br /><span class="line">   /* extract file number of slot number from id number string */</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">   /* form database address */</span><br /><span class="line">   d_encode_dba (file,slot,&amp;dba);</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">   /* set current record and read record contents */</span><br /><span class="line">   d_crset(&amp;dba);</span><br /><span class="line">   d_recread(&amp;rec);</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">   /* display record     */</span><br /><span class="line">   .....</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="vista-60468.html">d_decode_dba</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

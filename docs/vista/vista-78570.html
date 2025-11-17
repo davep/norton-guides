@@ -1,0 +1,112 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="vista-style.css">
+    <title>db_VISTA III » Functions » Functions descriptions</title>
+    <meta name="description" content="db_VISTA III">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="vista-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Functions</li>
+            <ul>
+              <li><a href="index.html">Functions descriptions</a></li>
+              
+            </ul>
+            <li>Codes</li>
+            <ul>
+              <li><a href="vista-6446.html">Function status codes</a></li>
+              <li><a href="vista-7989.html">System errors codes</a></li>
+              <li><a href="vista-14319.html">User errors codes</a></li>
+              <li><a href="vista-21058.html">Code&#39;s listing</a></li>
+              
+            </ul>
+            <li>Credits</li>
+            <ul>
+              <li><a href="vista-22437.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">      D_GTSCR</span><br /><span class="line"></span><br /><span class="line">SUMMARY</span><br /><span class="line">   d_gtscr(ts[,dbn])</span><br /><span class="line">   ULONG *ts;</span><br /><span class="line">   int dbn;</span><br /><span class="line"></span><br /><span class="line">ARGUMENTS</span><br /><span class="line"></span><br /><span class="line">   ts        Pointer to a ULONG (unsigned long) variable to contain</span><br /><span class="line">             timestamp value.</span><br /><span class="line"></span><br /><span class="line">   dbn       (Optional) The number of the database containing the record.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">DESCRIPTION</span><br /><span class="line">   Function d_gtscr copies the last access timestamp for the current</span><br /><span class="line">   record into the unsigned long variable pointer to by ts.</span><br /><span class="line"></span><br /><span class="line">──────────────────────────────────────────────────────────────────────────</span><br /><span class="line">Note:</span><br /><span class="line">   This function should be used with function d_crget to save the curent</span><br /><span class="line">   record&#39;s database address and last access timestamp, for those record</span><br /><span class="line">   types whitch are timestamped.</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">CURRENCY CHANGES</span><br /><span class="line">   None</span><br /><span class="line"></span><br /><span class="line">RETURN CODES</span><br /><span class="line"></span><br /><span class="line">   -7   S_NOCR         The current record is null.</span><br /><span class="line"></span><br /><span class="line">   -41  S_TIMESTAMP    The current owner record type is not timestamped.</span><br /><span class="line"></span><br /><span class="line">EXAMPLE</span><br /><span class="line"></span><br /><span class="line">    ..</span><br /><span class="line"></span><br /><span class="line">   DB_ADDR dba;</span><br /><span class="line">   ULONG   ts ;</span><br /><span class="line"></span><br /><span class="line">   /* save current record for( lates retrievial */</span><br /><span class="line">   d_crget(&amp;save_dba);</span><br /><span class="line">   d_gtscr (&amp;ts);</span><br /><span class="line">    ..</span><br /><span class="line">   /* later - retrieve saved record */</span><br /><span class="line">   d_crset(&amp;save_dba);</span><br /><span class="line">   d_stscr(&amp;ts);</span><br /><span class="line">   if (d_crstst() == S_OKAY)</span><br /><span class="line">      d_recread(&amp;irec);</span><br /><span class="line">    ..</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="vista-30577.html">d_crget</a></li>
+        
+          <li><a href="vista-33053.html">d_crset</a></li>
+        
+          <li><a href="vista-75555.html">d_gtscm</a></li>
+        
+          <li><a href="vista-77112.html">d_gtsco</a></li>
+        
+          <li><a href="vista-162429.html">d_stscm</a></li>
+        
+          <li><a href="vista-163969.html">d_stsco</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="vista-style.css">
+    <title>db_VISTA III » Functions » Functions descriptions</title>
+    <meta name="description" content="db_VISTA III">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="vista-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Functions</li>
+            <ul>
+              <li><a href="index.html">Functions descriptions</a></li>
+              
+            </ul>
+            <li>Codes</li>
+            <ul>
+              <li><a href="vista-6446.html">Function status codes</a></li>
+              <li><a href="vista-7989.html">System errors codes</a></li>
+              <li><a href="vista-14319.html">User errors codes</a></li>
+              <li><a href="vista-21058.html">Code&#39;s listing</a></li>
+              
+            </ul>
+            <li>Credits</li>
+            <ul>
+              <li><a href="vista-22437.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">   D_DBLOG</span><br /><span class="line"></span><br /><span class="line">SUMMARY</span><br /><span class="line">   d_dblog(log)</span><br /><span class="line">   char *log;</span><br /><span class="line"></span><br /><span class="line">ARGUMENTS</span><br /><span class="line">   log       String containing path to and/or name of database log file</span><br /><span class="line"></span><br /><span class="line">DESCRIPTION</span><br /><span class="line">   This function is used to specify the location and/or name of the databse</span><br /><span class="line">   log file.If log ends with the directory separator character (i.e. &#39;\&#39; on</span><br /><span class="line">   DOS and &#39;/&#39; on UNIX),the default file names are appended to the specified</span><br /><span class="line">   path name to form the fully-qualified file name.The default file name is</span><br /><span class="line">   &#34;userid.log&#34; and is assumed to be located in the working (or current)</span><br /><span class="line">   directory.Single-user or one-user applications will assume the name</span><br /><span class="line">   vista.log in no DBUSERID is specified.If log does not end with the</span><br /><span class="line">   directory separator character,db_VISTA will assume that the variable is</span><br /><span class="line">   the complete file name.This function must be called before the database is</span><br /><span class="line">   opened.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">─────────────────────────────────────────────────────────────────</span><br /><span class="line">NOTE</span><br /><span class="line">   Each user must have a unique file name. If ypur application runs on a DOS</span><br /><span class="line">   network,the log file must be accessible by all nodes on the network which</span><br /><span class="line">   run db_VISTA applications in order for automatic recovery to be possible.</span><br /><span class="line">   If the file name is not fully-qualified,the working directories for</span><br /><span class="line">   all applications must be identical. Never locate a user&#39;s log file on a</span><br /><span class="line">   private disk drive. If the workstation were to go down, there would be no</span><br /><span class="line">   way for db_VISTA to access the log file in order to perform automatic</span><br /><span class="line">   recovery.</span><br /><span class="line">─────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">CURRENCY CHANGES</span><br /><span class="line">   None</span><br /><span class="line"></span><br /><span class="line">RETURN CODES</span><br /><span class="line"></span><br /><span class="line">   -1    S_DBOPEN      Datadase is open. Function called after d_open.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">EXAMPLE</span><br /><span class="line">    /* log files stored on file server (device &#34;S:&#34;)  */</span><br /><span class="line">    d_dblog(&#34;S:\\LOGFILES\\&#34;);</span><br /><span class="line">    d_open(&#34;tims&#34;,&#34;s&#34;);</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="vista-55572.html">d_dbfpath</a></li>
+        
+          <li><a href="vista-54673.html">d_dbdpath</a></li>
+        
+          <li><a href="vista-58244.html">d_dbtaf</a></li>
+        
+          <li><a href="vista-59763.html">d_dbuserid</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

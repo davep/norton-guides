@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="vista-style.css">
+    <title>db_VISTA III » Functions » Functions descriptions</title>
+    <meta name="description" content="db_VISTA III">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="vista-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Functions</li>
+            <ul>
+              <li><a href="index.html">Functions descriptions</a></li>
+              
+            </ul>
+            <li>Codes</li>
+            <ul>
+              <li><a href="vista-6446.html">Function status codes</a></li>
+              <li><a href="vista-7989.html">System errors codes</a></li>
+              <li><a href="vista-14319.html">User errors codes</a></li>
+              <li><a href="vista-21058.html">Code&#39;s listing</a></li>
+              
+            </ul>
+            <li>Credits</li>
+            <ul>
+              <li><a href="vista-22437.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">   D_CSMGET</span><br /><span class="line"></span><br /><span class="line">SUMMARY</span><br /><span class="line">   d_csmget(SET,dba[,dbn])</span><br /><span class="line">   int SET;</span><br /><span class="line">   DB_ADDR *dba;</span><br /><span class="line">   int dbn;</span><br /><span class="line"></span><br /><span class="line">ARGUMENTS</span><br /><span class="line">   SET       Set type for which the current member&#39;s database address is to</span><br /><span class="line">             be returned.</span><br /><span class="line"></span><br /><span class="line">   dba       Pointer to a BD_ADRR variable to receive the database address</span><br /><span class="line">             of the current member.</span><br /><span class="line"></span><br /><span class="line">   dbn       (Optional) The number of the database containing the record.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">DESCRIPTION</span><br /><span class="line">   This function copies the database address of the current member of SET</span><br /><span class="line">   into the  database address variable pointer to by dba. It is used in</span><br /><span class="line">   conjuction with the d_csmset function for saving and restoring the</span><br /><span class="line">   current member of a set. If the current member is null (NULL_DBA) error</span><br /><span class="line">   code S_NOCM is returned as a status (i.e dberr is not called) and *dba</span><br /><span class="line">   will be set to null.</span><br /><span class="line"></span><br /><span class="line">──────────────────────────────────────────────────────────────────────────</span><br /><span class="line">Note:</span><br /><span class="line">   If the record type of the current member is timestamped, you should also</span><br /><span class="line">   call function d_gtscm to get its last access timestamp. When the current</span><br /><span class="line">   member is later restored by d_csmset, function d_stscm should also be</span><br /><span class="line">   called to restore the last access timestamp associated with that current</span><br /><span class="line">   member record.</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">CURRENCY CHANGES</span><br /><span class="line">   None</span><br /><span class="line"></span><br /><span class="line">RETURN CODES</span><br /><span class="line">   -2   S_INVSET       Invalid set type. Probably passed a record or field</span><br /><span class="line">                       type instead of a set type.</span><br /><span class="line"></span><br /><span class="line">   -9   S_NOCM         The current member is null. Returned as a status not</span><br /><span class="line">                       an error</span><br /><span class="line"></span><br /><span class="line">EXAMPLE</span><br /><span class="line"></span><br /><span class="line">   /* print key words for info records */</span><br /><span class="line">   DB_ADDR save_dba;</span><br /><span class="line">    ..</span><br /><span class="line">   /* save current member of key_to_info set</span><br /><span class="line">      in case info record was retrieved from a key word scan */</span><br /><span class="line">   d_csmget(KEY_TO_INFO,&amp;dba)</span><br /><span class="line">    ..     /* print key words thru info_to_key */</span><br /><span class="line">   /* restore current member */</span><br /><span class="line">   d_csmset(KEY_TO_INFO,&amp;dba);</span><br /><span class="line">    ..</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="vista-30577.html">d_crget</a></li>
+        
+          <li><a href="vista-33053.html">d_crset</a></li>
+        
+          <li><a href="vista-47190.html">d_csoset</a></li>
+        
+          <li><a href="vista-40487.html">d_csmset</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="vista-style.css">
+    <title>db_VISTA III » Functions » Functions descriptions</title>
+    <meta name="description" content="db_VISTA III">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="vista-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Functions</li>
+            <ul>
+              <li><a href="index.html">Functions descriptions</a></li>
+              
+            </ul>
+            <li>Codes</li>
+            <ul>
+              <li><a href="vista-6446.html">Function status codes</a></li>
+              <li><a href="vista-7989.html">System errors codes</a></li>
+              <li><a href="vista-14319.html">User errors codes</a></li>
+              <li><a href="vista-21058.html">Code&#39;s listing</a></li>
+              
+            </ul>
+            <li>Credits</li>
+            <ul>
+              <li><a href="vista-22437.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">   D_KEYREAD</span><br /><span class="line"></span><br /><span class="line">SUMMARY</span><br /><span class="line">   d_keyread(value)</span><br /><span class="line">   char *value;</span><br /><span class="line"></span><br /><span class="line">ARGUMENTS</span><br /><span class="line">   value     Pointer to area where the value of the elast scanned key will be</span><br /><span class="line">             coppied.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">DESCRIPTION</span><br /><span class="line">   This function reads the value of the last key found by a key retrieval</span><br /><span class="line">   function.It is intended to provide a mechanism whereby a key&#39;s value can</span><br /><span class="line">   be checked without having reads its associated records.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">CURRENCY CHANGES</span><br /><span class="line">   None.</span><br /><span class="line"></span><br /><span class="line">RETURN CODES</span><br /><span class="line"></span><br /><span class="line">   4       S_KEYSEQ        Call to d_keyread before a key retrieval function</span><br /><span class="line">                           was called.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">EXAMPLE</span><br /><span class="line"></span><br /><span class="line">     char id[16];</span><br /><span class="line">     .......</span><br /><span class="line">     /*   display all databse related info records</span><br /><span class="line">          (those for which the id_code begins with &#34;db&#34;)  */</span><br /><span class="line"></span><br /><span class="line">         d_keyfind (ID_CODE,&#34;db&#34;);    /* position to start of &#34;db&#34;s */</span><br /><span class="line"></span><br /><span class="line">         while (d_keynext(ID_CODE)==S_OKAY)</span><br /><span class="line">          {</span><br /><span class="line">          d_keyread(id);</span><br /><span class="line">          if (strncmp(id,&#34;db&#34;,2) break   /* no more &#34;db&#34; s */</span><br /><span class="line">          d_recread(&amp;irec);</span><br /><span class="line">             ....  /* print info record contents   */</span><br /><span class="line"></span><br /><span class="line">          }</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="vista-89579.html">d_keyfind</a></li>
+        
+          <li><a href="vista-92351.html">d_keyfrst</a></li>
+        
+          <li><a href="vista-93391.html">d_keylast</a></li>
+        
+          <li><a href="vista-98158.html">d_keynext</a></li>
+        
+          <li><a href="vista-99502.html">d_keyprev</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

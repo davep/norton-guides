@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="vista-style.css">
+    <title>db_VISTA III » Functions » Functions descriptions</title>
+    <meta name="description" content="db_VISTA III">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="vista-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Functions</li>
+            <ul>
+              <li><a href="index.html">Functions descriptions</a></li>
+              
+            </ul>
+            <li>Codes</li>
+            <ul>
+              <li><a href="vista-6446.html">Function status codes</a></li>
+              <li><a href="vista-7989.html">System errors codes</a></li>
+              <li><a href="vista-14319.html">User errors codes</a></li>
+              <li><a href="vista-21058.html">Code&#39;s listing</a></li>
+              
+            </ul>
+            <li>Credits</li>
+            <ul>
+              <li><a href="vista-22437.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">   D_KEYLOCK</span><br /><span class="line"></span><br /><span class="line">SUMMARY</span><br /><span class="line">   d_keylock(FIELD,type[,dbn])</span><br /><span class="line">   long FIELD;</span><br /><span class="line">   int dbn;</span><br /><span class="line"></span><br /><span class="line">ARGUMENTS</span><br /><span class="line">   FIELD       The field type of the key field for which is to be locked.</span><br /><span class="line"></span><br /><span class="line">   type        Pointer to a string containing the type of lock to be applied.</span><br /><span class="line"></span><br /><span class="line">   dbn         (optional) The number of the database containing the record.</span><br /><span class="line"></span><br /><span class="line">DESCRIPTION</span><br /><span class="line">   Function d_keylock places a lock on the key file which contains</span><br /><span class="line">   occurrences of key field FIELD.The type of lock to be applied is specified</span><br /><span class="line">   by types as follows:</span><br /><span class="line">              Type          Description</span><br /><span class="line">               &#34;r&#34;           Read lock.</span><br /><span class="line">               &#34;w&#34;           Write lock.</span><br /><span class="line">               &#34;x&#34;           Exclusive lock.</span><br /><span class="line">               &#34;k&#34;           Keep lock.</span><br /><span class="line">  Read lock allow other programs to read but not update the locked files.</span><br /><span class="line">  Write locks prevent all other programs from accesing the locked files and</span><br /><span class="line">  can only be issued from whithin transaction.Exckusive locks also prevent</span><br /><span class="line">  all other programs from accesing the locked files but not be issued</span><br /><span class="line">  independent of transactions.Keep locks can only be issued from within a</span><br /><span class="line">  transaction and will keep read- and write-locked files read-locked after a</span><br /><span class="line">  trasaction ends(d_trend normally frees all read- and write-locked files).</span><br /><span class="line">  The record type must be locked in order to apply a keep lock; otherwise</span><br /><span class="line">  status S_NOTLOCKED is returned.</span><br /><span class="line"></span><br /><span class="line">  Whithin a trasaction, a read-locked file can be upgraded to a write or</span><br /><span class="line">  exclusive lock by calling d_reclock with a write or exclusive lock where a</span><br /><span class="line">  read lock already exists.If the upgrate lock request is denied, the read</span><br /><span class="line">  lock will remain in effect.</span><br /><span class="line"></span><br /><span class="line">  This function is present in the single-user version of db_VISTA, but</span><br /><span class="line">  perfoms no action.This allows multi-user application to link whith the</span><br /><span class="line">  single user version for operation on stand-alone computer.</span><br /><span class="line"></span><br /><span class="line">CURRENCY CHANGES</span><br /><span class="line">   None.</span><br /><span class="line"></span><br /><span class="line">RETURN CODES</span><br /><span class="line"></span><br /><span class="line">   5    S_UNAVAIL       The requested key file is not available(i.e. you</span><br /><span class="line">                        weer on the queue waiting for the file longer</span><br /><span class="line">                        than your current time out value).</span><br /><span class="line">  -5    S_INVFLD        Invalid field type.</span><br /><span class="line">  -11   S_BADTYPE       An invalid lock type was specified.You may have</span><br /><span class="line">                        passed a character (e.g.&#39;r&#39;) instead of a string</span><br /><span class="line">                        (e.g.&#34;r&#34;)</span><br /><span class="line">  -17   S_NOTKEY        FIELD is not defined as a key.</span><br /><span class="line">  -23   S_NOTFREE       Key type alread locked by yuor application.</span><br /><span class="line">  -31   S_NOTRANS       Requested a write lock outside of a transaction.</span><br /><span class="line"></span><br /><span class="line">EXAMPLE</span><br /><span class="line">    /*display all info records in id_code order*/</span><br /><span class="line">    while (d_keylock(ID_CODE,&#34;r&#34;)==S_UNAVAIL)</span><br /><span class="line">    for(d_keylfrst(ID_CODE);db_status == S_OKAY;</span><br /><span class="line">            d_keypnext(ID_CODE)){</span><br /><span class="line">       d_recread(&amp;irec);</span><br /><span class="line">       .. /*print info record contens*/</span><br /><span class="line">    }</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="vista-74521.html">d_freeall</a></li>
+        
+          <li><a href="vista-96947.html">d_keylstat</a></li>
+        
+          <li><a href="vista-103055.html">d_lock</a></li>
+        
+          <li><a href="vista-117919.html">d_recfree</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
