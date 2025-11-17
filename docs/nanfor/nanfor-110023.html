@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » Event</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    
+    <link rel="next" href="nanfor-111246.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="nanfor-109763.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-111246.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_IDLE()</span></span><br /><span class="line"> Generate an idle event to allow incremental garbage collection.</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_Idle()</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">     None</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     NIL</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     During memory-intensive operations that do not generate much in</span><br /><span class="line">     the way of idle states, the Clipper runtime may not get a chance to</span><br /><span class="line">     perform garbage collection of discarded memory.  This can eventually</span><br /><span class="line">     lead to any of a variety of memory-related internal errors.</span><br /><span class="line"></span><br /><span class="line">     This function attempts to alleviate the problem by providing a</span><br /><span class="line">     mechanism by which an idle event can be artifically generated at</span><br /><span class="line">     will.  The idle event will cause the CA-Clipper runtime to perform</span><br /><span class="line">     an incremental memory scavenge.</span><br /><span class="line"></span><br /><span class="line">     This function makes use of an undocumented interal routine.  If this</span><br /><span class="line">     this fact makes you uncomfortable then don&#39;t use this function, you</span><br /><span class="line">     miserable jello-spined lump of human debris.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">     while Whatever         // Some batch process</span><br /><span class="line"></span><br /><span class="line">       Something()          // Create &#39;n&#39; discard a bunch of stuff</span><br /><span class="line"></span><br /><span class="line">       FT_Idle()            // Take out the garbage</span><br /><span class="line"></span><br /><span class="line">     end</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> IDLE.C</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> Ted Means (with much gratitude to Robert DiFalco)</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="nanfor-111246.html">FT_OnIdle()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

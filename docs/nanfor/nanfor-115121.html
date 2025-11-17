@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » File I/O</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-114497.html">
+    <link rel="next" href="nanfor-116902.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-114497.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-113206.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-116902.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_DFSETUP()</span></span><br /><span class="line"> Set up parameters for FT_DISPFILE()</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_DFSETUP( &lt;cInFile&gt;, &lt;nTop&gt;, &lt;nLeft&gt;, &lt;nBottom&gt;, &lt;nRight&gt;, ;</span></span><br /><span class="line">              <span class="fg15 bg1"> &lt;nStart&gt;, &lt;nCNormal&gt;, &lt;nCHighlight&gt;, &lt;cExitKeys&gt;,   ;</span></span><br /><span class="line">              <span class="fg15 bg1"> &lt;lBrowse&gt;, &lt;nColSkip&gt;, &lt;nRMargin&gt;, &lt;nBuffSize&gt; ) -&gt; nResult</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">&lt;cInFile&gt;</span>     - text file to display (full path and filename)</span><br /><span class="line">        <span class="ngb">&lt;nTop&gt;</span>        - upper row of window</span><br /><span class="line">        <span class="ngb">&lt;nLeft&gt;</span>       - left col of window</span><br /><span class="line">        <span class="ngb">&lt;nBottom&gt;</span>     - lower row of window</span><br /><span class="line">        <span class="ngb">&lt;nRight&gt;</span>      - right col of window</span><br /><span class="line">        <span class="ngb">&lt;nStart&gt;</span>      - line to place highlight at startup</span><br /><span class="line">        <span class="ngb">&lt;nCNormal&gt;</span>    - normal text color     (numeric attribute)</span><br /><span class="line">        <span class="ngb">&lt;nCHighlight&gt;</span> - text highlight color  (numeric attribute)</span><br /><span class="line">        <span class="ngb">&lt;cExitKeys&gt;</span>   - terminating key list  (each byte of string is a</span><br /><span class="line">                        key code)</span><br /><span class="line">        <span class="ngb">&lt;lBrowse&gt;</span>     - act-like-a-browse-routine flag</span><br /><span class="line">        <span class="ngb">&lt;nColSkip&gt;</span>    - col increment for left/right arrows</span><br /><span class="line">        <span class="ngb">&lt;nRMargin&gt;</span>    - right margin - anything to right is truncated</span><br /><span class="line">        <span class="ngb">&lt;nBuffSize&gt;</span>   - size of the paging buffer</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     0 if successful, FError() code if not</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     Note: make sure you allocate a buffer large enough to hold enough</span><br /><span class="line">     data for the number of lines that you have in the window.  Use the</span><br /><span class="line">     following formula as a guideline:</span><br /><span class="line"></span><br /><span class="line">        buffer size = (# of line) + 1 * RMargin</span><br /><span class="line"></span><br /><span class="line">     This is the smallest you should make the buffer.  For normal use,</span><br /><span class="line">     4096 bytes is recommended</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">     @ 4,9 TO 11,71</span><br /><span class="line"></span><br /><span class="line">     FT_DFSETUP(&#34;test.txt&#34;, 5, 10, 10, 70, 1, 7, 15,;</span><br /><span class="line">                &#34;AaBb&#34; + Chr(143), .T., 5, 132, 4096)</span><br /><span class="line"></span><br /><span class="line">     cKey = FT_DISPFILE()</span><br /><span class="line"></span><br /><span class="line">     FT_DFCLOSE()</span><br /><span class="line"></span><br /><span class="line">     @ 20,0 SAY &#34;Key that terminated FT_DISPFILE() was: &#34; + &#39;[&#39; + cKey + &#39;]&#39;</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> DFILE.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> Mike Taylor</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="nanfor-116902.html">FT_DISPFILE()</a></li>
+        
+          <li><a href="nanfor-114497.html">FT_DFCLOSE()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

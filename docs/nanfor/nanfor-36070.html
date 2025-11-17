@@ -1,0 +1,104 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » DOS/BIOS</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-35283.html">
+    <link rel="next" href="nanfor-37724.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-35283.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-30306.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-37724.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_FLOPTST()</span></span><br /><span class="line"> Test diskette drive status</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_FLOPTST( &lt;nDrive&gt; ) -&gt; nStatus</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;nDrive&gt;</span> is the diskette drive number, 0 = A:, 1 = B:</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     -1 - Wrong Parameters</span><br /><span class="line">      0 - Drive Loaded and ready to read or write</span><br /><span class="line">      1 - Drive Door Open or Diskette inserted upside down</span><br /><span class="line">      2 - Diskette is unformatted</span><br /><span class="line">      3 - Write protected</span><br /><span class="line">      4 - Undetermined</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     FT_FLOPTST() is designed as a full replacement for ISDRIVE().  Where</span><br /><span class="line">     ISDRIVE() returns just .T. or .F. depending if the diskette drive is</span><br /><span class="line">     ready or not, FT_FLOPTST() returns a numeric code designating the</span><br /><span class="line">     diskette drive&#39;s status.</span><br /><span class="line"></span><br /><span class="line">     FT_FLOPTST() is particularly useful in backup and restore programs</span><br /><span class="line">     that need to test the floppy drive before writing/reading from a</span><br /><span class="line">     floppy disk.</span><br /><span class="line"></span><br /><span class="line">     No testing has been performed on systems with more than 2 floppy</span><br /><span class="line">     drives.  If the third drive is &#34;C&#34; and the fourth &#34;D&#34; then there</span><br /><span class="line">     should be no problems.</span><br /><span class="line"></span><br /><span class="line">     This function does not currently check subst&#39;d drives.  So if you</span><br /><span class="line">     have SUBST E: A:\ then FT_FLOPTST( ASC(&#34;E&#34;)-ASC(&#34;A&#34;) ) == 4</span><br /><span class="line">     Any suggestions to fix this limitation are appreciated.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">     iStatus := FT_FLOPTST( 0 )</span><br /><span class="line">     DO CASE</span><br /><span class="line">        CASE iStatus == 1</span><br /><span class="line">           Qout( &#34;The door to drive A is open.&#34; )</span><br /><span class="line">        CASE iStatus == 2</span><br /><span class="line">           Qout( &#34;The diskette in drive A is not formatted.&#34; )</span><br /><span class="line">        CASE iStatus == 3</span><br /><span class="line">           Qout( &#34;The diskette in drive A is write-protected.&#34; )</span><br /><span class="line">        CASE iStatus == 4</span><br /><span class="line">           Qout( &#34;Something is wrong with drive A, but I don&#39;t know what.&#34; )</span><br /><span class="line">     ENDCASE</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> FLOPTST.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> Gary Smith</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

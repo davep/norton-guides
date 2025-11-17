@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » Date/Time</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    
+    <link rel="next" href="nanfor-62704.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="nanfor-59070.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-62704.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_ACCTADJ()</span></span><br /><span class="line"> Adjust beginning or ending fiscal pd. dates to acctg. dates</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_ACCTADJ( [ &lt;dGivenDate&gt; ], [ &lt;lIsEnd&gt; ] ) -&gt; dDate</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;dGivenDate&gt;</span> is any valid date in any valid format.</span><br /><span class="line">     Defaults to DATE() if not supplied.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;lIsEnd&gt;</span> is a logical variable. .F. = adjust for beginning of</span><br /><span class="line">     period mode, .T. = adjust for end of period mode.  Defaults to</span><br /><span class="line">     beginning of period mode.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     An adjusted date dependent upon mode and work week start day.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     Called by other FT_ACCT.. functions. The algorithm is:</span><br /><span class="line"></span><br /><span class="line">     Beginning of period mode:</span><br /><span class="line"></span><br /><span class="line">        If dGivenDate is in last 3 days of work week</span><br /><span class="line">           Return next week&#39;s start date</span><br /><span class="line">        Else</span><br /><span class="line">           Return this week&#39;s start date</span><br /><span class="line">        Endif</span><br /><span class="line"></span><br /><span class="line">     End of period mode:</span><br /><span class="line"></span><br /><span class="line">        If dGivenDate is in last 4 days of work week</span><br /><span class="line">           Return this week&#39;s end date</span><br /><span class="line">        Else</span><br /><span class="line">           Return prior week&#39;s end date</span><br /><span class="line">        Endif</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">     Beginning of period mode (lIsEnd == .F.)</span><br /><span class="line"></span><br /><span class="line">       dDate := Ctod( &#34;01/31/91&#34; )  // In last 3 days of work week</span><br /><span class="line">       ? FT_ACCTADJ( dDate )        // 02/03/91 (next week&#39;s start)</span><br /><span class="line"></span><br /><span class="line">       dDate := Ctod( &#34;03/31/91&#34; )  // Not in last 3 days of work week</span><br /><span class="line">       ? FT_ACCTADJ( dDate )        // 03/31/91 (this week&#39;s start)</span><br /><span class="line"></span><br /><span class="line">     End of period mode (lIsEnd == .T.)</span><br /><span class="line"></span><br /><span class="line">       dDate := Ctod( &#34;01/31/91&#34; )  // In last 4 days of work week</span><br /><span class="line">       ? FT_ACCTADJ( dDate, .T. )   // 02/02/91 (this week&#39;s end)</span><br /><span class="line"></span><br /><span class="line">       dDate := Ctod( &#34;03/31/91&#34; )  // Not in last 4 days of work week</span><br /><span class="line">       ? FT_ACCTADJ( dDate, .T. )   // 03/30/91 (prior week&#39;s end)</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> ACCTADJ.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> Jo W. French dba Practical Computing</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="nanfor-74675.html">FT_DATECNFG()</a></li>
+        
+          <li><a href="nanfor-79180.html">FT_DAYTOBOW()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

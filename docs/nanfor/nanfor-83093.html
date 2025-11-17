@@ -1,0 +1,104 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » Date/Time</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-82345.html">
+    <link rel="next" href="nanfor-84658.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-82345.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-59070.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-84658.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_ELAPSED()</span></span><br /><span class="line"> Return elapsed time between two days and/or times</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_ELAPSED([ &lt;dStart&gt; ], [ &lt;dEnd&gt; ], ;</span></span><br /><span class="line">                <span class="fg15 bg1"> &lt;cTimeStart&gt;, &lt;cTimeEnd&gt;) -&gt; aTimedata</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;dStart&gt;</span> is any valid date in any date format. Defaults to DATE().</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;dEnd&gt;</span> is any valid date in any date format. Defaults to DATE().</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;cTimeStart&gt;</span> is a valid Time string of the format &#39;hh:mm:ss&#39; where</span><br /><span class="line">     hh is hours in 24-hour format.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;cTimeEnd&gt;</span> is a valid Time string of the format &#39;hh:mm:ss&#39; where</span><br /><span class="line">     hh is hours in 24-hour format.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     A two-dimensional array containing elapsed time data.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     FT_ELAPSED() calculates the elapsed time between two Date/Time events.</span><br /><span class="line"></span><br /><span class="line">     It returns an array which contains the following data:</span><br /><span class="line"></span><br /><span class="line">     aRetVal[1,1]  Integer Days      aRetVal[1,2] Total Days    (nn.nnnn)</span><br /><span class="line">     aRetVal[2,1]  Integer Hours     aRetVal[2,2] Total Hours   (nn.nnnn)</span><br /><span class="line">     aRetVal[3,1]  Integer Minutes   aRetVal[3,2] Total Minutes (nn.nnnn)</span><br /><span class="line">     aRetVal[4,1]  Integer Seconds   aRetVal[4,2] Total Seconds (nn)</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">     FT_ELAPSED(CTOD(&#39;11/28/90&#39;), CTOD(&#39;11/30/90&#39;), &#39;08:00:00&#39;, &#39;12:10:30&#39;)</span><br /><span class="line">     will return:</span><br /><span class="line"></span><br /><span class="line">     aRetVal[1,1] -&gt;  2 (Days)        aRetVal[1,2] -&gt;    2.1740  Days</span><br /><span class="line">     aRetVal[2,1] -&gt;  4 (Hours)       aRetVal[2,2] -&gt;   52.1750  Hours</span><br /><span class="line">     aRetVal[3,1] -&gt; 10 (Minutes)     aRetVal[3,2] -&gt; 3130.5000  Minutes</span><br /><span class="line">     aRetVal[4,1] -&gt; 30 (Seconds)     aRetVal[4,2] -&gt; 187830     Seconds</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> ELAPSED.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> Jo W. French dba Practical Computing</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

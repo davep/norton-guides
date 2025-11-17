@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Keyboard/Mouse</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-146862.html">
+    <link rel="next" href="nanfor-149722.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-146862.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-137802.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-149722.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_MDBLCLK()</span></span><br /><span class="line"> Return true if a double click was detected</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">    <span class="fg15 bg1"> FT_MDBLCLK( [ &lt;nClick&gt; [, &lt;nButton&gt; [, &lt;nInterval&gt; [, &lt;nRow&gt; [, &lt;nCol&gt;;</span></span><br /><span class="line">                <span class="fg15 bg1"> [, &lt;nTime&gt; ] ] ] ] ] ] ) -&gt; lIsDoubleClk</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">&lt;nClick&gt;</span> is a numeric value.  If it is zero FT_MDBLCLK() will not</span><br /><span class="line">             check for the first press but rather will simply wait the</span><br /><span class="line">             specified period for a single press. This is useful if this</span><br /><span class="line">             routine is called from one which in turn responded to a button</span><br /><span class="line">             press. If it is not present or not equal to 0, then FT_MDBLCLK()</span><br /><span class="line">             will wait for two presses of the specified button.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">&lt;nButton&gt;</span> is the mouse button number</span><br /><span class="line">               0 - Left   Button</span><br /><span class="line">               1 - Right  Button</span><br /><span class="line">               2 - Middle Button [if applicable]</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">&lt;nInterval&gt;</span> is the interval to wait for the first click if requested</span><br /><span class="line">           and the time to wait for the second. If not present then defaults</span><br /><span class="line">           to 0.5 second.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">&lt;nRow&gt;</span> is the row number for the mouse cursor location for a double click</span><br /><span class="line">           to be valid. If not present then the current position is taken as</span><br /><span class="line">           the valid location.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">&lt;nCol&gt;</span> is the column number for the mouse cursor location for a double</span><br /><span class="line">           click to be valid. If not present, then the current position is</span><br /><span class="line">           taken as the valid location.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">&lt;nTime&gt;</span> is an optional start time for the waiting period for the first</span><br /><span class="line">           click (of either one or two requested). If not given then the</span><br /><span class="line">           time is set at entry into this routine. This is useful when this</span><br /><span class="line">           routine is called from another routine which was called in</span><br /><span class="line">           response to a mouse click but needs to know if a double click</span><br /><span class="line">           has occurred</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">    .T. if a double click was detected.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">    This is a mouse meta function that checks for the presence</span><br /><span class="line">    of a double click.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">   IF FT_MISREGION( 10, 10, 11, 20 ) .AND.;</span><br /><span class="line">      FT_MDBLCLK(0,1,,FT_MGETX(),FT_MGETY())  &amp;&amp; double click, right button</span><br /><span class="line">                                              &amp;&amp; at current location with</span><br /><span class="line">                                              &amp;&amp; default interval</span><br /><span class="line"></span><br /><span class="line">         MnuItem1()</span><br /><span class="line">   ENDIF</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> MOUSE1.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> Leo Letendre</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="nanfor-143544.html">FT_MBUTPRS()</a></li>
+        
+          <li><a href="nanfor-144807.html">FT_MBUTREL()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

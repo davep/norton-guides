@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » Conversion</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    
+    <link rel="next" href="nanfor-18812.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="nanfor-16449.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-18812.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_BYT2BIT()</span></span><br /><span class="line"> Convert byte to string of 1&#39;s and 0&#39;s</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_BYT2BIT( &lt;cByte&gt; ) -&gt; cBitPattern</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;cByte&gt;</span> is the byte to convert.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     9-character string, consisting of 1&#39;s and 0&#39;s, representing bits 0</span><br /><span class="line">     through 7 of parameter byte, with space between bits 3 and 4.  Returns</span><br /><span class="line">     NIL if parameters are faulty.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     Can be used to show results of bit manipulation, both before and after.</span><br /><span class="line">     Binary representation follows right-to-left convention of bit position</span><br /><span class="line">     numbering, 0 through 7.  Space between high and low nibbles for clarity</span><br /><span class="line">     and easy comparison to hexadecimal notation.</span><br /><span class="line"></span><br /><span class="line">     This function is presented to illustrate that bit-wise operations</span><br /><span class="line">     are possible with Clipper code.  For greater speed, write .C or</span><br /><span class="line">     .ASM versions and use the Clipper Extend system.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">     These three code lines perform a bitwise AND on bytes with values of</span><br /><span class="line">     CHR(20) and CHR(36), and deliver the result as a string in binary (bit)</span><br /><span class="line">     format.</span><br /><span class="line"></span><br /><span class="line">          ? FT_BYT2BIT(CHR(20))         // byte1: &#39;0001 0100&#39;</span><br /><span class="line">          ? FT_BYT2BIT(CHR(36))         // byte2: &#39;0010 0100&#39;</span><br /><span class="line"></span><br /><span class="line">          ? FT_BYT2BIT(FT_BYTEAND(CHR(20), CHR(36)))</span><br /><span class="line">                             // result: &#39;0000 0100&#39;</span><br /><span class="line"></span><br /><span class="line">     For a demonstration of Clipper bit manipulations, compile and</span><br /><span class="line">     link the program BITTEST.PRG in the Nanforum Toolkit source code.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> BYT2BIT.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> Forest Belt, Computer Diagnostic Services, Inc.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="nanfor-18812.html">FT_BYT2HEX()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

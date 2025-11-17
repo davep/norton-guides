@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » Information » Sample source code headers</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-314487.html">
+    <link rel="next" href="nanfor-319659.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-314487.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-314363.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-319659.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">                <span class="ngb">This example shows how you would set up the</span></span><br /><span class="line">               <span class="ngb">headers for either a Clipper or C source file.</span></span><br /><span class="line"></span><br /><span class="line">/*</span><br /><span class="line"> * File......: PRTSCR.C</span><br /><span class="line"> * Author....: Ted Means</span><br /><span class="line"> * CIS ID....: 73067,3332</span><br /><span class="line"> *</span><br /><span class="line"> * This is an original work by Ted Means and is placed in the</span><br /><span class="line"> * public domain.</span><br /><span class="line"> *</span><br /><span class="line"> * Modification history:</span><br /><span class="line"> * ---------------------</span><br /><span class="line"> *</span><br /><span class="line"> */</span><br /><span class="line"></span><br /><span class="line">/*  $DOC$</span><br /><span class="line"> *  $FUNCNAME$</span><br /><span class="line"> *     FT_PrtScr()</span><br /><span class="line"> *  $ONELINER$</span><br /><span class="line"> *     Enable or disable printscreens</span><br /><span class="line"> *  $SYNTAX$</span><br /><span class="line"> *     FT_PrtScr( &lt;lSetStat&gt; ) -&gt; lCurStat</span><br /><span class="line"> *  $ARGUMENTS$</span><br /><span class="line"> *     &lt;lSetStat&gt; set to .T. will enable printscreens, .F. will</span><br /><span class="line"> *     disable printscreens.</span><br /><span class="line"> *  $RETURNS$</span><br /><span class="line"> *     The current state ( .T. for enabled, .F. for disabled).</span><br /><span class="line"> *  $DESCRIPTION$</span><br /><span class="line"> *     This function is valuable if you have a need to disable the</span><br /><span class="line"> *     printscreen key.  It works by fooling the BIOS into thinking</span><br /><span class="line"> *     that a printscreen is already in progress.  The BIOS will then</span><br /><span class="line"> *     refuse to invoke the printscreen handler.</span><br /><span class="line"> *  $EXAMPLES$</span><br /><span class="line"> *     FT_PrtScr( .F. )       // Disable the printscreen key</span><br /><span class="line"> *     FT_PrtScr( .T. )       // Enable the printscreen key</span><br /><span class="line"> *     MemVar := FT_PrtScr()  // Get the current status</span><br /><span class="line"> *  $INCLUDE$</span><br /><span class="line"> *     FTVIDEO.CH</span><br /><span class="line"> *  $SEEALSO$</span><br /><span class="line"> *     ft_peek() ft_poke()</span><br /><span class="line"> *  $END$</span><br /><span class="line"> */</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">                        Formatting Guidelines</span></span><br /><span class="line">/*</span><br /><span class="line"> * File......: PRTSCR.C</span><br /><span class="line"> * Author....: Ted Means</span><br /><span class="line"> * CIS ID....: 73067,3332</span><br /><span class="line"> *</span><br /><span class="line"> * This is an original work by Ted Means and is placed in the</span><br /><span class="line"> * public domain.</span><br /><span class="line"> *</span><br /><span class="line"> * Modification history:</span><br /><span class="line"> * ---------------------</span><br /><span class="line"> */</span><br /><span class="line"></span><br /><span class="line">/*  $DOC$</span><br /><span class="line"> *  $FUNCNAME$</span><br /><span class="line"><span class="ngb">  ┌────┬────────── indent all items 6 spaces after asterisk</span></span><br /><span class="line"> * <span class="ngb">┌</span>   FT_PRTSCR()                           <span class="ngb">&lt;- 15 characters MAXIMUM</span></span><br /><span class="line"> * <span class="ngb">│</span>$ONELINER$</span><br /><span class="line"> * <span class="ngb">│</span>   Enable or disable printscreens        <span class="ngb">&lt;- 60 character MAXIMUM</span></span><br /><span class="line"> * <span class="ngb">│</span>$SYNTAX$</span><br /><span class="line"> * <span class="ngb">├</span>   FT_PRTSCR( &lt;lSetStat&gt; ) -&gt; lCurStat</span><br /><span class="line"> * <span class="ngb">│</span>$ARGUMENTS$ ┌─┴────────┴──────── Parameters in angle brackets</span><br /><span class="line"> * <span class="ngb">│</span>   &lt;lSetStat&gt; set to .T. will enable printscreens, .F. will</span><br /><span class="line"> * <span class="ngb">│</span>   disable printscreens.</span><br /><span class="line"> * <span class="ngb">│</span>$RETURNS$</span><br /><span class="line"> * <span class="ngb">│</span>   The current state ( .T. for enabled, .F. for disabled).</span><br /><span class="line"> * <span class="ngb">│</span>$DESCRIPTION$</span><br /><span class="line"> * <span class="ngb">│</span>   This function is valuable if you have a need to disable the</span><br /><span class="line"> * <span class="ngb">│</span>   printscreen key.  It works by fooling the BIOS into thinking</span><br /><span class="line"> * <span class="ngb">│</span>   that a printscreen is already in progress.  The BIOS will then</span><br /><span class="line"> * <span class="ngb">│</span>   refuse to invoke the printscreen handler.</span><br /><span class="line">   <span class="ngb">│</span>   <span class="ngb">└───────────── Lines no longer than 65 characters ──────────────┛</span></span><br /><span class="line"> * <span class="ngb">│</span>$EXAMPLES$</span><br /><span class="line"> * <span class="ngb">├</span>   FT_PRTSCR( .F. )       // Disable the printscreen key</span><br /><span class="line"> * <span class="ngb">├</span>   FT_PRTSCR( .T. )       // Enable the printscreen key</span><br /><span class="line"> * <span class="ngb">├</span>   MemVar := FT_PRTSCR()  // Get the current status</span><br /><span class="line"> * <span class="ngb">│</span>$INCLUDE$</span><br /><span class="line"> * <span class="ngb">│</span>   FTVIDEO.CH                            <span class="ngb">&lt;- optional</span></span><br /><span class="line"> * <span class="ngb">│</span>$SEEALSO$</span><br /><span class="line"> * <span class="ngb">├</span>   FT_PEEK() FT_POKE()                   <span class="ngb">&lt;- optional</span></span><br /><span class="line"> * <span class="ngb">│</span>$END$</span><br /><span class="line"> */<span class="ngb">│</span></span><br /><span class="line">   <span class="ngb">└─ Function names in all caps</span></span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="nanfor-319659.html">Sample ASM header</a></li>
+        
+          <li><a href="nanfor-314487.html">Submitting code for the Library</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

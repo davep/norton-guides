@@ -1,0 +1,119 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » File I/O</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-126149.html">
+    <link rel="next" href="nanfor-128081.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-126149.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-113206.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-128081.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_FINSERT()</span></span><br /><span class="line"> Inserts a line in the currently selected text file</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line"><span class="fg15 bg1"></span></span><br /><span class="line">     <span class="fg15 bg1"> FT_FINSERT( [ &lt; nLines &gt; ] ) -&gt; lSuccess</span></span><br /><span class="line"><span class="fg15 bg1"></span></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb"></span>&lt;nLines&gt;<span class="ngb"></span> is the number of lines that should be inserted at the</span><br /><span class="line">     current record position.</span><br /><span class="line"></span><br /><span class="line">     If <span class="ngb"></span>&lt;nLines&gt;<span class="ngb"></span> is omitted, one record is inserted.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">lSuccess</span> is TRUE if the insert succeeded, FALSE if not.  If</span><br /><span class="line">     false check the return value of <span class="ngb">ft_fError()</span> for the reason.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">     This function inserts a line of text in the file in the currently</span><br /><span class="line">     selected text file workarea.  Text lines are delimited with a</span><br /><span class="line">     CRLF pair.</span><br /><span class="line"></span><br /><span class="line">     The record pointer is not moved.</span><br /><span class="line"></span><br /><span class="line">     A text file &#34;record&#34; is a line of text terminated by a CRLF pair.</span><br /><span class="line">     Each line inserted with this function will be empty.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">     // add a couple of blank lines of text to a file</span><br /><span class="line">     ft fUse( &#34;test.txt&#34; )</span><br /><span class="line"></span><br /><span class="line">     ft_fGoTo( 10 )</span><br /><span class="line"></span><br /><span class="line">     ft_fInsert( 5 )</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> FTTEXT.C</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> Brice de Ganahl and Steve Larsen</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="nanfor-118895.html">FT_FAPPEND()</a></li>
+        
+          <li><a href="nanfor-130121.html">FT_FRECNO()</a></li>
+        
+          <li><a href="nanfor-121299.html">FT_FDELETE()</a></li>
+        
+          <li><a href="nanfor-128081.html">FT_FLASTRE()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

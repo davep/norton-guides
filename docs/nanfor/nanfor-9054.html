@@ -1,0 +1,104 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » Array</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-7737.html">
+    <link rel="next" href="nanfor-10534.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-7737.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-10534.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_ANOMATCHES()</span></span><br /><span class="line"> Find the number of array elements meeting a condition</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_ANOMATCHES( &lt;aArray&gt;, &lt;bCompareBlock&gt; ;</span></span><br /><span class="line">                    <span class="fg15 bg1"> [, &lt;nStartIndex&gt; [, &lt;nEndIndex&gt; ] ] ) -&gt; nNoOfMatches</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;aArray&gt;</span> is the array to be searched</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;bCompareBlock&gt;</span> is a code block containing the expression for</span><br /><span class="line">     the array elements to be tested with.  Each element is passed</span><br /><span class="line">     as a parameter to the block.  If the block returns .T., the</span><br /><span class="line">     number of matches will be incremented by one.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;nStartIndex&gt;</span> is the first array item to include in the search,</span><br /><span class="line">     defaults to first element.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;nEndIndex&gt;</span> is the last array element to include in the search,</span><br /><span class="line">     defaults to all elements.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     The number of elements that cause the code block to return .T.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     This function returns the number of array elements that, when passed</span><br /><span class="line">     to the supplied code block, cause that code block to return a .T. value.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">     // Search the Entire Array</span><br /><span class="line">     FT_ANOMATCHES(aTries, { | x | x &lt;= 100 } )</span><br /><span class="line"></span><br /><span class="line">     // Search from the 5th Element On</span><br /><span class="line">     FT_ANOMATCHES(aCodes, { | x | UPPER(x) == cCurrentCode }, 5)</span><br /><span class="line"></span><br /><span class="line">     // Search the 1st 10 Elements</span><br /><span class="line">     FT_ANOMATCHES(aDates, { | x | IS_BETWEEN(DATE()-7,x,DATE() + 7) }, 10)</span><br /><span class="line"></span><br /><span class="line">     // Search Elements 5-10</span><br /><span class="line">     FT_ANOMATCHES(aNames, { | x | x &lt;= cLastGoodName }, 5, 10)</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> ANOMATCH.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> David Husnian</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

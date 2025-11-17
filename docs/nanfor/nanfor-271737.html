@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Video</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-270869.html">
+    <link rel="next" href="nanfor-274768.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-270869.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-260934.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-274768.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_RGNSTACK()</span></span><br /><span class="line"> Push or pop a saved screen region on or off the stack</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_RGNSTACK( &lt;cAction&gt;, [ &lt;nTop&gt; ], [ &lt;nLeft&gt; ], [ &lt;nBottom&gt; ],</span></span><br /><span class="line">        <span class="fg15 bg1"> [ &lt;nRight&gt; ] ) -&gt; NIL</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;cAction&gt;</span> determines what action FT_RGNSTACK() will take.  The</span><br /><span class="line">     allowable values for this parameter are &#34;push&#34;, &#34;pop&#34;, and &#34;pop all&#34;.</span><br /><span class="line">     If the function is called with any other string as the first parameter</span><br /><span class="line">     no action is performed.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;cAction&gt;</span> with a value of &#34;push&#34; will push a saved screen region onto</span><br /><span class="line">     the stack.  A value of &#34;pop&#34; will restore the most recently pushed</span><br /><span class="line">     screen region.  &#34;pop all&#34; tells the function to restore all screen</span><br /><span class="line">     images which are currently on the stack.</span><br /><span class="line"></span><br /><span class="line">     The use of <span class="ngb">&lt;nTop&gt;</span>, <span class="ngb">&lt;nLeft&gt;</span>, <span class="ngb">&lt;nBottom&gt;</span>, and <span class="ngb">&lt;nRight&gt;</span> depends on the</span><br /><span class="line">     <span class="ngb">&lt;cAction&gt;</span> parameter.  If <span class="ngb">&lt;cAction&gt;</span> is &#34;push&#34;, the next four parameters</span><br /><span class="line">     define the screen region to save.  If <span class="ngb">&lt;cAction&gt;</span> is &#34;pop&#34; or &#34;pop all&#34;</span><br /><span class="line">     the following four parameters are ignored.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     FT_RGNSTACK() returns NIL.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     FT_RGNSTACK() allows multiple screens to be saved and restored from</span><br /><span class="line">     a stack.  The stack is implemented with Clipper static array that is</span><br /><span class="line">     visible only to FT_RGNSTACK().</span><br /><span class="line"></span><br /><span class="line">     The purpose of FT_RGNSTACK() is to allow multiple screen regions to be</span><br /><span class="line">     managed without the need to remember the original coordinates or to</span><br /><span class="line">     create variables for each one.</span><br /><span class="line"></span><br /><span class="line">     When called with &#34;push&#34;, FT_RGNSTACK() places the saved screen area</span><br /><span class="line">     at the end of the static array.  The array size is incremented by one</span><br /><span class="line">     to accommodate the new screen area.</span><br /><span class="line"></span><br /><span class="line">     When called with &#34;pop&#34;, the function restores the screen image stored</span><br /><span class="line">     in the last element of the array, and the array size is decremented by</span><br /><span class="line">     one.  If &#34;pop all&#34; is specified, all the saved screens are restored</span><br /><span class="line">     until the array is empty.</span><br /><span class="line"></span><br /><span class="line">     FT_RGNSTACK() calls FT_SAVRGN() and FT_RSTRGN().  Refer to the</span><br /><span class="line">     documentation for these two functions for more information.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">     The following example uses FT_RGNSTACK() to save and restore various</span><br /><span class="line">     sections of the screen.</span><br /><span class="line"></span><br /><span class="line">     @ 00, 00, 24, 79 BOX &#34;111111111&#34;         // fill the screen with 1&#39;s</span><br /><span class="line">     FT_RGNSTACK(&#34;push&#34;, 10, 05, 15, 15)      // push a region</span><br /><span class="line">     @ 00, 00, 24, 79 BOX &#34;222222222&#34;         // fill the screen with 2&#39;s</span><br /><span class="line">     FT_RGNSTACK(&#34;push&#34;, 10, 20, 15, 30)      // push a region</span><br /><span class="line">     @ 00, 00, 24, 79 BOX &#34;333333333&#34;         // fill the screen with 3&#39;s</span><br /><span class="line">     FT_RGNSTACK(&#34;push&#34;, 10, 35, 15, 45)      // push a region</span><br /><span class="line">     @ 00, 00, 24, 79 BOX &#34;444444444&#34;         // fill the screen with 4&#39;s</span><br /><span class="line">     FT_RGNSTACK(&#34;push&#34;, 10, 50, 15, 60)      // push a region</span><br /><span class="line">     @ 00, 00, 24, 79 BOX &#34;555555555&#34;         // fill the screen with 5&#39;s</span><br /><span class="line">     FT_RGNSTACK(&#34;push&#34;, 10, 65, 15, 75)      // push a region</span><br /><span class="line">     CLEAR</span><br /><span class="line">     FT_RGNSTACK(&#34;pop&#34;)        // restore the 5&#39;s region</span><br /><span class="line">     FT_RGNSTACK(&#34;pop&#34;)        // restore the 4&#39;s region</span><br /><span class="line">     FT_RGNSTACK(&#34;pop all&#34;)    // restore the 3&#39;s, 2&#39;s and 1&#39;s regions</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> SCREGION.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> David A. Richardson</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="nanfor-277815.html">FT_SAVRGN()</a></li>
+        
+          <li><a href="nanfor-274768.html">FT_RSTRGN()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

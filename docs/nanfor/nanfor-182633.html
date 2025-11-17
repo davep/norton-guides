@@ -1,0 +1,104 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Math</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-181783.html">
+    <link rel="next" href="nanfor-184249.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-181783.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-181545.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-184249.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_NETPV()</span></span><br /><span class="line"> Calculate net present value</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_NETPV( &lt;nInitialInvestment&gt;, &lt;nInterestRate&gt;, &lt;aCashFlow&gt; ;</span></span><br /><span class="line">               <span class="fg15 bg1"> [, &lt;nNoOfCashFlows&gt; ] ) -&gt; nNetPV</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;nInitialInvestment&gt;</span> is the amount of cash invested for purposes</span><br /><span class="line">     of generating the cash flows.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;nInterestRate&gt;</span> is the annual interest rate used to discount</span><br /><span class="line">     expected cash flows (10.5% = 10.5, not .105).</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;aCashFlow&gt;</span> is an array of the expected cash receipts each year.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;nNoOfCashFlows&gt;</span> is the number of years cash flows are expected</span><br /><span class="line">     (optional, Len( aCashFlow ) ).</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     The difference between the initial investment and the discounted</span><br /><span class="line">     cash flow in dollars.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     This function calculates the net present value, the difference</span><br /><span class="line">     between the cost of an initial investment and the present value</span><br /><span class="line">     of the expected cash flow(s) from the investment.  The present</span><br /><span class="line">     value of the expected cashflow(s) is calculated at the specified</span><br /><span class="line">     interest rate, which is often referred to as the &#34;cost of capital&#34;.</span><br /><span class="line"></span><br /><span class="line">     This function can be used to evaluate alternative investments.</span><br /><span class="line">     The larger the NPV, the more profitable the investment.  See</span><br /><span class="line">     also the FutureValue and PresentValue for further explanations.</span><br /><span class="line">     The formula to calculate the net present value is:</span><br /><span class="line"></span><br /><span class="line">     NetPresentValue = SUM(CashFlow[i] / ((1 + InterestRate) ** i))</span><br /><span class="line">                       FOR i = 1 TO NoOfCashFlows</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">     nNetPresentValue := FT_NETPV(10000, 10, { 10000,15000,16000,17000 } )</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> NETPV.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> David Husnian</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

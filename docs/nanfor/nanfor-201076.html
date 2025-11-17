@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Menus/Prompts</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-197458.html">
+    <link rel="next" href="nanfor-203050.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-197458.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-186992.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-203050.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_FILL()</span></span><br /><span class="line"> Declare menu options for FT_MENU1()</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_FILL( &lt;aSubArrayName&gt;, &lt;cMenuSelection&gt;, &lt;bFunction&gt;,</span></span><br /><span class="line">              <span class="fg15 bg1"> &lt;lSelectable&gt; ) -&gt; NIL</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;aSubArrayName&gt;</span> is a sub-array of <span class="ngb">&lt;acOptions&gt;</span> in FT_MENU1()</span><br /><span class="line">     denoting the group in which to include the selection --</span><br /><span class="line">     e.g., acOptions[1]</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;cMenuSelection&gt;</span> is the character string that will appear on</span><br /><span class="line">     the menu.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;bFunction&gt;</span> is the code block to be executed when that menu</span><br /><span class="line">     option is selected.  i.e. {|| MyFunction() } would execute</span><br /><span class="line">     the function called MyFunction().  {|| .f.} would exit the</span><br /><span class="line">     FT_MENU1 and return to the calling routine.   {|| .T.} would</span><br /><span class="line">     do nothing.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;lSelectable&gt;</span> is a logical variable that determines whether</span><br /><span class="line">     the corresponding menu option is selectable or not.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     NIL</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     FT_FILL() is a function used to set up the menu options prior</span><br /><span class="line">     to calling FT_MENU1().</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">  FT_FILL( aOptions[1], &#39;A. Execute A Dummy Procedure&#39; , {|| fubar()}, .t. )</span><br /><span class="line"></span><br /><span class="line">  The above would be added to the sub-menu associated with the first menu</span><br /><span class="line">  bar item, would execute the function FUBAR() when that option was</span><br /><span class="line">  selected, and would be selectable.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">  FT_FILL( aOptions[3], &#39;B. Enter Daily Charges&#39;       , {|| .t.},     .f. )</span><br /><span class="line"></span><br /><span class="line">  The above would be added to the sub-menu associated with the third menu</span><br /><span class="line">  bar item, and would be unselectable.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">  FT_FILL( aOptions[2], &#39;C. Enter Payments On Accounts&#39;, {|| .t.},     .t. )</span><br /><span class="line"></span><br /><span class="line">  The above would be added to the sub-menu associated with the second menu</span><br /><span class="line">  bar item, and would be selectable, but would do nothing when selected.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">  FT_FILL( aOptions[4], &#39;C. Exit&#39;                      , {|| .f.},     .t. )</span><br /><span class="line"></span><br /><span class="line">  The above would be added to the sub-menu associated with the fourth menu</span><br /><span class="line">  bar item, and would be selectable, and would exit FT_MENU1() when chosen.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> MENU1.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> Paul Ferrara</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="nanfor-203050.html">FT_MENU1()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

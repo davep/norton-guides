@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Video</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-276591.html">
+    <link rel="next" href="nanfor-279304.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-276591.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-260934.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-279304.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="nanfor-16449.html">Conversion</a></li>
+              <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+              <li><a href="nanfor-59070.html">Date/Time</a></li>
+              <li><a href="nanfor-102173.html">Environment</a></li>
+              <li><a href="nanfor-109763.html">Event</a></li>
+              <li><a href="nanfor-113206.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-Z</li>
+            <ul>
+              <li><a href="nanfor-137249.html">Game</a></li>
+              <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+              <li><a href="nanfor-181545.html">Math</a></li>
+              <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+              <li><a href="nanfor-223163.html">NetWare</a></li>
+              <li><a href="nanfor-237863.html">String</a></li>
+              <li><a href="nanfor-260934.html">Video</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="nanfor-285956.html">Overview</a></li>
+              <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+              <li><a href="nanfor-321056.html">Using CPMI</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_SAVRGN()</span></span><br /><span class="line"> Save a screen region for later display</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">     <span class="fg15 bg1"> FT_SAVRGN( &lt;nTop&gt;, &lt;nLeft&gt;, &lt;nBottom&gt;, &lt;nRight&gt; ) -&gt; cScreen</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments</span></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">&lt;nTop&gt;</span>, <span class="ngb">&lt;nLeft&gt;</span>, <span class="ngb">&lt;nBottom&gt;</span>, and <span class="ngb">&lt;nRight&gt;</span> define the portion of the</span><br /><span class="line">     screen to save.  Allowable values are 0 through 255.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns</span></span><br /><span class="line"></span><br /><span class="line">     FT_SAVRGN() returns the saved screen region and its coordinates</span><br /><span class="line">     as a character string.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description</span></span><br /><span class="line"></span><br /><span class="line">     FT_SAVRGN() is similar to Clipper&#39;s SAVESCREEN(), but it saves the</span><br /><span class="line">     screen coordinates as well as the display information.  The saved</span><br /><span class="line">     area can be restored by passing the returned string to FT_RSTRGN().</span><br /><span class="line"></span><br /><span class="line">     Note that the strings returned from FT_SAVRGN() and Clipper&#39;s</span><br /><span class="line">     SAVESCREEN() are not interchangeable.  A screen region saved with</span><br /><span class="line">     with FT_SAVRGN() must be restored using FT_RSTRGN().</span><br /><span class="line"></span><br /><span class="line">     FT_SAVRGN() calls Clipper&#39;s SAVESCREEN().  Refer to the Clipper</span><br /><span class="line">     documentation for more information regarding this function.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples</span></span><br /><span class="line"></span><br /><span class="line">     The following example uses FT_SAVRGN() and FT_RSTRGN() to save</span><br /><span class="line">     and restore a portion of the screen.</span><br /><span class="line"></span><br /><span class="line">     @ 00, 00, 24, 79 BOX &#34;111111111&#34;       // fill the screen with 1&#39;s</span><br /><span class="line">     cScreen = FT_SAVRGN(10, 10, 20, 30)    // save a region</span><br /><span class="line">     @ 00, 00, 24, 79 BOX &#34;222222222&#34;       // fill the screen with 2&#39;s</span><br /><span class="line">     FT_RSTRGN(cScreen)                     // restore the 1&#39;s region</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> SCREGION.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author:</span> David A. Richardson</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="nanfor-274768.html">FT_RSTRGN()</a></li>
+        
+          <li><a href="nanfor-271737.html">FT_RGNSTACK()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
