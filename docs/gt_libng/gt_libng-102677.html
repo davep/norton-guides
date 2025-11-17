@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="gt_libng-style.css">
+    <title>GT_LIB v1.0 Reference Guide Release 2.0 » G-P » Get Reader</title>
+    <meta name="description" content="GT_LIB v1.0 Reference Guide Release 2.0">
+    <link rel="prev" href="gt_libng-100996.html">
+    <link rel="next" href="gt_libng-104583.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="gt_libng-about.html">About</a></li>
+
+
+          
+
+<li><a href="gt_libng-100996.html">Previous</a></li>
+
+
+          
+
+<li><a href="gt_libng-98996.html">Up</a></li>
+
+
+          
+
+<li><a href="gt_libng-104583.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="gt_libng-5540.html">Audit</a></li>
+              <li><a href="gt_libng-6547.html">Compression</a></li>
+              <li><a href="gt_libng-13032.html">Date</a></li>
+              <li><a href="gt_libng-23409.html">Disk Drive</a></li>
+              <li><a href="gt_libng-37327.html">Error System</a></li>
+              <li><a href="gt_libng-40165.html">Environment</a></li>
+              <li><a href="gt_libng-49799.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-P</li>
+            <ul>
+              <li><a href="gt_libng-66199.html">General</a></li>
+              <li><a href="gt_libng-98996.html">Get Reader</a></li>
+              <li><a href="gt_libng-106381.html">Keyboard</a></li>
+              <li><a href="gt_libng-114805.html">Maths</a></li>
+              <li><a href="gt_libng-124424.html">Memory</a></li>
+              <li><a href="gt_libng-127716.html">Network</a></li>
+              <li><a href="gt_libng-133468.html">Printer</a></li>
+              
+            </ul>
+            <li>S-W</li>
+            <ul>
+              <li><a href="gt_libng-136117.html">Screen Saver</a></li>
+              <li><a href="gt_libng-140433.html">Security</a></li>
+              <li><a href="gt_libng-141574.html">String</a></li>
+              <li><a href="gt_libng-170364.html">System</a></li>
+              <li><a href="gt_libng-174810.html">Video</a></li>
+              <li><a href="gt_libng-205251.html">Windows</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="gt_libng-209432.html">About</a></li>
+              <li><a href="gt_libng-209917.html">Background</a></li>
+              <li><a href="gt_libng-212755.html">BBS List</a></li>
+              <li><a href="gt_libng-213177.html">Contributors</a></li>
+              <li><a href="gt_libng-213853.html">Submitting Code</a></li>
+              <li><a href="gt_libng-215955.html">Sample Clipper/C Header</a></li>
+              <li><a href="gt_libng-218225.html">Sample ASM Header</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">User list for a Get.</span></span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">       <span class="fg15 bg1"> GT_GetList(&lt;oGet&gt;,&lt;cType&gt;,&lt;bReturn&gt;,&lt;bValid&gt;, ;</span></span><br /><span class="line">           <span class="fg15 bg1"> [&lt;bFind&gt;],[&lt;bFor&gt;],[&lt;nTop&gt;],[&lt;nLeft&gt;]) -&gt; lSuccess</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments:</span></span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">&lt;oGet&gt;</span> is the Get Object passed to the post block.</span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">&lt;cType&gt;</span> is the type of window to use. &#39;A&#39; uses an</span><br /><span class="line">      array list and &#39;D&#39; uses a Browse on a DBF file.</span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">&lt;bReturn&gt;</span> block to extract the information to put</span><br /><span class="line">      into the Get field. It will be passed the element</span><br /><span class="line">      of the array or the record number (current) in the</span><br /><span class="line">      Browse case.</span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">&lt;bValid&gt;</span> the block stating whether the result in the</span><br /><span class="line">      Get field is valid.</span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">&lt;bFind&gt;</span> defines which option to start on. Should</span><br /><span class="line">      return a number for &#39;A&#39; windows or a value to seek</span><br /><span class="line">      with the browse. For Browses this will act as a</span><br /><span class="line">      while clause against the index.</span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">&lt;bFor&gt;</span> for clause. Only for Browse lists.</span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">&lt;nTop&gt;</span> and <span class="ngb">&lt;nLeft&gt;</span> specify the top left corner of</span><br /><span class="line">      the window.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">      Logical valid status.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description:</span></span><br /><span class="line"></span><br /><span class="line">      Allow a PostBlock on a get to display the user</span><br /><span class="line">      a list of legal options from an array or an open</span><br /><span class="line">      datafile. Allows while/for options and displays the</span><br /><span class="line">      list on screen. When an option is selected the list</span><br /><span class="line">      is removed.</span><br /><span class="line">      Requires extra information in :Cargo</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples:</span></span><br /><span class="line"></span><br /><span class="line">      oGet:PostBlock := { | oGet | Suppliers-&gt;(Gt_GetList( ;</span><br /><span class="line">          oGet, ;                         // Get object</span><br /><span class="line">          &#39;D&#39;, ;                          // Datafile</span><br /><span class="line">          { | | Field-&gt;Code }, ;          // Return</span><br /><span class="line">          { | cData | DBSEEK(cData) }, ;  // Valid</span><br /><span class="line">          { | cData | RTRIM(cData) }, ;   // Seek/while</span><br /><span class="line">          { | | Field-&gt;Qty &gt; 0 }, ;       // For</span><br /><span class="line">          02, ;                           // Top</span><br /><span class="line">          02)) }                          // Left</span><br /><span class="line"></span><br /><span class="line">      aGets[01][01]:Cargo := { ;</span><br /><span class="line">          {&#39;Code&#39;,&#39;Supplier&#39;}, ;          // Titles</span><br /><span class="line">          {{ | | Field-&gt;SuppCode }, ;</span><br /><span class="line">              { | | Field-&gt;SuppName }}, ; // List fields</span><br /><span class="line">          {}}                             // Only used with array</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> GT_GETLI.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author: </span> Martin Bryant</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="gt_libng--1.html">GT_CHOOSE()</a></li>
+        
+          <li><a href="gt_libng--1.html">GT_BROWSE()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

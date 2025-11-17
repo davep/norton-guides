@@ -1,0 +1,95 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="sbguide-style.css">
+    <title>AdLib and Sound Blaster reference guide. » Functions » CM/S Interface</title>
+    <meta name="description" content="AdLib and Sound Blaster reference guide.">
+    <link rel="prev" href="sbguide-2604.html">
+    <link rel="next" href="sbguide-4082.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="sbguide-about.html">About</a></li>
+
+
+          
+
+<li><a href="sbguide-2604.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="sbguide-4082.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Functions</li>
+            <ul>
+              <li><a href="index.html">CM/S Interface</a></li>
+              <li><a href="sbguide-12944.html">AdLib Interface</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="sbguide-13076.html">Hardware Data Sound Blaster</a></li>
+              <li><a href="sbguide-14110.html">Hardware layout Sound Blaster</a></li>
+              <li><a href="sbguide-14820.html">Hardware Data AdLib</a></li>
+              <li><a href="sbguide-15215.html">Hardware layout AdLib</a></li>
+              <li><a href="sbguide-15597.html">AdLib &amp; Sound Blaster</a></li>
+              
+            </ul>
+            <li>Future</li>
+            <ul>
+              <li><a href="sbguide-15992.html">Future Releases</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 1</span>     : Set Base I/O Address.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Entry</span>          : BX = 1.</span><br /><span class="line">                 AX = Base I/O Address.</span><br /><span class="line"><span class="ngb">Exit</span>           : None.</span><br /><span class="line"></span><br /><span class="line">This function set the base I/O address used by the driver.</span><br /><span class="line"></span><br /><span class="line">There are six base I/O addressed available 210, 220, 230, 240,</span><br /><span class="line">250 and 260 (hex). As the user can select any one of these</span><br /><span class="line">addresses on the Sound Blaster card, developers have to allow</span><br /><span class="line">users to specify the I/O address selected.</span><br /><span class="line"></span><br /><span class="line">We suggest 2 implementation methods here,</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">A.</span>  Calling program is coded to allow users to install their program for</span><br /><span class="line">         the correct I/O address to use and invokes this function to set</span><br /><span class="line">         the I/O address accordingly.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">B.</span>  A seperate program is coded to allow users to install the I/O</span><br /><span class="line">         address directly on the CT-VOICE.DRV. The I/O address is</span><br /><span class="line">         stored as a word type (2 bytes) at the offset 30 hex of the</span><br /><span class="line">         driver file.</span><br /><span class="line"></span><br /><span class="line">CT-VOICE driver uses the I/O default installed address if this</span><br /><span class="line">function is not called. Factory default for the base I/O address is</span><br /><span class="line">220 hex.</span><br /><span class="line"></span><br /><span class="line">If this function needs to be called, it must be called before the</span><br /><span class="line">&#34;Initialize Driver&#34; function.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

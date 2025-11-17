@@ -1,0 +1,119 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="gt_libng-style.css">
+    <title>GT_LIB v1.0 Reference Guide Release 2.0 » S-W » Video</title>
+    <meta name="description" content="GT_LIB v1.0 Reference Guide Release 2.0">
+    <link rel="prev" href="gt_libng-191284.html">
+    <link rel="next" href="gt_libng-192986.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="gt_libng-about.html">About</a></li>
+
+
+          
+
+<li><a href="gt_libng-191284.html">Previous</a></li>
+
+
+          
+
+<li><a href="gt_libng-174810.html">Up</a></li>
+
+
+          
+
+<li><a href="gt_libng-192986.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="gt_libng-5540.html">Audit</a></li>
+              <li><a href="gt_libng-6547.html">Compression</a></li>
+              <li><a href="gt_libng-13032.html">Date</a></li>
+              <li><a href="gt_libng-23409.html">Disk Drive</a></li>
+              <li><a href="gt_libng-37327.html">Error System</a></li>
+              <li><a href="gt_libng-40165.html">Environment</a></li>
+              <li><a href="gt_libng-49799.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-P</li>
+            <ul>
+              <li><a href="gt_libng-66199.html">General</a></li>
+              <li><a href="gt_libng-98996.html">Get Reader</a></li>
+              <li><a href="gt_libng-106381.html">Keyboard</a></li>
+              <li><a href="gt_libng-114805.html">Maths</a></li>
+              <li><a href="gt_libng-124424.html">Memory</a></li>
+              <li><a href="gt_libng-127716.html">Network</a></li>
+              <li><a href="gt_libng-133468.html">Printer</a></li>
+              
+            </ul>
+            <li>S-W</li>
+            <ul>
+              <li><a href="gt_libng-136117.html">Screen Saver</a></li>
+              <li><a href="gt_libng-140433.html">Security</a></li>
+              <li><a href="gt_libng-141574.html">String</a></li>
+              <li><a href="gt_libng-170364.html">System</a></li>
+              <li><a href="gt_libng-174810.html">Video</a></li>
+              <li><a href="gt_libng-205251.html">Windows</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="gt_libng-209432.html">About</a></li>
+              <li><a href="gt_libng-209917.html">Background</a></li>
+              <li><a href="gt_libng-212755.html">BBS List</a></li>
+              <li><a href="gt_libng-213177.html">Contributors</a></li>
+              <li><a href="gt_libng-213853.html">Submitting Code</a></li>
+              <li><a href="gt_libng-215955.html">Sample Clipper/C Header</a></li>
+              <li><a href="gt_libng-218225.html">Sample ASM Header</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Context Sensitive Help Driver</span></span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">       <span class="fg15 bg1"> Set Key nn To GT_HelpRequest</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments:</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">      NIL</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description:</span></span><br /><span class="line"></span><br /><span class="line">      This is a simple &#39;Help Engine&#39;. It must be simple since I wrote it</span><br /><span class="line">      &lt;g&gt;. The routine will create the help database automatically if</span><br /><span class="line">      the file &#39;HELPFILE&#39;, is missing. If the user requests help at any</span><br /><span class="line">      point where it has not been previously defined, then it will create</span><br /><span class="line">      a blank entry in the database, with the relevant calling points &amp;</span><br /><span class="line">      variables.</span><br /><span class="line">      It also creates and index called</span><br /><span class="line">      &#39;HelpFil1.NTX&#39; as well.The structure is as follows :-</span><br /><span class="line"></span><br /><span class="line">      VARIABLE_   Character   12</span><br /><span class="line">      ROUTINE_    Character   12</span><br /><span class="line">      HELPTEXT_   Memo</span><br /><span class="line">      TITLE_      Character   15</span><br /><span class="line"></span><br /><span class="line">      The file should be indexed on Upper(Variable_)+Upper(Routine_)</span><br /><span class="line"></span><br /><span class="line">      NB This routine uses the following routines :-</span><br /><span class="line">      GT_ELEVBAR      by       MartDude</span><br /><span class="line">      GT_OPEN         by       MortDude</span><br /><span class="line">      GT_BLOCK        by       Me!</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples:</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> HELP.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author: </span> Simon Coates</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

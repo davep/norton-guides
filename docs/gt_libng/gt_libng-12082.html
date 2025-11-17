@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="gt_libng-style.css">
+    <title>GT_LIB v1.0 Reference Guide Release 2.0 » A-F » Compression</title>
+    <meta name="description" content="GT_LIB v1.0 Reference Guide Release 2.0">
+    <link rel="prev" href="gt_libng-11264.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="gt_libng-about.html">About</a></li>
+
+
+          
+
+<li><a href="gt_libng-11264.html">Previous</a></li>
+
+
+          
+
+<li><a href="gt_libng-6547.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="gt_libng-5540.html">Audit</a></li>
+              <li><a href="gt_libng-6547.html">Compression</a></li>
+              <li><a href="gt_libng-13032.html">Date</a></li>
+              <li><a href="gt_libng-23409.html">Disk Drive</a></li>
+              <li><a href="gt_libng-37327.html">Error System</a></li>
+              <li><a href="gt_libng-40165.html">Environment</a></li>
+              <li><a href="gt_libng-49799.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-P</li>
+            <ul>
+              <li><a href="gt_libng-66199.html">General</a></li>
+              <li><a href="gt_libng-98996.html">Get Reader</a></li>
+              <li><a href="gt_libng-106381.html">Keyboard</a></li>
+              <li><a href="gt_libng-114805.html">Maths</a></li>
+              <li><a href="gt_libng-124424.html">Memory</a></li>
+              <li><a href="gt_libng-127716.html">Network</a></li>
+              <li><a href="gt_libng-133468.html">Printer</a></li>
+              
+            </ul>
+            <li>S-W</li>
+            <ul>
+              <li><a href="gt_libng-136117.html">Screen Saver</a></li>
+              <li><a href="gt_libng-140433.html">Security</a></li>
+              <li><a href="gt_libng-141574.html">String</a></li>
+              <li><a href="gt_libng-170364.html">System</a></li>
+              <li><a href="gt_libng-174810.html">Video</a></li>
+              <li><a href="gt_libng-205251.html">Windows</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="gt_libng-209432.html">About</a></li>
+              <li><a href="gt_libng-209917.html">Background</a></li>
+              <li><a href="gt_libng-212755.html">BBS List</a></li>
+              <li><a href="gt_libng-213177.html">Contributors</a></li>
+              <li><a href="gt_libng-213853.html">Submitting Code</a></li>
+              <li><a href="gt_libng-215955.html">Sample Clipper/C Header</a></li>
+              <li><a href="gt_libng-218225.html">Sample ASM Header</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">UN-Compress a String to a Clipper Numeric value</span></span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">       <span class="fg15 bg1"> &lt;numeric&gt; := GT_UnCompN(&lt;string&gt;,&lt;size&gt;)</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments:</span></span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">&lt;str&gt;</span>     - Character String to uncompress</span><br /><span class="line">      <span class="ngb">&lt;size&gt;</span>    - Number of Bytes of string to uncompress (1/2/4/8)</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">&lt;numeric&gt;</span> - Clipper value uncompressed</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description:</span></span><br /><span class="line"></span><br /><span class="line">      This function works hand-in-hand with GT_CompN(), this function</span><br /><span class="line">      uncompress&#39;s strings that have previously been compressed.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples:</span></span><br /><span class="line"></span><br /><span class="line">      #include &#34;gt_compn.h&#34;</span><br /><span class="line"></span><br /><span class="line">         s_w := GT_CompN( w, GT_BYTE)</span><br /><span class="line">         s_x := GT_CompN( x, GT_INT )</span><br /><span class="line">         s_y := GT_CompN( y, GT_LONG)</span><br /><span class="line">         s_z := GT_CompN( z, GT_DOUBLE)</span><br /><span class="line"></span><br /><span class="line">         * Display the Values that were Stored</span><br /><span class="line"></span><br /><span class="line">         ? GT_UnCompN( s_w, GT_BYTE)</span><br /><span class="line">         ? GT_UnCompN( s_x, GT_INT )</span><br /><span class="line">         ? GT_UnCompN( s_y, GT_LONG)</span><br /><span class="line">         ? GT_UnCompN( s_z, GT_DOUBLE)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> GT_UCMPN.C</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author: </span> Brian Dukes</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="gt_libng--1.html">GT_COMPN()</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

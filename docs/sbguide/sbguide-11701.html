@@ -1,0 +1,95 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="sbguide-style.css">
+    <title>AdLib and Sound Blaster reference guide. » Functions » CM/S Interface</title>
+    <meta name="description" content="AdLib and Sound Blaster reference guide.">
+    <link rel="prev" href="sbguide-10155.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="sbguide-about.html">About</a></li>
+
+
+          
+
+<li><a href="sbguide-10155.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Functions</li>
+            <ul>
+              <li><a href="index.html">CM/S Interface</a></li>
+              <li><a href="sbguide-12944.html">AdLib Interface</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="sbguide-13076.html">Hardware Data Sound Blaster</a></li>
+              <li><a href="sbguide-14110.html">Hardware layout Sound Blaster</a></li>
+              <li><a href="sbguide-14820.html">Hardware Data AdLib</a></li>
+              <li><a href="sbguide-15215.html">Hardware layout AdLib</a></li>
+              <li><a href="sbguide-15597.html">AdLib &amp; Sound Blaster</a></li>
+              
+            </ul>
+            <li>Future</li>
+            <ul>
+              <li><a href="sbguide-15992.html">Future Releases</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 13</span>     : Set User Function.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Entry</span>          : BX = 13.</span><br /><span class="line">                 DX:AX = Address to user function.</span><br /><span class="line"><span class="ngb">Exit</span>           : None.</span><br /><span class="line"></span><br /><span class="line">This function is invoked to specify the address of an optional user</span><br /><span class="line">function. By default, the user function is not specified.</span><br /><span class="line"></span><br /><span class="line">When the address of the user function is specified, CT-VOICE</span><br /><span class="line">driver calls the user function on encountering each voice data</span><br /><span class="line">block.</span><br /><span class="line"></span><br /><span class="line">Upon entry to the user function, ES:BX points to the first byte of</span><br /><span class="line">the current data block, which is the block type.</span><br /><span class="line"></span><br /><span class="line">User functions can carry out any task is desires and specify to the</span><br /><span class="line">driver whether current data block is to be precessed by the driver</span><br /><span class="line">or not.</span><br /><span class="line"></span><br /><span class="line">The user function must observe the following conditions:</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">A.</span>    The function must perform a far RET.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">B.</span>    The function must preserve the DS, DI, SI and the flag register</span><br /><span class="line">           except the carry flag.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">C.</span>    The function must clear the carry flag, if current data block</span><br /><span class="line">           has to be processed by the driver, otherwise set the carry flag.</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">D.</span>    The function must not set the carry flag, if current data block</span><br /><span class="line">           is the terminate block, i.e. block type is 0.</span><br /><span class="line"></span><br /><span class="line">To disable the call to the user function, invoke this function with</span><br /><span class="line">the contents of both DX and AX set to zero.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,95 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="sbguide-style.css">
+    <title>AdLib and Sound Blaster reference guide. » Functions » CM/S Interface</title>
+    <meta name="description" content="AdLib and Sound Blaster reference guide.">
+    <link rel="prev" href="sbguide-6290.html">
+    <link rel="next" href="sbguide-8551.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="sbguide-about.html">About</a></li>
+
+
+          
+
+<li><a href="sbguide-6290.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="sbguide-8551.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Functions</li>
+            <ul>
+              <li><a href="index.html">CM/S Interface</a></li>
+              <li><a href="sbguide-12944.html">AdLib Interface</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="sbguide-13076.html">Hardware Data Sound Blaster</a></li>
+              <li><a href="sbguide-14110.html">Hardware layout Sound Blaster</a></li>
+              <li><a href="sbguide-14820.html">Hardware Data AdLib</a></li>
+              <li><a href="sbguide-15215.html">Hardware layout AdLib</a></li>
+              <li><a href="sbguide-15597.html">AdLib &amp; Sound Blaster</a></li>
+              
+            </ul>
+            <li>Future</li>
+            <ul>
+              <li><a href="sbguide-15992.html">Future Releases</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 6</span>     : Output Voice.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Entry</span>          : BX = 6.</span><br /><span class="line">                 ES:DI = Address of output buffer.</span><br /><span class="line"><span class="ngb">Exit</span>           : None.</span><br /><span class="line"></span><br /><span class="line">This function uses DMA to output voice. The output buffer</span><br /><span class="line">contains voice data as defined in Creative Voice File Format,</span><br /><span class="line">ES:DI points to the start of the first voice data block in the buffer.</span><br /><span class="line">(Skipping the HEADER BLOCK). The HEADER BLOCK in the CVFF format</span><br /><span class="line">should be ignored. If other voice data is used, they must be converted</span><br /><span class="line">to the voice data block format as defined in CVFF format specification.</span><br /><span class="line">Control is returned to the calling program immediately with a 0FFFFH</span><br /><span class="line">stored into the status word.</span><br /><span class="line"></span><br /><span class="line">While the voice is being output, the calling program can perform</span><br /><span class="line">any other task that does not require the DMA channel 1.</span><br /><span class="line"></span><br /><span class="line">The voice data must be in the CVFF format. Under this format, voice</span><br /><span class="line">data with different sampling rates or packing formats can be stored</span><br /><span class="line">together. This format also allows silence packing and marker inserting.</span><br /><span class="line"></span><br /><span class="line">For more detail of &#34;Creative Voice Format&#34;, please refer to the</span><br /><span class="line">&#34;Creative Voice Format Specification&#34;.</span><br /><span class="line"></span><br /><span class="line">The status word remains non-zero until the end of a buffer us reached</span><br /><span class="line">or until the process is terminated by the &#34;Stop voice Process&#34; function.</span><br /><span class="line">The calling program can check the status work for:</span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">A.</span>    End of voice output, status work is zero, otherwise, status</span><br /><span class="line">           word is non-zero.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">     <span class="ngb">B.</span>    Voice output reaches a particular marker position, status</span><br /><span class="line">           word is updated with the marker value.</span><br /><span class="line"></span><br /><span class="line">Before the voice output has ended, calling program should not invoke</span><br /><span class="line">another voice output or a voice input.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

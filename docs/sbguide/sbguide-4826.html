@@ -1,0 +1,95 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="sbguide-style.css">
+    <title>AdLib and Sound Blaster reference guide. » Functions » CM/S Interface</title>
+    <meta name="description" content="AdLib and Sound Blaster reference guide.">
+    <link rel="prev" href="sbguide-4082.html">
+    <link rel="next" href="sbguide-5727.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="sbguide-about.html">About</a></li>
+
+
+          
+
+<li><a href="sbguide-4082.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="sbguide-5727.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Functions</li>
+            <ul>
+              <li><a href="index.html">CM/S Interface</a></li>
+              <li><a href="sbguide-12944.html">AdLib Interface</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="sbguide-13076.html">Hardware Data Sound Blaster</a></li>
+              <li><a href="sbguide-14110.html">Hardware layout Sound Blaster</a></li>
+              <li><a href="sbguide-14820.html">Hardware Data AdLib</a></li>
+              <li><a href="sbguide-15215.html">Hardware layout AdLib</a></li>
+              <li><a href="sbguide-15597.html">AdLib &amp; Sound Blaster</a></li>
+              
+            </ul>
+            <li>Future</li>
+            <ul>
+              <li><a href="sbguide-15992.html">Future Releases</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 3</span>     : Initialize Driver.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Entry</span>          : BX = 3.</span><br /><span class="line"><span class="ngb">Exit</span>           : AX = 0, Succesfully initialize.</span><br /><span class="line">                      1, Voice card fails.</span><br /><span class="line">                      2, I/O read / write fails.</span><br /><span class="line">                      3, Interrupt for DMA, fails.</span><br /><span class="line"></span><br /><span class="line">If the default I/O Address or interrupt needs to be</span><br /><span class="line">changed, &#34;Set Base I/O Address&#34; and &#34;Set interrupt Number&#34;</span><br /><span class="line">have to be called before invoking this function.</span><br /><span class="line"></span><br /><span class="line">This function checks for the correct setting and the funtionality</span><br /><span class="line">of the Sound Blaster Card. If the Sound Blaster Card is initialised</span><br /><span class="line">succesfully, it will return a 0 in AX.</span><br /><span class="line"></span><br /><span class="line">Otherwise, an error with a non-zero value is returned. The calling</span><br /><span class="line">program should abort when an error occurrs.</span><br /><span class="line"></span><br /><span class="line">The DAC connection to the speaker is turned on after the card has been</span><br /><span class="line">initialized.</span><br /><span class="line"></span><br /><span class="line">Except the functions 0- 2, all other driver fumctions can only be called after</span><br /><span class="line">this function has being invoked. This function only needs to be called once.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

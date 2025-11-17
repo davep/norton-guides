@@ -1,0 +1,119 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="gt_libng-style.css">
+    <title>GT_LIB v1.0 Reference Guide Release 2.0 » G-P » Get Reader</title>
+    <meta name="description" content="GT_LIB v1.0 Reference Guide Release 2.0">
+    <link rel="prev" href="gt_libng-104583.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="gt_libng-about.html">About</a></li>
+
+
+          
+
+<li><a href="gt_libng-104583.html">Previous</a></li>
+
+
+          
+
+<li><a href="gt_libng-98996.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>A-F</li>
+            <ul>
+              <li><a href="index.html">Array</a></li>
+              <li><a href="gt_libng-5540.html">Audit</a></li>
+              <li><a href="gt_libng-6547.html">Compression</a></li>
+              <li><a href="gt_libng-13032.html">Date</a></li>
+              <li><a href="gt_libng-23409.html">Disk Drive</a></li>
+              <li><a href="gt_libng-37327.html">Error System</a></li>
+              <li><a href="gt_libng-40165.html">Environment</a></li>
+              <li><a href="gt_libng-49799.html">File I/O</a></li>
+              
+            </ul>
+            <li>G-P</li>
+            <ul>
+              <li><a href="gt_libng-66199.html">General</a></li>
+              <li><a href="gt_libng-98996.html">Get Reader</a></li>
+              <li><a href="gt_libng-106381.html">Keyboard</a></li>
+              <li><a href="gt_libng-114805.html">Maths</a></li>
+              <li><a href="gt_libng-124424.html">Memory</a></li>
+              <li><a href="gt_libng-127716.html">Network</a></li>
+              <li><a href="gt_libng-133468.html">Printer</a></li>
+              
+            </ul>
+            <li>S-W</li>
+            <ul>
+              <li><a href="gt_libng-136117.html">Screen Saver</a></li>
+              <li><a href="gt_libng-140433.html">Security</a></li>
+              <li><a href="gt_libng-141574.html">String</a></li>
+              <li><a href="gt_libng-170364.html">System</a></li>
+              <li><a href="gt_libng-174810.html">Video</a></li>
+              <li><a href="gt_libng-205251.html">Windows</a></li>
+              
+            </ul>
+            <li>Information</li>
+            <ul>
+              <li><a href="gt_libng-209432.html">About</a></li>
+              <li><a href="gt_libng-209917.html">Background</a></li>
+              <li><a href="gt_libng-212755.html">BBS List</a></li>
+              <li><a href="gt_libng-213177.html">Contributors</a></li>
+              <li><a href="gt_libng-213853.html">Submitting Code</a></li>
+              <li><a href="gt_libng-215955.html">Sample Clipper/C Header</a></li>
+              <li><a href="gt_libng-218225.html">Sample ASM Header</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">GET a Memo Field</span></span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Syntax</span></span><br /><span class="line"></span><br /><span class="line">       <span class="fg15 bg1"> GT_MemoRead( oGet )</span></span><br /><span class="line">  <span class="fg15 bg1">          @ &lt;row&gt;, &lt;col&gt; GET &lt;memo&gt; MEMO COORD &lt;coords&gt; ;</span></span><br /><span class="line">        <span class="fg15 bg1"> BOXCOLOR &lt;bcolor&gt; TITLE &lt;title&gt;</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Arguments:</span></span><br /><span class="line"></span><br /><span class="line">      Standard Get parameters +</span><br /><span class="line">                coords  - array of 4 elements Top,left,bottom,right of MemoEdit Box</span><br /><span class="line">                bcolor  - color of MemoEdit Box (optional)</span><br /><span class="line">                title   - title of Memoedit Box (optional)</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">      Updated Get:buffer</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Description:</span></span><br /><span class="line"></span><br /><span class="line">      To allow a standard GET/Read on a Memo field.</span><br /><span class="line">      Displays MEMO/memo at the &lt;row&gt;, &lt;col&gt; position depending</span><br /><span class="line">                if the memo field has anything in it.</span><br /><span class="line">                Control_Page_Down to enter the Memo reader</span><br /><span class="line">                Allows all standard features of get system eg WHEN,VALID</span><br /><span class="line">                if get COLOR is used this will be used for the MEMO/memo</span><br /><span class="line"></span><br /><span class="line">                REQUIRES GT_Cent() if the TITLE option is used</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Examples:</span></span><br /><span class="line"></span><br /><span class="line">      PROCEDURE TestMemo()</span><br /><span class="line">          LOCAL GetList := {}</span><br /><span class="line">          LOCAL mNotes</span><br /><span class="line"></span><br /><span class="line">          CLS</span><br /><span class="line">          mNotes := &#34;This is the default memo string at entry to the GET.&#34;</span><br /><span class="line"></span><br /><span class="line">          @ 4,0 SAY &#34;Notes:&#34;</span><br /><span class="line">          @ 4,10 GET mNotes MEMO COORD {5, 10, 15, 50} ;</span><br /><span class="line">                                                                BOXCOLOR &#34;W+/B,GR+/B&#34; TITLE &#39;Test&#39;</span><br /><span class="line">          READ</span><br /><span class="line"></span><br /><span class="line">          ? mNotes</span><br /><span class="line">      RETURN</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Header File:</span> GT_Memo.ch</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Source:</span> GT_RMEMO.PRG</span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Author: </span> Niall Scott</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
