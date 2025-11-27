@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Structures</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-254037.html">
+    <link rel="next" href="dos5-255713.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-254037.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-221655.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-255713.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">struc PartEntry</span><br /><span class="line"> peBootable             db ?    ; 80h = bootable, 00h = non-bootable</span><br /><span class="line"> peBeginHead            db ?    ; Beginning head (&lt;=&gt; 1st track in part.)</span><br /><span class="line"> peBeginSector          db ?    ; Beginning sector (rel. to 1st track)</span><br /><span class="line"> peBeginCylinder        db ?    ; Beginning cylinder (&lt;=&gt; 1st track)</span><br /><span class="line"> peFileSystem           db ?    ; Type of file system</span><br /><span class="line"> peEndHead              db ?    ; Ending head (&lt;=&gt; last track in part.)</span><br /><span class="line"> peEndSector            db ?    ; Ending sector (rel. to 1st track)</span><br /><span class="line"> peEndCylinder          db ?    ; Ending cylinder (&lt;=&gt; last track)</span><br /><span class="line"> peStartSector          dd ?    ; Starting sector (rel. to beg. of disk)</span><br /><span class="line"> peSectors              dd ?    ; No. of sectors in partition</span><br /><span class="line">ends</span><br /><span class="line"></span><br /><span class="line">;       The PartEntry structure specifies the size and the starting</span><br /><span class="line">;       and ending sectors of a partition on a disk that can be</span><br /><span class="line">;       partitioned.</span><br /><span class="line">;       DOS supplies a partition table for every disk that can be</span><br /><span class="line">;       partitioned. The table, placed at the end of the first hidden</span><br /><span class="line">;       sector on the logical drive, consists of one or more PartEntry</span><br /><span class="line">;       structures.</span><br /><span class="line">;</span><br /><span class="line">;       ; peFileSystem</span><br /><span class="line">;       00h     Unknown</span><br /><span class="line">;       01h     12-bit FAT; partition smaller than 10 MB</span><br /><span class="line">;       04h     16-bit FAT; partition smaller than 32 MB</span><br /><span class="line">;       05h     Extended DOS partition</span><br /><span class="line">;       06h     16-bit FAT; partition larger than or equal to 32 MB</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-71920.html">440Dh /61h</a></li>
+        
+          <li><a href="dos5-68530.html">440Dh /41h</a></li>
+        
+          <li><a href="dos5-229595.html">DeviceParams</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

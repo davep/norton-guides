@@ -1,0 +1,96 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Structures</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-222721.html">
+    <link rel="next" href="dos5-224731.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-222721.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-221655.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-224731.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">struc BootSector</span><br /><span class="line"> bsJump         db 3 dup (?)    ; E9 XX XX or EB XX 90</span><br /><span class="line"> bsOemName      db &#34;????????&#34;   ; OEM name and version</span><br /><span class="line">                               ;; Start of BIOS parameter block</span><br /><span class="line"> bsBytesPerSec  dw ?            ; Bytes per sector</span><br /><span class="line"> bsSecPerClust  db ?            ; Sectors per cluster</span><br /><span class="line"> bsResSectors   dw ?            ; No. of reserved sectors</span><br /><span class="line"> bsFATs         db ?            ; No. of file allocation tables</span><br /><span class="line"> bsRootDirEnts  dw ?            ; No. of root-directory entries</span><br /><span class="line"> bsSectors      dw ?            ; Total no. of sectors (0 if &gt; 32 MB)</span><br /><span class="line"> bsMedia        db ?            ; Media descriptor</span><br /><span class="line"> bsFATsecs      dw ?            ; No. of sectors per FAT</span><br /><span class="line"> bsSecPerTrack  dw ?            ; Sectors per track</span><br /><span class="line"> bsHeads        dw ?            ; No. of heads</span><br /><span class="line"> bsHiddenSecs   dd ?            ; No. of hidden sectors</span><br /><span class="line"> bsHugeSectors  dd ?            ; No. of sectors if bsSectors = 0</span><br /><span class="line">                               ;; End of BIOS parameter block</span><br /><span class="line"> bsDriveNumber  db ?            ; Drive no. (80h=1st hard disk, else 0)</span><br /><span class="line"> bsReserved1    db ?            ; Reserved</span><br /><span class="line"> bsBootSignature db ?           ; Extended boot signature (29h)</span><br /><span class="line"> bsVolumeID     dd ?            ; Volume serial number</span><br /><span class="line"> bsVolumeLabel  db 11 dup (?)   ; Volume label</span><br /><span class="line"> bsFileSysType  db 8 dup (?)    ; File-system type (e.g. &#34;FAT12   &#34;)</span><br /><span class="line">ends</span><br /><span class="line"></span><br /><span class="line">;       The BootSector structure contains information about the disk</span><br /><span class="line">;       (or other storage medium) for a particular drive. The</span><br /><span class="line">;       structure appears at the beginning of the first sector (the</span><br /><span class="line">;       boot, or startup, sector) of the disk.</span><br /><span class="line">;       The BootSector structure shares the first sector with the</span><br /><span class="line">;       bootstrap routine and the boot sector signature. The boot</span><br /><span class="line">;       sector signature, stored in the last two bytes of the sector,</span><br /><span class="line">;       must be 0AA55h.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-229595.html">DeviceParams</a></li>
+        
+          <li><a href="dos5-251263.html">Media types</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

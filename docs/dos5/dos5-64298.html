@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-63707.html">
+    <link rel="next" href="dos5-64884.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-63707.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-64884.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 440Ch /65h     Get Iteration Count                          DOS 3.2+</span></span><br /><span class="line"></span><br /><span class="line">    Returns the number of times the device driver is to try to send</span><br /><span class="line">    output to a device before assuming that the device is busy.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX    = 440Ch</span><br /><span class="line">                BX    = Device handle</span><br /><span class="line">                CH    = Device category:</span><br /><span class="line">                        | 01h   Serial device</span><br /><span class="line">                        | 03h   Console (screen)</span><br /><span class="line">                        | 05h   Parallel printer</span><br /><span class="line">                CL    = 65h</span><br /><span class="line">                DS:DX = Pointer to 2-byte buffer for iteration count</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  Buffer updated</span><br /><span class="line">                or</span><br /><span class="line">                AX = Error code, if CF is set</span><br /><span class="line">                     | 01h Invalid function</span><br /><span class="line">                     | 06h Invalid handle</span><br /><span class="line">                     |     Device-dependent error</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-60839.html">440Ch /45h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

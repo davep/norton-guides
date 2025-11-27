@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Interrupts 20h-28h</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    
+    <link rel="next" href="dos5-160619.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="dos5-159299.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-160619.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 20h                 Terminate Program                          <span class="ngu">Superseded</span></span></span><br /><span class="line"></span><br /><span class="line">    Terminates the current program and returns control to its parent</span><br /><span class="line">    program.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngu">Note</span>    Int 20h has been superseded. Programs should use</span><br /><span class="line">                End Program (Int 21h, function 4ch).</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   CS = Segment of PSP</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  This interrupt does not return</span><br /><span class="line"></span><br /><span class="line">    ─────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This interrupt is intended to be used by .COM programs. When a</span><br /><span class="line">    program issues Int 20h, the CS register must contain the segment</span><br /><span class="line">    address of the program segment prefix (PSP).</span><br /><span class="line"></span><br /><span class="line">    Int 20h carries out the following actions:</span><br /><span class="line"></span><br /><span class="line">    - Flushes the file buffers and closes files, unlocking any regions</span><br /><span class="line">      locked by the program.</span><br /><span class="line">    - Restores interrupt 22h, 23h, and 24h vectors from the addresses</span><br /><span class="line">      saved in the PSP.</span><br /><span class="line">    - Frees any memory owned by the terminating program.</span><br /><span class="line">    - Transfers control to the address specified by offset 0Ah</span><br /><span class="line">      (termination address) in the PSP.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-93692.html">4Ch</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

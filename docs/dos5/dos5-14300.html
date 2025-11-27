@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-14051.html">
+    <link rel="next" href="dos5-14953.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-14051.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-14953.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 25h            Set Interrupt Vector</span></span><br /><span class="line"></span><br /><span class="line">    Replaces the vector-table entry with the address of the specified</span><br /><span class="line">    interrupt handler.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH    = 25h</span><br /><span class="line">                AL    = Interrupt number</span><br /><span class="line">                DS:DX = Address of interrupt handler</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  Nothing</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">                    </span><br /><span class="line">    Programs should <span class="ngu">never</span> set an interrupt handler by directly</span><br /><span class="line">    manipulating the interrupt vector table.</span><br /><span class="line"></span><br /><span class="line">    When a program installs a new interrupt handler, it should use</span><br /><span class="line">    function 35h to retrieve the address of the original interrupt</span><br /><span class="line">    handler and restore this original address before terminating.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-27388.html">35h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

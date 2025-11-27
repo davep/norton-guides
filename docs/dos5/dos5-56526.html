@@ -1,0 +1,96 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-55779.html">
+    <link rel="next" href="dos5-58056.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-55779.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-58056.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 4409h          Is Drive Remote                              DOS 3.1+</span></span><br /><span class="line"></span><br /><span class="line">    Determines whether the specified drive is local (attached to the</span><br /><span class="line">    computer running the program) or remote (on a network server).</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX = 4409h</span><br /><span class="line">                BL = Drive number (0 = default, 1 = A, etc.)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  DX bit 12 = 1   If drive is remote</span><br /><span class="line">                AX changed</span><br /><span class="line">                or</span><br /><span class="line">                AX = Error code, if CF is set</span><br /><span class="line">                     | 01h Invalid function</span><br /><span class="line">                     | 0Fh Invalid drive</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    If bit 12 of DX is set, the drive is remote (for example, if it</span><br /><span class="line">    represents a network connection) or is a non-standard file system</span><br /><span class="line">    (for example, CD-ROM); the other bits in DX are zero.</span><br /><span class="line"></span><br /><span class="line">    If bit 12 of DX is zero, the drive is not a network drive, and the</span><br /><span class="line">    bits in the DX register have the following meaning:</span><br /><span class="line"></span><br /><span class="line">                <span class="ngb">Bit     Description</span></span><br /><span class="line">                1       1 = Drive uses 32-bit sector addressing</span><br /><span class="line">                6       1 = Drive accepts Generic IOCTL for Block</span><br /><span class="line">                            Devices, Get Logical Drive Map, and Set</span><br /><span class="line">                            Logical Drive Map (functions 440dh, 440eh,</span><br /><span class="line">                            and 440fh)</span><br /><span class="line">                7       1 = Drive accepts Query IOCTL Device (function</span><br /><span class="line">                            4411h)</span><br /><span class="line">                9       1 = Drive is local but shared by other</span><br /><span class="line">                            computers in the network.</span><br /><span class="line">                11      1 = Drive accepts Does Device Use Removable</span><br /><span class="line">                            Media (function 4408h)</span><br /><span class="line">                13      1 = Drive requires media descriptor in FAT</span><br /><span class="line">                14      1 = Drive accepts Receive Control Data from</span><br /><span class="line">                            Block Device and Send Control Data to</span><br /><span class="line">                            Block Device (functions 4404h and 4405h)</span><br /><span class="line">                15      1 = Substitution drive (for example, set by</span><br /><span class="line">                            the SUBST command)</span><br /><span class="line">                All other bits zero</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-58056.html">440ah</a></li>
+        
+          <li><a href="dos5-55779.html">4408h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

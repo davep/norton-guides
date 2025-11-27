@@ -1,0 +1,100 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-102377.html">
+    <link rel="next" href="dos5-104869.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-102377.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-104869.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 5801h          Set Allocation Strategy                      DOS 3.0+</span></span><br /><span class="line"></span><br /><span class="line">    Sets the method DOS uses to allocate memory.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX = 5801h</span><br /><span class="line">                BX = allocation-strategy value</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  Nothing</span><br /><span class="line">                or</span><br /><span class="line">                AX = Error code, if CF is set</span><br /><span class="line">                     | 01h Invalid function (bad strategy value)</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    If a program changes the allocation strategy to permit allocations</span><br /><span class="line">    from the upper-memory area, it <span class="ngb">must</span> save the original allocation</span><br /><span class="line">    strategy and restore it before terminating.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    If the current allocation strategy specifies the upper-memory area</span><br /><span class="line">    but the upper-memory area is not linked, DOS searches conventional</span><br /><span class="line">    memory instead.</span><br /><span class="line"></span><br /><span class="line">    The <span class="ngb">allocation-strategy value</span> can be one of the following:</span><br /><span class="line"></span><br /><span class="line">    first_fit_low      = 0000h   Search conventional memory for the</span><br /><span class="line">                                 available block having the lowest</span><br /><span class="line">                                 address.</span><br /><span class="line">                                 This is the <span class="ngu">default</span> strategey.</span><br /><span class="line"></span><br /><span class="line">    best_fit_low       = 0001h   Search conventional memory for the</span><br /><span class="line">                                 available block that most closely</span><br /><span class="line">                                 matches the requested size.</span><br /><span class="line"></span><br /><span class="line">    last_fit_low       = 0002h   Search conventional memory for the</span><br /><span class="line">                                 available block at the highest address.</span><br /><span class="line"></span><br /><span class="line">    first_fit_high     = 0080h   Search the upper-memory area for the</span><br /><span class="line">                                 available block having the lowest</span><br /><span class="line">                                 address.</span><br /><span class="line">                                 If no block is found, the search</span><br /><span class="line">                                 continues in conventional memory.</span><br /><span class="line"></span><br /><span class="line">    best_fit_high      = 0081h   Search the upper-memory area for the</span><br /><span class="line">                                 available block that most closely</span><br /><span class="line">                                 matches the requested size.</span><br /><span class="line">                                 If no block is found, the search</span><br /><span class="line">                                 continues in conventional memory.</span><br /><span class="line"></span><br /><span class="line">    last_fit_high      = 0082h   Search the upper-memory area for the</span><br /><span class="line">                                 available block at the highest address.</span><br /><span class="line">                                 If no block is found, the search</span><br /><span class="line">                                 continues in conventional memory.</span><br /><span class="line"></span><br /><span class="line">    first_fit_highonly = 0040h   Search the upper-memory area for the</span><br /><span class="line">                                 available block at the lowest address.</span><br /><span class="line"></span><br /><span class="line">    best_fit_highonly  = 0041h   Search the upper-memory area for the</span><br /><span class="line">                                 available block that most closely</span><br /><span class="line">                                 matches the requested size.</span><br /><span class="line"></span><br /><span class="line">    last_fit_highonly  = 0042h   Search the upper-memory area for the</span><br /><span class="line">                                 available block at the highest address.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-83506.html">48h</a></li>
+        
+          <li><a href="dos5-102377.html">5800h</a></li>
+        
+          <li><a href="dos5-104869.html">5802h</a></li>
+        
+          <li><a href="dos5-105186.html">5803h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

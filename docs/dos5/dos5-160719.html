@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Interrupts 20h-28h</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-160619.html">
+    <link rel="next" href="dos5-162169.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-160619.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-159299.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-162169.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 22h                 Termination Address</span></span><br /><span class="line"></span><br /><span class="line">    Interrupt 22h is not used as an interrupt. Instead, DOS stores the</span><br /><span class="line">    termination address for the current program in the corresponding</span><br /><span class="line">    vector-table entry. This address is also specified in offset 0Ah</span><br /><span class="line">    in the current program&#39;s PSP.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Programs must not issue Interrupt 22h.</span></span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    </span><br /><span class="line">    The termination address is a return address back to the program</span><br /><span class="line">    that started the current program. DOS transfers control to the</span><br /><span class="line">    termination address as the last step in completing Terminate</span><br /><span class="line">    Program (Int 20h), Terminate Program (Int 21h, function 00h), Keep</span><br /><span class="line">    Program (Int 21h, function 31h), End Program (Int 21h, function</span><br /><span class="line">    4ch), and Terminate and Stay Resident (Int 27h). These functions</span><br /><span class="line">    always restore the vector-table entry from offset 0Ah in the</span><br /><span class="line">    current PSP before transferring control, so changes to the</span><br /><span class="line">    vector-table entry are ignored.</span><br /><span class="line">    </span><br /><span class="line">    Before transferring control to the termination address, DOS</span><br /><span class="line">    restores the parent program&#39;s stack and PSP. Furthermore, if a</span><br /><span class="line">    program terminates by using Int 20h, Int 21h/00h, or Int 21h/4ch,</span><br /><span class="line">    DOS frees all resources for the program, such as allocated memory,</span><br /><span class="line">    stack, files, and standard devices. This means that changes to the</span><br /><span class="line">    termination address in the PSP or direct calls to the termination</span><br /><span class="line">    address may corrupt the operation of the system.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-93692.html">4ch</a></li>
+        
+          <li><a href="dos5-22239.html">31h</a></li>
+        
+          <li><a href="dos5-255713.html">PSP</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Multiplex (Int 2Fh)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-153197.html">
+    <link rel="next" href="dos5-154399.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-153197.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-135422.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-154399.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 2Fh / 4B04h         Free Switcher ID                             DOS 5.0+</span></span><br /><span class="line"></span><br /><span class="line">    Frees the switcher identifier associated with the task switcher</span><br /><span class="line">    having the specified service-function handler. When a task</span><br /><span class="line">    switcher terminates, it calls this function.</span><br /><span class="line"></span><br /><span class="line">    Client programs must not call this function.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX    = 4B04h</span><br /><span class="line">                BX    = ID (allocated by Int 2Fh function 4B03h)</span><br /><span class="line">                ES:DI = Address of service-function handler</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  AX = BX = 00h   Success</span><br /><span class="line">                or</span><br /><span class="line">                BX &gt; 0          Invalid switcher ID</span><br /><span class="line"></span><br /><span class="line">    [...]</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-153197.html">4B03h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

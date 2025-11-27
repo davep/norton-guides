@@ -1,0 +1,104 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Device Driver Fnx</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-206950.html">
+    <link rel="next" href="dos5-208962.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-206950.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-182062.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-208962.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Device driver function 0Ch      IOCTL Write             b   c</span></span><br /><span class="line"></span><br /><span class="line">    IOCTL Write transfers data from a buffer to a device driver.</span><br /><span class="line"></span><br /><span class="line">    This function can be used for both block and character device</span><br /><span class="line">    drivers.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    DOS calls this function only if bit 14 is set in the dhAttributes</span><br /><span class="line">    field of the DeviceHeader structure for the driver.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">irwrUnit</span></span><br /><span class="line">    Specifies the device to which data is to be written. This field is</span><br /><span class="line">    used for block device drivers only.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">irwrStatus</span></span><br /><span class="line">    Specifies the status of the completed function. If the function</span><br /><span class="line">    was successful, the driver must set the done bit (bit 8).</span><br /><span class="line">    Otherwise, the driver must set both the error and done bits (bits</span><br /><span class="line">    15 and 8) and copy an error value to the low-order byte.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">irwrBuffer</span></span><br /><span class="line">    Contains the 32-bit address of the buffer containing data to write</span><br /><span class="line">    to the device.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">irwrBytes</span></span><br /><span class="line">    Contains the number of bytes to write and receives the number of</span><br /><span class="line">    bytes written.</span><br /><span class="line"></span><br /><span class="line">        input   Specifies the number of bytes to write. This number</span><br /><span class="line">                must not exceed the amount of data in the specified</span><br /><span class="line">                buffer.</span><br /><span class="line"></span><br /><span class="line">        output  Specifies the number of bytes written. This number</span><br /><span class="line">                cannot exceed the requested number of bytes.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-247980.html">IOCTLRWRequest</a></li>
+        
+          <li><a href="dos5-196098.html">Dev03h</a></li>
+        
+          <li><a href="dos5-52697.html">4403h</a></li>
+        
+          <li><a href="dos5-54158.html">4405h</a></li>
+        
+          <li><a href="dos5-227497.html">DeviceHeader</a></li>
+        
+          <li><a href="dos5-182799.html">Dev*</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

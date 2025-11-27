@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-58056.html">
+    <link rel="next" href="dos5-60421.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-58056.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-60421.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 440Bh          Set Sharing Retry Count                      DOS 3.1+</span></span><br /><span class="line"></span><br /><span class="line">    Sets the number of times DOS retries a disk operation after a</span><br /><span class="line">    failure caused by a file-sharing operation. When the number of</span><br /><span class="line">    retries is reached without success, DOS returns an error value to</span><br /><span class="line">    the program that requested the disk operation.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX = 440Bh</span><br /><span class="line">                CX = No. of times to execute delay loop between retries</span><br /><span class="line">                DX = No. of times to retry file operation</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  AX = Error code, if CF is set</span><br /><span class="line">                     | 01h Invalid function</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This function returns an error value of 1 (invalid function) if</span><br /><span class="line">    file sharing is not active (SHARE.EXE has not been loaded).</span><br /><span class="line"></span><br /><span class="line">    The pause time depends on the computer&#39;s clock speed. The default</span><br /><span class="line">    sharing retry count is 3; the default number of times between</span><br /><span class="line">    retries is 1. If a program changes the retry count or pause value,</span><br /><span class="line">    it should restore the default values before terminating.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-111071.html">5ch</a></li>
+        
+          <li><a href="dos5-105927.html">59h</a></li>
+        
+          <li><a href="dos5-141506.html">1000h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

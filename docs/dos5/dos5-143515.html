@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Multiplex (Int 2Fh)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-142674.html">
+    <link rel="next" href="dos5-147584.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-142674.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-135422.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-147584.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 2Fh / 1A00h         Get ANSI.SYS Installed State                 DOS 4.0+</span></span><br /><span class="line"></span><br /><span class="line">    Determines whether the ANSI.SYS device driver has been loaded.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX = 1A00h</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  AL = 0FFh | 00h   ANSI.SYS loaded | not loaded</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">ANSI Escape Sequences</span></span><br /><span class="line"></span><br /><span class="line">    ANSI escape sequences affect output to the screen device, giving</span><br /><span class="line">    programs control of the screen&#39;s cursor, colors, and display</span><br /><span class="line">    modes. (An escape sequence is one or more characters preceded by</span><br /><span class="line">    the escape character ASCII 1Bh.) When a program writes an escape</span><br /><span class="line">    sequence to the screen, the screen device translates the sequence</span><br /><span class="line">    into its corresponding action, such as positioning the cursor or</span><br /><span class="line">    changing colors.</span><br /><span class="line"></span><br /><span class="line">    The following list summarizes the ANSI escape sequences supported</span><br /><span class="line">    by the ANSI.SYS driver. ANSI escape sequences are available only</span><br /><span class="line">    if this driver has been installed. Parameters shown in <span class="ngu">underline<span class="ngb"></span></span></span><br /><span class="line">    are ASCII strings representing integers.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Escape sequence     Action</span></span><br /><span class="line">        ESC[2J          Clears the entire screen and moves the cursor</span><br /><span class="line">                        to upper-left corner (home).</span><br /><span class="line">        ESC[K           Clears the screen from cursor to end of line.</span><br /><span class="line">        ESC[<span class="ngu">rows</span>A       Moves the cursor up the specified number of</span><br /><span class="line">                        rows without changing the column (one row if</span><br /><span class="line">                        <span class="ngu">rows</span> omitted). Ignored if cursor already</span><br /><span class="line">                        at top row.</span><br /><span class="line">        ESC[<span class="ngu">rows</span>B       Moves the cursor down the specified number of</span><br /><span class="line">                        rows without changing the column (one row if</span><br /><span class="line">                        <span class="ngu">rows</span> omitted). Ignored if cursor already</span><br /><span class="line">                        at bottom row.</span><br /><span class="line">        ESC[<span class="ngu">cols</span>C       Moves the cursor to the right the specified</span><br /><span class="line">                        number of columns without changing the row</span><br /><span class="line">                        (one column if <span class="ngu">cols</span> omitted). Ignored if</span><br /><span class="line">                        cursor already at rightmost column.</span><br /><span class="line">        ESC[<span class="ngu">cols</span>D       Moves the cursor to the left the specified</span><br /><span class="line">                        number of columns without changing the row</span><br /><span class="line">                        (one column if <span class="ngu">cols</span> omitted). Ignored if</span><br /><span class="line">                        cursor already at leftmost column.</span><br /><span class="line">        ESC[<span class="ngu">row</span>;<span class="ngu">col</span>H    Moves the cursor to an absolute position, e.g.</span><br /><span class="line">                        ESC[25;80H moves the cursor to the lower-right</span><br /><span class="line">                        corner on an 80x25 screen. Either <span class="ngu">row</span> or <span class="ngu">col</span></span><br /><span class="line">                        can be omitted.</span><br /><span class="line">        ESC[s           Saves the current cursor position.</span><br /><span class="line">        ESC[u           Moves the cursor to the position most recently</span><br /><span class="line">                        saved by ESC[s.</span><br /><span class="line">        ESC[6n          Returns the current cursor position in the</span><br /><span class="line">                        format ESC[row;colR. A program should read the</span><br /><span class="line">                        cursor position from standard input immediately</span><br /><span class="line">                        after writing the escape sequence.</span><br /><span class="line">        ESC[<span class="ngu">attr</span>m       Selects from the character attributes and</span><br /><span class="line">                        colors in Table 1. If more than one attribute</span><br /><span class="line">                        or color is specified, values are separated by</span><br /><span class="line">                        semicolons. The ability to display certain</span><br /><span class="line">                        attributes and colors depends on the screen</span><br /><span class="line">                        device.</span><br /><span class="line">        ESC[=<span class="ngu">mode</span>h      Selects on of the display modes in Table 2.</span><br /><span class="line">        ESC[=7l         Disables line wrap.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Table 1 - Character attributes and colors</span></span><br /><span class="line">          <span class="ngb">Value   Attribute</span></span><br /><span class="line">            0     No special attributes</span><br /><span class="line">            1     High intensity</span><br /><span class="line">            2     Low intensity</span><br /><span class="line">            3     Italic</span><br /><span class="line">            4     Underline (on monochrome display adapter only)</span><br /><span class="line">            5     Blinking</span><br /><span class="line">            6     Rapid blinking</span><br /><span class="line">            7     Reverse video</span><br /><span class="line">            8     Invisible (doesn&#39;t display)</span><br /><span class="line">        <span class="ngb">Foreground    Background</span></span><br /><span class="line">        <span class="ngb">  value         value         Color</span></span><br /><span class="line">           30            40           Black</span><br /><span class="line">           31            41           Red</span><br /><span class="line">           32            42           Green</span><br /><span class="line">           33            43           Yellow</span><br /><span class="line">           34            44           Blue</span><br /><span class="line">           35            45           Magenta</span><br /><span class="line">           36            46           Cyan</span><br /><span class="line">           37            47           White</span><br /><span class="line"></span><br /><span class="line">        </span><br /><span class="line">        <span class="ngb">Table 2 - Display modes</span></span><br /><span class="line">        <span class="ngb">Value   Mode</span></span><br /><span class="line">          0     40 columns by 25 rows, 16-color text (color burst off)</span><br /><span class="line">          1     40 columns by 25 rows, 16-color text</span><br /><span class="line">          2     80 columns by 25 rows, 16-color text (color burst off)</span><br /><span class="line">          3     80 columns by 25 rows, 16-color text</span><br /><span class="line">          4     320 pixels by 200 pixels, 4-color graphics</span><br /><span class="line">          5     320 pixels by 200 pixels, 4-color graphics (color burst off)</span><br /><span class="line">          6     640 pixels by 200 pixels, 2-color graphics</span><br /><span class="line">          7     Enables line wrapping</span><br /><span class="line">          14    640 pixels by 200 pixels, 16-color graphics (EGA/VGA)</span><br /><span class="line">          15    640 pixels by 350 pixels, 2-color graphics (EGA/VGA)</span><br /><span class="line">          16    640 pixels by 350 pixels, 16-color graphics (EGA/VGA)</span><br /><span class="line">          17    640 pixels by 480 pixels, 2-color graphics (MCGA/VGA)</span><br /><span class="line">          18    640 pixels by 480 pixels, 16-color graphics (VGA)</span><br /><span class="line">          19    320 pixels by 200 pixels, 256-color graphics (MCGA/VGA)</span><br /><span class="line">        Note: Modes 14-19 supported by DOS 4.0+</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

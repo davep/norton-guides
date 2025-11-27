@@ -1,0 +1,104 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-21145.html">
+    <link rel="next" href="dos5-24018.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-21145.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-24018.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 31h            Keep Program</span></span><br /><span class="line"></span><br /><span class="line">    Ends the current program by returning control to its parent</span><br /><span class="line">    program but leaves (keeps) the program in memory and preserves the</span><br /><span class="line">    program&#39;s resources, such as open files and allocated memory.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 31h</span><br /><span class="line">                AL = Return value</span><br /><span class="line">                DX = Size of resident portion, in paragraphs</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  This function does not return</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    The return value may be retrieved by a parent process via function</span><br /><span class="line">    4Dh, or tested by means of the errorlevel feature of DOS batch</span><br /><span class="line">    processing. If the program terminates normally, the return value</span><br /><span class="line">    should be 00h.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    Function 31h carries out the following actions:</span><br /><span class="line"></span><br /><span class="line">    - Reallocates program memory to the amount specified by DX (min.</span><br /><span class="line">      6 paragraphs). Program memory includes only the program segment</span><br /><span class="line">      prefix (PSP) and program data and code. The reallocation does</span><br /><span class="line">      not affect the program&#39;s environment block, nor does it affect</span><br /><span class="line">      the memory allocated by the program after it was loaded.</span><br /><span class="line">    - Flushes the file buffers but leaves files open. Any locked</span><br /><span class="line">      regions in the open files remain locked.</span><br /><span class="line">    - Restores interrupt 22h, 23h, and 24h vectors from the addresses</span><br /><span class="line">      saved in the PSP.</span><br /><span class="line">    - Transfers control to the address specified by offset 0Ah</span><br /><span class="line">      (termination address) in the PSP.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    Before calling Keep Program, the initialization routine of a</span><br /><span class="line">    terminate-but-stay-resident (TSR) program should do the following:</span><br /><span class="line"></span><br /><span class="line">        - Close all unneeded files, including standard devices</span><br /><span class="line">        - Free the environment block if it is not needed</span><br /><span class="line">        - Free all memory not needed to support interrupt handlers</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-94701.html">4dh</a></li>
+        
+          <li><a href="dos5-93692.html">4ch</a></li>
+        
+          <li><a href="dos5-87638.html">4b00h</a></li>
+        
+          <li><a href="dos5-137149.html">Int 2Fh</a></li>
+        
+          <li><a href="dos5-258925.html">StdDevices</a></li>
+        
+          <li><a href="dos5-255713.html">PSP</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

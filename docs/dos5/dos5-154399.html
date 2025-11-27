@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Multiplex (Int 2Fh)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-153886.html">
+    <link rel="next" href="dos5-155015.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-153886.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-135422.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-155015.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 2Fh / 4B05h         Identify Instance Data                       DOS 5.0+</span></span><br /><span class="line"></span><br /><span class="line">    Identifies instance data maintained by a client program. A task</span><br /><span class="line">    switcher calls this function to create a linked list of instance</span><br /><span class="line">    data blocks for all client programs running on the system. Client</span><br /><span class="line">    programs with instance data must intercept interrupt 2Fh and</span><br /><span class="line">    process function 4B05h when they receive the function call.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX    = 4B05h</span><br /><span class="line">                ES:BX = 0000:0000h</span><br /><span class="line">                CX:DX = Address of service-function handler</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  ES:BX = Pointer to a SwStartupInfo structure</span><br /><span class="line">                or</span><br /><span class="line">                ES:BX = 0000:0000h</span><br /><span class="line"></span><br /><span class="line">    [...]</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-260462.html">SwStartupInfo</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

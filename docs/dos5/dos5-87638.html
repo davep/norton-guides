@@ -1,0 +1,106 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-85968.html">
+    <link rel="next" href="dos5-90507.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-85968.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-90507.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 4B00h          Load and Execute Program (EXEC)</span></span><br /><span class="line"></span><br /><span class="line">    Loads a program into memory, creates a new program segment prefix</span><br /><span class="line">    (PSP), and transfers control to the new program.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX    = 4B00h</span><br /><span class="line">                DS:DX = Pointer to ASCIIZ program name (.COM or .EXE)</span><br /><span class="line">                ES:BX = Pointer to a LoadExec structure</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  Expect all registers to be changed, except CS:IP</span><br /><span class="line">                AX = Error code, if CF is set</span><br /><span class="line">                     | 01h Invalid function number</span><br /><span class="line">                     | 02h File not found</span><br /><span class="line">                     | 03h Path not found</span><br /><span class="line">                     | 04h No handle available</span><br /><span class="line">                     | 05h Access denied</span><br /><span class="line">                     | 08h Insufficient memory</span><br /><span class="line">                     | 0Ah Invalid environment</span><br /><span class="line">                     | 0Bh Invalid format</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    Before function 4B00h (EXEC) is invoked, DS:DX must point to a</span><br /><span class="line">    zero-terminated string that specifies the program to load. The</span><br /><span class="line">    program name must be a valid DOS filename, and the file must be a</span><br /><span class="line">    valid .COM or .EXE program. ES:BX must point to a LoadExec</span><br /><span class="line">    structure containing pointers to data that DOS copies to the child</span><br /><span class="line">    program&#39;s PSP and environment block.</span><br /><span class="line"></span><br /><span class="line">    There must be enough free memory for DOS to load the program file.</span><br /><span class="line">    All open files of the parent program, except files that were</span><br /><span class="line">    opened in no-inheritance mode, are available to the newly loaded</span><br /><span class="line">    program.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Example</span></span><br /><span class="line"></span><br /><span class="line">        ideal</span><br /><span class="line">        model   small</span><br /><span class="line"></span><br /><span class="line">        STACK   100h</span><br /><span class="line">        DATASEG</span><br /><span class="line">        include &#34;strucs.inc&#34;            ; Get LoadExec definition</span><br /><span class="line">        prog_name db &#34;c:\command.com&#34;,0</span><br /><span class="line">        cmd_line  db 7,&#34; /c DIR&#34;,0dh</span><br /><span class="line">        exec_args LoadExec \</span><br /><span class="line">          &lt;0000h, dgroup:cmd_line, dgroup:dummyFCB, dgroup:dummyFCB&gt;</span><br /><span class="line">        saved_stack     dd ?</span><br /><span class="line">        dummyFCB        db 11 dup (&#34; &#34;), 5 dup (0)</span><br /><span class="line"></span><br /><span class="line">        CODESEG</span><br /><span class="line">    start:</span><br /><span class="line">        StartupCode</span><br /><span class="line">        assume  es:nothing</span><br /><span class="line">        mov     bx,TOP_OF_MEM           ; Must shrink memory before exec</span><br /><span class="line">        mov     ax,es                   ; ax = PSP segment</span><br /><span class="line">        sub     bx,ax                   ; bx = no. of paragraphs needed</span><br /><span class="line">        mov     ah,4ah                  ; Resize memory block (at es)</span><br /><span class="line">        int     21h</span><br /><span class="line">        jc      exec_failed</span><br /><span class="line">        mov     [word low  saved_stack],sp ; Save stack info</span><br /><span class="line">        mov     [word high saved_stack],ss</span><br /><span class="line">        mov     dx,offset prog_name     ; ds:dx -&gt; program name</span><br /><span class="line">        mov     bx,ds</span><br /><span class="line">        mov     es,bx</span><br /><span class="line">        mov     bx,offset exec_args     ; es:bx -&gt; parameter block</span><br /><span class="line">        mov     ax,4b00h                ; Load and Execute Program</span><br /><span class="line">        int     21h</span><br /><span class="line">        assume  nothing,cs:@code</span><br /><span class="line">        mov     ax,dgroup               ; (Keep CF flag intact)</span><br /><span class="line">        mov     ds,ax</span><br /><span class="line">        assume  ds:dgroup</span><br /><span class="line">        mov     ss,[word high saved_stack]</span><br /><span class="line">        mov     sp,[word low  saved_stack]</span><br /><span class="line">        assume  ss:@stack</span><br /><span class="line">        sti                             ; Set IF and clear DF</span><br /><span class="line">        cld                             ;   just in case...</span><br /><span class="line">        jc      exec_failed</span><br /><span class="line">        mov     ah,4dh                  ; Get Child-Program Return Value</span><br /><span class="line">        int     21h                     ;   into al register</span><br /><span class="line">        ; ...</span><br /><span class="line">        jmp short exit</span><br /><span class="line">    exec_failed:</span><br /><span class="line">        mov     al,0ffh</span><br /><span class="line">    exit:             </span><br /><span class="line">        mov     ah,4ch                  ; End Program, with return code</span><br /><span class="line">        int     21h</span><br /><span class="line"></span><br /><span class="line">        SEGMENT top_of_mem para         ; Link a void segment last</span><br /><span class="line">        ENDS                            ;   to calculate top of memory</span><br /><span class="line">                                        ;   (don&#39;t use with DOSSEG)</span><br /><span class="line">        END start</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-92521.html">4b05h</a></li>
+        
+          <li><a href="dos5-33814.html">3dh</a></li>
+        
+          <li><a href="dos5-85968.html">4ah</a></li>
+        
+          <li><a href="dos5-94701.html">4dh</a></li>
+        
+          <li><a href="dos5-105927.html">59h</a></li>
+        
+          <li><a href="dos5-255713.html">PSP</a></li>
+        
+          <li><a href="dos5-249622.html">LoadExec</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

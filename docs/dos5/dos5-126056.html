@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-124612.html">
+    <link rel="next" href="dos5-127119.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-124612.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-127119.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 6507h          Get Double-Byte Character Set                DOS 4.0+</span></span><br /><span class="line"></span><br /><span class="line">    Returns the address of a buffer containing values that specify the</span><br /><span class="line">    valid ranges for lead bytes in the given double-byte character set</span><br /><span class="line">    (DBCS).</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX    = 6507h</span><br /><span class="line">                BX    = Code page ID (0FFFFh = current code page)</span><br /><span class="line">                CX    = Size of buffer (min. 5)</span><br /><span class="line">                DX    = Country code (0FFFFh = current country)</span><br /><span class="line">                ES:DI = Pointer to country info buffer</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  Buffer updated</span><br /><span class="line">                or</span><br /><span class="line">                AX = Error code, if CF is set</span><br /><span class="line">                     | 01h Invalid function (CX &lt; 5)</span><br /><span class="line">                     | 02h File not found</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    Format of country info buffer:</span><br /><span class="line">        Offset  Size    Description</span><br /><span class="line">        00h     1       Info-ID (= 07h)</span><br /><span class="line">        01h     4       32-bit address of DBCS table</span><br /><span class="line"></span><br /><span class="line">    The DBCS values start with a 16-bit value that</span><br /><span class="line">    specifies the length of the table. The remainder of the table</span><br /><span class="line">    consists of pairs of bytes with each pair specifying the low and</span><br /><span class="line">    high character values for a valid range of lead byte values.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-120362.html">6501h</a></li>
+        
+          <li><a href="dos5-128069.html">6601h</a></li>
+        
+          <li><a href="dos5-128410.html">6602h</a></li>
+        
+          <li><a href="dos5-226037.html">CodePageIDs</a></li>
+        
+          <li><a href="dos5-226263.html">CountryCodes</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

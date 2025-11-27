@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-27650.html">
+    <link rel="next" href="dos5-29899.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-27650.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-29899.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 38h            Get/Set Country Information</span></span><br /><span class="line"></span><br /><span class="line">    Returns country-dependent information or sets the country code.</span><br /><span class="line"></span><br /><span class="line">               <span class="ngb">This description is valid for DOS 3.0+</span></span><br /><span class="line"></span><br /><span class="line">    1.  Get information for the current country or a specified country:</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH    = 38h</span><br /><span class="line">                AL    = Country code (00h = current country)</span><br /><span class="line">                BX    = 16-bit country code (if AL=FFh)</span><br /><span class="line">                DS:DX = Pointer to CountryInfo structure</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  BX = Country code</span><br /><span class="line">                CountryInfo filled</span><br /><span class="line">                or</span><br /><span class="line">                AX = Error code, if CF is set</span><br /><span class="line">                     | 01h Invalid function</span><br /><span class="line">                     | 02h File not found</span><br /><span class="line"></span><br /><span class="line">    To get country-dependent information for the current country, call</span><br /><span class="line">    this function with 00h in AL. To get information for another</span><br /><span class="line">    country, specify the appropriate country code in AL. For country</span><br /><span class="line">    codes larger than 254 (0FEh), enter FFh in AL and the country code</span><br /><span class="line">    in BX.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    2.  Set the country code that DOS uses to determine country</span><br /><span class="line">        information for the keyboard and screen (DOS 3.0+)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 38h</span><br /><span class="line">                AL = Country code</span><br /><span class="line">                BX = 16-bit country code (if AL=FFh)</span><br /><span class="line">                DX = FFFFh</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  AX = Error code, if CF is set</span><br /><span class="line">                     | 01h Invalid function</span><br /><span class="line">                     | 02h File not found</span><br /><span class="line"></span><br /><span class="line">    To specify a country code larger than 254 (FEh), place FFh in AL</span><br /><span class="line">    and the 16-bit country code in BX.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-120362.html">6501h</a></li>
+        
+          <li><a href="dos5-128069.html">6601h</a></li>
+        
+          <li><a href="dos5-128410.html">6602h</a></li>
+        
+          <li><a href="dos5-239128.html">ExtCountryInfo</a></li>
+        
+          <li><a href="dos5-226263.html">CountryCodes</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

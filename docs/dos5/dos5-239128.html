@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Structures</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-238329.html">
+    <link rel="next" href="dos5-240482.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-238329.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-221655.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-240482.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">;InfoID                 db ?            ; One byte precedes ExtCountryInfo</span><br /><span class="line">struc ExtCountryInfo                    ; Int 21h/AX=6501h (DOS 3.3+)</span><br /><span class="line"> eciLength              dw ?            ; Byte size of structure - 2</span><br /><span class="line"> eciCountryCode         dw ?            ; Country Code</span><br /><span class="line"> eciCodePageID          dw ?            ; Code page identifier</span><br /><span class="line"> ; Following = CountryInfo (Int 21h/AH=38h, DOS 2.11+, 34d bytes)</span><br /><span class="line"> eciDateFormat          dw ?            ; Date format</span><br /><span class="line"> eciCurrency            db 5 dup (?)    ; Currency symbol (ASCIIZ)</span><br /><span class="line"> eciThousands           db 2 dup (?)    ; Thousands separator (ASCIIZ)</span><br /><span class="line"> eciDecimal             db 2 dup (?)    ; Decimal separator (ASCIIZ)</span><br /><span class="line"> eciDateSep             db 2 dup (?)    ; Date separator (ASCIIZ)</span><br /><span class="line"> eciTimeSep             db 2 dup (?)    ; Time separator (ASCIIZ)</span><br /><span class="line"> eciBitField            db ?            ; Currency format</span><br /><span class="line"> eciCurrencyPlaces      db ?            ; Places after decimal point</span><br /><span class="line"> eciTimeFormat          db ?            ; 12-hour or 24-hour format</span><br /><span class="line"> eciCaseMap             dd ?            ; Addr of case-mapping routine</span><br /><span class="line"> eciDataSep             db 2 dup (?)    ; Data list separator (ASCIIZ)</span><br /><span class="line"> eciReserved            db 10 dup (?)   ; Reserved</span><br /><span class="line">ends                                    ; = 40d bytes</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        ; eciDateFormat</span><br /><span class="line">        date_usa        = 0000h         ; Month/day/year</span><br /><span class="line">        date_europe     = 0001h         ; Day/month/year</span><br /><span class="line">        date_japan      = 0002h         ; Year/month/day</span><br /><span class="line"></span><br /><span class="line">        ; eciTimeFormat</span><br /><span class="line">        time_12hour     = 0</span><br /><span class="line">        time_24hour     = 1</span><br /><span class="line"></span><br /><span class="line">        ; eciBitField                   ; (bits 2-7 undefined)</span><br /><span class="line">        currency_follows_amount = 0001b ; bit 0=0: precedes amount</span><br /><span class="line">        currency_space_amount   = 0010b ; bit 1=0: no space between</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-120362.html">6501h</a></li>
+        
+          <li><a href="dos5-226037.html">CodePageIDs</a></li>
+        
+          <li><a href="dos5-226263.html">CountryCodes</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

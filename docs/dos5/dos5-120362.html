@@ -1,0 +1,104 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-119868.html">
+    <link rel="next" href="dos5-121350.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-119868.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-121350.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="index.html">Functions (Int 21h)</a></li>
+              <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+              <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+              <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+              <li><a href="dos5-221655.html">Structures</a></li>
+              <li><a href="dos5-268064.html">Extended key codes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 6501h          Get Extended Country Information             DOS 3.3+</span></span><br /><span class="line"></span><br /><span class="line">     Returns the country information that DOS uses to control the</span><br /><span class="line">     keyboard and screen.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX    = 6501h</span><br /><span class="line">                BX    = Code page ID (0FFFFh = current code page)</span><br /><span class="line">                CX    = Size of buffer (min. 5, set to 41)</span><br /><span class="line">                DX    = Country code (0FFFFh = current country)</span><br /><span class="line">                ES:DI = Pointer to country info buffer</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  Buffer updated</span><br /><span class="line">                or</span><br /><span class="line">                AX = Error code, if CF is set</span><br /><span class="line">                     | 01h Invalid function (CX &lt; 5)</span><br /><span class="line">                     | 02h File not found (bad code page/country code)</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    Format of country info buffer:</span><br /><span class="line">        Offset  Size    Description</span><br /><span class="line">        00h     1       Info-ID (= 01h)</span><br /><span class="line">        01h     40d     ExtCountryInfo structure</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    If the parameter passed in CX is greater than 5 but less than the</span><br /><span class="line">    size of the country information, the information is truncated and</span><br /><span class="line">    no error is returned.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dos5-128069.html">6601h</a></li>
+        
+          <li><a href="dos5-128410.html">6602h</a></li>
+        
+          <li><a href="dos5-28526.html">38h</a></li>
+        
+          <li><a href="dos5-226037.html">CodePageIDs</a></li>
+        
+          <li><a href="dos5-226263.html">CountryCodes</a></li>
+        
+          <li><a href="dos5-239128.html">ExtCountryInfo</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
