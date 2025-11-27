@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Interfacing</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-206207.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-206207.html">Previous</a></li>
+
+
+          
+
+<li><a href="tasm4-202140.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Sample procedure using NOLANGUAGE (assembly) language specifier</span></span><br /><span class="line"></span><br /><span class="line">                ideal</span><br /><span class="line">                model   small           ; Code is NEAR</span><br /><span class="line">                stack   200h            ; Data and stack in DGROUP</span><br /><span class="line"></span><br /><span class="line">                CODESEG</span><br /><span class="line"></span><br /><span class="line">proc demo_asm</span><br /><span class="line">arg   a:word, b:dword:2, d:byte = arglen     ; arglen = 12</span><br /><span class="line">local x:dword, y:word:2 = localspc           ; localspc = 8</span><br /><span class="line">                push    bp              ; Must set up BP since no</span><br /><span class="line">                mov     bp,sp           ;   language is in effect</span><br /><span class="line">                sub     sp,localspc     ; Must set up local stack since</span><br /><span class="line">                ;                       ;   no language is in effect</span><br /><span class="line">                push    ds</span><br /><span class="line">                mov     [word low x],sp ; [dgroup:bp-04]</span><br /><span class="line">                mov     [y],arglen      ; [dgroup:bp-08]</span><br /><span class="line">                mov     ax,[a]          ; [dgroup:bp+04]</span><br /><span class="line">                les     di,[b]          ; [dgroup:bp+06]</span><br /><span class="line">                mov     dl,[d]          ; [dgroup:bp+14]</span><br /><span class="line">                mul     dl</span><br /><span class="line">                stosw</span><br /><span class="line">                ;   [ Useful code omitted ]</span><br /><span class="line">                pop     ds</span><br /><span class="line">                mov     sp,bp           ; Clean up local stack</span><br /><span class="line">                pop     bp              ; Clean up stack</span><br /><span class="line">                RET                     ; NEAR RETurn in small model</span><br /><span class="line">endp</span><br /><span class="line"></span><br /><span class="line">; Note: Turbo Assembler doesn&#39;t generate procedure prolog or epilog</span><br /><span class="line">;       code in NOLANGUAGE procedures (except size of RET).</span><br /><span class="line">;       The USES directive cannot be used in NOLANGUAGE procedures.</span><br /><span class="line">;       The extended CALL syntax cannot be used to call NOLANGUAGE</span><br /><span class="line">;       procedures, unless the language specifier is overridden, e.g.</span><br /><span class="line">;</span><br /><span class="line">        call    demo_asm Pascal, ax,ds si,es di,cx   ; No type checking</span><br /><span class="line"></span><br /><span class="line">                END</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-65434.html">MODEL</a></li>
+        
+          <li><a href="tasm4-79890.html">PROC</a></li>
+        
+          <li><a href="tasm4-13568.html">ARG</a></li>
+        
+          <li><a href="tasm4-60329.html">LOCAL</a></li>
+        
+          <li><a href="tasm4-113153.html">USES</a></li>
+        
+          <li><a href="tasm4-89841.html">RET</a></li>
+        
+          <li><a href="tasm4-81770.html">PROCDESC</a></li>
+        
+          <li><a href="tasm4-202361.html">Language</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

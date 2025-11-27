@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Command line</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-168271.html">
+    <link rel="next" href="tasm4-170026.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-168271.html">Previous</a></li>
+
+
+          
+
+<li><a href="tasm4-160592.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-170026.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">/i        Sets an include file path</span></span><br /><span class="line"></span><br /><span class="line">          /i<span class="ngb">PATH</span></span><br /><span class="line"></span><br /><span class="line">          The /i option lets you tell Turbo Assembler where to look for</span><br /><span class="line">          files that are included in your source file by using the INCLUDE</span><br /><span class="line">          directive. You can place more than one /i option on the command</span><br /><span class="line">          line (the number is only limited by RAM).</span><br /><span class="line"></span><br /><span class="line">          When Turbo Assembler encounters an INCLUDE directive, the</span><br /><span class="line">          location where it searches for the include file is determined by</span><br /><span class="line">          whether the file name in the INCLUDE directive has a directory</span><br /><span class="line">          path or is just a simple file name.</span><br /><span class="line"></span><br /><span class="line">          If you supply a directory path as part of the file name, that</span><br /><span class="line">          path is tried first, then Turbo Assembler searches the</span><br /><span class="line">          directories specified by /i command line options in the order</span><br /><span class="line">          they appear on the command line. It then looks in any</span><br /><span class="line">          directories specified by /i options in a configuration file.</span><br /><span class="line"></span><br /><span class="line">          If you don&#39;t supply a directory path as part of the file name,</span><br /><span class="line">          Turbo Assembler searches first in the directories specified by</span><br /><span class="line">          /i options in a configuration file, and finally it looks in the</span><br /><span class="line">          current directory.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">          <span class="ngb">Example:</span></span><br /><span class="line"></span><br /><span class="line">             tasm /i\INCLUDE /iD:\INCLUDE test1.asm</span><br /><span class="line"></span><br /><span class="line">             If the source file test1.asm contains the statement</span><br /><span class="line"></span><br /><span class="line">                INCLUDE &#34;MYMACS.INC&#34;</span><br /><span class="line"></span><br /><span class="line">             Turbo Assembler will first look for \INCLUDE\MYMACS.INC, then</span><br /><span class="line">             it will look for D:\INCLUDE\MYMACS.INC. If it still hasn&#39;t</span><br /><span class="line">             found the file, it will look for MYMACS.INC in the current</span><br /><span class="line">             directory.</span><br /><span class="line"></span><br /><span class="line">             If the statement in the source file had been</span><br /><span class="line"></span><br /><span class="line">                INCLUDE &#34;INCS\MYMACS.INC&#34;</span><br /><span class="line"></span><br /><span class="line">             TASM would first look for INCS\MYMACS.INC and then it would</span><br /><span class="line">             look for \INCLUDE\MYMACS.INC, and finally for</span><br /><span class="line">             D:\INCLUDE\MYMACS.INC.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-165132.html">Configuration file</a></li>
+        
+          <li><a href="tasm4-55253.html">INCLUDE</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

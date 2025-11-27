@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-44395.html">
+    <link rel="next" href="tasm4-47085.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-44395.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-47085.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">EXTRN            Define external                                    Directive</span></span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">EXTRN</span> definition [, definition ]...</span><br /><span class="line"></span><br /><span class="line">    Indicates that a symbol is defined in another module. definition</span><br /><span class="line">    describes a symbol and has the following format:</span><br /><span class="line"></span><br /><span class="line">       [language] name [<span class="ngb">[</span>count1<span class="ngb">]</span>] :complex_type [:count2]</span><br /><span class="line"></span><br /><span class="line">    - language specifies that the naming conventions of C, CPP, PASCAL,</span><br /><span class="line">      BASIC, FORTRAN, NOLANGUAGE, or PROLOG are to be applied to symbol</span><br /><span class="line">      name; temporarily overrides language set with a MODEL statement</span><br /><span class="line">    - name is the symbol that is defined in another module (must be</span><br /><span class="line">      declared as GLOBAL, PUBLIC, or PUBLICDLL in order for your program</span><br /><span class="line">      to link properly) and can optionally be followed by:</span><br /><span class="line">    - count1, an array element multiplier that defaults to 1</span><br /><span class="line">    - complex_type must match the type of the symbol where it&#39;s defined</span><br /><span class="line">      (the ABS type is used for symbols that represent absolute numbers)</span><br /><span class="line">    - count2 specifies how many items this external symbol defines</span><br /><span class="line">      and defaults to one if not specified.</span><br /><span class="line"></span><br /><span class="line">    Examples:   EXTRN memptr:DWORD</span><br /><span class="line">                EXTRN C carray[32]:WORD:400</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    You can use the EXTRN directive either inside or outside a segment</span><br /><span class="line">    declared with the SEGMENT directive. If you place EXTRN inside a</span><br /><span class="line">    segment, you are informing the assembler that the external variable is</span><br /><span class="line">    in another module but in the same segment. If you place the EXTRN</span><br /><span class="line">    directive ouside of any segment, you are informing the assembler that</span><br /><span class="line">    you don&#39;t know which segment the variable is declared in.</span><br /><span class="line"></span><br /><span class="line">    In MASM mode, external symbols declared outside of any segment are</span><br /><span class="line">    presumed to be reachable via the DS register, which may not always be</span><br /><span class="line">    a valid assumption. Make sure that you either place the correct</span><br /><span class="line">    segment value in DS, or use an explicit segment override when</span><br /><span class="line">    referring to these variables.</span><br /><span class="line"></span><br /><span class="line">    In Ideal mode, Turbo Assembler correctly checks for whether the</span><br /><span class="line">    external variable is addressable using any of the current segment</span><br /><span class="line">    registers, as described with the ASSUME directive.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-18252.html">ASSUME</a></li>
+        
+          <li><a href="tasm4-49611.html">GLOBAL</a></li>
+        
+          <li><a href="tasm4-83858.html">PUBLIC</a></li>
+        
+          <li><a href="tasm4-84534.html">PUBLICDLL</a></li>
+        
+          <li><a href="tasm4-91545.html">SEGMENT</a></li>
+        
+          <li><a href="tasm4-192722.html">Address subtypes</a></li>
+        
+          <li><a href="tasm4-199535.html">Syntax</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-27401.html">
+    <link rel="next" href="tasm4-29256.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-27401.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-29256.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">DD               Define doubleword                                  Directive</span></span><br /><span class="line"></span><br /><span class="line">  [name] <span class="ngb">DD</span> [type PTR] expression [,expression] ...</span><br /><span class="line"></span><br /><span class="line">    Allocates a doubleword (4 bytes) of storage. name is the symbol</span><br /><span class="line">    you&#39;ll subsequently use to refer to the data.</span><br /><span class="line"></span><br /><span class="line">    type followed by PTR adds debug information to the symbol being</span><br /><span class="line">    defined, so that Turbo Debugger can display its contents properly.</span><br /><span class="line">    type is one of the following: BYTE, WORD, DATAPTR, CODEPTR, DWORD,</span><br /><span class="line">    FWORD, PWORD, QWORD, TBYTE, SHORT, NEAR, FAR, or a structure name.</span><br /><span class="line"></span><br /><span class="line">    expression can be</span><br /><span class="line"></span><br /><span class="line">        - a ? (question mark)</span><br /><span class="line">        - a duplicated expression (DUP)</span><br /><span class="line">        - a constant expression in the range -32,768 to 65,535</span><br /><span class="line">          (if 80386+ selected: -2,147,483,648 to 4,294,967,295)</span><br /><span class="line">        - a relative expression or address that requires 16 bits</span><br /><span class="line">          or fewer (32 bits or fewer if 80386+ selected)</span><br /><span class="line">        - a relative address expression consisting of a 16-bit segment</span><br /><span class="line">          and a 16-bit offset</span><br /><span class="line">        - a string of up to 4 bytes in length, using standard quoted</span><br /><span class="line">          string format</span><br /><span class="line">        - a short (32-bit) floating-point number</span><br /><span class="line"></span><br /><span class="line">    Examples:   typ     DD      &#34;ObjA&#34;</span><br /><span class="line">                i24h    DD      _TEXT:offset new_i24h</span><br /><span class="line">                d1      DD      1.28E+5         ; Floating point</span><br /><span class="line">                d2      DD      12345678r       ; Real number (hex)</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-27401.html">DB</a></li>
+        
+          <li><a href="tasm4-34466.html">DW</a></li>
+        
+          <li><a href="tasm4-32713.html">DQ</a></li>
+        
+          <li><a href="tasm4-33420.html">DT</a></li>
+        
+          <li><a href="tasm4-136776.html">DUP</a></li>
+        
+          <li><a href="tasm4-134881.html">?</a></li>
+        
+          <li><a href="tasm4-136497.html">DATAPTR</a></li>
+        
+          <li><a href="tasm4-136118.html">CODEPTR</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-57953.html">
+    <link rel="next" href="tasm4-59085.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-57953.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-59085.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">JUMPS            Stretch conditional jumps                          Directive</span></span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">JUMPS</span></span><br /><span class="line"></span><br /><span class="line">    Causes TASM to look at the destination address of a conditional jump</span><br /><span class="line">    instruction, and if it is too far away to reach with the SHORT dis-</span><br /><span class="line">    placement that these instructions use, it generates a conditional jump</span><br /><span class="line">    of the opposite sense around an ordinary jump instruction to the</span><br /><span class="line">    desired target address.</span><br /><span class="line"></span><br /><span class="line">    Example:    je      equal_place         ; If short jump out of range</span><br /><span class="line"></span><br /><span class="line">                jne     ??0001              ; ...this code is generated</span><br /><span class="line">                jmp     equal_place</span><br /><span class="line">                ??0001:</span><br /><span class="line"></span><br /><span class="line">    This directive has the same effect as using /jJUMPS on the command</span><br /><span class="line">    line.</span><br /><span class="line">    To avoid generating extra NOPs, you can use the /m# switch (multiple</span><br /><span class="line">    assembly passes) or specify a SHORT override.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-72451.html">NOJUMPS</a></li>
+        
+          <li><a href="tasm4-170026.html">/j</a></li>
+        
+          <li><a href="tasm4-172385.html">/m#</a></li>
+        
+          <li><a href="tasm4-144390.html">SHORT</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

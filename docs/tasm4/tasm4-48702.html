@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-48291.html">
+    <link rel="next" href="tasm4-49611.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-48291.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-49611.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">GETFIELD         Get record field value                             Extension</span></span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">GETFIELD</span> field_name destination_reg, source_r/m</span><br /><span class="line"></span><br /><span class="line">    Generates code that retrieves the value of a field found in the same</span><br /><span class="line">    source register or memory address, and sets the destination to that</span><br /><span class="line">    value.</span><br /><span class="line"></span><br /><span class="line">    GETFIELD retrieves the value of a field found in the source register</span><br /><span class="line">    or memory address, and set the pertinent portion of the destination</span><br /><span class="line">    register to that value. This instruction affects no other registers</span><br /><span class="line">    than the operating register and the processor flags.</span><br /><span class="line"></span><br /><span class="line">    To accomplish its function, GETFIELD uses a series of MOV, XCHG, ROL,</span><br /><span class="line">    and ROR instructions. If you&#39;re using GETFIELD when your source and</span><br /><span class="line">    target registers are the same, the instruction will not generate the</span><br /><span class="line">    non-functional &#39;MOV target, source&#39;.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    Example:    RECORD foo r0:1,r1:4,r2:3,r3:1</span><br /><span class="line">                getfield r1 bl,ax           ; (bx changed)</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-96007.html">SETFIELD</a></li>
+        
+          <li><a href="tasm4-118957.html">Xtensions</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

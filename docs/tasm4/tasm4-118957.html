@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-117604.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-117604.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">TASM instruction set extensions</span></span><br /><span class="line"></span><br /><span class="line">    This section gives a brief description of Turbo Assembler&#39;s extensions</span><br /><span class="line">    to the instruction set.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Intelligent code generation</span></span><br /><span class="line"></span><br /><span class="line">    See SMART</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Extended jumps</span></span><br /><span class="line"></span><br /><span class="line">    See JUMPS</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Additional 80386 LOOP instructions</span></span><br /><span class="line"></span><br /><span class="line">    LOOPW, LOOPWE, LOOPWZ, LOOPWNE, LOOPWNZ count using the CX register.</span><br /><span class="line">    LOOPD, LOOPDE, LOOPDZ, LOOPDNE, LOOPDNZ count using the ECX register.</span><br /><span class="line">    The standard LOOPcc mnemonics select the counting register based on</span><br /><span class="line">    whether the current code segment is 32-bit (ECX) or 16-bit (CX).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Additional 80386 ENTER and LEAVE instructions</span></span><br /><span class="line"></span><br /><span class="line">    ENTERW, LEAVEW use BP,SP as stack frame registers.</span><br /><span class="line">    ENTERD, LEAVED use EBP,ESP as stack frame registers.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Additional IRET instructions (version T320+)</span></span><br /><span class="line"></span><br /><span class="line">    IRETW always pops word-style.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Extended PUSH and POP instructions</span></span><br /><span class="line"></span><br /><span class="line">    Multiple push or pop instructions per line allowed.</span><br /><span class="line"></span><br /><span class="line">    Examples: push ax [bx] cx dx si</span><br /><span class="line">              pop  cx bx ax</span><br /><span class="line">              push [foo] bx</span><br /><span class="line"></span><br /><span class="line">    Push/pop of DWORD-sized pointers on 8086,80186,80286 supported.</span><br /><span class="line">    Push/pop of PWORD/QWORD-sized pointers on ≥80386 supported.</span><br /><span class="line"></span><br /><span class="line">    Pushing constants on the 8086 supported (affects push, extended</span><br /><span class="line">    call):</span><br /><span class="line"></span><br /><span class="line">    Example:    P8086                   ; Code generated:</span><br /><span class="line">                push    1234h           ; push    ax</span><br /><span class="line">                                        ; push    bp</span><br /><span class="line">                                        ; mov     bp,sp</span><br /><span class="line">                                        ; mov     [word bp + 2],1234h</span><br /><span class="line">                                        ; pop     bp</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Extended PUSHA,POPA,PUSHF,POPF instructions (version T320+)</span></span><br /><span class="line"></span><br /><span class="line">    PUSHAW,POPAW,PUSHFW,POPFW always push and pop word-style, even in a</span><br /><span class="line">    32-bit code segment.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Extended shifts</span></span><br /><span class="line"></span><br /><span class="line">    TASM permits shift and rotate instructions to have a constant value</span><br /><span class="line">    other than 1 when the 8086 processor is selected. TASM accomplishes</span><br /><span class="line">    this by emitting the appropriate number of single shift/rotate</span><br /><span class="line">    instructions when the 8086 processor is selected.</span><br /><span class="line"></span><br /><span class="line">    Example:    ; source                ; code generated</span><br /><span class="line">                SHL AX,4                ; SHL   AX,1</span><br /><span class="line">                                        ; SHL   AX,1</span><br /><span class="line">                                        ; SHL   AX,1</span><br /><span class="line">                                        ; SHL   AX,1</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Forced segment overrides: SEGxx instructions</span></span><br /><span class="line"></span><br /><span class="line">    TASM provides six instructions that will generate a segment override</span><br /><span class="line">    prefix byte: SEGCS, SEGSS, SEGDS, SEGES, SEGFS, and SEGGS.</span><br /><span class="line"></span><br /><span class="line">    Examples:    SEGES XLATB</span><br /><span class="line">                 ;</span><br /><span class="line">                 SEGCS</span><br /><span class="line">                 test   [byte bx],1</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Additional smart flag instructions</span></span><br /><span class="line"></span><br /><span class="line">    TASM has four instructions that manipulate bits in a flag to improve</span><br /><span class="line">    both code size and efficiency. Use these to enhance the modularity of</span><br /><span class="line">    records (if the state of the flags are unimportant (except TESTFLAG)).</span><br /><span class="line"></span><br /><span class="line">    Instruction  Function                  Corresponds to</span><br /><span class="line">    FLIPFLAG     Complement flag bit(s)    XOR</span><br /><span class="line">    MASKFLAG     Mask off flag bit(s)      AND</span><br /><span class="line">    SETFLAG      Set flag bit(s)           OR</span><br /><span class="line">    TESTFLAG     Test flag bit(s)          TEST</span><br /><span class="line"></span><br /><span class="line">    Example:    RECORD foo  r0:1,r1:4,r2:3,r3:1</span><br /><span class="line">                ; ...</span><br /><span class="line">                TESTFLAG ax,MASK r1</span><br /><span class="line">                ; will generate the most efficient instruction</span><br /><span class="line">                ; regardless of where r1 exists in the record</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Additional field value manipulation instructions</span></span><br /><span class="line"></span><br /><span class="line">    TASM can generate specific code sequences for setting and retrieving</span><br /><span class="line">    values from bit fields specified with the RECORD directive. This lets</span><br /><span class="line">    you write code that is independent of the actual loction of a field</span><br /><span class="line">    within a record. Used in conjunction with the ENUM directive, records</span><br /><span class="line">    can achieve a high degree of modularity in assembly language.</span><br /><span class="line"></span><br /><span class="line">    Instruction  Function</span><br /><span class="line">    GETFIELD     Sets a value in a record field</span><br /><span class="line">    SETFIELD     Retrieves a value from a record field</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Additional fast immediate multiply instruction</span></span><br /><span class="line"></span><br /><span class="line">    TASM provides a special immidiate multiply operation for efficient</span><br /><span class="line">    array indexing. FASTIMUL addresses a typical problem that occurs when</span><br /><span class="line">    you create an array of structures. On the 8086, there is no immediate</span><br /><span class="line">    multiply operation available; even for the more advanced processors,</span><br /><span class="line">    multiplication using shifts and adds is significantly faster in some</span><br /><span class="line">    circumstances than using the standard immediate IMUL instruction.</span><br /><span class="line"></span><br /><span class="line">    Based on the currently specified processor, the FASTIMUL instruction</span><br /><span class="line">    chooses between the most efficient sequence of shifts and adds</span><br /><span class="line">    available, and the current processor&#39;s immediate IMUL operation (if</span><br /><span class="line">    any).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Extensions to necessary 80386 instructions</span></span><br /><span class="line"></span><br /><span class="line">    The 80386 has the ability to operate in both 16-bit and 32-bit mode.</span><br /><span class="line">    Many of the standard instructions have different meanings in these two</span><br /><span class="line">    modes. In TASM, you can control the operating size of the instruction</span><br /><span class="line">    using the SMALL and LARGE overrides in expressions.</span><br /><span class="line"></span><br /><span class="line">    SMALL/LARGE affect the following instructions:</span><br /><span class="line">        push   [small | large] segment_register  } 16-or 32-bit form of</span><br /><span class="line">        pop    [small | large] segment_register  } segment register</span><br /><span class="line">        fsave  [small | large] mem_pointer   )</span><br /><span class="line">        frstor [small | large] mem_pointer   )</span><br /><span class="line">        fstenv [small | large] mem_pointer   )</span><br /><span class="line">        fldenv [small | large] mem_pointer   )  Selects 16-bit or</span><br /><span class="line">        lgdt   [small | large] mem_pointer   )  32-bit instruction</span><br /><span class="line">        sgdt   [small | large] mem_pointer   )</span><br /><span class="line">        lidt   [small | large] mem_pointer   )</span><br /><span class="line">        sidt   [small | large] mem_pointer   )</span><br /><span class="line">        jmp    [small | large] mem_pointer } For DWORD-sized addresses:</span><br /><span class="line">        call   [small | large] mem_pointer } FAR 16-bit or NEAR 32-bit</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Calling procedures with stack frames</span></span><br /><span class="line"></span><br /><span class="line">    An extended form of the CALL instruction lets you directly call</span><br /><span class="line">    procedures that use high-level language interfacing conventions:</span><br /><span class="line"></span><br /><span class="line">       CALL expression [language] [,argument_list]</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    Procedures that define some of their arguments with the RETURNS</span><br /><span class="line">    keyword always expect the caller to POP them. There is no special</span><br /><span class="line">    extension to the CALL instruction to help pass those arguments</span><br /><span class="line">    specified in a procedure declaration after the RETURNS keyword. You</span><br /><span class="line">    must explicitly PUSH these arguments before the CALL, and POP them</span><br /><span class="line">    afterwards.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Objects</span></span><br /><span class="line"></span><br /><span class="line">    The CALL and JMP instructions, as well as the STRUC directive, have</span><br /><span class="line">    extensions that support objects.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-98657.html">SMART</a></li>
+        
+          <li><a href="tasm4-58323.html">JUMPS</a></li>
+        
+          <li><a href="tasm4-96007.html">SETFIELD</a></li>
+        
+          <li><a href="tasm4-48702.html">GETFIELD</a></li>
+        
+          <li><a href="tasm4-47596.html">FASTIMUL</a></li>
+        
+          <li><a href="tasm4-19677.html">CALL</a></li>
+        
+          <li><a href="tasm4-57953.html">JMP</a></li>
+        
+          <li><a href="tasm4-101924.html">STRUC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

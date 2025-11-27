@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Operators</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-133223.html">
+    <link rel="next" href="tasm4-134514.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-133223.html">Previous</a></li>
+
+
+          
+
+<li><a href="tasm4-124679.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-134514.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">.                Structure member selector                           Operator</span></span><br /><span class="line"></span><br /><span class="line">  memptr<span class="ngb">.</span>fieldname</span><br /><span class="line"></span><br /><span class="line">    Selects a structure member.</span><br /><span class="line"></span><br /><span class="line">    The period (.) structure member operator is far more strict in Ideal</span><br /><span class="line">    mode when accurately specifying the structure members you&#39;re referring</span><br /><span class="line">    to. The expression to the left of a period <span class="ngb">must</span> be a structure</span><br /><span class="line">    pointer. The expression to the right <span class="ngb">must</span> be a member name in that</span><br /><span class="line">    structure. Here are some examples:</span><br /><span class="line"></span><br /><span class="line">       Ideal</span><br /><span class="line">       struc demo                              ; Declare structure type</span><br /><span class="line">          Ord      dw  ?</span><br /><span class="line">          Tipe     db  5  dup (?)</span><br /><span class="line">          Numbers  dw  12 dup (?)</span><br /><span class="line">       ends</span><br /><span class="line"></span><br /><span class="line">       DATASEG</span><br /><span class="line">       fordA   demo   &lt;16,,&gt;                   ; Define variables</span><br /><span class="line">       fordT   demo   { Tipe=&#39;FordT&#39; }</span><br /><span class="line">       UDATASEG</span><br /><span class="line">       fords   demo   200 dup (?)</span><br /><span class="line"></span><br /><span class="line">       CODESEG</span><br /><span class="line">       assume ds:dgroup</span><br /><span class="line">       mov    dx,[fordA.Ord]                   ;</span><br /><span class="line">       mov    ax,[(demo PTR bx).Ord]           ; MASM: mov ax,Ord[bx]</span><br /><span class="line">       mov    ax,[(demo bx).Ord]               ; PTR operator is optional</span><br /><span class="line">       mov    cx,OFFSET (demo).Numbers         ; MASM: mov cx,Numbers</span><br /><span class="line">       mov    ax,[(demo (fordT + bx)).Ord]     ; MASM: mov ax,fordT[bx].Ord</span><br /><span class="line">       mov    ax,[((demo bx).Numbers) + 2]     ; MASM: mov ax,2[bx].Numbers</span><br /><span class="line">       mov    ax,SIZE demo                     ; ax = 31</span><br /><span class="line">       MASM</span><br /><span class="line">       ; Can&#39;t do this in Ideal mode:</span><br /><span class="line">       mov    ax,SIZE Numbers                  ; ax = 24</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-101924.html">STRUC</a></li>
+        
+          <li><a href="tasm4-126909.html">Operator precedence</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

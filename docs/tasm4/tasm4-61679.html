@@ -1,0 +1,118 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-61122.html">
+    <link rel="next" href="tasm4-63959.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-61122.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-63959.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">MACRO            Initiate macro definition                          Directive</span></span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">MACRO</span> name [dummy_arg [,dummy_arg]...]        ; Ideal mode</span><br /><span class="line">  macro_body</span><br /><span class="line">  ENDM</span><br /><span class="line"></span><br /><span class="line">  name <span class="ngb">MACRO</span> [dummy_arg [,dummy_arg]...]        ; MASM mode</span><br /><span class="line">  macro_body</span><br /><span class="line">  ENDM</span><br /><span class="line"></span><br /><span class="line">    Defines a multiline macro to be expanded later when name is encountered.</span><br /><span class="line"></span><br /><span class="line">    Macros may be nested to any depth, may call other macros, and may call</span><br /><span class="line">    themselves. They may also be redefined.</span><br /><span class="line"></span><br /><span class="line">    Macros generate code when they are called, not when defined. All</span><br /><span class="line">    addresses generated are relative to the position of where the macro is</span><br /><span class="line">    called, not where it is defined.</span><br /><span class="line"></span><br /><span class="line">    dummy_arg is a symbolic name used as a place holder for the actual</span><br /><span class="line">    argument passed to the macro when it&#39;s invoked; it has the following</span><br /><span class="line">    syntax:</span><br /><span class="line">                dummy_name [:dummy_type]</span><br /><span class="line"></span><br /><span class="line">    The optional dummy_type specifies something about the form the actual</span><br /><span class="line">    argument must take when you invoke the macro. The following types are</span><br /><span class="line">    supported:</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">dummy_type      Meaning</span></span><br /><span class="line">        REQ             Argument cannot be null or spaces.</span><br /><span class="line">        =&lt;text_string&gt;  Bracketed text string is the default value for the</span><br /><span class="line">                        dummy argument when the actual argument is null or</span><br /><span class="line">                        contains spaces.</span><br /><span class="line">        VARARG          Actual argument consists of the rest of the macro</span><br /><span class="line">                        invocation, interpreted as a list of arguments.</span><br /><span class="line">                        Commas and angle brackets are added to ensure this</span><br /><span class="line">                        interpretation.</span><br /><span class="line">        REST            Actual argument consists of the rest of the macro</span><br /><span class="line">                        invocation, interpreted as raw text.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Invoking a multiline macro</span></span><br /><span class="line"></span><br /><span class="line">    The syntax for invoking a general multiline macro is this:</span><br /><span class="line"></span><br /><span class="line">        macro_name [argument [[,]argument]...]</span><br /><span class="line"></span><br /><span class="line">    Each argument (separated by commas or spaces) represents a text</span><br /><span class="line">    string. You can specify this text string in the following ways:</span><br /><span class="line"></span><br /><span class="line">    ■ as a contiguous group of characters, not containing any whitespace,</span><br /><span class="line">      commas, or semicolons</span><br /><span class="line">    ■ as a group of characters delineated by angle brackets (&lt; &gt;), which</span><br /><span class="line">      can contain whitespace, commas, and semicolons</span><br /><span class="line">    ■ as a single character preceded by a ! character (which is equivalent</span><br /><span class="line">      to enclosing the character in angle brackets)</span><br /><span class="line">    ■ as an expression preceded by a % character, which represents the</span><br /><span class="line">      text value of the expression appropriate for the currently selected</span><br /><span class="line">      radix</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-10862.html">%</a></li>
+        
+          <li><a href="tasm4-131109.html">&lt;&gt;</a></li>
+        
+          <li><a href="tasm4-131497.html">!</a></li>
+        
+          <li><a href="tasm4-131755.html">%</a></li>
+        
+          <li><a href="tasm4-130099.html">&amp;</a></li>
+        
+          <li><a href="tasm4-60329.html">LOCAL</a></li>
+        
+          <li><a href="tasm4-44395.html">EXITM</a></li>
+        
+          <li><a href="tasm4-51480.html">GOTO</a></li>
+        
+          <li><a href="tasm4-116763.html">WHILE</a></li>
+        
+          <li><a href="tasm4-89312.html">REPT</a></li>
+        
+          <li><a href="tasm4-85949.html">PUSHSTATE</a></li>
+        
+          <li><a href="tasm4-39352.html">EQU</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

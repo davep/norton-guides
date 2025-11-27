@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Symbols &amp; expressions</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-199535.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-199535.html">Previous</a></li>
+
+
+          
+
+<li><a href="tasm4-189366.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">ABS              Absolute value</span></span><br /><span class="line"></span><br /><span class="line">    ABS is a data type specifier which is used to declare a symbol that&#39;s</span><br /><span class="line">    defined in its original module with the <span class="ngb">=</span> directive, in other words,</span><br /><span class="line">    a symbol that is simply a name for a constant value and is not</span><br /><span class="line">    associated with a code or data address.</span><br /><span class="line"></span><br /><span class="line">    ABS used in a GLOBAL statement can resolve symbol references that</span><br /><span class="line">    would otherwise result in an &#39;Illegal forward reference&#39; error or an</span><br /><span class="line">    &#39;Insufficient code generation&#39; warning.</span><br /><span class="line"></span><br /><span class="line">    Example:    ; File globals.ash</span><br /><span class="line">                dataseg</span><br /><span class="line">                array_size = 200</span><br /><span class="line">                global  string_len      :ABS</span><br /><span class="line">                global  eof             :ABS</span><br /><span class="line">                global  carray          :WORD:array_size</span><br /><span class="line"></span><br /><span class="line">                ; File globdata.asm</span><br /><span class="line">                model   small</span><br /><span class="line">                include &#34;.\globals.ash&#34;</span><br /><span class="line">                dataseg</span><br /><span class="line">                astring db      &#34;A string&#34;</span><br /><span class="line">                string_len =    $ - astring</span><br /><span class="line">                eof     =       1ah</span><br /><span class="line">                carray  dw      array_size DUP (&#34;CC&#34;)</span><br /><span class="line"></span><br /><span class="line">    Example:    EXTRN ysize:ABS</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-49611.html">GLOBAL</a></li>
+        
+          <li><a href="tasm4-11531.html">=</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

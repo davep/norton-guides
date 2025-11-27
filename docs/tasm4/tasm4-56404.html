@@ -1,0 +1,106 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-55909.html">
+    <link rel="next" href="tasm4-57352.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-55909.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-57352.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">IRP              Assemble once for each parameter             Macro Directive</span></span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">IRP</span> dummy_argument, argument_list</span><br /><span class="line">  macro_body</span><br /><span class="line">  ENDM</span><br /><span class="line"></span><br /><span class="line">    Causes the assembler to assemble macro_body once for each element in</span><br /><span class="line">    argument_list.</span><br /><span class="line"></span><br /><span class="line">    dummy_argument is the dummy argument used in the macro body.</span><br /><span class="line"></span><br /><span class="line">    argument_list consists of a list of arguments separated by commas. The</span><br /><span class="line">    arguments can be any text, such as symbols, strings, numbers. You must</span><br /><span class="line">    always surround argument_list with angle brackets (&lt; &gt;).</span><br /><span class="line"></span><br /><span class="line">    Examples:   IRP reg,&lt;ax,bx,cx,dx&gt;</span><br /><span class="line">                   push reg</span><br /><span class="line">                ENDM</span><br /><span class="line"></span><br /><span class="line">                IRP num,&lt;0,1,2,5,6&gt;</span><br /><span class="line">                   chr&amp;num db 0ffh</span><br /><span class="line">                ENDM</span><br /><span class="line"></span><br /><span class="line">                BCDops equ &lt;DAA,DAS,AAA,AAS&gt;</span><br /><span class="line">                % IRP op,BCDops</span><br /><span class="line">                      proc op&amp;_</span><br /><span class="line">                           op</span><br /><span class="line">                           ret</span><br /><span class="line">                      endp</span><br /><span class="line">                  ENDM</span><br /><span class="line"></span><br /><span class="line">                % IRP op,BCDops</span><br /><span class="line">                      IRP cf_,&lt;0,1&gt;</span><br /><span class="line">                      IRP af_,&lt;0,1&gt;</span><br /><span class="line">                      label op&amp;test&amp;&amp;cf_&amp;&amp;&amp;af_ byte  ; DAAtest00 etc.</span><br /><span class="line">                      dw    af_ shl 4 OR cf_ shl 0</span><br /><span class="line">                      dw    offset op&amp;_</span><br /><span class="line">                      db    &#34;&amp;op : AL before and after &#34;,0</span><br /><span class="line">                      ENDM</span><br /><span class="line">                      ENDM</span><br /><span class="line">                  ENDM</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-57352.html">IRPC</a></li>
+        
+          <li><a href="tasm4-89312.html">REPT</a></li>
+        
+          <li><a href="tasm4-61679.html">MACRO</a></li>
+        
+          <li><a href="tasm4-131109.html">&lt;&gt;</a></li>
+        
+          <li><a href="tasm4-10862.html">%</a></li>
+        
+          <li><a href="tasm4-130099.html">&amp;</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

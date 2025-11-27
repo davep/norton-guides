@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-87277.html">
+    <link rel="next" href="tasm4-89312.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-87277.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-89312.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">RECORD           Define record type                                 Directive</span></span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">RECORD</span> recordname [rec_field [, rec_field ...]]   ; Ideal mode</span><br /><span class="line">  recordname <span class="ngb">RECORD</span> [rec_field [, rec_field ...]]   ; MASM mode</span><br /><span class="line"></span><br /><span class="line">    Declares a record data type. Each rec_field describes a group of bits</span><br /><span class="line">    in the record and has the following syntax:</span><br /><span class="line"></span><br /><span class="line">       field_name : width_expr [=value]</span><br /><span class="line"></span><br /><span class="line">    field_name is the name of a record field. TASM will allocate a bit</span><br /><span class="line">    field of the width width_expr for it. =value describes the initial</span><br /><span class="line">    value of the field (the default value used when an instance of the</span><br /><span class="line">    record is created). Values and width expressions cannot be relative or</span><br /><span class="line">    forward-referenced. Record field names are <span class="ngb">global</span> in scope and</span><br /><span class="line">    cannot be redefined.</span><br /><span class="line"></span><br /><span class="line">    You can redefine record data types, and define the same name as a</span><br /><span class="line">    record data type more than once in a module.</span><br /><span class="line"></span><br /><span class="line">    Examples:   RECORD switches s1:1,s2:1,s3:4</span><br /><span class="line">                RECORD myrec val:3=4, {</span><br /><span class="line">                             mode:2</span><br /><span class="line">                             sze:4=15 }</span><br /><span class="line"></span><br /><span class="line">    Turbo Assembler provides special support for record fields that</span><br /><span class="line">    represent flags and enumerated data types (see GETFIELD, SETFIELD,</span><br /><span class="line">    MASKFLAG, SETFLAG, TESTFLAG, FLIPFLAG).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Creating an instance of a record</span></span><br /><span class="line"></span><br /><span class="line">    You can create an instance of a record data type by using the name of</span><br /><span class="line">    the record data type as a data allocation directive.</span><br /><span class="line"></span><br /><span class="line">    Record instances are always either a byte, a word, or a doubleword,</span><br /><span class="line">    depending on the number of bits allocated in the definition.</span><br /><span class="line"></span><br /><span class="line">    Examples:   rtest1 myrec ?                  ; uninitialized</span><br /><span class="line">                rtest2 myrec &lt; &gt;                ; initialized to defaults</span><br /><span class="line">                rtest3 myrec { }                ; initialized to defaults</span><br /><span class="line">                  which is equivalent to:</span><br /><span class="line">                  DW (4 SHL 6) + (0 SHL 4) + (15 SHL 0)</span><br /><span class="line">                rtest4 myrec {mode=2, sze=?}    ; initialize named fields</span><br /><span class="line">                rtest5 myrec &lt;,2,?&gt;             ; = rtest4</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-37700.html">ENUM</a></li>
+        
+          <li><a href="tasm4-48702.html">GETFIELD</a></li>
+        
+          <li><a href="tasm4-96007.html">SETFIELD</a></li>
+        
+          <li><a href="tasm4-64085.html">MASKFLAG</a></li>
+        
+          <li><a href="tasm4-150815.html">WIDTH</a></li>
+        
+          <li><a href="tasm4-140780.html">MASK</a></li>
+        
+          <li><a href="tasm4-129495.html">{</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

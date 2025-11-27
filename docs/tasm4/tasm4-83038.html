@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-81770.html">
+    <link rel="next" href="tasm4-83858.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-81770.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-83858.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">PROCTYPE         Define procedure type                              Directive</span></span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">PROCTYPE</span> procname [procedure_description] ; Ideal mode</span><br /><span class="line">  procname <span class="ngb">PROCTYPE</span> [procedure_description] ; MASM mode</span><br /><span class="line"></span><br /><span class="line">    Declares a procedure type. Describes a procedure but does not create a</span><br /><span class="line">    prototype for it.</span><br /><span class="line"></span><br /><span class="line">    Since procedure types don&#39;t allocate data, you can&#39;t create an</span><br /><span class="line">    instance of a procedure type.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    You can use a procedure type as a template for a prototype or a</span><br /><span class="line">    procedure declaration, for example:</span><br /><span class="line"></span><br /><span class="line">       PROCTYPE footype pascal NEAR  :word, :dword, :word</span><br /><span class="line"></span><br /><span class="line">       PROCDESC protof footype</span><br /><span class="line"></span><br /><span class="line">       PROC foo footype                 ; Pascal near procedure</span><br /><span class="line">       ARG a1:word, a2:dword, a3:word   ; Ensures type checking</span><br /><span class="line">       ; ...</span><br /><span class="line">       MASM                             ; Can&#39;t do this in Ideal mode !?</span><br /><span class="line">       CALL [footype PTR bx], ax, ds bx, cx     ; No error</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-199535.html">Syntax</a></li>
+        
+          <li><a href="tasm4-19677.html">CALL</a></li>
+        
+          <li><a href="tasm4-81770.html">PROCDESC</a></li>
+        
+          <li><a href="tasm4-79890.html">PROC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

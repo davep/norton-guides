@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Symbols &amp; expressions</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-189492.html">
+    <link rel="next" href="tasm4-192722.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-189492.html">Previous</a></li>
+
+
+          
+
+<li><a href="tasm4-189366.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-192722.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Symbols</span></span><br /><span class="line"></span><br /><span class="line">    A symbol represents a value, which can be a variable, address label,</span><br /><span class="line">    or an operand to an assembly instruction or directive.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Symbol names</span></span><br /><span class="line"></span><br /><span class="line">    Symbol names are combinations of letters (both uppercase and</span><br /><span class="line">    lowercase), digits, and special characters. Symbol names can&#39;t start</span><br /><span class="line">    with a digit. TASM treats symbols as either case sensitive or case</span><br /><span class="line">    insensitive. The command line switches /ml, /mu, and /mx control the</span><br /><span class="line">    case sensitivity of symbols.</span><br /><span class="line"></span><br /><span class="line">    Symbol names can be up to 255 characters in length. By default,</span><br /><span class="line">    symbol names are significant up to 32 characters. You can use the /mv</span><br /><span class="line">    command line switch to change the number of characters of</span><br /><span class="line">    significance in symbols.</span><br /><span class="line"></span><br /><span class="line">    The underscore (_), question mark (?), dollar sign ($), and at-sign</span><br /><span class="line">    (@) can all be used as part of a symbol name. In MASM mode only, you</span><br /><span class="line">    can use a dot (.) as the first character of a symbol name. However,</span><br /><span class="line">    since it&#39;s easy to confuse a dot at the start of a symbol with the</span><br /><span class="line">    dot operator (which performs a structure member operation), it&#39;s</span><br /><span class="line">    better not to use it in symbol names.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Symbol types</span></span><br /><span class="line"></span><br /><span class="line">    Each symbol has a type that describes the characteristics and</span><br /><span class="line">    information associated with it. The way you define a symbol determines</span><br /><span class="line">    its type. For example, you can declare a symbol to represent a numeric</span><br /><span class="line">    expression, a text string, a procedure name, or a data variable. The</span><br /><span class="line">    following table lists the types of symbols that Turbo Assembler v4.0</span><br /><span class="line">    supports.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Symbol type         Description</span></span><br /><span class="line">    ───────────────────────────────────────────────────────────────────</span><br /><span class="line">    address             An address</span><br /><span class="line">                        Data subtypes are:</span><br /><span class="line">                          UNKNOWN,BYTE,WORD,DWORD,PWORD or FWORD,QWORD,</span><br /><span class="line">                          TBYTE, and an address of a named structure</span><br /><span class="line">                          or table</span><br /><span class="line">                        Code subtypes are:</span><br /><span class="line">                           SHORT, NEAR, and FAR</span><br /><span class="line">    text_macro          A text string</span><br /><span class="line">    alias               An equivalent symbol</span><br /><span class="line">    numerical_expr      The value of a numerical expression</span><br /><span class="line">    multiline_macro     Multiple text lines with dummy arguments</span><br /><span class="line">    struc/union         A structure or union data type</span><br /><span class="line">    table               A data table type</span><br /><span class="line">    struc_member/</span><br /><span class="line">      table_member      A structure or table member</span><br /><span class="line">    record              A record data type</span><br /><span class="line">    record_field        A record field</span><br /><span class="line">    enum                An enumerated data type</span><br /><span class="line">    segment             A segment</span><br /><span class="line">    group               A group</span><br /><span class="line">    type                A named type                 (cf. TYPEDEF directive)</span><br /><span class="line">    proceduretype       A procedure description type (cf. PROCTYPE directive)</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-192722.html">Address subtypes</a></li>
+        
+          <li><a href="tasm4-111272.html">TYPEDEF</a></li>
+        
+          <li><a href="tasm4-83038.html">PROCTYPE</a></li>
+        
+          <li><a href="tasm4-173446.html">/ml</a></li>
+        
+          <li><a href="tasm4-174113.html">/mu</a></li>
+        
+          <li><a href="tasm4-174690.html">/mx</a></li>
+        
+          <li><a href="tasm4-174435.html">/mv</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

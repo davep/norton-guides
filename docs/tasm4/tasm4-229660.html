@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Error messages</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-229318.html">
+    <link rel="next" href="tasm4-230304.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-229318.html">Previous</a></li>
+
+
+          
+
+<li><a href="tasm4-212771.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-230304.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Forward reference needs override</span></span><br /><span class="line"></span><br /><span class="line">An expression containing a forward-referenced variable resulted in more</span><br /><span class="line">code being required than Turbo Assembler anticipated. This can happen</span><br /><span class="line">either when the variable is unexpectedly a far address for a JMP or CALL</span><br /><span class="line">or when the variable requires a segment override in order to access it.</span><br /><span class="line">For example,</span><br /><span class="line"></span><br /><span class="line">     ASSUME cs:DATA </span><br /><span class="line">     call A            ;presume near call </span><br /><span class="line">   PROC A FAR          ;oops, it&#39;s far</span><br /><span class="line"></span><br /><span class="line">     mov ax,[memvar]   ;doesn&#39;t know it needs override</span><br /><span class="line">   SEGMENT DATA</span><br /><span class="line">   memvar DW  ?        ;oops, needs override</span><br /><span class="line"></span><br /><span class="line">Correct this by explicitly supplying the segment override or FAR override.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-201286.html">ABS</a></li>
+        
+          <li><a href="tasm4-49611.html">GLOBAL</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Operators</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-129495.html">
+    <link rel="next" href="tasm4-131109.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-129495.html">Previous</a></li>
+
+
+          
+
+<li><a href="tasm4-124679.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-131109.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Assembler</li>
+            <ul>
+              <li><a href="index.html">Directives</a></li>
+              <li><a href="tasm4-124679.html">Operators</a></li>
+              <li><a href="tasm4-151581.html">Predefined equates</a></li>
+              <li><a href="tasm4-160592.html">Command line</a></li>
+              <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+              <li><a href="tasm4-202140.html">Interfacing</a></li>
+              <li><a href="tasm4-209306.html">Keywords</a></li>
+              <li><a href="tasm4-212771.html">Error messages</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">&amp;                Substitute operator                           Macro operator</span></span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">&amp;</span>name</span><br /><span class="line">  or</span><br /><span class="line">  <span class="ngb">&amp;</span>name<span class="ngb">&amp;</span></span><br /><span class="line">  or</span><br /><span class="line">  name<span class="ngb">&amp;</span></span><br /><span class="line"></span><br /><span class="line">    Substitutes actual value of macro parameter name.</span><br /><span class="line"></span><br /><span class="line">    The <span class="ngb">&amp;</span> character has a special meaning when used with macro parameters.</span><br /><span class="line">    In general, <span class="ngb">&amp;</span> separates a dummy argument name from the surrounding</span><br /><span class="line">    text, so Turbo Assembler can recognize it for substitution.</span><br /><span class="line"></span><br /><span class="line">    Example:    MACRO mac2 foo</span><br /><span class="line">                  foo&amp;sym:</span><br /><span class="line">                  DB &#34;We&#39;re in O&amp;foo&amp;o&#34;</span><br /><span class="line">                ENDM</span><br /><span class="line"></span><br /><span class="line">                Invoking the macro with: mac2 &lt;hi&gt;</span><br /><span class="line">                will generate:</span><br /><span class="line"></span><br /><span class="line">                hisym:</span><br /><span class="line">                  DB &#34;We&#39;re in Ohio&#34;</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    ■ Outside quoted strings, the <span class="ngb">&amp;</span> serves only as a general separator.</span><br /><span class="line">    ■ Inside quoted strings, and after a semicolon that&#39;s not in a quoted</span><br /><span class="line">      string in Ideal mode, <span class="ngb">&amp;</span> must precede a dummy argument for it to be</span><br /><span class="line">      recognized.</span><br /><span class="line">    ■ Turbo Assembler removes one <span class="ngb">&amp;</span> from any group of <span class="ngb">&amp;</span>s during a macro</span><br /><span class="line">      expansion. This makes it possible to place macro definitions</span><br /><span class="line">      requiring <span class="ngb">&amp;</span> characters inside other macro definitions.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="tasm4-131109.html">&lt;&gt;</a></li>
+        
+          <li><a href="tasm4-131497.html">!</a></li>
+        
+          <li><a href="tasm4-131755.html">%</a></li>
+        
+          <li><a href="tasm4-61679.html">MACRO</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
