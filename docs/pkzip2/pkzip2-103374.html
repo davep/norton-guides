@@ -1,0 +1,103 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="pkzip2-style.css">
+    <title>PKZIP 2.0 Reference Guide » Guides » Using List Files</title>
+    <meta name="description" content="PKZIP 2.0 Reference Guide">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="pkzip2-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">PKZIP</a></li>
+              <li><a href="pkzip2-35456.html">PKUNZIP</a></li>
+              <li><a href="pkzip2-49977.html">PKSFX/ZIP2EXE</a></li>
+              <li><a href="pkzip2-58620.html">PK SAFE ANSI</a></li>
+              <li><a href="pkzip2-60701.html">Introduction</a></li>
+              <li><a href="pkzip2-69366.html">Configuration Files</a></li>
+              <li><a href="pkzip2-76242.html">Addendum</a></li>
+              
+            </ul>
+            <li>Guides</li>
+            <ul>
+              <li><a href="pkzip2-82634.html">Backup Guide</a></li>
+              <li><a href="pkzip2-88893.html">Archive Attribute</a></li>
+              <li><a href="pkzip2-90931.html">Data Encryption</a></li>
+              <li><a href="pkzip2-103374.html">Using List Files</a></li>
+              <li><a href="pkzip2-112353.html">F.A.Q. (part I)</a></li>
+              <li><a href="pkzip2-121188.html">F.A.Q. (part II)</a></li>
+              <li><a href="pkzip2-130028.html">Error Levels</a></li>
+              <li><a href="pkzip2-132429.html">Errors &amp; Warnings</a></li>
+              
+            </ul>
+            <li>Credits</li>
+            <ul>
+              <li><a href="pkzip2-153649.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">  <span class="ngb">USING LIST FILES</span></span><br /><span class="line"></span><br /><span class="line">  PKZIP, PKUNZIP and PKSFX offer a powerful feature; list files.  List files</span><br /><span class="line">  are simply listings of files.  They are used to simplify command lines,</span><br /><span class="line">  and make repetitive tasks less troublesome.</span><br /><span class="line"></span><br /><span class="line">  List files can allow you to perform some complex tasks which otherwise</span><br /><span class="line">  would not be possible.  List files can not only be read, but can also be</span><br /><span class="line">  created by PKZIP and PKUNZIP.  Also, list files can be created and used by</span><br /><span class="line">  other programs, such as StupenDOS&#34;, PKZOOM&#34; and PKZMENU&#34;.</span><br /><span class="line"></span><br /><span class="line">  PKZIP and PKUNZIP use List Files in two ways: files to be included and</span><br /><span class="line">  files to be excluded.  If a List File is being created, the contents will</span><br /><span class="line">  reflect a listing of those files which would have been added, deleted,</span><br /><span class="line">  extracted or listed during a normal PKZIP/PKUNZIP operation.</span><br /><span class="line"></span><br /><span class="line">  List File text may contain:</span><br /><span class="line"></span><br /><span class="line">     * Comments</span><br /><span class="line"></span><br /><span class="line">     * File Names</span><br /><span class="line"></span><br /><span class="line">     * Wild Cards</span><br /><span class="line"></span><br /><span class="line">     * Exact Path Names and Files</span><br /><span class="line"></span><br /><span class="line">     * Drive Letters</span><br /><span class="line"></span><br /><span class="line">  List File text consists of plain ASCII.  These files may be created using</span><br /><span class="line">  any text editor which can produce plain ASCII files, sometimes referred to</span><br /><span class="line">  as &#34;DOS Text&#34;.</span><br /><span class="line"></span><br /><span class="line">  All of the following lines would be valid in a List File:</span><br /><span class="line"></span><br /><span class="line">     clowns.bmp</span><br /><span class="line">     *.exe</span><br /><span class="line">     project.*</span><br /><span class="line">     MSLR????.QWK</span><br /><span class="line">     ;This is a comment</span><br /><span class="line">     emp\census.txt  ;This is also a valid comment</span><br /><span class="line">     D:\data\february.wk1</span><br /><span class="line">     D:\games\majong\*.*</span><br /><span class="line">     D:\QWK\*.REP</span><br /><span class="line"></span><br /><span class="line">  A line in a list file is treated in an identical manner to files specified</span><br /><span class="line">  on the command line.  Note that only files and comments are valid in a</span><br /><span class="line">  list file.  Both forward and backward slashes may be used in a list file.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Reading List Files</span></span><br /><span class="line"></span><br /><span class="line">  A list file can be used in two different ways with PKZIP and PKUNZIP:</span><br /><span class="line"></span><br /><span class="line">     * Files to be acted upon in a ZIP operation.</span><br /><span class="line"></span><br /><span class="line">     * Files to be excluded from a ZIP operation.</span><br /><span class="line"></span><br /><span class="line">  List files are usually specified with an @ (ASCII 64, normally above the 2</span><br /><span class="line">  on your keyboard).  The list file character can be changed by modifying</span><br /><span class="line">  the configuration file.  Please note that the list file generation option</span><br /><span class="line">  (-@)) will also change to the selected list file character.  Avoid using a</span><br /><span class="line">  character already used for another option.</span><br /><span class="line"></span><br /><span class="line">  The simplest example of using a List File is when a .ZIP file is going to</span><br /><span class="line">  be created containing the files specfied.  If a List File called</span><br /><span class="line">  &#34;test.lst&#34; was created containing the following lines:</span><br /><span class="line"></span><br /><span class="line">     *.COM</span><br /><span class="line">     300Z.TXT</span><br /><span class="line"></span><br /><span class="line">  And then used in a PKZIP command:</span><br /><span class="line"></span><br /><span class="line">     C:\&gt;pkzip sample.zip @test.lst</span><br /><span class="line"></span><br /><span class="line">  All .COM files in the current directory would be added to the .ZIP file</span><br /><span class="line">  &#34;SAMPLE.ZIP&#34;, as well as the file &#34;300Z.TXT&#34; if it existed.</span><br /><span class="line"></span><br /><span class="line">  The contents of a List File that is specified are included.  The contents</span><br /><span class="line">  of a List File specified after a -x are excluded.  Multiple List Files to</span><br /><span class="line">  be included and excluded may be specified on the command line in addition</span><br /><span class="line">  to file names being listed alone on the command line.</span><br /><span class="line"></span><br /><span class="line">  Following are several example usages of List Files, each with a short</span><br /><span class="line">  description of what action would be caused.</span><br /><span class="line"></span><br /><span class="line">     C:\&gt;pkzip first.zip @abc.lst -x@xyz.lst</span><br /><span class="line"></span><br /><span class="line">  All files specified in &#34;abc.lst&#34; would be added to the .ZIP file</span><br /><span class="line">  &#34;first.zip&#34;.  Any files that match the file specification in &#34;xyz.lst&#34;</span><br /><span class="line">  would not be added.</span><br /><span class="line"></span><br /><span class="line">     C:\&gt;pkzip second.zip -d @abc.lst -x*.txt</span><br /><span class="line"></span><br /><span class="line">  All files listed in &#34;abc.lst&#34; would be deleted from the .ZIP file</span><br /><span class="line">  &#34;first.zip&#34;.  Any files matching the &#34;*.txt&#34; specification would not be</span><br /><span class="line">  deleted.</span><br /><span class="line"></span><br /><span class="line">     C:\&gt;pkzip -vc third.zip @xyz.lst</span><br /><span class="line"></span><br /><span class="line">  A file listing with comments will be shown for all files in &#34;third.zip&#34;</span><br /><span class="line">  which are listed in &#34;xyz.lst&#34;</span><br /><span class="line"></span><br /><span class="line">     C:\&gt;pkzip -rp backup.zip *.* -x@noback.lst</span><br /><span class="line"></span><br /><span class="line">  A .ZIP file containing the entire drive would be created, excluding any</span><br /><span class="line">  files which match those in &#34;noback.lst&#34;</span><br /><span class="line"></span><br /><span class="line">  <span class="ngu">Don&#39;t forget to use the @ in front of a list file name.  If you do not use</span></span><br /><span class="line">  <span class="ngu">the @, the list file itself will be added to the .ZIP file.</span></span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Generating List Files</span></span><br /><span class="line"></span><br /><span class="line">  The Generation of list files can have many uses.  Some suggested ways to</span><br /><span class="line">  use this feature are:</span><br /><span class="line"></span><br /><span class="line">     * Dividing Files to be Zipped into logical groups</span><br /><span class="line"></span><br /><span class="line">     * Easy exclusion of files already Zipped from a PKZIP operation</span><br /><span class="line"></span><br /><span class="line">     * Complex Batch File operations</span><br /><span class="line"></span><br /><span class="line">  Keep in mind that a plain ASCII list file can be fed through other</span><br /><span class="line">  programs, like &#39;sort&#39;, and can be used by some other applications such as</span><br /><span class="line">  StupenDOS or PKZMENU.</span><br /><span class="line"></span><br /><span class="line">  The list file generated by PKZIP or PKUNZIP when the -@ option is used</span><br /><span class="line">  contains the names of all the files which would have been acted upon in a</span><br /><span class="line">  normal ZIP operation.</span><br /><span class="line"></span><br /><span class="line">  In a simple PKZIP command, the list file will contain a listing of all the</span><br /><span class="line">  files which would have been archived by PKZIP.  If the list file is</span><br /><span class="line">  generated with a freshen or update command, the list file will contain</span><br /><span class="line">  those files which would have been added/updated in the .ZIP file.</span><br /><span class="line"></span><br /><span class="line">  To generate a list file of your entire C: hard drive:</span><br /><span class="line"></span><br /><span class="line">     C:\&gt;pkzip dummy -rp -@cdrive.lst</span><br /><span class="line"></span><br /><span class="line">  Note that the &#34;dummy&#34; .ZIP file name is necessary to have a valid PKZIP</span><br /><span class="line">  command.</span><br /><span class="line"></span><br /><span class="line">  The list file generated by PKUNZIP will contain those files which would</span><br /><span class="line">  have been extracted.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Using List files to debug</span></span><br /><span class="line"></span><br /><span class="line">  You may find the generation of list files helpful when you are testing</span><br /><span class="line">  batch files.  Let&#39;s say you have created a batch file which should</span><br /><span class="line">  compress several files as a backup procedure.  Perhaps these files are</span><br /><span class="line">  very large and it takes several minutes to compress each one.  This means</span><br /><span class="line">  that if you were to test the batch file simply by running it, it could</span><br /><span class="line">  take quite a while to find a problem and fix it.</span><br /><span class="line"></span><br /><span class="line">  By generating a list file of what would have been compressed, you can</span><br /><span class="line">  check very quickly to make certain that the proper files are being</span><br /><span class="line">  selected.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">List file size</span></span><br /><span class="line"></span><br /><span class="line">  The size of a list file that may be processed is limited.  The total size</span><br /><span class="line">  of the list file depends upon two factors.</span><br /><span class="line"></span><br /><span class="line">  The first is path storage.  If paths are specified in the list file and</span><br /><span class="line">  are NOT stored with the -P option, the list file size is limited to 7000</span><br /><span class="line">  bytes.</span><br /><span class="line"></span><br /><span class="line">  If paths are specified and ARE stored, the list file size is limited to</span><br /><span class="line">  9700 bytes.</span><br /><span class="line"></span><br /><span class="line">  If a list file has drive letters specified as part of the file names</span><br /><span class="line">  within the file, the maximum list file size is reduced.  When paths are</span><br /><span class="line">  not stored the maximum List File size is 5100 bytes.  When they are stored</span><br /><span class="line">  the maximum List File size is 6600 bytes.</span><br /><span class="line"></span><br /><span class="line">  Note that this table corresponds to the total size of all list files being</span><br /><span class="line">  used in a single command.</span><br /><span class="line"></span><br /><span class="line">      ╔════════════════════════════╤══════════════════╤═══════════════════╗</span><br /><span class="line">      ║ List File Size Limits      │  No Path Storage │ Path Storage (-P) ║</span><br /><span class="line">      ╟────────────────────────────┼──────────────────┼───────────────────╢</span><br /><span class="line">      ║ Drive Letters in List File │    5100 bytes*   │       6600        ║</span><br /><span class="line">      ╟────────────────────────────┼──────────────────┼───────────────────╢</span><br /><span class="line">      ║ No Drive Letter            │       7000       │       9700        ║</span><br /><span class="line">      ╚════════════════════════════╧══════════════════╧═══════════════════╝</span><br /><span class="line">      *These numbers are approximate and may vary depending on your</span><br /><span class="line">       configuration.</span><br /><span class="line"></span><br /><span class="line">  If the list file is too big, you will receive an &#34;Insufficient Memory&#34;</span><br /><span class="line">  error.  If you have a list file which is too big, you may split it into</span><br /><span class="line">  two or more smaller list files and perform multiple PKZIP operations.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Be Creative</span></span><br /><span class="line"></span><br /><span class="line">  The list file functions give you a whole new level of power with PKZIP.</span><br /><span class="line">  When defining a problem and searching for a solution, don&#39;t forget to</span><br /><span class="line">  consider the power of these features.</span><br /><span class="line"></span><br /><span class="line">  Using the list file features can give you access to new abilities PKZIP</span><br /><span class="line">  would not have inherently.  Here are some example situtations:</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Removing Old Files</span></span><br /><span class="line"></span><br /><span class="line">  Suppose a .ZIP file &#39;work&#39; contains 45 files.  The contents of &#39;work&#39; are</span><br /><span class="line">  extracted to a work directory and several of the files are deleted.  How</span><br /><span class="line">  do you delete these files that are no longer necessary from the &#39;work&#39;</span><br /><span class="line">  archive? Doing it manually would be very tedious.</span><br /><span class="line"></span><br /><span class="line">  First create a list of the contents of the directory.  By redirecting</span><br /><span class="line">  these file names to a list file you can capture an image of what needs to</span><br /><span class="line">  be kept in the .ZIP file.</span><br /><span class="line"></span><br /><span class="line">     C:\work&gt;pkzip dummy.zip *.* -@keep.lst</span><br /><span class="line"></span><br /><span class="line">  The list file &#39;keep.lst&#39; now contains the files we want preserved in the</span><br /><span class="line">  .ZIP file, files not in this list will be deleted:</span><br /><span class="line"></span><br /><span class="line">     C:\work&gt;pkzip work.zip -d *.* -x@keep.lstC:\work&gt;del keep.lst</span><br /><span class="line"></span><br /><span class="line">  The WORK.ZIP file now contains only those files which are also in the work</span><br /><span class="line">  directory.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Sorting .ZIP Files</span></span><br /><span class="line"></span><br /><span class="line">  Files will be added to a .ZIP file in the order that they are listed in</span><br /><span class="line">  the list file.  This can be useful if you want the contents of a .ZIP file</span><br /><span class="line">  to be in a particular order.  After generating a list file, bring it into</span><br /><span class="line">  an editor and modify it to meet your need.  To create a .ZIP file that is</span><br /><span class="line">  sorted in alphabetical order, you would use the following series of</span><br /><span class="line">  commands:</span><br /><span class="line"></span><br /><span class="line">     C:\work&gt;pkzip test.zip *.* -@test.lst</span><br /><span class="line">     C:\work&gt;sort &lt; test.lst &gt; sort.lst</span><br /><span class="line">     C:\work&gt;pkzip test.zip @sort.lst</span><br /><span class="line">     C:\work&gt;del test.lst sort.lst</span><br /><span class="line"></span><br /><span class="line">  The SORT command used above is a standard DOS program.  See your DOS</span><br /><span class="line">  manual for further information on this useful feature.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

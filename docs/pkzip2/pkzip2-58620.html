@@ -1,0 +1,112 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="pkzip2-style.css">
+    <title>PKZIP 2.0 Reference Guide » Reference » PK SAFE ANSI</title>
+    <meta name="description" content="PKZIP 2.0 Reference Guide">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="pkzip2-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">PKZIP</a></li>
+              <li><a href="pkzip2-35456.html">PKUNZIP</a></li>
+              <li><a href="pkzip2-49977.html">PKSFX/ZIP2EXE</a></li>
+              <li><a href="pkzip2-58620.html">PK SAFE ANSI</a></li>
+              <li><a href="pkzip2-60701.html">Introduction</a></li>
+              <li><a href="pkzip2-69366.html">Configuration Files</a></li>
+              <li><a href="pkzip2-76242.html">Addendum</a></li>
+              
+            </ul>
+            <li>Guides</li>
+            <ul>
+              <li><a href="pkzip2-82634.html">Backup Guide</a></li>
+              <li><a href="pkzip2-88893.html">Archive Attribute</a></li>
+              <li><a href="pkzip2-90931.html">Data Encryption</a></li>
+              <li><a href="pkzip2-103374.html">Using List Files</a></li>
+              <li><a href="pkzip2-112353.html">F.A.Q. (part I)</a></li>
+              <li><a href="pkzip2-121188.html">F.A.Q. (part II)</a></li>
+              <li><a href="pkzip2-130028.html">Error Levels</a></li>
+              <li><a href="pkzip2-132429.html">Errors &amp; Warnings</a></li>
+              
+            </ul>
+            <li>Credits</li>
+            <ul>
+              <li><a href="pkzip2-153649.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">  <span class="ngb">PK SAFE ANSI (PKSFANSI.COM)</span></span><br /><span class="line"></span><br /><span class="line">  PKSFANSI (PK Safe ANSI) is a Terminate and Stay Resident program that</span><br /><span class="line">  disables ANSI Keyboard Key Reassignments, thereby preventing &#34;ANSI bombs&#34;</span><br /><span class="line">  embedded in any text file (such as README files) or output by any program.</span><br /><span class="line"></span><br /><span class="line">  Normally, ANSI sequences that redefine the keyboard could be hidden inside</span><br /><span class="line">  ANY text file or program, and could be executed completely unnoticed until</span><br /><span class="line">  it is too late.  PKSFANSI intercepts calls to the ANSI.SYS or other ANSI</span><br /><span class="line">  device drivers, and filters out any keyboard reassignments, while allowing</span><br /><span class="line">  other ANSI sequences through unaltered.</span><br /><span class="line"></span><br /><span class="line">  If a keyboard key reassignment is attempted, PKSFANSI will intercept the</span><br /><span class="line">  sequence and discard it.  PKSFANSI also will BEEP to alert you that a</span><br /><span class="line">  reassignment was attempted.</span><br /><span class="line"></span><br /><span class="line">  PKSFANSI requires less than 1k bytes resident RAM, and should work with</span><br /><span class="line">  any ANSI driver, such as the standard ANSI.SYS driver, NANSI, ZANSI,</span><br /><span class="line">  DVANSI, etc.  Note that if you use a memory resident ANSI driver, such as</span><br /><span class="line">  the DESQview DVANSI.COM driver, PKSFANSI should be loaded after the ANSI</span><br /><span class="line">  driver is loaded.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Usage</span></span><br /><span class="line"></span><br /><span class="line">  Add PK Safe ANSI to your AUTOEXEC.BAT command file.  Early in your</span><br /><span class="line">  AUTOEXEC.BAT file add the line:</span><br /><span class="line"></span><br /><span class="line">     C:\PKWARE\PKSFANSI.COM</span><br /><span class="line"></span><br /><span class="line">  This will cause the PK Safe ANSI TSR to be loaded into memory, allowing</span><br /><span class="line">  you to safely use ANSI codes.  Once this is installed you may wish to turn</span><br /><span class="line">  on ANSI in your PKZIP configuration file.  There should be this line</span><br /><span class="line">  present in your PKZIP.CFG file:</span><br /><span class="line"></span><br /><span class="line">     ANSI=ENABLED</span><br /><span class="line"></span><br /><span class="line">  To turn on ANSI for a particular PKZIP operation, or for a PKUNZIP</span><br /><span class="line">  operation, use the command option -q.</span><br /><span class="line"></span><br /><span class="line">     pkunzip -v test.zip -q</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Monochrome</span></span><br /><span class="line"></span><br /><span class="line">  Option PK Safe ANSI has one option.  This option will cause PK Safe ANSI</span><br /><span class="line">  to discard color codes.  This is useful if you are using a laptop computer</span><br /><span class="line">  with a monochrome display.</span><br /><span class="line"></span><br /><span class="line">     PKSFANSI -c</span><br /><span class="line"></span><br /><span class="line">  Please note that this only affects programs which use ANSI for their</span><br /><span class="line">  display control.</span><br /><span class="line"></span><br /><span class="line">  NOTE: PK Safe Ansi is included with the registered version of the</span><br /><span class="line">  software.</span><br /><span class="line"></span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="pkzip2-28311.html">-z</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,103 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="pkzip2-style.css">
+    <title>PKZIP 2.0 Reference Guide » Reference » PKSFX/ZIP2EXE</title>
+    <meta name="description" content="PKZIP 2.0 Reference Guide">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="pkzip2-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">PKZIP</a></li>
+              <li><a href="pkzip2-35456.html">PKUNZIP</a></li>
+              <li><a href="pkzip2-49977.html">PKSFX/ZIP2EXE</a></li>
+              <li><a href="pkzip2-58620.html">PK SAFE ANSI</a></li>
+              <li><a href="pkzip2-60701.html">Introduction</a></li>
+              <li><a href="pkzip2-69366.html">Configuration Files</a></li>
+              <li><a href="pkzip2-76242.html">Addendum</a></li>
+              
+            </ul>
+            <li>Guides</li>
+            <ul>
+              <li><a href="pkzip2-82634.html">Backup Guide</a></li>
+              <li><a href="pkzip2-88893.html">Archive Attribute</a></li>
+              <li><a href="pkzip2-90931.html">Data Encryption</a></li>
+              <li><a href="pkzip2-103374.html">Using List Files</a></li>
+              <li><a href="pkzip2-112353.html">F.A.Q. (part I)</a></li>
+              <li><a href="pkzip2-121188.html">F.A.Q. (part II)</a></li>
+              <li><a href="pkzip2-130028.html">Error Levels</a></li>
+              <li><a href="pkzip2-132429.html">Errors &amp; Warnings</a></li>
+              
+            </ul>
+            <li>Credits</li>
+            <ul>
+              <li><a href="pkzip2-153649.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">  <span class="ngb">PKSFX/ZIP2EXE/PKUNZJR</span></span><br /><span class="line"></span><br /><span class="line">  The PKZIP utilities offer a self-extraction capability.  This means that</span><br /><span class="line">  you can make a .ZIP file into an .EXE file.  This file will in effect be</span><br /><span class="line">  able to extract itself.  A PKSFX (PK-Self Extracting) file consists of a</span><br /><span class="line">  .ZIP file which has been transformed into a self-extracting file by the</span><br /><span class="line">  utility ZIP2EXE.  There is no utility or file called &#34;SFX&#34; or &#34;PKSFX&#34;, but</span><br /><span class="line">  the self-extracting file will show PKSFX on the banner in the same manner</span><br /><span class="line">  as PKUNZIP:</span><br /><span class="line"></span><br /><span class="line">     PKSFX (R)  FAST!  Self Extract Utility  Version 2</span><br /><span class="line">     Copr. 1989-1992 PKWARE Inc. All Rights Reserved. PKSFX/h for help</span><br /><span class="line">     PKSFX Reg. U.S. Pat. and Tm. Off.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Creating a Self-Extracting File</span></span><br /><span class="line"></span><br /><span class="line">  In order to create a self-extracting file, you must first create a .ZIP</span><br /><span class="line">  file.  Once this .ZIP file is created, use the ZIP2EXE utility to</span><br /><span class="line">  transform this .ZIP file into an .EXE file.</span><br /><span class="line"></span><br /><span class="line">     D:\&gt;zip2exe test.zip</span><br /><span class="line"></span><br /><span class="line">     ZIP2EXE (tm)     Self-Extract Creator     Version 2</span><br /><span class="line">     Copr. 1989-1992 PKWARE Inc. All Rights Reserved. ZIP2EXE/h for help</span><br /><span class="line"></span><br /><span class="line">     TEST.ZIP =&gt; TEST.EXE</span><br /><span class="line"></span><br /><span class="line">     D:\&gt;</span><br /><span class="line"></span><br /><span class="line">  As you can see, an .EXE file by the same name as the .ZIP file is created.</span><br /><span class="line">  The original .ZIP file is not deleted.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Meet Junior</span></span><br /><span class="line"></span><br /><span class="line">  Turning a .ZIP file into an .EXE file increases the size because of the</span><br /><span class="line">  included extraction program.  The added size is approximately 13.5K bytes.</span><br /><span class="line">  If space is at a premium, and you are willing to sacrifice functionality</span><br /><span class="line">  for size, try PKSFX Junior(TM).</span><br /><span class="line"></span><br /><span class="line">  The PKSFX Junior is somewhat smaller, and offers very few command line</span><br /><span class="line">  options due to this reduced size.  The options which are available with</span><br /><span class="line">  the PKSFX Junior are indicated on the PKSFX command summary.</span><br /><span class="line"></span><br /><span class="line">  To create a PKSFX Junior file, add the command line option -j when</span><br /><span class="line">  performing the ZIP2EXE step.</span><br /><span class="line"></span><br /><span class="line">     D:\&gt;zip2exe -j test.zip</span><br /><span class="line"></span><br /><span class="line">  PKSFX Junior adds approximately 3K bytes to the .ZIP file.</span><br /><span class="line"></span><br /><span class="line">  PKSFX Junior can handle a maximum of 512 files.  Although PKSFX Junior has</span><br /><span class="line">  this limit to the number of files it can handle, there is no limit to the</span><br /><span class="line">  file size.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">PKUNZIP Junior</span></span><br /><span class="line"></span><br /><span class="line">  The PKUNZIP Junior program is an extremely small stand-alone extraction</span><br /><span class="line">  program.  It is used in the same manner as PKUNZIP but it has only the</span><br /><span class="line">  functionality of the PKSFX Junior self-extractor.</span><br /><span class="line"></span><br /><span class="line">     PKUNZIP(R)  FAST!  Mini Extract Utility  Version 2</span><br /><span class="line">     Copr. 1989-1992 PKWARE Inc. All Rights Reserved.</span><br /><span class="line">     PKUNZIP Reg. U.S. Pat. and Tm. Off.</span><br /><span class="line"></span><br /><span class="line">     Usage:  pkunzjr [-o] filename[.zip] [output_path]</span><br /><span class="line"></span><br /><span class="line">  PKUNZIP Junior has one option, -o.  This option is the same as that for</span><br /><span class="line">  PKUNZIP (Senior).</span><br /><span class="line"></span><br /><span class="line">  PKUNZIP Junior accepts the .ZIP file name on the command line, and may</span><br /><span class="line">  optionally accept an output path.  PKUNZIP Junior cannot extract specific</span><br /><span class="line">  files, but must extract the entire .ZIP file.</span><br /><span class="line"></span><br /><span class="line">  PKUNZIP Junior cannot extract a file containing more that 512 files, and</span><br /><span class="line">  does not support multiple volume .ZIP files.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">PKSFX Command Summary</span></span><br /><span class="line"></span><br /><span class="line">  Command line syntax and options are the same as PKUNZIP.  The options</span><br /><span class="line">  listed below are offered by a self-extracting file.</span><br /><span class="line"></span><br /><span class="line">  Syntax: pksfx [option] [d:\path] [file]* [file]*</span><br /><span class="line"></span><br /><span class="line">  PKSFX indicates the name of the self-extracting file you are executing.</span><br /><span class="line">  No options are necessary if you wish to simply extract all files to the</span><br /><span class="line">  current directory.  If you wish to extract the contents to another</span><br /><span class="line">  directory, indicate the drive and/or path the files should extract to.  To</span><br /><span class="line">  extract only particular files, indicate the name(s) at the end of the</span><br /><span class="line">  command line.</span><br /><span class="line"></span><br /><span class="line">  Options:</span><br /><span class="line"></span><br /><span class="line">     @listfile.lst            Specify list of files for extraction*</span><br /><span class="line"></span><br /><span class="line">     -c[m]                    Extract to console*</span><br /><span class="line"></span><br /><span class="line">     -d                       Re-create directories stored in .ZIP file*</span><br /><span class="line"></span><br /><span class="line">     -l                       Display software license agreement*</span><br /><span class="line"></span><br /><span class="line">     -n                       Extract only newer files*</span><br /><span class="line"></span><br /><span class="line">     -o                       Overwrite existing files</span><br /><span class="line"></span><br /><span class="line">     -p[a|b][c][#]            Extract to printer*</span><br /><span class="line"></span><br /><span class="line">     -s&lt;password&gt;             Decrypt with password*</span><br /><span class="line"></span><br /><span class="line">     -t                       Test file integrity*</span><br /><span class="line"></span><br /><span class="line">  * Indicates options not available in the PKSFX Junior and PKUNZIP Junior</span><br /><span class="line">    programs.</span><br /><span class="line"></span><br /><span class="line">  Options should be placed after the self-extracting files name.  If</span><br /><span class="line">  multiple options are used they must be separated by a space and each must</span><br /><span class="line">  have its own option indicator (either - or /).</span><br /><span class="line"></span><br /><span class="line">  All options behave in the same manner as they do with PKUNZIP, with one</span><br /><span class="line">  exception.  The -s option cannot accept keyboard entry.  A password</span><br /><span class="line">  entered with a self-extracting file must be able to be entered from the</span><br /><span class="line">  command line.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Modifying a Self-Extracting File</span></span><br /><span class="line"></span><br /><span class="line">  A self-extracting file can be operated upon by PKZIP and PKUNZIP in a</span><br /><span class="line">  manner identical to normal .ZIP files.  You will need to specify the full</span><br /><span class="line">  file name including the EXE extension.</span><br /><span class="line"></span><br /><span class="line">     C:\&gt;pkzip test.exe -f d:\*.*</span><br /><span class="line"></span><br /><span class="line">  There is no difference between operating on a self-extracting file and a</span><br /><span class="line">  normal .ZIP file.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">A Note About Self-Extracting Files</span></span><br /><span class="line"></span><br /><span class="line">  When you create a self-extracting file, you are adding a copy of the</span><br /><span class="line">  extraction code to that file.  Since this code duplicates the</span><br /><span class="line">  functionality of the PKUNZIP program, it makes sense to use the</span><br /><span class="line">  self-extractor only when PKUNZIP will not be present on the machine to</span><br /><span class="line">  extract the file.</span><br /><span class="line"></span><br /><span class="line">  If you create many self-extracting files for your own use, you will be</span><br /><span class="line">  using more space unnecessarily.  Therefore it is recommended that you only</span><br /><span class="line">  use the self-extracting capability when you are sending a file to someone</span><br /><span class="line">  that you know does not have a compatible PKUNZIP.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Stripping the PKSFX Code</span></span><br /><span class="line"></span><br /><span class="line">  You may have occasion to want to keep the contents of a self-extracting</span><br /><span class="line">  file, but wish to turn it back to a normal .ZIP file.</span><br /><span class="line"></span><br /><span class="line">  The ZIP2EXE offers an option to reverse the process.  This is done with</span><br /><span class="line">  the command line switch -e:</span><br /><span class="line"></span><br /><span class="line">     F:\&gt;zip2exe -e test.exe</span><br /><span class="line"></span><br /><span class="line">  ZIP2EXE will recognize normal and PKSFX Junior files automatically.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Sending a Self-Extractor</span></span><br /><span class="line"></span><br /><span class="line">  If you are sending a PKSFX file to somone who is not familiar with data</span><br /><span class="line">  compression and/or PKWARE products, we recommend you tell them to do the</span><br /><span class="line">  following:</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">With PKSFX Junior:</span></span><br /><span class="line"></span><br /><span class="line">  1) Create a temporary directory on the hard drive to hold the files</span><br /><span class="line">     contained in the self-extracting file.</span><br /><span class="line"></span><br /><span class="line">     C:\&gt;md temp</span><br /><span class="line"></span><br /><span class="line">  2) Change to the directory that was just created.</span><br /><span class="line"></span><br /><span class="line">     C:\&gt;cd temp</span><br /><span class="line">     C:\temp&gt;</span><br /><span class="line"></span><br /><span class="line">  3) Place the diskette containing the self-extracting file into the A: or</span><br /><span class="line">     B: drive.  4) Type the name of the self-extractor, including the path</span><br /><span class="line">     to the floppy drive.</span><br /><span class="line"></span><br /><span class="line">     C:\temp&gt;a:test</span><br /><span class="line"></span><br /><span class="line">  With normal PKSFX:</span><br /><span class="line"></span><br /><span class="line">  1) Place the diskette containing the self-extracting file into the A: or</span><br /><span class="line">     B: drive and change to that drive.</span><br /><span class="line"></span><br /><span class="line">     C:\&gt;a:</span><br /><span class="line"></span><br /><span class="line">  2) Type in the following;</span><br /><span class="line"></span><br /><span class="line">     A:\&gt;test -d c:\temp</span><br /><span class="line"></span><br /><span class="line">  You may also wish to create a batch file or text file on the floppy disk</span><br /><span class="line">  containing the above steps.  The contents of the self-extractor will be</span><br /><span class="line">  placed into this temporary directory.  They can then examine or move the</span><br /><span class="line">  files at their leisure.  The -d option ensures that any subdirectory</span><br /><span class="line">  information included will be re-created, and causes PKSFX to create the</span><br /><span class="line">  temporary directory for the user.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Site license</span></span><br /><span class="line"></span><br /><span class="line">  A site license is required by a corporation, company, educational</span><br /><span class="line">  institution, or governmental agency for use of PKWARE software on the</span><br /><span class="line">  total number of computers that will use the software.</span><br /><span class="line"></span><br /><span class="line">  Use of PKWARE programs for personal use is covered by your purchase of a</span><br /><span class="line">  single license for PKZIP.  A Distribution License is required by a</span><br /><span class="line">  corporation, company, educational institution or governmental agency to</span><br /><span class="line">  use PKWARE programs to facilitate the distribution of software to outside</span><br /><span class="line">  parties.</span><br /><span class="line"></span><br /><span class="line">  Please note that if a self-extracting file is used, a Distribution License</span><br /><span class="line">  is required, because PKWARE code is distributed in the form of the PKSFX</span><br /><span class="line">  program combined with the file(s) being distributed.</span><br /><span class="line"></span><br /><span class="line">  Please contact PKWARE for more information if you intend to distribute</span><br /><span class="line">  self- extracting files.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Confirm before extract</span></span><br /><span class="line"></span><br /><span class="line">  If a PKSFX file has a .ZIP file comment attached, this comment is</span><br /><span class="line">  displayed before the file is extracted.  By imbedding a Control-S</span><br /><span class="line">  character (Hex 13, ASCII 19), you can cause PKSFX to pause.  The display</span><br /><span class="line">  will look like this:</span><br /><span class="line"></span><br /><span class="line">     Searching EXE: XXXXX.EXE -</span><br /><span class="line">     .</span><br /><span class="line">     .</span><br /><span class="line">     .</span><br /><span class="line">     (ZIP file comment text)</span><br /><span class="line">     .</span><br /><span class="line">     .</span><br /><span class="line">     .</span><br /><span class="line">     Do you want to extract these files now (y/n)?</span><br /><span class="line"></span><br /><span class="line">  Press &#39;Y&#39; to extract the files, &#39;N&#39; o abort.  Note that the Control-S</span><br /><span class="line">  character is not displayed.  This control character may be located</span><br /><span class="line">  anywhere within the comment.</span><br /><span class="line"></span><br /><span class="line">  If the user aborts by pressing &#39;N&#39;, an exit code of 12 will be returned by</span><br /><span class="line">  PKSFX.  PKSFX Junior will return an exit code of 8.</span><br /><span class="line"></span><br /><span class="line">  <span class="ngb">Memory Requirements</span></span><br /><span class="line"></span><br /><span class="line">  The memory requirements for PKSFX are similar to those of PKUNZIP.</span><br /><span class="line"></span><br /><span class="line">  PKSFX Junior, and PKUNZIP Junior require a minimum of 50K RAM free, and a</span><br /><span class="line">  maximum of 64K RAM free.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
