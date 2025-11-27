@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-57156.html">
+    <link rel="next" href="perl-58052.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-57156.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-58052.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     require(EXPR)</span><br /><span class="line"></span><br /><span class="line">     require EXPR</span><br /><span class="line"></span><br /><span class="line">     require</span><br /><span class="line"></span><br /><span class="line">             Includes the library file specified by EXPR,  or  by</span><br /><span class="line">             $_  if  EXPR is not supplied.  Has semantics similar</span><br /><span class="line">             to the following subroutine:</span><br /><span class="line"></span><br /><span class="line">                  sub require {</span><br /><span class="line">                      local($filename) = @_;</span><br /><span class="line">                      return 1 if $INC{$filename};</span><br /><span class="line">                      local($realfilename,$result);</span><br /><span class="line">                      ITER: {</span><br /><span class="line">                       foreach $prefix (@INC) {</span><br /><span class="line">                           $realfilename = &#34;$prefix/$filename&#34;;</span><br /><span class="line">                           if (-f $realfilename) {</span><br /><span class="line">                            $result = do $realfilename;</span><br /><span class="line">                            last ITER;</span><br /><span class="line">                           }</span><br /><span class="line">                       }</span><br /><span class="line">                       die &#34;Can&#39;t find $filename in \@INC&#34;;</span><br /><span class="line">                      }</span><br /><span class="line">                      die $@ if $@;</span><br /><span class="line">                      die &#34;$filename did not return true value&#34; unless $result;</span><br /><span class="line">                      $INC{$filename} = $realfilename;</span><br /><span class="line">                      $result;</span><br /><span class="line">                  }</span><br /><span class="line"></span><br /><span class="line">             Note that the file will not be included twice  under</span><br /><span class="line">             the same specified name.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

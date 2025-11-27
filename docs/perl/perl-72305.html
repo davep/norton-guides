@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-71475.html">
+    <link rel="next" href="perl-74888.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-71475.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-74888.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     study(SCALAR)</span><br /><span class="line"></span><br /><span class="line">     study SCALAR</span><br /><span class="line"></span><br /><span class="line">     study   Takes extra time to study SCALAR ($_ if unspecified)</span><br /><span class="line">             in anticipation of doing many pattern matches on the</span><br /><span class="line">             string before it is next modified.  This may or  may</span><br /><span class="line">             not save time, depending on the nature and number of</span><br /><span class="line">             patterns you are searching on, and on the  distribu-</span><br /><span class="line">             tion  of  character  frequencies in the string to be</span><br /><span class="line">             searched--you probably want to compare runtimes with</span><br /><span class="line">             and  without  it  to  see  which runs faster.  Those</span><br /><span class="line">             loops which scan for  many  short  constant  strings</span><br /><span class="line">             (including  the  constant parts of more complex pat-</span><br /><span class="line">             terns) will benefit most.  You  may  have  only  one</span><br /><span class="line">             study  active  at  a  time--if you study a different</span><br /><span class="line">             scalar the first is  &#34;unstudied&#34;.   (The  way  study</span><br /><span class="line">             works  is  this: a linked list of every character in</span><br /><span class="line">             the string to be searched is made, so we  know,  for</span><br /><span class="line">             example,  where  all  the  &#39;k&#39; characters are.  From</span><br /><span class="line">             each  search  string,  the   rarest   character   is</span><br /><span class="line">             selected, based on some static frequency tables con-</span><br /><span class="line">             structed from some  C  programs  and  English  text.</span><br /><span class="line">             Only those places that contain this &#34;rarest&#34; charac-</span><br /><span class="line">             ter are examined.)</span><br /><span class="line"></span><br /><span class="line">             For example, here is a loop which inserts index pro-</span><br /><span class="line">             ducing  entries before any line containing a certain</span><br /><span class="line">             pattern:</span><br /><span class="line"></span><br /><span class="line">                  while (&lt;&gt;) {</span><br /><span class="line">                       study;</span><br /><span class="line">                       print &#34;.IX foo\n&#34; if /\bfoo\b/;</span><br /><span class="line">                       print &#34;.IX bar\n&#34; if /\bbar\b/;</span><br /><span class="line">                       print &#34;.IX blurfl\n&#34; if /\bblurfl\b/;</span><br /><span class="line">                       ...</span><br /><span class="line">                       print;</span><br /><span class="line">                  }</span><br /><span class="line"></span><br /><span class="line">             In searching for /\bfoo\b/, only those locations  in</span><br /><span class="line">             $_  that  contain &#39;f&#39; will be looked at, because &#39;f&#39;</span><br /><span class="line">             is rarer than &#39;o&#39;.  In general, this is  a  big  win</span><br /><span class="line">             except  in pathological cases.  The only question is</span><br /><span class="line">             whether it saves you more time than it took to build</span><br /><span class="line">             the linked list in the first place.</span><br /><span class="line"></span><br /><span class="line">             Note that if you have to look for strings  that  you</span><br /><span class="line">             don&#39;t  know  till  runtime,  you can build an entire</span><br /><span class="line">             loop as a string and eval that to avoid  recompiling</span><br /><span class="line">             all  your  patterns  all  the  time.   Together with</span><br /><span class="line">             undefining $/ to input entire files as  one  record,</span><br /><span class="line">             this can be very fast, often faster than specialized</span><br /><span class="line">             programs like fgrep.  The following scans a list  of</span><br /><span class="line">             files  (@files)  for  a  list of words (@words), and</span><br /><span class="line">             prints out the names of those files that  contain  a</span><br /><span class="line">             match:</span><br /><span class="line"></span><br /><span class="line">                  $search = &#39;while (&lt;&gt;) { study;&#39;;</span><br /><span class="line">                  foreach $word (@words) {</span><br /><span class="line">                      $search .= &#34;++\$seen{\$ARGV} if /\b$word\b/;\n&#34;;</span><br /><span class="line">                  }</span><br /><span class="line">                  $search .= &#34;}&#34;;</span><br /><span class="line">                  @ARGV = @files;</span><br /><span class="line">                  undef $/;</span><br /><span class="line">                  eval $search;       # this screams</span><br /><span class="line">                  $/ = &#34;\n&#34;;          # put back to normal input delim</span><br /><span class="line">                  foreach $file (sort keys(%seen)) {</span><br /><span class="line">                      print $file, &#34;\n&#34;;</span><br /><span class="line">                  }</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-15232.html">
+    <link rel="next" href="perl-17399.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-15232.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-17399.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     dbmopen(ASSOC,DBNAME,MODE)</span><br /><span class="line"></span><br /><span class="line">             This binds a dbm or  ndbm  file  to  an  associative</span><br /><span class="line">             array.   ASSOC is the name of the associative array.</span><br /><span class="line">             (Unlike normal open, the first  argument  is  NOT  a</span><br /><span class="line">             filehandle,  even though it looks like one).  DBNAME</span><br /><span class="line">             is the name of the database  (without  the  .dir  or</span><br /><span class="line">             .pag extension).  If the database does not exist, it</span><br /><span class="line">             is created with protection  specified  by  MODE  (as</span><br /><span class="line">             modified  by  the  umask).  If your system only sup-</span><br /><span class="line">             ports the older dbm functions, you may only have one</span><br /><span class="line">             dbmopen in your program.  If your system has neither</span><br /><span class="line">             dbm nor  ndbm,  calling  dbmopen  produces  a  fatal</span><br /><span class="line">             error.  (MS-DOS users: the MS-DOS port uses Gnu-dbm,</span><br /><span class="line">             which supports multiple files.)</span><br /><span class="line"></span><br /><span class="line">             Values assigned to the associative  array  prior  to</span><br /><span class="line">             the  dbmopen  are  lost.  A certain number of values</span><br /><span class="line">             from the dbm file are cached in memory.  By  default</span><br /><span class="line">             this number is 64, but you can increase it by preal-</span><br /><span class="line">             locating that number of garbage entries in the asso-</span><br /><span class="line">             ciative array before the dbmopen.  You can flush the</span><br /><span class="line">             cache if necessary with the reset command.</span><br /><span class="line"></span><br /><span class="line">             If you don&#39;t have write access to the dbm file,  you</span><br /><span class="line">             can  only  read associative array variables, not set</span><br /><span class="line">             them.  If you want to test whether  you  can  write,</span><br /><span class="line">             either  use  file tests or try setting a dummy array</span><br /><span class="line">             entry inside an eval, which will trap the error.</span><br /><span class="line"></span><br /><span class="line">             Note that functions such as keys() and values()  may</span><br /><span class="line">             return  huge  array  values  when  used on large dbm</span><br /><span class="line">             files.  You may prefer to use the each() function to</span><br /><span class="line">             iterate over large dbm files.  Example:</span><br /><span class="line"></span><br /><span class="line">                  # print out history file offsets</span><br /><span class="line">                  dbmopen(HIST,&#39;/usr/lib/news/history&#39;,0666);</span><br /><span class="line">                  while (($key,$val) = each %HIST) {</span><br /><span class="line">                       print $key, &#39; = &#39;, unpack(&#39;L&#39;,$val), &#34;\n&#34;;</span><br /><span class="line">                  }</span><br /><span class="line">                  dbmclose(HIST);</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="perl-15232.html">dbmclose</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

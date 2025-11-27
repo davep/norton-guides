@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-79102.html">
+    <link rel="next" href="perl-81179.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-79102.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-81179.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     tr/SEARCHLIST/REPLACEMENTLIST/cds</span><br /><span class="line"></span><br /><span class="line">     y/SEARCHLIST/REPLACEMENTLIST/cds</span><br /><span class="line"></span><br /><span class="line">             Translates all occurrences of the  characters  found</span><br /><span class="line">             in  the search list with the corresponding character</span><br /><span class="line">             in the replacement list.  It returns the  number  of</span><br /><span class="line">             characters  replaced  or  deleted.   If no string is</span><br /><span class="line">             specified via the =~ or !~ operator, the  $_  string</span><br /><span class="line">             is  translated.   (The string specified with =~ must</span><br /><span class="line">             be a  scalar  variable,  an  array  element,  or  an</span><br /><span class="line">             assignment  to  one  of those, i.e. an lvalue.)  For</span><br /><span class="line">             sed devotees, y is provided as a synonym for tr.</span><br /><span class="line"></span><br /><span class="line">             If the c modifier is specified, the SEARCHLIST char-</span><br /><span class="line">             acter  set  is  complemented.   If the d modifier is</span><br /><span class="line">             specified, any characters  specified  by  SEARCHLIST</span><br /><span class="line">             that  are  not found in REPLACEMENTLIST are deleted.</span><br /><span class="line">             (Note that this is slightly more flexible  than  the</span><br /><span class="line">             behavior  of some tr programs, which delete anything</span><br /><span class="line">             they find in the  SEARCHLIST,  period.)   If  the  s</span><br /><span class="line">             modifier  is specified, sequences of characters that</span><br /><span class="line">             were translated to the same character  are  squashed</span><br /><span class="line">             down to 1 instance of the character.</span><br /><span class="line"></span><br /><span class="line">             If the d modifier was used, the  REPLACEMENTLIST  is</span><br /><span class="line">             always interpreted exactly as specified.  Otherwise,</span><br /><span class="line">             if the REPLACEMENTLIST is  shorter  than  the  SEAR-</span><br /><span class="line">             CHLIST, the final character is replicated till it is</span><br /><span class="line">             long enough.  If the REPLACEMENTLIST  is  null,  the</span><br /><span class="line">             SEARCHLIST is replicated.  This latter is useful for</span><br /><span class="line">             counting characters in a  class,  or  for  squashing</span><br /><span class="line">             character sequences in a class.</span><br /><span class="line"></span><br /><span class="line">             Examples:</span><br /><span class="line"></span><br /><span class="line">                 $ARGV[1] =~ y/A-Z/a-z/;   # canonicalize to lower case</span><br /><span class="line"></span><br /><span class="line">                 $cnt = tr/*/*/;           # count the stars in $_</span><br /><span class="line"></span><br /><span class="line">                 $cnt = tr/0-9//;          # count the digits in $_</span><br /><span class="line"></span><br /><span class="line">                 tr/a-zA-Z//s;             # bookkeeper -&gt; bokeper</span><br /><span class="line"></span><br /><span class="line">                 ($HOST = $host) =~ tr/a-z/A-Z/;</span><br /><span class="line"></span><br /><span class="line">                 y/a-zA-Z/ /cs;            # change non-alphas to single space</span><br /><span class="line"></span><br /><span class="line">                 tr/\200-\377/\0-\177/;    # delete 8th bit</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

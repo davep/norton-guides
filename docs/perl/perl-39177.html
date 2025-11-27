@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-38988.html">
+    <link rel="next" href="perl-42974.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-38988.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-42974.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     m/PATTERN/gio</span><br /><span class="line"></span><br /><span class="line">     /PATTERN/gio</span><br /><span class="line"></span><br /><span class="line">             Searches a string for a pattern match,  and  returns</span><br /><span class="line">             true  (1)  or false (&#39;&#39;).  If no string is specified</span><br /><span class="line">             via  the  =~  or  !~  operator,  the  $_  string  is</span><br /><span class="line">             searched.  (The string specified with =~ need not be</span><br /><span class="line">             an lvalue--it may be the  result  of  an  expression</span><br /><span class="line">             evaluation,   but   remember  the  =~  binds  rather</span><br /><span class="line">             tightly.)  See also the section on  regular  expres-</span><br /><span class="line">             sions.</span><br /><span class="line"></span><br /><span class="line">             If / is  the  delimiter  then  the  initial  &#39;m&#39;  is</span><br /><span class="line">             optional.   With  the  &#39;m&#39;  you  can use any pair of</span><br /><span class="line">             non-alphanumeric characters as delimiters.  This  is</span><br /><span class="line">             particularly  useful  for  matching  Unix path names</span><br /><span class="line">             that contain &#39;/&#39;.  If the final  delimiter  is  fol-</span><br /><span class="line">             lowed  by  the  optional letter &#39;i&#39;, the matching is</span><br /><span class="line">             done in a case-insensitive manner.  PATTERN may con-</span><br /><span class="line">             tain  references  to scalar variables, which will be</span><br /><span class="line">             interpolated (and the pattern recompiled) every time</span><br /><span class="line">             the  pattern search is evaluated.  (Note that $) and</span><br /><span class="line">             $| may not be interpolated because  they  look  like</span><br /><span class="line">             end-of-string tests.)  If you want such a pattern to</span><br /><span class="line">             be compiled only once, add an &#34;o&#34; after the trailing</span><br /><span class="line">             delimiter.   This avoids expensive run-time recompi-</span><br /><span class="line">             lations, and is useful when the value you are inter-</span><br /><span class="line">             polating  won&#39;t  change over the life of the script.</span><br /><span class="line"></span><br /><span class="line">             If the PATTERN evaluates to a null string, the  most</span><br /><span class="line">             recent   successful   regular   expression  is  used</span><br /><span class="line">             instead.</span><br /><span class="line"></span><br /><span class="line">             If used in a context that requires an array value, a</span><br /><span class="line">             pattern  match  returns  an  array consisting of the</span><br /><span class="line">             subexpressions matched by  the  parentheses  in  the</span><br /><span class="line">             pattern, i.e. ($1, $2, $3...).  It does NOT actually</span><br /><span class="line">             set $1, $2, etc. in this case, nor does it  set  $+,</span><br /><span class="line">             $`,  $&amp;  or $&#39;.  If the match fails, a null array is</span><br /><span class="line">             returned.  If the match succeeds, but there were  no</span><br /><span class="line">             parentheses, an array value of (1) is returned.</span><br /><span class="line"></span><br /><span class="line">             Examples:</span><br /><span class="line"></span><br /><span class="line">                 open(tty, &#39;/dev/tty&#39;);</span><br /><span class="line">                 &lt;tty&gt; =~ /^y/i &amp;&amp; do foo();    # do foo if desired</span><br /><span class="line"></span><br /><span class="line">                 if (/Version: *([0-9.]*)/) { $version = $1; }</span><br /><span class="line"></span><br /><span class="line">                 next if m#^/usr/spool/uucp#;</span><br /><span class="line"></span><br /><span class="line">                 # poor man&#39;s grep</span><br /><span class="line">                 $arg = shift;</span><br /><span class="line">                 while (&lt;&gt;) {</span><br /><span class="line">                      print if /$arg/o;    # compile only once</span><br /><span class="line">                 }</span><br /><span class="line"></span><br /><span class="line">                 if (($F1, $F2, $Etc) = ($foo =~ /^(\S+)\s+(\S+)\s*(.*)/))</span><br /><span class="line"></span><br /><span class="line">             This last example splits $foo  into  the  first  two</span><br /><span class="line">             words  and  the  remainder  of the line, and assigns</span><br /><span class="line">             those three fields to $F1, $F2 and $Etc.  The condi-</span><br /><span class="line">             tional  is true if any variables were assigned, i.e.</span><br /><span class="line">             if the pattern matched.</span><br /><span class="line"></span><br /><span class="line">             The   &#34;g&#34;   modifier   specifies   global    pattern</span><br /><span class="line">             matching--that  is, matching as many times as possi-</span><br /><span class="line">             ble within the string.  How it  behaves  depends  on</span><br /><span class="line">             the context.  In an array context, it returns a list</span><br /><span class="line">             of all the substrings matched by all the parentheses</span><br /><span class="line">             in   the   regular  expression.   If  there  are  no</span><br /><span class="line">             parentheses, it returns a list of  all  the  matched</span><br /><span class="line">             strings,  as  if  there  were parentheses around the</span><br /><span class="line">             whole pattern.  In a  scalar  context,  it  iterates</span><br /><span class="line">             through  the  string,  returning  TRUE  each time it</span><br /><span class="line">             matches, and FALSE when it eventually  runs  out  of</span><br /><span class="line">             matches.   (In  other  words,  it remembers where it</span><br /><span class="line">             left off last time and restarts the search  at  that</span><br /><span class="line">             point.)   It presumes that you have not modified the</span><br /><span class="line">             string since the last match.  Modifying  the  string</span><br /><span class="line">             between  matches  may  result in undefined behavior.</span><br /><span class="line"></span><br /><span class="line">             (You can actually get away with  in-place  modifica-</span><br /><span class="line">             tions  via substr() that do not change the length of</span><br /><span class="line">             the entire string.  In general, however, you  should</span><br /><span class="line">             be using s///g for such modifications.)  Examples:</span><br /><span class="line"></span><br /><span class="line">                  # array context</span><br /><span class="line">                  ($one,$five,$fifteen) = (`uptime` =~ /(\d+\.\d+)/g);</span><br /><span class="line"></span><br /><span class="line">                  # scalar context</span><br /><span class="line">                  $/ = 1; $* = 1;</span><br /><span class="line">                  while ($paragraph = &lt;&gt;) {</span><br /><span class="line">                      while ($paragraph =~ /[a-z][&#39;&#34;)]*[.!?]+[&#39;&#34;)]*\s/g) {</span><br /><span class="line">                       $sentences++;</span><br /><span class="line">                      }</span><br /><span class="line">                  }</span><br /><span class="line">                  print &#34;$sentences\n&#34;;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

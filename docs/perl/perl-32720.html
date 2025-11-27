@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-32594.html">
+    <link rel="next" href="perl-34492.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-32594.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-34492.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     ioctl(FILEHANDLE,FUNCTION,SCALAR)</span><br /><span class="line"></span><br /><span class="line">             Implements the ioctl(2) function.   You&#39;ll  probably</span><br /><span class="line">             have to say</span><br /><span class="line"></span><br /><span class="line">                  require &#34;ioctl.ph&#34;; # probably /usr/local/lib/perl/ioctl.ph</span><br /><span class="line"></span><br /><span class="line">             first to get the correct function  definitions.   If</span><br /><span class="line">             ioctl.ph  doesn&#39;t  exist or doesn&#39;t have the correct</span><br /><span class="line">             definitions you&#39;ll have to roll your own,  based  on</span><br /><span class="line">             your  C  header files such as &lt;sys/ioctl.h&gt;.  (There</span><br /><span class="line">             is a perl script called h2ph  that  comes  with  the</span><br /><span class="line">             Unix  perl  kit which may help you in this.)  SCALAR</span><br /><span class="line">             will  be  read  and/or  written  depending  on   the</span><br /><span class="line">             FUNCTION--a  pointer  to  the string value of SCALAR</span><br /><span class="line">             will be passed as the third argument of  the  actual</span><br /><span class="line">             ioctl call.  (If SCALAR has no string value but does</span><br /><span class="line">             have a numeric value,  that  value  will  be  passed</span><br /><span class="line">             rather  than  a  pointer  to  the  string value.  To</span><br /><span class="line">             guarantee this to be true, add a  0  to  the  scalar</span><br /><span class="line">             before using it.)  The pack() and unpack() functions</span><br /><span class="line">             are useful for manipulating the values of structures</span><br /><span class="line">             used  by  ioctl().   The  following example sets the</span><br /><span class="line">             erase character to DEL.</span><br /><span class="line"></span><br /><span class="line">                  require &#39;ioctl.ph&#39;;</span><br /><span class="line">                  $sgttyb_t = &#34;ccccs&#34;;          # 4 chars and a short</span><br /><span class="line">                  if (ioctl(STDIN,$TIOCGETP,$sgttyb)) {</span><br /><span class="line">                       @ary = unpack($sgttyb_t,$sgttyb);</span><br /><span class="line">                       $ary[2] = 127;</span><br /><span class="line">                       $sgttyb = pack($sgttyb_t,@ary);</span><br /><span class="line">                       ioctl(STDIN,$TIOCSETP,$sgttyb)</span><br /><span class="line">                            || die &#34;Can&#39;t ioctl: $!&#34;;</span><br /><span class="line">                  }</span><br /><span class="line"></span><br /><span class="line">             The return value of ioctl (and fcntl) is as follows:</span><br /><span class="line"></span><br /><span class="line">                  if OS returns:           perl returns:</span><br /><span class="line">                    -1                       undefined value</span><br /><span class="line">                    0                        string &#34;0 but true&#34;</span><br /><span class="line">                    anything else            that number</span><br /><span class="line"></span><br /><span class="line">             Thus perl returns  true  on  success  and  false  on</span><br /><span class="line">             failure,  yet  you  can  still  easily determine the</span><br /><span class="line">             actual value returned by the operating system:</span><br /><span class="line"></span><br /><span class="line">                  ($retval = ioctl(...)) || ($retval = -1);</span><br /><span class="line">                  printf &#34;System returned %d\n&#34;, $retval;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

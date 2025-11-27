@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-22836.html">
+    <link rel="next" href="perl-24817.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-22836.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-24817.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     eof(FILEHANDLE)</span><br /><span class="line"></span><br /><span class="line">     eof()</span><br /><span class="line"></span><br /><span class="line">     eof     Returns 1 if the next read on FILEHANDLE will return</span><br /><span class="line">             end of file, or if FILEHANDLE is not open.  FILEHAN-</span><br /><span class="line">             DLE may be an expression whose value gives the  real</span><br /><span class="line">             filehandle  name.  (Note that this function actually</span><br /><span class="line">             reads a character and then ungetc&#39;s it, so it is not</span><br /><span class="line">             very  useful  in  an  interactive  context.)  An eof</span><br /><span class="line">             without an argument returns the eof status  for  the</span><br /><span class="line">             last file read.  Empty parentheses () may be used to</span><br /><span class="line">             indicate the pseudo file formed of the files  listed</span><br /><span class="line">             on the command line, i.e. eof() is reasonable to use</span><br /><span class="line">             inside a while (&lt;&gt;) loop to detect the end  of  only</span><br /><span class="line">             the  last  file.   Use  eof(ARGV) or eof without the</span><br /><span class="line">             parentheses to test EACH file in a while (&lt;&gt;)  loop.</span><br /><span class="line">             Examples:</span><br /><span class="line"></span><br /><span class="line">                  # insert dashes just before last line of last file</span><br /><span class="line">                  while (&lt;&gt;) {</span><br /><span class="line">                       if (eof()) {</span><br /><span class="line">                            print &#34;--------------\n&#34;;</span><br /><span class="line">                       }</span><br /><span class="line">                       print;</span><br /><span class="line">                  }</span><br /><span class="line"></span><br /><span class="line">                  # reset line numbering on each input file</span><br /><span class="line">                  while (&lt;&gt;) {</span><br /><span class="line">                       print &#34;$.\t$_&#34;;</span><br /><span class="line">                       if (eof) {     # Not eof().</span><br /><span class="line">                            close(ARGV);</span><br /><span class="line">                       }</span><br /><span class="line">                  }</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

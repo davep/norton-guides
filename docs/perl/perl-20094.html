@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-18961.html">
+    <link rel="next" href="perl-22490.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-18961.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-22490.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     do BLOCK</span><br /><span class="line"></span><br /><span class="line">             Returns  the  value  of  the  last  command  in  the</span><br /><span class="line">             sequence of commands indicated by BLOCK.  When modi-</span><br /><span class="line">             fied by a loop modifier,  executes  the  BLOCK  once</span><br /><span class="line">             before   testing  the  loop  condition.   (On  other</span><br /><span class="line">             statements the loop modifiers test  the  conditional</span><br /><span class="line">             first.)</span><br /><span class="line"></span><br /><span class="line">     do SUBROUTINE (LIST)</span><br /><span class="line"></span><br /><span class="line">             Executes a SUBROUTINE declared by a sub declaration,</span><br /><span class="line">             and   returns  the  value  of  the  last  expression</span><br /><span class="line">             evaluated in SUBROUTINE.  If there is no  subroutine</span><br /><span class="line">             by  that name, produces a fatal error.  (You may use</span><br /><span class="line">             the &#34;defined&#34; operator to determine if a  subroutine</span><br /><span class="line">             exists.)  If you pass arrays as part of LIST you may</span><br /><span class="line">             wish to pass the length of the  array  in  front  of</span><br /><span class="line">             each  array.   (See the section on subroutines later</span><br /><span class="line">             on.)  SUBROUTINE may be a scalar variable, in  which</span><br /><span class="line">             case  the  variable contains the name of the subrou-</span><br /><span class="line">             tine to execute.  The parentheses  are  required  to</span><br /><span class="line">             avoid confusion with the &#34;do EXPR&#34; form.</span><br /><span class="line"></span><br /><span class="line">             As an alternate form, you may call a  subroutine  by</span><br /><span class="line">             prefixing  the  name with an ampersand: &amp;foo(@args).</span><br /><span class="line">             If you aren&#39;t passing any arguments, you don&#39;t  have</span><br /><span class="line">             to use parentheses.  If you omit the parentheses, no</span><br /><span class="line">             @_ array is passed to the subroutine.  The &amp; form is</span><br /><span class="line">             also  used to specify subroutines to the defined and</span><br /><span class="line">             undef operators.</span><br /><span class="line"></span><br /><span class="line">     do EXPR Uses the value of EXPR as a  filename  and  executes</span><br /><span class="line">             the contents of the file as a perl script.  Its pri-</span><br /><span class="line">             mary use is to include subroutines from a perl  sub-</span><br /><span class="line">             routine library.</span><br /><span class="line"></span><br /><span class="line">                  do &#39;stat.pl&#39;;</span><br /><span class="line"></span><br /><span class="line">             is just like</span><br /><span class="line"></span><br /><span class="line">                  eval `cat stat.pl`;</span><br /><span class="line"></span><br /><span class="line">             except that it&#39;s more efficient, more concise, keeps</span><br /><span class="line">             track  of  the  current filename for error messages,</span><br /><span class="line">             and searches all the -I libraries if the file  isn&#39;t</span><br /><span class="line">             in the current directory (see also the @INC array in</span><br /><span class="line">             Predefined Names).  It&#39;s the same, however, in  that</span><br /><span class="line">             it  does reparse the file every time you call it, so</span><br /><span class="line">             if you are going to use the file inside a  loop  you</span><br /><span class="line">             might  prefer to use -P and #include, at the expense</span><br /><span class="line">             of a little more startup time.   (The  main  problem</span><br /><span class="line">             with #include is that cpp doesn&#39;t grok # comments--a</span><br /><span class="line">             workaround is to use &#34;;#&#34; for standalone  comments.)</span><br /><span class="line">             Note that the following are NOT equivalent:</span><br /><span class="line"></span><br /><span class="line">                  do $foo;  # eval a file</span><br /><span class="line">                  do $foo();     # call a subroutine</span><br /><span class="line"></span><br /><span class="line">             Note that inclusion of library  routines  is  better</span><br /><span class="line">             done with the &#34;require&#34; operator.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

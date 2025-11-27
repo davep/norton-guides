@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Operators</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-192171.html">
+    <link rel="next" href="perl-197729.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-192171.html">Previous</a></li>
+
+
+          
+
+<li><a href="perl-188582.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-197729.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     -x      A file test.  This unary operator  takes  one  argu-</span><br /><span class="line">             ment,  either  a filename or a filehandle, and tests</span><br /><span class="line">             the associated file to  see  if  something  is  true</span><br /><span class="line">             about  it.   If  the  argument is omitted, tests $_,</span><br /><span class="line">             except for -t, which tests STDIN.  It returns 1  for</span><br /><span class="line">             true and &#39;&#39; for false, or the undefined value if the</span><br /><span class="line">             file doesn&#39;t exist.  Precedence is higher than logi-</span><br /><span class="line">             cal  and relational operators, but lower than arith-</span><br /><span class="line">             metic operators.  The operator may be any of:</span><br /><span class="line"></span><br /><span class="line">                  -r   File is readable by effective uid.</span><br /><span class="line">                  -w   File is writable by effective uid.</span><br /><span class="line">                  -x   File is executable by effective uid.</span><br /><span class="line">                  -o   File is owned by effective uid.</span><br /><span class="line">                  -R   File is readable by real uid.</span><br /><span class="line">                  -W   File is writable by real uid.</span><br /><span class="line">                  -X   File is executable by real uid.</span><br /><span class="line">                  -O   File is owned by real uid.</span><br /><span class="line">                  -e   File exists.</span><br /><span class="line">                  -z   File has zero size.</span><br /><span class="line">                  -s   File has non-zero size (returns size).</span><br /><span class="line">                  -f   File is a plain file.</span><br /><span class="line">                  -d   File is a directory.</span><br /><span class="line">                  -l   File is a symbolic link.</span><br /><span class="line">                  -p   File is a named pipe (FIFO).</span><br /><span class="line">                  -S   File is a socket.</span><br /><span class="line">                  -b   File is a block special file.</span><br /><span class="line">                  -c   File is a character special file.</span><br /><span class="line">                  -u   File has setuid bit set.</span><br /><span class="line">                  -g   File has setgid bit set.</span><br /><span class="line">                  -k   File has sticky bit set.</span><br /><span class="line">                  -t   Filehandle is opened to a tty.</span><br /><span class="line">                  -T   File is a text file.</span><br /><span class="line">                  -B   File is a binary file (opposite of -T).</span><br /><span class="line">                  -M   Age of file in days when script started.</span><br /><span class="line">                  -A   Same for access time.</span><br /><span class="line">                  -C   Same for inode change time.</span><br /><span class="line"></span><br /><span class="line">             The interpretation of the file permission  operators</span><br /><span class="line">             -r,  -R,  -w,  -W,  -x and -X is based solely on the</span><br /><span class="line">             mode of the file and the uids and gids of the  user.</span><br /><span class="line">             There  may be other reasons you can&#39;t actually read,</span><br /><span class="line">             write or execute the file.  (Note that  serveral  of</span><br /><span class="line">             the above don&#39;t mean much under MS-DOS.)</span><br /><span class="line"></span><br /><span class="line">             Example:</span><br /><span class="line"></span><br /><span class="line">                  while (&lt;&gt;) {</span><br /><span class="line">                       chop;</span><br /><span class="line">                       next unless -f $_;  # ignore specials</span><br /><span class="line">                       ...</span><br /><span class="line">                  }</span><br /><span class="line"></span><br /><span class="line">             Note that -s/a/b/ does not do  a  negated  substitu-</span><br /><span class="line">             tion.   Saying  -exp($foo)  still works as expected,</span><br /><span class="line">             however--only single letters following a  minus  are</span><br /><span class="line">             interpreted as file tests.</span><br /><span class="line"></span><br /><span class="line">             The -T and -B switches work as follows.   The  first</span><br /><span class="line">             block  or so of the file is examined for odd charac-</span><br /><span class="line">             ters such as strange control  codes  or  metacharac-</span><br /><span class="line">             ters.   If too many odd characters (&gt;10%) are found,</span><br /><span class="line">             it&#39;s a -B file, otherwise it&#39;s a -T file.  Also, any</span><br /><span class="line">             file  containing  null  in  the  first block is con-</span><br /><span class="line">             sidered a binary file.  If -T or -B  is  used  on  a</span><br /><span class="line">             filehandle,  the  current  stdio  buffer is examined</span><br /><span class="line">             rather than the first block.  Both -T and -B  return</span><br /><span class="line">             TRUE on a null file, or a file at EOF when testing a</span><br /><span class="line">             filehandle.</span><br /><span class="line"></span><br /><span class="line">     If any of the file tests (or either stat operator) are given</span><br /><span class="line">     the  special  filehandle consisting of a solitary underline,</span><br /><span class="line">     then the stat structure of the previous file test  (or  stat</span><br /><span class="line">     operator) is used, saving a system call.  (This doesn&#39;t work</span><br /><span class="line">     with -t, and you need to remember that  lstat  and  -l  will</span><br /><span class="line">     leave  values  in  the stat structure for the symbolic link,</span><br /><span class="line">     not the real file.)  Example:</span><br /><span class="line"></span><br /><span class="line">          print &#34;Can do.\n&#34; if -r $a || -w _ || -x _;</span><br /><span class="line"></span><br /><span class="line">          stat($filename);</span><br /><span class="line">          print &#34;Readable\n&#34; if -r _;</span><br /><span class="line">          print &#34;Writable\n&#34; if -w _;</span><br /><span class="line">          print &#34;Executable\n&#34; if -x _;</span><br /><span class="line">          print &#34;Setuid\n&#34; if -u _;</span><br /><span class="line">          print &#34;Setgid\n&#34; if -g _;</span><br /><span class="line">          print &#34;Sticky\n&#34; if -k _;</span><br /><span class="line">          print &#34;Text\n&#34; if -T _;</span><br /><span class="line">          print &#34;Binary\n&#34; if -B _;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

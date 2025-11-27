@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-36660.html">
+    <link rel="next" href="perl-38325.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-36660.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-38325.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     local(LIST)</span><br /><span class="line"></span><br /><span class="line">             Declares the listed variables to  be  local  to  the</span><br /><span class="line">             enclosing  block, subroutine, eval or &#34;do&#34;.  All the</span><br /><span class="line">             listed elements must be legal lvalues.  This  opera-</span><br /><span class="line">             tor  works  by  saving  the  current values of those</span><br /><span class="line">             variables in LIST on a hidden  stack  and  restoring</span><br /><span class="line">             them  upon  exiting  the  block, subroutine or eval.</span><br /><span class="line"></span><br /><span class="line">             This means that called subroutines can  also  refer-</span><br /><span class="line">             ence  the  local  variable,  but not the global one.</span><br /><span class="line">             The LIST may be assigned to if desired, which allows</span><br /><span class="line">             you to initialize your local variables.  (If no ini-</span><br /><span class="line">             tializer is given for a particular variable,  it  is</span><br /><span class="line">             created  with an undefined value.)  Commonly this is</span><br /><span class="line">             used to name the parameters to a subroutine.   Exam-</span><br /><span class="line">             ples:</span><br /><span class="line"></span><br /><span class="line">                  sub RANGEVAL {</span><br /><span class="line">                       local($min, $max, $thunk) = @_;</span><br /><span class="line">                       local($result) = &#39;&#39;;</span><br /><span class="line">                       local($i);</span><br /><span class="line"></span><br /><span class="line">                       # Presumably $thunk makes reference to $i</span><br /><span class="line"></span><br /><span class="line">                       for ($i = $min; $i &lt; $max; $i++) {</span><br /><span class="line">                            $result .= eval $thunk;</span><br /><span class="line">                       }</span><br /><span class="line"></span><br /><span class="line">                       $result;</span><br /><span class="line">                  }</span><br /><span class="line"></span><br /><span class="line">                  if ($sw eq &#39;-v&#39;) {</span><br /><span class="line">                      # init local array with global array</span><br /><span class="line">                      local(@ARGV) = @ARGV;</span><br /><span class="line">                      unshift(@ARGV,&#39;echo&#39;);</span><br /><span class="line">                      system @ARGV;</span><br /><span class="line">                  }</span><br /><span class="line">                  # @ARGV restored</span><br /><span class="line"></span><br /><span class="line">                  # temporarily add to digits associative array</span><br /><span class="line">                  if ($base12) {</span><br /><span class="line">                       # (NOTE: not claiming this is efficient!)</span><br /><span class="line">                       local(%digits) = (%digits,&#39;t&#39;,10,&#39;e&#39;,11);</span><br /><span class="line">                       do parse_num();</span><br /><span class="line">                  }</span><br /><span class="line"></span><br /><span class="line">             Note that local() is a run-time command, and so gets</span><br /><span class="line">             executed  every  time  through a loop, using up more</span><br /><span class="line">             stack storage each time until it&#39;s all  released  at</span><br /><span class="line">             once when the loop is exited.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-67307.html">
+    <link rel="next" href="perl-70998.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-67307.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-70998.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     split(/PATTERN/,EXPR,LIMIT)</span><br /><span class="line"></span><br /><span class="line">     split(/PATTERN/,EXPR)</span><br /><span class="line"></span><br /><span class="line">     split(/PATTERN/)</span><br /><span class="line"></span><br /><span class="line">     split   Splits a  string  into  an  array  of  strings,  and</span><br /><span class="line">             returns  it.   (If  not in an array context, returns</span><br /><span class="line">             the number of fields found and splits  into  the  @_</span><br /><span class="line">             array.   (In  an  array  context,  you can force the</span><br /><span class="line">             split into @_ by using ?? as the pattern delimiters,</span><br /><span class="line">             but  it still returns the array value.))  If EXPR is</span><br /><span class="line">             omitted, splits the $_ string.  If PATTERN  is  also</span><br /><span class="line">             omitted,  splits  on  whitespace (/[ \t\n]+/).  Any-</span><br /><span class="line">             thing matching PATTERN is taken to  be  a  delimiter</span><br /><span class="line">             separating the fields.  (Note that the delimiter may</span><br /><span class="line">             be longer than one character.)  If LIMIT  is  speci-</span><br /><span class="line">             fied,  splits  into  no  more  than that many fields</span><br /><span class="line">             (though it may  split  into  fewer).   If  LIMIT  is</span><br /><span class="line">             unspecified,   trailing  null  fields  are  stripped</span><br /><span class="line">             (which potential users of pop()  would  do  well  to</span><br /><span class="line">             remember).   A pattern matching the null string (not</span><br /><span class="line">             to be confused with a null pattern //, which is just</span><br /><span class="line">             one  member  of  the set of patterns matching a null</span><br /><span class="line">             string) will split the value of EXPR  into  separate</span><br /><span class="line">             characters  at  each point it matches that way.  For</span><br /><span class="line">             example:</span><br /><span class="line"></span><br /><span class="line">                  print join(&#39;:&#39;, split(/ */, &#39;hi there&#39;));</span><br /><span class="line"></span><br /><span class="line">             produces the output &#39;h:i:t:h:e:r:e&#39;.</span><br /><span class="line"></span><br /><span class="line">             The LIMIT parameter can be used to partially split a</span><br /><span class="line">             line</span><br /><span class="line"></span><br /><span class="line">                  ($login, $passwd, $remainder) = split(/:/, $_, 3);</span><br /><span class="line"></span><br /><span class="line">             (When assigning to a list, if LIMIT is omitted, perl</span><br /><span class="line">             supplies a LIMIT one larger than the number of vari-</span><br /><span class="line">             ables in the list, to avoid unnecessary  work.   For</span><br /><span class="line">             the  list  above LIMIT would have been 4 by default.</span><br /><span class="line">             In time critical applications it behooves you not to</span><br /><span class="line">             split into more fields than you really need.)</span><br /><span class="line"></span><br /><span class="line">             If  the  PATTERN  contains  parentheses,  additional</span><br /><span class="line">             array  elements  are created from each matching sub-</span><br /><span class="line">             string in the delimiter.</span><br /><span class="line"></span><br /><span class="line">                  split(/([,-])/,&#34;1-10,20&#34;);</span><br /><span class="line"></span><br /><span class="line">             produces the array value</span><br /><span class="line"></span><br /><span class="line">                  (1,&#39;-&#39;,10,&#39;,&#39;,20)</span><br /><span class="line"></span><br /><span class="line">             The  pattern  /PATTERN/  may  be  replaced  with  an</span><br /><span class="line">             expression to specify patterns that vary at runtime.</span><br /><span class="line">             (To  do   runtime   compilation   only   once,   use</span><br /><span class="line">             /$variable/o.)   As  a  special  case,  specifying a</span><br /><span class="line">             space (&#39; &#39;) will split on white space just as  split</span><br /><span class="line">             with no arguments does, but leading white space does</span><br /><span class="line">             NOT produce a null first  field.   Thus,  split(&#39; &#39;)</span><br /><span class="line">             can  be  used  to  emulate  awk&#39;s  default behavior,</span><br /><span class="line">             whereas split(/ /) will give you as many  null  ini-</span><br /><span class="line">             tial fields as there are leading spaces.</span><br /><span class="line"></span><br /><span class="line">             Example:</span><br /><span class="line"></span><br /><span class="line">                  open(passwd, &#39;/etc/passwd&#39;);</span><br /><span class="line">                  while (&lt;passwd&gt;) {</span><br /><span class="line">                       ($login, $passwd, $uid, $gid, $gcos, $home, $shell)</span><br /><span class="line">                            = split(/:/);</span><br /><span class="line">                       ...</span><br /><span class="line">                  }</span><br /><span class="line"></span><br /><span class="line">             (Note that $shell above will still have a newline on</span><br /><span class="line">             it.  See chop().)  See also join.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-24817.html">
+    <link rel="next" href="perl-27324.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-24817.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-27324.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     exec(LIST)</span><br /><span class="line"></span><br /><span class="line">     exec LIST</span><br /><span class="line"></span><br /><span class="line">             If there is more than one argument in  LIST,  or  if</span><br /><span class="line">             LIST  is  an  array  with more than one value, calls</span><br /><span class="line">             execvp() with the arguments in LIST.   If  there  is</span><br /><span class="line">             only  one  scalar  argument, the argument is checked</span><br /><span class="line">             for shell metacharacters.  If  there  are  any,  the</span><br /><span class="line">             entire  argument is passed to &#34;/bin/sh -c&#34; for pars-</span><br /><span class="line">             ing.  If there are none, the argument is split  into</span><br /><span class="line">             words and passed directly to execvp(), which is more</span><br /><span class="line">             efficient.  Note: exec (and  system)  do  not  flush</span><br /><span class="line">             your  output  buffer,  so  you may need to set $| to</span><br /><span class="line">             avoid lost output.  Examples:</span><br /><span class="line"></span><br /><span class="line">                  exec &#39;/bin/echo&#39;, &#39;Your arguments are: &#39;, @ARGV;</span><br /><span class="line">                  exec &#34;sort $outfile | uniq&#34;;</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">             If you don&#39;t really want to execute the first  argu-</span><br /><span class="line">             ment, but want to lie to the program you are execut-</span><br /><span class="line">             ing about its own name, you can specify the  program</span><br /><span class="line">             you  actually  want  to  run  by assigning that to a</span><br /><span class="line">             variable and putting the name  of  the  variable  in</span><br /><span class="line">             front  of  the  LIST  without a comma.  (This always</span><br /><span class="line">             forces interpretation of the LIST as a  multi-valued</span><br /><span class="line">             list,  even  if there is only a single scalar in the</span><br /><span class="line">             list.)  Example:</span><br /><span class="line"></span><br /><span class="line">                  $shell = &#39;/bin/csh&#39;;</span><br /><span class="line">                  exec $shell &#39;-sh&#39;;       # pretend it&#39;s a login shell</span><br /><span class="line"></span><br /><span class="line">             The MS-DOS  implementation  of  exec  has  problems.</span><br /><span class="line">             Unlike system and pipes it is not MKS toolkit compa-</span><br /><span class="line">             tible.  As of this writing (September 1991) it  will</span><br /><span class="line">             not  even allow for temporary file cleanup.  The use</span><br /><span class="line">             of exec on MS-DOS is strongly discouraged.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

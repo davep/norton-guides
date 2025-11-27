@@ -1,0 +1,93 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Languages</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-137872.html">
+    <link rel="next" href="perl-143784.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-137872.html">Previous</a></li>
+
+
+          
+
+<li><a href="perl-90961.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-143784.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>PERL</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="perl-90961.html">Languages</a></li>
+              <li><a href="perl-159711.html">Command line options</a></li>
+              <li><a href="perl-170094.html">Regular Expressions</a></li>
+              <li><a href="perl-171332.html">Special Variables</a></li>
+              <li><a href="perl-188582.html">Operators</a></li>
+              <li><a href="perl-197905.html">Debugging</a></li>
+              
+            </ul>
+            <li>Tables</li>
+            <ul>
+              <li><a href="perl-204383.html">ASCII Chart</a></li>
+              <li><a href="perl-207014.html">Literals</a></li>
+              <li><a href="perl-207867.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">     Style</span><br /><span class="line"></span><br /><span class="line">     Each programmer will, of course, have his or her own prefer-</span><br /><span class="line">     ences  in  regards to formatting, but there are some general</span><br /><span class="line">     guidelines that will make your programs easier to read.</span><br /><span class="line"></span><br /><span class="line">     1.  Just because you  CAN  do  something  a  particular  way</span><br /><span class="line">         doesn&#39;t  mean  that  you SHOULD do it that way.  Perl is</span><br /><span class="line">         designed to give you several ways  to  do  anything,  so</span><br /><span class="line">         consider picking the most readable one.  For instance</span><br /><span class="line"></span><br /><span class="line">              open(FOO,$foo) || die &#34;Can&#39;t open $foo: $!&#34;;</span><br /><span class="line"></span><br /><span class="line">         is better than</span><br /><span class="line"></span><br /><span class="line">              die &#34;Can&#39;t open $foo: $!&#34; unless open(FOO,$foo);</span><br /><span class="line"></span><br /><span class="line">         because the second way  hides  the  main  point  of  the</span><br /><span class="line">         statement in a modifier.  On the other hand</span><br /><span class="line"></span><br /><span class="line">              print &#34;Starting analysis\n&#34; if $verbose;</span><br /><span class="line"></span><br /><span class="line">         is better than</span><br /><span class="line"></span><br /><span class="line">              $verbose &amp;&amp; print &#34;Starting analysis\n&#34;;</span><br /><span class="line"></span><br /><span class="line">         since the main point isn&#39;t whether the user typed -v  or</span><br /><span class="line">         not.</span><br /><span class="line"></span><br /><span class="line">         Similarly, just because  an  operator  lets  you  assume</span><br /><span class="line">         default arguments doesn&#39;t mean that you have to make use</span><br /><span class="line">         of the defaults.  The defaults are there for  lazy  sys-</span><br /><span class="line">         tems programmers writing one-shot programs.  If you want</span><br /><span class="line">         your program to  be  readable,  consider  supplying  the</span><br /><span class="line">         argument.</span><br /><span class="line"></span><br /><span class="line">         Along  the  same  lines,  just  because  you  can   omit</span><br /><span class="line">         parentheses  in  many places doesn&#39;t mean that you ought</span><br /><span class="line">         to:</span><br /><span class="line"></span><br /><span class="line">              return print reverse sort num values array;</span><br /><span class="line">              return print(reverse(sort num (values(%array))));</span><br /><span class="line"></span><br /><span class="line">         When in doubt, parenthesize.  At the very least it  will</span><br /><span class="line">         let some poor schmuck bounce on the % key in vi.</span><br /><span class="line"></span><br /><span class="line">         Even if you aren&#39;t in doubt, consider the mental welfare</span><br /><span class="line">         of  the  person  who has to maintain the code after you,</span><br /><span class="line">         and who will probably put parens in the wrong place.</span><br /><span class="line"></span><br /><span class="line">     2.  Don&#39;t go through silly contortions to exit a loop at the</span><br /><span class="line">         top  or the bottom, when perl provides the &#34;last&#34; opera-</span><br /><span class="line">         tor so you can exit in the middle.  Just  outdent  it  a</span><br /><span class="line">         little to make it more visible:</span><br /><span class="line"></span><br /><span class="line">             line:</span><br /><span class="line">              for (;;) {</span><br /><span class="line">                  statements;</span><br /><span class="line">              last line if $foo;</span><br /><span class="line">                  next line if /^#/;</span><br /><span class="line">                  statements;</span><br /><span class="line">              }</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">     3.  Don&#39;t be afraid to use  loop  labels--they&#39;re  there  to</span><br /><span class="line">         enhance readability as well as to allow multi-level loop</span><br /><span class="line">         breaks.  See last example.</span><br /><span class="line"></span><br /><span class="line">     4.  For portability, when using features  that  may  not  be</span><br /><span class="line">         implemented  on  every machine, test the construct in an</span><br /><span class="line">         eval to see if it fails.  If you know  what  version  or</span><br /><span class="line">         patchlevel a particular feature was implemented, you can</span><br /><span class="line">         test $] to see if it will be there.</span><br /><span class="line"></span><br /><span class="line">     5.  Choose mnemonic identifiers.</span><br /><span class="line"></span><br /><span class="line">     6.  Be consistent.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
