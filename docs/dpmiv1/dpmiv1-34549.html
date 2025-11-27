@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-33610.html">
+    <link rel="next" href="dpmiv1-36204.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-33610.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-36204.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Set Processor Exception Handler Vector</span><br /><span class="line"></span><br /><span class="line">Sets the address of a handler for a CPU exception or fault,</span><br /><span class="line">allowing a protected mode application to intercept processor</span><br /><span class="line">exceptions (such as segment not present faults) that are not</span><br /><span class="line">handled by the DPMI host and would otherwise generate a</span><br /><span class="line">fatal error.  This function should be avoided by DPMI 1.0</span><br /><span class="line">clients (see Notes).</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0203H</span><br /><span class="line">   BL     = exception/fault number (00H-1FH)</span><br /><span class="line">   CX:(E)DX= selector:offset of exception handler</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if function successful</span><br /><span class="line">   Carry flag= clear</span><br /><span class="line"></span><br /><span class="line">   if function unsuccessful</span><br /><span class="line">   Carry flag= set</span><br /><span class="line">   AX     = error code</span><br /><span class="line">           8021H   invalid value (BL not in range 0-1FH)</span><br /><span class="line">           8022H   invalid selector</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  The value passed in CX should  be a valid protected mode</span><br /><span class="line">   code (executable) selector, not a real mode segment</span><br /><span class="line">   address.</span><br /><span class="line">o  32-bit clients must supply a 32-bit offset in the EDX</span><br /><span class="line">   register.  If the client&#39;s handler chains to the next</span><br /><span class="line">   exception handler, it must do so using a 32-bit interrupt</span><br /><span class="line">   stack frame.</span><br /><span class="line">o  Every exception is first examined by the DPMI host.  If</span><br /><span class="line">   the host does not handle the exception, it reflects the</span><br /><span class="line">   exception to the first handler in the protected mode</span><br /><span class="line">   exception handler chain.  See page 30 for a complete</span><br /><span class="line">   discussion of the environment and responsibilities of</span><br /><span class="line">   protected mode exception handlers installed with this</span><br /><span class="line">   function.</span><br /><span class="line">o  Clients which run under DPMI 1.0 should use Int 31H</span><br /><span class="line">   Functions 0212H and 0213H to set the addresses of</span><br /><span class="line">   exception handlers.  This function is supported by DPMI</span><br /><span class="line">   1.0 hosts solely for compatibility with DPMI 0.9.</span><br /><span class="line">o  Refer to the rules for descriptor usage in Appendix D.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

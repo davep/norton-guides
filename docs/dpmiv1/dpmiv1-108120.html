@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-107695.html">
+    <link rel="next" href="dpmiv1-110316.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-107695.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-110316.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Install Resident Service Provider Callback</span><br /><span class="line"></span><br /><span class="line">Protected mode resident service providers (protected mode</span><br /><span class="line">TSRs) can provide services to 16-bit DPMI programs, 32-bit</span><br /><span class="line">DPMI programs, or both.  A resident service provider uses</span><br /><span class="line">this function to request notification from the host whenever</span><br /><span class="line">another DPMI program in the same virtual machine is loaded</span><br /><span class="line">or terminated.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0C00H</span><br /><span class="line">   ES:(E)DI= selector:offset of 40-byte buffer with the</span><br /><span class="line">           following structure:</span><br /><span class="line"></span><br /><span class="line">           OffsetLengthContents</span><br /><span class="line">           00H    8Descriptor for 16-bit data segment</span><br /><span class="line">           08H    8Descriptor for 16-bit code segment</span><br /><span class="line">           10H    2Offset of 16-bit callback procedure</span><br /><span class="line">           12H    2Reserved</span><br /><span class="line">           14H    8Descriptor for 32-bit data segment</span><br /><span class="line">           1CH    8Descriptor for 32-bit code segment</span><br /><span class="line">           24H    4Offset of 32-bit callback procedure</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if function successful</span><br /><span class="line">   Carry flag= clear</span><br /><span class="line"></span><br /><span class="line">   if function unsuccessful</span><br /><span class="line">   Carry flag= set</span><br /><span class="line">   AX     = error code</span><br /><span class="line">           8021H   invalid value (access rights/type bytes</span><br /><span class="line">                   invalid, or offset outside segment</span><br /><span class="line">                   limits)</span><br /><span class="line">           8025H   invalid linear address (descriptor</span><br /><span class="line">                   references a linear address range outside</span><br /><span class="line">                   that allowed for DPMI clients)</span><br /><span class="line">           8015H   callback unavailable (host unable to</span><br /><span class="line">                   allocate resources for resident handler</span><br /><span class="line">                   initialization callback)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  A DPMI client that uses this function declares its intent</span><br /><span class="line">   to provide resident protected mode services.  The client</span><br /><span class="line">   must subsequently terminate and stay resident using Int</span><br /><span class="line">   31H Fn 0C01H.  DPMI clients which intend to stay</span><br /><span class="line">   resident only to provide services to real mode programs</span><br /><span class="line">   should not use this function.</span><br /><span class="line">o  The data structure provides room for a data descriptor, a</span><br /><span class="line">   code descriptor, and an offset for both 16-bit and 32-bit</span><br /><span class="line">   protected modes.  The client can conveniently initialize</span><br /><span class="line">   the descriptor fields to valid values by fetching copies</span><br /><span class="line">   of  its current code and data descriptors with Int 31H</span><br /><span class="line">   Function 000BH.</span><br /><span class="line">o  If only one mode is supported by the resident service</span><br /><span class="line">   provider, then the code descriptor for the unsupported</span><br /><span class="line">   mode should be initialized to zero.</span><br /><span class="line">o  This function is called on the locked protected mode</span><br /><span class="line">   stack.</span><br /><span class="line"></span><br /><span class="line">o  For further details on programming of resident service</span><br /><span class="line">   providers, see page 41.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

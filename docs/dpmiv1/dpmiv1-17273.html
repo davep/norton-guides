@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-15707.html">
+    <link rel="next" href="dpmiv1-19537.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-15707.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-19537.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Set Descriptor Access Rights</span><br /><span class="line"></span><br /><span class="line">Modifies the access rights and type fields in the LDT</span><br /><span class="line">descriptor for the specified segment.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0009H</span><br /><span class="line">   BX     = selector</span><br /><span class="line">   CL     = access rights/type byte</span><br /><span class="line">   CH     = 80386 extended access rights/type byte</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if function successful</span><br /><span class="line">   Carry flag= clear</span><br /><span class="line"></span><br /><span class="line">   if function unsuccessful</span><br /><span class="line">   Carry flag= set</span><br /><span class="line">   AX     = error code</span><br /><span class="line">           8021H   invalid value (access rights/type bytes</span><br /><span class="line">                   invalid)</span><br /><span class="line">           8022H   invalid selector</span><br /><span class="line">           8025H   invalid linear address (changing the</span><br /><span class="line">                   access rights/type bytes would cause the</span><br /><span class="line">                   descriptor to reference a linear address</span><br /><span class="line">                   range outside that allowed for DPMI</span><br /><span class="line">                   clients.)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  The access rights/type byte passed to the function in CL</span><br /><span class="line">   has the following format:</span><br /><span class="line"></span><br /><span class="line">   +---+---+---+---+---+---+---+---+</span><br /><span class="line">   | P |  DPL  | 1 |C/D|E/C|W/R| A |</span><br /><span class="line">   +-+-+---+---+-+-+-+-+-+-+-+-+-+-+</span><br /><span class="line">   |     |     |   |   |   |   |</span><br /><span class="line">   |     |     |   |   |   |   +- 0=not accessed, 1=accessed</span><br /><span class="line">   |     |     |   |   |   +----- data: 0=read,</span><br /><span class="line">   1=&gt;read/write</span><br /><span class="line">   |     |     |   |   |          code: must be 1 (readable)</span><br /><span class="line">   |     |     |   |   +--------- data: 0=expand-up,</span><br /><span class="line">   1=expand-down</span><br /><span class="line">   |     |     |   |              code: must be 0</span><br /><span class="line">   (non-conforming)</span><br /><span class="line">   |     |     |   +------------- 0=data, 1=code</span><br /><span class="line">   |     |     +----------------- must be 1</span><br /><span class="line">   |     +----------------------- must equal caller&#39;s CPL</span><br /><span class="line">   +----------------------------- 0=absent, 1=present</span><br /><span class="line"></span><br /><span class="line">   If the Present bit is not set in the descriptor, the DPMI</span><br /><span class="line">   host allows any values except in the DPL and &#34;must be 1&#34;</span><br /><span class="line">   bit fields.</span><br /><span class="line"></span><br /><span class="line">o  On 80386 (and later) machines, the DPMI host interprets</span><br /><span class="line">   the value passed to the function in CH as follows:</span><br /><span class="line"></span><br /><span class="line">   +---+---+---+---+---+---+---+---+</span><br /><span class="line">   | G |B/D| 0 |Avl|    Reserved   |</span><br /><span class="line">   +-+-+-+-+-+-+-+-+---+---+---+---+</span><br /><span class="line">   |   |   |   |         |</span><br /><span class="line">   |   |   |   |         +-- ignored</span><br /><span class="line">   |   |   |   +------------ can be 0 or 1</span><br /><span class="line">   |   |   +---------------- must be 0</span><br /><span class="line">   |   +-------------------- 0=default 16-bit, 1=default</span><br /><span class="line">   32-bit</span><br /><span class="line">   +------------------------ 0=byte granular, 1=page</span><br /><span class="line">   granular</span><br /><span class="line"></span><br /><span class="line">o  A DPMI 1.0 host will reload any segment registers which</span><br /><span class="line">   contain the selector specified in register BX. It is</span><br /><span class="line">   suggested that DPMI 0.9 hosts also implement this.</span><br /><span class="line">o  Client programs should use the LAR instruction to examine</span><br /><span class="line">   the access rights of a descriptor.</span><br /><span class="line">o  Refer to the rules for descriptor usage in Appendix D.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-76327.html">
+    <link rel="next" href="dpmiv1-83186.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-76327.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-83186.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Map Device in Memory Block</span><br /><span class="line"></span><br /><span class="line">Maps the physical addresses assigned to a device onto the</span><br /><span class="line">linear addresses of a memory block previously allocated with</span><br /><span class="line">Int 31H Fn 0504H.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0508H</span><br /><span class="line">   ESI    = memory block handle</span><br /><span class="line">   EBX    = offset within memory block of page(s) to be</span><br /><span class="line">           mapped (must be page-aligned)</span><br /><span class="line">   ECX    = number of pages to map</span><br /><span class="line">   EDX    = physical address of device (must be</span><br /><span class="line">           page-aligned)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if function successful</span><br /><span class="line">   Carry flag= clear</span><br /><span class="line"></span><br /><span class="line">   if function unsuccessful</span><br /><span class="line">   Carry flag= set</span><br /><span class="line">   AX     = error code</span><br /><span class="line">           8001H   unsupported function (Device Mapping</span><br /><span class="line">                   Capability not supported)</span><br /><span class="line">           8003H   system integrity (invalid device address)</span><br /><span class="line">           8023H   invalid handle (in ESI)</span><br /><span class="line">           8025H   invalid linear address (specified range</span><br /><span class="line">                   is not within specified block or EBX/EDX</span><br /><span class="line">                   is not page-aligned)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  16-bit DPMI hosts will not support this function.  A</span><br /><span class="line">   16-bit client of a 32-bit DPMI 1.0 host can use this</span><br /><span class="line">   function.</span><br /><span class="line">o  Support of this call by 32-bit DPMI hosts is optional.</span><br /><span class="line">   Application programs or DOS Extenders which require this</span><br /><span class="line">   call in order to run are not DPMI Compliant.</span><br /><span class="line">o  Any committed or mapped pages resided in the linear</span><br /><span class="line">   address range that is being mapped into will be</span><br /><span class="line">   uncommitted or unmapped automatically by the host.</span><br /><span class="line">o  All pages created by this call have the mapped bit (bit</span><br /><span class="line">   2) set in the attributes returned by the Get Page</span><br /><span class="line">   Attributes function (Int 31H Fn 0506H).</span><br /><span class="line">o  This functio</span><br /><span class="line">n differs from the Create Physical Address Mapping function (Int 31H</span><br /><span class="line">   Function 0800H) in that this function supports mapping of</span><br /><span class="line">   physical devices within an existing memory block, rather</span><br /><span class="line">   than at an arbitrary linear address.  Use of an existing</span><br /><span class="line">   memory block gives 32-bit programs the ability to access</span><br /><span class="line">   physical devices with NEAR pointers, which is often</span><br /><span class="line">   highly desirable for performance reasons.</span><br /><span class="line">o  Unlike Int 31H Fn 0800H, this function allows</span><br /><span class="line">   mapping of  addresses below 1 MB that do not lie within</span><br /><span class="line">   RAM available for use by programs; e.g. this function can</span><br /><span class="line">    be used to map the refresh buffers of IBM-compatible</span><br /><span class="line">   display adapters.</span><br /><span class="line">o  If the DPMI host is not virtualizing the device,  it must</span><br /><span class="line">   disable any memory caching on the mapped pages;  in</span><br /><span class="line">   particular, on the 486 or later, the PCD (page cache</span><br /><span class="line">   disable) bit must be set in the page table entries.</span><br /><span class="line">o  DPMI hosts that do not virtualize physical devices can</span><br /><span class="line">   support this function by creating page table entries that</span><br /><span class="line">   map the physical device.  The page table entries must be</span><br /><span class="line">   marked as mapped so that the host knows not to attempt</span><br /><span class="line">   freeing of physical memory for the pages when the memory</span><br /><span class="line">   block is freed.</span><br /><span class="line">o  DPMI hosts are allowed to support this function for some</span><br /><span class="line">   physical devices and not for others, because mapping of</span><br /><span class="line">   virtualized devices requires page aliasing in the host -</span><br /><span class="line">   a complex task.  DPMI hosts with partial support for this</span><br /><span class="line">   function may fail the function call on virtualized</span><br /><span class="line">   devices (such as displays), and allow the call on</span><br /><span class="line">   non-virtualized devices (such as the Weitek</span><br /><span class="line">   coprocessors).  Allowing the client to map  a physical</span><br /><span class="line">   device so that it can be accessed with NEAR references,</span><br /><span class="line">   for example, may help the client achieve considerably</span><br /><span class="line">   better performance.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-21135.html">
+    <link rel="next" href="dpmiv1-23840.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-21135.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-23840.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Allocate Specific LDT Descriptor</span><br /><span class="line"></span><br /><span class="line">Allocates a specific LDT descriptor.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 000DH</span><br /><span class="line">   BX     = selector</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if function successful</span><br /><span class="line">   Carry flag= clear</span><br /><span class="line"></span><br /><span class="line">   and descriptor has been allocated</span><br /><span class="line">   if function unsuccessful</span><br /><span class="line">   Carry flag= set</span><br /><span class="line">   AX     = error code</span><br /><span class="line">           8011H   descriptor unavailable (descriptor is in</span><br /><span class="line">                   use)</span><br /><span class="line">           8022H   invalid selector (references GDT or</span><br /><span class="line">                   beyond the LDT limit)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  The first 10H (16) descriptors (selector values 04H-7CH)</span><br /><span class="line">   are reserved for this function and must not be used by</span><br /><span class="line">   the DPMI host.</span><br /><span class="line">o  Under DPMI 0.9 hosts, if another application has already</span><br /><span class="line">   been loaded, some of descriptors reserved for allocation</span><br /><span class="line">   by this function may be already in use and unavailable.</span><br /><span class="line">   Under DPMI 1.0 hosts, each client has its own LDT and</span><br /><span class="line">   thus will have the full 16 descriptors available for use</span><br /><span class="line">   with this function.</span><br /><span class="line">o  Resident service providers (protected-mode TSRs) should</span><br /><span class="line">   not use this function.</span><br /><span class="line">o  Refer to the rules for descriptor usage in Appendix D.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-27275.html">
+    <link rel="next" href="dpmiv1-30385.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-27275.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-30385.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Free DOS Memory Block</span><br /><span class="line"></span><br /><span class="line">Frees a memory block that was previously allocated with the</span><br /><span class="line">Allocate DOS Memory Block function (Int 31H Fn 0100H).</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0101H</span><br /><span class="line">   DX     = selector of block to be freed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if function successful</span><br /><span class="line">   Carry flag= clear</span><br /><span class="line"></span><br /><span class="line">   if function unsuccessful</span><br /><span class="line">   Carry flag= set</span><br /><span class="line">   AX     = error code</span><br /><span class="line">           0007H   memory control blocks damaged (also</span><br /><span class="line">                   returned by DPMI 0.9 hosts).</span><br /><span class="line">           0009H   incorrect memory segment specified (also</span><br /><span class="line">                   returned by DPMI 0.9 hosts).</span><br /><span class="line">           8022H   invalid selector</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  All descriptors allocated for the memory block are</span><br /><span class="line">   automatically freed by this function, and are no longer</span><br /><span class="line">   valid after this function returns.</span><br /><span class="line">o  Under DPMI 1.0 hosts, any segment registers which contain</span><br /><span class="line">   a selector being freed are zeroed by this function.</span><br /><span class="line">o  Refer to the rules for descriptor usage in Appendix D.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

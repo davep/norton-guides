@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-54837.html">
+    <link rel="next" href="dpmiv1-58533.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-54837.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-58533.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Get Version</span><br /><span class="line"></span><br /><span class="line">Returns the version number of the DPMI Specification</span><br /><span class="line">implemented by the DPMI host.  Clients can use this</span><br /><span class="line">information to determine whicH Fn calls are supported</span><br /><span class="line">in the current environment.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0400H</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   Carry flag= clear (this function always succeeds)</span><br /><span class="line">   AH     = DPMI major version as a  binary number</span><br /><span class="line">   AL     = DPMI minor version as a  binary number</span><br /><span class="line">   BX     = flags</span><br /><span class="line">           Bits   Significance</span><br /><span class="line">           0      0 = host is 16-bit DPMI implementation</span><br /><span class="line">                  1 = host is 32-bit (80386) DPMI</span><br /><span class="line">           implementation</span><br /><span class="line">           1      0 = CPU returned to Virtual 86 mode for</span><br /><span class="line">           reflected interrupts</span><br /><span class="line">                  1 = CPU returned to real mode for</span><br /><span class="line">           reflected interrupts</span><br /><span class="line">           2      0 = virtual memory not supported</span><br /><span class="line">                  1 = virtual memory supported</span><br /><span class="line">           3      reserved, for historical reasons</span><br /><span class="line">           4-15   reserved for later use</span><br /><span class="line">   CL     = processor type</span><br /><span class="line">           02H = 80286</span><br /><span class="line">           03H = 80386</span><br /><span class="line">           04H = 80486</span><br /><span class="line">           05H-FFH       reserved for future Intel</span><br /><span class="line">           processors</span><br /><span class="line">   DH     = current value of virtual master PIC base</span><br /><span class="line">           interrupt</span><br /><span class="line">   DL     = current value of virtual slave PIC base</span><br /><span class="line">           interrupt</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  Under DPMI hosts, the major version number is returned in</span><br /><span class="line">   DH and the minor version number is returned in DL. There</span><br /><span class="line">   are two decimal digits for the minor version number with</span><br /><span class="line">   the least-significant digit representing the revision</span><br /><span class="line">   number of the minor version number. Under DPMI version</span><br /><span class="line">   0.9 hosts, DH is returned as 0, and DL is returned as</span><br /><span class="line">   decimal 90 (5AH). In hypothetical DPMI version 2.3, DH</span><br /><span class="line">   would be returned as 2 and DL would be returned as 30</span><br /><span class="line">   (1EH).</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

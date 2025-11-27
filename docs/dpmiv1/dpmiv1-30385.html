@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-29508.html">
+    <link rel="next" href="dpmiv1-32187.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-29508.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-32187.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Resize DOS Memory Block</span><br /><span class="line"></span><br /><span class="line">Changes the size of a memory block that was previously al</span><br /><span class="line">located with the Allocate DOS Memory Block function (Int 31H</span><br /><span class="line">Function 0100H).</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0102H</span><br /><span class="line">   BX     = new block size in (16-byte) paragraphs</span><br /><span class="line">   DX     = selector of block to modify</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if function successful</span><br /><span class="line">   Carry flag= clear</span><br /><span class="line"></span><br /><span class="line">   if function unsuccessful</span><br /><span class="line">   Carry flag= set</span><br /><span class="line">   AX     = error code</span><br /><span class="line">           0007H   memory control blocks damaged (also</span><br /><span class="line">                   returned by DPMI 0.9 hosts).</span><br /><span class="line">           0008H   insufficient memory (also returned by</span><br /><span class="line">                   DPMI 0.9 hosts).</span><br /><span class="line">           0009H   incorrect memory segment specified (also</span><br /><span class="line">                   returned by DPMI 0.9 hosts).</span><br /><span class="line">           8011H   descriptor unavailable</span><br /><span class="line">           8022H   invalid selector</span><br /><span class="line">   BX     = maximum possible block size (paragraphs)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  Requests to increase the size of an existing DOS memory</span><br /><span class="line">   block may fail due to subsequent DOS memory block</span><br /><span class="line">   allocations causing fragmentation of DOS memory, or</span><br /><span class="line">   insufficient remaining DOS memory.  In addition, the</span><br /><span class="line">   function will fail if the block is growing past a 64 KB</span><br /><span class="line">   boundary and the next descriptor in the LDT is not</span><br /><span class="line">   available.</span><br /><span class="line">o  A request to decrease the size of a DOS memory block may</span><br /><span class="line">   cause some descriptors that were previously allocated to</span><br /><span class="line">   the block to be freed and the limit of the new last</span><br /><span class="line">   descriptor for the block to be changed.</span><br /><span class="line">o  Under a DPMI 1.0 host, any segment registers which</span><br /><span class="line">   contain a selector being modified are reloaded by this</span><br /><span class="line">   function and any segment registers which contain a</span><br /><span class="line">   selector being freed are zeroed by this function.</span><br /><span class="line">o  Client programs should never modify or free any</span><br /><span class="line">   descriptors allocated by this function.  The Free DOS</span><br /><span class="line">   Memory Block function (Int 31H Fn 0101H) will</span><br /><span class="line">   deallocate the descriptors automatically.</span><br /><span class="line">o  Refer to the rules for descriptor usage in Appendix D.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

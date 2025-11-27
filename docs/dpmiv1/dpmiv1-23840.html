@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-22804.html">
+    <link rel="next" href="dpmiv1-25020.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-22804.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-25020.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Get Multiple Descriptors</span><br /><span class="line"></span><br /><span class="line">Copies one or more local descriptor table (LDT) entries into</span><br /><span class="line">a client buffer.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 000EH</span><br /><span class="line">   CX     = number of descriptors to copy</span><br /><span class="line">   ES:(E)DI= selector:offset of a buffer in the following</span><br /><span class="line">           format:</span><br /><span class="line"></span><br /><span class="line">           Offset   Length   Contents</span><br /><span class="line">           00H      2        Selector #1 (set by client)</span><br /><span class="line">           02H      8        Descriptor #1 (returned by</span><br /><span class="line">           host)</span><br /><span class="line">           0AH      2        Selector #2 (set by client)</span><br /><span class="line">           0CH      8        Descriptor #2 (returned by</span><br /><span class="line">           host)</span><br /><span class="line">           .        .        .</span><br /><span class="line">           .        .        .</span><br /><span class="line">           .        .        .</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if function successful</span><br /><span class="line">   Carry flag= clear</span><br /><span class="line"></span><br /><span class="line">   and buffer contains copies of the descriptors for the</span><br /><span class="line">   specified selectors</span><br /><span class="line"></span><br /><span class="line">   if function unsuccessful</span><br /><span class="line">   Carry flag= set</span><br /><span class="line">   AX     = error code</span><br /><span class="line">           8022H   invalid selector</span><br /><span class="line">   CX     = number of descriptors successfully copied</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  If an error occurs because of an invalid selector or</span><br /><span class="line">   descriptor, the function returns the number of</span><br /><span class="line">   descriptors which were successfully copied in CX.  All of</span><br /><span class="line">   the descriptors which were copied prior to the one that</span><br /><span class="line">   failed are valid.</span><br /><span class="line">o  32-bit programs must use ES:EDI to point to the buffer.</span><br /><span class="line">   16-bit programs should use ES:DI.</span><br /><span class="line">o  Refer to the rules for descriptor usage in Appendix D.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

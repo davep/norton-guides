@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-51980.html">
+    <link rel="next" href="dpmiv1-54837.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-51980.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-54837.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Get State Save/Restore Addresses</span><br /><span class="line"></span><br /><span class="line">Returns the addresses of two procedures used to save and</span><br /><span class="line">restore the state of the current task&#39;s registers in the</span><br /><span class="line">mode which is not currently executing.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0305H</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   Carry flag = clear (this function always succeeds)</span><br /><span class="line">   AX     = size of buffer in bytes required to save state</span><br /><span class="line">   BX:CX  = real mode address of routine used to</span><br /><span class="line">           save/restore state</span><br /><span class="line">   SI:(E)DI= protected mode address of routine used to</span><br /><span class="line">           save/restore state</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  The real mode address returned by this function in BX:CX</span><br /><span class="line">   is called only in real mode to save/restore the state of</span><br /><span class="line">   the protected mode registers.  The protected mode address</span><br /><span class="line">   returned by this function in SI:(E)DI  is called only in</span><br /><span class="line">   protected mode to save/restore the state of the real mode</span><br /><span class="line">   registers; 16-bit programs should call the address in</span><br /><span class="line">   SI:DI, 32-bit programs should call the address in SI:EDI.</span><br /><span class="line">   Registers for the current mode can be saved by simply</span><br /><span class="line">   pushing them on the stack.</span><br /><span class="line">o  Both of the state-save procedures are entered by a FAR</span><br /><span class="line">   CALL with the following parameters:</span><br /><span class="line"></span><br /><span class="line">AL = 0 to save state</span><br /><span class="line">   = 1 to restore state</span><br /><span class="line">ES:(E)DI= (selector or segment):offset of state-save buffer</span><br /><span class="line"></span><br /><span class="line">The state-save buffer must be at least as large as the value returned</span><br /><span class="line">   in AX by Int 31H Fn 0305H.  The state save/restore</span><br /><span class="line">   procedures do not modify any registers.  For a further</span><br /><span class="line">   discussion of use of the state save/restore procedures,</span><br /><span class="line">   see page 25.</span><br /><span class="line">o  Some DPMI hosts will not require the state to be saved,</span><br /><span class="line">   indicating this by returning a buffer size of zero in AX.</span><br /><span class="line">   In such cases, the addresses returned by this function</span><br /><span class="line">   can still be called, although they will simply return</span><br /><span class="line">   without performing any useful function.</span><br /><span class="line">o  Clients do not need to call the state save/restore</span><br /><span class="line">   procedures before using Int 31H Functions 0300H, 0301H,</span><br /><span class="line">   or 0302H.  The state save/restore procedures are provided</span><br /><span class="line">   specifically for clients that use the raw mode switch</span><br /><span class="line">   services.</span><br /><span class="line">o  A client can use the function to save its state in the</span><br /><span class="line">   destination mode before switching modes using the raw</span><br /><span class="line">   mode switch or issuing real-mode calls from a protected</span><br /><span class="line">   mode hardware interrupt handler. Refer to page 24 for the</span><br /><span class="line">   detailed information on stacks and mode switching.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

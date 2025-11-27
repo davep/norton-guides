@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-111803.html">
+    <link rel="next" href="dpmiv1-117243.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-111803.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-117243.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Free Shared Memory</span><br /><span class="line"></span><br /><span class="line">Deallocates a shared memory block.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0D01H</span><br /><span class="line">   SI:DI  = handle of shared memory block to free</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if function successful</span><br /><span class="line">   Carry flag= clear</span><br /><span class="line"></span><br /><span class="line">   if function unsuccessful</span><br /><span class="line">   Carry flag= set</span><br /><span class="line">   AX     = error code</span><br /><span class="line">           8023H   invalid handle</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  The shared memory handle becomes invalid after the shared</span><br /><span class="line">   memory block is deallocated, and should not be used in</span><br /><span class="line">   any other function call (such as serialization).</span><br /><span class="line">o  The host maintains virtual machine use counts and a</span><br /><span class="line">   global use count for each shared memory block.  A</span><br /><span class="line">   virtual machine use count is the number of allocation</span><br /><span class="line">   calls (Int 31H Fn 0D00H) that have been issued by a</span><br /><span class="line">   particular virtual machine for the shared block, while</span><br /><span class="line">   the global use count corresponds to the number of virtual</span><br /><span class="line">   machines which have access to the block.  When a virtual</span><br /><span class="line">   machine use count reaches zero, the clients in that</span><br /><span class="line">   virtual machine no longer have addressability to the</span><br /><span class="line">   shared memory block; when the global use count reaches</span><br /><span class="line">   zero, the shared memory block is destroyed by the host.</span><br /><span class="line">o  It is the client&#39;s responsibility to free any descriptors</span><br /><span class="line">   that it has allocated to map the shared memory block.</span><br /><span class="line">o  Applications should not depend on this function to</span><br /><span class="line">   release a previous successful serialization for the same</span><br /><span class="line">   shared memory block.  Serialization is only released by</span><br /><span class="line">   this function when the virtual machine use count goes to</span><br /><span class="line">   0 (i.e., the client no longer has access to the shared</span><br /><span class="line">   memory block).</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

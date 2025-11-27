@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-47440.html">
+    <link rel="next" href="dpmiv1-51980.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-47440.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-51980.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Allocate Real Mode Callback Address</span><br /><span class="line"></span><br /><span class="line">Returns a unique real mode segment:offset, known as a &#34;real</span><br /><span class="line">mode callback,&#34;  that will transfer control from real mode</span><br /><span class="line">to a protected mode procedure.  Callback addresses obtained</span><br /><span class="line">with this function can be passed by a protected mode program</span><br /><span class="line">to a real mode application, interrupt handler, device</span><br /><span class="line">driver, or TSR, so that the real mode program can call</span><br /><span class="line">procedures within the protected mode program or notify the</span><br /><span class="line">protected mode program of an event.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0303H</span><br /><span class="line">   DS:(E)SI= selector:offset of protected mode procedure to</span><br /><span class="line">           call</span><br /><span class="line">   ES:(E)DI= selector:offset of 32H-byte buffer for real</span><br /><span class="line">           mode register data structure to be used when</span><br /><span class="line">           calling callback routine.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if function successful</span><br /><span class="line">   Carry flag= clear</span><br /><span class="line">   CX:DX  = segment:offset of real mode callback</span><br /><span class="line"></span><br /><span class="line">   if function unsuccessful</span><br /><span class="line">   Carry flag= set</span><br /><span class="line">   AX     = error code</span><br /><span class="line">           8015H   callback unavailable</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  DPMI hosts must provide a minimum of 16 callback</span><br /><span class="line">   addresses per client.</span><br /><span class="line">o  A descriptor may be allocated for each callback to hold</span><br /><span class="line">   the real mode SS descriptor. Real mode callbacks are a</span><br /><span class="line">   limited system resource.  A client should use the Free</span><br /><span class="line">   Real Mode Callback Address function (Int 31H Function</span><br /><span class="line">   0304H) to release a callback that it is no longer using.</span><br /><span class="line">o  For further information on writing real mode callback</span><br /><span class="line">   procedures, see page 34.</span><br /><span class="line">o  The contents of the real mode register data structure is</span><br /><span class="line">   not valid after the function call, but only at the time</span><br /><span class="line">   of the actual callback.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-5133.html">
+    <link rel="next" href="dpmiv1-7271.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-5133.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-7271.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Get CPU Mode</span><br /><span class="line"></span><br /><span class="line">Returns information about the current CPU mode.  Programs</span><br /><span class="line">which only execute in protected mode do not need to call</span><br /><span class="line">this function.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 1686H</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   if executing in protected mode</span><br /><span class="line">   AX     = 0</span><br /><span class="line"></span><br /><span class="line">   if executing in real mode or Virtual 86 mode</span><br /><span class="line">   AX     = nonzero</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  Some environments support programs or libraries that can</span><br /><span class="line">   execute in either real or protected mode (bimodal code).</span><br /><span class="line">   This function is supplied so that such programs can</span><br /><span class="line">   detect at run time whether they are running in protected</span><br /><span class="line">   mode and make use of system facilities accordingly.</span><br /><span class="line">o  This function should not be used to determine if a DPMI</span><br /><span class="line">   host is present.  A client should make sure that DPMI</span><br /><span class="line">   services are available before calling this function;</span><br /><span class="line">   otherwise, the results returned by the function may not</span><br /><span class="line">   be valid.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-52559.html">
+    <link rel="next" href="dpmiv1-57000.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-52559.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-57000.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">Functions</a></li>
+              <li><a href="dpmiv1-126452.html">Errors</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Get Raw Mode Switch Addresses</span><br /><span class="line"></span><br /><span class="line">Returns addresses that can be called for low-level mode</span><br /><span class="line">switching.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Call With:</span></span><br /><span class="line"></span><br /><span class="line">   AX     = 0306H</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Returns:</span></span><br /><span class="line"></span><br /><span class="line">   Carry flag = clear (this function always succeeds)</span><br /><span class="line">   BX:CX  = real-to-protected mode switch address</span><br /><span class="line">   SI:(E)DI= protected-to-real mode switch address</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line"></span><br /><span class="line">o  The address returned in BX:CX must only be called in real</span><br /><span class="line">   mode to switch into protected mode.  The address returned</span><br /><span class="line">   in SI:(E)DI must only be called in protected mode to</span><br /><span class="line">   switch into real mode; 16-bit programs should call the</span><br /><span class="line">   address returned by this function in SI:DI, while 32-bit</span><br /><span class="line">   programs should call the address returned in SI:EDI.</span><br /><span class="line"></span><br /><span class="line">o  The mode switch procedures are entered by a FAR JMP to</span><br /><span class="line">   the appropriate address with the following parameters:</span><br /><span class="line"></span><br /><span class="line">AX = new DS</span><br /><span class="line">CX = new ES</span><br /><span class="line">DX = new SS</span><br /><span class="line">(E)BX= new (E)SP</span><br /><span class="line">SI = new CS</span><br /><span class="line">(E)DI= new (E)IP</span><br /><span class="line"></span><br /><span class="line">The processor is placed into the desired mode, and the DS, ES, SS,</span><br /><span class="line">   (E)SP, CS, and (E)IP registers are updated with the</span><br /><span class="line">   specified values; in other words, execution of the client</span><br /><span class="line">   continues in the requested mode at the address provided</span><br /><span class="line">   in registers SI:(E)DI.  The values specified to be placed</span><br /><span class="line">   into th</span><br /><span class="line">e segment registers must be appropriate for the destination mode; if</span><br /><span class="line">   invalid selectors are supplied when switching into</span><br /><span class="line">   protected mode, an exception will occur.</span><br /><span class="line"></span><br /><span class="line">The values in (E)AX, (E)BX, (E)CX, (E)DX, (E)SI, and (E)DI after the</span><br /><span class="line">   mode switch are undefined. (E)BP will be preserved across</span><br /><span class="line">   the mode switch call so it can be used as a pointer. On</span><br /><span class="line">   an 80386 or later CPU, the FS and GS segment registers</span><br /><span class="line">   will contain zero after the mode switch.</span><br /><span class="line"></span><br /><span class="line">If interrupts are disabled when the mode switch procedure is invoked,</span><br /><span class="line">   they will not be re-enabled by the DPMI host (even</span><br /><span class="line">   temporarily).</span><br /><span class="line"></span><br /><span class="line">o  It is up to the client to save and restore the state of</span><br /><span class="line">   the task when using this function to switch modes.  This</span><br /><span class="line">   usually requires using the state save/restore procedures</span><br /><span class="line">   whose addresses are returned by Int 31H Fn 0305H</span><br /><span class="line">   (see page 94).</span><br /><span class="line"></span><br /><span class="line">o  Clients may find it more convenient to use Int 31H</span><br /><span class="line">   Functions 0300H, 0301H, and 0302H for mode switching than</span><br /><span class="line">   this function.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
