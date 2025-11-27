@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="xms30-style.css">
+    <title>XMS Specification  (version 3.0) » XMS » Overview</title>
+    <meta name="description" content="XMS Specification  (version 3.0)">
+    <link rel="prev" href="xms30-5410.html">
+    <link rel="next" href="xms30-6936.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="xms30-about.html">About</a></li>
+
+
+          
+
+<li><a href="xms30-5410.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="xms30-6936.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>XMS</li>
+            <ul>
+              <li><a href="index.html">Overview</a></li>
+              <li><a href="xms30-18951.html">XMS API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">CALLING THE API FUNCTIONS</span></span><br /><span class="line"></span><br /><span class="line">Programs can execute INT 2Fh with AH=43h and AL=10h to obtain the</span><br /><span class="line">address of the driver&#39;s control function.  The address is returned in</span><br /><span class="line">ES:BX.  This function is called to access all of the XMS functions.  It</span><br /><span class="line">should be called with AH set to the number of the API function</span><br /><span class="line">requested.  The API function will put a success code of 0001h or 0000h</span><br /><span class="line">in AX.  If the function succeeded (AX=0001h), additional information may</span><br /><span class="line">be passed back in BX and DX.  If the function failed (AX=0000h), an</span><br /><span class="line">error code may be returned in BL.  Valid error codes have their high bit</span><br /><span class="line">set.  Developers should keep in mind that some of the XMS API functions</span><br /><span class="line">may not be implemented by all drivers and will return failure in all</span><br /><span class="line">cases.</span><br /><span class="line"></span><br /><span class="line">        Example:</span><br /><span class="line"></span><br /><span class="line">        ; Get the address of the driver&#39;s control function</span><br /><span class="line"></span><br /><span class="line">        mov     ax,4310h</span><br /><span class="line">        int     2Fh</span><br /><span class="line">        mov     word ptr [XMSControl],bx        ; XMSControl is a DWORD</span><br /><span class="line">        mov     word ptr [XMSControl+2],es</span><br /><span class="line"></span><br /><span class="line">        ; Get the XMS driver&#39;s version number</span><br /><span class="line"></span><br /><span class="line">        mov     ah,00h</span><br /><span class="line">        call    [XMSControl]    ; Get XMS Version Number</span><br /><span class="line"></span><br /><span class="line">NOTE: Programs should make sure that at least 256 bytes of stack space</span><br /><span class="line">is available before calling XMS API functions.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

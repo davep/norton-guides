@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="xms30-style.css">
+    <title>XMS Specification  (version 3.0) » XMS » XMS API</title>
+    <meta name="description" content="XMS Specification  (version 3.0)">
+    <link rel="prev" href="xms30-34912.html">
+    <link rel="next" href="xms30-36947.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="xms30-about.html">About</a></li>
+
+
+          
+
+<li><a href="xms30-34912.html">Previous</a></li>
+
+
+          
+
+<li><a href="xms30-18951.html">Up</a></li>
+
+
+          
+
+<li><a href="xms30-36947.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>XMS</li>
+            <ul>
+              <li><a href="index.html">Overview</a></li>
+              <li><a href="xms30-18951.html">XMS API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Query Any Free Extended Memory (Function 88h)</span></span><br /><span class="line"></span><br /><span class="line">        ARGS:   AH = 88h</span><br /><span class="line"></span><br /><span class="line">        RETS:   EAX = Size of largest free extended memory block in Kb.</span><br /><span class="line">                BL = 0 if no error occurs, otherwise it takes an error code.</span><br /><span class="line">                ECX = Highest ending address of any memory block.</span><br /><span class="line">                EDX = Total amount of free memory in Kb.</span><br /><span class="line"></span><br /><span class="line">        ERRS:   BL = 80h if the function is not implemented.</span><br /><span class="line">                BL = 81h if a VDISK device is detected.</span><br /><span class="line">                BL = A0h if all extended memory is allocated.</span><br /><span class="line"></span><br /><span class="line">This function uses 32-bit values to return the size of available memory,</span><br /><span class="line">thus allowing returns up to 4GByte. Additionally, it returns the highest</span><br /><span class="line">known physical memory address, that is, the physical address of the last</span><br /><span class="line">byte of memory.  There may be discontinuities in the memory map below</span><br /><span class="line">this address.</span><br /><span class="line"></span><br /><span class="line">The memory pool reported on is the same as that reported on by the</span><br /><span class="line">existing Query Free Extended Memory function.  If the highest memory</span><br /><span class="line">address is not more than 64 Mb, then these two functions will return the</span><br /><span class="line">same results.</span><br /><span class="line"></span><br /><span class="line">Because of its reliance on 32-bit registers, this function is only</span><br /><span class="line">available on 80386 and higher processors.  XMS drivers on 80286 machines</span><br /><span class="line">should return error code 80h if this function is called.</span><br /><span class="line"></span><br /><span class="line">If error code 81h is returned, the value in ECX will still be valid.  If</span><br /><span class="line">error code A0h is returned, EAX and EDX will be 0, and ECX will still be</span><br /><span class="line">valid.</span><br /><span class="line"></span><br /><span class="line"><span class="ngr">Note: This function is new to version 3.0</span></span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

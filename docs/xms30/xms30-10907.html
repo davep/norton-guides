@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="xms30-style.css">
+    <title>XMS Specification  (version 3.0) » XMS » Overview</title>
+    <meta name="description" content="XMS Specification  (version 3.0)">
+    <link rel="prev" href="xms30-9795.html">
+    <link rel="next" href="xms30-13920.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="xms30-about.html">About</a></li>
+
+
+          
+
+<li><a href="xms30-9795.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="xms30-13920.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>XMS</li>
+            <ul>
+              <li><a href="index.html">Overview</a></li>
+              <li><a href="xms30-18951.html">XMS API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">IMPLEMENTATION NOTES FOR DOS XMS DRIVERS</span></span><br /><span class="line"></span><br /><span class="line">    A DOS XMS driver&#39;s control function must begin with code similar to</span><br /><span class="line">    the following:</span><br /><span class="line"></span><br /><span class="line">XMMControl  proc    far</span><br /><span class="line"></span><br /><span class="line">            jmp     short XCControlEntry     ; For &#34;hookability&#34;</span><br /><span class="line">            nop                              ; NOTE: The jump must be a short</span><br /><span class="line">            nop                              ;  jump to indicate the end of</span><br /><span class="line">            nop                              ;  any hook chainThe nop&#39;s</span><br /><span class="line">                                             ;  allow a far jump to be</span><br /><span class="line">                                             ;  patched in.</span><br /><span class="line">XCControlEntry:</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    XMS drivers must preserve all registers except those containing</span><br /><span class="line">    returned values across any function call.</span><br /><span class="line"></span><br /><span class="line">    XMS drivers are required to hook INT 15h and watch for calls to</span><br /><span class="line">    functions 87h (Block Move) and 88h (Extended Memory Available). The</span><br /><span class="line">    INT 15h Block Move function must be hooked so that the state of the</span><br /><span class="line">    A20 line is preserved across the call. The INT 15h Extended Memory</span><br /><span class="line">    Available function must be hooked to return 0h to protect the HMA.</span><br /><span class="line"></span><br /><span class="line">    In order to maintain compatibility with existing device drivers, DOS</span><br /><span class="line">    XMS drivers must not hook INT 15h until the first non-Version Number</span><br /><span class="line">    call to the control function is made.</span><br /><span class="line"></span><br /><span class="line">    XMS drivers are required to check for the presence of drivers which</span><br /><span class="line">    use the IBM VDISK allocation scheme.  Note that it is not sufficient</span><br /><span class="line">    to check for VDISK users at installation time but at the time when</span><br /><span class="line">    the HMA is first allocated.  If a VDISK user is detected, the HMA</span><br /><span class="line">    must not be allocated. Microsoft will publish a standard method for</span><br /><span class="line">    detecting drivers which use the VDISK allocation scheme.</span><br /><span class="line"></span><br /><span class="line">    XMS drivers which have a fixed number of extended memory handles</span><br /><span class="line">    (most do) should implement a command line parameter for adjusting</span><br /><span class="line">    that number (suggested name &#34;/NUMHANDLES=&#34;)</span><br /><span class="line"></span><br /><span class="line">    XMS drivers should make sure that the major DOS version number is</span><br /><span class="line">    greater than or equal to 3 before installing themselves.</span><br /><span class="line"></span><br /><span class="line">    UMBs cannot occupy memory addresses that can be banked by EMS</span><br /><span class="line">    4.0.EMS 4.0 takes precedence over UMBs for physically addressable</span><br /><span class="line">    memory.</span><br /><span class="line"></span><br /><span class="line">    All driver functions must be re-entrant.  Care should be taken to</span><br /><span class="line">    not leave interrupts disabled for long periods of time.</span><br /><span class="line"></span><br /><span class="line">    Allocation of a zero length extended memory buffer is allowed.</span><br /><span class="line">    Programs which hook XMS drivers may need to reserve a handle for</span><br /><span class="line">    private use via this method.  Programs which hook an XMS driver</span><br /><span class="line">    should pass all requests for zero length EMBs to the next driver in</span><br /><span class="line">    the chain.</span><br /><span class="line"></span><br /><span class="line">    Drivers should control the A20 line via an &#34;enable count.&#34; Local</span><br /><span class="line">    Enable only enables the A20 line if the count is zero.  It then</span><br /><span class="line">    increments the count. Local Disable only disables A20 if the count</span><br /><span class="line">    is one.  It then decrements the count. Global Enable/Disable keeps a</span><br /><span class="line">    flag which indicates the state of A20.  They use Local</span><br /><span class="line">    Enable/Disable to actually change the state.</span><br /><span class="line"></span><br /><span class="line">    Drivers should always check the physical A20 state in the local</span><br /><span class="line">    Enable-Disable calls, to see that the physical state matches the</span><br /><span class="line">    internal count.  If the physical state does not match, it should be</span><br /><span class="line">    modified so that it matches the internal count.  This avoids</span><br /><span class="line">    problems with applications that modify A20 directly.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

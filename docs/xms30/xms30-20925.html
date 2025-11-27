@@ -1,0 +1,92 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="xms30-style.css">
+    <title>XMS Specification  (version 3.0) » XMS » XMS API</title>
+    <meta name="description" content="XMS Specification  (version 3.0)">
+    <link rel="prev" href="xms30-20212.html">
+    <link rel="next" href="xms30-21998.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="xms30-about.html">About</a></li>
+
+
+          
+
+<li><a href="xms30-20212.html">Previous</a></li>
+
+
+          
+
+<li><a href="xms30-18951.html">Up</a></li>
+
+
+          
+
+<li><a href="xms30-21998.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>XMS</li>
+            <ul>
+              <li><a href="index.html">Overview</a></li>
+              <li><a href="xms30-18951.html">XMS API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Request High Memory Area (Function 01h)</span></span><br /><span class="line"></span><br /><span class="line">        ARGS:   AH = 01h</span><br /><span class="line">                If the caller is a TSR or device driver,</span><br /><span class="line">                DX = Space needed in the HMA by the caller in bytes</span><br /><span class="line">                If the caller is an application program,</span><br /><span class="line">                DX = FFFFh</span><br /><span class="line"></span><br /><span class="line">        RETS:   AX = 0001h if the HMA is assigned to the caller,</span><br /><span class="line">                     0000h otherwise</span><br /><span class="line"></span><br /><span class="line">        ERRS:   BL = 80h if the function is not implemented</span><br /><span class="line">                BL = 81h if a VDISK device is detected</span><br /><span class="line">                BL = 90h if the HMA does not exist</span><br /><span class="line">                BL = 91h if the HMA is already in use</span><br /><span class="line">                BL = 92h if DX is less than the /HMAMIN= parameter</span><br /><span class="line"></span><br /><span class="line">This function attempts to reserve the 64K-16 byte high memory area for</span><br /><span class="line">the caller.  If the HMA is currently unused, the caller&#39;s size parameter</span><br /><span class="line">is compared to the /HMAMIN= parameter on the driver&#39;s command line. If</span><br /><span class="line">the value passed by the caller is greater than or equal to the amount</span><br /><span class="line">specified by the driver&#39;s parameter, the request succeeds.  This</span><br /><span class="line">provides the ability to ensure that programs which use the HMA</span><br /><span class="line">efficiently have priority over those which do not.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="xms30-6936.html">Prioritizing HMA Usage</a></li>
+        
+          <li><a href="xms30-8716.html">High Memory Area Restrictions</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

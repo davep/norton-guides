@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="xms30-style.css">
+    <title>XMS Specification  (version 3.0) » XMS » XMS API</title>
+    <meta name="description" content="XMS Specification  (version 3.0)">
+    <link rel="prev" href="xms30-27007.html">
+    <link rel="next" href="xms30-29930.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="xms30-about.html">About</a></li>
+
+
+          
+
+<li><a href="xms30-27007.html">Previous</a></li>
+
+
+          
+
+<li><a href="xms30-18951.html">Up</a></li>
+
+
+          
+
+<li><a href="xms30-29930.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>XMS</li>
+            <ul>
+              <li><a href="index.html">Overview</a></li>
+              <li><a href="xms30-18951.html">XMS API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Move Extended Memory Block (Function 0Bh)</span></span><br /><span class="line"></span><br /><span class="line">        ARGS:   AH = 0Bh</span><br /><span class="line">                DS:SI = Pointer to an Extended Memory Move Structure</span><br /><span class="line">                        (see below)</span><br /><span class="line"></span><br /><span class="line">        RETS:   AX = 0001h if the move is successful,</span><br /><span class="line">                     0000h otherwise</span><br /><span class="line"></span><br /><span class="line">        ERRS:   BL = 80h if the function is not implemented</span><br /><span class="line">                BL = 81h if a VDISK device is detected</span><br /><span class="line">                BL = 82h if an A20 error occurs</span><br /><span class="line">                BL = A3h if the SourceHandle is invalid</span><br /><span class="line">                BL = A4h if the SourceOffset is invalid</span><br /><span class="line">                BL = A5h if the DestHandle is invalid</span><br /><span class="line">                BL = A6h if the DestOffset is invalid</span><br /><span class="line">                BL = A7h if the Length is invalid</span><br /><span class="line">                BL = A8h if the move has an invalid overlap</span><br /><span class="line">                BL = A9h if a parity error occurs</span><br /><span class="line"></span><br /><span class="line">Extended Memory Move Structure Definition:</span><br /><span class="line"></span><br /><span class="line">        ExtMemMoveStruct    struc</span><br /><span class="line">            Length              dd  ?   ; 32-bit number of bytes to transfer</span><br /><span class="line">            SourceHandle        dw  ?   ; Handle of source block</span><br /><span class="line">            SourceOffset        dd  ?   ; 32-bit offset into source</span><br /><span class="line">            DestHandle          dw  ?   ; Handle of destination block</span><br /><span class="line">            DestOffset          dd  ?   ; 32-bit offset into destination block</span><br /><span class="line">        ExtMemMoveStruct    ends</span><br /><span class="line"></span><br /><span class="line">This function attempts to transfer a block of data from one location to</span><br /><span class="line">another. It is primarily intended for moving blocks of data between</span><br /><span class="line">conventional memory and extended memory, however it can be used for</span><br /><span class="line">moving blocks within conventional memory and within extended memory.</span><br /><span class="line"></span><br /><span class="line">NOTE: If SourceHandle is set to 0000h, the SourceOffset is interpreted</span><br /><span class="line">as a standard segment:offset air which refers to memory that is directly</span><br /><span class="line">accessible by the processor.  The segment:offset pair is stored in Intel</span><br /><span class="line">DWORD notation. The same is true for DestHandle and DestOffset.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">   SourceHandle and DestHandle do not have to refer to locked memory</span><br /><span class="line">   blocks.</span><br /><span class="line">   Length must be even.</span><br /><span class="line">   Although not required, WORD-aligned moves can be significantly faster</span><br /><span class="line">   on most machines. DWORD aligned move can be even faster on 80386</span><br /><span class="line">   machines.</span><br /><span class="line">   If the source and destination blocks overlap, only forward moves</span><br /><span class="line">   (i.e. where the source base is less than the destination base) are</span><br /><span class="line">   guaranteed to work properly.</span><br /><span class="line">   Programs should not enable the A20 line before calling this function.</span><br /><span class="line">   The state of the A20 line is preserved.</span><br /><span class="line"></span><br /><span class="line">This function is guaranteed to provide a reasonable number of  interrupt</span><br /><span class="line">windows during long transfers.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
