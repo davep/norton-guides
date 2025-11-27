@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-42956.html">
+    <link rel="next" href="click-45701.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-42956.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-45701.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">Getting Started</a></li>
+              <li><a href="click-10263.html">Features</a></li>
+              <li><a href="click-15048.html">Click .INI file</a></li>
+              
+            </ul>
+            <li>Support</li>
+            <ul>
+              <li><a href="click-32383.html">Support</a></li>
+              <li><a href="click-34012.html">Changes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Click! now does a few things with # directives.</span><br /><span class="line"></span><br /><span class="line">1. If a # is followed by a space, the space is removed</span><br /><span class="line"></span><br /><span class="line">... and only for #include ...</span><br /><span class="line"></span><br /><span class="line">2. The word INCLUDE is converted to lower case</span><br /><span class="line">3. The filename is converted to upper case</span><br /><span class="line">4. The delimiters on the filename are changed to &#34; if they are &#39;</span><br /><span class="line"></span><br /><span class="line">So...</span><br /><span class="line"></span><br /><span class="line"># INCLUDE &#39;filename.ch&#39;</span><br /><span class="line"></span><br /><span class="line">... becomes ...</span><br /><span class="line"></span><br /><span class="line">#include &#34;FILENAME.CH&#34;</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">The conversion of line elements for alignment of := was too aggressive.</span><br /><span class="line"></span><br /><span class="line">I changed it so that it only tries to align := on lines that start with</span><br /><span class="line">variables. This works much better.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Optimized a few more places in the code in an attempt to squeeze every</span><br /><span class="line">ounce of speed out of Click!. Found a couple of pretty good speed</span><br /><span class="line">improvements.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">The Declaration Buster can now convert older style code to use the</span><br /><span class="line">incremental operators ++, --, +=, -=, /=, *= and =</span><br /><span class="line"></span><br /><span class="line">CONVERT_TO_INCREMENTOR=YES</span><br /><span class="line"></span><br /><span class="line">Code style like:</span><br /><span class="line"></span><br /><span class="line">s = s + 1</span><br /><span class="line">s := s - 1</span><br /><span class="line">x := x + ( anyvar + anyfunc() )</span><br /><span class="line">test=test-1// with a comment</span><br /><span class="line">q = q * 14</span><br /><span class="line"></span><br /><span class="line">... now converts to ...</span><br /><span class="line"></span><br /><span class="line">s ++</span><br /><span class="line">s --</span><br /><span class="line">x += ( anyvar + anyfunc() )</span><br /><span class="line">test --             // with a comment</span><br /><span class="line">q *= 14</span><br /><span class="line"></span><br /><span class="line">It will not convert more complex forms, like:</span><br /><span class="line"></span><br /><span class="line">x[ 2 ] = x[ 2 ] + 1</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">The Declaration Buster can now convert the old style function calls to</span><br /><span class="line">the new style. The CLICK.INI directive which controls this is:</span><br /><span class="line"></span><br /><span class="line">CONVERT_OLD_STYLE_FUNCTIONS=YES (defaults to NO)</span><br /><span class="line"></span><br /><span class="line">With this set to YES, ...</span><br /><span class="line"></span><br /><span class="line">do test</span><br /><span class="line">do test // a comment</span><br /><span class="line"></span><br /><span class="line">do test with a, c, somevar</span><br /><span class="line">do test with a, c, somevar // and a comment</span><br /><span class="line"></span><br /><span class="line">... becomes ...</span><br /><span class="line"></span><br /><span class="line">test()</span><br /><span class="line">test()              // a comment</span><br /><span class="line"></span><br /><span class="line">test( a, c, somevar )</span><br /><span class="line">test( a, c, somevar )                   // and a comment</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

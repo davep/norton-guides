@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-63475.html">
+    <link rel="next" href="click-65707.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-63475.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-65707.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">Getting Started</a></li>
+              <li><a href="click-10263.html">Features</a></li>
+              <li><a href="click-15048.html">Click .INI file</a></li>
+              
+            </ul>
+            <li>Support</li>
+            <ul>
+              <li><a href="click-32383.html">Support</a></li>
+              <li><a href="click-34012.html">Changes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">STORE statements are converted to := assignments, like:</span><br /><span class="line"></span><br /><span class="line">STORE &#39;Hello&#39; + &#34; World&#34; to y, z, x</span><br /><span class="line">STORE x to y</span><br /><span class="line"></span><br /><span class="line">becomes:</span><br /><span class="line"></span><br /><span class="line">y := z := x := &#39;Hello&#39; + &#34; World&#34;</span><br /><span class="line">y := x</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Updated CLICKINI.DOC</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Added BEGIN SEQUENCE to the command list in CLICK.INI, and modified</span><br /><span class="line">Click! so it understands it as a two word command.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Using the MrDebug profiler, ( great debugger! ) I found a couple of</span><br /><span class="line">places where I could speed up Click!</span><br /><span class="line"></span><br /><span class="line">Rewrote the List Reader and changed the binary seek routines for seeking</span><br /><span class="line">into the arrays of commands, functions and operaters. Bypassed the line</span><br /><span class="line">parser when the line is obviously a comment.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Well, I thought I fixed the REPLACE ALL problem, but I didn&#39;t.</span><br /><span class="line"></span><br /><span class="line">Once Again.... (sigh)</span><br /><span class="line"></span><br /><span class="line">I originally looked in the .NG, and not STD.CH.</span><br /><span class="line"></span><br /><span class="line">This is now according to STD.CH</span><br /><span class="line"></span><br /><span class="line">So:</span><br /><span class="line"></span><br /><span class="line">replace x with y</span><br /><span class="line">replace all x with y</span><br /><span class="line">replace x with y all</span><br /><span class="line">replace x with y for z</span><br /><span class="line">replace x with y while z</span><br /><span class="line">replace x with y record n</span><br /><span class="line">replace x with y next n</span><br /><span class="line">replace x with y rest</span><br /><span class="line"></span><br /><span class="line">becomes:</span><br /><span class="line"></span><br /><span class="line">field-&gt;x := y</span><br /><span class="line">replace all x with y</span><br /><span class="line">replace x with y all</span><br /><span class="line">replace x with y for z</span><br /><span class="line">replace x with y while z</span><br /><span class="line">replace x with y record n</span><br /><span class="line">replace x with y next n</span><br /><span class="line">replace x with y rest</span><br /><span class="line"></span><br /><span class="line">Any REPLACE commands with ALL, FOR, WHILE, RECORD, REST and NEXT are not</span><br /><span class="line">modified. (note 2 previous inadequate corrections in .995 and .996)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

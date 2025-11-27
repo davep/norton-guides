@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Reference » Click .INI file</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-22178.html">
+    <link rel="next" href="click-23565.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-22178.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-15048.html">Up</a></li>
+
+
+          
+
+<li><a href="click-23565.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">Getting Started</a></li>
+              <li><a href="click-10263.html">Features</a></li>
+              <li><a href="click-15048.html">Click .INI file</a></li>
+              
+            </ul>
+            <li>Support</li>
+            <ul>
+              <li><a href="click-32383.html">Support</a></li>
+              <li><a href="click-34012.html">Changes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        CONVERT_OLD_STYLE_FUNCTIONS</span><br /><span class="line"></span><br /><span class="line">    Default: NO</span><br /><span class="line"></span><br /><span class="line">    Options: YES, NO</span><br /><span class="line"></span><br /><span class="line">    When set to YES, Click! converts:</span><br /><span class="line"></span><br /><span class="line">    1.09 makes a change to the way that the conversion of old style</span><br /><span class="line">    function calls are done. After creating 1.08, I was informed that</span><br /><span class="line">    conversion of DO/WITH function calls to formal function/parameters</span><br /><span class="line">    changes the way the variables are passed. DO/WITH passes all</span><br /><span class="line">    variables by reference, but function calls do not. Now, the</span><br /><span class="line">    conversion places an @ in front of each parameter. Sometimes this</span><br /><span class="line">    will break the code because the @ sign is an illegal operator. See</span><br /><span class="line">    below for what to do if you get C2009 errors..</span><br /><span class="line"></span><br /><span class="line">    With this set to YES, ...</span><br /><span class="line"></span><br /><span class="line">    do test</span><br /><span class="line">    do test // a comment</span><br /><span class="line"></span><br /><span class="line">    do test with a, c, somevar</span><br /><span class="line">    do test with a, c, somevar // and a comment</span><br /><span class="line"></span><br /><span class="line">    ... becomes ...</span><br /><span class="line"></span><br /><span class="line">    test()</span><br /><span class="line">    test()              // a comment</span><br /><span class="line"></span><br /><span class="line">    test( @a, @c, @somevar )</span><br /><span class="line">    test( @a, @c, @somevar )                   // and a comment</span><br /><span class="line"></span><br /><span class="line">    ... and a blazing warning screen appears when Click! is set to run</span><br /><span class="line">    with this option turned on, because of the potential of compiler</span><br /><span class="line">    error C2009 occuring because of the pass by reference on all</span><br /><span class="line">    parameters.</span><br /><span class="line"></span><br /><span class="line">    If you get C2009 compiler errors after using this option, remove the</span><br /><span class="line">    offending @ in the parameter list and recompile.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

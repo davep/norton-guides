@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-37780.html">
+    <link rel="next" href="click-40257.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-37780.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-40257.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">Getting Started</a></li>
+              <li><a href="click-10263.html">Features</a></li>
+              <li><a href="click-15048.html">Click .INI file</a></li>
+              
+            </ul>
+            <li>Support</li>
+            <ul>
+              <li><a href="click-32383.html">Support</a></li>
+              <li><a href="click-34012.html">Changes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Click! begins it&#39;s ascent into object oriented awareness!</span><br /><span class="line"></span><br /><span class="line">----</span><br /><span class="line"></span><br /><span class="line">Not that it makes any difference, but I added:</span><br /><span class="line"></span><br /><span class="line">SET EPOCH TO YEAR( DATE() ) - 50</span><br /><span class="line"></span><br /><span class="line">Better safe than sorry.</span><br /><span class="line"></span><br /><span class="line">----</span><br /><span class="line"></span><br /><span class="line">Added ALIGN_CLASS_IN_THE_ALIGNER to CLICK.INI.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Added METHOD to the declaration buster</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Added METHOD and CLASS METHOD to Click.ini, and modified Click! to treat</span><br /><span class="line">them like FUNCTION and PROCEDURE, including header creation.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Added METHOD, CLASS, VAR, ENDCLASS, INIT, EXIT to Click.ini</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Click! now removes spaces before : when it&#39;s appropriate. OO stuff now</span><br /><span class="line">looks like:</span><br /><span class="line"></span><br /><span class="line">::windowStack[1]:setFrameState( XBPDLG_FRAMESTAT_NORMALIZED )</span><br /><span class="line">oSubMenu := XbpMenu():new( oMenu )</span><br /><span class="line"></span><br /><span class="line">instead of:</span><br /><span class="line"></span><br /><span class="line">::windowStack[1] :setFrameState( XBPDLG_FRAMESTAT_NORMALIZED )</span><br /><span class="line">oSubMenu := XbpMenu() :new( oMenu )</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Click! had a problem converting this:</span><br /><span class="line"></span><br /><span class="line">store chr( toets ) to x</span><br /><span class="line"></span><br /><span class="line">This is fixed. It now converts to:</span><br /><span class="line"></span><br /><span class="line">x := chr( toets )</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Fixed the identification and headers on INIT PROCEDURE and EXIT PROCEDURE.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">There was a problem with the declaration buster when avoiding</span><br /><span class="line">declaration lines with the key words ALL, NEXT, WHILE and FOR which</span><br /><span class="line">would avoid the breaking up the line even if any of those words were</span><br /><span class="line">subparts of variables.</span><br /><span class="line"></span><br /><span class="line">Now, Click! scans the parsed array for exact matches. This allows lines</span><br /><span class="line">like:</span><br /><span class="line"></span><br /><span class="line">local INSCREEN,XWIDTH,XLENGTH,XSHALLOW,XDEEP,XGALLONS,AVEDEPTH,mult</span><br /><span class="line"></span><br /><span class="line">to be broken up instead of avoided. (XGALLONS contains ALL)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

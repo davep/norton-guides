@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-55743.html">
+    <link rel="next" href="click-59969.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-55743.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-59969.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">Getting Started</a></li>
+              <li><a href="click-10263.html">Features</a></li>
+              <li><a href="click-15048.html">Click .INI file</a></li>
+              
+            </ul>
+            <li>Support</li>
+            <ul>
+              <li><a href="click-32383.html">Support</a></li>
+              <li><a href="click-34012.html">Changes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Click! scans all of your libraries available via the LIB= path</span><br /><span class="line">statement, however, if you have libraries which are not included in your</span><br /><span class="line">LIB= statement, you should create a temporary environment which includes</span><br /><span class="line">pointers to ALL libraries.</span><br /><span class="line"></span><br /><span class="line">If you have already created CLICK.DBF, and it doesn&#39;t contain ALL of</span><br /><span class="line">your library references, Delete CLICK.DBF and CLICK.NSX, correct your</span><br /><span class="line">LIB= path to include ALL directories where you have libraries, and run</span><br /><span class="line">CLICK so it can rebuild the CLICK.DBF table and index.</span><br /><span class="line"></span><br /><span class="line">When you pass a link script as a file list, Click! will use your current</span><br /><span class="line">environment to resolve exactly which library would be used when more than</span><br /><span class="line">one is found to match the function.</span><br /><span class="line"></span><br /><span class="line">This means that you can scan all of your libraries into CLICK.DBF one</span><br /><span class="line">time, and Click! is &#39;current environment sensitive&#39; at runtime.</span><br /><span class="line"></span><br /><span class="line">This only works when you use a .LNK file as the file list. If run Click!</span><br /><span class="line">with no parameters, or *.PRG, then Click! will list every library that</span><br /><span class="line">any function may have come from, in no particular order.</span><br /><span class="line"></span><br /><span class="line">If you pass the name of a .LNK file into Click!, it uses the library</span><br /><span class="line">references inside the .LNK file(s) to resolve the function names in</span><br /><span class="line">FNC_CROS.TXT when they could have come from more than one library.</span><br /><span class="line"></span><br /><span class="line">References to other .LNK files are also scanned for input, so if you</span><br /><span class="line">have one or more references (@&lt;filename&gt;) to other .LNK files in the</span><br /><span class="line">main .LNK file, they will be included if found. The LIB= environment</span><br /><span class="line">variable will be used for the .LNK search.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">There is a new file named CLICKFNC.INI which is used to augment the</span><br /><span class="line">CLICK.DBF creation process. It belongs in the same directory as</span><br /><span class="line">CLICK.EXE. Since functions can come from many places other than</span><br /><span class="line">libraries, you need a method of permanently informing Click! as to what</span><br /><span class="line">their name is and where they reside.</span><br /><span class="line"></span><br /><span class="line">If you have functions which do not come from libraries, and you want</span><br /><span class="line">Click! to understand where they come from and include them in CLICK.DBF,</span><br /><span class="line">then add the file references to CLICKFNC.INI file following the example</span><br /><span class="line">of:</span><br /><span class="line"></span><br /><span class="line">&lt;function&gt; = &lt;LOCATION&gt;</span><br /><span class="line"></span><br /><span class="line">like:</span><br /><span class="line"></span><br /><span class="line">swpruncmd=BLINKER.EXE</span><br /><span class="line"></span><br /><span class="line">Everything in CLICKFNC.INI is included any time CLICK.DBF is created.</span><br /><span class="line"></span><br /><span class="line">Case is not sensitive and are corrected when the .INI file is read in.</span><br /><span class="line"></span><br /><span class="line">Improperly formatted lines are omitted.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">If you used the first word of a two word command as a function, then it</span><br /><span class="line">was treated wrong, like:</span><br /><span class="line"></span><br /><span class="line">MENU()</span><br /><span class="line"></span><br /><span class="line">was coming out like:</span><br /><span class="line"></span><br /><span class="line">MENU ()</span><br /><span class="line"></span><br /><span class="line">because of the MENU TO command. This is fixed now.</span><br /><span class="line"></span><br /><span class="line">Also fixed are:</span><br /><span class="line"></span><br /><span class="line">SAVE ALL LIKE A????X TO TEMP</span><br /><span class="line"></span><br /><span class="line">SAVE ALL EXCEPT A* TO TEMP</span><br /><span class="line"></span><br /><span class="line">SET COLOR TO G*</span><br /><span class="line"></span><br /><span class="line">COPY TO STKSUPP$</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

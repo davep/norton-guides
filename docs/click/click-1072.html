@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Reference » Getting Started</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-700.html">
+    <link rel="next" href="click-7854.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-700.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="click-7854.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">Getting Started</a></li>
+              <li><a href="click-10263.html">Features</a></li>
+              <li><a href="click-15048.html">Click .INI file</a></li>
+              
+            </ul>
+            <li>Support</li>
+            <ul>
+              <li><a href="click-32383.html">Support</a></li>
+              <li><a href="click-34012.html">Changes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">    Perhaps a few words of why I created Click! is in order before we</span><br /><span class="line">    dive off into seeing how we can use it.</span><br /><span class="line"></span><br /><span class="line">    First off, I do not intend for Click! to be the ultimate source code</span><br /><span class="line">    reformatter. (but it&#39;s pretty good!)</span><br /><span class="line"></span><br /><span class="line">    Over the years, I have run into so much badly written/formatted</span><br /><span class="line">    code, which I would tediously reformat line by line just to make it</span><br /><span class="line">    barely readable, that I decided to create a tool which would</span><br /><span class="line">    automate _MANY_ of the tasks of turning ugly code into usable code.</span><br /><span class="line"></span><br /><span class="line">    What I have found while creating Click! is that the CA-Clipper</span><br /><span class="line">    language is very robust, and therefore any source code scanner that</span><br /><span class="line">    is worth anything must also be quite robust. Thanks to many fine</span><br /><span class="line">    beta testers, I believe that Click! has acheived an excellent</span><br /><span class="line">    capability of handling extremely diverse code.</span><br /><span class="line"></span><br /><span class="line">    I suspect that the optimum use of Click! would be to run it once on</span><br /><span class="line">    ugly code, and that would be the last time. Once you begin to</span><br /><span class="line">    customize the look of the code, it would be stupid to run Click!</span><br /><span class="line">    again and toss it all down the drain.</span><br /><span class="line"></span><br /><span class="line">    There is NO WAY to create the ultimate source code reformatter, and</span><br /><span class="line">    if you just want a good re-indenter, you should not be using Click!.</span><br /><span class="line">    Use DST.EXE available on The Oasis.</span><br /><span class="line"></span><br /><span class="line">    Every programmer has a style all his own. Click! is not an attempt</span><br /><span class="line">    to be as flexible as every programmer.</span><br /><span class="line"></span><br /><span class="line">    Of course, if you like the way that Click! formats source code,</span><br /><span class="line">    there is no reason why you can&#39;t use it everyday on all of your</span><br /><span class="line">    source code.</span><br /><span class="line"></span><br /><span class="line">    So, here are some of the basic rules that Click! runs on today.</span><br /><span class="line"></span><br /><span class="line">    0. If you already have carefully formatted code, do not use Click!</span><br /><span class="line"></span><br /><span class="line">       Click! is the infantry, not the Green Beret.</span><br /><span class="line"></span><br /><span class="line">    1. The line is parsed into it&#39;s component parts, like strings,</span><br /><span class="line">       words, operators and spaces. Words are looked up in the .INI file</span><br /><span class="line">       and are assigned to either Command, Function or Variable status.</span><br /><span class="line">       Finally, any word that is followed by a ( is called a Function,</span><br /><span class="line">       except IF,  which is assumed a function until proven to be a</span><br /><span class="line">       command.</span><br /><span class="line"></span><br /><span class="line">    2. The spaces between the elements are thrown away.</span><br /><span class="line"></span><br /><span class="line">       Think about this. All previous alignment is down the drain. This</span><br /><span class="line">       has it&#39;s good points and it&#39;s bad points.</span><br /><span class="line"></span><br /><span class="line">    3. The spaces are put back in with a single space between each</span><br /><span class="line">       element.</span><br /><span class="line"></span><br /><span class="line">       ( Note: It would be lovely if we could teach a program to have</span><br /><span class="line">       artificial intelligence so that it could look around and see that</span><br /><span class="line">       the lines before it or the several lines following it all have</span><br /><span class="line">       something in common, and should be lined up to make them pretty</span><br /><span class="line">       for our eyes. This means that the code is torn apart and put back</span><br /><span class="line">       together with a single space between each element.)</span><br /><span class="line"></span><br /><span class="line">       ( Later note: The Aligner was created to overcome this</span><br /><span class="line">       shortcoming in the main pass. It recognizes sequences of code,</span><br /><span class="line">       reviews them as a unit and performs alignments based on the unit</span><br /><span class="line">       of code. I found this was impossible to do in the main pass,</span><br /><span class="line">       which we are talking about here... )</span><br /><span class="line"></span><br /><span class="line">       Once the line is reassembled, I do a few things that can make it</span><br /><span class="line">       look better.</span><br /><span class="line"></span><br /><span class="line">       The fallback modes are:</span><br /><span class="line"></span><br /><span class="line">       a) If I can&#39;t figure out how to indent something on a continued</span><br /><span class="line">          line, it defaults to DEFAULT_INDENT (defaults to 8) spaces</span><br /><span class="line">          indent for the rest of the continuation.</span><br /><span class="line"></span><br /><span class="line">       b) Spaces are removed in certain places. Spaces are removed</span><br /><span class="line">          before commas, before and after : and =&gt; and \, before ( in</span><br /><span class="line">          certain circumstances, after @ and ! unless it is the first</span><br /><span class="line">          element of a line, always after ::, etc.</span><br /><span class="line"></span><br /><span class="line">    4. Multi command lines are broken up into their components to make</span><br /><span class="line">       it obvious where control structures lie.</span><br /><span class="line"></span><br /><span class="line">       This means that...</span><br /><span class="line"></span><br /><span class="line">       for x := 1 to 10; qqout( x ); next</span><br /><span class="line"></span><br /><span class="line">       ...will become...</span><br /><span class="line"></span><br /><span class="line">       for x := 1 to 10</span><br /><span class="line">          qqout( x )</span><br /><span class="line">       next</span><br /><span class="line"></span><br /><span class="line">       Some of you are really not going to like this, but please feel</span><br /><span class="line">       free to write your own if you can do it better. I&#39;ll toss mine</span><br /><span class="line">       and use yours. ;)</span><br /><span class="line"></span><br /><span class="line">       It makes it ever so much easier to understand code when it has</span><br /><span class="line">       been broken up this way, and the compiler certainly doesn&#39;t care.</span><br /><span class="line"></span><br /><span class="line">       Furthermore, this allows Click! to indent mysterious code easily.</span><br /><span class="line"></span><br /><span class="line">    5. If there is a = in the second position, it becomes :=. Same with</span><br /><span class="line">       for/next. The = will become a := .</span><br /><span class="line"></span><br /><span class="line">       This will not happen if you run Click! in S87 mode.</span><br /><span class="line"></span><br /><span class="line">    6. There is some elaborate code in there to figure out whether an IF</span><br /><span class="line">       is a command or a function. This is perhaps the most difficult</span><br /><span class="line">       part of the code. I have tried this about twenty or thirty</span><br /><span class="line">       different ways.</span><br /><span class="line"></span><br /><span class="line">       Here is the rule today: (which seems to work pretty reliably on</span><br /><span class="line">       plain clipper code)</span><br /><span class="line"></span><br /><span class="line">       If there is an IF followed by a parenthesis, begin going through</span><br /><span class="line">       the operator parts of the line. Count up one for each open paren</span><br /><span class="line">       and down one for each close paren. If the paren count is at 1 and</span><br /><span class="line">       you find a comma that is not inside a string, the IF is a</span><br /><span class="line">       function. If the paren count goes above 1 and then reaches 0,</span><br /><span class="line">       stop looking.</span><br /><span class="line"></span><br /><span class="line">       Any other occurance of IF is a command.</span><br /><span class="line"></span><br /><span class="line">       If any of you have a better way, please feel free to elaborate.</span><br /><span class="line"></span><br /><span class="line">    7. Reindenting takes place along the way, and is a byproduct of what</span><br /><span class="line">       Click! is doing. The real thrust is to straighten up the actual</span><br /><span class="line">       code into some type of regularity.</span><br /><span class="line"></span><br /><span class="line">       In general, if there is something that you don&#39;t like about</span><br /><span class="line">       Click! that is a matter of style, it is probably not something</span><br /><span class="line">       easy to do. I will work on it, and will take your suggestions.</span><br /><span class="line"></span><br /><span class="line">       Currently, there is little or no support for OO code.</span><br /><span class="line"></span><br /><span class="line">    8. There are no guarantees that any output of Click! will compile,</span><br /><span class="line">       so of course, the first thing you MUST do is create a backup or</span><br /><span class="line">       even more preferably, work in a junk directory, so that any</span><br /><span class="line">       valuable code is not touched in any way.</span><br /><span class="line"></span><br /><span class="line">    9. Click! creates a log if there is a structure underflow or</span><br /><span class="line">       overflow. The log file name is definable in the .INI file and</span><br /><span class="line">       defaults to CLICK.LOG.</span><br /><span class="line"></span><br /><span class="line">       You can use it to help report things that went badly, since it</span><br /><span class="line">       will point you to the end of the function that failed. You will</span><br /><span class="line">       have to manually compare the input and output to see where the</span><br /><span class="line">       actual problem occurred.</span><br /><span class="line"></span><br /><span class="line">       If you find some code that breaks Click!, please condense the</span><br /><span class="line">       code to the smallest reproducable chunk. Then, email me with that</span><br /><span class="line">       chunk. I do not need the CLICK.LOG file. That is for you to find</span><br /><span class="line">       the error with. It will do me no good, and I should be able to</span><br /><span class="line">       reproduce the error with your code snippet.</span><br /><span class="line"></span><br /><span class="line">    10. # commands which cover more than a single line are written &#39;as</span><br /><span class="line">        is&#39; in the output. No formatting takes place on #defines, etc..</span><br /><span class="line">        The only exception to this is that the first line, which starts</span><br /><span class="line">        with the # character, is left justified.</span><br /><span class="line"></span><br /><span class="line">    12. CLICK.INI belongs in the same directory as CLICK.EXE. You do not</span><br /><span class="line">        have to put it in the working directory and if you do, it will</span><br /><span class="line">        override the one that is in the same directory as CLICK.EXE</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

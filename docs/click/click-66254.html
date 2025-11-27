@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-66105.html">
+    <link rel="next" href="click-67365.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-66105.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-67365.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">Getting Started</a></li>
+              <li><a href="click-10263.html">Features</a></li>
+              <li><a href="click-15048.html">Click .INI file</a></li>
+              
+            </ul>
+            <li>Support</li>
+            <ul>
+              <li><a href="click-32383.html">Support</a></li>
+              <li><a href="click-34012.html">Changes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">On an assignment, when the aligner was fixing the spaces before the :=,</span><br /><span class="line">it would not correct the following lines if the := was followed by a ;</span><br /><span class="line"></span><br /><span class="line">It started like:</span><br /><span class="line"></span><br /><span class="line">somevar      := { &#39;asdfasdf&#39;, ;</span><br /><span class="line">                  &#39;asdfasdf&#39;, ;</span><br /><span class="line">                  &#39;asdfasdf&#39; }</span><br /><span class="line"></span><br /><span class="line">.993 version looked like:</span><br /><span class="line"></span><br /><span class="line">somevar := { &#39;asdfasdf&#39;, ;</span><br /><span class="line">                  &#39;asdfasdf&#39;, ;</span><br /><span class="line">                  &#39;asdfasdf&#39; }</span><br /><span class="line"></span><br /><span class="line">.994 version looks like:</span><br /><span class="line"></span><br /><span class="line">somevar := { &#39;asdfasdf&#39;, ;</span><br /><span class="line">             &#39;asdfasdf&#39;, ;</span><br /><span class="line">             &#39;asdfasdf&#39; }</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">On a similar note:</span><br /><span class="line"></span><br /><span class="line">On a declaration, when the aligner was fixing the spaces before the :=,</span><br /><span class="line">it would not correct the following lines if the := was followed by a ;</span><br /><span class="line"></span><br /><span class="line">It started like:</span><br /><span class="line"></span><br /><span class="line">LOCAL somevar      := { &#39;asdfasdf&#39;, ;</span><br /><span class="line">                        &#39;asdfasdf&#39;, ;</span><br /><span class="line">                        &#39;asdfasdf&#39; }</span><br /><span class="line"></span><br /><span class="line">.993 version looked like:</span><br /><span class="line"></span><br /><span class="line">LOCAL somevar := { &#39;asdfasdf&#39;, ;</span><br /><span class="line">                        &#39;asdfasdf&#39;, ;</span><br /><span class="line">                        &#39;asdfasdf&#39; }</span><br /><span class="line">.994 version looks like:</span><br /><span class="line"></span><br /><span class="line">LOCAL somevar := { &#39;asdfasdf&#39;, ;</span><br /><span class="line">                   &#39;asdfasdf&#39;, ;</span><br /><span class="line">                   &#39;asdfasdf&#39; }</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">REPLACE ALL</span><br /><span class="line"></span><br /><span class="line">is ignored when</span><br /><span class="line"></span><br /><span class="line">CHANGE_REPLACE_WITH_TO_ASSIGNMENT=YES</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">replace x with y</span><br /><span class="line"></span><br /><span class="line">now becomes</span><br /><span class="line"></span><br /><span class="line">field-&gt;x := y</span><br /><span class="line"></span><br /><span class="line">instead of</span><br /><span class="line"></span><br /><span class="line">x := y</span><br /><span class="line"></span><br /><span class="line">however</span><br /><span class="line"></span><br /><span class="line">replace inv-&gt;x with y</span><br /><span class="line"></span><br /><span class="line">becomes</span><br /><span class="line"></span><br /><span class="line">inv-&gt;x := y</span><br /><span class="line"></span><br /><span class="line">and not</span><br /><span class="line"></span><br /><span class="line">field-&gt;inv-&gt;x := y    // which works, by the way!</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

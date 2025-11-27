@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-48170.html">
+    <link rel="next" href="click-51874.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-48170.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-51874.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">Getting Started</a></li>
+              <li><a href="click-10263.html">Features</a></li>
+              <li><a href="click-15048.html">Click .INI file</a></li>
+              
+            </ul>
+            <li>Support</li>
+            <ul>
+              <li><a href="click-32383.html">Support</a></li>
+              <li><a href="click-34012.html">Changes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">Added some C code to speed up the array sort during startup.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Click! can now incorporate a Table and Index cross reference into each</span><br /><span class="line">source module header, and can create the list of all modules using files</span><br /><span class="line">and indexes.</span><br /><span class="line"></span><br /><span class="line">The following CLICK.INI entries control this behaviour.</span><br /><span class="line"></span><br /><span class="line">TABLE_XREF_FILE=TBL_CROS.TXT</span><br /><span class="line"></span><br /><span class="line">// options are YES, NO</span><br /><span class="line">// please note that you must set ADD_CLICK_HEADERS=YES</span><br /><span class="line">TABLE_XREF_INTO_SOURCE=YES</span><br /><span class="line"></span><br /><span class="line">// options are YES, NO</span><br /><span class="line">// please note that you must set ADD_CLICK_HEADERS=YES</span><br /><span class="line">INDEX_XREF_INTO_SOURCE=YES</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Click! now recognizes when a Clipper FUNCTION or COMMAND is being used</span><br /><span class="line">as something other than a function or command.</span><br /><span class="line"></span><br /><span class="line">New rules are:</span><br /><span class="line"></span><br /><span class="line">If a Clipper function is not followed by a (, then it not evaluated as a</span><br /><span class="line">Clipper function.</span><br /><span class="line"></span><br /><span class="line">/*</span><br /><span class="line">I suppose that means I should convert:</span><br /><span class="line">DO SOMEFUNC with a, b, c</span><br /><span class="line">...to...</span><br /><span class="line">SOMEFUNC( a, b, c )</span><br /><span class="line">...in PASS 1</span><br /><span class="line">*/</span><br /><span class="line"></span><br /><span class="line">If a Clipper command is found within () or {} or [], then it not</span><br /><span class="line">evaluated as a Clipper command.</span><br /><span class="line"></span><br /><span class="line">This will allow code like ...</span><br /><span class="line"></span><br /><span class="line">#define TOP     a[1]</span><br /><span class="line">#define LEFT    a[2]</span><br /><span class="line">#define BOTTOM  a[3]</span><br /><span class="line">#define RIGHT   a[4]</span><br /><span class="line"></span><br /><span class="line">aadd(envSTAck_, { row(), col(), setcursor(curs_size), setcolor(newcolor), ;</span><br /><span class="line">     if(valtype(coords) == &#34;A&#34;, { TOP, LEFT, BOTTOM, RIGHT, ;</span><br /><span class="line">             savescreen(TOP, LEFT, BOTTOM, RIGHT) }, NIL) } )</span><br /><span class="line"></span><br /><span class="line">... to continue to work, even though I find using reserved words as</span><br /><span class="line">    variables or manifest constants an undesirable style ...</span><br /><span class="line"></span><br /><span class="line">Also, prequalifying what can&#39;t be a function or a command has led to a</span><br /><span class="line">significant reduction in processing time!</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">The Aligner now recognize and align arrays destined for DBCREATE(),</span><br /><span class="line">so that code like...</span><br /><span class="line"></span><br /><span class="line">somevar := {{ &#39;XXX&#39;, &#39;C&#39;, 123, 0 },;</span><br /><span class="line">           { &#39;YYYYY&#39;, &#39;C&#39;, 99, 0 },;</span><br /><span class="line">           {&#39;Z&#39;,&#39;D&#39;,8,0},;</span><br /><span class="line">           { &#39;AFIELD&#39;, &#39;C&#39;, 2, 0 } }</span><br /><span class="line"></span><br /><span class="line">... ends up looking like ...</span><br /><span class="line"></span><br /><span class="line">somevar := { { &#39;XXX&#39;   , &#39;C&#39;, 123, 0 }, ;</span><br /><span class="line">             { &#39;YYYYY&#39; , &#39;C&#39;,  99, 0 }, ;</span><br /><span class="line">             { &#39;Z&#39;     , &#39;D&#39;,   8, 0 }, ;</span><br /><span class="line">             { &#39;AFIELD&#39;, &#39;C&#39;,   2, 0 } }</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Click! now understands when [ and ] are being used as string delimiters.</span><br /><span class="line"></span><br /><span class="line">So...</span><br /><span class="line"></span><br /><span class="line">x := [asdfasdf&#39;&#34;asdf]</span><br /><span class="line">? [this works&#39;&#34;]</span><br /><span class="line">x := somefunc( [this works, too] )</span><br /><span class="line"></span><br /><span class="line">...will all be recognized as a string being delimited by [].</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Click! can now convert &amp;&amp; to // when found as a comment marker.</span><br /><span class="line"></span><br /><span class="line">( in CLICK.INI )</span><br /><span class="line">CONVERT_&amp;&amp;_TO_//=YES</span><br /><span class="line"></span><br /><span class="line">So...</span><br /><span class="line"></span><br /><span class="line">if x &amp;&amp; test</span><br /><span class="line">...becomes...</span><br /><span class="line">if x        // test</span><br /><span class="line"></span><br /><span class="line">...but...</span><br /><span class="line"></span><br /><span class="line">if x &amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp; test</span><br /><span class="line">...becomes...</span><br /><span class="line">if x        //&amp;&amp;&amp;&amp;&amp;&amp; test</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">STORE conversion modified to eliminate this...</span><br /><span class="line"></span><br /><span class="line">for L_count = 1 to 5</span><br /><span class="line">   store    &#34; &#34; to Em_Benefit[L_count,1]</span><br /><span class="line">   store   0.00 to Em_Benefit[L_count,2]</span><br /><span class="line">next</span><br /><span class="line"></span><br /><span class="line">from becoming ...</span><br /><span class="line"></span><br /><span class="line">for L_count = 1 to 5</span><br /><span class="line">   Em_Benefit[ L_count := 1 ] := &#34; &#34;</span><br /><span class="line">   Em_Benefit[ L_count := 2 ] := 0.00</span><br /><span class="line">next</span><br /><span class="line"></span><br /><span class="line">Now, it correctly identifies internal commas and processes like:</span><br /><span class="line"></span><br /><span class="line">for L_count = 1 to 5</span><br /><span class="line">   Em_Benefit[ L_count, 1 ] := &#34; &#34;</span><br /><span class="line">   Em_Benefit[ L_count, 2 ] := 0.00</span><br /><span class="line">next</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Click! has an option to end it&#39;s run by returning to DOS with the</span><br /><span class="line">original screen and color setting, pausing for a keystroke to end the</span><br /><span class="line">run.</span><br /><span class="line"></span><br /><span class="line">RESTORE_SCREEN_ON_EXIT=YES</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

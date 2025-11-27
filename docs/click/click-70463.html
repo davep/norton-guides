@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-69288.html">
+    <link rel="next" href="click-71891.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-69288.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-71891.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">Getting Started</a></li>
+              <li><a href="click-10263.html">Features</a></li>
+              <li><a href="click-15048.html">Click .INI file</a></li>
+              
+            </ul>
+            <li>Support</li>
+            <ul>
+              <li><a href="click-32383.html">Support</a></li>
+              <li><a href="click-34012.html">Changes</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">If you selected:</span><br /><span class="line"></span><br /><span class="line">CASE_OF_COMMANDS=LIKEINFILE</span><br /><span class="line"></span><br /><span class="line">IF and FOR didn&#39;t get indented.</span><br /><span class="line"></span><br /><span class="line">This is fixed.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Previously, the Declaration Buster was adding comments together when</span><br /><span class="line">comments were on consecutive continued lines which were not parts of</span><br /><span class="line">declarations.</span><br /><span class="line"></span><br /><span class="line">This is fixed.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">INIT FUNCTION</span><br /><span class="line"></span><br /><span class="line">EXIT FUNCTION</span><br /><span class="line"></span><br /><span class="line">are now recognized as functions.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Previously, the macro character &amp;, was being broken out of words in</span><br /><span class="line">lines. Now, the &amp; character is interpreted to be part of a word unless it</span><br /><span class="line">is found in pairs, &amp;&amp;, which is interpreted as a comment.</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Previously, the backslash character \, was being broken out of words in</span><br /><span class="line">lines. Now, the \ character is always interpreted to be part of a word.</span><br /><span class="line"></span><br /><span class="line">Currently, the word characters are:</span><br /><span class="line"></span><br /><span class="line">  &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890._\&#39; and sometimes &#39;&amp;&#39;</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Declaration Buster now also busts up multiparameter REPLACE statements.</span><br /><span class="line"></span><br /><span class="line">So, if you have the Declaration Buster turned on, this:</span><br /><span class="line"></span><br /><span class="line">REPLACE foo with x, bar with y, baz with z</span><br /><span class="line"></span><br /><span class="line">becomes:</span><br /><span class="line"></span><br /><span class="line">REPLACE foo with x</span><br /><span class="line">REPLACE bar with y</span><br /><span class="line">REPLACE baz with z</span><br /><span class="line"></span><br /><span class="line">(which sets us up for the next change)</span><br /><span class="line"></span><br /><span class="line">---</span><br /><span class="line"></span><br /><span class="line">Continuing on with that thought, there is a new parameter in CLICK.INI,</span><br /><span class="line">CHANGE_REPLACE_WITH_TO_ASSIGNMENT, which when set to YES, results in:</span><br /><span class="line"></span><br /><span class="line">REPLACE foo with x</span><br /><span class="line">REPLACE bar with y</span><br /><span class="line">REPLACE baz with z</span><br /><span class="line"></span><br /><span class="line">being processed into:</span><br /><span class="line"></span><br /><span class="line">foo := x</span><br /><span class="line">bar := y</span><br /><span class="line">baz := z</span><br /><span class="line"></span><br /><span class="line">This doesn&#39;t work unless the Declaration Buster is turned on.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
