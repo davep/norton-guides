@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="vgaregs-style.css">
+    <title>VGA registers » VGA » Regs</title>
+    <meta name="description" content="VGA registers">
+    <link rel="prev" href="vgaregs-32381.html">
+    <link rel="next" href="vgaregs-34429.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="vgaregs-about.html">About</a></li>
+
+
+          
+
+<li><a href="vgaregs-32381.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="vgaregs-34429.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>VGA</li>
+            <ul>
+              <li><a href="index.html">Regs</a></li>
+              <li><a href="vgaregs-43932.html">ASM</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Address register                  ATTRIB</span></span><br /><span class="line"></span><br /><span class="line">Layout  b5     PAS  Palette address source</span><br /><span class="line">        b4-b0  ADR  Attribute address</span><br /><span class="line"></span><br /><span class="line">- Palette address source (bit 5)</span><br /><span class="line">        This field is used to control the operation of the dual-ported</span><br /><span class="line">        palette RAM. If the host is to have control of the palette</span><br /><span class="line">        registers during a load operation, it must reset the PAS field</span><br /><span class="line">        to 0 (zero). In order for the VGA display memory to access</span><br /><span class="line">        this palette RAM, the PAS field must be set to 1.</span><br /><span class="line"></span><br /><span class="line">- Attribute address (bits 4-0)</span><br /><span class="line">        Selects which of the registers of the attribute controller</span><br /><span class="line">        will be addressed by the next I/O write cycle.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Note</span></span><br /><span class="line">        Unlike all the other VGA address/data port pairs, the</span><br /><span class="line">        attribute controller has only one port dedicated to it. This</span><br /><span class="line">        port resides at host location 03C0h (write). An internal</span><br /><span class="line">        hardware <span class="ngu">flip-flop</span> is used to multiplex this port to load</span><br /><span class="line">        either this Address attribute register or one of the Attribute</span><br /><span class="line">        registers. When the flip-flop is in the set state, data</span><br /><span class="line">        written to this port is directed to whichever Attribute</span><br /><span class="line">        register index is loaded into the ADR field of this register.</span><br /><span class="line"></span><br /><span class="line">        The flip-flop is controlled indirectly by the host. When the</span><br /><span class="line">        Input status #1 register is read (by an IN instruction), the</span><br /><span class="line">        flip-flop is cleared.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        ; Set overscan color</span><br /><span class="line">        mov     dx,03DAh        ; Input status #1 reg.</span><br /><span class="line">        in      al,dx           ; Dummy input clears flip-flop</span><br /><span class="line">        mov     dx,03C0h        ; Attribute controller reg.</span><br /><span class="line">        mov     al,11h          ; Index of overscan reg.</span><br /><span class="line">        out     dx,al           ; Write address</span><br /><span class="line">        ; Flip-flop now set</span><br /><span class="line">        mov     al,0eh          ; Data value</span><br /><span class="line">        out     dx,al           ; Write data</span><br /><span class="line">        ; Flip-flop now clear</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
