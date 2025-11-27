@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » DOS » Functions</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-130085.html">
+    <link rel="next" href="progref-133693.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-130085.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-75576.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-133693.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 38h (56)        Get or Set Country-Dependent Information</span></span><br /><span class="line"></span><br /><span class="line">    DOS 2.x: Returns country-dependent information for the current</span><br /><span class="line">    country.</span><br /><span class="line"></span><br /><span class="line">    DOS 3.x: Returns country-dependent information for the current country</span><br /><span class="line">    or a specified country, or sets the current country.</span><br /><span class="line"></span><br /><span class="line">         <span class="ngb">Note:</span>        The country-dependent information returned by DOS</span><br /><span class="line">                      2.x is different from that returned by DOS 3.x.</span><br /><span class="line"></span><br /><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"><span class="ngb">  DOS 3</span></span><br /><span class="line"></span><br /><span class="line">     1.  To get country-dependent information for the current country or a</span><br /><span class="line">         specified country:</span><br /><span class="line"></span><br /><span class="line">         <span class="ngb">On entry:</span>    AH         38h</span><br /><span class="line">                      AL         Country code (00h = current country)</span><br /><span class="line">                      BX         16-bit country code (if AL=FFh)</span><br /><span class="line">                      DS:DX      Pointer to a 34-byte memory buffer</span><br /><span class="line"></span><br /><span class="line">         <span class="ngb">Returns:</span>     AX         Error code, if CF (Carry Flag) is set</span><br /><span class="line">                      BX         Country code</span><br /><span class="line">                      DS:DX      Country-dependent information</span><br /><span class="line"></span><br /><span class="line">    To get country-dependent information for the current country, call</span><br /><span class="line">    this Function with 00h in AL. To get information for another country,</span><br /><span class="line">    specify the appropriate country code in AL. For countries with a code</span><br /><span class="line">    above or equal to 255, call this Function with 0FFh in AL and the</span><br /><span class="line">    country code in BX.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">                        Country Information table</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">           size         Meaning</span></span><br /><span class="line">            DW          Binary value indicating the date format</span><br /><span class="line">            5 DB        Currency symbol (ASCIIZ string)</span><br /><span class="line">            2 DB        Thousands separator (ASCIIZ string)</span><br /><span class="line">            2 DB        Decimal separator (ASCIIZ string)</span><br /><span class="line">            2 DB        Date separator (ASCIIZ string)</span><br /><span class="line">            2 DB        Time separator (ASCIIZ string)</span><br /><span class="line">            1 DB        Currency format:</span><br /><span class="line">                            01h = Currency symbol follows value.</span><br /><span class="line">                                  no spaces between symbol and value.</span><br /><span class="line">                            02h = Currency symbol precedes value.</span><br /><span class="line">                                  one space between symbol and value.</span><br /><span class="line">                            03h = Currency symbol follows value.</span><br /><span class="line">                                  one space between symbol and value.</span><br /><span class="line">                            04h = Currency symbol replaces decimal separator.</span><br /><span class="line">                                  (DOS 3.2 and above only)</span><br /><span class="line">            1 DB        Number of significant decimal digits in currency.</span><br /><span class="line">            1 DB        Time format:</span><br /><span class="line">                            Bit 0 = 0 for 12-hour format.</span><br /><span class="line">                            Bit 0 = 1 for 24-hour format.</span><br /><span class="line">            2 DW        Pointer to a FAR procedure that performs</span><br /><span class="line">                        case mapping for the specified country.</span><br /><span class="line">            2 DB        Data list separator (ASCIIZ string)</span><br /><span class="line">            5 DW        Reserved</span><br /><span class="line"></span><br /><span class="line">     2.  To set the current country (DOS 3.0 and above only)</span><br /><span class="line"></span><br /><span class="line">         <span class="ngb">On entry:</span>    AH         38h</span><br /><span class="line">                      AL         Country code</span><br /><span class="line">                      BX         16-bit country code (if AL=FFh)</span><br /><span class="line">                      DX         FFFFh</span><br /><span class="line"></span><br /><span class="line">         <span class="ngb">Returns:</span>     AH         Error code, if CF is set</span><br /><span class="line"></span><br /><span class="line">    To specify a country code larger than 254 (FDh), place FFh in AL and</span><br /><span class="line">    the 16-bit country code in BX.</span><br /><span class="line"></span><br /><span class="line">         <span class="ngb">Notes:</span>       The DOS case-mapping routine whose address (as</span><br /><span class="line">                      segment:offset) is returned with the country</span><br /><span class="line">                      dependent information will map character values from</span><br /><span class="line">                      80h to FFh to their uppercase equivalents. To use</span><br /><span class="line">                      this routine, first place the character to be mapped</span><br /><span class="line">                      to uppercase in the AL register. Then make a FAR</span><br /><span class="line">                      CALL to this routine.  The uppercased character will</span><br /><span class="line">                      be returned in the AL register.</span><br /><span class="line"></span><br /><span class="line">   ─────────────────────────────────────────────────────────────────────────</span><br /><span class="line"><span class="ngb">   DOS 2.10</span></span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">On entry:</span>      AH         38h</span><br /><span class="line">                      AL         00h</span><br /><span class="line">                      DS:DX      Pointer to a 32-byte memory area</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Returns:</span>       AX         Error code, if CF is set</span><br /><span class="line">                      DS:DX      Country-dependent information</span><br /><span class="line"></span><br /><span class="line">    The return information at DS:DX is structured as follows:</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">         Bytes        Contents</span></span><br /><span class="line">           2          Date/time format (see below)</span><br /><span class="line">           2          Currency symbol (ASCIIZ string)</span><br /><span class="line">           2          Thousands separator (ASCIIZ string)</span><br /><span class="line">           2          Decimal separator (ASCIIZ string)</span><br /><span class="line">          24          Reserved</span><br /><span class="line"></span><br /><span class="line">   ─────────────────────────────────────────────────────────────────────────</span><br /><span class="line"><span class="ngb">    The possible date/time format values are as follows:</span></span><br /><span class="line"></span><br /><span class="line">          00h         USA standard         h:m:s   m/d/y</span><br /><span class="line">          01h         Europe standard      h:m:s   d/m/y</span><br /><span class="line">          02h         Japan standard       h:m:s   y:m:d</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

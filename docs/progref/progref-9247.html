@@ -1,0 +1,134 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-8271.html">
+    <link rel="next" href="progref-11738.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-8271.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-11738.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 09H (9)  </span>(IRQ 1)<span class="ngb">    Keyboard</span></span><br /><span class="line"></span><br /><span class="line">    The keyboard generates an INT 9 every time a key is pushed or</span><br /><span class="line">    released.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Notes:</span>         This is a hardware interrupt (IRQ 1) activated by</span><br /><span class="line">                      the make or break of every keystroke.</span><br /><span class="line"></span><br /><span class="line">    The default INT 9 handler in the ROM reads the make and break scan</span><br /><span class="line">    codes from the keyboard and converts them into actions or key codes as</span><br /><span class="line">    follows:</span><br /><span class="line"></span><br /><span class="line">         ■   For ASCII keys, when a make code is encountered, the ASCII code</span><br /><span class="line">             and the scan code for the key are placed in the 32-byte keyboard</span><br /><span class="line">             buffer, which is located at 0:41Eh. The ASCII code and scan code</span><br /><span class="line">             are placed in the buffer at the location addressed by the</span><br /><span class="line">             Keyboard Buffer Tail Pointer (0:041Ch). The Keyboard Buffer Tail</span><br /><span class="line">             Pointer is then incremented by 2, and if it points past the end</span><br /><span class="line">             of the buffer, it is adjusted so that it points to the beginning</span><br /><span class="line">             of the buffer.</span><br /><span class="line"></span><br /><span class="line">         ■   If Ctrl, Alt, or Shift has been pressed, the Shift Status</span><br /><span class="line">             (0:0417h) and Extended Shift Status (0:0418h) bytes are updated.</span><br /><span class="line"></span><br /><span class="line">         ■   If the Ctrl-Alt-Del combination has been pressed, the Reset</span><br /><span class="line">             Flag (0:0472h) is set to 1234h and control is given to the</span><br /><span class="line">             power-on self test (POST). Because the Reset Flag is 1234h, the</span><br /><span class="line">             POST routine bypasses the memory test.</span><br /><span class="line"></span><br /><span class="line">         ■   If the Pause key sequence has been entered, this interrupt</span><br /><span class="line">             enters an indefinite loop. The loop is broken as soon as a valid</span><br /><span class="line">             ASCII keystroke is entered. (The PC Convertible issues an INT</span><br /><span class="line">             15h, Service 41h (Wait on External Event), to execute its pause</span><br /><span class="line">             loop.)</span><br /><span class="line"></span><br /><span class="line">         ■   If the Print Screen key sequence is entered, an INT 05h (Print</span><br /><span class="line">             Screen) is executed.</span><br /><span class="line"></span><br /><span class="line">         ■   If the Control-Break key sequence is entered, an INT 1Bh</span><br /><span class="line">             (Control-Break) is executed.</span><br /><span class="line"></span><br /><span class="line">         ■   For XTs dated 1/10/86 and after, ATs, XT-286s, and PC</span><br /><span class="line">             Convertibles, the INT 9h handler generates an INT 15h, function</span><br /><span class="line">             91h (Interrupt Complete) to signal that a keystroke is</span><br /><span class="line">             available. Also, on these machines, a make or break of the Sys</span><br /><span class="line">             Req key generates an INT 15h, function 85h (System Request Key</span><br /><span class="line">             Pressed).</span><br /><span class="line"></span><br /><span class="line">         ■   For ATs dated 6/10/85 and after, XT-286s, and PC Convertibles,</span><br /><span class="line">             an INT 15h, function 4Fh (Keyboard Intercept) is executed after</span><br /><span class="line">             the scan code has been read from the keyboard port (60h). This</span><br /><span class="line">             allows the user to redefine or remove a keystroke.</span><br /><span class="line"></span><br /><span class="line">    INT 16 provides a standard way to read characters from the keyboard</span><br /><span class="line">    buffer that have been placed there by the INT 9 handler in ROM.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="progref-426964.html">INT 16h,  00h</a></li>
+        
+          <li><a href="progref-19495.html">INT 1Bh</a></li>
+        
+          <li><a href="progref-34669.html">0:417h</a></li>
+        
+          <li><a href="progref-36946.html">0:41Eh</a></li>
+        
+          <li><a href="progref-302236.html">Keyboard Codes</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

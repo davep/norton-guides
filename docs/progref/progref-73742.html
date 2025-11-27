@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » Flags Register</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Flags Register</span></span><br /><span class="line"></span><br /><span class="line">    The flags register contains various bits that control and record the</span><br /><span class="line">    state of the microprocessor, as defined below.</span><br /><span class="line"></span><br /><span class="line">                <span class="ngb">Bit:</span>    15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0</span><br /><span class="line">                       ┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐</span><br /><span class="line">     <span class="ngb">Flags register:</span>   │  │  │  │  │OF│DF│IF│TF│SF│ZF│  │AF│  │PF│  │CF│</span><br /><span class="line">                       └──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┛</span><br /><span class="line"></span><br /><span class="line">  ────────────────────────────────── <span class="ngb">Flags</span> ──────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">O</span>verflow            Set when an arithmetic overflow occurred.  An</span><br /><span class="line">                           arithmetic overflow occurs when the size of a</span><br /><span class="line">                           computation exceeds the size of the</span><br /><span class="line">                           destination.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">D</span>irection           Set for auto-decrement with string</span><br /><span class="line">                           instructions, clear for auto-increment.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">I</span>nterrupt Enable    Interrupts are enabled as long as this flag is</span><br /><span class="line">                           set.  When this flag is cleared, interrupts</span><br /><span class="line">                           except for nonmaskable interrupts are disabled.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">T</span>rap                This flag is used by debuggers to single step</span><br /><span class="line">                           through programs.  When this flag is set, an</span><br /><span class="line">                           INT 3 is generated after every instruction.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">S</span>ign                Set when the high-order bit of the result is 1.</span><br /><span class="line">                           In other words, S = 0 for positive numbers and</span><br /><span class="line">                           S = 1 for negative numbers.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Z</span>ero                Set whenever the result is 0.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">A</span>uxiliary Carry     Set when the is a carry out of the lower half</span><br /><span class="line">                           of an 8 or 16 bit number, or when there is a</span><br /><span class="line">                           borrow from the upper to the lower half.  This</span><br /><span class="line">                           flag is used mainly by the decimal-arithmetic</span><br /><span class="line">                           instructions.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">P</span>arity Flag         Set if there is an even number of 1-bits in the</span><br /><span class="line">                           result.  Cleared if there is an odd number of</span><br /><span class="line">                           1-bits.  Often used by communications programs</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">C</span>arry Flag          Set if there was a carry out of, or a borrow</span><br /><span class="line">                           into the high-order bit of the result.  This</span><br /><span class="line">                           flag is useful for propagating carries and</span><br /><span class="line">                           borrows for multi-word numbers.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

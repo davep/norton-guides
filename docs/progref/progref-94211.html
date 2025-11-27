@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » DOS » Functions</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-93419.html">
+    <link rel="next" href="progref-96745.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-93419.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-75576.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-96745.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 0Fh (15)        Open File, Using FCBs</span></span><br /><span class="line"></span><br /><span class="line">    Open an existing file using a File Control Block (FCB).</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">On entry:</span>      AH         0Fh</span><br /><span class="line">                      DS:DX      Pointer to an unopened FCB</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Returns:</span>       AL         00h       If file successfully opened</span><br /><span class="line">                                 FFh       If file not found</span><br /><span class="line"></span><br /><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">  The FCB is initialized as follows:</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">    Offset  Length  Field           Initialized to       Initialized by</span></span><br /><span class="line"></span><br /><span class="line">      00h     1     Drive code      Drive specified           User</span><br /><span class="line">      01h     8     Filename        Filename                  User</span><br /><span class="line">      09h     3     Extension       Filename extension        User</span><br /><span class="line">      0Ch     2     Current Block   00h                       DOS</span><br /><span class="line">      0Eh     2     Record Size     80h                       DOS; see below</span><br /><span class="line">      10h     4     File Size       Value in file directory   DOS</span><br /><span class="line">      14h     2     Date            Value in file directory   DOS</span><br /><span class="line">      16h     2     Time            Value in file directory   DOS</span><br /><span class="line">      18h     8     Reserved</span><br /><span class="line">      20h     1     Current Record  See notes below           User</span><br /><span class="line">      21h     4     Random Record   See notes below           User</span><br /><span class="line">                    Number</span><br /><span class="line"></span><br /><span class="line">    An extended File Control Block is used to access files with special</span><br /><span class="line">    attributes. An extended File Control Block has three additional</span><br /><span class="line">    fields, starting at offset -07h (minus 7), as follows:</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">    Offset  Length  Field             Initialized to     Initialized by</span></span><br /><span class="line"></span><br /><span class="line">     -07h     1     Extended FCB ID   FFh                     User</span><br /><span class="line">     -06h     5     Reserved          Must be zeros           User</span><br /><span class="line">     -01h     1     Attribute Byte    File attribute          User</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Notes:</span>         If the drive code was 0 (default drive), this</span><br /><span class="line">                      function changes it to the current default drive,</span><br /><span class="line">                      where A = 1, B = 2, etc.</span><br /><span class="line"></span><br /><span class="line">                      The record-size field is set by DOS to 80h (128)</span><br /><span class="line">                      bytes. If you want to use a different value, change</span><br /><span class="line">                      the field after the file has been opened and before</span><br /><span class="line">                      you perform any disk operation. If the record size</span><br /><span class="line">                      is less than 64 bytes, all four bytes of this field</span><br /><span class="line">                      are used; otherwise only the lower three bytes are</span><br /><span class="line">                      used.</span><br /><span class="line"></span><br /><span class="line">                      The current record field is used for sequential</span><br /><span class="line">                      read/write operations, and must be set before</span><br /><span class="line">                      performing any sequential read/writes. Set the</span><br /><span class="line">                      current record field to the record number that you</span><br /><span class="line">                      wish to access within the current block. The current</span><br /><span class="line">                      record field can take on any value between 0 and</span><br /><span class="line">                      127.</span><br /><span class="line"></span><br /><span class="line">                      The random record number field must be set before</span><br /><span class="line">                      any random read/write operations can be performed.</span><br /><span class="line">                      Set this field to the record number relative to the</span><br /><span class="line">                      beginning of the file that you wish to access.</span><br /><span class="line"></span><br /><span class="line">                      File Control Blocks are a holdover from DOS 1. It is</span><br /><span class="line">                      preferable to manipulate files using the newer DOS</span><br /><span class="line">                      services that deal with files via handles. (All file</span><br /><span class="line">                      functions above 2Eh use handles rather than FCBs.)</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="progref-227007.html">FCB</a></li>
+        
+          <li><a href="progref-137767.html">3Dh</a></li>
+        
+          <li><a href="progref-96745.html">10h</a></li>
+        
+          <li><a href="progref-119708.html">29h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

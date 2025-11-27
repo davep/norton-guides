@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » DOS » Functions</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-196196.html">
+    <link rel="next" href="progref-199209.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-196196.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-75576.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-199209.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 5F02h (95-2)    Get Redirection List Entry                 ≥ DOS 3.1</span></span><br /><span class="line"></span><br /><span class="line">    Returns information on one entry in the network redirection list.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">On entry:</span>      AH         5Fh</span><br /><span class="line">                      AL         02h</span><br /><span class="line">                      BX         Index into redirection list</span><br /><span class="line">                      DS:SI      Pointer to a 128-byte buffer for local</span><br /><span class="line">                                 device name</span><br /><span class="line">                      ES:DI      Pointer to a 128-byte buffer for network</span><br /><span class="line">                                 name</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Returns:</span>       AX         Error code, if CF is set</span><br /><span class="line">                      BH         Device status flag</span><br /><span class="line">                                     Bit  0 = 0 if device valid</span><br /><span class="line">                                              1 if device invalid</span><br /><span class="line">                      BL         Device type (3=printer, 4=disk drive)</span><br /><span class="line">                      CX         Parameter saved via Function 5F03</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Destroys:</span>      DX and BP are both changed</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Error codes:</span>   1          Network not loaded</span><br /><span class="line">                      18         No more files</span><br /><span class="line"></span><br /><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    Subfunction 02 of Function 5Fh returns an entry in the network</span><br /><span class="line">    redirection list. The list itself is created via Subfunction 03.</span><br /><span class="line"></span><br /><span class="line">    To call Subfunction 02, place the index value you wish to inspect in</span><br /><span class="line">    BX. The local device name will be returned in a 16-byte area pointed</span><br /><span class="line">    to by DS:SI, and its network name will be returned in a 128-byte area</span><br /><span class="line">    pointed to by ES:DI. BL returns a device-type code (3 for a printer, 4</span><br /><span class="line">    for a disk drive), and CX returns a parameter (specified by means of</span><br /><span class="line">    Subfunction 03) associated with the device.</span><br /><span class="line"></span><br /><span class="line">    To list all devices on the network, execute this function repeatedly,</span><br /><span class="line">    starting with an index (BX) value of 00h, incrementing BX by 1 until</span><br /><span class="line">    AX reports an error code of 18.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="progref-199209.html">5F03h</a></li>
+        
+          <li><a href="progref-200982.html">5F04h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

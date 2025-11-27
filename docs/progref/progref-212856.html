@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » DOS » Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-212805.html">
+    <link rel="next" href="progref-214259.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-212805.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-202334.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-214259.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 2Fh... (47)          Multiplex Interrupt                         Overview</span></span><br /><span class="line"></span><br /><span class="line">    Defines a general interface between two processes. Applications using</span><br /><span class="line">    this interrupt must define specific functions and parameters.</span><br /><span class="line">    Functions currently defined by DOS include the resident portions of</span><br /><span class="line">    PRINT, ASSIGN, SHARE, and APPEND.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">On entry:</span>      AH         Multiplex number</span><br /><span class="line">                      AL         Function to be performed by multiplex handler</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Returns:</span>       AX         Error code</span><br /><span class="line"></span><br /><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    A multiplex handlers is referenced by its &#34;multiplex number,&#34; in the</span><br /><span class="line">    AH register. The choice of multiplex number is arbitrary; you may</span><br /><span class="line">    assign any number to your routine between 80h and FFh; 0 through 7Fh</span><br /><span class="line">    are reserved for use by DOS.</span><br /><span class="line"></span><br /><span class="line">    The function to be performed by the multiplex handler is specified in</span><br /><span class="line">    AL. Other registers may hold other parameters, as needed (see the</span><br /><span class="line">    separate descriptions of the multiplex handlers implemented by DOS).</span><br /><span class="line"></span><br /><span class="line">    All multiplex handlers must define a call for AL = 0 (Get Installed</span><br /><span class="line">    State). AL values of F8h to FFh are reserved by DOS.</span><br /><span class="line"></span><br /><span class="line">    Multiplex Handlers Implemented or Reserved by DOS</span><br /><span class="line"></span><br /><span class="line">               AH       1h      Resident part of PRINT</span><br /><span class="line">                        2h      Resident part of ASSIGN</span><br /><span class="line">                       10h      Resident part of SHARE</span><br /><span class="line">                       B7h      Resident part of APPEND</span><br /><span class="line"></span><br /><span class="line">    All other values from AH = 0 to AH = 7Fh are reserved by DOS.</span><br /><span class="line"></span><br /><span class="line">    Interrupt 2Fh is available in DOS versions 3.1 and later.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

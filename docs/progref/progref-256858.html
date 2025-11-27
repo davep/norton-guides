@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Xtensions » EMS Driver</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-256440.html">
+    <link rel="next" href="progref-257728.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-256440.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-251183.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-257728.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 67h,  4Eh  GET OR SET PAGE MAP                                   ≥ 3.2</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">On entry:</span></span><br /><span class="line">        AH = 4Eh</span><br /><span class="line">        AL = 00h if getting mapping registers</span><br /><span class="line">             01h if setting mapping registers</span><br /><span class="line">             02h if getting and setting mapping registers at once</span><br /><span class="line">             03h if getting size of page-mapping array</span><br /><span class="line">        DS:SI = pointer to array holding information (AL=01/02)</span><br /><span class="line">        ES:DI = pointer to array to receive information (AL=00/02)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span></span><br /><span class="line">        AH = status</span><br /><span class="line">            00h successful</span><br /><span class="line">                AL = bytes in page-mapping array (subfunction 03h only)</span><br /><span class="line">                array pointed to by ES:DI receives mapping info (AL=00/02)</span><br /><span class="line">            80h internal error</span><br /><span class="line">            81h hardware malfunction</span><br /><span class="line">            84h undefined function requested</span><br /><span class="line">            8Fh undefined subfunction parameter</span><br /><span class="line">            A3h contents of source array corrupted (EMS 4.0?)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span> this function was designed to be used by multitasking operating</span><br /><span class="line">      systems and should not ordinarily be used by appplication software.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

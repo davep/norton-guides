@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » Device Adapters</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="progref-69857.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Color Graphics Adapter</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">        3D4h    6845 Index Register (Output)</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">        3D5h    6845 Data Registers</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">                Reg#    Meaning                Text Graphics   Unit</span></span><br /><span class="line">                  R0    Horizontal Total        97      53      Char</span><br /><span class="line">                  R1    Horizontal Displayed    80      45      Char</span><br /><span class="line">                  R2    H.Sync position         82      46      Char</span><br /><span class="line">                  R3    H.Sync width            15       8      Char</span><br /><span class="line">                  R4    Vertical Total          25      91      Rows</span><br /><span class="line">                  R5    Vertical Adjust          6       2      Lines</span><br /><span class="line">                  R6    Vertical Displayed      25      87      Char</span><br /><span class="line">                  R7    V.Sync Position         25      87      Rows</span><br /><span class="line">                  R8    Interlace Mode           2       2</span><br /><span class="line">                  R9    Max.ScanLine Address    13       3</span><br /><span class="line">                  R10   Horizontal Display      12       0      Lines</span><br /><span class="line">                  R11   Horizontal Display       0       0      Lines</span><br /><span class="line">                  R12   Screen Start Address (H) 0       0</span><br /><span class="line">                  R13   Screen Start Address (L) 0       0</span><br /><span class="line">                  R14   Cursor Address (H)       0       0</span><br /><span class="line">                  R15   Cursor Address (L)       0       0</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">        3D8h    Mode Register (Output)</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">                   Bit</span></span><br /><span class="line">                   <span class="ngu">7 6 5 4 3 2 1 0</span></span><br /><span class="line">                   x x . . . . . .  not used</span><br /><span class="line">                   . . x . . . . .  Blinking</span><br /><span class="line">                   . . . x . . . .  640x200 B&amp;W</span><br /><span class="line">                   . . . . x . . .  Enable Video</span><br /><span class="line">                   . . . . . x . .  B&amp;W Mode</span><br /><span class="line">                   . . . . . . x .  320x200 Graphics</span><br /><span class="line">                   . . . . . . . x  80x25 Mode</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">        3D9h    Color Register (Output)</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">                   Bit</span></span><br /><span class="line">                   <span class="ngu">7 6 5 4 3 2 1 0</span></span><br /><span class="line">                   x x . . . . . .  not used</span><br /><span class="line">                   . . x . . . . .  320x200 Color set</span><br /><span class="line">                   . . . x . . . .  Alt. Back Colors</span><br /><span class="line">                   . . . . x . . .  Intensify RGB</span><br /><span class="line">                   . . . . . x . .  Blue</span><br /><span class="line">                   . . . . . . x .  Green</span><br /><span class="line">                   . . . . . . . x  Red</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">        3DAh    Status Register (Input)</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">                   Bit</span></span><br /><span class="line">                   <span class="ngu">7 6 5 4 3 2 1 0</span></span><br /><span class="line">                   x x x x . . . . not used</span><br /><span class="line">                   . . . . x . . .  Alpha Data</span><br /><span class="line">                   . . . . . x . .  Pen Switch off</span><br /><span class="line">                   . . . . . . x .  Light Pen Triggered</span><br /><span class="line">                   . . . . . . . x  Video Sync</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">        3DBh    Clear Light pen Latch (Output)</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">        3DCh    Set Light pen Latch (Output)</span></span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

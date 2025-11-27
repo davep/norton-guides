@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-336216.html">
+    <link rel="next" href="progref-343981.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-336216.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-314851.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-343981.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 10h,  11h (17)       Character Generator                              EGA</span></span><br /><span class="line"></span><br /><span class="line">    Changes fonts on the Enhanced Graphics Adapter (EGA) to predefined</span><br /><span class="line">    fonts or user-defined fonts in both text and graphics modes.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">On entry:</span>      AH         11h</span><br /><span class="line">                      AL         Subservice</span><br /><span class="line">                      00h - Load user-defined font (text modes)</span><br /><span class="line">                                 ES:BP   Pointer to font table</span><br /><span class="line">                                 CX      Character count</span><br /><span class="line">                                 DX      Table Character offset</span><br /><span class="line">                                 BL      Font block to load (0-3)</span><br /><span class="line">                                 BH      Bytes per Character</span><br /><span class="line"></span><br /><span class="line">                      01h - Load 8 x 14 character font (monochrome set)</span><br /><span class="line">                                 BL       Font block to load (0-3)</span><br /><span class="line"></span><br /><span class="line">                      02h - Load 8 x 8 double-dot character font (text modes)</span><br /><span class="line">                                 BL       Font block to load (0-3)</span><br /><span class="line"></span><br /><span class="line">                      03h - Set the block specifier (text modes)</span><br /><span class="line">                                 BL  Bits 3, 2: Select block (0-3) to use</span><br /><span class="line">                                         when bit 3 of attribute byte is 1</span><br /><span class="line">                                     Bits 1, 0: Select block (0-3) to use</span><br /><span class="line">                                         when bit 3 of attribute byte is 0</span><br /><span class="line"></span><br /><span class="line">                      04h - Load 8 x 16 character font (VGA)</span><br /><span class="line">                                 BL       Font block to load</span><br /><span class="line"></span><br /><span class="line">                      10h - Load user-defined text font (text modes)</span><br /><span class="line">                                 ES:BP    Pointer to font table</span><br /><span class="line">                                 CX       Character count</span><br /><span class="line">                                 DX       Table character offset</span><br /><span class="line">                                 BL       Font block to load (0-3)</span><br /><span class="line">                                 BH       Bytes per character</span><br /><span class="line"></span><br /><span class="line">                      11h - Load 8 x 14 character font (monochrome set)</span><br /><span class="line">                                 (text modes)</span><br /><span class="line">                                 BL       Font block to load (0-3)</span><br /><span class="line"></span><br /><span class="line">                      12h - Load 8 x 8 double-dot character font (text modes)</span><br /><span class="line">                                 BL       Font block to load (0-3)</span><br /><span class="line"></span><br /><span class="line">                      20h - Load user-defined 8 x 8 character font (graphics</span><br /><span class="line">                                 mode)</span><br /><span class="line">                                 ES:BP    Pointer to user graphics table for</span><br /><span class="line">                                          graphics characters 128-255.</span><br /><span class="line">                                          INT 1Fh is set to this pointer.</span><br /><span class="line"></span><br /><span class="line">                      21h - Load user-defined character font (graphics mode)</span><br /><span class="line">                                 ES:BP    Pointer to user graphics table for</span><br /><span class="line">                                          graphics characters 0-255. INT 43h</span><br /><span class="line">                                          is pointer.</span><br /><span class="line">                                 CX       Bytes per Character</span><br /><span class="line">                                 BL       Number of Rows</span><br /><span class="line">                                          00h - DL contains number of rows</span><br /><span class="line">                                          01h - 14 (0Eh) rows</span><br /><span class="line">                                          02h - 25 (19h) rows</span><br /><span class="line">                                          03h - 43 (2Bh) rows</span><br /><span class="line"></span><br /><span class="line">                      22h - Load ROM 8 x 14 character font (graphics mode)</span><br /><span class="line">                                 BL       Number of Rows (Same format as</span><br /><span class="line">                                          Subservice 21h)</span><br /><span class="line"></span><br /><span class="line">                      23h - Load ROM 8 x 8 double-dot character font</span><br /><span class="line">                                 (graphics mode)</span><br /><span class="line">                                 BL       Number of Rows (Same format as</span><br /><span class="line">                                          Subservice 21h)</span><br /><span class="line"></span><br /><span class="line">                      24h - Load 8 x 16 character font</span><br /><span class="line">                                 BL       Number of Rows (Same format as</span><br /><span class="line">                                          Subservice 21h)</span><br /><span class="line"></span><br /><span class="line">                      30h - Return Font Information</span><br /><span class="line">                                 BH       Type of Pointer to return</span><br /><span class="line">                                          00h - Current INT 1Fh</span><br /><span class="line">                                                pointer</span><br /><span class="line">                                          01h - Current INT 44h</span><br /><span class="line">                                                    pointer</span><br /><span class="line">                                          02h - ROM 8 x 14 font pointer</span><br /><span class="line">                                          03h - ROM 8 x 8 double-dot font</span><br /><span class="line">                                                    pointer</span><br /><span class="line">                                          04h - ROM 8 x 8 double-dot font</span><br /><span class="line">                                                    pointer (top)</span><br /><span class="line">                                          05h - ROM text alternate 9 x 14</span><br /><span class="line">                                                    pointer</span><br /><span class="line">                                          06h -     8 x 16 (VGA)</span><br /><span class="line">                                          07h -     9 x 16 (VGA)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Returns:</span>       (Only Subservice 30h - Return Font Information)</span><br /><span class="line">                      ES:BP      Pointer to Table specified in BH</span><br /><span class="line">                      CX         Scan lines per character</span><br /><span class="line">                      DL         Rows</span><br /><span class="line"></span><br /><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Notes:</span>         Subservices 00h, 01h, and 02h perform a mode set,</span><br /><span class="line">                      completely altering the video state but not clearing</span><br /><span class="line">                      the display buffer (the screen is not cleared).</span><br /><span class="line"></span><br /><span class="line">                      Subservices 10h, 11h, and 12h are the same as 00h,</span><br /><span class="line">                      01h, and 02h, respectively, except for the following</span><br /><span class="line">                      differences:</span><br /><span class="line"></span><br /><span class="line">                      ■ Subservices 10h, 11h, and 12h rely on page 0 as</span><br /><span class="line">                        being the active page</span><br /><span class="line">                      ■ The number of bytes per character is recalculated</span><br /><span class="line">                      ■ The number of rows is recalculated</span><br /><span class="line">                      ■ The length of the regenerative buffer is re-</span><br /><span class="line">                        calculated</span><br /><span class="line">                      ■ Five cursor control (CRTC) registers are re-</span><br /><span class="line">                        programmed</span><br /><span class="line"></span><br /><span class="line">                      Subservices 10h-23h should only be called</span><br /><span class="line">                      immediately after a mode set.</span><br /><span class="line"></span><br /><span class="line">                      Subservice 03h (Set the block specifier) lets you</span><br /><span class="line">                      display two character sets at the same time, each</span><br /><span class="line">                      from one block of 256 characters, thus allowing for</span><br /><span class="line">                      a 512-character set. When a 512-character set is</span><br /><span class="line">                      used, it is recommended that you set the color</span><br /><span class="line">                      planes with 8 consistent colors by executing Service</span><br /><span class="line">                      10h, Subservice 00h (AX=1000h) and setting BX =</span><br /><span class="line">                      0712h.</span><br /><span class="line"></span><br /><span class="line">                      Each increment of 64K EGA memory allows another font</span><br /><span class="line">                      block to be used. The default of 64K allows one font</span><br /><span class="line">                      block, whereas an EGA memory of 256K allows up to</span><br /><span class="line">                      four font block. Each block holds definitions for</span><br /><span class="line">                      256 characters.</span><br /><span class="line"></span><br /><span class="line">                      When defining the character set in graphics modes, a</span><br /><span class="line">                      full set of 256 characters MUST be supplied (compare</span><br /><span class="line">                      this with character-set definitions in the text</span><br /><span class="line">                      modes, where any number of characters--up to 256 per</span><br /><span class="line">                      block--may be loaded).</span><br /><span class="line"></span><br /><span class="line">                      Subservice 21h will load 256 character definitions.</span><br /><span class="line">                      Video modes 4, 5, and 6 use only the first 128</span><br /><span class="line">                      characters. All other modes use all 256 characters.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="progref-343981.html">INT 10h,  12h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

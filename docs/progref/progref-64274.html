@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » Low Memory Usage</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-64207.html">
+    <link rel="next" href="progref-65235.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-64207.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-27119.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-65235.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">F000:FFF0h               FAR JMP to Beginning of Power-On Self Test (POST)</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngb">Length: 5 bytes</span></span><br /><span class="line"></span><br /><span class="line">    Located at this address is a far jump to the beginning of the Power-On</span><br /><span class="line">    Self Test (POST).</span><br /><span class="line"></span><br /><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    See POST for more details on what it does. The reason this address is</span><br /><span class="line">    used for this purpose is that when the 8086 family of microprocessors</span><br /><span class="line">    receive power, the CS register is set to FFFFh and the IP register to</span><br /><span class="line">    0, which is exactly the same address as this address F000:FFF0h.</span><br /><span class="line"></span><br /><span class="line">    If you wish to reboot (either warm or cold) a system, perform a far</span><br /><span class="line">    jump to this address. This will force the POST to take control, which</span><br /><span class="line">    will reboot the system. The POST looks at the word at address 0:472h</span><br /><span class="line">    to determine whether a warm boot or a cold boot should be performed.</span><br /><span class="line">    If the value at 0:472h is 1234h, then a warm boot is performed;</span><br /><span class="line">    otherwise the boot is cold.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="progref-47173.html">0:472h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-359101.html">
+    <link rel="next" href="progref-365299.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-359101.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-350222.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-365299.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 13h,  04h (4)        Verify Sectors                                   all</span></span><br /><span class="line"></span><br /><span class="line">    Verifies one or more fixed disk or diskette sectors.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">On entry:</span>      AH         04h</span><br /><span class="line">                      AL         Number of sectors to verify</span><br /><span class="line">                      CH         Cylinder number (10-bit value; upper 2 bits</span><br /><span class="line">                                 in CL)</span><br /><span class="line">                      CL         Starting sector number</span><br /><span class="line">                      DH         Head number</span><br /><span class="line">                      DL         Drive number</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Returns:</span>       AH         Status of operation (See Service 01h)</span><br /><span class="line">                      AL         Number of sectors verified</span><br /><span class="line">                      CF         Set if error, cleared otherwise</span><br /><span class="line"></span><br /><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    Verifies the specified number of sectors starting at the specified</span><br /><span class="line">    location (head, cylinder, and track) on the disk. The verification</span><br /><span class="line">    process consists of checking that the sectors can be found and read</span><br /><span class="line">    (checking address fields) and that the Cyclic Redundancy Check (CRC)</span><br /><span class="line">    is correct. No memory area is needed for this operation.</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Notes:</span>         Values in DL less than 80h specify floppy disks;</span><br /><span class="line">                      values greater than 80h specify fixed disks. For</span><br /><span class="line">                      example, 0 means the first floppy diskette, while</span><br /><span class="line">                      80h means the first fixed disk.</span><br /><span class="line"></span><br /><span class="line">                      The cylinder number is a ten-bit quantity (0 through</span><br /><span class="line">                      1023). Its most significant two bits are in bits 7</span><br /><span class="line">                      and 6 of CL; the remaining eight bits are in CH. The</span><br /><span class="line">                      starting sector number fits in the low-order portion</span><br /><span class="line">                      (lower 6 bits) of CL.</span><br /><span class="line"></span><br /><span class="line">                      The value returned in AL (number of sectors</span><br /><span class="line">                      verified) may not give the correct number of</span><br /><span class="line">                      sectors, even though no error occurred while</span><br /><span class="line">                      verifying. Use the results of the Carry flag and AH</span><br /><span class="line">                      (status flag) to determine the status of the</span><br /><span class="line">                      operation.</span><br /><span class="line"></span><br /><span class="line">                      The sectors verified must all be on the same</span><br /><span class="line">                      cylinder and same side for diskettes, while a hard</span><br /><span class="line">                      disk can verify up to 255 sectors at one time.</span><br /><span class="line"></span><br /><span class="line">                      If an error is encountered verifying a sector, use</span><br /><span class="line">                      Service 0h to reset the drive and retry the</span><br /><span class="line">                      operation. It is recommended that at least 3 retries</span><br /><span class="line">                      be attempted before an error is signalled, since the</span><br /><span class="line">                      error may have resulted from the diskette motor not</span><br /><span class="line">                      being up to speed.</span><br /><span class="line"></span><br /><span class="line">                      For the AT, XT-286, and PC Convertible, the BIOS</span><br /><span class="line">                      executes INT 15h, Service 90h (Device Busy), for the</span><br /><span class="line">                      diskette (Type = 01h) and the fixed disk (Type =</span><br /><span class="line">                      00h) prior to waiting for the interrupt. INT 15h,</span><br /><span class="line">                      Service 91h (Interrupt Complete), is executed upon</span><br /><span class="line">                      completion. Also diskette operations that require</span><br /><span class="line">                      the diskette motor to be on will call INT 15h,</span><br /><span class="line">                      Service 90 (Device Busy), with the type equal to</span><br /><span class="line">                      &#34;Diskette Drive Motor Start&#34; (Type = FDh). This</span><br /><span class="line">                      allows the system to perform another task while the</span><br /><span class="line">                      drive motor is waiting to get up to speed.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="progref-353185.html">INT 13h,  01h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

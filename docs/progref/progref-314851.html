@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><a class="line" href="progref-316054.html">INT 10h,  00h (0)        Set Video Mode</a><br /><a class="line" href="progref-318191.html">INT 10h,  01h (1)        Set Cursor Size</a><br /><a class="line" href="progref-319689.html">INT 10h,  02h (2)        Set Cursor Position</a><br /><a class="line" href="progref-320861.html">INT 10h,  03h (3)        Read Cursor Position and Size</a><br /><a class="line" href="progref-323226.html">INT 10h,  04h (4)        Read Light-Pen Position</a><br /><a class="line" href="progref-324261.html">INT 10h,  05h (5)        Set Active Display Page</a><br /><a class="line" href="progref-325158.html">INT 10h,  06h (6)        Scroll Window Up</a><br /><a class="line" href="progref-326192.html">INT 10h,  07h (7)        Scroll Window Down</a><br /><a class="line" href="progref-327228.html">INT 10h,  08h (8)        Read Character and Attribute At Cursor</a><br /><a class="line" href="progref-328122.html">INT 10h,  09h (9)        Write Character and Attribute at Cursor</a><br /><a class="line" href="progref-329545.html">INT 10h,  0Ah (10)       Write Character at Cursor</a><br /><a class="line" href="progref-330816.html">INT 10h,  0Bh (11)       Set Color Palette</a><br /><a class="line" href="progref-332196.html">INT 10h,  0Ch (12)       Write Pixel</a><br /><a class="line" href="progref-333377.html">INT 10h,  0Dh (13)       Read Pixel</a><br /><a class="line" href="progref-334304.html">INT 10h,  0Eh (14)       Write Character in Teletype (TTY) Mode</a><br /><a class="line" href="progref-335631.html">INT 10h,  0Fh (15)       Get Current Video Mode</a><br /><a class="line" href="progref-336216.html">INT 10h,  10h (16)       Set Palette Registers                      PCjr, EGA</a><br /><a class="line" href="progref-339664.html">INT 10h,  11h (17)       Character Generator                              EGA</a><br /><a class="line" href="progref-343981.html">INT 10h,  12h (18)       Alternate Select                                 EGA</a><br /><a class="line" href="progref-345723.html">INT 10h,  13h (19)       Write Character String                          many</a><br /><a class="line" href="progref-347598.html">INT 10h,  14h (20)       LCD Handler                              Convertible</a><br /><a class="line" href="progref-348614.html">INT 10h,  15h (21)       Return Physical Display Characteristics  Convertible</a><br /><a class="line" href="progref-350145.html">INT 10h,  16h (22)       Get/Set type of dislpay                          VGA</a><br /></pre>
+  
+  
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

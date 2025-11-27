@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Xtensions » Fossil Driver</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-287393.html">
+    <link rel="next" href="progref-289880.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-287393.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-268819.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-289880.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 14h,  1Bh    Return information about the driver</span></span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">Entry:</span>  CX         Size of user info buffer in bytes</span><br /><span class="line"></span><br /><span class="line">              DX         Port number</span><br /><span class="line"></span><br /><span class="line">              ES         Segment of user info buffer</span><br /><span class="line"></span><br /><span class="line">              DI         Offset into ES of user info buffer</span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">Exit:</span>   AX         Number of bytes actually transferred</span><br /><span class="line"></span><br /><span class="line">    Transfer information about the driver and its current status to the user</span><br /><span class="line">    for use in determining,  at the application level, limits of the driver.</span><br /><span class="line">    Designed to assist  &#34;generic&#34; applications  to adjust to &#34;foreign&#34; gear.</span><br /><span class="line"></span><br /><span class="line">    The data structure currently returned by the driver is as follows (sorry</span><br /><span class="line">    but you&#39;ll have to live with assembly syntax):</span><br /><span class="line"></span><br /><span class="line">        info    equ     $               ; define begin of structure</span><br /><span class="line">        strsiz  dw      info_size       ; size of the structure in bytes</span><br /><span class="line">        majver  db      curr_fossil     ; FOSSIL spec driver conforms to</span><br /><span class="line">        minver  db      curr_rev        ; rev level of this specific driver</span><br /><span class="line">        ident   dd      id_string       ; &#34;FAR&#34; pointer to ASCII ID string</span><br /><span class="line">        ibufr   dw      ibsize          ; size of the input buffer (bytes)</span><br /><span class="line">        ifree   dw      ?               ; number of bytes left in buffer</span><br /><span class="line">        obufr   dw      obsize          ; size of the output buffer (bytes)</span><br /><span class="line">        ofree   dw      ?               ; number of bytes left in the buffer</span><br /><span class="line">        swidth  db      screen_width    ; width of screen on this adapter</span><br /><span class="line">        sheight db      screen_height   ; height of screen    &#34;     &#34;</span><br /><span class="line">        baud    db      ?               ; ACTUAL baud rate, computer to modem</span><br /><span class="line">        info_size equ $-info</span><br /><span class="line"></span><br /><span class="line">    The ident string should be  null-terminated,  and NOT contain a newline.</span><br /><span class="line">    The baud rate byte contains the bits that  Function 00h would use to set</span><br /><span class="line">    the port to that speed.</span><br /><span class="line"></span><br /><span class="line">    The fields related to a particular port (buffer size,  space left in the</span><br /><span class="line">    buffer,  baud rate) will be undefined if port FFh  or an invalid port is</span><br /><span class="line">    contained in DX.</span><br /><span class="line"></span><br /><span class="line">    Additional information will always be passed after these,  so that,  for</span><br /><span class="line">    example, offset &#34;sheight&#34; will never change with FOSSIL revision changes.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » Low Memory Usage</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-30445.html">
+    <link rel="next" href="progref-32953.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-30445.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-27119.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-32953.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">0:410h                   Equipment List</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb"> Length: 2 bytes</span></span><br /><span class="line"></span><br /><span class="line">    Contains a list of the hardware installed on the system.</span><br /><span class="line"></span><br /><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">                        Equipment List</span></span><br /><span class="line"></span><br /><span class="line">  <span class="ngu">F E D C B A 9 8  7 6 5 4 3 2 1 0</span></span><br /><span class="line">  x x . . . . . .  . . . . . . . .  Number of printers installed</span><br /><span class="line">  . . x . . . . .  . . . . . . . .  Internal modem installed</span><br /><span class="line">  . . . x . . . .  . . . . . . . .  Game adapter installed (always 1 on PCJr)</span><br /><span class="line">  . . . . x x x .  . . . . . . . .  Number of RS-232 ports</span><br /><span class="line">  . . . . . . . x  . . . . . . . .  Reserved</span><br /><span class="line">  . . . . . . . .  x x . . . . . .  Number of diskettes - 1 (0=1 diskette)</span><br /><span class="line">  . . . . . . . .  . . x x . . . .  Initial video mode (see below)</span><br /><span class="line">  . . . . . . . .  . . . . x x . .  Reserved</span><br /><span class="line">  . . . . . . . .  . . . . . . x .  Math coprocessor installed</span><br /><span class="line">  . . . . . . . .  . . . . . . . x  1=diskettes present, 0=no diskettes</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">                     Initial video mode</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">               Value                 Meaning</span></span><br /><span class="line">                 00                  Reserved</span><br /><span class="line">                 01                  40 x 25 Color</span><br /><span class="line">                 10                  80 x 25 Color</span><br /><span class="line">                 11                  80 x 25 Monochrome</span><br /><span class="line"></span><br /><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Notes:</span>         Use INT 11h to access the equipment information via</span><br /><span class="line">                      the ROM BIOS interface.</span><br /><span class="line"></span><br /><span class="line">                      The equipment list is initialized during the power-</span><br /><span class="line">                      up test (POST).</span><br /><span class="line"></span><br /><span class="line">                      For the IBM PC, XT, and PCjr, bits 2 and 3 lists the</span><br /><span class="line">                      amount of RAM installed on the system board in</span><br /><span class="line">                       increments of 16K. For example, 00 means 16K, while</span><br /><span class="line">                      11 means 64K.</span><br /><span class="line"></span><br /><span class="line">                      Bit 2 on the XT-286 reports whether or not a</span><br /><span class="line">                      pointing device is installed.</span><br /><span class="line"></span><br /><span class="line">                      Bit 0 indicates only whether the system has one or</span><br /><span class="line">                      more diskette drives. Refer to bits 6 and 7 to find</span><br /><span class="line">                      out how many diskettes are actually present. To</span><br /><span class="line">                      determine the number of hard disks installed, use</span><br /><span class="line">                      INT 13h, Function 8.</span><br /><span class="line"></span><br /><span class="line">                      If the DIP switches for PCs and XTs are not set</span><br /><span class="line">                      correctly reflecting the presence of a math</span><br /><span class="line">                      coprocessor, then bit 1 (math coprocessor present)</span><br /><span class="line">                      may be incorrect. A better test for the math</span><br /><span class="line">                      coprocessor would be to test it directly by</span><br /><span class="line">                      executing a math coprocessor instruction and then</span><br /><span class="line">                      checking to see if the instruction was executed.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="progref-13391.html">INT 11h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

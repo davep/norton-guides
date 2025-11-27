@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Low Level</li>
+            <ul>
+              <li><a href="index.html">BIOS Interrupts</a></li>
+              <li><a href="progref-27119.html">Low Memory Usage</a></li>
+              <li><a href="progref-66179.html">I/O Addresses</a></li>
+              <li><a href="progref-69857.html">Device Adapters</a></li>
+              <li><a href="progref-71828.html">System ID-Byte</a></li>
+              <li><a href="progref-72459.html">POST</a></li>
+              <li><a href="progref-73742.html">Flags Register</a></li>
+              
+            </ul>
+            <li>DOS</li>
+            <ul>
+              <li><a href="progref-75576.html">Functions</a></li>
+              <li><a href="progref-202334.html">Interrupts</a></li>
+              <li><a href="progref-217806.html">Error Codes</a></li>
+              <li><a href="progref-221299.html">File Attributes</a></li>
+              <li><a href="progref-223104.html">Standard Handles</a></li>
+              <li><a href="progref-225061.html">PSP Description</a></li>
+              <li><a href="progref-227007.html">FCB Fields</a></li>
+              
+            </ul>
+            <li>Xtensions</li>
+            <ul>
+              <li><a href="progref-229144.html">Mouse Driver</a></li>
+              <li><a href="progref-251183.html">EMS Driver</a></li>
+              <li><a href="progref-268819.html">Fossil Driver</a></li>
+              <li><a href="progref-292076.html">NetBios</a></li>
+              <li><a href="progref-292575.html">Windows</a></li>
+              
+            </ul>
+            <li>Misc.</li>
+            <ul>
+              <li><a href="progref-293074.html">ASCII Chart</a></li>
+              <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+              <li><a href="progref-298869.html">Special Characters</a></li>
+              <li><a href="progref-300756.html">Color Chart</a></li>
+              <li><a href="progref-302236.html">Keyboard Codes</a></li>
+              <li><a href="progref-314224.html">Credits</a></li>
+              <li><a href="progref-314503.html">Future additions</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><a class="line" href="progref-3800.html">INT 00h                  Divide by 0</a><br /><a class="line" href="progref-4477.html">INT 01H                  Single Step</a><br /><a class="line" href="progref-4935.html">INT 02h                  Non-Maskable Interrupt (NMI)</a><br /><a class="line" href="progref-6231.html">INT 03h                  Breakpoint</a><br /><a class="line" href="progref-6643.html">INT 04h                  Overflow</a><br /><a class="line" href="progref-7101.html">INT 05h                  Print Screen</a><br /><a class="line" href="progref-8171.html">INT 06h (6)              Reserved</a><br /><a class="line" href="progref-8221.html">INT 07h (7)              Reserved</a><br /><a class="line" href="progref-8271.html">INT 08h (8)  (IRQ 0)     System Timer</a><br /><a class="line" href="progref-9247.html">INT 09H (9)  (IRQ 1)     Keyboard</a><br /><a class="line" href="progref-11738.html">INT 0Ah (10) (IRQ 2)     EGA Display, PC Net, 3278/79</a><br /><a class="line" href="progref-12156.html">INT 0Bh (11) (IRQ 3)</a><br /><a class="line" href="progref-12465.html">INT 0Ch (12) (IRQ 4)     Comunications (COM 1, Mainly)</a><br /><a class="line" href="progref-12702.html">INT 0Dh (13) (IRQ 5)     Fixed disk (PC) / Printer 2 (AT)</a><br /><a class="line" href="progref-12923.html">INT 0Eh (14) (IRQ 6)     Diskette Hardware Interupt</a><br /><a class="line" href="progref-13065.html">INT 0Fh (15) (IRQ 7)     LPT 1 Printer, Cluster (alternate)</a><br /><a class="line" href="progref-314851.html">INT 10h (16)             Video and Screen services</a><br /><a class="line" href="progref-13391.html">INT 11h (17)             Read Equipment-List</a><br /><a class="line" href="progref-15531.html">INT 12h (18)             Report Memory Size</a><br /><a class="line" href="progref-350222.html">INT 13h (19)             Disk I/O Services, Floppy and Harddisk</a><br /><a class="line" href="progref-394794.html">INT 14h (20)             Serial I/O Services (Communication ports)</a><br /><a class="line" href="progref-399767.html">INT 15h (21)             Cassette and Extended Services</a><br /><a class="line" href="progref-426457.html">INT 16h (22)             Keyboard I/O Services</a><br /><a class="line" href="progref-438906.html">INT 17h (23)             Printer I/O Services</a><br /><a class="line" href="progref-16686.html">INT 18h (24)             BASIC Loader Service</a><br /><a class="line" href="progref-17281.html">INT 19h (25)             Bootstrap Loader Service</a><br /><a class="line" href="progref-440963.html">INT 1Ah (16)             System Timer and Clock Services</a><br /><a class="line" href="progref-19495.html">INT 1Bh (27)             Keyboard Break</a><br /><a class="line" href="progref-20455.html">INT 1Ch (28)             User Timer Tick</a><br /><a class="line" href="progref-21483.html">INT 1Dh (29)             Video Parameters Pointer (1Dh)</a><br /><a class="line" href="progref-21922.html">INT 1Eh (30)             Diskette Parameters</a><br /><a class="line" href="progref-22414.html">INT 1Fh (31)             Video graphics Character Extensions</a><br /><a class="line" href="progref--1.html">INT 20h - 27h            DOS Interrupts</a><br /><a class="line" href="progref--1.html">INT 28h - 32h            Reserved for DOS</a><br /><a class="line" href="progref--1.html">INT 33h                  Mouse Driver</a><br /><a class="line" href="progref--1.html">INT 34h - 3Fh            Reserved for DOS</a><br /><a class="line" href="progref-23140.html">INT 40h                  Diskette (INT 13 remapped)</a><br /><a class="line" href="progref-23318.html">INT 41h                  Fixed disk parameters</a><br /><a class="line" href="progref--1.html">INT 42h                  EGA Bios redirect</a><br /><a class="line" href="progref--1.html">INT 43h                  EGA Video parameters</a><br /><a class="line" href="progref--1.html">INT 44h                  EGA Character table</a><br /><a class="line" href="progref--1.html">INT 45h - 49h            Reserved for BIOS</a><br /><a class="line" href="progref-23812.html">INT 4Ah (74)             User Alarm                   XT-286, AT, Convertible</a><br /><a class="line" href="progref--1.html">INT 4Bh - 58h            Reserved for BIOS</a><br /><a class="line" href="progref-24653.html">INT 5Ah (90)             Cluster</a><br /><a class="line" href="progref--1.html">INT 5Bh - 5Fh            Reserved for BIOS</a><br /><a class="line" href="progref--1.html">INT 60h - 66h            Reserved for User programs</a><br /><a class="line" href="progref--1.html">INT 67                   EMS Device Driver</a><br /><a class="line" href="progref--1.html">INT 68h - 6Fh            ?</a><br /><a class="line" href="progref-24703.html">INT 70h (112) (IRQ 8)    Real-Time Clock              XT-286, AT, Convertible</a><br /><a class="line" href="progref-25680.html">INT 71h (113) (IRQ 9)    LAN Adapter</a><br /><a class="line" href="progref-25820.html">INT 72h (114) (IRQ 10)   Hardware servicer</a><br /><a class="line" href="progref-25947.html">INT 73h (115) (IRQ 11)   Hardware servicer</a><br /><a class="line" href="progref-26074.html">INT 74h (116) (IRQ 12)   Hardware servicer</a><br /><a class="line" href="progref-26201.html">INT 75h (117) (IRQ 13)   Math CO-Processor</a><br /><a class="line" href="progref-26590.html">INT 76h (118) (IRQ 14)   Fixed Disk Controller (AT)</a><br /><a class="line" href="progref-26997.html">INT 77h (119) (IRQ 15)   Future servicer</a><br /><a class="line" href="progref--1.html">INT 78h - 7Fh            DOS Interrupts</a><br /><a class="line" href="progref--1.html">INT 80h - 85h            Reserved for BASIC</a><br /><a class="line" href="progref--1.html">INT 86h - F0h            Used by BASIC Interpreter while running</a><br /><a class="line" href="progref--1.html">INT F1h - FFh            Not used</a><br /></pre>
+  
+  
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
