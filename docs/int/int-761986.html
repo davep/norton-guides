@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Hardware » Video</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="int-638292.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">          <span class="ngb">Creating a split screen</span></span><br /><span class="line"></span><br /><span class="line">          the VGA hardware supports a split screen. The top portion</span><br /><span class="line">          of the screen is designated as screen A, and the button</span><br /><span class="line">          portion is designated as screen B, as in the figure below:</span><br /><span class="line"></span><br /><span class="line">                           ┌────────────────────────┐</span><br /><span class="line">                           │                        │</span><br /><span class="line">                           │        Screen A        │</span><br /><span class="line">                           │                        │</span><br /><span class="line">                           ├────────────────────────┤</span><br /><span class="line">                           │                        │</span><br /><span class="line">                           │        Screen B        │</span><br /><span class="line">                           │                        │</span><br /><span class="line">                           └────────────────────────┛</span><br /><span class="line"></span><br /><span class="line">          The following figure shows the screen mapping for a system</span><br /><span class="line">          containing a 32Kb alphanumeric storage buffer, such as the</span><br /><span class="line">          VGA.</span><br /><span class="line"></span><br /><span class="line">          Information displayed on screen A is defined by the Start</span><br /><span class="line">          Address High and Low register on the CRT controller.</span><br /><span class="line">          Information displayed on screen B always begins at video</span><br /><span class="line">          address 0000h.</span><br /><span class="line"></span><br /><span class="line">          0000h  ┌──────────────────────────┐</span><br /><span class="line">                 │         Screen B         │</span><br /><span class="line">                 │                          │</span><br /><span class="line">          0FFFh  │   Buffer storage area    │</span><br /><span class="line">                 ├──────────────────────────┤</span><br /><span class="line">          1000h  │         Screen A         │</span><br /><span class="line">                 │                          │</span><br /><span class="line">                 │   Buffer storage area    │</span><br /><span class="line">          7FFFh  └──────────────────────────┛</span><br /><span class="line"></span><br /><span class="line">          The Line Compare register of the CRT controller performs</span><br /><span class="line">          the spilt screen function. The CRT controller has an</span><br /><span class="line">          internal horizontal scan line counter and logic that</span><br /><span class="line">          compares the counter value to the value in the Line compare</span><br /><span class="line">          register and clears the memory address generator when a</span><br /><span class="line">          comparison occurs. The linear address generator then</span><br /><span class="line">          sequentially addresses the display buffer starting at</span><br /><span class="line">          location 0. Each subsequent row address is determined by</span><br /><span class="line">          the 16-bit addition of the start-of line latch and the</span><br /><span class="line">          Offset register.</span><br /><span class="line"></span><br /><span class="line">          Screen B can be smoothly scrolled onto the display by</span><br /><span class="line">          updating the line compare register with the vertical</span><br /><span class="line">          retrace signal. Screen B information is not affected by</span><br /><span class="line">          scrolling operations that use the Start Address register to</span><br /><span class="line">          scroll through the screen A information.</span><br /><span class="line"></span><br /><span class="line">          When PEL-panning compatibility is enables (Attribute Mode</span><br /><span class="line">          Control register), a successful line comparison forces the</span><br /><span class="line">          output of the Horizontal Panning register to 0&#39;s until a</span><br /><span class="line">          vertical synchronization occurs. This feature allows the</span><br /><span class="line">          information on screen B to remain unaffected by PEL-panning</span><br /><span class="line">          operations on screen A.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

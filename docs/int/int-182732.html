@@ -1,0 +1,119 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Ports, EMS » I/O ports</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-182528.html">
+    <link rel="next" href="int-184389.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-182528.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-155180.html">Up</a></li>
+
+
+          
+
+<li><a href="int-184389.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">Port 3D5  -  Color/VGA Data register</span></span><br /><span class="line"></span><br /><span class="line">        Data to be placed in the register selected by port 3B4.</span><br /><span class="line">        Only registers 0Ch-0Fh may be retrieved; all others are</span><br /><span class="line">        write-only.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Warning: don&#39;t play around with register 0 to 9. It can cause</span></span><br /><span class="line">        <span class="ngb">         permanent damage to the hardware!</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngu">Reg   Use                                 A40  A80  Grap</span></span><br /><span class="line">          0   Horizontal total characters - 1     38h  71h  38h</span><br /><span class="line">          1   Horizontal displayed characters     28h  50h  28h</span><br /><span class="line">          2   Horizontal synch position           2Dh  5Ah  2Dh</span><br /><span class="line">          3   Horizontal synch width in chars.    0Ah  0Ah  0Ah</span><br /><span class="line">          4   Vertical total lines -1             1Fh  1Fh  1Fh</span><br /><span class="line">              ((lines*scan lines) div chars)-1</span><br /><span class="line">          5   Vertical total lines -1             06h  06h  06h</span><br /><span class="line">              ((lines*scan lines) mod chars)-1</span><br /><span class="line">          6   Vertical displayed rows             19h  19h  19h</span><br /><span class="line">          7   Vertical synch position row         1Ch  1Ch  70h</span><br /><span class="line">          8   Interlace mode                      02h  02h  02h</span><br /><span class="line">          9   Maximum scan line address           07h  07h  01h</span><br /><span class="line">          A   Cursor starting scanline            06h  06h  06h</span><br /><span class="line">              1xxx xxxx Unused</span><br /><span class="line">              x1xx xxxx Blink rate</span><br /><span class="line">              xx1x xxxx 0=display, 1=no display</span><br /><span class="line">              xxx1 1111 starting scanline</span><br /><span class="line">                        0=top, 0Dh=button</span><br /><span class="line">          B   Cursor ending scanline              07h  07h  07h</span><br /><span class="line">              111x xxxx Unused</span><br /><span class="line">              xxx1 1111 ending scanline</span><br /><span class="line">                        0=top, 0Dh=button</span><br /><span class="line">          C   Memory address MSB                  00h  00h  00h</span><br /><span class="line">          D   Memory address LSB                  00h  00h  00h</span><br /><span class="line">          E   Cursor address MSB                  ??   ??   ??</span><br /><span class="line">          F   Cursor address LSB                  ??   ??   ??</span><br /><span class="line">         10   Light pen MSB                       ??   ??   ??</span><br /><span class="line">              Vertical Retrace Start (VGA)</span><br /><span class="line">         11   Light pen LSB                       ??   ??   ??</span><br /><span class="line">              Vertical Retrace End</span><br /><span class="line">         12   Vertical Display Enable End (VGA)</span><br /><span class="line">         13   Offset (VGA)</span><br /><span class="line">         14   Underline location (VGA)</span><br /><span class="line">         15   Start Vertical Blanking (VGA)</span><br /><span class="line">         16   End Vertical blanking (VGA)</span><br /><span class="line">         17   CRT mode control (VGA)</span><br /><span class="line">         18   Line Compare (VGA)</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="int-182528.html">3D4-W</a></li>
+        
+          <li><a href="int-176967.html">3B5</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

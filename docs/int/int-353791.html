@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-353518.html">
+    <link rel="next" href="int-355758.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-353518.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-332568.html">Up</a></li>
+
+
+          
+
+<li><a href="int-355758.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Create PSP (INT 21h, 26h)</span></span><br /><span class="line"></span><br /><span class="line">        Entry:</span><br /><span class="line">          AH = 26h</span><br /><span class="line">          DX = Segment number to set up PSP at</span><br /><span class="line">        Return:</span><br /><span class="line">          Current PSP is copied to specified segment.</span><br /><span class="line"></span><br /><span class="line">        Note: Use of this call should be avoided, now that DOS contains</span><br /><span class="line">              the EXEC function call.</span><br /><span class="line"></span><br /><span class="line">        Format of PSP:</span><br /><span class="line">                Offset  Size    Description</span><br /><span class="line">                 00h  2 BYTEs   program exit point</span><br /><span class="line">                 02h    WORD    memory size in paragraphs</span><br /><span class="line">                 04h    BYTE    unused</span><br /><span class="line">                 05h  5 BYTEs   CP/M entry point</span><br /><span class="line">                 0Ah    DWORD   terminate address (old INT 22h)</span><br /><span class="line">                 0Eh    DWORD   break address (old INT 23h)</span><br /><span class="line">                 12h    DWORD   critical error handler (old INT 24h)</span><br /><span class="line">                 16h    WORD    parent PSP segment</span><br /><span class="line">                 18h 20 BYTEs   DOS 2+ open file table, FFh = unused</span><br /><span class="line">                 2Ch    WORD    DOS 2+ environment segment (see below)</span><br /><span class="line">                 2Eh    DWORD   DOS 2+ process&#39;s SS:SP on entry to last</span><br /><span class="line">                                INT 21 call</span><br /><span class="line">                 32h    WORD    DOS 3+ max open files</span><br /><span class="line">                 34h    DWORD   DOS 3+ open file table address</span><br /><span class="line">                 38h    DWORD   DOS 3+ pointer to previous PSP???</span><br /><span class="line">                                (set to FFFFFFFFh in 3.1,3.3)</span><br /><span class="line">                 3Ch 20 BYTEs   unused by DOS versions &lt;= 3.3</span><br /><span class="line">                 50h  3 BYTEs   DOS function dispatcher (FAR routine) --</span><br /><span class="line">                                CDh 21h CBh</span><br /><span class="line">                 53h  9 BYTEs   unused</span><br /><span class="line">                 5Ch 16 BYTEs   FCB #1 (see AH=0Fh), filled in from first</span><br /><span class="line">                                commandline argument</span><br /><span class="line">                                (when opened, overwrites following FCB)</span><br /><span class="line">                 6Ch 20 BYTEs   FCB #2 (see AH=0Fh), filled in from second</span><br /><span class="line">                                commandline argument</span><br /><span class="line">                                (when opened, overwrites part of command tail)</span><br /><span class="line">                 80h 128 BYTEs  command tail / default DTA buffer</span><br /><span class="line">                                command tail is BYTE for length of tail,</span><br /><span class="line">                                N BYTEs for the tail, followed by a BYTE</span><br /><span class="line">                                containing 0Dh</span><br /><span class="line"></span><br /><span class="line">        Format of environment block:</span><br /><span class="line">                Offset  Size    Description</span><br /><span class="line">                 00h  N BYTEs   first environment variable, ASCIZ string of</span><br /><span class="line">                                form &#34;var=value&#34;</span><br /><span class="line">                      N BYTEs   second environment variable, ASCIZ string</span><br /><span class="line">                        ...</span><br /><span class="line">                      N BYTEs   last environment variable, ASCIZ string of</span><br /><span class="line">                                form &#34;var=value&#34;</span><br /><span class="line">                        BYTE    00h</span><br /><span class="line">                ---DOS 3+---</span><br /><span class="line">                        WORD    number of strings following environment</span><br /><span class="line">                                (normally 1)</span><br /><span class="line">                      N BYTEs   ASCIZ full pathname of program owning this</span><br /><span class="line">                                environment</span><br /><span class="line"></span><br /><span class="line">                                other strings may follow</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="int-371500.html">INT 21h, 4Bh</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

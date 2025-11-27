@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-39938.html">
+    <link rel="next" href="int-43700.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-39938.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="int-43700.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">Btrieve API</span></span><br /><span class="line"></span><br /><span class="line">        Entry:</span><br /><span class="line">          DS:DX -&gt; 38-byte parameter record (see below)</span><br /><span class="line"></span><br /><span class="line">        Return:</span><br /><span class="line">          Return code field set</span><br /><span class="line"></span><br /><span class="line">        Note:   Btrieve sets low byte of vector to 33h; this serves as</span><br /><span class="line">                the installation check</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Format of Btrieve parameter record:</span></span><br /><span class="line"></span><br /><span class="line">        Offset  Size    Description</span><br /><span class="line">         00h    DWORD   pointer to data buffer</span><br /><span class="line">         04h    WORD    data buffer length</span><br /><span class="line">         06h    DWORD   pointer to 90-byte record containing positioning info</span><br /><span class="line">                        (should be same for all calls for same file)</span><br /><span class="line">         0Ah    DWORD   pointer to 38-byte FCB info buffer</span><br /><span class="line">                        (should be same for all calls for same file)</span><br /><span class="line">         0Eh    WORD    function code</span><br /><span class="line">                        00h open</span><br /><span class="line">                        01h close</span><br /><span class="line">                        02h insert</span><br /><span class="line">                        03h update</span><br /><span class="line">                        04h delete</span><br /><span class="line">                        05h get_equal</span><br /><span class="line">                        06h get_next</span><br /><span class="line">                        07h get_prev</span><br /><span class="line">                        08h get_greater</span><br /><span class="line">                        09h get_gr_eql</span><br /><span class="line">                        0Ah get_less</span><br /><span class="line">                        0Bh get_less_eq</span><br /><span class="line">                        0Ch get_first</span><br /><span class="line">                        0Dh get_last</span><br /><span class="line">                        0Eh create</span><br /><span class="line">                        0Fh stat</span><br /><span class="line">                        10h extend</span><br /><span class="line">                        11h set_dir: set directory information</span><br /><span class="line">                        12h get_dir: get directory information</span><br /><span class="line">                        13h begin_trans</span><br /><span class="line">                        14h end_trans</span><br /><span class="line">                        15h abort_trans</span><br /><span class="line">                        16h get_pos: get record position number</span><br /><span class="line">                        17h get_direct: get data by sending record position</span><br /><span class="line">                        18h step_direct</span><br /><span class="line">                        19h stop</span><br /><span class="line">                        1Ah version</span><br /><span class="line">                        1Bh unlock</span><br /><span class="line">                        1Ch reset</span><br /><span class="line">                        1Dh set owner</span><br /><span class="line">                        1Eh clear owner</span><br /><span class="line">                        1Fh create supplemental index</span><br /><span class="line">                        20h drop supplemental index</span><br /><span class="line">                        21h step first</span><br /><span class="line">                        22h step last</span><br /><span class="line">                        23h step next</span><br /><span class="line">                        31h ???</span><br /><span class="line">                        37h ???</span><br /><span class="line">                        38h ???</span><br /><span class="line">                        39h ???</span><br /><span class="line">                        3Ah ???</span><br /><span class="line">                        3Bh ???</span><br /><span class="line">                        3Ch ???</span><br /><span class="line">                        3Dh ???</span><br /><span class="line">                        3Eh ???</span><br /><span class="line">                        3Fh ???</span><br /><span class="line">                        adding 100 (64h) or 200 (C8h) appears to result in the same</span><br /><span class="line">                          functions with modified behavior</span><br /><span class="line">         10h    DWORD   pointer to file name/key buffer</span><br /><span class="line">         14h    BYTE    key length</span><br /><span class="line">         15h    BYTE    key number</span><br /><span class="line">         16h    DWORD   pointer to status code</span><br /><span class="line">                        status codes:</span><br /><span class="line">                        00h successful</span><br /><span class="line">                        01h invalid operation</span><br /><span class="line">                        02h I/O error</span><br /><span class="line">                        03h file not open</span><br /><span class="line">                        04h key value not found</span><br /><span class="line">                        05h duplicate key value</span><br /><span class="line">                        06h invalid key number</span><br /><span class="line">                        07h different key number</span><br /><span class="line">                        08h invalid positioning</span><br /><span class="line">                        09h end of file</span><br /><span class="line">                        0Ah modifiable key value error</span><br /><span class="line">                        0Bh invalid file name</span><br /><span class="line">                        0Ch file not found</span><br /><span class="line">                        0Dh extended file error</span><br /><span class="line">                        0Eh pre-image open error</span><br /><span class="line">                        0Fh pre-image I/O error</span><br /><span class="line">                        10h expansion error</span><br /><span class="line">                        11h close error</span><br /><span class="line">                        12h disk full</span><br /><span class="line">                        13h unrecoverable error</span><br /><span class="line">                        14h record manager inactive</span><br /><span class="line">                        15h key buffer too short</span><br /><span class="line">                        16h data buffer length overrun</span><br /><span class="line">                        17h position block length</span><br /><span class="line">                        18h page size error</span><br /><span class="line">                        19h create I/O error</span><br /><span class="line">                        1Ah number of keys</span><br /><span class="line">                        1Bh invalid key position</span><br /><span class="line">                        1Ch invalid record length</span><br /><span class="line">                        1Dh invalid key length</span><br /><span class="line">                        1Eh not a Btrieve file</span><br /><span class="line">                        1Fh file already extended</span><br /><span class="line">                        20h extended I/O error</span><br /><span class="line">                        22h invalid extension name</span><br /><span class="line">                        23h directory error</span><br /><span class="line">                        24h transaction error</span><br /><span class="line">                        25h transaction is active</span><br /><span class="line">                        26h transaction control file I/O error</span><br /><span class="line">                        27h end/abort transaction error</span><br /><span class="line">                        28h transaction max files</span><br /><span class="line">                        29h operation not allowed</span><br /><span class="line">                        2Ah incomplete accelerated access</span><br /><span class="line">                        2Bh invalid record address</span><br /><span class="line">                        2Ch null key path</span><br /><span class="line">                        2Dh inconsistent key flags</span><br /><span class="line">                        2Eh access to file denied</span><br /><span class="line">                        2Fh maximum open files</span><br /><span class="line">                        30h invalid alternate sequence definition</span><br /><span class="line">                        31h key type error</span><br /><span class="line">                        32h owner already set</span><br /><span class="line">                        33h invalid owner</span><br /><span class="line">                        34h error writing cache</span><br /><span class="line">                        35h invalid interface</span><br /><span class="line">                        36h variable page error</span><br /><span class="line">                        37h autoincrement error</span><br /><span class="line">                        38h incomplete index</span><br /><span class="line">                        39h expanded memory error</span><br /><span class="line">                        3Ah compression buffer too short</span><br /><span class="line">                        3Bh file already exists</span><br /><span class="line">                        50h conflict</span><br /><span class="line">                        51h lock error</span><br /><span class="line">                        52h lost position</span><br /><span class="line">                        53h read outside transaction</span><br /><span class="line">                        54h record in use</span><br /><span class="line">                        55h file in use</span><br /><span class="line">                        56h file table full</span><br /><span class="line">                        57h handle table full</span><br /><span class="line">                        58h incompatible open mode</span><br /><span class="line">                        5Dh incompatible lock type</span><br /><span class="line">                        5Eh permission error</span><br /><span class="line">         1Ah    WORD    interface code (version specific)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

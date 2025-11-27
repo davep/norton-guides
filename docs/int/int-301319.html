@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-301264.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-301264.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-291933.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">INT 15 - DESQview (TopView???) - GET PROGRAM NAME</span><br /><span class="line">        AX = DE00h</span><br /><span class="line">Return: AX = offset into DESQVIEW.DVO of current program:</span><br /><span class="line">               BYTE  length of name</span><br /><span class="line">             N BYTES name</span><br /><span class="line">             2 BYTES keys to invoke program (second = 00h if only one key used)</span><br /><span class="line">             3 BYTES ??? (I see 0 always)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">INT 15 - DESQview (TopView???) - ???</span><br /><span class="line">        AX = DE01h</span><br /><span class="line">        ???</span><br /><span class="line">Return: nothing</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">INT 15 - DESQview (TopView???) - ???</span><br /><span class="line">        AH = DEh</span><br /><span class="line">        AL =</span><br /><span class="line">             02h  ???</span><br /><span class="line">                  Return: nothing (NOP in DV 2.00)</span><br /><span class="line">             03h  ???</span><br /><span class="line">                  Return: nothing (NOP in DV 2.00)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">INT 15 - DESQview (TopView???) - GET AVAILABLE COMMON MEMORY</span><br /><span class="line">        AX = DE04h</span><br /><span class="line">Return: BX = bytes of common memory available</span><br /><span class="line">        CX = largest block available</span><br /><span class="line">        DX = total common memory in bytes</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">INT 15 - DESQview (TopView???) - GET AVAILABLE CONVENTIONAL MEMORY</span><br /><span class="line">        AX = DE05h</span><br /><span class="line">Return: BX = K of memory available</span><br /><span class="line">        CX = largest block available</span><br /><span class="line">        DX = total conventional memory in K</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">INT 15 - DESQview (TopView???) - GET AVAILABLE EXPANDED MEMORY</span><br /><span class="line">        AX = DE06h</span><br /><span class="line">Return: BX = K of expanded memory available</span><br /><span class="line">        CX = largest block available</span><br /><span class="line">        DX = total expanded memory in K</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">INT 15 - DESQview (TopView???) - ???</span><br /><span class="line">        AH = DEh</span><br /><span class="line">        AL =</span><br /><span class="line">             07h  ???</span><br /><span class="line">                  Return: AX = ???</span><br /><span class="line">             08h  ???</span><br /><span class="line">                  Return: AX = 0  ???</span><br /><span class="line">                               1  ???</span><br /><span class="line">             09h  ???</span><br /><span class="line">                  Return: nothing (NOP in DV 2.00)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">INT 15 - DESQview (TopView???) - DISPLAY CHARACTER ON STATUS LINE</span><br /><span class="line">        AX = DE0Ah</span><br /><span class="line">        BL = character</span><br /><span class="line">Return: character displayed, next call will display in next position (which</span><br /><span class="line">        wraps back to the start of the line if off the right edge of screen)</span><br /><span class="line">Notes:  displays character on bottom line of *physical* screen, regardless</span><br /><span class="line">        of current size of window (even entirely hidden)</span><br /><span class="line">        does not know about graphics display modes, just pokes the characters</span><br /><span class="line">        into display memory</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">INT 15 - DESQview (TopView???) - ???</span><br /><span class="line">        AH = DEh</span><br /><span class="line">        AL =</span><br /><span class="line">             0Bh  Set ???</span><br /><span class="line">                  BL = 0</span><br /><span class="line">                       1</span><br /><span class="line">                       2</span><br /><span class="line">                       &gt;2 pops up error window in DV 2.00</span><br /><span class="line">                  BH = ???</span><br /><span class="line">                  Return: ???</span><br /><span class="line">             0Ch  ???</span><br /><span class="line">                  BX = number of bytes ??? (gets converted to paragraphs)</span><br /><span class="line">                  Return: ES:DI = pointer to ???</span><br /><span class="line">             0Dh  ???</span><br /><span class="line">                  Return: nothing</span><br /><span class="line">             0Eh  ???</span><br /><span class="line">                  Return: BX = 0 ???</span><br /><span class="line">                               1 ???</span><br /><span class="line">             0Fh  ???</span><br /><span class="line">                  Return: AX = ???</span><br /><span class="line">                          BX = ???</span><br /><span class="line">             10h  ???</span><br /><span class="line">                  BX = ???</span><br /><span class="line">                  Return: BX = ???</span><br /><span class="line">             11h  ???</span><br /><span class="line">                  BL = 0 ???</span><br /><span class="line">                       nonzero ???</span><br /><span class="line">                  Return: nothing</span><br /><span class="line">→</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

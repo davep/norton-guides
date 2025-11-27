@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-450120.html">
+    <link rel="next" href="int-453151.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-450120.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-411523.html">Up</a></li>
+
+
+          
+
+<li><a href="int-453151.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">DOS Internal - Send device driver request</span></span><br /><span class="line"></span><br /><span class="line">        Entry:</span><br /><span class="line">          AX = 1510h</span><br /><span class="line">          CX = CD-ROM drive letter (0 = A, 1 = B, etc)</span><br /><span class="line">          ES:BX -&gt; CD-ROM device driver request header (see below)</span><br /><span class="line"></span><br /><span class="line">        Format of device driver request header:</span><br /><span class="line">                Offset  Size    Description</span><br /><span class="line">                 00h    BYTE    length of request header</span><br /><span class="line">                 01h    BYTE    subunit within device driver</span><br /><span class="line">                 02h    BYTE    command code (see below)</span><br /><span class="line">                 03h    WORD    status (filled in by device driver)</span><br /><span class="line">                                bit 15: error</span><br /><span class="line">                                bits 14-10: reserved</span><br /><span class="line">                                bit 9: busy</span><br /><span class="line">                                bit 8: done</span><br /><span class="line">                                bits 7-0: error code if bit 15 set (see below)</span><br /><span class="line">                 05h  8 BYTEs   reserved</span><br /><span class="line">                 0Dh            any additional information starts here</span><br /><span class="line"></span><br /><span class="line">        Values for command code:</span><br /><span class="line">                00h INIT</span><br /><span class="line">                01h MEDIA CHECK (block devices)</span><br /><span class="line">                02h BUILD BPB (block devices)</span><br /><span class="line">                03h IOCTL INPUT</span><br /><span class="line">                04h INPUT</span><br /><span class="line">                05h NONDESTRUCTIVE INPUT, NO WAIT</span><br /><span class="line">                06h INPUT STATUS</span><br /><span class="line">                07h INPUT FLUSH</span><br /><span class="line">                08h OUTPUT</span><br /><span class="line">                09h OUTPUT WITH VERIFY</span><br /><span class="line">                0Ah OUTPUT STATUS</span><br /><span class="line">                0Bh OUTPUT FLUSH</span><br /><span class="line">                0Ch IOCTL OUTPUT</span><br /><span class="line">                0Dh (DOS 3+) DEVICE OPEN</span><br /><span class="line">                0Eh (DOS 3+) DEVICE CLOSE</span><br /><span class="line">                0Fh (DOS 3+) REMOVABLE MEDIA (block devices)</span><br /><span class="line">                10h (DOS 3+) OUTPUT UNTIL BUSY</span><br /><span class="line">                11h unused???</span><br /><span class="line">                12h unused???</span><br /><span class="line">                13h (DOS 3.2+) GENERIC IOCTL</span><br /><span class="line">                14h unused???</span><br /><span class="line">                15h unused???</span><br /><span class="line">                16h unused???</span><br /><span class="line">                17h (DOS 3.2+) GET LOGICAL DEVICE</span><br /><span class="line">                18h (DOS 3.2+) SET LOGICAL DEVICE</span><br /><span class="line">                80h (CD-ROM) READ LONG</span><br /><span class="line">                81h (CD-ROM) reserved</span><br /><span class="line">                82h (CD-ROM) READ LONG PREFETCH</span><br /><span class="line">                83h (CD-ROM) SEEK</span><br /><span class="line">                84h (CD-ROM) PLAY AUDIO</span><br /><span class="line">                85h (CD-ROM) STOP AUDIO</span><br /><span class="line">                86h (CD-ROM) WRITE LONG</span><br /><span class="line">                87h (CD-ROM) WRITE LONG VERIFY</span><br /><span class="line">                88h (CD-ROM) RESUME AUDIO</span><br /><span class="line"></span><br /><span class="line">        Values for error code:</span><br /><span class="line">                00h write-protect violation</span><br /><span class="line">                01h unknown unit</span><br /><span class="line">                02h drive not ready</span><br /><span class="line">                03h unknown command</span><br /><span class="line">                04h CRC error</span><br /><span class="line">                05h bad drive request structure length</span><br /><span class="line">                06h seek error</span><br /><span class="line">                07h unknown media</span><br /><span class="line">                08h sector not found</span><br /><span class="line">                09h printer out of paper</span><br /><span class="line">                0Ah write fault</span><br /><span class="line">                0Bh read fault</span><br /><span class="line">                0Ch general failure</span><br /><span class="line">                0Dh reserved</span><br /><span class="line">                0Eh reserved</span><br /><span class="line">                0Fh invalid disk change</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

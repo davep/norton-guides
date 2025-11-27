@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-381010.html">
+    <link rel="next" href="int-382590.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-381010.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-332568.html">Up</a></li>
+
+
+          
+
+<li><a href="int-382590.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">Resolve path string to fully qualified path string (INT 21h, 60h)</span></span><br /><span class="line"></span><br /><span class="line">        Expands path to include all subdirectoryes. Asterics is expanded</span><br /><span class="line">        to ?.</span><br /><span class="line"></span><br /><span class="line">        Entry:</span><br /><span class="line">          AH    = 60h</span><br /><span class="line">          DI:SI = relative path strings</span><br /><span class="line">          ES:DI = buffer for fully qualified name</span><br /><span class="line">        Return:</span><br /><span class="line">          CF set on error</span><br /><span class="line">            AX = error code</span><br /><span class="line">                02h invalid source name</span><br /><span class="line">                03h invalid drive or malformed path</span><br /><span class="line">                others???</span><br /><span class="line">          CF clear if successful</span><br /><span class="line">            AH = 00h</span><br /><span class="line">            AL = &#39;\&#39; if relative path refers to something in root directory</span><br /><span class="line">               = Uppercased last letter of relative path if relative path</span><br /><span class="line">                 refers to current directory or subdir of current directory</span><br /><span class="line">               = 00h otherwise</span><br /><span class="line">            buffer filled with qualified name of form D:\PATH\FILE.EXT</span><br /><span class="line"></span><br /><span class="line">Notes:  The input path need not actually exist.</span><br /><span class="line">        Letters are uppercased, forward slashes converted to backslashes,</span><br /><span class="line">        asterisks converted to appropriate number of question marks, and</span><br /><span class="line">        file and directory names are truncated to 8.3 if necessary.</span><br /><span class="line">        &#39;.&#39; and &#39;..&#39; in the path are resolved.</span><br /><span class="line">        If path string is on a JOINed drive, the returned name is the one</span><br /><span class="line">        that  would be needed if the drive were not JOINed; similarly for a</span><br /><span class="line">        SUBSTed drive letter.  Because of this, it is possible to get a</span><br /><span class="line">        qualified name that is not legal with the current combination of</span><br /><span class="line">        SUBSTs and JOINs</span><br /><span class="line"></span><br /><span class="line">SeeAlso: INT 2F/AX=1221h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

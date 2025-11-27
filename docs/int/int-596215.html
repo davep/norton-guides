@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Ports, EMS » I/O ports</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-595433.html">
+    <link rel="next" href="int-598042.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-595433.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-594283.html">Up</a></li>
+
+
+          
+
+<li><a href="int-598042.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">00B - Status Register B</span></span><br /><span class="line"></span><br /><span class="line">        Real Time Clock Status Register.</span><br /><span class="line"></span><br /><span class="line">                1xxx xxxx  Set</span><br /><span class="line">                             When set to 0, this bit updates the cycle,</span><br /><span class="line">                             normally by advancing the counts at a rate of</span><br /><span class="line">                             one per second. When set to 1, this bit</span><br /><span class="line">                             immediately ends any update cycle in progress,</span><br /><span class="line">                             and the program can initialize the 14 time bytes</span><br /><span class="line">                             without any futher updates occurring until this</span><br /><span class="line">                             bit is set to 0.</span><br /><span class="line">                x1xx xxxx  Periodic Interrupt Enable</span><br /><span class="line">                             This bit is a read/write bit that allows an</span><br /><span class="line">                             interrupt to occur at a rate specified by the</span><br /><span class="line">                             rate and divider bits in Status Register A</span><br /><span class="line">                             (00A). When set to 1, this bit enables inter-</span><br /><span class="line">                             rupt. The system initializes this bit to 0.</span><br /><span class="line">                xx1x xxxx  Alarm Interrupt Enable</span><br /><span class="line">                             When set to 1, this bit enables the alarm inter-</span><br /><span class="line">                             rupt. The system initializes this bit to 0.</span><br /><span class="line">                xxx1 xxxx  Update-Ended Interrupt Enabled</span><br /><span class="line">                             When set to 1, this bit enables the update-</span><br /><span class="line">                             ended interrupt. The system initializes</span><br /><span class="line">                             this bit to 0.</span><br /><span class="line">                xxxx 1xxx  Square Wave Enabled</span><br /><span class="line">                             When set to 1, this bit enables the square-</span><br /><span class="line">                             frequency as set by the rate-selection bits</span><br /><span class="line">                             in Status Register A (00A). The system initia-</span><br /><span class="line">                             lizes this bit to 0.</span><br /><span class="line">                xxxx x1xx  Date Mode</span><br /><span class="line">                             This bit indicates if the time-and-date calendar</span><br /><span class="line">                             updates use binary or binary-coded-decimal (BCD)</span><br /><span class="line">                             formats. When set to 1, this bit indicates a</span><br /><span class="line">                             binary format. The system initializes this bit</span><br /><span class="line">                             to 0.</span><br /><span class="line">                xxxx xx1x  24-Hour Mode</span><br /><span class="line">                             This bit establishes if the hours byte is in</span><br /><span class="line">                             the 24-hour or 12-hour mode. When set to 1, this</span><br /><span class="line">                             bit indicates the 24-hour mode. The system</span><br /><span class="line">                             initializes this bit to 1.</span><br /><span class="line">                xxxx xxx1  Daylight Savings Enabled</span><br /><span class="line">                             When set to 1, this bit enables the daylight</span><br /><span class="line">                             savings time mode. When set to 0, it disables</span><br /><span class="line">                             the mode, and the clock reverts to standart</span><br /><span class="line">                             time. The system initializes this bit to 0.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="int-595433.html">00A</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

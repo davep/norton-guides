@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Hardware » Net Bios</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="int-230985.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">Net Bios interface</span></span><br /><span class="line"></span><br /><span class="line">        Calling the Net Bios is accomplished by building a Net Bios</span><br /><span class="line">        Control Block (NCB), and execute an INT 5Ch with registers ES:BX</span><br /><span class="line">        containing the address of the NCB. When control is returned,</span><br /><span class="line">        only AX is changed.</span><br /><span class="line"></span><br /><span class="line">        The NCB is 64 bytes long and is shown in Table 2. The COMMAND</span><br /><span class="line">        field describes the basic function of the command. All commands</span><br /><span class="line">        are listed in Table 1. On selected commands, the high order bit</span><br /><span class="line">        of the COMMAND field can be set to indicate the &#34;no-wait&#34; mode.</span><br /><span class="line">        This feature, coupled with the value contained in the POST field,</span><br /><span class="line">        results in three distinct ways that the Net Bios can signal</span><br /><span class="line">        command completion:</span><br /><span class="line"></span><br /><span class="line">             1.   No-wait bit not set. In this case, the post address is</span><br /><span class="line">                  ignored and control will not be returned from INT 5Ch</span><br /><span class="line">                  until after the command has completed. The RETCODE</span><br /><span class="line">                  field and the AL register will contain the result of</span><br /><span class="line">                  the operation (see Table 4 for error codes).</span><br /><span class="line"></span><br /><span class="line">             2.   No-wait bit set and POST contains 0:0. The Net Bios</span><br /><span class="line">                  will (after minimum processing) return immediately,</span><br /><span class="line">                  even though the command may not have completed. On</span><br /><span class="line">                  return, the AL register will contain an &#34;immediate</span><br /><span class="line">                  error&#34; code or 0. If AL is not 0, then the command</span><br /><span class="line">                  could not be queued (e.g., invalid COMMAND code). If</span><br /><span class="line">                  AL is 0, then the process should poll the CMD_DONE</span><br /><span class="line">                  field of the NCB, waiting for some value other than</span><br /><span class="line">                  0FFh. When CMD_DONE is not equal to 0FFh, the command</span><br /><span class="line">                  has completed and all other NCB fields are valid.</span><br /><span class="line"></span><br /><span class="line">             3.   No-wait bit set and POST contains the address of a user</span><br /><span class="line">                  routine. The Net Bios will return immediately, even</span><br /><span class="line">                  though the command may not have completed. On return,</span><br /><span class="line">                  the AL register will contain an &#34;immediate error&#34; code</span><br /><span class="line">                  or 0. If AL is not 0, then the command could not be</span><br /><span class="line">                  queued (e.g., invalid COMMAND code). If AL is 0, then</span><br /><span class="line">                  the user&#39;s POST routine will be called after the</span><br /><span class="line">                  command is completed. When the POST routine is called,</span><br /><span class="line">                  interrupts are off, the stack is set for an IRET, and</span><br /><span class="line">                  ES:BX contains the address of the completed NCB.</span><br /><span class="line"></span><br /><span class="line">        Table 1 shows NCB COMMAND field codes, Table 3 shows field usage</span><br /><span class="line">        by command, and Table 4 shows error codes returned in AL and</span><br /><span class="line">        RETCODE.</span><br /><span class="line"></span><br /><span class="line">        Typically, a POST routine can issue another Net Bios command.</span><br /><span class="line">        However, some implementations may return an immediate error 21h</span><br /><span class="line">        (interface busy) on nested interrupt conditions. If the user is</span><br /><span class="line">        issuing commands from either the POST routine or other hardware</span><br /><span class="line">        routines, then the user must be prepared to queue NCBs that need</span><br /><span class="line">        starting and start them from, say, a timer tick whenever an</span><br /><span class="line">        interface busy error is encountered. This same logic can also</span><br /><span class="line">        cover the case where the Net Bios is temporarily out of resources</span><br /><span class="line">        (immediate error 09h). Normally, do not always queue the NCBs</span><br /><span class="line">        for later starting (may dramatically reduce throughput), only do</span><br /><span class="line">        it when the errors 21h or 09h are encountered.</span><br /><span class="line"></span><br /><span class="line">        The user POST routine should be as short as possible and no</span><br /><span class="line">        registers should be changed. Interrupts may be enabled in the</span><br /><span class="line">        POST routine.</span><br /><span class="line"></span><br /><span class="line">        In some cases, the user&#39;s POST routine will be called before</span><br /><span class="line">        control is returned from the INT 5Ch that started the command.</span><br /><span class="line"></span><br /><span class="line">        A typical sequence of Net Bios commands is listed below.</span><br /><span class="line"></span><br /><span class="line">             1. ADD NAME</span><br /><span class="line">             2. CALL</span><br /><span class="line">             3. SEND</span><br /><span class="line">             4. RECEIVE</span><br /><span class="line">             5. Repeat 3,4 as needed</span><br /><span class="line">             6. HANG UP</span><br /><span class="line">             7. DELETE NAME</span><br /><span class="line"></span><br /><span class="line">        Depending on the design of the application, the process doing the</span><br /><span class="line">        above may send a specific message to the other end informing it</span><br /><span class="line">        of the intention to HANG UP. This would not be necessary if the</span><br /><span class="line">        other end was executing the following sequence.</span><br /><span class="line"></span><br /><span class="line">             1. ADD NAME</span><br /><span class="line">             2. LISTEN</span><br /><span class="line">             3. RECEIVE</span><br /><span class="line">             4. If time-out goto 3</span><br /><span class="line">             5. If session lost goto 2</span><br /><span class="line">             6. SEND</span><br /><span class="line">             7. Goto 3</span><br /><span class="line"></span><br /><span class="line">        Entry:</span><br /><span class="line">          ES:BX -&gt; pointer to Network Control Block</span><br /><span class="line">        Return:</span><br /><span class="line">          AL = Error Code (0 if none)</span><br /><span class="line"></span><br /><span class="line">        Functions:</span><br /><span class="line">        10   Call                 Attempt to open session with another name</span><br /><span class="line">        11   Listen               Listen for a `Call&#39; to come in</span><br /><span class="line">        12   Hang up              End a session</span><br /><span class="line">        14   Send                 Send data as a message within specific</span><br /><span class="line">                                  session</span><br /><span class="line">        15   Receive              Receive a message</span><br /><span class="line">        16   Receive any          Receive a message from any open session</span><br /><span class="line">        17   Chain send           Concatenate two buffers and send as a</span><br /><span class="line">                                  message</span><br /><span class="line"></span><br /><span class="line">        20   Send datagram        Send a datagram (wow!)</span><br /><span class="line">        21   Receive datagram     Receive a datagram</span><br /><span class="line">        22   Send broadcast       Send a broadcast datagram</span><br /><span class="line">             datagram</span><br /><span class="line">        23   Receive broadcast    Receive a broadcast datagram</span><br /><span class="line">             datagram</span><br /><span class="line"></span><br /><span class="line">        30   Add name             Add a unique name to the local name table</span><br /><span class="line">        31   Delete name          Delete a name from the local name table</span><br /><span class="line">        32   Reset                Reset the LAN adapter, clear name and</span><br /><span class="line">                                  sessions tables. Use with GREAT care!</span><br /><span class="line">        33   Adapter status       Get information about the LAN adapter,</span><br /><span class="line">                                  names.</span><br /><span class="line">        34   Session status       Get information about all sessions</span><br /><span class="line">                                  associated with a specific name or all</span><br /><span class="line">                                  names.</span><br /><span class="line">        35   Cancel               Cancel a pending command</span><br /><span class="line">        36   Add group name       Add a group name to the local name table</span><br /><span class="line"></span><br /><span class="line">        70   Unlink               Terminate a remote boot operation (end</span><br /><span class="line">                                  INT 13h redirection)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        ---1---│--2-│---3---│7</span><br /><span class="line">        0124567│0123│0123456│0</span><br /><span class="line">        ───────┼────┼───────┼───────────────────────────────────────────</span><br /><span class="line">        IIIIIII│IIII│IIIIIII│I   00      Command</span><br /><span class="line">        OOOOOOO│OOOO│OOOOOOO│O   01      Return code</span><br /><span class="line">        OOIIIOI│    │  I    │    02      Local session number</span><br /><span class="line">             I │IIII│O I   O│    03      Number of a local name</span><br /><span class="line">           IIII│IIII│   III │    04-07   Pointer to message buffer</span><br /><span class="line">           IBBI│IBIB│   BB  │    08-09   Message buffer length</span><br /><span class="line">        IB    I│IO O│   I   │    0A-19   Callname (see below)</span><br /><span class="line">        II     │    │II  I I│    1A-29   Source (local) name</span><br /><span class="line">        II     │    │       │    2A      Receive timeout in half seconds</span><br /><span class="line">        II     │    │       │    2B      Send timeout in helf seconds</span><br /><span class="line">        IIIIIII│IIII│II II I│    2C-2F   Interrupt completion routine address</span><br /><span class="line">        IIIIIII│IIII│IIIIIII│I   30      Number of LAN adapter (0 or 1)</span><br /><span class="line">        OOOOOOO│OOOO│OOOOOOO│O   31      Command complete flag</span><br /><span class="line">               │    │       │    32-3F   14d bytes reserved (Internal use only)</span><br /><span class="line"></span><br /><span class="line">        Callname</span><br /><span class="line">          Normal use:</span><br /><span class="line">            0A-19   Network name</span><br /><span class="line">          Chain send:</span><br /><span class="line">            0A-0B   Length of next buffer in chain</span><br /><span class="line">            0C-0F   Pointer to next buffer in chain</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

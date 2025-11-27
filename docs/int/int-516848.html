@@ -1,0 +1,123 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-516244.html">
+    <link rel="next" href="int-517979.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-516244.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-509559.html">Up</a></li>
+
+
+          
+
+<li><a href="int-517979.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">Receive Command (Net Bios, 15h)</span></span><br /><span class="line"></span><br /><span class="line">        This command receives data from the machine or process with which</span><br /><span class="line">        a session as been established. The LSN field is set to the</span><br /><span class="line">        session number, and BUFADR and BUFLEN are set to the size and</span><br /><span class="line">        maximum length of the receive data buffer. The remote session</span><br /><span class="line">        must issue a SEND or CHAIN SEND command. If a send is not issued</span><br /><span class="line">        by the remote within the time specified earlier in RTO, the</span><br /><span class="line">        RECEIVE will complete with a time out error (RETCODE = 05h).</span><br /><span class="line">        Time outs do not cause session termination.</span><br /><span class="line"></span><br /><span class="line">        RECEIVE commands are completed in the order in which they are</span><br /><span class="line">        issued. If received data could be used to complete either a</span><br /><span class="line">        RECEIVE or RECEIVE ANY, the RECEIVE is given priority and</span><br /><span class="line">        completed.</span><br /><span class="line"></span><br /><span class="line">        The actual size of the received data is returned in BUFLEN. If</span><br /><span class="line">        the maximum buffer length was smaller than the length of the</span><br /><span class="line">        data, then the buffer is filled to the maximum and RETCODE = 06h</span><br /><span class="line">        is returned. The next RECEIVE (or RECEIVE ANY) will be completed</span><br /><span class="line">        with the remainder of the data.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="int-513201.html">Net Bios, 10h</a></li>
+        
+          <li><a href="int-513822.html">Net Bios, 11h</a></li>
+        
+          <li><a href="int-516244.html">Net Bios, 14h</a></li>
+        
+          <li><a href="int-517979.html">Net Bios, 16h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

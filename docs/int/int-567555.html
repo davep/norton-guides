@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-566930.html">
+    <link rel="next" href="int-569177.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-566930.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-551872.html">Up</a></li>
+
+
+          
+
+<li><a href="int-569177.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">Change number of sessions</span></span><br /><span class="line"></span><br /><span class="line">        Entry:</span><br /><span class="line">          AH = 06h</span><br /><span class="line">          DS:DX -&gt; control block (see below)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Format of control block:</span></span><br /><span class="line"></span><br /><span class="line">        Offset  Size    Description</span><br /><span class="line">         00h 12 BYTEs   reserved</span><br /><span class="line">         0Ch    WORD    1500h</span><br /><span class="line">         0Eh  6 BYTEs   0</span><br /><span class="line">         14h    WORD    (high byte first) primary return code (see AH=02h)</span><br /><span class="line">         16h    DWORD   (high byte first) secondary return code (see below, AH=01h)</span><br /><span class="line">         1Ah  8 BYTEs   (high byte first) logical unit ID</span><br /><span class="line">         22h  8 BYTEs   blanks</span><br /><span class="line">         2Ah  8 BYTEs   (high byte first) partner logical unit name</span><br /><span class="line">         32h  8 BYTEs   (high byte first) mode name</span><br /><span class="line">         3Ah    BYTE    bit 7: use MODE_NAME_SELECT_ALL rather than MODE_NAME</span><br /><span class="line">                        bit 6: set negotiable values</span><br /><span class="line">         3Bh    BYTE    partner logical unit mode session limit</span><br /><span class="line">         3Ch    BYTE    minimum CONWINNERS_SOURCE</span><br /><span class="line">         3Dh    BYTE    maximum CONWINNERS_TARGET</span><br /><span class="line">         3Eh    BYTE    automatic activation</span><br /><span class="line">         3Fh    BYTE    0</span><br /><span class="line">         40h    BYTE    bit 7: drain target</span><br /><span class="line">                        bit 6: drain source</span><br /><span class="line">                        bit 5: target responsible, not source</span><br /><span class="line"></span><br /><span class="line">        Values for secondary return code (see also AH=01h):</span><br /><span class="line">                  0000h accepted</span><br /><span class="line">                  0001h negotiated</span><br /><span class="line">                  0003h bad logical unit ID</span><br /><span class="line">                  0004h allocation failure, no retry</span><br /><span class="line">                  0005h allocation failure, retry</span><br /><span class="line">                  0151h can&#39;t raise limits</span><br /><span class="line">                  0153h all modes must reset</span><br /><span class="line">                  0154h bad SNASVCMG limits</span><br /><span class="line">                  0155h minimum greater than total</span><br /><span class="line">                  0156h mode closed (prim return code = 1)</span><br /><span class="line">                        CNOS mode closed (prim return code = 18h)</span><br /><span class="line">                  0157h bad mode name (prim return code = 1)</span><br /><span class="line">                        CNOS bad mode name (prim return code = 18h)</span><br /><span class="line">                  0159h reset SNA drains</span><br /><span class="line">                  015Ah single not SRC response</span><br /><span class="line">                  015Bh bad partner logical unit</span><br /><span class="line">                  015Ch exceeds maximum allowed</span><br /><span class="line">                  015Dh change SRC drains</span><br /><span class="line">                  015Eh logical unit detached</span><br /><span class="line">                  015Fh CNOS command race reject</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

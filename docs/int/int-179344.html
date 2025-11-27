@@ -1,0 +1,125 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Ports, EMS » I/O ports</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-179108.html">
+    <link rel="next" href="int-181159.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-179108.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-155180.html">Up</a></li>
+
+
+          
+
+<li><a href="int-181159.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">Port 3C2-W  -  VGA Miscellaneous Output Register</span></span><br /><span class="line"></span><br /><span class="line">        The read address for this register is 3CC and its write address</span><br /><span class="line">        is 3C2.</span><br /><span class="line"></span><br /><span class="line">          1xxx xxxx  Vertical Sync Polarity</span><br /><span class="line">                       When set to 0, this bit selects a positive</span><br /><span class="line">                       &#39;vertical retrace&#39; signal. This bit works</span><br /><span class="line">                       with bit 6 to determine the vertical size.</span><br /><span class="line">          x1xx xxxx  Horizontal Sync Polarity</span><br /><span class="line">                       When set to 0, this bit selects a positive</span><br /><span class="line">                       &#39;horizontal retrace&#39; signal. Bits 7 and 6 select</span><br /><span class="line">                       the vertical size (see below).</span><br /><span class="line">          xx11 xxxx  Reserved</span><br /><span class="line">          xxxx 11xx  Clock Select</span><br /><span class="line">                       These two bits select the clock source according</span><br /><span class="line">                       to the figure below. The external clock es driven</span><br /><span class="line">                       through the auzilary video extension. The input</span><br /><span class="line">                       clock should be kept between 14.3 and 28.4 MHz.</span><br /><span class="line">          xxxx xx1x  Enable RAM</span><br /><span class="line">                       When set to 0, this bit disables address decode</span><br /><span class="line">                       for the display buffer from the system.</span><br /><span class="line">          xxxx xxx1  I/O Address Select</span><br /><span class="line">                       This bit select the CRT controller addresses.</span><br /><span class="line">                       When set to 0, this bit sets the CRT controller</span><br /><span class="line">                       addresses to 3Bx and the address for the Input</span><br /><span class="line">                       status register 1 to 3BA for compatibility with</span><br /><span class="line">                       the monochrome adapter.</span><br /><span class="line">                       When set to 1, this bit sets the CRT controller</span><br /><span class="line">                       addresses to 3Dx and the address for the Input</span><br /><span class="line">                       status register 1 to 3DA for compatibility with</span><br /><span class="line">                       the color/graphics adapter.</span><br /><span class="line">                       The Write addresses to the feauture control</span><br /><span class="line">                       register are affected in the same manner.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">            <span class="ngb">Bits</span></span><br /><span class="line">            <span class="ngb">7 6    Vertical size</span></span><br /><span class="line">            ────────────────────</span><br /><span class="line">            0 0    Reserved</span><br /><span class="line">            0 1    400 lines</span><br /><span class="line">            1 0    350 lines</span><br /><span class="line">            1 1    480 lines</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">            <span class="ngb">Bits</span></span><br /><span class="line">            <span class="ngb">3 2    Clock Select</span></span><br /><span class="line">            ────────────────────</span><br /><span class="line">            0 0    Selects 25.175 MHz clock for 640/320 Horizontal PELs</span><br /><span class="line">            0 1    Selects 28.322 MHz clock for 720/360 Horizontal PELs</span><br /><span class="line">            1 0    Selects External Clock</span><br /><span class="line">            1 1    Reserved</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="int-182199.html">3CC-R</a></li>
+        
+          <li><a href="int-178778.html">3BA-R</a></li>
+        
+          <li><a href="int-185299.html">3DA-W</a></li>
+        
+          <li><a href="int-636116.html">Monochrome Adapter</a></li>
+        
+          <li><a href="int-636641.html">Color/Graphics Adapter</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

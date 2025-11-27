@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Hardware » Video</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="int-638292.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">         <span class="ngb">Programming the Registers</span></span><br /><span class="line"></span><br /><span class="line">         Each of the video components has an address register and a</span><br /><span class="line">         number of data registers. The data registers have addresses</span><br /><span class="line">         common to all registers for that component. The individual</span><br /><span class="line">         registers are selected by a pointer (index) in its Address</span><br /><span class="line">         register. To write to a data register, the address register is</span><br /><span class="line">         loaded with the index of the desired data register, then the</span><br /><span class="line">         data register is loaded by writing to the common I/O address.</span><br /><span class="line"></span><br /><span class="line">         The general registers do not share a common address; they each</span><br /><span class="line">         have their own I/O address.</span><br /><span class="line"></span><br /><span class="line">         For compatibility with IBM Enhanced Graphics Adapter (EGA), the</span><br /><span class="line">         internal video subsystem palette is programmed the same as the</span><br /><span class="line">         EGA. Using BIOS to program the palette will produce a color</span><br /><span class="line">         compatible to that produced by the EGA. Mode 13h (256-color</span><br /><span class="line">         mode) is  programmed so that the first 16 locations in the DAC</span><br /><span class="line">         produce compatible colors.</span><br /><span class="line"></span><br /><span class="line">         When BIOS is used to load the color palette for a color mode and</span><br /><span class="line">         monochrome display is attached, the color palette is changed.</span><br /><span class="line">         The colors are summed to produce shades of gray that allow color</span><br /><span class="line">         applications to produce a readable screen.</span><br /><span class="line"></span><br /><span class="line">         Modifying the following bits must be done while the sequencer is</span><br /><span class="line">         held in a synchronous reset through its Reset register. The bits</span><br /><span class="line">         are:</span><br /><span class="line"></span><br /><span class="line">         •  Bits 3 and 0 of the Clocking Mode register.</span><br /><span class="line"></span><br /><span class="line">         •  Bits 3 and 2 of the Miscellaneous Output register.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

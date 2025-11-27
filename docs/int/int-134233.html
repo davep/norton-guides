@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » DOS List formats</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-133370.html">
+    <link rel="next" href="int-135541.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-133370.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-127442.html">Up</a></li>
+
+
+          
+
+<li><a href="int-135541.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngb">Format of data at start of STACKS code segment (if present):</span></span><br /><span class="line"></span><br /><span class="line">Offset  Size    Description</span><br /><span class="line"> 00h    WORD    ???</span><br /><span class="line"> 02h    WORD    number of stacks (the x in STACKS=x,y)</span><br /><span class="line"> 04h    WORD    size of stack control block array (should be 8*x)</span><br /><span class="line"> 06h    WORD    size of each stack (the y in STACKS=x,y)</span><br /><span class="line"> 08h    DWORD   ptr to STACKS data segment</span><br /><span class="line"> 0Ch    WORD    offset in STACKS data segment of stack control block array</span><br /><span class="line"> 0Eh    WORD    offset in STACKS data segment of last element of that array</span><br /><span class="line"> 10h    WORD    offset in STACKS data segment of the entry in that array for</span><br /><span class="line">                the next stack to be allocated (initially same as value in</span><br /><span class="line">                0Eh and works its way down in steps of 8 to the value in</span><br /><span class="line">                0Ch as hardware interrupts pre-empt each other)</span><br /><span class="line"></span><br /><span class="line">Note:           the STACKS code segment data may, if present, be located as</span><br /><span class="line">                follows:</span><br /><span class="line">    DOS 3.2:    The code segment data is at a paragraph boundary fairly</span><br /><span class="line">                early in the IBMBIO segment (seen at 0070:0190h)</span><br /><span class="line">    DOS 3.3:    The code segment is at a paragraph boundary in the DOS data</span><br /><span class="line">                segment, which may be determined by inspecting the segment</span><br /><span class="line">                pointers of the vectors for those of interrupts 02h,</span><br /><span class="line">                08h-0Eh, 70h, 72-77h which have not been redirected by</span><br /><span class="line">                device drivers or TSRs.</span><br /><span class="line">    DOS 4.x:    Identified by sub-segment control block type &#34;S&#34; within</span><br /><span class="line">                the DOS data segment.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="int-93200.html">INT 21h, 52h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

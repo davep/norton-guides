@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-552413.html">
+    <link rel="next" href="int-565402.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-552413.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-551872.html">Up</a></li>
+
+
+          
+
+<li><a href="int-565402.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">Appc/pc</span></span><br /><span class="line"></span><br /><span class="line">        Entry:</span><br /><span class="line">          AH = 02h</span><br /><span class="line">          DS:DX -&gt; control block</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Format of control block:</span></span><br /><span class="line"></span><br /><span class="line">        Offset  Size    Description</span><br /><span class="line">         00h 12 BYTEs   reserved</span><br /><span class="line">         0Ch    WORD    verb (action)</span><br /><span class="line">         0Eh    BYTE    1 if MC_ (mapped conversation) form of verb</span><br /><span class="line">                        0 if basic verb</span><br /><span class="line">         0Fh  5 BYTEs   reserved (0)</span><br /><span class="line">         14h    WORD    (high byte first) primary return code (see below)</span><br /><span class="line">         16h    DWORD   (high byte first) error code (see below)</span><br /><span class="line">         1Ah  8 BYTEs   (high byte first) TP_ID</span><br /><span class="line">         22h    DWORD   (high byte first) conversation ID</span><br /><span class="line">        <span class="ngb">---if verb=0100h (Allocate or MC_Allocate)---</span></span><br /><span class="line">         26h    BYTE    (MC_Allocate only) 0 basic conversation</span><br /><span class="line">                                           1 mapped conversation</span><br /><span class="line">         27h    BYTE    00h SYNC_LEVEL = none</span><br /><span class="line">                        01h SYNC_LEVEL = confirm</span><br /><span class="line">         28h    WORD    0000h</span><br /><span class="line">         2Ah    BYTE    00h RETURN_CONTROL: when session allocated</span><br /><span class="line">                        01h RETURN_CONTROL: immediate</span><br /><span class="line">                        02h RETURN_CONTROL: when session free</span><br /><span class="line">         2Bh  8 BYTEs   0</span><br /><span class="line">         33h  8 BYTEs   (high byte first) partner logical unit name</span><br /><span class="line">         3Bh  8 BYTEs   (high byte first) mode name</span><br /><span class="line">         43h 65 BYTEs   (counted string) TP name</span><br /><span class="line">         84h    BYTE    00h security: none</span><br /><span class="line">                        01h security: same</span><br /><span class="line">                        02h security: pgm</span><br /><span class="line">         85h 11 BYTEs   0</span><br /><span class="line">         90h 11 BYTEs   (counted string) password</span><br /><span class="line">         9Bh 11 BYTEs   (counted string) user ID</span><br /><span class="line">         A6h    WORD    PIP_DATA length</span><br /><span class="line">         A8h    DWORD   pointer to PIP_DATA</span><br /><span class="line">        <span class="ngb">---if verb=0300h (Confirm or MC_Confirm)---</span></span><br /><span class="line">         26h    BYTE  request to send received (0=no, 1=yes)</span><br /><span class="line">        <span class="ngb">---if verb=0400h (Confirmed or MC_Confirmed), no additional fields---</span></span><br /><span class="line">        <span class="ngb">---if verb=0500h (Deallocate or MC_Deallocate)---</span></span><br /><span class="line">         26h    BYTE    0</span><br /><span class="line">         27h    BYTE    type 0 SYNC_LEVEL</span><br /><span class="line">                             1 FLUSH</span><br /><span class="line">                             2 ABEND_PROC</span><br /><span class="line">                             3 ABEND_SVC</span><br /><span class="line">                             4 ABEND_TIMER</span><br /><span class="line">                             5 ABEND</span><br /><span class="line">         28h    WORD    (MC_Deallocate only) length of error log data</span><br /><span class="line">         2Ah    DWORD   (MC_Deallocate only) pointer to error log data</span><br /><span class="line">        <span class="ngb">---if verb=0600h (Flush or MC_Flush), no additional fields---</span></span><br /><span class="line">        <span class="ngb">---if verb=0700h (Get_Attributes or MC_Get_Attributes)---</span></span><br /><span class="line">         26h  8 BYTEs   (high byte first) logical unit ID</span><br /><span class="line">         2Eh    BYTE    0</span><br /><span class="line">         2Fh    BYTE    SYNC_LEVEL (0=none, 1=confirm)</span><br /><span class="line">         30h  8 BYTEs   (high byte first) mode name</span><br /><span class="line">         38h  8 BYTEs   (high byte first) own net name</span><br /><span class="line">         40h  8 BYTEs   (high byte first) own logical unit name</span><br /><span class="line">         48h  8 BYTEs   (high byte first) partner logical unit name</span><br /><span class="line">         50h 18 BYTEs   (counted string) partner&#39;s fully qualified logical unit name</span><br /><span class="line">         62h    BYTE    0</span><br /><span class="line">         63h 11 BYTEs   (counted string) user ID</span><br /><span class="line">        <span class="ngb">---if verb=0800h (Get_Type)---</span></span><br /><span class="line">         26h    BYTE    type (0=basic conversation, 1=mapped conversation)</span><br /><span class="line">        <span class="ngb">---if verb=0900h (Post_on_Receipt)---</span></span><br /><span class="line">         26h    WORD    maximum length</span><br /><span class="line">         28h    BYTE    fill (0=buffer, 1=LL)</span><br /><span class="line">        <span class="ngb">---if verb=0A00h (Prepare_to_Receive or MC_Prepare_to_Receive)---</span></span><br /><span class="line">         26h    BYTE    type (0=SYNC_LEVEL, 1=FLUSH)</span><br /><span class="line">         27h    BYTE    locks (0=short, 1=long)</span><br /><span class="line">        <span class="ngb">---if verb=0B00h (Receive_and_Wait or MC_Receive_and_Wait)---</span></span><br /><span class="line">         26h    BYTE    what received</span><br /><span class="line">                        00h data</span><br /><span class="line">                        01h data complete</span><br /><span class="line">                        02h data incomplete</span><br /><span class="line">                        03h confirm</span><br /><span class="line">                        04h confirm send</span><br /><span class="line">                        05h confirm deallocate</span><br /><span class="line">                        06h send</span><br /><span class="line">         27h    BYTE    (MC_Receive_and_Wait only) fill (0=buffer, 1=LL)</span><br /><span class="line">         28h    BYTE    Request_to_Send_Received (0=no, 1=yes)</span><br /><span class="line">         29h    WORD    maximum length</span><br /><span class="line">         2Bh    WORD    data length</span><br /><span class="line">         2Dh    DWORD   pointer to data</span><br /><span class="line">        <span class="ngb">---if verb=0C00h (Receive_Immediate or MC_Receive_Immediate)---</span></span><br /><span class="line">         26h    BYTE    what received</span><br /><span class="line">                        00h data</span><br /><span class="line">                        01h data complete</span><br /><span class="line">                        02h data incomplete</span><br /><span class="line">                        03h confirm</span><br /><span class="line">                        04h confirm send</span><br /><span class="line">                        05h confirm deallocate</span><br /><span class="line">                        06h send</span><br /><span class="line">         27h    BYTE    (MC_Receive_Immediate only) fill (0=buffer, 1=LL)</span><br /><span class="line">         28h    BYTE    Request_to_Send_Received (0=no, 1=yes)</span><br /><span class="line">         29h    WORD    maximum length</span><br /><span class="line">         2Bh    WORD    data length</span><br /><span class="line">         2Dh    DWORD   pointer to data</span><br /><span class="line">        <span class="ngb">---if verb=0E00h (Request_to_Send or MC_Request_to_Send), no other fields---</span></span><br /><span class="line">        <span class="ngb">---if verb=0F00h (Send_Data or MC_Send_Data)---</span></span><br /><span class="line">         26h    BYTE    request to send received (0=no, 1=yes)</span><br /><span class="line">         27h    BYTE    0</span><br /><span class="line">         28h    WORD    data length</span><br /><span class="line">         2Ah    DWORD   pointer to data</span><br /><span class="line">        <span class="ngb">---if verb=1000h (Send_Error or MC_Send_Error)---</span></span><br /><span class="line">         26h    BYTE    request to send received (0=no, 1=yes)</span><br /><span class="line">         27h    BYTE    type (0=program, 1=SVC)</span><br /><span class="line">         28h    DWORD   0</span><br /><span class="line">         2Ch    WORD    (MC_Send_Error only) LOG_DATA length</span><br /><span class="line">         2Eh    DWORD   (MC_Send_Error only) pointer to LOG_DATA</span><br /><span class="line">        <span class="ngb">---if verb=1200h (Test or MC_Test)---</span></span><br /><span class="line">         26h    BYTE    (MC_Test only) test (0=posted, 1=request_to_send received)</span><br /><span class="line">                        Note: error code has different interpretations for:</span><br /><span class="line">                                0 posted data</span><br /><span class="line">                                1 posted not data (primary return code = 0)</span><br /><span class="line">                                1 bad TP_ID (primary return code = 1)</span><br /><span class="line">        <span class="ngb">---if verb=1300h (Wait)---</span></span><br /><span class="line">         26h    BYTE    number of conversations to wait on</span><br /><span class="line">                        Note: error codes have interpretations as for 1200h above</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Values for primary return code:</span></span><br /><span class="line">                0000h  successful</span><br /><span class="line">                0001h  parameter check</span><br /><span class="line">                0002h  state check</span><br /><span class="line">                0003h  allocation error</span><br /><span class="line">                0005h  deallocate abended</span><br /><span class="line">                0006h  deallocate abended program</span><br /><span class="line">                0007h  deallocate abended SVC</span><br /><span class="line">                0008h  deallocate abended timer</span><br /><span class="line">                0009h  deallocate normal return</span><br /><span class="line">                000Ah  data posting blocked</span><br /><span class="line">                000Bh  posting not active</span><br /><span class="line">                000Ch  PROG_ERROR_NO_TRUNC</span><br /><span class="line">                000Dh  PROG_ERROR_TRUNC</span><br /><span class="line">                000Eh  PROG_ERROR_PURGING</span><br /><span class="line">                000Fh  CONV_FAILURE_RETRY</span><br /><span class="line">                0010h  CONV_FAILURE_NO_RETRY</span><br /><span class="line">                0011h  SVC_ERROR_NO_TRUNC</span><br /><span class="line">                0012h  SVC_ERROR_TRUNC</span><br /><span class="line">                0013h  SVC_ERROR_PURGING</span><br /><span class="line">                0014h  unsuccessful</span><br /><span class="line">                0018h  CNOS partner logical unit reject</span><br /><span class="line">                0019h  conversation type mixed</span><br /><span class="line">                F001h  APPC disabled</span><br /><span class="line">                F002h  APPC busy</span><br /><span class="line">                F003h  APPC abended</span><br /><span class="line">                F004h  incomplete</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Values for error code:</span></span><br /><span class="line">                0001h bad TP ID</span><br /><span class="line">                0002h bad conversation ID</span><br /><span class="line">                0004h allocation error, no retry</span><br /><span class="line">                0005h allocation error, retry</span><br /><span class="line">                0006h data area crosses segment boundary</span><br /><span class="line">                0010h bad TPN length</span><br /><span class="line">                0011h bad CONV length</span><br /><span class="line">                0012h bad SYNC level</span><br /><span class="line">                0013h bad security selection</span><br /><span class="line">                0014h bad return control</span><br /><span class="line">                0015h SEC_TOKENS too big</span><br /><span class="line">                0016h PIP_LEN incorrect</span><br /><span class="line">                0017h no use of SNASVCMG</span><br /><span class="line">                0018h unknown partner mode</span><br /><span class="line">                0031h confirm: SYNC_NONE</span><br /><span class="line">                0032h confirm: bad state</span><br /><span class="line">                0033h confirm: NOT_LL_BDY</span><br /><span class="line">                0041h confirmed: bad state</span><br /><span class="line">                0051h deallocate: bad type</span><br /><span class="line">                0052h deallocate: flush bad state</span><br /><span class="line">                0053h deallocate: confirm bad state</span><br /><span class="line">                0055h deallocate: NOT_LL_BDY</span><br /><span class="line">                0057h deallocate: log LL_WRONG</span><br /><span class="line">                0061h flush: not send state</span><br /><span class="line">                0091h post on receipt: invalid length</span><br /><span class="line">                0092h post on receipt: not in receive state</span><br /><span class="line">                0093h post on receipt: bad fill</span><br /><span class="line">                00A1h prepare to receive:invalid type</span><br /><span class="line">                00A2h prepare to receive: unfinished LL</span><br /><span class="line">                00A3h prepare to receive: not in send state</span><br /><span class="line">                00B1h receive and wait: bad state</span><br /><span class="line">                00B2h receive and wait: NOT_LL_BDY</span><br /><span class="line">                00B5h receive and wait: bad fill</span><br /><span class="line">                00C1h receive immediate: not in receive state</span><br /><span class="line">                00C4h receive immediate: bad fill</span><br /><span class="line">                00E1h request to send: not in receive state</span><br /><span class="line">                00F1h send data: bad LL</span><br /><span class="line">                00F2h send data: not in send state</span><br /><span class="line">                0102h send error: log LL wrong</span><br /><span class="line">                0103h send error: bad type</span><br /><span class="line">                0121h test: invalid type</span><br /><span class="line">                0122h test: not in receive state</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

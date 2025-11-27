@@ -1,0 +1,108 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-487720.html">
+    <link rel="next" href="int-489110.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-487720.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-411523.html">Up</a></li>
+
+
+          
+
+<li><a href="int-489110.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Dos Tables</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="int-50943.html">DOS functions</a></li>
+              <li><a href="int-127442.html">DOS List formats</a></li>
+              <li><a href="int-150514.html">DOS Error codes</a></li>
+              <li><a href="int-154931.html">DOS Data Structures</a></li>
+              
+            </ul>
+            <li>Ports, EMS</li>
+            <ul>
+              <li><a href="int-155180.html">I/O ports</a></li>
+              <li><a href="int-194469.html">EMS Error codes</a></li>
+              <li><a href="int-196321.html">Ansi control sequences</a></li>
+              <li><a href="int-202455.html">ASCII Chart</a></li>
+              <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+              <li><a href="int-208398.html">Special Characters</a></li>
+              <li><a href="int-210204.html">Color Chart</a></li>
+              <li><a href="int-211689.html">Keyboard Codes</a></li>
+              
+            </ul>
+            <li>Hardware</li>
+            <ul>
+              <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+              <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+              <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+              <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+              <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+              <li><a href="int-230985.html">Net Bios</a></li>
+              <li><a href="int-231105.html">Video</a></li>
+              <li><a href="int-231243.html">Credits</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Communicating Applications Spec - Submit file to send</span></span><br /><span class="line"></span><br /><span class="line">        Entry:</span><br /><span class="line">          AX = CB15h</span><br /><span class="line">          DS:DX -&gt; variable-length data area</span><br /><span class="line">        Return:</span><br /><span class="line">          AX &gt;= 0 event handle</span><br /><span class="line">             &lt;  0 error code (see AX=CB01h)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Format of data area:</span></span><br /><span class="line"></span><br /><span class="line">        Offset  Size    Description</span><br /><span class="line">         00h    BYTE    transfer type</span><br /><span class="line">                        00h = 200x200 dpi, fax mode</span><br /><span class="line">                        01h = 100x200 dpi, fax mode</span><br /><span class="line">                        02h = file transfer mode</span><br /><span class="line">                        03h to 7Fh reserved</span><br /><span class="line">         01h    BYTE    text size</span><br /><span class="line">                        00h = 80 columns</span><br /><span class="line">                        01h = 132 columns</span><br /><span class="line">                        02h to 7Fh reserved</span><br /><span class="line">         02h    WORD    time to send (DOS packed time format,</span><br /><span class="line">                        see INT 21/AX=5700h)</span><br /><span class="line">         04h    WORD    date to send (DOS packed date format,</span><br /><span class="line">                        see INT 21/AX=5700h)</span><br /><span class="line">         06h 32 BYTEs   ASCIZ destination name</span><br /><span class="line">         26h 80 BYTEs   ASCIZ name of file to send</span><br /><span class="line">         76h 47 BYTEs   ASCIZ phone number to dial</span><br /><span class="line">         A5h 64 BYTEs   ASCIZ application-specific tag string</span><br /><span class="line">         E5h    BYTE    reserved (00h)</span><br /><span class="line">         E6h    BYTE    cover page</span><br /><span class="line">                        00h don&#39;t send cover page</span><br /><span class="line">                        01h send cover page</span><br /><span class="line">                        02h to 7Fh reserved</span><br /><span class="line">         E7h 23 BYTEs   reserved (zeros)</span><br /><span class="line">         FEh variable   ASCIZ string containing text of cover page</span><br /><span class="line">                        (if cover page flag set to 01h)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
