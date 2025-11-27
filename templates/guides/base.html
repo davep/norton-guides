@@ -1,0 +1,57 @@
+{# -*- engine: jinja2 -*- #}
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="{{ generator }}">
+    <link rel="stylesheet" type="text/css" href="{{ stylesheet }}">
+    <title>{% block title %}{{ None|title }}{% endblock %}</title>
+    <meta name="description" content="{{ None|title }}">
+    {% if previous_url %}<link rel="prev" href="{{ previous_url }}">{% endif %}
+    {% if next_url %}<link rel="next" href="{{ next_url }}">{% endif %}
+    {% block extraheaders %}{% endblock %}
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          {% with prompt="Guides", link="../index.html" %}{% include "inc/nav-link.html" %}{% endwith %}
+          {% with prompt="About", link=about_url %}{% include "inc/nav-link.html" %}{% endwith %}
+          {% with prompt="Previous", link=previous_url %}{% include "inc/nav-link.html" %}{% endwith %}
+          {% with prompt="Up", link=up_url %}{% include "inc/nav-link.html" %}{% endwith %}
+          {% with prompt="Next", link=next_url %}{% include "inc/nav-link.html" %}{% endwith %}
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+          {%- for menu in guide.menus %}
+            <li>{{ menu }}</li>
+            <ul>
+              {% for option in menu -%}
+                <li><a href="{{ option|urlify }}">{{ option.text }}</a></li>
+              {% endfor %}
+            </ul>
+          {%- endfor %}
+        </ul>
+      </nav>
+
+      <article class="box">
+        {% block content %}{% endblock %}
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
+{# base.html ends here #}
