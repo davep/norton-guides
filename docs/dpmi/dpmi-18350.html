@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » OverView</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-13151.html">
+    <link rel="next" href="dpmi-19202.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-13151.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-19202.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Virtual Memory and Page Locking</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">            Many implementations  of DPMI  support virtual  memory.   In</span><br /><span class="line">            these environments,  it will be necessary to lock any memory</span><br /><span class="line">            that can  be touched while executing inside of DOS.  This is</span><br /><span class="line">            necessary because  it may  not be possible for the operating</span><br /><span class="line">            system to demand load a page if DOS is busy.</span><br /><span class="line"></span><br /><span class="line">            Some DPMI implementations will not call DOS to read or write</span><br /><span class="line">            virtual memory  to disk  and under these implementations the</span><br /><span class="line">            page locking services may be ignored.  Since the entire DPMI</span><br /><span class="line">            session is  virtualized, a  page fault can be handled at any</span><br /><span class="line">            point while  executing the  program.    However,  under  all</span><br /><span class="line">            implementations, DPMI  applications  should  lock  interrupt</span><br /><span class="line">            code and  data.   The lock  calls will always return success</span><br /><span class="line">            under implementations that ignore these calls.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

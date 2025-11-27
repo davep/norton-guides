@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » OverView</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-7221.html">
+    <link rel="next" href="dpmi-11084.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-7221.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-11084.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Virtual DOS Environments</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">            Many  DPMI   implementations  are  simulated  &#34;virtual  DOS&#34;</span><br /><span class="line">            sessions.  In other words, the DOS interface and environment</span><br /><span class="line">            presented  to  the  program  are  not  actually  the  native</span><br /><span class="line">            interface of  the operating  system.   Hardware  interrupts,</span><br /><span class="line">            I/O, and  processor exceptions  will be  virtualized by  the</span><br /><span class="line">            operating system.   This  means, for  example, that  a  DPMI</span><br /><span class="line">            program may  receive a simulated keyboard interrupt and read</span><br /><span class="line">            simulated I/O from the keyboard controller ports.</span><br /><span class="line"></span><br /><span class="line">            In these  environments, actual  hardware interrupts  will be</span><br /><span class="line">            handled by  the operating  system.   The physical interrupts</span><br /><span class="line">            will be  invisible to  the DPMI application program.  If the</span><br /><span class="line">            operating system  so  chooses,  it  may  reflect  a  virtual</span><br /><span class="line">            interrupt to  the DPMI  program.   The DPMI program does not</span><br /><span class="line">            need to know, nor should it care, if this is the case.  From</span><br /><span class="line">            the program&#39;s  point of  view, the  interrupt looks  exactly</span><br /><span class="line">            like a  &#34;real&#34; interrupt.   The  operating system  will also</span><br /><span class="line">            virtualize I/O  to the  interrupt controller  ports and  any</span><br /><span class="line">            other simulated devices.</span><br /><span class="line"></span><br /><span class="line">            There are basically three levels of virtualization that DPMI</span><br /><span class="line">            implementations can provide:</span><br /><span class="line"></span><br /><span class="line">        <span class="ngu">No Virtualization</span></span><br /><span class="line"></span><br /><span class="line">            In general,  stand-alone single tasking DPMI implementations</span><br /><span class="line">            will not  virtualize  any  hardware  devices.    These  hose</span><br /><span class="line">            extension programs  will execute  as standard  DOS real mode</span><br /><span class="line">            drivers or  programs.   Extenders  which  use  the  services</span><br /><span class="line">            provided by these DPMI host drivers will translate protected</span><br /><span class="line">            mode DOS  calls to  real mode  DOS calls.    Normally  these</span><br /><span class="line">            extenders will  invoke DPMI services to return the processor</span><br /><span class="line">            to real  mode (instead  of virtual  8086 mode)  when calling</span><br /><span class="line">            DOS.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngu">Partial Virtualization</span></span><br /><span class="line"></span><br /><span class="line">            Some environments  that execute  under DOS  will  virtualize</span><br /><span class="line">            hardware devices,  provide virtual  memory, or provide other</span><br /><span class="line">            services  that   require  virtualization  of  some  hardware</span><br /><span class="line">            devices.   Under these  environments, DPMI applications will</span><br /><span class="line">            always run  at a non-privileged ring (usually ring 3).  Some</span><br /><span class="line">            or all  hardware interrupts will be virtualized, some or all</span><br /><span class="line">            I/O  will   be  virtualized,   and  virtual  memory  may  be</span><br /><span class="line">            supported.     Under  these  implementations,  page  locking</span><br /><span class="line">            services  usually   must  be  used  to  lock  interrupt  and</span><br /><span class="line">            exception handling code.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngu">Complete Virtualization</span></span><br /><span class="line"></span><br /><span class="line">            These  environments   provide  a  completely  simulated  DOS</span><br /><span class="line">            environment.  The native operating system is something other</span><br /><span class="line">            than MS-DOS.   Under  these  implementations  of  DPMI,  all</span><br /><span class="line">            devices will  be virtualized to some extent.  Normally, page</span><br /><span class="line">            locking services  will be  ignored by  these implementations</span><br /><span class="line">            since all physical device interrupt and I/O handling will be</span><br /><span class="line">            performed by the operating system.  Programs will always run</span><br /><span class="line">            at a non-privileged ring.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

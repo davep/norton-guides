@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » OverView</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-26547.html">
+    <link rel="next" href="dpmi-33113.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-26547.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-33113.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Calling the Real to Protected Mode Switch Entry Point</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">                 After using  Int 2Fh  function  1687h,  to  obtain  the</span><br /><span class="line">                 protected mode  entry point,  the DPMI client must call</span><br /><span class="line">                 the entry point address as described in this section.</span><br /><span class="line"></span><br /><span class="line">            To Call</span><br /><span class="line"></span><br /><span class="line">                 AX = Flags</span><br /><span class="line">                      Bit 0 = 1 if program is a 32-bit application</span><br /><span class="line">                 ES =  Real mode  segment of  DPMI host data area.  This</span><br /><span class="line">                      must be  the size  of the data area returned in SI</span><br /><span class="line">                      from the previous function.  ES will be ignored if</span><br /><span class="line">                      the required data size is zero.</span><br /><span class="line">                 Call the  address returned  in ES:DI  by  the  previous</span><br /><span class="line">                      function</span><br /><span class="line"></span><br /><span class="line">            Returns</span><br /><span class="line"></span><br /><span class="line">                 If function was successful:</span><br /><span class="line">                 Carry flag is clear.</span><br /><span class="line">                 Program is now executing in protected mode.</span><br /><span class="line">                 CS =  16-bit selector  with base  of real mode CS and a</span><br /><span class="line">                      64K limit</span><br /><span class="line">                 SS = Selector with base of real mode SS and a 64K limit</span><br /><span class="line">                 DS = Selector with base of real mode DS and a 64K limit</span><br /><span class="line">                 ES = Selector to program&#39;s PSP with a 100h byte limit</span><br /><span class="line">                 FS and GS = 0 (if running on an 80386 or 80486)</span><br /><span class="line">                 If the program is a 32-bit application the high word of</span><br /><span class="line">                      ESP will be 0</span><br /><span class="line">                 All other registers are preserved</span><br /><span class="line"></span><br /><span class="line">                 If function was not successful:</span><br /><span class="line">                 Carry flag is set.</span><br /><span class="line">                 Program is executing in real mode</span><br /><span class="line"></span><br /><span class="line">            Programmer&#39;s Notes</span><br /><span class="line"></span><br /><span class="line">                 o    Once in protected mode, all Int 31h calls that are</span><br /><span class="line">                      supported by DPMI can be called.</span><br /><span class="line">                 o    To terminate  the program, execute an Int 21h with</span><br /><span class="line">                      AH=4Ch and  AL=Error code.   This  is the standard</span><br /><span class="line">                      DOS exit  function.   Do not  use  any  other  DOS</span><br /><span class="line">                      termination call -- Only AH=4Ch is supported under</span><br /><span class="line">                      DPMI.</span><br /><span class="line">                 o    Under  different   implementations  of   DPMI  the</span><br /><span class="line">                      privilege ring of a program will change.  Programs</span><br /><span class="line">                      should make no assumptions about the ring at which</span><br /><span class="line">                      they  will   run.     When  creating  descriptors,</span><br /><span class="line">                      programs should  set the  DPL of the descriptor to</span><br /><span class="line">                      the same  ring as their initial code segment.  Use</span><br /><span class="line">                      the lar  instruction to  determine the  protection</span><br /><span class="line">                      ring  of   your  program&#39;s   code  segment.    All</span><br /><span class="line">                      descriptors created  by your program should be set</span><br /><span class="line">                      to the same protection level.</span><br /><span class="line">                 o    Programs  that   specify  that   they  are  32-bit</span><br /><span class="line">                      applications will initially run with a 16-bit code</span><br /><span class="line">                      segment.   Stack and  data  selectors  for  32-bit</span><br /><span class="line">                      programs will be 32-bit (the Big bit will be set).</span><br /><span class="line">                      However, all  Int 31h  calls will  require  48-bit</span><br /><span class="line">                      pointers even  though the  program is running in a</span><br /><span class="line">                      16-bit code segment.</span><br /><span class="line">                 o    Unless you have explicitly enabled the A20 address</span><br /><span class="line">                      line through the XMS interface, do not assume that</span><br /><span class="line">                      memory from  1Mb to  1Mb+64K-16 (the  High  Memory</span><br /><span class="line">                      Area) is  addressable once your program is running</span><br /><span class="line">                      in protected  mode.   If you  want to  be able  to</span><br /><span class="line">                      access the  HMA  then  you  must  enable  the  A20</span><br /><span class="line">                      through XMS  before entering  protected mode.  XMS</span><br /><span class="line">                      calls are  not supported  in protected mode.  Note</span><br /><span class="line">                      that  this   restriction  is  only  important  for</span><br /><span class="line">                      software that wishes to access the HMA.  Under all</span><br /><span class="line">                      implementations of  DPMI the  physical A20 address</span><br /><span class="line">                      line  will   always  be  enabled  while  executing</span><br /><span class="line">                      protected mode code.  However, some 80386 specific</span><br /><span class="line">                      DPMI implementations simulate 1Mb address wrap for</span><br /><span class="line">                      compatibility   reasons.      Under   these   DPMI</span><br /><span class="line">                      implementations, the  HMA will  not be  accessible</span><br /><span class="line">                      unless  the   A20  is   enabled  through  the  XMS</span><br /><span class="line">                      interface.</span><br /><span class="line">                 o    The environment  pointer in  the current program&#39;s</span><br /><span class="line">                      PSP  will   automatically  be   converted   to   a</span><br /><span class="line">                      descriptor.   If you  want to  free the  program&#39;s</span><br /><span class="line">                      environment memory, you must do so before entering</span><br /><span class="line">                      protected mode.   In  this case,  the  environment</span><br /><span class="line">                      pointer  descriptor  will  point  to  garbage  and</span><br /><span class="line">                      should not  be used.   The  DPMI client may change</span><br /><span class="line">                      the environment  pointer in the PSP after entering</span><br /><span class="line">                      protected mode  but it  must  restore  it  to  the</span><br /><span class="line">                      selector  created   by  the   DPMI   host   before</span><br /><span class="line">                      terminating.</span><br /><span class="line">                 o    The caller  is allowed  to modify  or free the DS,</span><br /><span class="line">                      SS, and  CS descriptors  allocated by  this  call.</span><br /><span class="line">                      You  may   not  modify   the  PSP   descriptor  or</span><br /><span class="line">                      environment pointer  descriptor in  the PSP.</span><br /><span class="line">                 o    Note that if DS=SS on entry to this call then only</span><br /><span class="line">                      one descriptor  will be  allocated for both DS and</span><br /><span class="line">                      SS.  In this case, for example, if you changed the</span><br /><span class="line">                      base of  the DS  descriptor you  would also change</span><br /><span class="line">                      the base of the stack segment.</span><br /><span class="line">                 o    For some hosts it may be a good idea for protected</span><br /><span class="line">                      mode programs  to use some or all of the real mode</span><br /><span class="line">                      memory allocated  to the  real mode program by DOS</span><br /><span class="line">                      for protected  mode code  or data.  Protected mode</span><br /><span class="line">                      programs that  use memory  in the first 1Mb should</span><br /><span class="line">                      mark the  memory as  pageable using Int 31h 0602h.</span><br /><span class="line"></span><br /><span class="line">            Example Code</span><br /><span class="line"></span><br /><span class="line">                 ;</span><br /><span class="line">                 ; Get the entry point address and save it</span><br /><span class="line">                 ;</span><br /><span class="line">                         mov     ax, 1687h</span><br /><span class="line">                         int     2Fh</span><br /><span class="line">                         test    ax, ax</span><br /><span class="line">                         jnz     Cant_Enter_PMode</span><br /><span class="line">                         mov     [PMode_Entry_Seg], es</span><br /><span class="line">                         mov     [PMode_Entry_Off], di</span><br /><span class="line"></span><br /><span class="line">                 ;</span><br /><span class="line">                 ; Allocate memory for use by DOS extender if necessary</span><br /><span class="line">                 ; NOTE:  This code assumes that the program has already</span><br /><span class="line">                 ;        shrunk its memory block so that the DOS</span><br /><span class="line">                 ;        memory allocation call will work</span><br /><span class="line">                 ;</span><br /><span class="line">                         test    si, si</span><br /><span class="line">                         jz      Enter_PMode_Now</span><br /><span class="line">                         mov     bx, si</span><br /><span class="line">                         mov     ah, 48h</span><br /><span class="line">                         int     21h</span><br /><span class="line">                         jc      Cant_Enter_PMode</span><br /><span class="line">                         mov     es, ax</span><br /><span class="line"></span><br /><span class="line">                 ;</span><br /><span class="line">                 ; Enter protected mode as a 16-bit program</span><br /><span class="line">                 ;</span><br /><span class="line">                 Enter_PMode_Now:</span><br /><span class="line">                         xor     ax, ax</span><br /><span class="line">                         call    DWORD PTR [PMode_Entry_Off]</span><br /><span class="line">                         jc      Cant_Enter_PMode</span><br /><span class="line"></span><br /><span class="line">                 ;</span><br /><span class="line">                 ; The program is running in protected mode now!</span><br /><span class="line">                 ; Protected mode initialization code would go here.</span><br /><span class="line">                 ; Mark program&#39;s real mode memory as pageable, etc.</span><br /><span class="line">                 ;</span><br /><span class="line">                         .</span><br /><span class="line">                         .</span><br /><span class="line">                         .</span><br /><span class="line"></span><br /><span class="line">                 ;</span><br /><span class="line">                 ; Quit the program and return to real mode DOS</span><br /><span class="line">                 ;</span><br /><span class="line">                         mov     ax, 4C00h</span><br /><span class="line">                         int     21h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

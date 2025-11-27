@@ -1,0 +1,90 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-42123.html">
+    <link rel="next" href="dpmi-43605.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-42123.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-43605.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Allocate LDT Descriptors</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">                 This  function   is  used   to  allocate  one  or  more</span><br /><span class="line">                 descriptors from  the  task&#39;s  Local  Descriptor  Table</span><br /><span class="line">                 (LDT).  The descriptor(s) allocated must be initialized</span><br /><span class="line">                 by the application.</span><br /><span class="line"></span><br /><span class="line">            To Call</span><br /><span class="line"></span><br /><span class="line">                 AX = 0000h</span><br /><span class="line">                 CX = Number of descriptors to allocate</span><br /><span class="line"></span><br /><span class="line">            Returns</span><br /><span class="line"></span><br /><span class="line">                 If function was successful:</span><br /><span class="line">                 Carry flag is clear.</span><br /><span class="line">                 AX = Base selector</span><br /><span class="line"></span><br /><span class="line">                 If function was not successful:</span><br /><span class="line">                 Carry flag is set.</span><br /><span class="line"></span><br /><span class="line">            Programmer&#39;s Notes</span><br /><span class="line"></span><br /><span class="line">                 o    If more than one descriptor was requested, AX will</span><br /><span class="line">                      contain  the   first  of  a  contiguous  array  of</span><br /><span class="line">                      descriptors.  You should add the value returned by</span><br /><span class="line">                      function 0003h (see function 0008H) to  get to the</span><br /><span class="line">                      next selector in the array.</span><br /><span class="line">                 o    The descriptor  will be  set to present data type,</span><br /><span class="line">                      with a base and limit of zero.</span><br /><span class="line">                 o    It is up to the caller to fill in the descriptors.</span><br /><span class="line">                 o    The privilege  level of descriptors will match the</span><br /><span class="line">                      application&#39;s code  segment privilege level.  When</span><br /><span class="line">                      modifying descriptors,  always set  the DPL to the</span><br /><span class="line">                      same  privilege   ring  as   your  program&#39;s  code</span><br /><span class="line">                      segment.  Use the lar instruction to determine the</span><br /><span class="line">                      privilege of a descriptor.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="dpmi-47319.html">INT 31H Function 0008H</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

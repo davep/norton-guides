@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-94852.html">
+    <link rel="next" href="dpmi-97887.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-94852.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-97887.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Mark Real Mode Region as Pageable</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">                 Under some  implementations  of  DPMI,  all  memory  in</span><br /><span class="line">                 virtual 8086 mode is locked by default.  If a protected</span><br /><span class="line">                 mode program  is using  memory in the first megabyte of</span><br /><span class="line">                 address space,  it is  a good idea to use this function</span><br /><span class="line">                 to turn  off automatic  page  locking  for  regions  of</span><br /><span class="line">                 memory that will not be touched at interrupt time.</span><br /><span class="line"></span><br /><span class="line">                 Do not  mark memory as pageable in regions that are not</span><br /><span class="line">                 owned by your application.  For example, you should not</span><br /><span class="line">                 mark all free DOS memory as pageable since it may cause</span><br /><span class="line">                 a page  fault to  occur while  inside of DOS (causing a</span><br /><span class="line">                 crash).   Also, do  not mark the DPMI host data area as</span><br /><span class="line">                 pageable.</span><br /><span class="line"></span><br /><span class="line">                 It is  very important  to relock  any real  mode memory</span><br /><span class="line">                 using function  0603h  before  terminating  a  program.</span><br /><span class="line">                 Memory  that  remains  unlocked  after  a  program  has</span><br /><span class="line">                 terminated could result in fatal page faults when other</span><br /><span class="line">                 software is executed in that address space.</span><br /><span class="line"></span><br /><span class="line">                 Note that  address space  marked as  pageable  by  this</span><br /><span class="line">                 function can  be locked  using function  0600h.    This</span><br /><span class="line">                 function is  just an  advisory service  to allow memory</span><br /><span class="line">                 that does  not need to be locked to be paged out.  This</span><br /><span class="line">                 function just  disables any  automatic locking  of real</span><br /><span class="line">                 mode memory performed by the DPMI host.</span><br /><span class="line"></span><br /><span class="line">            To Call</span><br /><span class="line"></span><br /><span class="line">                 AX = 0602h</span><br /><span class="line">                 BX:CX =  Starting linear  address of  memory to mark as</span><br /><span class="line">                      pageable</span><br /><span class="line">                 SI:DI = Size of region to page in bytes</span><br /><span class="line"></span><br /><span class="line">            Returns</span><br /><span class="line"></span><br /><span class="line">                 If function was successful:</span><br /><span class="line">                 Carry flag is clear.</span><br /><span class="line"></span><br /><span class="line">                 If function was not successful:</span><br /><span class="line">                 Carry flag is set.</span><br /><span class="line"></span><br /><span class="line">            Programmer&#39;s Notes</span><br /><span class="line"></span><br /><span class="line">                 o    If this  function fails  then none  of the  memory</span><br /><span class="line">                      will be unlocked.</span><br /><span class="line">                 o    If the specified region overlaps part of a page at</span><br /><span class="line">                      the beginning  or end  of the  region, the page(s)</span><br /><span class="line">                      will be not be marked as pageable.</span><br /><span class="line">                 o    When  your   program  terminates  it  should  call</span><br /><span class="line">                      function 0603h to relock the memory region.</span><br /><span class="line">                 o    Unlike the  lock and unlock calls, the pageability</span><br /><span class="line">                      of the  real mode region is maintained as a binary</span><br /><span class="line">                      state, not  a count.   Therefore, do not call this</span><br /><span class="line">                      function multiple times for a given linear region.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-56354.html">
+    <link rel="next" href="dpmi-58407.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-56354.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-58407.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Resize DOS Memory Block</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">                 This function  is used to grow or shrink a memory block</span><br /><span class="line">                 that was  allocated through  the  Allocate  DOS  Memory</span><br /><span class="line">                 Block function.</span><br /><span class="line"></span><br /><span class="line">            To Call</span><br /><span class="line"></span><br /><span class="line">                 AX = 0102h</span><br /><span class="line">                 BX = New block size in paragraphs</span><br /><span class="line">                 DX = Selector of block to modify</span><br /><span class="line"></span><br /><span class="line">            Returns</span><br /><span class="line"></span><br /><span class="line">                 If function was successful:</span><br /><span class="line">                 Carry flag is clear.</span><br /><span class="line"></span><br /><span class="line">                 If function was not successful:</span><br /><span class="line">                 Carry flag is set.</span><br /><span class="line">                 AX = DOS error code:</span><br /><span class="line">                      07h  memory control blocks damaged</span><br /><span class="line">                      08h  insufficient memory  available to allocate as</span><br /><span class="line">                      requested</span><br /><span class="line">                      09h  incorrect memory segment specified</span><br /><span class="line">                 BX = Maximum block size possible in paragraphs</span><br /><span class="line"></span><br /><span class="line">            Programmer&#39;s Notes</span><br /><span class="line"></span><br /><span class="line">                 o    Growing a  memory block  is often  likely to  fail</span><br /><span class="line">                      since other  DOS block  allocations  will  prevent</span><br /><span class="line">                      increasing the  size of  the block.   Also, if the</span><br /><span class="line">                      size of a block grows past a 64K boundary then the</span><br /><span class="line">                      allocation will fail if the next descriptor in the</span><br /><span class="line">                      LDT is  not free.   Therefore,  this  function  is</span><br /><span class="line">                      usually only used to shrink a block.</span><br /><span class="line">                 o    Shrinking a  block may cause some descriptors that</span><br /><span class="line">                      were previously  allocated  to  the  block  to  be</span><br /><span class="line">                      freed.  For example shrinking a block from 140K to</span><br /><span class="line">                      120K would cause the third allocated descriptor to</span><br /><span class="line">                      be freed since it is no longer valid.  The initial</span><br /><span class="line">                      selector  will   remain  unchanged,  however,  the</span><br /><span class="line">                      limits  of  the  remaining  two  descriptors  will</span><br /><span class="line">                      change:  the first to 120K and the second to 56k.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

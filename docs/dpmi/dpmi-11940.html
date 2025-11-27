@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » OverView</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-11084.html">
+    <link rel="next" href="dpmi-13151.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-11084.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-13151.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Interrupt Flag Management</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">            The popf  and iret  instructions may not modify the state of</span><br /><span class="line">            the interrupt  flag since most DPMI implementations will run</span><br /><span class="line">            programs with  IOPL &lt; DPL.  Programs must execute cli or sti</span><br /><span class="line">            to modify the interrupt flag state.</span><br /><span class="line"></span><br /><span class="line">            This means  that the  following  code  sequence  will  leave</span><br /><span class="line">            interrupts disabled:</span><br /><span class="line"></span><br /><span class="line">                 ;</span><br /><span class="line">                 ; (Assume interrupts are enabled at this point)</span><br /><span class="line">                 ;</span><br /><span class="line">                         pushf</span><br /><span class="line">                         cli</span><br /><span class="line">                         .</span><br /><span class="line">                         .</span><br /><span class="line">                         popf            ; Interrupts are still OFF!</span><br /><span class="line"></span><br /><span class="line">            Note that since some implementations of DPMI will maintain a</span><br /><span class="line">            virtual interrupt state for protected mode DOS programs, the</span><br /><span class="line">            current value  of the  interrupt flag  may not  reflect  the</span><br /><span class="line">            current virtual  interrupt state.   Protected  mode programs</span><br /><span class="line">            should use the virtual interrupt state services to determine</span><br /><span class="line">            the current interrupt flag state.</span><br /><span class="line"></span><br /><span class="line">            Since cli  and sti  are privileged  instructions, they  will</span><br /><span class="line">            cause a  protection violation  and the  DPMI  provider  will</span><br /><span class="line">            simulate the  instruction.  Because of the overhead involved</span><br /><span class="line">            in processing  the exception,  cli and sti should be used as</span><br /><span class="line">            little as possible.  In general, you should expect either of</span><br /><span class="line">            these instructions to require at least 300 clocks.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

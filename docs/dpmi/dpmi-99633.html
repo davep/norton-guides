@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-98852.html">
+    <link rel="next" href="dpmi-100693.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-98852.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-100693.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Mark Page as Demand Paging Candidate</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">                 This function  is used  to inform  the operating system</span><br /><span class="line">                 that a  range of  pages should be placed at the head of</span><br /><span class="line">                 the page  out candidate  list.   This will  force these</span><br /><span class="line">                 pages to  be swapped  to disk ahead of other pages even</span><br /><span class="line">                 if the memory has been accessed recently.  However, all</span><br /><span class="line">                 memory contents will be preserved.</span><br /><span class="line"></span><br /><span class="line">                 This is  useful, for example, if a program knows that a</span><br /><span class="line">                 given piece  of data  will not  be accessed  for a long</span><br /><span class="line">                 period of  time.   That data  is ideal  for swapping to</span><br /><span class="line">                 disk since  the physical  memory it now occupies can be</span><br /><span class="line">                 used for other purposes.</span><br /><span class="line"></span><br /><span class="line">            To Call</span><br /><span class="line"></span><br /><span class="line">                 AX = 0702h</span><br /><span class="line">                 BX:CX = Starting linear address of pages to mark</span><br /><span class="line">                 SI:DI = Number of bytes to mark as paging candidates</span><br /><span class="line"></span><br /><span class="line">            Returns</span><br /><span class="line"></span><br /><span class="line">                 If function was successful:</span><br /><span class="line">                 Carry flag is clear.</span><br /><span class="line"></span><br /><span class="line">                 If function was not successful:</span><br /><span class="line">                 Carry flag is set.</span><br /><span class="line"></span><br /><span class="line">            Programmer&#39;s Notes</span><br /><span class="line"></span><br /><span class="line">                 o    This function  does not  force  the  pages  to  be</span><br /><span class="line">                      swapped to disk immediately.</span><br /><span class="line">                 o    Partial pages will not be discarded.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

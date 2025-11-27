@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-59273.html">
+    <link rel="next" href="dpmi-60959.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-59273.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-60959.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Get Processor Exception Handler Vector</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">                 This function  returns  the  CS:(E)IP  of  the  current</span><br /><span class="line">                 protected mode  exception  handler  for  the  specified</span><br /><span class="line">                 exception number.</span><br /><span class="line"></span><br /><span class="line">            To Call</span><br /><span class="line"></span><br /><span class="line">                 AX = 0202h</span><br /><span class="line">                 BL = Exception/fault number (00h-1Fh)</span><br /><span class="line"></span><br /><span class="line">            Returns</span><br /><span class="line"></span><br /><span class="line">                 If function was successful:</span><br /><span class="line">                 Carry flag is clear.</span><br /><span class="line">                 CX:(E)DX = Selector:Offset of exception handler</span><br /><span class="line"></span><br /><span class="line">                 If function was not successful:</span><br /><span class="line">                 Carry flag is set.</span><br /><span class="line">                 The value passed in BL was invalid.</span><br /><span class="line"></span><br /><span class="line">            Programmer&#39;s Notes</span><br /><span class="line"></span><br /><span class="line">                 o    The value returned in CX is a valid protected mode</span><br /><span class="line">                      selector, not a real mode segment.</span><br /><span class="line">                 o    32-bit mode  programs will  be returned  a  32-bit</span><br /><span class="line">                      offset in the EDX register.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

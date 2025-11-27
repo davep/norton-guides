@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-71262.html">
+    <link rel="next" href="dpmi-74964.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-71262.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-74964.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Call Real Mode Procedure With Iret Frame</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">                 This function  calls a real mode procedure.  The called</span><br /><span class="line">                 procedure must execute an iret when it completes.</span><br /><span class="line"></span><br /><span class="line">            To Call</span><br /><span class="line"></span><br /><span class="line">                 AX = 0302h</span><br /><span class="line">                 BH = Flags</span><br /><span class="line">                      Bit 0  = 1 resets the interrupt controller and A20</span><br /><span class="line">                      line</span><br /><span class="line">                      Other flags reserved and must be 0</span><br /><span class="line">                 CX =  Number of  words to  copy from  protected mode to</span><br /><span class="line">                      real mode stack</span><br /><span class="line">                 ES:(E)DI = Selector:Offset of real mode call structure</span><br /><span class="line"></span><br /><span class="line">            Returns</span><br /><span class="line"></span><br /><span class="line">                 If function was successful:</span><br /><span class="line">                 Carry flag is clear.</span><br /><span class="line">                 ES:(E)DI =  Selector:Offset of  modified real mode call</span><br /><span class="line">                      structure</span><br /><span class="line"></span><br /><span class="line">                 If function was not successful:</span><br /><span class="line">                 Carry flag is set.</span><br /><span class="line"></span><br /><span class="line">            Programmer&#39;s Notes</span><br /><span class="line"></span><br /><span class="line">                 o    The  CS:IP   in  the   real  mode  call  structure</span><br /><span class="line">                      specifies the  address of  the real mode procedure</span><br /><span class="line">                      to call.</span><br /><span class="line">                 o    The real  mode procedure must execute an iret when</span><br /><span class="line">                      it has completed.</span><br /><span class="line">                 o    If the  SS:SP fields  are zero  then a  real  mode</span><br /><span class="line">                      stack  will   be  provided   by  the   DPMI  host.</span><br /><span class="line">                      Otherwise, the  real mode SS:SP will be set to the</span><br /><span class="line">                      specified values before the procedure is called.</span><br /><span class="line">                 o    When the  Int 31h  returns,  the  real  mode  call</span><br /><span class="line">                      structure  will   contain  the  values  that  were</span><br /><span class="line">                      returned by the real mode procedure.</span><br /><span class="line">                 o    The  flags   specified  in   the  real  mode  call</span><br /><span class="line">                      structure will  be pushed the real mode stack iret</span><br /><span class="line">                      frame.   The procedure  will be  called  with  the</span><br /><span class="line">                      interrupt and trace flags clear.</span><br /><span class="line">                 o    It is  up to  the caller  to remove any parameters</span><br /><span class="line">                      that were pushed on the protected mode stack.</span><br /><span class="line">                 o    32-bit programs  must use  ES:EDI to  point to the</span><br /><span class="line">                      real mode  call structure.  16-bit programs should</span><br /><span class="line">                      use ES:DI.</span><br /><span class="line">                 o    The flag to reset the interrupt controller and A20</span><br /><span class="line">                      line is  ignored by  DPMI implementations that run</span><br /><span class="line">                      in  Virtual   8086   mode.      It   causes   DPMI</span><br /><span class="line">                      implementations that  return to  real mode  to set</span><br /><span class="line">                      the interrupt  controller  and  A20  address  line</span><br /><span class="line">                      hardware to its normal real mode state.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

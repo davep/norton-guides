@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-87669.html">
+    <link rel="next" href="dpmi-91993.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-87669.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-91993.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>DPMI</li>
+            <ul>
+              <li><a href="index.html">OverView</a></li>
+              <li><a href="dpmi-38393.html">DPMI API</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Allocate Memory Block</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">                 This function allocates and commits linear memory.</span><br /><span class="line"></span><br /><span class="line">            To Call</span><br /><span class="line"></span><br /><span class="line">                 AX = 0501h</span><br /><span class="line">                 BX:CX = Size of memory block to allocate in bytes</span><br /><span class="line"></span><br /><span class="line">            Returns</span><br /><span class="line"></span><br /><span class="line">                 If function was successful:</span><br /><span class="line">                 Carry flag is clear</span><br /><span class="line">                 BX:CX = Linear address of allocated memory block</span><br /><span class="line">                 SI:DI = Memory block handle (used to resize and free)</span><br /><span class="line"></span><br /><span class="line">                 If function was unsuccessful:</span><br /><span class="line">                 Carry flag is set</span><br /><span class="line"></span><br /><span class="line">            Programmer&#39;s Notes</span><br /><span class="line"></span><br /><span class="line">                 o    This function  does not allocate any selectors for</span><br /><span class="line">                      the memory block.  It is the responsibility of the</span><br /><span class="line">                      caller to  allocate and  initialize any  selectors</span><br /><span class="line">                      needed to access the memory.</span><br /><span class="line">                 o    Under DPMI  implementations that  support  virtual</span><br /><span class="line">                      memory  the   memory  block   will  be   allocated</span><br /><span class="line">                      unlocked.   If some or all of the memory should be</span><br /><span class="line">                      locked you  will  need  to  use  either  the  lock</span><br /><span class="line">                      selector  function   or  the  lock  linear  region</span><br /><span class="line">                      function.</span><br /><span class="line">                 o    Under many  implementations of  DPMI,  allocations</span><br /><span class="line">                      will  be  page  granular.    This  means  that  an</span><br /><span class="line">                      allocation  of  1001h  bytes  will  result  in  an</span><br /><span class="line">                      allocation of  2000h bytes.   Therefore it is best</span><br /><span class="line">                      to always allocate memory in multiples of 4K.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
