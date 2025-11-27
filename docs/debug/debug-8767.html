@@ -1,0 +1,112 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » / » Commands</title>
+    <meta name="description" content="DEBUG">
+    <link rel="prev" href="debug-6512.html">
+    <link rel="next" href="debug-11425.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><a href="debug-6512.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="debug-11425.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>/</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="debug-36268.html">Parameters</a></li>
+              <li><a href="debug-41899.html">Messages</a></li>
+              <li><a href="debug-45534.html">Common</a></li>
+              <li><a href="debug-46838.html">Starting DEBUG</a></li>
+              <li><a href="debug-49445.html">Introduction</a></li>
+              
+            </ul>
+            <li>*</li>
+            <ul>
+              <li><a href="debug-50016.html">Flags register</a></li>
+              <li><a href="debug-51925.html">PSP structure</a></li>
+              <li><a href="debug-54321.html">EXE header</a></li>
+              <li><a href="debug-55255.html">BPB structure</a></li>
+              <li><a href="debug-56377.html">FCB structure</a></li>
+              <li><a href="debug-57564.html">ASCII table</a></li>
+              
+            </ul>
+            <li>-</li>
+            <ul>
+              <li><a href="debug-62697.html">Comments</a></li>
+              <li><a href="debug-63334.html">Scripts</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">    <span class="ngb">Enter command</span></span><br /><span class="line"></span><br /><span class="line">    Purpose:  The Enter command has two modes of operation:</span><br /><span class="line"></span><br /><span class="line">              ■   Replaces the contents of one or more bytes, starting at</span><br /><span class="line">                  the specified address, with the values contained in the</span><br /><span class="line">                  list (see option 1).</span><br /><span class="line"></span><br /><span class="line">              ■   Displays and allows modification of bytes in a sequential</span><br /><span class="line">                  manner (see option 2).</span><br /><span class="line"></span><br /><span class="line">    Format:   E address [list]</span><br /><span class="line"></span><br /><span class="line">    Remarks:  If you enter only an offset for the address, the E command</span><br /><span class="line">              assumes the segment contained in the DS register.</span><br /><span class="line"></span><br /><span class="line">              The Enter command has two format options:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngr">Option 1                                                    </span></span><br /><span class="line"></span><br /><span class="line">              Use this option to place the list in memory beginning at the</span><br /><span class="line">              specified address.</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">E address list</span></span><br /><span class="line"></span><br /><span class="line">              For example:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">E ds:100 F3 &#34;xyz&#34; 8D</span></span><br /><span class="line"></span><br /><span class="line">              Memory locations ds:100h through ds:104h are filled with the</span><br /><span class="line">              5 bytes specified in the list.</span><br /><span class="line"></span><br /><span class="line">              <span class="ngr">Option 2                                                    </span></span><br /><span class="line"></span><br /><span class="line">              Use this option to display the address and the byte of a lo-</span><br /><span class="line">              cation, then the system waits for your input.</span><br /><span class="line"></span><br /><span class="line">              For example:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">E address</span></span><br /><span class="line"></span><br /><span class="line">              Take <span class="ngb">any of the next 4 actions</span>:</span><br /><span class="line"></span><br /><span class="line">              1.  Enter a <span class="ngb">1</span>-or <span class="ngb">2</span>-character hexadecimal value to replace</span><br /><span class="line">                  the contents of the byte.</span><br /><span class="line"></span><br /><span class="line">              2.  Press the <span class="ngb">space bar</span> to advance to the next address. Its</span><br /><span class="line">                  contents are displayed. If you want to change its con-</span><br /><span class="line">                  tents, take action 1 above.</span><br /><span class="line"></span><br /><span class="line">              3.  Enter a hyphen (<span class="ngb">-</span>) to back up to the preceding address.</span><br /><span class="line">                  A new line is displayed with the preceding address and its</span><br /><span class="line">                  contents. If you want to change the contents take action 1</span><br /><span class="line">                  above.</span><br /><span class="line"></span><br /><span class="line">                  To back up one more byte without changing the current</span><br /><span class="line">                  byte, enter another hyphen.</span><br /><span class="line"></span><br /><span class="line">              4.  Press the <span class="ngb">Enter</span> key to end the Enter command.</span><br /><span class="line"></span><br /><span class="line">                  <span class="ngb">Note</span>:</span><br /><span class="line">                  Display lines can have 4 or 8 bytes of data, depending on</span><br /><span class="line">                  whether the system display format is 40- or 80-column.</span><br /><span class="line">                  Spacing beyond an 8-byte boundary causes a new display</span><br /><span class="line">                  line, with the beginning address, to be started.</span><br /><span class="line"></span><br /><span class="line">              For example:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">E cs:100</span></span><br /><span class="line"></span><br /><span class="line">              might cause this display:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">04BA:0100 EB._</span></span><br /><span class="line"></span><br /><span class="line">              To change the contents of 04BA:0100h from EBh to 41h, enter</span><br /><span class="line">              41.</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">04BA:0100 EB.41_</span></span><br /><span class="line"></span><br /><span class="line">              To see the contents of the next three locations, press the</span><br /><span class="line">              space bar three times. The screen might look like this:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">04BA:0100 EB.41   10.  00.  BC._</span></span><br /><span class="line"></span><br /><span class="line">              To change the contents of the current location (04BA:0103h)</span><br /><span class="line">              from BCh to 42h, enter 42.</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">04BA:0100 EB.41   10.  00.  BC.42_</span></span><br /><span class="line"></span><br /><span class="line">              Now, suppose you want to back up and change the 10h to 6Fh.</span><br /><span class="line">              This is what the screen would look like after entering two</span><br /><span class="line">              hyphens and the replacement byte:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">04BA:0100 EB.41   10.  00.  BC.42-</span></span><br /><span class="line">              <span class="ngb">04BA:0102 00.-</span></span><br /><span class="line">              <span class="ngb">04BA:0101 10.6F_</span></span><br /><span class="line"></span><br /><span class="line">              Press the Enter key to end the Enter command. You will see the</span><br /><span class="line">              hyphen (-) prompt.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="debug-36619.html">address</a></li>
+        
+          <li><a href="debug-38118.html">list</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

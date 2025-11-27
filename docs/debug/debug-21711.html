@@ -1,0 +1,114 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » / » Commands</title>
+    <meta name="description" content="DEBUG">
+    <link rel="prev" href="debug-21462.html">
+    <link rel="next" href="debug-22683.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><a href="debug-21462.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="debug-22683.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>/</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="debug-36268.html">Parameters</a></li>
+              <li><a href="debug-41899.html">Messages</a></li>
+              <li><a href="debug-45534.html">Common</a></li>
+              <li><a href="debug-46838.html">Starting DEBUG</a></li>
+              <li><a href="debug-49445.html">Introduction</a></li>
+              
+            </ul>
+            <li>*</li>
+            <ul>
+              <li><a href="debug-50016.html">Flags register</a></li>
+              <li><a href="debug-51925.html">PSP structure</a></li>
+              <li><a href="debug-54321.html">EXE header</a></li>
+              <li><a href="debug-55255.html">BPB structure</a></li>
+              <li><a href="debug-56377.html">FCB structure</a></li>
+              <li><a href="debug-57564.html">ASCII table</a></li>
+              
+            </ul>
+            <li>-</li>
+            <ul>
+              <li><a href="debug-62697.html">Comments</a></li>
+              <li><a href="debug-63334.html">Scripts</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">    <span class="ngb">Proceed command</span></span><br /><span class="line"></span><br /><span class="line">    Purpose:  Causes the execution of a subroutine call, a loop instruc-</span><br /><span class="line">              tion, an interrupt, or a repeat string instruction to stop</span><br /><span class="line">              at the next instruction.</span><br /><span class="line"></span><br /><span class="line">    Format:   P [=address][value]</span><br /><span class="line"></span><br /><span class="line">    Remarks:  When at a subroutine call, a loop instruction, an interrupt,</span><br /><span class="line">              or a repeat string instruction, issue the Proceed command to</span><br /><span class="line">              execute the instruction (as an atomic operation), and return</span><br /><span class="line">              control at the next instruction. The Proceed command has the</span><br /><span class="line">              same syntax as the Trace command. Specifying P0, is the same</span><br /><span class="line">              as specifying T0.</span><br /><span class="line"></span><br /><span class="line">    Example:  If the following instructions are executed:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">0100  CALL  1000</span></span><br /><span class="line">              <span class="ngb">0103  JC    2000</span></span><br /><span class="line">              <span class="ngb">.</span></span><br /><span class="line">              <span class="ngb">.</span></span><br /><span class="line">              <span class="ngb">.</span></span><br /><span class="line">              <span class="ngb">1000  XOR   AX,AX</span></span><br /><span class="line">              <span class="ngb">.</span></span><br /><span class="line">              <span class="ngb">.</span></span><br /><span class="line">              <span class="ngb">.</span></span><br /><span class="line">              <span class="ngb">1xxx  RET</span></span><br /><span class="line"></span><br /><span class="line">              and CS:IP was pointing to the CALL 1000h instruction, typing</span><br /><span class="line">              P causes the execution of the subroutine and returns control</span><br /><span class="line">              to DEBUG at the JC instruction.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="debug-27589.html">Trace</a></li>
+        
+          <li><a href="debug-36619.html">address</a></li>
+        
+          <li><a href="debug-41499.html">value</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

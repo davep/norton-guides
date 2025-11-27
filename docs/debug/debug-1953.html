@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » / » Commands</title>
+    <meta name="description" content="DEBUG">
+    
+    <link rel="next" href="debug-5529.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="debug-5529.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>/</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="debug-36268.html">Parameters</a></li>
+              <li><a href="debug-41899.html">Messages</a></li>
+              <li><a href="debug-45534.html">Common</a></li>
+              <li><a href="debug-46838.html">Starting DEBUG</a></li>
+              <li><a href="debug-49445.html">Introduction</a></li>
+              
+            </ul>
+            <li>*</li>
+            <ul>
+              <li><a href="debug-50016.html">Flags register</a></li>
+              <li><a href="debug-51925.html">PSP structure</a></li>
+              <li><a href="debug-54321.html">EXE header</a></li>
+              <li><a href="debug-55255.html">BPB structure</a></li>
+              <li><a href="debug-56377.html">FCB structure</a></li>
+              <li><a href="debug-57564.html">ASCII table</a></li>
+              
+            </ul>
+            <li>-</li>
+            <ul>
+              <li><a href="debug-62697.html">Comments</a></li>
+              <li><a href="debug-63334.html">Scripts</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">    <span class="ngb">Assemble command</span></span><br /><span class="line"></span><br /><span class="line">    Purpose:  To assemble IBM Personal Computer Macro Assembler language</span><br /><span class="line">              statements directly into memory.</span><br /><span class="line"></span><br /><span class="line">    Format:   A [address]</span><br /><span class="line"></span><br /><span class="line">    Remarks:  All numeric input to the Assemble command is in hexadecimal.</span><br /><span class="line">              The assembly statements you enter are assembled into memory</span><br /><span class="line">              at successive locations, starting with the address specified</span><br /><span class="line">              in address. If no address is specified, the statements are</span><br /><span class="line">              assembled into the area at CS:0100h, if no previous Assemble</span><br /><span class="line">              command was issued, or into the location following the last</span><br /><span class="line">              instruction assembled by a previous Assemble command. When</span><br /><span class="line">              all desired statements have been entered, press Enter when</span><br /><span class="line">              you are prompted for the next statement, to return to the</span><br /><span class="line">              DEBUG prompt.</span><br /><span class="line"></span><br /><span class="line">              DEBUG responds to invalid statements by displaying:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">^error</span></span><br /><span class="line"></span><br /><span class="line">              and redisplaying the current assemble address.</span><br /><span class="line"></span><br /><span class="line">              DEBUG supports standard 8088/8086 assembly language syntax</span><br /><span class="line">              (and the 8087) instruction set), with the following rules:</span><br /><span class="line"></span><br /><span class="line">              ■   All numeric values entered are hexadecimal and can be</span><br /><span class="line">                  entered as 1-4 characters.</span><br /><span class="line"></span><br /><span class="line">              ■   Prefix mnemonics must be entered in front of the opcode</span><br /><span class="line">                  to which they refer. They can also be entered on a sepa-</span><br /><span class="line">                  rate line.</span><br /><span class="line"></span><br /><span class="line">              ■   The segment override mnemonics are CS:, DS:, ES:, and</span><br /><span class="line">                  SS:.</span><br /><span class="line"></span><br /><span class="line">              ■   String manipulation mnemonics must explicitly state the</span><br /><span class="line">                  string size. For example, MOVSW must be used to move word</span><br /><span class="line">                  strings and MOVSB must be used to move byte strings.</span><br /><span class="line"></span><br /><span class="line">              ■   The mnemonic for the far return is RETF.</span><br /><span class="line"></span><br /><span class="line">              ■   The assembler will automatically assemble short, near,</span><br /><span class="line">                  or far jumps and calls depending on byte displacement to</span><br /><span class="line">                  the destination address. These can be overridden with</span><br /><span class="line">                  the NEAR or FAR prefix. For example:</span><br /><span class="line"></span><br /><span class="line">                  <span class="ngb">0100:0500 JMP 502</span>       ;A 2 byte short jump</span><br /><span class="line">                  <span class="ngb">0100:0502 JMP NEAR 505</span>  ;A 3 byte near jump</span><br /><span class="line">                  <span class="ngb">0100:0505 JMP FAR 50A</span>   ;A 5 byte far jump</span><br /><span class="line"></span><br /><span class="line">                  The NEAR prefix can be abbreviated to NE, but the FAR</span><br /><span class="line">                  prefix cannot be abbreviated.</span><br /><span class="line"></span><br /><span class="line">              ■   DEBUG cannot tell whether some operands refer to a word</span><br /><span class="line">                  memory location or a byte memory location. In this case,</span><br /><span class="line">                  the data type must be explicitly stated with the prefix</span><br /><span class="line">                  WORD PTR or BYTE PTR. DEBUG will also accept the abbre-</span><br /><span class="line">                  viations WO and BY. For example:</span><br /><span class="line"></span><br /><span class="line">                  <span class="ngb">NEG   BYTE PTR [128]</span></span><br /><span class="line">                  <span class="ngb">DEC   WO [SI]</span></span><br /><span class="line"></span><br /><span class="line">              ■   DEBUG also cannot tell whether an operand refers to a</span><br /><span class="line">                  memory location or to an immediate operand. DEBUG uses</span><br /><span class="line">                  the common convention that operand enclosed in square</span><br /><span class="line">                  brackets refer to memory. For example:</span><br /><span class="line"></span><br /><span class="line">                  <span class="ngb">MOV   AX,21</span>         ;Load AX with 21h</span><br /><span class="line">                  <span class="ngb">MOV   AX,[21]</span>       ;Load AX with the contents of</span><br /><span class="line">                                      ;  memory location 21h</span><br /><span class="line"></span><br /><span class="line">              ■   Two popular pseudo-instructions have also been included.</span><br /><span class="line">                  The DB opcode assembles byte values directly into memo-</span><br /><span class="line">                  ry. The DW opcode assembles word values directly into</span><br /><span class="line">                  memory. For example:</span><br /><span class="line"></span><br /><span class="line">                  <span class="ngb">DB   1,2,3,4,&#34;This is an example&#34;</span></span><br /><span class="line">                  <span class="ngb">DB   &#34;This is a quote: &#34;&#39;</span></span><br /><span class="line">                  <span class="ngb">DB   &#34;This is a quote:&#39;&#34;</span></span><br /><span class="line">                  <span class="ngb">DW   1000,2000,3000,&#34;, BACH:&#34;</span></span><br /><span class="line"></span><br /><span class="line">              ■   All forms of the register indirect commands are support-</span><br /><span class="line">                  ed. For example:</span><br /><span class="line"></span><br /><span class="line">                  <span class="ngb">ADD     BX,34[BP+2].[SI-1]</span></span><br /><span class="line">                  <span class="ngb">POP     [BP+DI]</span></span><br /><span class="line">                  <span class="ngb">PUSH    [SI]</span></span><br /><span class="line"></span><br /><span class="line">              ■   All opcode synonyms are supported. For example:</span><br /><span class="line"></span><br /><span class="line">                  <span class="ngb">LOOPZ   100</span></span><br /><span class="line">                  <span class="ngb">LOOPE   100</span></span><br /><span class="line">                  <span class="ngb">JA      200</span></span><br /><span class="line">                  <span class="ngb">JNBE    200</span></span><br /><span class="line"></span><br /><span class="line">              ■   For 8087 opcodes the WAIT or FWAIT prefix must be ex-</span><br /><span class="line">                  plicitly specified. For example:</span><br /><span class="line"></span><br /><span class="line">                  <span class="ngb">FWAIT FADD ST,ST(3)</span>   ;This line will assemble</span><br /><span class="line">                                        ;  an FWAIT prefix</span><br /><span class="line">                  <span class="ngb">FLD TBYTE PTR [BX]</span>    ;This line will not</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    Example:  <span class="ngb">C&gt;debug</span></span><br /><span class="line">              <span class="ngb">-a200</span></span><br /><span class="line">              <span class="ngb">08B4:0200 xor ax,ax</span></span><br /><span class="line">              <span class="ngb">08B4:0202 mov [bx],ax</span></span><br /><span class="line">              <span class="ngb">08B4:0204 ret</span></span><br /><span class="line">              <span class="ngb">08B4:0205</span></span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="debug-36619.html">address</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

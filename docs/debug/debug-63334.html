@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » - » Scripts</title>
+    <meta name="description" content="DEBUG">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>/</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="debug-36268.html">Parameters</a></li>
+              <li><a href="debug-41899.html">Messages</a></li>
+              <li><a href="debug-45534.html">Common</a></li>
+              <li><a href="debug-46838.html">Starting DEBUG</a></li>
+              <li><a href="debug-49445.html">Introduction</a></li>
+              
+            </ul>
+            <li>*</li>
+            <ul>
+              <li><a href="debug-50016.html">Flags register</a></li>
+              <li><a href="debug-51925.html">PSP structure</a></li>
+              <li><a href="debug-54321.html">EXE header</a></li>
+              <li><a href="debug-55255.html">BPB structure</a></li>
+              <li><a href="debug-56377.html">FCB structure</a></li>
+              <li><a href="debug-57564.html">ASCII table</a></li>
+              
+            </ul>
+            <li>-</li>
+            <ul>
+              <li><a href="debug-62697.html">Comments</a></li>
+              <li><a href="debug-63334.html">Scripts</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">    <span class="ngb">Using DEBUG scripts</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Testing for DEBUG presence</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">ISDEBUG.BAT</span></span><br /><span class="line">    @echo off</span><br /><span class="line">    rem     Create a Debug script that terminates Debug immediately</span><br /><span class="line">    echo Q &gt; dbg.$$$</span><br /><span class="line">    Debug &lt; dbg.$$$ &gt; dbg(.$$$</span><br /><span class="line">    if exist dbg(.$$$ goto IS_DEBUG</span><br /><span class="line">    rem</span><br /><span class="line">    rem     Erase DOS&#39;s &#39;Bad command&#39; message</span><br /><span class="line">    CLS</span><br /><span class="line">    echo Debug is not in path.</span><br /><span class="line">    goto EO_BAT</span><br /><span class="line">    :IS_DEBUG</span><br /><span class="line">    del *.$$$ &gt; nul</span><br /><span class="line">    echo Debug is in path.</span><br /><span class="line">    :EO_BAT</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Running DEBUG commands from a batch file</span></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">SEARCH.BAT</span></span><br /><span class="line">    @echo off</span><br /><span class="line">    rem</span><br /><span class="line">    rem      Search for string thru 8 segments w/Debug and Find.</span><br /><span class="line">    rem      NOTE: Won&#39;t locate strings crossing segment border.</span><br /><span class="line">    rem</span><br /><span class="line">    if %1.==. goto usage</span><br /><span class="line">    echo Creating DEBUG script...</span><br /><span class="line">    echo S 0000:0 L 0  %1 %2 %3 %4 %5 %6 %7 %8 %9 &gt; SEARCH.SCR</span><br /><span class="line">    echo S 1000:0 L 0  %1 %2 %3 %4 %5 %6 %7 %8 %9 &gt;&gt; SEARCH.SCR</span><br /><span class="line">    echo S 2000:0 L 0  %1 %2 %3 %4 %5 %6 %7 %8 %9 &gt;&gt; SEARCH.SCR</span><br /><span class="line">    echo S 3000:0 L 0  %1 %2 %3 %4 %5 %6 %7 %8 %9 &gt;&gt; SEARCH.SCR</span><br /><span class="line">    echo S 4000:0 L 0  %1 %2 %3 %4 %5 %6 %7 %8 %9 &gt;&gt; SEARCH.SCR</span><br /><span class="line">    echo S 5000:0 L 0  %1 %2 %3 %4 %5 %6 %7 %8 %9 &gt;&gt; SEARCH.SCR</span><br /><span class="line">    echo S 6000:0 L 0  %1 %2 %3 %4 %5 %6 %7 %8 %9 &gt;&gt; SEARCH.SCR</span><br /><span class="line">    echo S 7000:0 L 0  %1 %2 %3 %4 %5 %6 %7 %8 %9 &gt;&gt; SEARCH.SCR</span><br /><span class="line">    echo Q &gt;&gt; SEARCH.SCR</span><br /><span class="line">    rem</span><br /><span class="line">    echo Search matching %1 %2 %3 %4 %5 %6 %7 %8 %9 &gt; HITLIST.TXT</span><br /><span class="line">    echo Searching...</span><br /><span class="line">    rem     Tell Find to filter out lines containing the Debug prompt</span><br /><span class="line">    DEBUG &lt; SEARCH.SCR | FIND /V &#34;-&#34; &gt;&gt; HITLIST.TXT</span><br /><span class="line">    del SEARCH.SCR</span><br /><span class="line">    echo Results are in file HITLIST.TXT</span><br /><span class="line">    goto eo_bat</span><br /><span class="line">    :usage</span><br /><span class="line">    echo.</span><br /><span class="line">    echo Type what %0 should look for (max. 9 bytes):</span><br /><span class="line">    echo as hex bytes        e.g. %0 48 40 4C</span><br /><span class="line">    echo or quoted text      e.g. %0 &#34;HAL&#34;</span><br /><span class="line">    echo or both             e.g. %0 1B &#34;[2J&#34; 49 41 4D</span><br /><span class="line">    echo.</span><br /><span class="line">    :eo_bat</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Writing small programs using DEBUG scripts</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    Noprtscr changes one byte in the BIOS data area to trick the PC into</span><br /><span class="line">    believing that a PrtScr is currently taking place. This will effec-</span><br /><span class="line">    tively disable the Shift-PrtScr key combination.</span><br /><span class="line">    DEBUG &lt; NOPRTSCR.SCR  will create NOPRTSCR.COM</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">NOPRTSCR.SCR</span></span><br /><span class="line">    A 100</span><br /><span class="line">    MOV AX,0050</span><br /><span class="line">    PUSH AX</span><br /><span class="line">    POP ES</span><br /><span class="line">    MOV DI,0000</span><br /><span class="line">    ES:</span><br /><span class="line">    MOV BYTE PTR [DI],01</span><br /><span class="line">    MOV AX,4C00</span><br /><span class="line">    INT 21</span><br /><span class="line"></span><br /><span class="line">    RCX</span><br /><span class="line">    11</span><br /><span class="line">    N NOPRTSCR.COM</span><br /><span class="line">    W</span><br /><span class="line">    Q</span><br /><span class="line">    ;                   ;1) Always put a blank line before &#39;R CX&#39; to</span><br /><span class="line">                        ;   end the A(ssemble) command</span><br /><span class="line">                        ;2) Put a semicolon in the line after &#39;Q&#39; to</span><br /><span class="line">                        ;   force a CR/LF, else DEBUG will wait forever,</span><br /><span class="line">                        ;   since it is reading from standard input,</span><br /><span class="line">                        ;   i.e. reboot necessary.</span><br /><span class="line">                        ;   Issuing ECHO Q &gt;&gt; debug.scr in a batch file</span><br /><span class="line">                        ;   will also do the job.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    ────────────────────</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    ANSIX tests for ANSI.SYS presence and returns errorlevel 1 if it</span><br /><span class="line">    is loaded, 0 if not.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">ANSIX.SCR</span></span><br /><span class="line">    N ANSIX.COM</span><br /><span class="line">    A100</span><br /><span class="line">    JMP  010D           ;Skip over data</span><br /><span class="line">    ;&lt;0102&gt;</span><br /><span class="line">    DB   1B &#39;[6n&#39; &#39;$&#39;</span><br /><span class="line">    ;&lt;0107&gt;</span><br /><span class="line">    DB   0D 20 20 20 20 &#39;$&#39;</span><br /><span class="line">    ;&lt;010D&gt;</span><br /><span class="line">    MOV  DX,102         ;Display the ANSI Device Status Report string</span><br /><span class="line">    MOV  AH,09          ; to see if ANSI is loaded</span><br /><span class="line">    INT  21</span><br /><span class="line">    MOV  AH,0B          ;Check for key in the keyboard</span><br /><span class="line">    INT  21             ; buffer -- if there&#39;s anything</span><br /><span class="line">    CMP  AL,FF          ; there, ANSI is loaded</span><br /><span class="line">    JZ   0128           ;Go empty the buffer</span><br /><span class="line">    MOV  DX,107         ;Erase the garbage left by the</span><br /><span class="line">    MOV  AH,09          ; DSR string</span><br /><span class="line">    INT  21</span><br /><span class="line">    MOV  AX,4C00        ;Exit w/ errorlevel 0 = ANSI not loaded</span><br /><span class="line">    INT  21</span><br /><span class="line">    ;&lt;0128&gt;</span><br /><span class="line">    MOV  AH,6           ;Get key from keyboard buffer</span><br /><span class="line">    MOV  DL,FF          ; don&#39;t wait if buffer is empty</span><br /><span class="line">    INT  21             ; and don&#39;t print it to the screen.</span><br /><span class="line">    JNZ  128            ;Go back for more &#39;til buffer is empty</span><br /><span class="line">    MOV  AX,4C01        ;Exit w/ errorlevel 1 = ANSI loaded</span><br /><span class="line">    INT  21</span><br /><span class="line">    ;&lt;0135&gt;</span><br /><span class="line"></span><br /><span class="line">    R CX</span><br /><span class="line">    35</span><br /><span class="line">    W</span><br /><span class="line">    Q</span><br /><span class="line">    ;</span><br /><span class="line">    ──────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Debugging</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">MYDBG.BAT</span></span><br /><span class="line">    @echo off</span><br /><span class="line">    echo Creating DEBUG script...</span><br /><span class="line">    rem  Load program at CS:0100h</span><br /><span class="line">    echo N MYPROG.COM &gt; my.scr</span><br /><span class="line">    echo L      &gt;&gt; my.scr</span><br /><span class="line">    rem  Execute until breakpoint</span><br /><span class="line">    echo G 0140 &gt;&gt; my.scr</span><br /><span class="line">    rem  Execute 10 instructions, displaying register values</span><br /><span class="line">    echo T 0A   &gt;&gt; my.scr</span><br /><span class="line">    rem  More execution</span><br /><span class="line">    echo G 03E8 &gt;&gt; my.scr</span><br /><span class="line">    rem  Display registers before loop</span><br /><span class="line">    echo R      &gt;&gt; my.scr</span><br /><span class="line">    rem  Execute loop</span><br /><span class="line">    echo P      &gt;&gt; my.scr</span><br /><span class="line">    rem  Display registers after loop</span><br /><span class="line">    echo R      &gt;&gt; my.scr</span><br /><span class="line">    rem  Execute until termination</span><br /><span class="line">    echo G      &gt;&gt; my.scr</span><br /><span class="line">    rem  ...and quit DEBUG</span><br /><span class="line">    echo Q      &gt;&gt; my.scr</span><br /><span class="line">    rem</span><br /><span class="line">    echo Running DEBUG script...</span><br /><span class="line">    DEBUG &lt; my.scr &gt; MY.DBG</span><br /><span class="line">    rem  Display DEBUG&#39;s output on screen</span><br /><span class="line">    type MY.DBG | MORE</span><br /><span class="line">    :eo_bat</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

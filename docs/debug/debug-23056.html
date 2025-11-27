@@ -1,0 +1,112 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » / » Commands</title>
+    <meta name="description" content="DEBUG">
+    <link rel="prev" href="debug-22683.html">
+    <link rel="next" href="debug-26626.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><a href="debug-22683.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="debug-26626.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>/</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="debug-36268.html">Parameters</a></li>
+              <li><a href="debug-41899.html">Messages</a></li>
+              <li><a href="debug-45534.html">Common</a></li>
+              <li><a href="debug-46838.html">Starting DEBUG</a></li>
+              <li><a href="debug-49445.html">Introduction</a></li>
+              
+            </ul>
+            <li>*</li>
+            <ul>
+              <li><a href="debug-50016.html">Flags register</a></li>
+              <li><a href="debug-51925.html">PSP structure</a></li>
+              <li><a href="debug-54321.html">EXE header</a></li>
+              <li><a href="debug-55255.html">BPB structure</a></li>
+              <li><a href="debug-56377.html">FCB structure</a></li>
+              <li><a href="debug-57564.html">ASCII table</a></li>
+              
+            </ul>
+            <li>-</li>
+            <ul>
+              <li><a href="debug-62697.html">Comments</a></li>
+              <li><a href="debug-63334.html">Scripts</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">    <span class="ngb">Register command</span></span><br /><span class="line"></span><br /><span class="line">    Purpose:  The Register command has three functions:</span><br /><span class="line"></span><br /><span class="line">              ■   It displays the hexadecimal contents of a single regi-</span><br /><span class="line">                  ster, with the option of changing those contents.</span><br /><span class="line"></span><br /><span class="line">              ■   It displays the hexadecimal contents of all the regi-</span><br /><span class="line">                  sters, plus the alphabetic flag settings, and the next</span><br /><span class="line">                  instruction to be executed.</span><br /><span class="line"></span><br /><span class="line">              ■   It displays the eight 2-letter alphabetic flag settings,</span><br /><span class="line">                  with the option of changing any or all of them.</span><br /><span class="line"></span><br /><span class="line">    Format:   R [registername]</span><br /><span class="line"></span><br /><span class="line">    Remarks:  When the DEBUG program starts, the registers and flags are</span><br /><span class="line">              set to certain values for the program being debugged (see</span><br /><span class="line">              Starting DEBUG).</span><br /><span class="line"></span><br /><span class="line">              <span class="ngr">Display a single register                                   </span></span><br /><span class="line"></span><br /><span class="line">              The valid <span class="ngb">registername</span>s are:</span><br /><span class="line"></span><br /><span class="line">              AX        BP        SS</span><br /><span class="line">              BX        SI        CS</span><br /><span class="line">              CX        DI        IP</span><br /><span class="line">              DX        DS        PC</span><br /><span class="line">              SP        ES        F</span><br /><span class="line"></span><br /><span class="line">              Both IP and PC (program counter) refer to the instruction</span><br /><span class="line">              pointer.</span><br /><span class="line"></span><br /><span class="line">              For example, to display the contents of a single register,</span><br /><span class="line">              you might enter:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">R AX</span></span><br /><span class="line"></span><br /><span class="line">              The system might respond with:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">AX F1E4</span></span><br /><span class="line">              <span class="ngb">:_</span></span><br /><span class="line"></span><br /><span class="line">              Now you may take one of two actions:</span><br /><span class="line"></span><br /><span class="line">              ■   Press Enter to leave the contents unchanged.</span><br /><span class="line">                  or</span><br /><span class="line">              ■   Change the contents of the AX register by entering a</span><br /><span class="line">                  1-4 character hexadecimal value, such as 0FFFh.</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">AX F1E4</span></span><br /><span class="line">              <span class="ngb">:FFF_</span></span><br /><span class="line"></span><br /><span class="line">              Now pressing Enter changes the contents of the AX register</span><br /><span class="line">              to 0FFFh.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">              <span class="ngr">Display all registers and flags                             </span></span><br /><span class="line"></span><br /><span class="line">              To display the contents of all registers and flags (and the</span><br /><span class="line">              next instruction to be executed), type:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">R</span></span><br /><span class="line"></span><br /><span class="line">              The system might respond with:</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">AX=0E00  BX=00FF  CX=0007  DX=01FF  SP=039D  BP=0000  SI=005C  DI=0000</span></span><br /><span class="line">    <span class="ngb">DS=04BA  ES=04BA  SS=04BA  CS=04BA  IP=011A   NV UP DI NG NZ AC PE NC</span></span><br /><span class="line">    <span class="ngb">04BA:011A   CD21          INT     21</span></span><br /><span class="line"></span><br /><span class="line">              The first two lines display the hex contents of the registers</span><br /><span class="line">              and the eight alphabetic flag settings. The last line indi-</span><br /><span class="line">              cates the location of the next instruction to be executed,</span><br /><span class="line">              and its hex and unassembled formats. This is the instruction</span><br /><span class="line">              pointed to by CS:IP.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">              <span class="ngr">Display all flags                                           </span></span><br /><span class="line"></span><br /><span class="line">              There are eight flags, each with 2-letter codes to indicate</span><br /><span class="line">              either a <span class="ngb">set</span> or <span class="ngb">clear</span> condition.</span><br /><span class="line"></span><br /><span class="line">              The flags appear in displays in the same order as presented</span><br /><span class="line">              in the following table:</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">Flag Name</span>                            <span class="ngb">Set</span>   <span class="ngb">Clear</span></span><br /><span class="line">              Overflow (yes/no)                    OV    NV</span><br /><span class="line">              Direction (decrement/increment)      DN    UP    (DowN/UP)</span><br /><span class="line">              Interrupt (enable/disable)           EI    DI</span><br /><span class="line">              Sign (negative/positive)             NG    PL    (NeG/PLus)</span><br /><span class="line">              Zero (yes/no)                        ZR    NZ</span><br /><span class="line">              Auxiliary carry (yes/no)             AC    NA</span><br /><span class="line">              Parity (even/odd)                    PE    PO</span><br /><span class="line">              Carry (yes/no)                       CY    NC</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">              To display all flags, enter:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">R F</span></span><br /><span class="line"></span><br /><span class="line">              If all the flags are in a <span class="ngb">set</span> condition, the response is:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">OV DN EI NG ZR AC PE CY -_</span></span><br /><span class="line"></span><br /><span class="line">              Now you can take one of two actions:</span><br /><span class="line"></span><br /><span class="line">              1.  Press Enter to leave the settings unchanged.</span><br /><span class="line">              2.  Change any or all of the settings.</span><br /><span class="line"></span><br /><span class="line">              To change a flag, just enter its opposite code. The opposite</span><br /><span class="line">              codes can be entered in any order - with or without interven-</span><br /><span class="line">              ing spaces. For example, to change the first, third, fifth,</span><br /><span class="line">              and seventh flags, enter:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">OV DN EI NG ZR AC PE CY - PONZDINV</span></span><br /><span class="line"></span><br /><span class="line">              They are entered in reverse order in this example.</span><br /><span class="line"></span><br /><span class="line">              Press Enter and the flags are modified as specified, the</span><br /><span class="line">              prompt appears, and you can enter the next command.</span><br /><span class="line"></span><br /><span class="line">              If you want to see if the new codes are in effect, enter:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">R F</span></span><br /><span class="line"></span><br /><span class="line">              The response is:</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">NV DN DI NG NZ AC PO CY -_</span></span><br /><span class="line"></span><br /><span class="line">              The first, third, fifth, and seventh flags are changed as</span><br /><span class="line">              requested. The second, fourth, sixth, and eighth flags are</span><br /><span class="line">              unchanged.</span><br /><span class="line"></span><br /><span class="line">              <span class="ngb">Note</span>:</span><br /><span class="line">              A single flag can be changed only once per R F command.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="debug-50016.html">Flags</a></li>
+        
+          <li><a href="debug-46838.html">Starting</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

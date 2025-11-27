@@ -1,0 +1,112 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » * » PSP structure</title>
+    <meta name="description" content="DEBUG">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>/</li>
+            <ul>
+              <li><a href="index.html">Commands</a></li>
+              <li><a href="debug-36268.html">Parameters</a></li>
+              <li><a href="debug-41899.html">Messages</a></li>
+              <li><a href="debug-45534.html">Common</a></li>
+              <li><a href="debug-46838.html">Starting DEBUG</a></li>
+              <li><a href="debug-49445.html">Introduction</a></li>
+              
+            </ul>
+            <li>*</li>
+            <ul>
+              <li><a href="debug-50016.html">Flags register</a></li>
+              <li><a href="debug-51925.html">PSP structure</a></li>
+              <li><a href="debug-54321.html">EXE header</a></li>
+              <li><a href="debug-55255.html">BPB structure</a></li>
+              <li><a href="debug-56377.html">FCB structure</a></li>
+              <li><a href="debug-57564.html">ASCII table</a></li>
+              
+            </ul>
+            <li>-</li>
+            <ul>
+              <li><a href="debug-62697.html">Comments</a></li>
+              <li><a href="debug-63334.html">Scripts</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">    <span class="ngb">Program Segment Prefix (PSP) Structure</span></span><br /><span class="line"></span><br /><span class="line">               <span class="ngb">Length</span></span><br /><span class="line">    <span class="ngb">Offset     (bytes)  Description</span></span><br /><span class="line">    ────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    00h        2        INT 20h instruction (<span class="ngb">CD20</span>h).</span><br /><span class="line">    02h        2        <span class="ngb">Top of memory</span>. Segment address of the top of the</span><br /><span class="line">                        current program&#39;s memory allocation block.</span><br /><span class="line">    04h        1        Reserved.</span><br /><span class="line">    05h        1        INT 21h instruction (<span class="ngb">CD21</span>h).</span><br /><span class="line">    06h        2        <span class="ngb">Available memory</span> - the number of bytes available</span><br /><span class="line">                        in the segment.</span><br /><span class="line">    08h        2        Reserved.</span><br /><span class="line">    0Ah        4        <span class="ngb">Terminate address</span> (IP,CS). Address of the termina-</span><br /><span class="line">                        tion interrupt handler (INT 22h) inherited by the</span><br /><span class="line">                        current program. DOS uses this value to restore</span><br /><span class="line">                        the INT 22h vector when the program terminates.</span><br /><span class="line">    0Eh        4        <span class="ngb">Ctrl-Break address</span> (IP,CS). Address of the Ctrl-</span><br /><span class="line">                        Break interrupt handler (INT 23h) inherited by the</span><br /><span class="line">                        current program. DOS uses this value to restore the</span><br /><span class="line">                        INT 23h vector when the program terminates.</span><br /><span class="line">    12h        4        <span class="ngb">Critical error address</span> (IP,CS). Address of the</span><br /><span class="line">                        critical error interrupt handler (INT 24h) inheri-</span><br /><span class="line">                        ted by the current program. DOS uses this value to</span><br /><span class="line">                        restore the INT 24h vector when the program termi-</span><br /><span class="line">                        nates.</span><br /><span class="line">    16h       22 (16h)  Reserved.</span><br /><span class="line">    2Ch        2        <span class="ngb">Environment</span> - the segment address of the DOS</span><br /><span class="line">                        environment.</span><br /><span class="line">    2Eh       46 (2Eh)  Reserved.</span><br /><span class="line">    5Ch       16 (10h)  <span class="ngb">Unopened standard FCB1</span>, as parsed from the first</span><br /><span class="line">                        parameter in the command tail.</span><br /><span class="line">    6Ch       20 (14h)  <span class="ngb">Unopened standard FCB2</span>, as parsed from the second</span><br /><span class="line">                        parameter in the command tail.</span><br /><span class="line">    80h        1        <span class="ngb">Parameter length</span> - the length, in bytes, of the</span><br /><span class="line">                        command tail (trailing carriage return (0Dh) is not</span><br /><span class="line">                        included).</span><br /><span class="line">    81h      127 (7Fh)  <span class="ngb">Command tail</span>. Also used as default DTA for FCB</span><br /><span class="line">                        functions.</span><br /><span class="line"></span><br /><span class="line">    ────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span>:     The second FCB at 6Ch will be overwritten if the first FCB</span><br /><span class="line">              is used to open a file.  This happens because the only 16</span><br /><span class="line">              bytes are reserved for the first FCB, whereas an entire</span><br /><span class="line">              FCB is 37 bytes long.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Memory Control Block (MCB) Structure</span> (partial list)</span><br /><span class="line"></span><br /><span class="line">               <span class="ngb">Length</span></span><br /><span class="line">    <span class="ngb">Offset     (bytes)  Description</span></span><br /><span class="line">    ────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    00h        1        5Ah (<span class="ngb">Z</span>) if last block in chain, otherwise 4Dh (<span class="ngb">M</span>)</span><br /><span class="line">    01h        2        Owner&#39;s PSP segment (0000 if free, 0008 if DOS&#39;s)</span><br /><span class="line">    03h        2        Size of memory block in paragraphs</span><br /><span class="line">    [...]</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="debug-54321.html">EXE</a></li>
+        
+          <li><a href="debug-56377.html">FCB</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
