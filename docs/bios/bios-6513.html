@@ -1,0 +1,90 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-4643.html">
+    <link rel="next" href="bios-7621.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-4643.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-7621.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 12h                 Report Memory Size</span></span><br /><span class="line"></span><br /><span class="line">    Reports the number of contiguous 1K memory blocks in the system</span><br /><span class="line">    (up to 640K).</span><br /><span class="line"></span><br /><span class="line">        Entry   No parameters</span><br /><span class="line"></span><br /><span class="line">        Return  AX = Memory size (up to 640K)</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This service determines memory by either examining the DIP</span><br /><span class="line">    switches on the system board or using the value stored in the CMOS</span><br /><span class="line">    battery, depending on the type of machine.</span><br /><span class="line"></span><br /><span class="line">    The value returned in AX is the same as that stored at memory</span><br /><span class="line">    location 0040h:0013h, which is initialized during the power-up</span><br /><span class="line">    tests.</span><br /><span class="line"></span><br /><span class="line">    This is the amount of memory available to the entire system. This</span><br /><span class="line">    is not the amount of memory available to the user&#39;s program. Use</span><br /><span class="line">    Int 21h, function 48h, to determine the amount of memory available</span><br /><span class="line">    to a user&#39;s program.</span><br /><span class="line"></span><br /><span class="line">    To determine the amount of memory above the 1024K address range,</span><br /><span class="line">    use Int 15h, Service 88h.</span><br /><span class="line"></span><br /><span class="line">    If the CMOS battery memory value or the DIP switch value is</span><br /><span class="line">    greater than the actual amount of memory, then the actual amount</span><br /><span class="line">    of memory is returned by this interrupt.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-159518.html">Int 15h, 88h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Low memory</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-47397.html">
+    <link rel="next" href="bios-50154.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-47397.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-14162.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-50154.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">0040h:00A8h           Double-Word Pointer to Video Parameters for the EGA</span></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length: 4 bytes</span></span><br /><span class="line"></span><br /><span class="line">    This double-word pointer points to a list of pointers that contain</span><br /><span class="line">    various parameters and overrides for the Enhanced Graphics Adapter</span><br /><span class="line">    (EGA).</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    <span class="ngb">Table Pointed to by Double-Word at 0040h:00A8h</span></span><br /><span class="line"></span><br /><span class="line">      <span class="ngb">Offset  Size (bytes)  Description</span></span><br /><span class="line">      00h         4        Video Parameter Table Pointer</span><br /><span class="line">      04h         4        Dynamic Save Area Pointer</span><br /><span class="line">      08h         4        Alpha Mode Auxiliary Character Generator Pointer</span><br /><span class="line">      0Ch         4        Graphics Mode Auxiliary Character Generator Pointer</span><br /><span class="line">      10h         4        Reserved (always 00:00h)</span><br /><span class="line">      14h         4        Reserved (always 00:00h)</span><br /><span class="line">      18h         4        Reserved (always 00:00h)</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    <span class="ngb">Video Parameter Table Pointer (Double-Word)</span></span><br /><span class="line"></span><br /><span class="line">    This double-word pointer is initialized to point to the BIOS video</span><br /><span class="line">    parameter table.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    <span class="ngb">Dynamic Save Area Pointer (Double-Word)</span></span><br /><span class="line"></span><br /><span class="line">    This double-word pointer is optional, hence it is initialized to</span><br /><span class="line">    00:00h. When used, this pointer points to a RAM table where</span><br /><span class="line">    specific dynamic values are saved. Currently the values are</span><br /><span class="line">    defined as follows:</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Offset  Size (bytes)    Description</span></span><br /><span class="line">        00h     16              16 EGA palette register values</span><br /><span class="line">        10h     1               Overscan value</span><br /><span class="line">        11h     239             Reserved</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    <span class="ngb">Alpha Mode Auxiliary Character Generator Pointer (Double-Word)</span></span><br /><span class="line"></span><br /><span class="line">    This double-word pointer is optional; hence it is initialized to</span><br /><span class="line">    00:00h. When used, this pointer points to a table as defined</span><br /><span class="line">    below:</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Offset    Size (bytes)      Description</span></span><br /><span class="line">    00h            1            Bytes per character</span><br /><span class="line">    01h            1            Block to load (0=normal operation)</span><br /><span class="line">    02h            2            Count to store (256=normal operation)</span><br /><span class="line">    04h            2            Character offset (0=normal operation)</span><br /><span class="line">    06h            4            Double-word pointer to Font Table</span><br /><span class="line">    0Ah            1            Maximum displayable rows (If FFh,</span><br /><span class="line">                                maximum rows calculated)</span><br /><span class="line">    0Bh            n            &#39;n&#39; bytes consisting of different</span><br /><span class="line">                                mode values for this font.</span><br /><span class="line">                                (0FFh is terminator)</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    <span class="ngb">Graphics Mode Auxiliary Character Generator Pointer (double-word)</span></span><br /><span class="line"></span><br /><span class="line">    This double-word pointer is optional; hence it is initialized to</span><br /><span class="line">    00:00h. When used, this pointer points to a table as defined</span><br /><span class="line">    below:</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Offset    Size (bytes)      Description</span></span><br /><span class="line">        00h            1            Displayable rows</span><br /><span class="line">        01h            2            Bytes per character</span><br /><span class="line">        03h            4            Double-word pointer to Font Table</span><br /><span class="line">        07h            n            &#39;n&#39; bytes consisting of different</span><br /><span class="line">                                    mode values for this font.</span><br /><span class="line">                                    (0FFh is terminator)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

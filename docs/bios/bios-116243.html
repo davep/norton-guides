@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-115306.html">
+    <link rel="next" href="bios-119094.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-115306.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-94319.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-119094.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 13h, 08h            Get Current Drive Parameters                    fixed</span></span><br /><span class="line"></span><br /><span class="line">    Reports disk drive parameters, such as the number of heads,</span><br /><span class="line">    tracks, and sectors per track.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 08h</span><br /><span class="line">                DL = Drive number</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  CH = Maximum value for cylinder</span><br /><span class="line">                     (10-bit value; upper 2 bits in CL)</span><br /><span class="line">                CL = Maximum value for sector</span><br /><span class="line">                DH = Maximum value for heads</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">For fixed disks:</span></span><br /><span class="line">                AH = Status of operation (See Service 01h)</span><br /><span class="line">                DL = Number of fixed disks</span><br /><span class="line">                CF   Set if error; otherwise cleared</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">For diskettes:</span></span><br /><span class="line">                AX    = 0</span><br /><span class="line">                BL    = Bits 7 to 4 = 0</span><br /><span class="line">                        Bits 3 to 0 -- Valid drive type in CMOS</span><br /><span class="line">                                       (See below)</span><br /><span class="line">                BH    = 0</span><br /><span class="line">                DL    = Number of diskettes</span><br /><span class="line">                ES:DI = Pointer to 11-byte Diskette Drive Parameter</span><br /><span class="line">                        Table</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This service is available for diskettes on PC Convertibles,</span><br /><span class="line">    XT-286s, and ATs dated after 1/10/84. All machines support the</span><br /><span class="line">    fixed disk mode of this service.</span><br /><span class="line"></span><br /><span class="line">    Values in DL less than 80h specify diskettes; values greater than</span><br /><span class="line">    80h specify fixed disks. For example, 0 means the first diskette,</span><br /><span class="line">    while 80h means the first fixed disk.</span><br /><span class="line"></span><br /><span class="line">    The cylinder number is a ten-bit quantity (0 through 1023). Its</span><br /><span class="line">    most significant two bits are in bits 7 and 6 of CL; the remaining</span><br /><span class="line">    eight bits are in CH. The starting sector number fits in the</span><br /><span class="line">    low-order portion (lower 6 bits) of CL.</span><br /><span class="line"></span><br /><span class="line">    If the drive is a fixed disk and there is an error, the Carry Flag</span><br /><span class="line">    will be set. If the drive number is invalid, AH will be equal to</span><br /><span class="line">    7. And if no fixed disk drive is present or the fixed disk drive</span><br /><span class="line">    adapter is not installed, AH will be equal to 1.</span><br /><span class="line"></span><br /><span class="line">    If the drive is a diskette and there is an error, then:</span><br /><span class="line"></span><br /><span class="line">    If the drive type is known but 1) the CMOS is invalid, not</span><br /><span class="line">    present, 2) the battery is discharged, or 3) the CMOS checksum is</span><br /><span class="line">    invalid, then all registers will contain valid information, but BL</span><br /><span class="line">    will be 0.</span><br /><span class="line"></span><br /><span class="line">    If the drive type is not known or the requested drive is not</span><br /><span class="line">    installed, then BX, CX, DH, ES, and DI will all be 0. DL will</span><br /><span class="line">    contain the number of diskette drives.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Valid Diskette Drive Types in CMOS</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">BL (bits 3-0)      Meaning</span></span><br /><span class="line">             00h           Unknown drive type</span><br /><span class="line">             01h           360K, 5.25 inch, 40 track</span><br /><span class="line">             02h           1.2M, 5.25 inch, 80 track</span><br /><span class="line">             03h           720K, 3.5 inch,  80 track</span><br /><span class="line">             04h           1.44MB, 3.5 inch, 80 track</span><br /><span class="line"></span><br /><span class="line">    For the AT, XT-286, and PC Convertible, the BIOS executes Int 15h,</span><br /><span class="line">    Service 90h (Device Busy), for the diskette (Type = 01h) and the</span><br /><span class="line">    fixed disk (Type = 00h) prior to waiting for the interrupt. Int</span><br /><span class="line">    15h, Service 91h (Interrupt Complete), is executed upon</span><br /><span class="line">    completion. Also diskette operations that require the diskette</span><br /><span class="line">    motor to be on will call Int 15h, Service 90 (Device Busy), with</span><br /><span class="line">    the type equal to &#34;Diskette Drive Motor Start&#34; (Type = FDh). This</span><br /><span class="line">    allows the system to perform another task while the drive motor is</span><br /><span class="line">    waiting to get up to speed.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

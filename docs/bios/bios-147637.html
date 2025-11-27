@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    
+    <link rel="next" href="bios-148597.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="bios-146401.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-148597.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 15h, 21h            Read or Write POST Error Log                     PS/2</span></span><br /><span class="line"></span><br /><span class="line">    Used internally by BIOS in Power-On Self Test (POST).</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    Read POST Error Log</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX = 2100h</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  ES:DI = Address of POST Error Log</span><br /><span class="line">                BX    = Number of POST error codes stored</span><br /><span class="line">                AH    = 00h</span><br /><span class="line">                CF    = 0</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    Write Error to POST Log</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX = 2101h</span><br /><span class="line">                BX = POST 16-bit error code</span><br /><span class="line">                     BH = device code</span><br /><span class="line">                     BL = device error</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  CF = AH = 00h if error stored</span><br /><span class="line">                              01h if log is full, error not stored</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This service is used by BIOS during the Power-On Self Test (POST).</span><br /><span class="line">    If errors occur, they are recorded in the POST log. The Power-On</span><br /><span class="line">    Self Test is concerned with hardware; there is little of value to</span><br /><span class="line">    the applications programmer in this service.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

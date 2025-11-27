@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Low memory</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-34144.html">
+    <link rel="next" href="bios-35816.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-34144.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-14162.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-35816.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">0040h:0072h           Reset State Flag</span></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length: 2 bytes</span></span><br /><span class="line"></span><br /><span class="line">    Indicates what the machine is to do in the event of a reset.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Value        Meaning</span></span><br /><span class="line">        1234h        Skip memory test</span><br /><span class="line">        5678h        System Suspended             (PC Convertible)</span><br /><span class="line">        9ABCh        Manufacturing Test Mode      (PC Convertible)</span><br /><span class="line">        ABCDh        POST Loop Mode               (PC Convertible)</span><br /><span class="line"></span><br /><span class="line">    When the user hits Ctrl-Alt-Del sequence, this word is set to</span><br /><span class="line">    1234h and control is transferred to the power-on routine, which</span><br /><span class="line">    initializes and tests various hardware devices. This word is then</span><br /><span class="line">    tested to see if it has the value 1234h; if it does, the lengthy</span><br /><span class="line">    memory test is skipped and the system is rebooted.</span><br /><span class="line"></span><br /><span class="line">    The PC Convertible added three new modes for this word. The first</span><br /><span class="line">    is the System Suspended mode. This mode is triggered when the</span><br /><span class="line">    machine is recovering from a suspended power-off state. If this is</span><br /><span class="line">    the case, the memory test is skipped, devices are restored to</span><br /><span class="line">    their previous states, and control is transferred to the program</span><br /><span class="line">    that was suspended. The other two new modes are not useful to the</span><br /><span class="line">    user.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

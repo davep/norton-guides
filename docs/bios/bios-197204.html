@@ -1,0 +1,96 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-196371.html">
+    <link rel="next" href="bios-198703.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-196371.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-185076.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-198703.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 1Ah, 08h            Set Clock-Activated Power-On Mode         Convertible</span></span><br /><span class="line"></span><br /><span class="line">    Sets the time at which the computer will automatically power on.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 08h</span><br /><span class="line">                CH = Hours (BCD)</span><br /><span class="line">                CL = Minutes (BCD)</span><br /><span class="line">                DH = Seconds (BCD)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  CF   Set if clock not operating or alarm already set;</span><br /><span class="line">                     else cleared</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This service is available only for the PC Convertible. Previous</span><br /><span class="line">    machines will report unpredictable results (including the state of</span><br /><span class="line">    the Carry Flag). ATs, XT-286s, and the PS/2 family will set the</span><br /><span class="line">    Carry Flag, thus reporting an error state.</span><br /><span class="line"></span><br /><span class="line">    All dates are in Binary Coded Decimal (BCD). For example, June 1,</span><br /><span class="line">    1985 will be set as CX = 1985; DX = 0601.</span><br /><span class="line"></span><br /><span class="line">    The real-time clock is the clock that runs even when the computer</span><br /><span class="line">    is turned off. A CMOS battery is used so that, even while the</span><br /><span class="line">    computer is off, the date, time, and alarm time are maintained.</span><br /><span class="line"></span><br /><span class="line">    After this service is executed, the machine will automatically</span><br /><span class="line">    power on as soon as the hour, minute, and second specified match</span><br /><span class="line">    the time on the real-time clock date. If the system is already on,</span><br /><span class="line">    then Int 4Ah (User Alarm) will be executed.</span><br /><span class="line"></span><br /><span class="line">    If the system is on, the alarm interrupt (Int 4Ah) will continue</span><br /><span class="line">    to occur every 24 hours at the specified time until it is reset</span><br /><span class="line">    via Service 07h (Reset Real-Time Clock Alarm). Only one alarm time</span><br /><span class="line">    can be active at a time.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-194189.html">Int 1Ah, 06h</a></li>
+        
+          <li><a href="bios-196371.html">Int 1Ah, 07h</a></li>
+        
+          <li><a href="bios-198703.html">Int 1Ah, 09h</a></li>
+        
+          <li><a href="bios-12389.html">Int 4Ah</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

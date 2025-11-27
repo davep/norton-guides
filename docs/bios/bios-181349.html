@@ -1,0 +1,90 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-180117.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-180117.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-171114.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 16h, 12h            Get Extended Shift Status                        many</span></span><br /><span class="line"></span><br /><span class="line">    Returns the current keyboard shift status. This service is</span><br /><span class="line">    provided to support the enhanced (101/102-key) keyboard.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 12h</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  AL = Shift status</span><br /><span class="line">                AH = Extended shift status</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">                <span class="ngb">Shift Status (AL)</span></span><br /><span class="line">                7 6 5 4 3 2 1 0</span><br /><span class="line">                1 . . . . . . .      Insert locked</span><br /><span class="line">                . 1 . . . . . .      Caps Lock locked</span><br /><span class="line">                . . 1 . . . . .      Num Lock locked</span><br /><span class="line">                . . . 1 . . . .      Scroll Lock locked</span><br /><span class="line">                . . . . 1 . . .      Alt key is pressed</span><br /><span class="line">                . . . . . 1 . .      Ctrl key is pressed</span><br /><span class="line">                . . . . . . 1 .      Left Shift key is pressed</span><br /><span class="line">                . . . . . . . 1      Right Shift key is pressed</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">                <span class="ngb">Extended Shift Status (AH)</span></span><br /><span class="line">                7 6 5 4 3 2 1 0</span><br /><span class="line">                1 . . . . . . .      Sys Req key is pressed</span><br /><span class="line">                . 1 . . . . . .      Caps Lock key is pressed</span><br /><span class="line">                . . 1 . . . . .      Num Lock key is pressed</span><br /><span class="line">                . . . 1 . . . .      Scroll Lock key is pressed</span><br /><span class="line">                . . . . 1 . . .      Right Alt key is pressed</span><br /><span class="line">                . . . . . 1 . .      Right Ctrl key is is pressed</span><br /><span class="line">                . . . . . . 1 .      Left Alt key is pressed</span><br /><span class="line">                . . . . . . . 1      Left Ctrl key is pressed</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This service is supported only on the AT dated 11/15/85 and after,</span><br /><span class="line">    the XT dated 1/10/86 and after, and the XT-286.</span><br /><span class="line"></span><br /><span class="line">    The shift status byte return in AL is obtained from the byte at</span><br /><span class="line">    memory location 0040h:0017h. Note that this is the same value that</span><br /><span class="line">    is returned by Service 02h.</span><br /><span class="line"></span><br /><span class="line">    Note that the Extended Shift Status (value returned in AH) reports</span><br /><span class="line">    if keys are being pressed, not locked.</span><br /><span class="line"></span><br /><span class="line">    See Service 02h for an equivalent service that works with all</span><br /><span class="line">    keyboards, not supporting the new keys on the enhanced</span><br /><span class="line">    (101/102-key) keyboard.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-174388.html">Int 16h, 02h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

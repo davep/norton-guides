@@ -1,0 +1,90 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-80427.html">
+    <link rel="next" href="bios-81557.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-80427.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-54487.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-81557.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 10h, 1130h          Get Font Information                   EGA, MCGA, VGA</span></span><br /><span class="line"></span><br /><span class="line">    Returns font information.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AX = 1130h</span><br /><span class="line">                BH = Type of pointer to return</span><br /><span class="line">                     | 00h - Current Int 1Fh pointer</span><br /><span class="line">                     | 01h - Current Int 43h pointer</span><br /><span class="line">                     | 02h - ROM 8 x 14 font pointer</span><br /><span class="line">                     | 03h - ROM 8 x 8 double-dot font pointer</span><br /><span class="line">                     | 04h - ROM 8 x 8 double-dot font pointer (top)</span><br /><span class="line">                     | 05h - ROM text alternative 9 x 14 pointer</span><br /><span class="line">                             (not MCGA)</span><br /><span class="line">                     | 06h - ROM 8 x 16 font pointer (not EGA)</span><br /><span class="line">                     | 07h - ROM alternative 9 x 16 pointer</span><br /><span class="line">                             (not EGA, MCGA)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  ES:BP = Specified pointer</span><br /><span class="line">                CX    = Scan lines per character (of displayed font)</span><br /><span class="line">                DL    = Displayed character rows - 1</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    The IBM EGA and some EGA cards return DL = the number of displayed</span><br /><span class="line">    character rows (one too many).</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-74222.html">Int 10h, 11h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

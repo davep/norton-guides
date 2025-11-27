@@ -1,0 +1,90 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Low memory</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-52161.html">
+    <link rel="next" href="bios-53150.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-52161.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-14162.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-53150.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FFFFh:0000h           FAR JMP to Beginning of Power-On Self Test (POST)</span></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length: 5 bytes</span></span><br /><span class="line"></span><br /><span class="line">    Located at this address is a far jump to the beginning of the</span><br /><span class="line">    Power-On Self Test (POST).</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    See POST for more details on what it does. The reason this address</span><br /><span class="line">    is used for this purpose is that when the 8086 family of</span><br /><span class="line">    microprocessors receive power, the CS register is set to FFFFh and</span><br /><span class="line">    the IP register to 0.</span><br /><span class="line"></span><br /><span class="line">    If you wish to reboot (either warm or cold) a system, perform a</span><br /><span class="line">    far jump to this address. This will force the POST to take</span><br /><span class="line">    control, which will reboot the system. The POST looks at the word</span><br /><span class="line">    at address 0040h:0072h to determine whether a warm boot or a cold</span><br /><span class="line">    boot should be performed. If the value at 0040h:0072h is 1234h,</span><br /><span class="line">    then a warm boot is performed; otherwise the boot is cold.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-34686.html">0040h:0072h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

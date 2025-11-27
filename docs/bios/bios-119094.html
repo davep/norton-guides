@@ -1,0 +1,90 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-116243.html">
+    <link rel="next" href="bios-120717.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-116243.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-94319.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-120717.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 13h, 09h            Initialize Fixed Disk Tables               fixed disk</span></span><br /><span class="line"></span><br /><span class="line">    Initializes a fixed disk using parameter tables.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 09h</span><br /><span class="line">                DL = Drive number (Bit 7 must be set)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  AH = Status of operation (see Service 01h)</span><br /><span class="line">                CF   Set if error; otherwise cleared</span><br /><span class="line"></span><br /><span class="line">    Int 41h points to a fixed disk parameter table. On some machines,</span><br /><span class="line">    Int 46h also contains a fixed disk parameter table for a second</span><br /><span class="line">    drive. These tables are used by this service to initialize drives.</span><br /><span class="line">    Service 09h will cause the the BIOS to adjust properly to any</span><br /><span class="line">    fixed disk parameters that have been changed in the fixed disk</span><br /><span class="line">    parameter table.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    The behavior of this service depends on the type of machine it is</span><br /><span class="line">    executed on:</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">XT</span>                If the drive number is a legal value (80h &lt;= DL</span><br /><span class="line">                      &lt;= 87h), then both drives 0 and 1 are</span><br /><span class="line">                      initialized. Int 41h actually points to four</span><br /><span class="line">                      tables. The table used for the drive number is</span><br /><span class="line">                      determined by the setting of switches on the</span><br /><span class="line">                      fixed disk drive adapter. If the initialization</span><br /><span class="line">                      of drive 0 fails, drive 1 initialization is not</span><br /><span class="line">                      attempted.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">AT and XT-286</span>     If DL is 80h, then drive 0 is initialized via</span><br /><span class="line">                      Int 41h. If DL is 81h, then drive 1 is</span><br /><span class="line">                      initialized via Int 46h.</span><br /><span class="line"></span><br /><span class="line">    If an error is encountered, use Service 0h to reset the drive and</span><br /><span class="line">    retry the operation.</span><br /><span class="line"></span><br /><span class="line">    For the AT, XT-286, and PC Convertible, the BIOS executes Int 15h,</span><br /><span class="line">    Service 90h (Device Busy), for the diskette (Type = 01h) and the</span><br /><span class="line">    fixed disk (Type = 00h) prior to waiting for the interrupt. Int</span><br /><span class="line">    15h, Service 91h (Interrupt Complete), is executed upon</span><br /><span class="line">    completion.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-97437.html">Int 13h, 01h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

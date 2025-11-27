@@ -1,0 +1,92 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-7621.html">
+    <link rel="next" href="bios-10430.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-7621.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-10430.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 19h                 Bootstrap Loader Service</span></span><br /><span class="line"></span><br /><span class="line">    Attempts to load the sector at head 0, cylinder 0, sector 1, of a</span><br /><span class="line">    diskette or fixed disk into memory at 0:7C00h, and transfer</span><br /><span class="line">    control there. This sector usually has an operating system</span><br /><span class="line">    bootstrap loader.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This interrupt attempts to load the sector at head 0, track 0,</span><br /><span class="line">    sector 1, on the first diskette into memory at 0:7C00h. If unable,</span><br /><span class="line">    it then attempts to load the sector at head 0, track 0, sector 1</span><br /><span class="line">    of the first hard disk. If it is unable to load from either the</span><br /><span class="line">    diskette or the fixed disk, it calls Int 18h, which calls the ROM</span><br /><span class="line">    BASIC.</span><br /><span class="line"></span><br /><span class="line">    If Int 19h is successful, control is transferred to the first byte</span><br /><span class="line">    of the sector, which has been read in at memory location 0:7C00h.</span><br /><span class="line">    That is, CS is set to 0 and IP is set to 7C00h.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This interrupt is not a substitute for a Ctrl-Alt- Del warm boot.</span><br /><span class="line">    This interrupt is the last action performed by the Power-On Self</span><br /><span class="line">    Test (POST), which is activated by Ctrl-Alt-Del. If a user program</span><br /><span class="line">    attempts to execute this interrupt directly, the machine may lock</span><br /><span class="line">    up.</span><br /><span class="line"></span><br /><span class="line">    To correctly reboot within an application program, jump to FFFF:0h</span><br /><span class="line">    in memory. That is, set CS to FFFF and IP to 0. This is the same</span><br /><span class="line">    process that occurs when the machine is first powered on.</span><br /><span class="line">    Following these steps will perform a &#34;cold&#34; boot. To perform a</span><br /><span class="line">    &#34;warm&#34; boot using this method, first set the word at location</span><br /><span class="line">    0040h:0072h to 1234h. This will simulate the pressing of the</span><br /><span class="line">    Ctrl-Alt-Del.</span><br /><span class="line"></span><br /><span class="line">    A cold boot initializes all hardware, tests all hardware, tests</span><br /><span class="line">    RAM, then calls Int 19h to load the bootstrap loader. This process</span><br /><span class="line">    is performed when the computer is turned on or a hardware reset</span><br /><span class="line">    button is pressed.</span><br /><span class="line"></span><br /><span class="line">    A warm boot initializes and tests all hardware but does not test</span><br /><span class="line">    RAM. It then calls Int 19h to load the bootstrap loader. This</span><br /><span class="line">    process is performed when Ctrl-Alt-Del is typed.</span><br /><span class="line"></span><br /><span class="line">    The sector read from the diskette will in turn read in the rest of</span><br /><span class="line">    the operating system. A fixed disk will read in a Partition Table,</span><br /><span class="line">    which will then read in the correct operating system.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-7621.html">Int 18h</a></li>
+        
+          <li><a href="bios-34686.html">0040h:0072h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,90 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-8165.html">
+    <link rel="next" href="bios-11368.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-8165.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-11368.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 1Bh                 Keyboard Break</span></span><br /><span class="line"></span><br /><span class="line">    Called when a Control-Break key sequence is encountered.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    When the machine is powered on, the interrupt handler for this</span><br /><span class="line">    interrupt just IRETs back to the caller. DOS, however, installs a</span><br /><span class="line">    Ctrl-Break handler that sets an internal flag to signal that a</span><br /><span class="line">    keyboard Break condition has occurred.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    DOS tests the state of the internal flag occasionally, depending</span><br /><span class="line">    on the state of the Control- Break Check (Int 21h, Function</span><br /><span class="line">    3300h). If the flag is on during a test, then the string &#34;^C&#34;,</span><br /><span class="line">    followed by a Carriage-Return/ Line-Feed combination, is displayed</span><br /><span class="line">    on the screen, the DOS internal flag is reset, and Int 23h</span><br /><span class="line">    (Control-Break Exit Address) is called.</span><br /><span class="line"></span><br /><span class="line">    Note that Int 09h (Keyboard) sets the byte at 0040h:0071h to</span><br /><span class="line">    signal that a Control-Break key has been entered.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-34144.html">0040h:0071h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

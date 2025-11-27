@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    
+    <link rel="next" href="bios-60825.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="bios-54487.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-60825.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 10h, 00h            Set Video Mode</span></span><br /><span class="line"></span><br /><span class="line">    Sets the video mode.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 00h</span><br /><span class="line">                AL = Video mode</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  Nothing</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">  On the EGA, MCGA, and VGA, the display memory is not erased by a</span><br /><span class="line">  mode set if the high bit of AL is set.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">  Host memory affected by a mode set:</span><br /><span class="line">        0040h:0049h     Current video mode</span><br /><span class="line">        0040h:004Ah     No. of columns on screen</span><br /><span class="line">        0040h:004Ch     Length of active screen buffer</span><br /><span class="line">        0040h:004Eh     Start offset of current display page</span><br /><span class="line">        0040h:0050h     Cursor positions</span><br /><span class="line">        0040h:0060h     Cursor mode</span><br /><span class="line">        0040h:0062h     Current display page</span><br /><span class="line">        0040h:0063h     Base host address of port</span><br /><span class="line">        0040h:0065h     Current mode</span><br /><span class="line">        0040h:0066h     Current color</span><br /><span class="line">        0040h:0084h     No. of character rows</span><br /><span class="line"></span><br /><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br /><span class="line">         <span class="ngb">Table of standard text and graphics video modes</span></span><br /><span class="line"></span><br /><span class="line">    Mode   Text   Box    Pixel   Colors  No.  Buffer System/</span><br /><span class="line">  no. type resol  size resolution       pages  addr  adapter</span><br /><span class="line">  00h  T   40x25  8x8   320x200  16gray    8   B800  CGA,PCjr</span><br /><span class="line">   0*  T   40x25  8x14  320x350  16gray    8   B800  EGA</span><br /><span class="line">       T   40x25  8x16  320x400   16       8   B800  MCGA</span><br /><span class="line">   0+  T   40x25  9x16  360x400   16       8   B800  VGA</span><br /><span class="line">  01h  T   40x25  8x8   320x200   16       8   B800  CGA,PCjr</span><br /><span class="line">   1*  T   40x25  8x14  320x350   16       8   B800  EGA</span><br /><span class="line">       T   40x25  8x16  320x400   16       8   B800  MCGA</span><br /><span class="line">   1+  T   40x25  9x16  360x400   16       8   B800  VGA</span><br /><span class="line">  02h  T   80x25  8x8   640x200  16gray    4   B800  CGA,PCjr</span><br /><span class="line">   2*  T   80x25  8x14  640x350  16gray    8   B800  EGA</span><br /><span class="line">       T   80x25  8x16  640x400   16       8   B800  MCGA</span><br /><span class="line">   2+  T   80x25  9x16  720x400   16       8   B800  VGA</span><br /><span class="line">  03h  T   80x25  8x8   640x200   16       4   B800  CGA,PCjr</span><br /><span class="line">   3*  T   80x25  8x14  640x350   16/64    8   B800  EGA</span><br /><span class="line">       T   80x25  8x16  640x400   16       8   B800  MCGA</span><br /><span class="line">   3+  T   80x25  9x16  720x400   16       8   B800  VGA</span><br /><span class="line">  04h  G   40x25  8x8   320x200    4       1   B800  CGA,PCjr,EGA,MCGA,VGA</span><br /><span class="line">  05h  G   40x25  8x8   320x200   4gray    1   B800  CGA,PCjr,EGA</span><br /><span class="line">       G   40x25  8x8   320x200    4       1   B800  MCGA,VGA</span><br /><span class="line">  06h  G   80x25  8x8   640x200    2       1   B800  CGA,PCjr,EGA,MCGA,VGA</span><br /><span class="line">  07h  T   80x25  9x14  720x350  mono     var  B000  MDA,Hercules,EGA</span><br /><span class="line">   7+  T   80x25  9x16  720x400  mono      8   B000  VGA</span><br /><span class="line">  08h  G   20x25  8x8   160x200   16       .   B000  PCjr</span><br /><span class="line">  09h  G   40x25  8x8   320x200   16       .   B000  PCjr</span><br /><span class="line">  0Ah  G   80x25  8x8   640x200    4       .   B000  PCjr</span><br /><span class="line">  0Bh     reserved                                   (EGA internal)</span><br /><span class="line">  0Ch     reserved                                   (EGA internal)</span><br /><span class="line">  0Dh  G   40x25  8x8   320x200   16       8   A000  EGA,VGA</span><br /><span class="line">  0Eh  G   80x25  8x8   640x200   16       4   A000  EGA,VGA</span><br /><span class="line">  0Fh  G   80x25  8x14  640x350  mono      2   A000  EGA,VGA</span><br /><span class="line">  10h  G   80x25  8x14  640x350    4       2   A000  64k EGA</span><br /><span class="line">       G     .     .    640x350   16       2   A000  256k EGA,VGA</span><br /><span class="line">  11h  G   80x30  8x16  640x480    2/256K  1   A000  VGA,MCGA</span><br /><span class="line">  12h  G   80x30  8x16  640x480   16/256K  1   A000  VGA</span><br /><span class="line">  13h  G   40x25  8x8   320x200  256/256K  1   A000  VGA,MCGA</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-62576.html">Int 10h, 06h</a></li>
+        
+          <li><a href="bios-63328.html">Int 10h, 07h</a></li>
+        
+          <li><a href="bios-68256.html">Int 10h, 0Fh</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

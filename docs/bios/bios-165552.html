@@ -1,0 +1,96 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-164254.html">
+    <link rel="next" href="bios-167835.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-164254.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-146401.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-167835.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 15h, C0h            Return System Configuration                      many</span></span><br /><span class="line"></span><br /><span class="line">    Reports the machine model number, sub-model number, BIOS revision</span><br /><span class="line">    level, and other hardware-specific attributes.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = C0h</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  CF      Set if error, else cleared</span><br /><span class="line">                AH    = 0</span><br /><span class="line">                ES:BX = Pointer to a System Descriptor Table</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This service is not available for the PC, PCjr, XT dated 11/08/82,</span><br /><span class="line">    and the AT dated 1/10/84. Use the return state of AH to determine</span><br /><span class="line">    if the service is returning valid information.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">System Descriptor Table</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Description          Length (byte)   Value</span></span><br /><span class="line">        Table length            1              8</span><br /><span class="line">        System model number     1              ?</span><br /><span class="line">        Sub-model number        1              ?</span><br /><span class="line">        Bios Revision level     1              ?</span><br /><span class="line">        Feature Information     1              ?</span><br /><span class="line">        Reserved                4              0</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Feature Information</span></span><br /><span class="line"></span><br /><span class="line">        7 6 5 4 3 2 1 0</span><br /><span class="line">        x . . . . . . .     Fixed Disk BIOS uses DMA channel 3</span><br /><span class="line">        . x . . . . . .     2nd interrupt chip present</span><br /><span class="line">        . . x . . . . .     Real-time clock present</span><br /><span class="line">        . . . x . . . .     Keyboard intercept called in Int 09h</span><br /><span class="line">        . . . . x . . .     Wait for external event supported</span><br /><span class="line">        . . . . . x . .     Reserved</span><br /><span class="line">        . . . . . . x .     Reserved</span><br /><span class="line">        . . . . . . . x     Reserved</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    The XT dated 1/10/86 has a bug in its Feature Information. It</span><br /><span class="line">    incorrectly states that the second interrupt chip is present (bit</span><br /><span class="line">    6 is set) and that the fixed disk BIOS doesn&#39;t use DMA channel 3</span><br /><span class="line">    (bit 7 is clear). Both of these are incorrect. To test for this</span><br /><span class="line">    condition, if the model number is FBh and the BIOS level is 1,</span><br /><span class="line">    then ASSUME that the Fixed disk BIOS does use DMA channel 3 and</span><br /><span class="line">    the second interrupt chip is not present.</span><br /><span class="line"></span><br /><span class="line">    Programs using the DMA channel 3 presence must also be aware that</span><br /><span class="line">    other adapters may be using this channel, such as the IBM Network</span><br /><span class="line">    Adapter, which will not be reflected in the Feature Information</span><br /><span class="line">    byte.</span><br /><span class="line"></span><br /><span class="line">    See Int 15h, Service 4Fh, for more information on Keyboard</span><br /><span class="line">    intercept (bit 4 of the Feature Information byte) and see Int 09h</span><br /><span class="line">    for more information of the hardware keyboard interrupt.</span><br /><span class="line"></span><br /><span class="line">    See Int 15h, Service 41h, for more information on the Wait for</span><br /><span class="line">    External Event (bit 3 of the Feature Information byte).</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-149940.html">Int 15h, 4Fh</a></li>
+        
+          <li><a href="bios-2150.html">Int 09h</a></li>
+        
+          <li><a href="bios-148783.html">Int 15h, 41h</a></li>
+        
+          <li><a href="bios-53491.html">FFFFh:000Eh</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

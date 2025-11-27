@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-128785.html">
+    <link rel="next" href="bios-130746.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-128785.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-94319.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-130746.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 13h, 11h            Recalibrate Drive                          fixed disk</span></span><br /><span class="line"></span><br /><span class="line">    This service recalibrates a specified fixed disk drive to reset</span><br /><span class="line">    the seek speed. This service can be performed on fixed disks only.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 11h</span><br /><span class="line">                DL = Drive number (Bit 7 must be set)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  AH = Status of operation (See Service 01h)</span><br /><span class="line">                CF   Set if error; otherwise cleared</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This service is called by both Service 00h and Service 0Dh. Thus</span><br /><span class="line">    calling either of these services will accomplish the same as</span><br /><span class="line">    calling Service 11h.</span><br /><span class="line"></span><br /><span class="line">    This service sends the RECALIBRATE command to the disk controller,</span><br /><span class="line">    making the controller default to its original state and place the</span><br /><span class="line">    read/write arm at track 0.</span><br /><span class="line"></span><br /><span class="line">    If an error is encountered, use Service 0h to reset the drive and</span><br /><span class="line">    retry the operation.</span><br /><span class="line"></span><br /><span class="line">    For the AT, XT-286, and PC Convertible, the BIOS executes Int 15h,</span><br /><span class="line">    Service 90h (Device Busy), for the diskette (Type = 01h) and the</span><br /><span class="line">    fixed disk (Type = 00h) prior to waiting for the interrupt. Int</span><br /><span class="line">    15h, Service 91h (Interrupt Complete), is executed upon</span><br /><span class="line">    completion.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-95761.html">Int 13h, 00h</a></li>
+        
+          <li><a href="bios-97437.html">Int 13h, 01h</a></li>
+        
+          <li><a href="bios-127469.html">Int 13h, 0Dh</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

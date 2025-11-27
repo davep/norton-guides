@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-95761.html">
+    <link rel="next" href="bios-99522.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-95761.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-94319.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-99522.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 13h, 01h            Get Disk System Status                            all</span></span><br /><span class="line"></span><br /><span class="line">    Returns status information about the most recent fixed or floppy</span><br /><span class="line">    disk operation.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 01h</span><br /><span class="line">                DL = Drive number</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  AH = Status of operation (see below)</span><br /><span class="line">                CF   Set if error, otherwise cleared</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">                     <span class="ngb">Status of Operation (AH)</span></span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">AH             Meaning</span></span><br /><span class="line">       FFh            Sense operation failed             (fixed)</span><br /><span class="line">       E0h            Status error                       (fixed)</span><br /><span class="line">       CCh            Write fault                        (fixed)</span><br /><span class="line">       BBh            Undefined error                    (fixed)</span><br /><span class="line">       80h            Drive not ready</span><br /><span class="line">       40h            Seek failure</span><br /><span class="line">       20h            Controller failure</span><br /><span class="line">       11h            ECC corrected data error           (fixed)</span><br /><span class="line">       10h            CRC or ECC data error</span><br /><span class="line">       0Fh            DMA arbitration level out of range (fixed)</span><br /><span class="line">       0Eh            Control data address mark detected (fixed)</span><br /><span class="line">       0Dh            Invalid number sectors on format   (fixed)</span><br /><span class="line">       0Ch            Media type not found               (floppy)</span><br /><span class="line">       0Bh            Bad cylinder found                 (fixed)</span><br /><span class="line">       0Ah            Bad sector flag detected           (fixed)</span><br /><span class="line">       09h            Attempt to DMA across a 64K boundary</span><br /><span class="line">       08h            DMA overrun</span><br /><span class="line">       07h            Drive parameter activity failed    (fixed)</span><br /><span class="line">       06h            Diskette change line active        (floppy)</span><br /><span class="line">       05h            Reset failed                       (fixed)</span><br /><span class="line">       04h            Sector not found</span><br /><span class="line">       03h            Attempt to write on write-protected disk</span><br /><span class="line">       02h            Address mark not found</span><br /><span class="line">       01h            Invalid command</span><br /><span class="line">       00h            No error</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    The most recent diskette operation status is found at 0040h:0041h.</span><br /><span class="line">    The most recent fixed disk operation status is at 0040h:0074h.</span><br /><span class="line"></span><br /><span class="line">    For the AT, XT-286, and PC Convertible, the BIOS executes Int 15h,</span><br /><span class="line">    Service 90h (Device Busy), for the diskette (Type = 01h) and the</span><br /><span class="line">    fixed disk (Type = 00h) prior to waiting for the interrupt. Int</span><br /><span class="line">    15h, Service 91h (Interrupt Complete), is executed upon</span><br /><span class="line">    completion. Also diskette operations that require the diskette</span><br /><span class="line">    motor to be on will call Int 15h, Service 90 (Device Busy), with</span><br /><span class="line">    the type equal to &#34;Diskette Drive Motor Start&#34; (Type = FDh). This</span><br /><span class="line">    allows the system to perform another task while the drive motor is</span><br /><span class="line">    waiting to get up to speed.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-95761.html">Int 13h, 00h</a></li>
+        
+          <li><a href="bios-27165.html">0040h:0041h</a></li>
+        
+          <li><a href="bios-35816.html">0040h:0074h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

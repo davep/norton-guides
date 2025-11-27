@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    
+    <link rel="next" href="bios-97437.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="bios-94319.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-97437.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 13h, 00h            Reset Fixed Disk/Diskette System                  all</span></span><br /><span class="line"></span><br /><span class="line">    Resets the fixed disk or diskette controller and drive, forcing</span><br /><span class="line">    recalibration of the read/write head.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 00h</span><br /><span class="line">                DL = Drive number</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  AH = Status of operation (See Service 01h)</span><br /><span class="line">                CF   Set if error, cleared otherwise</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    If DL is greater than or equal to 80h, the floppy diskette</span><br /><span class="line">    controller is reset, and then the fixed disk controller is reset.</span><br /><span class="line">    The status returned in AH in this case is the status of the fixed</span><br /><span class="line">    disk; to get the status of the floppy diskette controller, examine</span><br /><span class="line">    memory location 0040h:0041h.</span><br /><span class="line"></span><br /><span class="line">    If an error is reported by the disk BIOS routines, use this</span><br /><span class="line">    service to reset the floppy and/or fixed disk controllers, and</span><br /><span class="line">    retry the operation.</span><br /><span class="line"></span><br /><span class="line">    A fixed disk reset is executed only if the value in DL is less</span><br /><span class="line">    than or equal to the last fixed disk on the system. That is, the</span><br /><span class="line">    lower 7 bits of DL should be less than or equal to the number of</span><br /><span class="line">    fixed disks.</span><br /><span class="line"></span><br /><span class="line">    For the AT, XT-286, and PC Convertible, the BIOS executes Int 15h,</span><br /><span class="line">    Service 90h (Device Busy), for the diskette (Type = 01h) and the</span><br /><span class="line">    fixed disk (Type = 00h) prior to waiting for the interrupt. Int</span><br /><span class="line">    15h, Service 91h (Interrupt Complete), is executed upon</span><br /><span class="line">    completion. Also diskette operations that require the diskette</span><br /><span class="line">    motor to be on will call Int 15h, Service 90 (Device Busy), with</span><br /><span class="line">    the type equal to &#34;Diskette Drive Motor Start&#34; (Type = FDh). This</span><br /><span class="line">    allows the system to perform another task while the drive motor is</span><br /><span class="line">    waiting to get up to speed.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-97437.html">Int 13h, 01h</a></li>
+        
+          <li><a href="bios-127469.html">Int 13h, 0Dh</a></li>
+        
+          <li><a href="bios-129565.html">Int 13h, 11h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

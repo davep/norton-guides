@@ -1,0 +1,92 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-178107.html">
+    <link rel="next" href="bios-181349.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-178107.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-171114.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-181349.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 16h, 11h            Extended Keyboard Status                         many</span></span><br /><span class="line"></span><br /><span class="line">    Checks to see if a character is available in the buffer. This</span><br /><span class="line">    service is provided to support the extended keyboard (101/102-key</span><br /><span class="line">    keyboard).</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 11h</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  ZF = 0, if character is available</span><br /><span class="line">                     1, if character is not available</span><br /><span class="line">                AX = If character is available, then set to</span><br /><span class="line">                     character as in Service 10h</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This service is supported only on the AT dated 11/15/85 and after,</span><br /><span class="line">    the XT dated 1/10/86 and after, and the XT-286.</span><br /><span class="line"></span><br /><span class="line">    If a character is available, the Zero Flag is cleared and AX</span><br /><span class="line">    contains the ASCII value in AL and the scan code in AH. The</span><br /><span class="line">    character is not removed from the buffer. Use Service 10h to</span><br /><span class="line">    remove the character from the buffer. See Service 10h for a</span><br /><span class="line">    complete description of the meaning of AX if a character is</span><br /><span class="line">    available.</span><br /><span class="line"></span><br /><span class="line">    This service is excellent for clearing the keyboard or allowing a</span><br /><span class="line">    program to be interruptable by a specific key sequence.</span><br /><span class="line"></span><br /><span class="line">    See Service 01h for an equivalent service that works with all</span><br /><span class="line">    keyboards, not supporting the new keys on the enhanced</span><br /><span class="line">    (101/102-key) keyboard.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-173397.html">Int 16h, 01h</a></li>
+        
+          <li><a href="bios-178107.html">Int 16h, 10h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

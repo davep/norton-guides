@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-141417.html">
+    <link rel="next" href="bios-143666.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-141417.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-139731.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-143666.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 14h, 03h            Get Serial Port Status</span></span><br /><span class="line"></span><br /><span class="line">    Returns line status and modem status information for a specified</span><br /><span class="line">    serial port.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 03h</span><br /><span class="line">                DX = Serial port number (0 - COM1, 1 - COM2, etc.)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  AX = Line and Modem status (See below)</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    Status information is returned in AX, as follows:</span><br /><span class="line"></span><br /><span class="line">            <span class="ngb">AH (Line status)</span></span><br /><span class="line">            7 6 5 4 3 2 1 0</span><br /><span class="line">            1 . . . . . . .       Time-out error</span><br /><span class="line">            . 1 . . . . . .       Transfer shift register empty</span><br /><span class="line">            . . 1 . . . . .       Transfer holding register empty</span><br /><span class="line">            . . . 1 . . . .       Break-detect error</span><br /><span class="line">            . . . . 1 . . .       Framing error</span><br /><span class="line">            . . . . . 1 . .       Parity error</span><br /><span class="line">            . . . . . . 1 .       Overrun error</span><br /><span class="line">            . . . . . . . 1       Data ready</span><br /><span class="line"></span><br /><span class="line">            <span class="ngb">AL (Modem status)</span></span><br /><span class="line">            7 6 5 4 3 2 1 0</span><br /><span class="line">            1 . . . . . . .       Received line signal detect</span><br /><span class="line">            . 1 . . . . . .       Ring indicator</span><br /><span class="line">            . . 1 . . . . .       Data set ready</span><br /><span class="line">            . . . 1 . . . .       Clear to send</span><br /><span class="line">            . . . . 1 . . .       Change in receive line signal detected</span><br /><span class="line">            . . . . . 1 . .       Trailing edge ring detector</span><br /><span class="line">            . . . . . . 1 .       Change in data set ready</span><br /><span class="line">            . . . . . . . 1       Change in clear to send</span><br /><span class="line"></span><br /><span class="line">    If bit 7 of the Line status byte (AH) is set, then the rest of the</span><br /><span class="line">    bits in AH and AL are unpredictable.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    Early versions of the ROM-BIOS for the original PC had a</span><br /><span class="line">    programming error that would cause &#34;time-out&#34; errors to be</span><br /><span class="line">    reported as &#34;transfer shift register empty&#34; and &#34;break-detect&#34;</span><br /><span class="line">    errors. This has been corrected in all other versions of the</span><br /><span class="line">    ROM-BIOS.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,90 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-73891.html">
+    <link rel="next" href="bios-75997.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-73891.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-54487.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-75997.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 10h, 11h            Character Generator</span></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">General description</span></span><br /><span class="line"></span><br /><span class="line">    Subservices 00h, 01h, and 02h perform a mode set, completely</span><br /><span class="line">    altering the video state but not clearing the display buffer.</span><br /><span class="line"></span><br /><span class="line">    Subservices 10h, 11h, and 12h are the same as 00h, 01h, and 02h,</span><br /><span class="line">    respectively, except for the following differences:</span><br /><span class="line"></span><br /><span class="line">        *  Subservices 10h, 11h, and 12h rely on page 0 as being</span><br /><span class="line">           the active page</span><br /><span class="line">        *  The number of bytes per character is recalculated</span><br /><span class="line">        *  The number of rows is recalculated</span><br /><span class="line">        *  The length of the regeneration buffer is recalculated</span><br /><span class="line">        *  Five cursor control (CRTC) registers are reprogrammed</span><br /><span class="line"></span><br /><span class="line">    Subservices 10h-23h should only be called immediately after a mode</span><br /><span class="line">    set.</span><br /><span class="line"></span><br /><span class="line">    Subservice 03h (Set the block specifier) lets you display two</span><br /><span class="line">    character sets at the same time, each from one block of 256</span><br /><span class="line">    characters, thus allowing for a 512-character set. When a</span><br /><span class="line">    512-character set is used, it is recommended that you set the</span><br /><span class="line">    color planes with 8 consistent colors by executing Service 10h,</span><br /><span class="line">    Subservice 00h (AX=1000h) and setting BX = 0712h.</span><br /><span class="line"></span><br /><span class="line">    Each increment of 64K EGA/VGA memory allows another font block to</span><br /><span class="line">    be used. The default of 64K allows one font block, whereas an</span><br /><span class="line">    EGA/MCGA memory of 256K allows up to four font block. Each block</span><br /><span class="line">    holds definitions for 256 characters. The VGA allows up to 8 font</span><br /><span class="line">    blocks.</span><br /><span class="line"></span><br /><span class="line">    When defining the character set in graphics modes, a full set of</span><br /><span class="line">    256 characters must be supplied (compare this with character-set</span><br /><span class="line">    definitions in the text modes, where any number of characters--up</span><br /><span class="line">    to 256 per block--may be loaded).</span><br /><span class="line"></span><br /><span class="line">    Subservice 21h will load 256 character definitions. Video modes 4,</span><br /><span class="line">    5, and 6 use only the first 128 characters. All other modes use</span><br /><span class="line">    all 256 characters.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-68624.html">Int 10h, 1000h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

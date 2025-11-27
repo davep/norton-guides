@@ -1,0 +1,81 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-174388.html">
+    <link rel="next" href="bios-177109.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-174388.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-171114.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-177109.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 16h, 03h            Set Typematic Rate                   PCjr, XT-286, AT</span></span><br /><span class="line"></span><br /><span class="line">    Sets the typematic rate and delay of the keyboard.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 03h</span><br /><span class="line">                AL = Subservice</span><br /><span class="line">                     0 - Return to default keyboard state</span><br /><span class="line">                     1 - Increase initial delay</span><br /><span class="line">                     2 - Slow typematic rate by 1/2</span><br /><span class="line">                     3 - Perform Subservices 1 and 2</span><br /><span class="line">                     4 - Turns off typematic characters</span><br /><span class="line">                     5 - Set typematic rate and delay</span><br /><span class="line">                            BL - Typematic rate (see below)</span><br /><span class="line">                            BH - Delay value (see below)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  Nothing</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Typematic Rate in Characters per Second (BL)</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">BL     Rate        BL     Rate        BL    Rate</span></span><br /><span class="line">        00h    30.0        0Bh    10.9        16h   4.3</span><br /><span class="line">        01h    26.7        0Ch    10.0        17h   4.0</span><br /><span class="line">        02h    24.0        0Dh     9.2        18h   3.7</span><br /><span class="line">        03h    21.8        0Eh     8.6        19h   3.3</span><br /><span class="line">        04h    20.0        0Fh     8.0        1Ah   3.0</span><br /><span class="line">        05h    18.5        10h     7.5        1Bh   2.7</span><br /><span class="line">        06h    17.1        11h     6.7        1Ch   2.5</span><br /><span class="line">        07h    16.0        12h     6.0        1Dh   2.3</span><br /><span class="line">        08h    15.0        13h     5.5        1Eh   2.1</span><br /><span class="line">        09h    13.3        14h     5.0        1Fh   2.0</span><br /><span class="line">        0Ah    12.0        15h     4.6</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Delay Value in Milliseconds (BH)</span></span><br /><span class="line"></span><br /><span class="line">                <span class="ngb">BH      Delay</span></span><br /><span class="line">                0       250</span><br /><span class="line">                1       500</span><br /><span class="line">                2       750</span><br /><span class="line">                3       1000</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    Subservices 0 through 4 are available only for the PCjr.</span><br /><span class="line">    Subservice 5 is available only for ATs dated 11/15/85 and after,</span><br /><span class="line">    and for XT-286s.</span><br /><span class="line"></span><br /><span class="line">    Subservice 0 (Return to Default Keyboard State) restores the</span><br /><span class="line">    keyboard to its original state. The original state at power-on is</span><br /><span class="line">    typematic on, normal initial delay and normal typematic rate.</span><br /><span class="line"></span><br /><span class="line">    Subservice 1 (Increase Initial Delay) increases the delay between</span><br /><span class="line">    the first character typed and the burst of typematic characters.</span><br /><span class="line"></span><br /><span class="line">    For Subservices 0 through 4, each time the typematic rate is</span><br /><span class="line">    changed, all previous states are removed. For example, if you want</span><br /><span class="line">    to increase the typematic delay and the rate is currently being</span><br /><span class="line">    slowed, use Subservice 3 (Perform Subservices 1 and 2) rather than</span><br /><span class="line">    Subservice 1 (Increase Initial Delay) by itself.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

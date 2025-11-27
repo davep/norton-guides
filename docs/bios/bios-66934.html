@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-66595.html">
+    <link rel="next" href="bios-68256.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-66595.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-54487.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-68256.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 10h, 0Eh            Write Character in Teletype (TTY) Mode</span></span><br /><span class="line"></span><br /><span class="line">    Writes one character at the current cursor location and advances</span><br /><span class="line">    the cursor.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 0Eh</span><br /><span class="line">                AL = Character to write</span><br /><span class="line">                BL = Foreground color (graphics modes only)</span><br /><span class="line">                BH = Display page number (text modes only)</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  Nothing</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    In text modes, the character displayed retains the display</span><br /><span class="line">    attribute of the previous character that occupied the screen</span><br /><span class="line">    location. In graphics modes, it is necessary to specify the</span><br /><span class="line">    foreground color (in BL) each time you call this service.</span><br /><span class="line"></span><br /><span class="line">    This service responds to the ASCII meanings of characters 07h</span><br /><span class="line">    (bell), 08h (backspace), 0Ah (line feed), and 0Dh (carriage</span><br /><span class="line">    return). All other ASCII values result in the displaying of a</span><br /><span class="line">    character, with the cursor moving one position.</span><br /><span class="line"></span><br /><span class="line">    If the cursor is at the end of a line, it wraps to the next line.</span><br /><span class="line">    If the cursor is at the end of the last screen line, the screen is</span><br /><span class="line">    scrolled upward and the display attribute for the entire new line</span><br /><span class="line">    is taken from the last character on the preceding line.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    The display page number (in BH) is required only for IBM PC ROM</span><br /><span class="line">    BIOS dated Oct 19, 1981 and earlier.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-64715.html">Int 10h, 09h</a></li>
+        
+          <li><a href="bios-65142.html">Int 10h, 0Ah</a></li>
+        
+          <li><a href="bios-86211.html">Int 10h, 13h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

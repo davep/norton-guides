@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-131002.html">
+    <link rel="next" href="bios-132840.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-131002.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-94319.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-132840.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>BIOS</li>
+            <ul>
+              <li><a href="index.html">Interrupts</a></li>
+              <li><a href="bios-14162.html">Low memory</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 13h, 15h            Read DASD Type                                   many</span></span><br /><span class="line"></span><br /><span class="line">    Returns the type of interface associated with a drive and also the</span><br /><span class="line">    number of sectors the drive contains. Can be used to determine if</span><br /><span class="line">    a diskette drive supports the sensing of a diskette change.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Entry</span>   AH = 15h</span><br /><span class="line">                DL = Drive number</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Return</span>  CF Set if error, else cleared</span><br /><span class="line">                AH    = Disk type (see below)</span><br /><span class="line">                        Status of operation if error (see Service 01)</span><br /><span class="line">                CX:DX = If no error and AH &lt;&gt; 0, then 4-byte integer</span><br /><span class="line">                        with number of sectors.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    This service is not available for PCs, PCjrs, and XTs dated before</span><br /><span class="line">    1/10/86.</span><br /><span class="line"></span><br /><span class="line">    This service allows you to determine whether a drive supports the</span><br /><span class="line">    Change Line Status service (Service 16h). The Change Line Status</span><br /><span class="line">    informs the system whether or not a diskette has changed since the</span><br /><span class="line">    last access to it.</span><br /><span class="line"></span><br /><span class="line">    Use Service 17h (Set DASD Type) to set the type.</span><br /><span class="line"></span><br /><span class="line">                <span class="ngb">Disk Type</span></span><br /><span class="line">                AH      Meaning</span><br /><span class="line">                00h     Drive not present</span><br /><span class="line">                01h     Diskette, no change line available</span><br /><span class="line">                02h     Diskette, change line available</span><br /><span class="line">                03h     Fixed Disk</span><br /><span class="line"></span><br /><span class="line">    For the AT, XT-286, and PC Convertible, the BIOS executes Int 15h,</span><br /><span class="line">    Service 90h (Device Busy), for the diskette (Type = 01h) and the</span><br /><span class="line">    fixed disk (Type = 00h) prior to waiting for the interrupt. Int</span><br /><span class="line">    15h, Service 91h (Interrupt Complete), is executed upon</span><br /><span class="line">    completion. Also diskette operations that require the diskette</span><br /><span class="line">    motor to be on will call Int 15h, Service 90 (Device Busy), with</span><br /><span class="line">    the type equal to &#34;Diskette Drive Motor Start&#34; (Type = FDh). This</span><br /><span class="line">    allows the system to perform another task while the drive motor is</span><br /><span class="line">    waiting to get up to speed.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="bios-97437.html">Int 13h, 01h</a></li>
+        
+          <li><a href="bios-132840.html">Int 13h, 16h</a></li>
+        
+          <li><a href="bios-134477.html">Int 13h, 17h</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
