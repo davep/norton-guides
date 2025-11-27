@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-454169.html">
+    <link rel="next" href="rbint-468963.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-454169.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-468963.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 10 Fn 00  - Video - Set Video Mode  <span class="ngb">(Cont.)</span></span></span><br /><span class="line"></span><br /><span class="line">     = G 100x75     8x8   800x600   16   . .  Genoa SuperEGA BIOS 3.0+</span><br /><span class="line">     = G 100x75     8x8   800x600   16   . .  Genoa 6400</span><br /><span class="line"> 7Ah = T 114x60     8x8      .  16   .   B800 Quadram Ultra VGA</span><br /><span class="line">     = T 114x60     8x8      .   .   . .  Genoa SuperEGA BIOS 3.0+</span><br /><span class="line">     = G    .    .    720x540  256   . .  C&amp;T chipset, Cardinal</span><br /><span class="line"> 7Bh = G    .    .    800x600  256   . .  C&amp;T chipset, Cardinal</span><br /><span class="line">     = G 114x60      .    912x480   16???    .   A000 Quadram Ultra VGA</span><br /><span class="line">     = G    .    .    912x480   16   . .  Genoa SuperEGA BIOS 3.0+</span><br /><span class="line"> 7Ch = G    .    .    512x512   16   . .  Genoa</span><br /><span class="line">     = G    .    .    800x600  256   . .  C&amp;T 82C453 chipset</span><br /><span class="line">     = G 200x75     8x16 1600x1200   . [16]  .   A000 Diamond Stealth64 Video 2xx1</span><br /><span class="line"> 7Dh = G  64x32     8x16  512x512  256   . .  Genoa</span><br /><span class="line"> 7Eh = special mode set (see AX=007Eh)     .  Paradise VGA, AT&amp;T VDC600</span><br /><span class="line">     = G  80x25     8x16  640x400  256   . .  Genoa 6400</span><br /><span class="line">     = G    .    .   1024x768  256   . .  C&amp;T 82C453 chipset</span><br /><span class="line">     = G  90x43      .   . mono      .   B000 HERCULES.COM on HGC [14]</span><br /><span class="line"> 7Fh = special function set (see AX=007Fh/BH=00h) Paradise VGA, AT&amp;T VDC600</span><br /><span class="line">     = G 128x48     8x16 1024x768    4   . .  Genoa 6400</span><br /><span class="line">     = G  90x29      .   . mono      .   B000 HERCULES.COM on HGC [14]</span><br /><span class="line"> 82h = T  80x25      .   . B&amp;W   . .  AT&amp;T VDC overlay mode [6]</span><br /><span class="line"> 83h = T  80x25      .   .   .   . .  AT&amp;T VDC overlay mode [6]</span><br /><span class="line"> 86h = G    .    .    640x200  B&amp;W   . .  AT&amp;T VDC overlay mode [6]</span><br /><span class="line"> 88h = G  90x43     8x8   720x348  mono      .   B000 Hercules + MSHERC.COM</span><br /><span class="line"> C0h = G    .    .    640x400  2/prog palette  .  AT&amp;T VDC overlay mode [6]</span><br /><span class="line">     = G    .    .    640x400  2/prog palette  .  Olivetti Quaderno overlay</span><br /><span class="line"> C4h = disable output    .   .   . .  AT&amp;T VDC overlay mode [6]</span><br /><span class="line"> C8h = G  80x50     8x8   640x400    2   .   B800 Olivetti Quaderno overlay</span><br /><span class="line"> D0h = G    .    .    640x400    2   .   B800 DEC VAXmate AT&amp;T mode</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span></span><br /><span class="line">[1] interlaced only</span><br /><span class="line">[2] for ATI EGA Wonder, mode 08h is only valid if SMS.COM is loaded resident.</span><br /><span class="line">      SMS maps mode 08h to mode 27h if the byte at location 0040:0063 is 0B4h,</span><br /><span class="line">      otherwise to mode 23h, thus selecting the appropriate (monochrome or</span><br /><span class="line">      color) 132x25 character mode.</span><br /><span class="line">    for ATI VGA Wonder, mode 08h is the same, and only valid if VCONFIG loaded</span><br /><span class="line">      resident</span><br /><span class="line">[3] early XGA boards support 132-column text but do not have this BIOS mode</span><br /><span class="line">[4] DESQview intercepts calls to change into these two modes (21h is page 0,</span><br /><span class="line">      22h is page 1) even if there is no Hercules graphics board installed</span><br /><span class="line">[5] ATI BIOS v4-1.00 has a text-scrolling bug in this mode</span><br /><span class="line">[6] for AT&amp;T VDC overlay modes, BL contains the DEB mode, which may be 06h,</span><br /><span class="line">      40h, or 44h</span><br /><span class="line">[7] BIOS text support is broken in this undocumented mode; scrolling moves</span><br /><span class="line">      only about 1/3 of the screen (and does even that portion incorrectly),</span><br /><span class="line">      while screen clears only clear about 3/4.</span><br /><span class="line">[8] The Oak OTI-037/067/077 modes are present in the Oak VGA BIOS, which OEMs</span><br /><span class="line">      may choose to use only partially or not at all; thus, not all Oak boards</span><br /><span class="line">      support all &#34;Oak&#34; modes listed here</span><br /><span class="line">[9] this card uses the full 128K A000h-BFFFh range for the video buffer,</span><br /><span class="line">      precluding the use of a monochrome adapter in the same system</span><br /><span class="line">[10] mode 17h supported by Tseng ET4000 BIOS 8.01X dated 09/14/90, but not</span><br /><span class="line">      v8.01X dated 02/28/92; mode 21h supported by 02/28/92 version but not</span><br /><span class="line">      09/14/90 version</span><br /><span class="line">[11] HERKULES simulates a 90x45 text mode in Hercules graphics mode; the</span><br /><span class="line">      installation check for HERKULES.COM is the signature &#34;Herkules&#34; two</span><br /><span class="line">      bytes beyond the INT 10 handler</span><br /><span class="line">[12] The Realtek RTVGA BIOS v3.C10 crashes when attempting to switch into</span><br /><span class="line">      modes 21h or 27h; this version of the BIOS also sets the BIOS data area</span><br /><span class="line">      incorrectly for extended text modes, resulting in scrolling after only</span><br /><span class="line">      24 lines (the VMODE.EXE  utility does set the data area correctly)</span><br /><span class="line">[13] The Tandy 1000SL/TL BIOS does not actually support this mode</span><br /><span class="line">[14] HERCULES.COM is a graphics-mode BIOS extension for Hercules-compatible</span><br /><span class="line">      graphics cards by Soft Warehouse, Inc.  Its installation check is to</span><br /><span class="line">      test whether the word preceding the INT 10 handler is 4137h.</span><br /><span class="line">[15] The Hercules-graphics video modes for HERCBIOS (shareware by Dave</span><br /><span class="line">      Tutelman) may be changed by a command-line switch; the 90x43</span><br /><span class="line">      character-cell mode&#39;s number is always one higher than the 90x29 mode</span><br /><span class="line">      (whose default is mode 08h)</span><br /><span class="line">[16] Stealth64 Video 2001-series BIOS v1.03 reports 76 lines for mode 7Ch,</span><br /><span class="line">      resulting in incorrect scrolling for TTY output (scrolling occurs only</span><br /><span class="line">      after the end of the 76th line, which is not displayed)</span><br /><span class="line">[17] For 43-line text on EGA or 43/50-line text on VGA, you must load an 8x8</span><br /><span class="line">      font using AX=1102h after switching to mode 3; VGA may also require</span><br /><span class="line">      using INT 10/AH=12h/BL=30h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0010,#0081,#0123</span><br /><span class="line">Index: video modes</span><br /><span class="line">Index: installation check;HERKULES|installation check;HERCULES.COM</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

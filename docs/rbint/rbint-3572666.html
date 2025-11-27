@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    
+    <link rel="next" href="rbint-3573889.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3573889.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F  - Multiplex - Notes                                              </span>  [<span class="ngb">-</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = identifier of program which is to handle the interrupt</span><br /><span class="line">      00h-7Fh reserved for DOS</span><br /><span class="line">      B8h-BFh reserved for networks</span><br /><span class="line">      C0h-FFh reserved for applications</span><br /><span class="line">   AL is the function code</span><br /><span class="line">   This is a general mechanism for verifying the presence of a TSR and</span><br /><span class="line">   communicating with it.  When searching for a free identifier code for AH</span><br /><span class="line">   using the installation check (AL=00h), the calling program should set</span><br /><span class="line">   BX/CX/DX to 0000h and must not depend on any registers other than CS:IP</span><br /><span class="line">   and SS:SP to be valid on return, since numerous programs now use additional</span><br /><span class="line">   registers on input and/or output for the installation check.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> Since the multiplex chain is growing so long, and beginning to</span><br /><span class="line">     experience multiplex number collisions, I have proposed an alternate</span><br /><span class="line">     multiplex interrupt on INT 2D.  If you decide to use the alternate</span><br /><span class="line">     multiplex, please let me know.</span><br /><span class="line">   DOS and some other programs return values in the flags register, so</span><br /><span class="line">     any TSR which chains by calling the previous handler rather than</span><br /><span class="line">     jumping to it should ensure that the returned flags are preserved</span><br /><span class="line">     and passed back to the original caller</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2D&#34;ALTERNATE MULTIPLEX&#34;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

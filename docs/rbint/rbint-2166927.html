@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2166610.html">
+    <link rel="next" href="rbint-2173559.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2166610.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2173559.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 2B01  - Tame V2.10+ - Installation Check                       </span>  [<span class="ngb">T</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 2B01h</span><br /><span class="line">   CX = 5441h (&#39;TA&#39;)</span><br /><span class="line">   DX = 4D45h (&#39;ME&#39;)</span><br /><span class="line">---v2.60---</span><br /><span class="line">   BH = ???</span><br /><span class="line">       00h skip ???, else do</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 02h if installed</span><br /><span class="line">   ES:DX -&gt; data area in TAME-RES (see #1070,#1074,#1076)</span><br /><span class="line">Program: TAME is a shareware program by David G. Thomas which gives up CPU</span><br /><span class="line">     time to other partitions under a multitasker when the current</span><br /><span class="line">     partition&#39;s program incessantly polls the keyboard or system time</span><br /><span class="line"></span><br /><span class="line">Format of TAME 2.10-2.20 data area:</span><br /><span class="line">Offset Size    Description (Table 1070)</span><br /><span class="line"> 00h   BYTE    data structure minor version number (01h in TAME 2.20)</span><br /><span class="line"> 01h   BYTE    data structure major version number (07h in TAME 2.20)</span><br /><span class="line"> 02h   DWORD   number of task switches</span><br /><span class="line"> 06h   DWORD   number of keyboard polls</span><br /><span class="line"> 0Ah   DWORD   number of time polls</span><br /><span class="line"> 0Eh   DWORD   number of times DESQview told program runs only in foreground</span><br /><span class="line"> 12h   DWORD   original INT 10h</span><br /><span class="line"> 16h   DWORD   original INT 14h</span><br /><span class="line"> 1Ah   DWORD   original INT 15h</span><br /><span class="line"> 1Eh   DWORD   original INT 16h</span><br /><span class="line"> 22h   DWORD   original INT 17h</span><br /><span class="line"> 26h   DWORD   original INT 21h</span><br /><span class="line"> 2Ah   DWORD   original INT 28h</span><br /><span class="line"> 2Eh   WORD    offset of TAME INT 10h handler</span><br /><span class="line"> 30h   WORD    offset of TAME INT 14h handler</span><br /><span class="line"> 32h   WORD    offset of TAME INT 15h handler</span><br /><span class="line"> 34h   WORD    offset of TAME INT 16h handler</span><br /><span class="line"> 36h   WORD    offset of TAME INT 17h handler</span><br /><span class="line"> 38h   WORD    offset of TAME INT 21h handler</span><br /><span class="line"> 3Ah   WORD    offset of TAME INT 28h handler</span><br /><span class="line"> 3Ch   WORD    X in /max:X,Y or /freq:X,Y</span><br /><span class="line"> 3Eh   WORD    Y in /max:X,Y or /freq:X,Y</span><br /><span class="line"> 40h   WORD    number of polls remaining before next task switch</span><br /><span class="line"> 42h   WORD    /KEYIDLE value</span><br /><span class="line"> 44h   BYTE    interrupts already grabbed by TAME (see #1071)</span><br /><span class="line"> 45h   BYTE    flags for interrupts which may be acted on (same bits as above)</span><br /><span class="line"> 46h   BYTE    TAME enabled (01h) or disabled (00h)</span><br /><span class="line"> 47h   BYTE    /TIMEPOLL (01h) or /NOTIMEPOLL (00h)</span><br /><span class="line"> 48h   BYTE    /NOTIMER (01h) or /TIMER (00h)</span><br /><span class="line"> 49h   BYTE    window or task number for this task</span><br /><span class="line"> 4Ah   BYTE    multitasker type (see #1072)</span><br /><span class="line"> 4Bh   BYTE    type of task switching selected</span><br /><span class="line">       bit 0: DESQview???</span><br /><span class="line">       bit 1: DoubleDOS???</span><br /><span class="line">       bit 2: TopView???</span><br /><span class="line">       bit 3: KeySwitch</span><br /><span class="line">       bit 4: HLT instruction</span><br /><span class="line"> 4Ch   BYTE    ???</span><br /><span class="line"> 4Dh   BYTE    flags</span><br /><span class="line">       bit 1: /FREQ instead of /MAX</span><br /><span class="line"> 4Eh   BYTE    /FG: value</span><br /><span class="line"> 4Fh   BYTE    task switches left until next FGONLY DESQview API call</span><br /><span class="line"> 50h   BYTE    ???</span><br /><span class="line"></span><br /><span class="line">Bitfields for interrupts already grabbed by TAME:</span><br /><span class="line">Bit(s) Description (Table 1071)</span><br /><span class="line"> 0 INT 10h</span><br /><span class="line"> 1 INT 14h</span><br /><span class="line"> 2 INT 15h</span><br /><span class="line"> 3 INT 16h</span><br /><span class="line"> 4 INT 17h</span><br /><span class="line"> 5 INT 21h</span><br /><span class="line"> 6 INT 28h</span><br /><span class="line"></span><br /><span class="line">(Table 1072)</span><br /><span class="line">Values for multitasker type:</span><br /><span class="line"> 01h   DESQview</span><br /><span class="line"> 02h   DoubleDOS</span><br /><span class="line"> 03h   TopView</span><br /><span class="line"> 04h   OmniView</span><br /><span class="line"> 05h   VM/386</span><br /><span class="line"></span><br /><span class="line">Bitfields for type of task switching selected:</span><br /><span class="line">Bit(s) Description (Table 1073)</span><br /><span class="line"> 0 DESQview</span><br /><span class="line"> 1 DoubleDOS</span><br /><span class="line"> 2 TopView</span><br /><span class="line"> 3 OmniView</span><br /><span class="line"> 4 KeySwitch</span><br /><span class="line"> 5 HLT instruction</span><br /><span class="line"></span><br /><span class="line">Format of TAME 2.30 data area:</span><br /><span class="line">Offset Size    Description (Table 1074)</span><br /><span class="line"> 00h   BYTE    data structure minor version number (02h in TAME 2.30)</span><br /><span class="line"> 01h   BYTE    data structure major version number (0Ah in TAME 2.30)</span><br /><span class="line"> 02h   DWORD   number of task switches</span><br /><span class="line"> 06h   DWORD   number of keyboard polls</span><br /><span class="line"> 0Ah   DWORD   number of time polls</span><br /><span class="line"> 0Eh   DWORD   number of times DESQview told program runs only in foreground</span><br /><span class="line"> 12h   DWORD   time of last /CLEAR or TAME-RES load</span><br /><span class="line"> 16h   DWORD   time yielded</span><br /><span class="line"> 1Ah   DWORD   time spent polling</span><br /><span class="line"> 1Eh   DWORD   time spent waiting on key input with INT 16/AH=01h,11h</span><br /><span class="line"> 22h   DWORD   original INT 10h</span><br /><span class="line"> 26h   DWORD   original INT 14h</span><br /><span class="line"> 2Ah   DWORD   original INT 15h</span><br /><span class="line"> 2Eh   DWORD   original INT 16h</span><br /><span class="line"> 32h   DWORD   original INT 17h</span><br /><span class="line"> 36h   DWORD   original INT 21h</span><br /><span class="line"> 3Ah   DWORD   original INT 28h</span><br /><span class="line"> 3Eh   WORD    offset of TAME INT 10h handler</span><br /><span class="line"> 40h   WORD    offset of TAME INT 14h handler</span><br /><span class="line"> 42h   WORD    offset of TAME INT 15h handler</span><br /><span class="line"> 44h   WORD    offset of TAME INT 16h handler</span><br /><span class="line"> 46h   WORD    offset of TAME INT 17h handler</span><br /><span class="line"> 48h   WORD    offset of TAME INT 21h handler</span><br /><span class="line"> 4Ah   WORD    offset of TAME INT 28h handler</span><br /><span class="line"> 4Ch   WORD    X in /max:X,Y or /freq:X,Y</span><br /><span class="line"> 4Eh   WORD    Y in /max:X,Y or /freq:X,Y</span><br /><span class="line"> 50h   WORD    number of polls remaining before next task switch</span><br /><span class="line"> 52h   WORD    /KEYIDLE value</span><br /><span class="line"> 54h   WORD    /FG: value</span><br /><span class="line"> 56h   WORD    task switches left until next FGONLY DESQview API call</span><br /><span class="line"> 58h   WORD    multitasker version</span><br /><span class="line"> 5Ah   WORD    virtual screen segment</span><br /><span class="line"> 5Ch   BYTE    interrupts already grabbed by TAME (see #1071)</span><br /><span class="line"> 5Dh   BYTE    flags for interrupts which may be acted on (same bits as above)</span><br /><span class="line"> 5Eh   BYTE    window or task number for this task</span><br /><span class="line"> 5Fh   BYTE    multitasker type (see #1072)</span><br /><span class="line"> 60h   BYTE    type of task switching selected (bit flags) (see #1073)</span><br /><span class="line"> 61h   BYTE    watch_DOS</span><br /><span class="line"> 62h   BYTE    action flags (see #1075)</span><br /><span class="line"> 63h   BYTE    old status</span><br /><span class="line"> 64h   WORD    signature DA34h</span><br /><span class="line"></span><br /><span class="line">Bitfields for TAME action flags:</span><br /><span class="line">Bit(s) Description (Table 1075)</span><br /><span class="line"> 0 TAME enabled</span><br /><span class="line"> 1 /FREQ instead of /MAX (X and Y count fields are per tick)</span><br /><span class="line"> 2 /TIMEPOLL</span><br /><span class="line"> 3 /KEYPOLL</span><br /><span class="line"> 4 inhibit timer</span><br /><span class="line"> 5 enable status monitoring</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1074,#1076</span><br /><span class="line"></span><br /><span class="line">Format of TAME 2.60 data area:</span><br /><span class="line">Offset Size    Description (Table 1076)</span><br /><span class="line"> 00h   BYTE    data structure minor version number (02h in TAME 2.60)</span><br /><span class="line"> 01h   BYTE    data structure major version number (0Bh in TAME 2.60)</span><br /><span class="line"> 02h   DWORD   number of task switches</span><br /><span class="line"> 06h   DWORD   number of keyboard polls</span><br /><span class="line"> 0Ah   DWORD   number of time polls</span><br /><span class="line"> 0Eh   DWORD   number of times DESQview told program runs only in foreground</span><br /><span class="line"> 12h   DWORD   time of last /CLEAR or TAME-RES load</span><br /><span class="line"> 16h   DWORD   time yielded</span><br /><span class="line"> 1Ah   DWORD   time spent polling</span><br /><span class="line"> 1Eh   DWORD   time spent waiting on key input with INT 16/AH=01h,11h</span><br /><span class="line"> 22h  4 BYTEs  ???</span><br /><span class="line"> 26h   DWORD   original INT 10h</span><br /><span class="line"> 2Ah   DWORD   original INT 14h</span><br /><span class="line"> 2Eh   DWORD   original INT 15h</span><br /><span class="line"> 32h   DWORD   original INT 16h</span><br /><span class="line"> 36h   DWORD   original INT 17h</span><br /><span class="line"> 3Ah   DWORD   original INT 21h</span><br /><span class="line"> 3Eh   DWORD   original INT 28h</span><br /><span class="line"> 42h   WORD    offset of TAME INT 10h handler</span><br /><span class="line"> 44h   WORD    offset of TAME INT 14h handler</span><br /><span class="line"> 46h   WORD    offset of TAME INT 15h handler</span><br /><span class="line"> 48h   WORD    offset of TAME INT 16h handler</span><br /><span class="line"> 4Ah   WORD    offset of TAME INT 17h handler</span><br /><span class="line"> 4Ch   WORD    offset of TAME INT 21h handler</span><br /><span class="line"> 4Eh   WORD    offset of TAME INT 28h handler</span><br /><span class="line"> 50h   WORD    X in /max:X,Y or /freq:X,Y</span><br /><span class="line"> 52h   WORD    Y in /max:X,Y or /freq:X,Y</span><br /><span class="line"> 54h   WORD    number of polls remaining before next task switch</span><br /><span class="line"> 56h   WORD    /KEYIDLE value</span><br /><span class="line"> 58h  4 BYTEs  ???</span><br /><span class="line"> 5Ch   WORD    X in /boost:X,Y</span><br /><span class="line"> 5Eh   WORD    Y in /boost:X,Y</span><br /><span class="line"> 60h   WORD    /FG: value</span><br /><span class="line"> 62h   WORD    task switches remaining until next FGONLY DESQview API call</span><br /><span class="line"> 64h   WORD    multitasker version ???</span><br /><span class="line"> 66h   WORD    virtual screen segment</span><br /><span class="line"> 68h   BYTE    interrupts already grabbed by TAME (see #1071)</span><br /><span class="line"> 69h   BYTE    flags for interrupts which may be acted on (same bits as above)</span><br /><span class="line"> 6Ah   BYTE    window or task number for this task</span><br /><span class="line"> 6Bh   BYTE    multitasker type (see #1072)</span><br /><span class="line"> 6Ch   BYTE    type of task switching selected (bit flags) (see #1073)</span><br /><span class="line"> 6Dh   BYTE    watch_DOS</span><br /><span class="line"> 6Eh   BYTE    action flags (see #1075)</span><br /><span class="line"> 6Fh   BYTE    old status</span><br /><span class="line"> 70h   WORD    signature DA34h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

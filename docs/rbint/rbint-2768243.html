@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2767693.html">
+    <link rel="next" href="rbint-2769135.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2767693.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2769135.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 71A8  - Windows95 - Long Filename - Generate Short Filename    </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 71A8h</span><br /><span class="line">   DS:SI -&gt; ASCIZ long filename (no path allowed!)</span><br /><span class="line">   ES:DI -&gt; buffer for ASCIZ short filename</span><br /><span class="line">   DH = short name&#39;s format</span><br /><span class="line">       00h 11-char directory entry/FCB filename format</span><br /><span class="line">       01h DOS 8.3</span><br /><span class="line">   DL = character sets</span><br /><span class="line">       bits 7-4: short name&#39;s character set (see #1474)</span><br /><span class="line">       bits 3-0: long name&#39;s character set (see #1474)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       ES:DI buffer filled</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code</span><br /><span class="line">       7100h if function not supported</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this function uses the same algorithm as the filesystem except that</span><br /><span class="line">     the returned name never has a numeric tail for disambiguation</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=7160h/CL=00h,AX=7160h/CL=02h,AX=71A7h/BL=00h</span><br /><span class="line"></span><br /><span class="line">(Table 1474)</span><br /><span class="line">Values for Windows95 filename character set:</span><br /><span class="line"> 00h   Windows ANSI</span><br /><span class="line"> 01h   current OEM character set</span><br /><span class="line"> 02h   Unicode</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

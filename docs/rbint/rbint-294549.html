@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-294446.html">
+    <link rel="next" href="rbint-296726.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-294446.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-296726.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Function:</span></span><br /><span class="line"></span><br /><span class="line">Reads values from a port address in DX into a string at ES:DI or ES:EDI</span><br /><span class="line">in memory. When used with the REPcondition prefix, CX or ECX contains the</span><br /><span class="line">number of values to read.</span><br /><span class="line"></span><br /><span class="line">There is also a NEC specific instruction with the conflicting mnemonic INS,</span><br /><span class="line">see &lt;NECINS&gt; or select &lt;NEC specific instructions&gt; from the mnemonic list</span><br /><span class="line">page for more information regarding that instruction.</span><br /><span class="line"></span><br /><span class="line">Bugs in the 286;</span><br /><span class="line">If, in protected mode, ES would contain a null selector or ES:DI would</span><br /><span class="line">point beyond the segment limit when executing the single INS, causing</span><br /><span class="line">exception 0dh, the 0d exception handler would point to the instruction</span><br /><span class="line">following INS and not to it.</span><br /><span class="line"></span><br /><span class="line">If, in protected mode, during the repeated version of the instruction, a</span><br /><span class="line">segment limit or IOPL exception occurred, the exception handler would see</span><br /><span class="line">the CX value as it was before the start of the instruction, DI would reflect</span><br /><span class="line">the proper index at the time of the exception though. This type of bug</span><br /><span class="line">also occurs with the CMPS instruction.</span><br /><span class="line"></span><br /><span class="line">Bugs in the 386:</span><br /><span class="line">The value of CX or ECX after the REPcondition version is not correct when</span><br /><span class="line">the instruction is followed by a PUSH, POP or memory reference. After</span><br /><span class="line">REP INS the value of CX, ECX is -1, not 0. Do not assume (E)CX to be 0.</span><br /><span class="line"></span><br /><span class="line">When REP INS or INS is followed by an instruction that uses a different</span><br /><span class="line">address size or when they are followed by an instruction that references</span><br /><span class="line">the stack implicitly while the B bit of the SS descriptor is different than</span><br /><span class="line">the address size used by the instruction, INS will not properly update</span><br /><span class="line">the (E)DI and REP INS will not properly update the (E)CX register.</span><br /><span class="line">The actual address size used will be the one of the instruction following</span><br /><span class="line">the (REP) INS.</span><br /><span class="line">A workaround for this bug is to code a NOP with the same address size as the</span><br /><span class="line">INS right behind it by using the address size prefix byte 67h (when needed).</span><br /><span class="line"></span><br /><span class="line">Bugs in the 486:</span><br /><span class="line">Early 486 may hang if the INS destination address spans across a doubleword</span><br /><span class="line">boundary, while not asserting BS16# or BS8#.</span><br /><span class="line">To avoid this, always align the string at a doubleword.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">INS  (NECINS) Insert bit field (NEC V20/30 only)</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

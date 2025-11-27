@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4935675.html">
+    <link rel="next" href="rbint-4938212.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4935675.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4908825.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4938212.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 60  U - Intrspy/cmdspy V1.0 Only - Api                               </span>  [<span class="ngb">G</span>]</span><br /><span class="line"></span><br /><span class="line">Program: INTRSPY is a script-driven debugger included with the book</span><br /><span class="line">     _Undocumented_DOS_.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> INTRSPY will hook the first available interrupt in the range 60h-67h.</span><br /><span class="line">   The installation check is to</span><br /><span class="line">     a) determine that the handler is an IRET instruction</span><br /><span class="line">     b) the signature 0Dh &#34;INTRSPY vN.NN&#34; immediately precedes the handler</span><br /><span class="line">   If INTRSPY is installed, the DWORD immediately after the IRET stores</span><br /><span class="line">     its entry point (see #2946)</span><br /><span class="line">   INTRSPY v2.0 (included with the second edition of the book) no longer</span><br /><span class="line">     supports this API</span><br /><span class="line">Index: installation check;INTRSPY</span><br /><span class="line"></span><br /><span class="line">(Table 2946)</span><br /><span class="line">Call INTRSPY v1.0 entry point with:</span><br /><span class="line">   AH = function</span><br /><span class="line">       00h ???</span><br /><span class="line">       01h set current directory (for use in reporting)</span><br /><span class="line">       ES:DI -&gt; counted string containing directory name (max 79 char)</span><br /><span class="line">       02h set name of script file</span><br /><span class="line">       ES:DI -&gt; counted string containing file name (max 79 chars)</span><br /><span class="line">       03h set script arguments</span><br /><span class="line">       ES:DI -&gt; counted string containing arguments (max 79 chars)</span><br /><span class="line">       04h get directory set with function 01h</span><br /><span class="line">       ES:DI -&gt; 80-byte buffer for directory name</span><br /><span class="line">       05h get name of script file</span><br /><span class="line">       ES:DI -&gt; 80-byte buffer for script filename</span><br /><span class="line">       06h get script arguments</span><br /><span class="line">       ES:DI -&gt; 80-byte buffer for script arguments</span><br /><span class="line">       07h get ???</span><br /><span class="line">       CL = 00h-15h specifies what to get</span><br /><span class="line">       ES:DI -&gt; WORD to be set with desired value on return</span><br /><span class="line">       08h get ???</span><br /><span class="line">       ES:DI -&gt; WORD to be set with returned value</span><br /><span class="line">       09h get ???</span><br /><span class="line">       ES:DI -&gt; WORD to be set with returned value</span><br /><span class="line">       0Bh store code for interrupt handler???</span><br /><span class="line">       ES:DI -&gt; data</span><br /><span class="line">       CX = number of bytes</span><br /><span class="line">       0Ch ???</span><br /><span class="line">       ES:DI -&gt; ???</span><br /><span class="line">       0Dh get ???</span><br /><span class="line">       ES:DI -&gt; BYTE to be set with returned value</span><br /><span class="line">       0Eh set ??? flag</span><br /><span class="line">       0Fh clear ??? flag</span><br /><span class="line">       10h ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AL = 04h or 05h if failed</span><br /><span class="line">       11h ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AL = 05h if failed</span><br /><span class="line">       12h get ???</span><br /><span class="line">       ES:DI -&gt; buffer</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = number of bytes returned in buffer</span><br /><span class="line">       13h ???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AH = 00h</span><br /><span class="line">   AL = status</span><br /><span class="line">       00h successful</span><br /><span class="line">       01h invalid function</span><br /><span class="line">       02h ???</span><br /><span class="line">       03h ???</span><br /><span class="line">       04h ???</span><br /><span class="line">       05h ???</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

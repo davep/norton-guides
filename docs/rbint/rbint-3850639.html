@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3850348.html">
+    <link rel="next" href="rbint-3853625.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3850348.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3853625.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 170A  - Ms Windows &#34;winoldap&#34; - Get Device Capabilities        </span>  [<span class="ngb">W</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 170Ah</span><br /><span class="line">   DX = GDI information index (see #2413)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = integer value of the desired item</span><br /><span class="line">         (see #2414,#2415,#2416,#2417,#2418,#2419,#2420)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  This function returns the device-capability bits for the given display</span><br /><span class="line"></span><br /><span class="line">(Table 2413)</span><br /><span class="line">Values for GDI information index:</span><br /><span class="line"> 00h   device driver version</span><br /><span class="line"> 02h   device classification</span><br /><span class="line"> 04h   width in mm</span><br /><span class="line"> 06h   height in mm</span><br /><span class="line"> 08h   width in pixels</span><br /><span class="line"> 0Ah   height in pixels</span><br /><span class="line"> 0Ch   bits per pixel</span><br /><span class="line"> 0Eh   number of bit planes</span><br /><span class="line"> 10h   number of brushes supported by device</span><br /><span class="line"> 12h   number of pens supported by device</span><br /><span class="line"> 14h   number of markers supported by device</span><br /><span class="line"> 16h   number of fonts supported by device</span><br /><span class="line"> 18h   number of colors</span><br /><span class="line"> 1Ah   size required for device descriptor</span><br /><span class="line"> 1Ch   curve capabilities</span><br /><span class="line"> 1Eh   line capabilities</span><br /><span class="line"> 20h   polygon capabilities</span><br /><span class="line"> 22h   text capabilities</span><br /><span class="line"> 24h   clipping capabilities</span><br /><span class="line"> 26h   bitblt capabilities</span><br /><span class="line"> 28h   X aspect</span><br /><span class="line"> 2Ah   Y aspect</span><br /><span class="line"> 2Ch   length of hypotenuse of aspect</span><br /><span class="line"> 58h   logical pixels per inch of width</span><br /><span class="line"> 5Ah   logical pixels per inch of height</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2414,#2415,#2416,#2417,#2418,#2419,#2420</span><br /><span class="line"></span><br /><span class="line">(Table 2414)</span><br /><span class="line">Values for device classification:</span><br /><span class="line"> 00h   vector plotter</span><br /><span class="line"> 01h   raster display</span><br /><span class="line"> 02h   raster printer</span><br /><span class="line"> 03h   raster camera</span><br /><span class="line"> 04h   character-stream, PLP</span><br /><span class="line"> 05h   Metafile, VDM</span><br /><span class="line"> 06h   display-file</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2413,#2415,#2416,#2417,#2418,#2419,#2420</span><br /><span class="line"></span><br /><span class="line">Bitfields for curve capabilities:</span><br /><span class="line">Bit(s) Description (Table 2415)</span><br /><span class="line"> 0 circles</span><br /><span class="line"> 1 pie wedges</span><br /><span class="line"> 2 chord arcs</span><br /><span class="line"> 3 ellipses</span><br /><span class="line"> 4 wide lines</span><br /><span class="line"> 5 styled lines</span><br /><span class="line"> 6 wide styled lines</span><br /><span class="line"> 7 interiors</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2413,#2414,#2416,#2417,#2418,#2419,#2420</span><br /><span class="line"></span><br /><span class="line">Bitfields for line capabilities:</span><br /><span class="line">Bit(s) Description (Table 2416)</span><br /><span class="line"> 1 polylines</span><br /><span class="line"> 2 markers</span><br /><span class="line"> 3 polymarkers</span><br /><span class="line"> 4 wide lines</span><br /><span class="line"> 5 styled lines</span><br /><span class="line"> 6 wide styled lines</span><br /><span class="line"> 7 interiors</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2413,#2414,#2415,#2417,#2418,#2419,#2420</span><br /><span class="line"></span><br /><span class="line">Bitfields for polygon capabilities:</span><br /><span class="line">Bit(s) Description (Table 2417)</span><br /><span class="line"> 0 polygons</span><br /><span class="line"> 1 rectangles</span><br /><span class="line"> 2 trapezoids</span><br /><span class="line"> 3 scanlines</span><br /><span class="line"> 4 wide borders</span><br /><span class="line"> 5 styled borders</span><br /><span class="line"> 6 wide styled borders</span><br /><span class="line"> 7 interiors</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2413,#2414,#2415,#2416,#2418,#2419,#2420</span><br /><span class="line"></span><br /><span class="line">Bitfields for text capabilities:</span><br /><span class="line">Bit(s) Description (Table 2418)</span><br /><span class="line"> 0 output precision character</span><br /><span class="line"> 1 output precision stroke</span><br /><span class="line"> 2 clippping precision stroke</span><br /><span class="line"> 3 90-degree character rotation</span><br /><span class="line"> 4 arbitrary character rotation</span><br /><span class="line"> 5 independent X and Y scaling</span><br /><span class="line"> 6 double-size</span><br /><span class="line"> 7 integer scaling</span><br /><span class="line"> 8 continuous scaling</span><br /><span class="line"> 9 bold</span><br /><span class="line"> 10    italic</span><br /><span class="line"> 11    underline</span><br /><span class="line"> 12    strikeout</span><br /><span class="line"> 13    raster fonts</span><br /><span class="line"> 14    vector fonts</span><br /><span class="line"> 15    reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2413,#2414,#2415,#2416,#2417,#2419,#2420</span><br /><span class="line"></span><br /><span class="line">(Table 2419)</span><br /><span class="line">Values for clipping capabilities:</span><br /><span class="line"> 00h   none</span><br /><span class="line"> 01h   clipping to rectangles</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2413,#2414,#2415,#2416,#2417,#2418,#2420</span><br /><span class="line"></span><br /><span class="line">Bitfields for raster capabilities:</span><br /><span class="line">Bit(s) Description (Table 2420)</span><br /><span class="line"> 0 simple bitBLT</span><br /><span class="line"> 1 device requires banding support</span><br /><span class="line"> 2 device requires scaling support</span><br /><span class="line"> 3 supports &gt;64K bitmap</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2413,#2414,#2415,#2416,#2417,#2418,#2419</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

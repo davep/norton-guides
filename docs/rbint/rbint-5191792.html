@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5191243.html">
+    <link rel="next" href="rbint-5193137.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5191243.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5193137.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 61 Fn 2A  - Pc/tcp Kernel V2.05+ - Get Configuration Information     </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 2Ah</span><br /><span class="line">   DS:SI -&gt; 26-byte buffer for configuration information (see #3143)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear</span><br /><span class="line">   AX = 0000h</span><br /><span class="line">   buffer filled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> size of buffer may vary with kernel version; 26 bytes is the size for</span><br /><span class="line">     versions 2.05 through 2.2</span><br /><span class="line">   this function is not supported by Beame&amp;Whiteside&#39;s BWPCTCP v3.0a shim</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 61&#34;FTP Software&#34;,INT 61/AH=00h&#34;PC/TCP&#34;</span><br /><span class="line"></span><br /><span class="line">Format of PC/TCP configuration information:</span><br /><span class="line">Offset Size    Description (Table 3143)</span><br /><span class="line"> 00h   BYTE    maximum TCP connections available</span><br /><span class="line"> 01h   BYTE    maximum UDP connections available</span><br /><span class="line"> 02h   BYTE    maximum IP connections available</span><br /><span class="line"> 03h   BYTE    maximum Raw Net connections available</span><br /><span class="line"> 04h   BYTE    number of TCP connections currently in use</span><br /><span class="line"> 05h   BYTE    number of UDP connections currently in use</span><br /><span class="line"> 06h   BYTE    number of IP connections currently in use</span><br /><span class="line"> 07h   BYTE    number of Raw Net connections currently in use</span><br /><span class="line"> 08h   WORD    number of local network descriptors active</span><br /><span class="line"> 0Ah   WORD    number of global network descriptors active</span><br /><span class="line"> 0Ch   BYTE    maximum header size on network</span><br /><span class="line"> 0Dh   BYTE    maximum trailer size on network</span><br /><span class="line"> 0Eh   WORD    size of large packet buffer</span><br /><span class="line"> 10h   WORD    number of network interfaces attached</span><br /><span class="line"> 12h   DWORD   milliseconds since kernel started</span><br /><span class="line"> 16h   DWORD   IP broadcast address</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

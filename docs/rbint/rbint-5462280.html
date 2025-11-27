@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5461822.html">
+    <link rel="next" href="rbint-5463182.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5461822.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5448544.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5463182.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 67 Fn 2833  - Q87 V4+ - Prepare To Unload And Get Xms Handle For Q87 </span>  [<span class="ngb">u</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 2833h</span><br /><span class="line">   EAX = 29482833h (entire EAX value required)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> EAX = XMS handle for memory allocated when Q87 was installed</span><br /><span class="line">   EBX = status</span><br /><span class="line">       00000000h Q87 is in demo mode (countdown running);</span><br /><span class="line">             Q87 remains active</span><br /><span class="line">       00000001h Q87 is in registered mode; memory manager&#39;s IDT, GDT,</span><br /><span class="line">             and optionally CR0 (if BL &lt;&gt; 5Fh on entry) have</span><br /><span class="line">             been restored</span><br /><span class="line">       00000002h Q87 is in demo mode (demo time has expired);</span><br /><span class="line">             Q87 remains active</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this call is used by UNLOAD87 to release the memory used by Q87</span><br /><span class="line">BUG:   v4.00-v4.03 will hang on most machines when run under bare DOS with</span><br /><span class="line">     no memory manager, because neither Q87 nor UNLOAD87 checks whether</span><br /><span class="line">     there is a valid INT 67 handler before performing an installation</span><br /><span class="line">     check via INT 67</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4321h,INT 21/AX=4321h/BX=0000h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

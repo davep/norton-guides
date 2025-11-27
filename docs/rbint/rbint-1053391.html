@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1053092.html">
+    <link rel="next" href="rbint-1054623.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1053092.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-993233.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1054623.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 14 Fn EA  - Telapi - &#34;telstatus&#34; - Get Telnet Connection Status Infor</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = EAh</span><br /><span class="line">   BX = connection ID (see AH=E0h&#34;TelAPI&#34;)</span><br /><span class="line">   ES:SI -&gt; buffer for status info (see #0327)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (0000h,FFFFh,etc.)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E9h,AH=EBh,AX=FF00h</span><br /><span class="line"></span><br /><span class="line">Format of TelAPI Telnet connection status information:</span><br /><span class="line">Offset Size    Description (Table 0327)</span><br /><span class="line"> 00h  4 BYTEs  remote host IP address</span><br /><span class="line"> 04h 20 BYTEs  reserved</span><br /><span class="line"> 18h   WORD    local port number</span><br /><span class="line"> 1Ah   BYTE    connection mode (00h = ASCII, 01h = Binary)</span><br /><span class="line"> 1Bh   BYTE    echo flag (00h local, 01h remote)</span><br /><span class="line"> 1Ch   BYTE    SGA flag (00h will, 01h won&#39;t)</span><br /><span class="line"> 1Dh   BYTE    EOR negotation flag (00h do negotiate, 01h don&#39;t)</span><br /><span class="line"> 1Eh   BYTE    buffering (00h line mode, 01h character mode)</span><br /><span class="line"> 1Fh   BYTE    reserved</span><br /><span class="line"> 20h   BYTE    verbose flag (00h no, 01h verbose mode)</span><br /><span class="line"> 21h   BYTE    received EOL (00h no xlat, 01h CR, 02h LF, 03h CRLF)</span><br /><span class="line"> 22h   BYTE    sent EOL (00h no translation, 01h CR, 02h LF)</span><br /><span class="line"> 23h   BYTE    break character</span><br /><span class="line"> 24h   BYTE    IP escape character</span><br /><span class="line"> 25h   BYTE    AO escape character</span><br /><span class="line"> 26h   BYTE    AYT escape character</span><br /><span class="line"> 27h   BYTE    EC escape character</span><br /><span class="line"> 28h   BYTE    EL escape character</span><br /><span class="line"> 29h 41 BYTEs  ASCIZ Telnet-negotiated terminal type</span><br /><span class="line"> 52h  9 BYTEs  session ID</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0328</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

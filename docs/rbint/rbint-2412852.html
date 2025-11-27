@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2412119.html">
+    <link rel="next" href="rbint-2413719.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2412119.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2413719.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 440D  - Ms-dos 7.0 - Generic Ioctl - Enumerate Open Files      </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 440Dh</span><br /><span class="line">   CX = 086Dh (category code 08h, minor code 6Dh)</span><br /><span class="line">   BL = drive number (00h=default,01h=A:,etc)</span><br /><span class="line">   DS:DX -&gt; buffer for ASCIZ pathname</span><br /><span class="line">   SI = file index (0000h to number of open files-1)</span><br /><span class="line">   DI = enumeration type (0000h all files, 0001h unmovable files)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">       AX = error code (01h,02h,12h,etc.) (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line">       0012h if file index is out of range</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">       AX = file open mode (BX from AX=6C00h or AX=716Ch)</span><br /><span class="line">       CX = file type (see #1264)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=440Dh&#34;DOS 3.2+&#34;,AX=440Dh/CX=084Ah,AX=440Dh/CX=086Ch</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=440Dh/CX=086Eh,AX=6C00h,AX=716Ch</span><br /><span class="line"></span><br /><span class="line">(Table 1264)</span><br /><span class="line">Values for file type:</span><br /><span class="line"> 0000h normal file</span><br /><span class="line"> 0001h memory-mapped file (unmovable)</span><br /><span class="line"> 0002h unmovable file</span><br /><span class="line"> 0004h swap file</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

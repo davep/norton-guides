@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2130328.html">
+    <link rel="next" href="rbint-2136093.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2130328.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2136093.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 2526  P - Phar Lap 386/dos-extender - Get Configuration Informa</span>  [<span class="ngb">E</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 2526h</span><br /><span class="line">   ???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> details are not yet available</span><br /><span class="line">   this function takes a pointer to the configuration buffer (see #1053)</span><br /><span class="line">     and a poitner to a BYTE as arguments</span><br /><span class="line"></span><br /><span class="line">Format of Phar Lap configuration buffer:</span><br /><span class="line">Offset Size    Description (Table 1053)</span><br /><span class="line"> 00h   DWORD   flags 1 (see #1054)</span><br /><span class="line"> 04h   DWORD   flags 2 (unused through v5.0)</span><br /><span class="line"> 08h   DWORD   flags 3 (unused through v5.0)</span><br /><span class="line"> 0Ch   DWORD   386|DOS-Extender major version</span><br /><span class="line"> 10h   DWORD   386|DOS-Extender minor version</span><br /><span class="line"> 14h   DWORD   first letter of text after minor version number in version str</span><br /><span class="line"> 18h   DWORD   beta flag (00h normal release, 01h beta release)</span><br /><span class="line"> 1Ch   DWORD   processor (3 = 386, 4 = 486)</span><br /><span class="line"> 20h   DWORD   coprocessor (4 = none, 6 = 287, 7 = 387/486)</span><br /><span class="line"> 24h   DWORD   Weitek coprocessor flag (0 = none, 1 = present)</span><br /><span class="line"> 28h   DWORD   machine type (0 = IBM PC compatible, 1 = NEC 9800 series)</span><br /><span class="line"> 2Ch   DWORD   machine class</span><br /><span class="line">       IBM: bus type (0=ISA, 1=MCA, 2=XT, 3=EISA)</span><br /><span class="line">       NEC: 0=normal mode, 1=high-res mode</span><br /><span class="line"> 30h   DWORD   VCPI flag (0 = none, 1 = present)</span><br /><span class="line"> 34h   DWORD   -WEITEK/-1167 switch (0 = AUTO, 1 = ON, 2 = OFF)</span><br /><span class="line"> 38h   DWORD   -MINREAL setting</span><br /><span class="line"> 3Ch   DWORD   -MAXREAL setting</span><br /><span class="line"> 40h   DWORD   -MINIBUF setting</span><br /><span class="line"> 44h   DWORD   -MAXIBUF setting</span><br /><span class="line"> 48h   DWORD   size in bytes of DOS call data buffer</span><br /><span class="line"> 4Ch   DWORD   number of interrupt stacks (-NISTACK)</span><br /><span class="line"> 50h   DWORD   interrupt stack size (-ISTKSIZE)</span><br /><span class="line"> 54h   DWORD   -REALBREAK setting</span><br /><span class="line"> 58h   DWORD   -CALLBUFS</span><br /><span class="line"> 5Ch   DWORD   -HWIVEC</span><br /><span class="line"> 60h   DWORD   -PRIVEC</span><br /><span class="line"> 64h   DWORD   -INTMAP</span><br /><span class="line"> 68h   DWORD   -PRIMAP</span><br /><span class="line"> 6Ch   DWORD   VCPI: master 8259 interrupt vector base (IRQ0 mapping)</span><br /><span class="line"> 70h   DWORD   VCPI: slave 8259 interrupt vector base (IRQ8 mapping)</span><br /><span class="line"> 74h   DWORD   BIOS print screen interrupt vector (0 if NEC)</span><br /><span class="line"> 78h   DWORD   -EXTLOW setting</span><br /><span class="line"> 7Ch   DWORD   -EXTHIGH setting</span><br /><span class="line"> 80h   DWORD   lowest physical extended-memory address allocatable</span><br /><span class="line"> 84h   DWORD   highest physical extended-memory address allocatable + 1</span><br /><span class="line"> 88h   DWORD   special memory&#39;s physical base address (00000000h if none)</span><br /><span class="line"> 8Ch   DWORD   special memory size in bytes (00000000h if none)</span><br /><span class="line"> 90h   DWORD   -MAXVCPIMEM setting</span><br /><span class="line"> 94h   DWORD   -VSCAN</span><br /><span class="line"> 98h   DWORD   -SWAPCHK (0 = OFF, 1 = ON, 2 = FORCE, 3 = MAX)</span><br /><span class="line"> 9Ch   DWORD   -CODESIZE setting</span><br /><span class="line"> A0h   DWORD   minimum swap file size (-MINSWFSIZE)</span><br /><span class="line"> A4h   DWORD   maximum swap fiel size (-MAXSWFSIZE)</span><br /><span class="line"> A8h   DWORD   page replacement policy (0 = LFU, 1 = NUR)</span><br /><span class="line"> ACh   DWORD   number of GDT entries (-NGDTENT)</span><br /><span class="line"> B0h   DWORD   number of LDT entries (-NLDTENT)</span><br /><span class="line"> B4h   DWORD   program&#39;s privilege level (0-3)</span><br /><span class="line">---386|DOS-Extender v3.0+ ---</span><br /><span class="line"> B8h   DWORD   -LOCKSTACK setting</span><br /><span class="line"> BCh   DWORD   -MAXEXTMEM</span><br /><span class="line"> C0h   DWORD   -MAXXMSMEM</span><br /><span class="line"> C4h   DWORD   -MAXPGMMEM</span><br /><span class="line"> C8h   DWORD   -DATATHRESHOLD</span><br /><span class="line"> CCh   DWORD   virtual memory manager flag (0 = not present, 1 = present)</span><br /><span class="line"> D0h   DWORD   Cyrix coprocessor flag (0 = no Cyrix EMC387, 1 = present)</span><br /><span class="line"> D4h   DWORD   -CYRIX setting (0 = AUTO, 1 = ON, 2 = OFF)</span><br /><span class="line"> D8h   DWORD   DPMI flag (0 = not present, 1 = present)</span><br /><span class="line"> DCh   DWORD   DPMI major version</span><br /><span class="line"> E0h   DWORD   DPMI minor version</span><br /><span class="line"> E4h   DWORD   DPMI capabilities flags (see #1055)</span><br /><span class="line"> E8h   DWORD   VCPI major version</span><br /><span class="line"> ECh   DWORD   VCPI minor version</span><br /><span class="line"> F0h   WORD    VCPI: IRQ0-7 physical base interrupt vector</span><br /><span class="line"> F2h   WORD    VCPI: IRQ8-15 physical base interrupt vector</span><br /><span class="line"> F4h   DWORD   XMS flag (0 = none, 1 = present)</span><br /><span class="line"> F8h   DWORD   XMS major version</span><br /><span class="line"> FCh   DWORD   XMS minor version</span><br /><span class="line">100h   WORD    application&#39;s CS selector</span><br /><span class="line">102h   WORD    application&#39;s DS selector</span><br /><span class="line">104h   WORD    application&#39;s PSP selector</span><br /><span class="line">106h   WORD    application&#39;s environment selector</span><br /><span class="line">108h   WORD    selector mapping entire first megabyte</span><br /><span class="line">10Ah   WORD    selector mapping text video memory</span><br /><span class="line">10Ch   WORD    selector mapping video memory (text for IBM, graphics for NEC)</span><br /><span class="line">10Eh   WORD    selector mapping Weitek address space, 0000h if not present</span><br /><span class="line">110h   WORD    selector mapping Cyrix EMC387 address space, 0000h if none</span><br /><span class="line">112h   WORD    reserved (0)</span><br /><span class="line">114h   DWORD   real-mode FAR entry point to call to switch to protected mode</span><br /><span class="line">         with no saved context</span><br /><span class="line">118h   DWORD   size of LDT in bytes</span><br /><span class="line">---386|DOS-Extender v5.0+ ---</span><br /><span class="line">11Ch   DWORD   Windows flag (0 = not present, 1 = Windows present)</span><br /><span class="line">120h   DWORD   Windows major version</span><br /><span class="line">124h   DWORD   Windows minor version</span><br /><span class="line">128h   DWORD   Windows mode (0 = real/standard, 1 = enhanced)</span><br /><span class="line">12Ch   DWORD   OS/2 flag (0 = not present, 1 = OS/2 present)</span><br /><span class="line">130h   DWORD   OS/2 major version</span><br /><span class="line">134h   DWORD   OS/2 minor version</span><br /><span class="line">138h 50 DWORDs reserved (0)</span><br /><span class="line"></span><br /><span class="line">Bitfields for flags 1:</span><br /><span class="line">Bit(s) Description (Table 1054)</span><br /><span class="line"> 0 -NOPAGE specified</span><br /><span class="line"> 1 -A20 specified</span><br /><span class="line"> 2 -VDISK specified</span><br /><span class="line"> 3 -XT specified</span><br /><span class="line"> 4 -AT specified</span><br /><span class="line"> 5 -MCA specified</span><br /><span class="line"> 6 -EISA specified</span><br /><span class="line"> 7 -NORMRES specified (NEC only)</span><br /><span class="line"> 8 -HIGHRES specified (NEC only)</span><br /><span class="line"> 9 set if -SWFGROW1ST, clear if -NOSWFGROW1ST</span><br /><span class="line"> 10    -NOVM specified</span><br /><span class="line"> 11    -SAVEREGS specified</span><br /><span class="line"> 12    unused (clear)</span><br /><span class="line"> 13    -NOVCPI specified</span><br /><span class="line"> 14    -NOMUL specified</span><br /><span class="line"> 15    -NOBMCHK specified</span><br /><span class="line"> 16    -NOSPCLMEM or -NOBIM</span><br /><span class="line"> 17    -NOPGEXP specified</span><br /><span class="line"> 18    -SWAPDEFDISK specified</span><br /><span class="line">---v3.0+ ---</span><br /><span class="line"> 19    -SAVEINTS specified</span><br /><span class="line"> 20    -NOLOAD specified</span><br /><span class="line"> 21    -PAGELOG specified</span><br /><span class="line"> 22    -OPENDENY specified</span><br /><span class="line"> 23    -ERRATA17 specified</span><br /><span class="line">---v4.1+ ---</span><br /><span class="line"> 24    -NESTDPMI specified</span><br /><span class="line"> 25    -NONESTDPMI specified</span><br /><span class="line"> 26    -NODPMI specified</span><br /><span class="line"> 27    -NOPCDWEITEK specified</span><br /><span class="line">---v4.2+ ---</span><br /><span class="line"> 28    -WININT21 specified</span><br /><span class="line"></span><br /><span class="line">Bitfields for DPMI capabilities flags:</span><br /><span class="line">Bit(s) Description (Table 1055)</span><br /><span class="line"> 0 paging supported</span><br /><span class="line"> 1 physical device mapping</span><br /><span class="line"> 2 conventional memory mapping</span><br /><span class="line"> 3 exceptions restartable</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

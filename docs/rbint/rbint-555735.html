@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-555396.html">
+    <link rel="next" href="rbint-557006.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-555396.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-557006.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 10 Fn 1E00  - Video - Flat-panel - Read Information                  </span>  [<span class="ngb">V</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1E00h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 1Eh if function supported</span><br /><span class="line">       BL = flat-panel status (see #0050)</span><br /><span class="line">       ES:DI -&gt; information table (see #0051)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  IBM classifies this function as optional</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1E01h,AX=1E02h,AX=1E03h,AX=1E04h,AX=1E05h,AX=1EFEh</span><br /><span class="line"></span><br /><span class="line">Bitfields for flat-panel status:</span><br /><span class="line">Bit(s) Description (Table 0050)</span><br /><span class="line"> 7-3   reserved</span><br /><span class="line"> 2 color display</span><br /><span class="line"> 1 flat panel is active</span><br /><span class="line"> 0 flat panel is attached</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0051</span><br /><span class="line"></span><br /><span class="line">Format of flat-panel information table:</span><br /><span class="line">Offset Size    Description (Table 0051)</span><br /><span class="line"> 00h   BYTE    number of WORDs in the remainder of the table</span><br /><span class="line"> 01h   WORD    number of vertical pixels per meter</span><br /><span class="line"> 03h   WORD    number of horizontal pixels per meter</span><br /><span class="line"> 05h   WORD    total number of vertical pixels</span><br /><span class="line"> 07h   WORD    total number of horizontal pixels</span><br /><span class="line"> 09h   WORD    vertical pixel separation in micrometers (center-to-center)</span><br /><span class="line"> 0Bh   WORD    horizontal pixel separation in micrometers</span><br /><span class="line"> 0Dh   WORD    range of gray levels available, less 1</span><br /><span class="line"> 0Fh   WORD    number of red levels available, less 1 (0000h if nonochrome)</span><br /><span class="line"> 11h   WORD    number of green levels available, less 1 (0000h if nonochrome)</span><br /><span class="line"> 13h   WORD    number of blue levels available, less 1 (0000h if nonochrome)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0050</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

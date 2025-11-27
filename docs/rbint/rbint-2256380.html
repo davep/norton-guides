@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2255087.html">
+    <link rel="next" href="rbint-2258660.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2255087.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2258660.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 40  - Turbo Debug Hardware Breakpoints - Send Cmd To Hardware B</span>  [<span class="ngb">G</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 40h</span><br /><span class="line">   BX = handle for character device &#34;TDHDEBUG&#34;</span><br /><span class="line">   CX = number of bytes to write</span><br /><span class="line">   DS:DX -&gt; hardware breakpoint command (see #1105)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = number of bytes actually written</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (05h,06h) (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  results are retrieved by reading from the device</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=3Fh&#34;Turbo Debug&#34;</span><br /><span class="line"></span><br /><span class="line">Format of Turbo Debugger hardware breakpoint commands:</span><br /><span class="line">Offset Size    Description (Table 1105)</span><br /><span class="line"> 00h   BYTE    command code</span><br /><span class="line">       00h install interrupt vectors</span><br /><span class="line">       01h get hardware capabilities</span><br /><span class="line">       02h enable hardware breakpoints</span><br /><span class="line">       03h disable hardware breakpoints</span><br /><span class="line">       04h set hardware breakpoint</span><br /><span class="line">       05h clear hardware breakpoint</span><br /><span class="line">       06h set I/O base address and reset hardware</span><br /><span class="line">       07h restore interrupt vectors</span><br /><span class="line">---command code 00h---</span><br /><span class="line"> 01h   DWORD   pointer to Turbo Debugger entry point to be jumped to on</span><br /><span class="line">         hardware breakpoint; call with CPU state the same as on</span><br /><span class="line">         the breakpoint except for pushing AX and placing an entry</span><br /><span class="line">         code (FFh if breakout button or breakpoint handle) in AH</span><br /><span class="line">---command code 04h---</span><br /><span class="line"> 01h   BYTE    breakpoint type</span><br /><span class="line">       00h memory read</span><br /><span class="line">       01h memory write</span><br /><span class="line">       02h memory read/write</span><br /><span class="line">       03h I/O read</span><br /><span class="line">       04h I/O write</span><br /><span class="line">       05h I/O read/write</span><br /><span class="line">       06h instruction fetch</span><br /><span class="line"> 02h   BYTE    address matching mode (see #1106)</span><br /><span class="line"> 03h   DWORD   32-bit linear low address</span><br /><span class="line"> 07h   DWORD   32-bit linear high address</span><br /><span class="line"> 0Bh   WORD    pass count</span><br /><span class="line"> 0Dh   BYTE    data size (01h, 02h, or 04h)</span><br /><span class="line"> 0Eh   BYTE    source of matched bus cycle (01h CPU, 02h DMA, 03h either)</span><br /><span class="line"> 0Fh   BYTE    data-matching mode (see #1106)</span><br /><span class="line"> 10h   DWORD   low data value</span><br /><span class="line"> 14h   DWORD   high data value</span><br /><span class="line"> 18h   DWORD   data mask specifying which bits of the data are tested</span><br /><span class="line">---command code 05h---</span><br /><span class="line"> 01h   BYTE    handle of breakpoint to clear (breakpoint returned from command</span><br /><span class="line">         04h)</span><br /><span class="line">---command code 06h---</span><br /><span class="line"> 01h   WORD    base address of hardware debugger board</span><br /><span class="line"></span><br /><span class="line">(Table 1106)</span><br /><span class="line">Values for Turbo Debugger address/data matching mode:</span><br /><span class="line"> 00h   match any</span><br /><span class="line"> 01h   equal to test value</span><br /><span class="line"> 02h   different from test value</span><br /><span class="line"> 03h   above test value</span><br /><span class="line"> 04h   below test value</span><br /><span class="line"> 05h   below or equal to test value</span><br /><span class="line"> 06h   above or equal to test value</span><br /><span class="line"> 07h   within inclusive range</span><br /><span class="line"> 08h   outside specified range</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

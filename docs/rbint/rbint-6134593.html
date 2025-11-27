@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-6134367.html">
+    <link rel="next" href="rbint-6135863.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-6134367.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-6101071.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-6135863.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int E0  - Real/32 - &#34;n_rct&#34; - Get Requestor Configuration Table          </span>  [<span class="ngb">O</span>]</span><br /><span class="line"></span><br /><span class="line">   CL = 45h</span><br /><span class="line">   DS:DX -&gt; RCT Control Block (see #3772,#3773)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status or error code (see #3697,#3696)</span><br /><span class="line">   may destroy SI,DI,DS???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT E0/CL=47h</span><br /><span class="line"></span><br /><span class="line">Format of REAL/32 RCT Control Block for Drives:</span><br /><span class="line">Offset Size    Description (Table 3772)</span><br /><span class="line"> 00h   BYTE    command byte</span><br /><span class="line">       00h map disk drive</span><br /><span class="line">       02h map list device</span><br /><span class="line"> 01h   BYTE    local resource ID</span><br /><span class="line"> 02h   BYTE    remote resource ID</span><br /><span class="line"> 03h   BYTE    server node ID number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the RCT Control Block is a union of two possible structures; this</span><br /><span class="line">     variant is used when mapping disk drives and list devices</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #3773</span><br /><span class="line"></span><br /><span class="line">Format of REAL/32 RCT Control Block for Queues:</span><br /><span class="line">Offset Size    Description (Table 3773)</span><br /><span class="line"> 00h   BYTE    command byte</span><br /><span class="line">       03h map local queue to server</span><br /><span class="line">       04h unmap queue</span><br /><span class="line"> 01h  8 BYTEs  local queue name (case-sensitive)</span><br /><span class="line"> 09h  8 BYTEs  remote queue name (case-sensitive)</span><br /><span class="line"> 11h   BYTE    server node ID number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the RCT Control Block is a union of two possible structures; this</span><br /><span class="line">     variant is used when mapping queues</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #3772</span><br /><span class="line"></span><br /><span class="line">(Table 3697)</span><br /><span class="line">Values for REAL/32 &#34;N_RCT&#34; status:</span><br /><span class="line"> 0000h successful</span><br /><span class="line"> 0001h invalid local device</span><br /><span class="line"> 0002h invalid remote device</span><br /><span class="line"> 0003h no queue entry space</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

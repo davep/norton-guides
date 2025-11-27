@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3758329.html">
+    <link rel="next" href="rbint-3761447.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3758329.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3761447.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1684  P - Ms Windows - Reboot - Get Api Entry Point            </span>  [<span class="ngb">W</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1684h</span><br /><span class="line">   BX = 0009h (virtual device ID for REBOOT device) (see #2329)</span><br /><span class="line">   ES:DI = 0000h:0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ES:DI -&gt; VxD API entry point (see #2335)</span><br /><span class="line">         0000h:0000h if the VxD does not support an API</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 14/AH=17h&#34;FOSSIL&#34;,INT 16/AX=E0FFh</span><br /><span class="line"></span><br /><span class="line">(Table 2335)</span><br /><span class="line">Call REBOOT protected-mode entry point with:</span><br /><span class="line">   AX = function</span><br /><span class="line">       0100h warm boot</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> never</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   broadcasts &#34;Reboot_Processor&#34; message, which is caught</span><br /><span class="line">             by the VKD device</span><br /><span class="line">       0201h set KERNEL Ctrl-Alt-Del handler</span><br /><span class="line">       ES:DI -&gt; new Ctrl-Alt-Del handler</span><br /><span class="line">       DS:SI -&gt; KERNEL reboot sanity check byte</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Notes:</span>  if an application installs its own handler and then</span><br /><span class="line">             chains to Windows&#39; handler, Windows will no longer</span><br /><span class="line">             be able to detect hung applications, and will always</span><br /><span class="line">             produce an &#34;Application not responding&#34; dialog</span><br /><span class="line">           DS must contain a writable, fixed selector because</span><br /><span class="line">             the provided address is converted to a linear address</span><br /><span class="line">             before being stored</span><br /><span class="line">           when Ctrl-Alt-Del is pressed in the system VM, Reboot</span><br /><span class="line">             sets the sanity check byte to zero, schedules a</span><br /><span class="line">             750ms wait, and then tests whether the check byte is</span><br /><span class="line">             still zero; if not, it displays a message that there</span><br /><span class="line">             is no hung application and then exits</span><br /><span class="line">       0202h get KERNEL Ctrl-Alt-Del handler</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           ES:DI -&gt; current Ctrl-Alt-Del handler</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   the default handler is located in KERNEL</span><br /><span class="line">       0203h display &#34;Application not responding&#34; dialog box</span><br /><span class="line">       ES:DI -&gt; ASCIZ name of hung application</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> never if user pressed Ctrl-Alt-Del a second time</span><br /><span class="line">           CF clear</span><br /><span class="line">           AX = result</span><br /><span class="line">               0000h user pressed Esc</span><br /><span class="line">               0001h user pressed Enter</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   this function is used by the default Windows</span><br /><span class="line">             Ctrl-Alt-Del handler</span><br /><span class="line">       0204h set/reset protected-mode INT 01 handler</span><br /><span class="line">       CX:EDX -&gt; new protected-mode INT 01 handler</span><br /><span class="line">       CX = 0000h restore protected-mode INT 01 handler</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Notes:</span>  if CX is nonzero, the current handler address is saved</span><br /><span class="line">             internally before the new handler is set; this saved</span><br /><span class="line">             address is then used when CX is zero on entry</span><br /><span class="line">           used by Windows&#39; default Ctrl-Alt-Del handler; actual</span><br /><span class="line">             fatal exit to DOS will be done on next INT 01</span><br /><span class="line">       Warning: opened files are not closed and remain open as</span><br /><span class="line">             orphaned files in DOS</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  functions 0201h and 0203h are not useful outside the system VM</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0967,#0969</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

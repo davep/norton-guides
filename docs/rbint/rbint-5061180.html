@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5057505.html">
+    <link rel="next" href="rbint-5063101.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5057505.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5063101.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 61 Fn 00  U - Pc/tcp Kernel V2.05+ - Get Debug Information           </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 00h</span><br /><span class="line">   DS:SI -&gt; 216-byte buffer for network debugging information (see #2993)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear</span><br /><span class="line">   AX = 0000h</span><br /><span class="line">   buffer filled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this call is not documented by FTP, Inc. for any version</span><br /><span class="line">   most of the information returned by this call is available via the</span><br /><span class="line">     documented get_kernel_info or net_info commands.</span><br /><span class="line">   this function is not supported by Beame&amp;Whiteside&#39;s BWPCTCP v3.0a shim</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 61&#34;FTP Software&#34;,INT 61/AH=2Ah&#34;PC/TCP&#34;</span><br /><span class="line"></span><br /><span class="line">Format of network debugging information:</span><br /><span class="line">Offset Size    Description (Table 2993)</span><br /><span class="line"> 00h   DWORD   number of interrupts</span><br /><span class="line"> 04h   DWORD   receive buffer low-water mark</span><br /><span class="line"> 08h   DWORD   transmit buffer low-water mark</span><br /><span class="line"> 0Ch   DWORD   number of packets received</span><br /><span class="line"> 10h   DWORD   number of packets transmitted</span><br /><span class="line"> 14h   DWORD   total receive errors</span><br /><span class="line"> 18h   DWORD   total transmit errors</span><br /><span class="line"> 1Ch  4 BYTEs  ???</span><br /><span class="line"> 20h   DWORD   receive resets</span><br /><span class="line"> 24h   DWORD   transmit resets</span><br /><span class="line"> 28h   DWORD   number of &#34;runts&#34; received</span><br /><span class="line"> 2Ch   DWORD   number of alignment errors on received packets</span><br /><span class="line"> 30h   DWORD   number of CRC errors on received packets</span><br /><span class="line"> 34h   DWORD   number of parity errors on received packets</span><br /><span class="line"> 38h   DWORD   number of receive overflow errors</span><br /><span class="line"> 3Ch   DWORD   number of oversized packets received</span><br /><span class="line"> 40h   DWORD   number of packets lost due to lack of buffers</span><br /><span class="line"> 44h   DWORD   receive timeouts</span><br /><span class="line"> 48h 32 BYTEs  ???</span><br /><span class="line"> 68h   DWORD   number of transmit collisions</span><br /><span class="line"> 6Ch   DWORD   number of transmit timeouts</span><br /><span class="line"> 70h   DWORD   number of transmit underflows</span><br /><span class="line"> 74h   DWORD   number of lost &#34;crs&#34; on transmit</span><br /><span class="line"> 78h   DWORD   number of times heartbeat failed on transmit</span><br /><span class="line"> 7Ch 24 BYTEs  ???</span><br /><span class="line"> 94h   WORD    free packet buffers</span><br /><span class="line"> 96h   WORD    total packet buffers</span><br /><span class="line"> 98h   WORD    minimum number of packet buffers free since kernel started</span><br /><span class="line"> 9Ah 24 BYTEs  ???</span><br /><span class="line"> B2h   DWORD   pointer to TCP connection list???</span><br /><span class="line"> B6h   DWORD   pointer to IP routing table???</span><br /><span class="line"> BAh 30 BYTEs  ???</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

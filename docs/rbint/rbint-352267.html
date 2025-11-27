@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-352217.html">
+    <link rel="next" href="rbint-352984.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-352217.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-352984.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Function:</span></span><br /><span class="line"></span><br /><span class="line">FDIV divides destination by source and returns the result in destination.</span><br /><span class="line">FDIVP does the same but pops the FPU stack afterwards.</span><br /><span class="line"></span><br /><span class="line">The bug occurs when the instruction operates on an FPU register which is</span><br /><span class="line">tagged as empty, but holds a nonzero value and the next FPU instruction</span><br /><span class="line">occurs within 35 FPU clock counts. In that case, the current instruction</span><br /><span class="line">will use the invalid number in the empty location, producing an invalid</span><br /><span class="line">result and causing the following instruction to generate an invalid</span><br /><span class="line">result as well. There is no workaround.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">FDIVR / FDIVRP  Floating point division reversed / divide &amp; POP</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

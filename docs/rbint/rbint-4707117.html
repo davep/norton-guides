@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4706535.html">
+    <link rel="next" href="rbint-4708734.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4706535.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4675914.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4708734.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 33 Fn 002B  - Ms Mouse V7.0+ - Load Acceleration Profiles            </span>  [<span class="ngb">M</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 002Bh</span><br /><span class="line">   BX = active acceleration profile</span><br /><span class="line">       0001h-0004h or FFFFh to restore default curves</span><br /><span class="line">   ES:SI -&gt; buffer containing acceleration profile data (see #2851)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = success flag</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=002Ch,AX=002Dh,AX=0033h</span><br /><span class="line"></span><br /><span class="line">Format of acceleration profile data:</span><br /><span class="line">Offset Size    Description (Table 2851)</span><br /><span class="line"> 00h   BYTE    length of acceleration profile 1</span><br /><span class="line"> 01h   BYTE    length of acceleration profile 2</span><br /><span class="line"> 02h   BYTE    length of acceleration profile 3</span><br /><span class="line"> 03h   BYTE    length of acceleration profile 4</span><br /><span class="line"> 04h 32 BYTEs  threshold speeds for acceleration profile 1</span><br /><span class="line"> 24h 32 BYTEs  threshold speeds for acceleration profile 2</span><br /><span class="line"> 44h 32 BYTEs  threshold speeds for acceleration profile 3</span><br /><span class="line"> 64h 32 BYTEs  threshold speeds for acceleration profile 4</span><br /><span class="line"> 84h 32 BYTEs  speedup factor for acceleration profile 1</span><br /><span class="line">       (10h = 1.0, 14h = 1.25, 20h = 2.0, etc)</span><br /><span class="line"> A4h 32 BYTEs  speedup factor for acceleration profile 2</span><br /><span class="line">       (10h = 1.0, 14h = 1.25, 20h = 2.0, etc)</span><br /><span class="line"> C4h 32 BYTEs  speedup factor for acceleration profile 3</span><br /><span class="line">       (10h = 1.0, 14h = 1.25, 20h = 2.0, etc)</span><br /><span class="line"> E4h 32 BYTEs  speedup factor for acceleration profile 4</span><br /><span class="line">       (10h = 1.0, 14h = 1.25, 20h = 2.0, etc)</span><br /><span class="line">104h 16 BYTEs  name of acceleration profile 1 (blank-padded)</span><br /><span class="line">114h 16 BYTEs  name of acceleration profile 2 (blank-padded)</span><br /><span class="line">124h 16 BYTEs  name of acceleration profile 3 (blank-padded)</span><br /><span class="line">134h 16 BYTEs  name of acceleration profile 4 (blank-padded)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  unused bytes in the threshold speed fields are filled with 7Fh and</span><br /><span class="line">     unused bytes in the speedup factor fields are filled with 10h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

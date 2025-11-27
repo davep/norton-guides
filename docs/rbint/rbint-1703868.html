@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="rbint-1703799.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 19  - System - Bootstrap Loader                                      </span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Desc:</span>  This interrupt reboots the system without clearing memory or restoring</span><br /><span class="line">     interrupt vectors.  Because interrupt vectors are preserved, this</span><br /><span class="line">     interrupt usually causes a system hang if any TSRs have hooked</span><br /><span class="line">     vectors from 00h through 1Ch, particularly INT 08.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> Usually, the BIOS will try to read sector 1, head 0, track 0 from drive</span><br /><span class="line">     A: to 0000h:7C00h.  If this fails, and a hard disk is installed, the</span><br /><span class="line">     BIOS will read sector 1, head 0, track 0 of the first hard disk.</span><br /><span class="line">     This sector should contain a master bootstrap loader and a partition</span><br /><span class="line">     table (see #0574).  After loading the master boot sector at</span><br /><span class="line">     0000h:7C00h, the master bootstrap loader is given control</span><br /><span class="line">     (see #0577).  It will scan the partition table for an active</span><br /><span class="line">     partition, and will then load the operating system&#39;s bootstrap</span><br /><span class="line">     loader (contained in the first sector of the active partition) and</span><br /><span class="line">     give it control.</span><br /><span class="line">   true IBM PCs and most clones issue an INT 18 if neither floppy nor hard</span><br /><span class="line">     disk have a valid boot sector</span><br /><span class="line">   to accomplish a warm boot equivalent to Ctrl-Alt-Del, store 1234h in</span><br /><span class="line">     0040h:0072h and jump to FFFFh:0000h.  For a cold boot equivalent to</span><br /><span class="line">     a reset, store 0000h at 0040h:0072h before jumping.</span><br /><span class="line">   VDISK.SYS hooks this interrupt to allow applications to find out how</span><br /><span class="line">     much extended memory has been used by VDISKs (see #0573).  DOS 3.3+</span><br /><span class="line">     PRINT hooks INT 19 but does not set up a correct VDISK header block</span><br /><span class="line">     at the beginning of its INT 19 handler segment, thus causing some</span><br /><span class="line">     programs to overwrite extended memory which is already in use.</span><br /><span class="line">   the default handler is at F000h:E6F2h for 100% compatible BIOSes</span><br /><span class="line">   MS-DOS 3.2+ hangs on booting (even from floppy) if the hard disk</span><br /><span class="line">     contains extended partitions which point at each other in a loop,</span><br /><span class="line">     since it will never find the end of the linked list of extended</span><br /><span class="line">     partitions</span><br /><span class="line">   under Windows Real and Enhanced modes, calling INT 19 will hang the</span><br /><span class="line">     system in the same was as under bare DOS; under Windows Standard</span><br /><span class="line">     mode, INT 19 will successfully perform a cold reboot as it appears</span><br /><span class="line">     to have been redirected to a MOV AL,0FEh/OUT 64h,AL sequence</span><br /><span class="line">BUG:   when loading the remainder of the DOS system files fails, various</span><br /><span class="line">     versions of IBMBIO.COM/IO.SYS incorrectly restore INT 1E before</span><br /><span class="line">     calling INT 19, assuming that the boot sector had stored the</span><br /><span class="line">     contents of INT 1E at DS:SI instead of on the stack as it actually</span><br /><span class="line">     does</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 14/AH=17h,INT 18&#34;BOOT HOOK&#34;,INT 49&#34;Tandy 2000&#34;,INT 5B&#34;PC Cluster&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0067h,MEM F000h:FFF0h,CMOS 0Fh</span><br /><span class="line"></span><br /><span class="line">Format of VDISK header block (at beginning of INT 19 handler&#39;s segment):</span><br /><span class="line">Offset Size    Description (Table 0573)</span><br /><span class="line"> 00h 18 BYTEs  n/a (for VDISK.SYS, the device driver header)</span><br /><span class="line"> 12h 11 BYTEs  signature string &#34;VDISK  Vn.m&#34; for VDISK.SYS version n.m</span><br /><span class="line"> 1Dh 15 BYTEs  n/a</span><br /><span class="line"> 2Ch  3 BYTEs  linear address of first byte of available extended memory</span><br /><span class="line"></span><br /><span class="line">Format of hard disk master boot sector:</span><br /><span class="line">Offset Size    Description (Table 0574)</span><br /><span class="line"> 00h 446 BYTEs Master bootstrap loader code</span><br /><span class="line">1BEh 16 BYTEs  partition record for partition 1 (see #0575)</span><br /><span class="line">1CEh 16 BYTEs  partition record for partition 2</span><br /><span class="line">1DEh 16 BYTEs  partition record for partition 3</span><br /><span class="line">1EEh 16 BYTEs  partition record for partition 4</span><br /><span class="line">1FEh   WORD    signature, AA55h indicates valid boot block</span><br /><span class="line"></span><br /><span class="line">Format of partition record:</span><br /><span class="line">Offset Size    Description (Table 0575)</span><br /><span class="line"> 00h   BYTE    boot indicator (80h = active partition)</span><br /><span class="line"> 01h   BYTE    partition start head</span><br /><span class="line"> 02h   BYTE    partition start sector (bits 0-5)</span><br /><span class="line"> 03h   BYTE    partition start track (bits 8,9 in bits 6,7 of sector)</span><br /><span class="line"> 04h   BYTE    operating system indicator (see #0576)</span><br /><span class="line"> 05h   BYTE    partition end head</span><br /><span class="line"> 06h   BYTE    partition end sector (bits 0-5)</span><br /><span class="line"> 07h   BYTE    partition end track (bits 8,9 in bits 6,7 of sector)</span><br /><span class="line"> 08h   DWORD   sectors preceding partition</span><br /><span class="line"> 0Ch   DWORD   length of partition in sectors</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0574</span><br /><span class="line"></span><br /><span class="line">(Table 0576)</span><br /><span class="line">Values for operating system indicator:</span><br /><span class="line"> 00h   empty</span><br /><span class="line"> 01h   DOS 12-bit FAT</span><br /><span class="line"> 02h   XENIX root file system</span><br /><span class="line"> 03h   XENIX /usr file system (obsolete)</span><br /><span class="line"> 04h   DOS 16-bit FAT (up to 32M)</span><br /><span class="line"> 05h   DOS 3.3+ extended partition</span><br /><span class="line"> 06h   DOS 3.31+ Large File System (16-bit FAT, over 32M)</span><br /><span class="line"> 07h   QNX</span><br /><span class="line"> 07h   OS/2 HPFS</span><br /><span class="line"> 07h   Windows NT NTFS</span><br /><span class="line"> 07h   Advanced Unix</span><br /><span class="line"> 08h   OS/2 (v1.0-1.3 only)</span><br /><span class="line"> 08h   AIX bootable partition, SplitDrive</span><br /><span class="line"> 08h   Commodore DOS</span><br /><span class="line"> 08h   DELL partition spanning multiple drives</span><br /><span class="line"> 09h   AIX data partition</span><br /><span class="line"> 09h   Coherent filesystem</span><br /><span class="line"> 0Ah   OS/2 Boot Manager</span><br /><span class="line"> 0Ah   OPUS</span><br /><span class="line"> 0Ah   Coherent swap partition</span><br /><span class="line"> 0Bh   Windows95 with 32-bit FAT</span><br /><span class="line"> 0Ch   Windows95 with 32-bit FAT (using LBA-mode INT 13 extensions)</span><br /><span class="line"> 0Eh   logical-block-addressable VFAT (same as 06h but using LBA-mode INT 13)</span><br /><span class="line"> 0Fh   logical-block-addressable VFAT (same as 05h but using LBA-mode INT 13)</span><br /><span class="line"> 10h   OPUS</span><br /><span class="line"> 11h   OS/2 Boot Manager hidden 12-bit FAT partition</span><br /><span class="line"> 12h   Compaq Diagnostics partition</span><br /><span class="line"> 14h   (resulted from using Novell DOS 7.0 FDISK to delete Linux Native part)</span><br /><span class="line"> 14h   OS/2 Boot Manager hidden sub-32M 16-bit FAT partition</span><br /><span class="line"> 16h   OS/2 Boot Manager hidden over-32M 16-bit FAT partition</span><br /><span class="line"> 17h   OS/2 Boot Manager hidden HPFS partition</span><br /><span class="line"> 18h   AST special Windows swap file (&#34;Zero-Volt Suspend&#34; partition)</span><br /><span class="line"> 19h   Willowtech Photon coS</span><br /><span class="line"> 20h   Willowsoft Overture File System (OFS1)</span><br /><span class="line"> 21h   officially listed as reserved</span><br /><span class="line"> 23h   officially listed as reserved</span><br /><span class="line"> 24h   NEC MS-DOS 3.x</span><br /><span class="line"> 26h   officially listed as reserved</span><br /><span class="line"> 31h   officially listed as reserved</span><br /><span class="line"> 33h   officially listed as reserved</span><br /><span class="line"> 34h   officially listed as reserved</span><br /><span class="line"> 36h   officially listed as reserved</span><br /><span class="line"> 38h   Theos</span><br /><span class="line"> 3Ch   PowerQuest PartitionMagic recovery partition</span><br /><span class="line"> 40h   VENIX 80286</span><br /><span class="line"> 41h   Personal RISC Boot</span><br /><span class="line"> 42h   SFS (Secure File System) by Peter Gutmann</span><br /><span class="line"> 50h   OnTrack Disk Manager, read-only partition</span><br /><span class="line"> 51h   OnTrack Disk Manager, read/write partition</span><br /><span class="line"> 51h   NOVEL</span><br /><span class="line"> 52h   CP/M</span><br /><span class="line"> 52h   Microport System V/386</span><br /><span class="line"> 53h   OnTrack Disk Manager, write-only partition???</span><br /><span class="line"> 54h   OnTrack Disk Manager (DDO)</span><br /><span class="line"> 56h   GoldenBow VFeature</span><br /><span class="line"> 61h   SpeedStor</span><br /><span class="line"> 63h   Unix SysV/386, 386/ix</span><br /><span class="line"> 63h   Mach, MtXinu BSD 4.3 on Mach</span><br /><span class="line"> 63h   GNU HURD</span><br /><span class="line"> 64h   Novell NetWare 286</span><br /><span class="line"> 65h   Novell NetWare (3.11)</span><br /><span class="line"> 67h   Novell</span><br /><span class="line"> 68h   Novell</span><br /><span class="line"> 69h   Novell</span><br /><span class="line"> 70h   DiskSecure Multi-Boot</span><br /><span class="line"> 71h   officially listed as reserved</span><br /><span class="line"> 73h   officially listed as reserved</span><br /><span class="line"> 74h   officially listed as reserved</span><br /><span class="line"> 75h   PC/IX</span><br /><span class="line"> 76h   officially listed as reserved</span><br /><span class="line"> 80h   Minix v1.1 - 1.4a</span><br /><span class="line"> 81h   Minix v1.4b+</span><br /><span class="line"> 81h   Linux</span><br /><span class="line"> 81h   Mitac Advanced Disk Manager</span><br /><span class="line"> 82h   Linux Swap partition</span><br /><span class="line"> 82h   Prime</span><br /><span class="line"> 83h   Linux native file system (ext2fs/xiafs)</span><br /><span class="line"> 84h   OS/2-renumbered type 04h partition (related to hiding DOS C: drive)</span><br /><span class="line"> 86h   FAT16 volume/stripe set (Windows NT)</span><br /><span class="line"> 87h   HPFS Fault-Tolerant mirrored partition</span><br /><span class="line"> 87h   NTFS volume/stripe set</span><br /><span class="line"> 93h   Amoeba file system</span><br /><span class="line"> 94h   Amoeba bad block table</span><br /><span class="line"> A0h   Phoenix NoteBIOS Power Management &#34;Save-to-Disk&#34; partition</span><br /><span class="line"> A1h   officially listed as reserved</span><br /><span class="line"> A3h   officially listed as reserved</span><br /><span class="line"> A4h   officially listed as reserved</span><br /><span class="line"> A5h   FreeBSD, BSD/386</span><br /><span class="line"> A6h   officially listed as reserved</span><br /><span class="line"> B1h   officially listed as reserved</span><br /><span class="line"> B3h   officially listed as reserved</span><br /><span class="line"> B4h   officially listed as reserved</span><br /><span class="line"> B6h   officially listed as reserved</span><br /><span class="line"> B7h   BSDI file system (secondarily swap)</span><br /><span class="line"> B8h   BSDI swap partition (secondarily file system)</span><br /><span class="line"> C1h   DR DOS 6.0 LOGIN.EXE-secured 12-bit FAT partition</span><br /><span class="line"> C4h   DR DOS 6.0 LOGIN.EXE-secured 16-bit FAT partition</span><br /><span class="line"> C6h   DR DOS 6.0 LOGIN.EXE-secured Huge partition</span><br /><span class="line"> C6h   corrupted FAT16 volume/stripe set (Windows NT)</span><br /><span class="line"> C7h   Syrinx Boot</span><br /><span class="line"> C7h   corrupted NTFS volume/stripe set</span><br /><span class="line"> D8h   CP/M-86</span><br /><span class="line"> DBh   CP/M, Concurrent CP/M, Concurrent DOS</span><br /><span class="line"> DBh   CTOS (Convergent Technologies OS)</span><br /><span class="line"> E1h   SpeedStor 12-bit FAT extended partition</span><br /><span class="line"> E3h   DOS read-only</span><br /><span class="line"> E3h   Storage Dimensions</span><br /><span class="line"> E4h   SpeedStor 16-bit FAT extended partition</span><br /><span class="line"> E5h   officially listed as reserved</span><br /><span class="line"> E6h   officially listed as reserved</span><br /><span class="line"> F1h   Storage Dimensions</span><br /><span class="line"> F2h   DOS 3.3+ secondary partition</span><br /><span class="line"> F3h   officially listed as reserved</span><br /><span class="line"> F4h   SpeedStor</span><br /><span class="line"> F4h   Storage Dimensions</span><br /><span class="line"> F6h   officially listed as reserved</span><br /><span class="line"> FEh   LANstep</span><br /><span class="line"> FEh   IBM PS/2 IML</span><br /><span class="line"> FFh   Xenix bad block table</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  for partition type 07h, one should inspect the partition boot record</span><br /><span class="line">     for the actual file system type</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0575</span><br /><span class="line"></span><br /><span class="line">(Table 0577)</span><br /><span class="line">Values Bootstrap loader is called with (IBM BIOS):</span><br /><span class="line">   CS:IP = 0000h:7C00h</span><br /><span class="line">   DH = access</span><br /><span class="line">       bits 7-6,4-0: don&#39;t care</span><br /><span class="line">       bit 5: =0 device supported by INT 13</span><br /><span class="line">   DL = boot drive</span><br /><span class="line">       00h first floppy</span><br /><span class="line">       80h first hard disk</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

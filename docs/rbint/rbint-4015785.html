@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4015502.html">
+    <link rel="next" href="rbint-4016563.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4015502.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3870311.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4016563.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 4B20  - Ms Windows 3+ - Win.com - Set Program To Execute On Exi</span>  [<span class="ngb">W</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4B20h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = 0000h if successful</span><br /><span class="line">       DX:CX -&gt; 256-byte buffer for pathname and commandline (see #2510)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> when the Windows function ExitWindows is called with an exit code of</span><br /><span class="line">     44h, WIN.COM executes the program specified in the returned buffer</span><br /><span class="line">     and then restarts Windows</span><br /><span class="line">   the returned address is a real-mode segment:offset value</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4B21h</span><br /><span class="line"></span><br /><span class="line">Format of WIN.COM buffer:</span><br /><span class="line">Offset Size    Description (Table 2510)</span><br /><span class="line"> 00h 128 BYTEs commandline for program (count byte, command tail, 0Dh)</span><br /><span class="line"> 80h 128 BYTEs ASCIZ pathname of program to execute</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the order above is for a Windows95 DOS box; it may be reversed under</span><br /><span class="line">     Windows 3.x</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

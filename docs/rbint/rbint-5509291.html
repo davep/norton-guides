@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5508950.html">
+    <link rel="next" href="rbint-5509969.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5508950.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5448544.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5509969.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 67 Fn 54  - Lim Ems 4.0 - Get Handle Directory                       </span>  [<span class="ngb">m</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 54h</span><br /><span class="line">   AL = subfunction</span><br /><span class="line">       00h get handle directory</span><br /><span class="line">          ES:DI -&gt; buffer for handle directory (see #3322)</span><br /><span class="line">       01h search for named handle</span><br /><span class="line">          DS:SI -&gt; 8-byte name</span><br /><span class="line">       02h get total number of handles</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = number of entries in handle directory (subfunction 00h)</span><br /><span class="line">   DX = value of named handle (subfunction 01h)</span><br /><span class="line">   BX = total number of handles (subfunction 02h)</span><br /><span class="line">   AH = status (00h,80h,81h,84h,8Fh,A0h,A1h) (see also #3321)</span><br /><span class="line">       A1h a handle found had no name</span><br /><span class="line"></span><br /><span class="line">Format of EMS handle directory entry:</span><br /><span class="line">Offset Size    Description (Table 3322)</span><br /><span class="line"> 00h   WORD    handle</span><br /><span class="line"> 02h  8 BYTEs  handle&#39;s name</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

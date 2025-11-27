@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2181108.html">
+    <link rel="next" href="rbint-2184243.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2181108.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2184243.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 30  - Dos 2+ - Get Dos Version                                 </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 30h</span><br /><span class="line">---DOS 5+ ---</span><br /><span class="line">   AL = what to return in BH</span><br /><span class="line">       00h OEM number (as for DOS 2.0-4.0x)</span><br /><span class="line">       01h version flag</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = major version number (00h if DOS 1.x)</span><br /><span class="line">   AH = minor version number</span><br /><span class="line">   BL:CX = 24-bit user serial number (most versions do not use this)</span><br /><span class="line">---if DOS &lt;5 or AL=00h---</span><br /><span class="line">   BH = MS-DOS OEM number (see #1082)</span><br /><span class="line">---if DOS 5+ and AL=01h---</span><br /><span class="line">   BH = version flag</span><br /><span class="line">       bit 3: DOS is in ROM</span><br /><span class="line">       other: reserved (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the OS/2 v1.x Compatibility Box returns major version 0Ah (10)</span><br /><span class="line">   the OS/2 v2.x Compatibility Box returns major version 14h (20)</span><br /><span class="line">   OS/2 Warp 3.0 Virtual DOS Machines report v20.30; Warp 4 VDMs report</span><br /><span class="line">     v20.40.</span><br /><span class="line">   the WindowsNT DOS box returns version 5.00, subject to SETVER</span><br /><span class="line">   DOS 4.01 and 4.02 identify themselves as version 4.00; use</span><br /><span class="line">     INT 21/AH=87h to distinguish between the original European MS-DOS 4.0</span><br /><span class="line">     and the later PC-DOS 4.0x and MS-DOS 4.0x</span><br /><span class="line">   IBM DOS 6.1 reports its version as 6.00; use the OEM number to</span><br /><span class="line">     distinguish between MS-DOS 6.00 and IBM DOS 6.1 (there was never an</span><br /><span class="line">     IBM DOS 6.0)</span><br /><span class="line">   MS-DOS 6.21 reports its version as 6.20; version 6.22 returns the</span><br /><span class="line">     correct value</span><br /><span class="line">   Windows95 returns version 7.00 (the underlying MS-DOS), as did the</span><br /><span class="line">     &#34;Chicago&#34; beta (reported in _Microsoft_Systems_Journal_,August 1994);</span><br /><span class="line">     Windows95 OSR2 returns version 7.10</span><br /><span class="line">   DR DOS 5.0 and 6.0 report version 3.31; Novell DOS 7 reports IBM v6.00,</span><br /><span class="line">     which some software displays as IBM DOS v6.10 (because of the version</span><br /><span class="line">     mismatch in true IBM DOS, as mentioned above).  The Novell DOS 7</span><br /><span class="line">     SETVER.EXE has an undocumented option /G x.y which sets the &#34;global&#34;</span><br /><span class="line">     DOS version returned by this function for all executables not given</span><br /><span class="line">     a specific version number in SETVER to major version x and minor</span><br /><span class="line">     version y.</span><br /><span class="line">   generic MS-DOS 3.30, Compaq MS-DOS 3.31, and others identify themselves</span><br /><span class="line">     as PC-DOS by returning OEM number 00h</span><br /><span class="line">   the version returned under DOS 4.0x may be modified by entries in</span><br /><span class="line">     the special program list (see #1348 at AH=52h); the version returned</span><br /><span class="line">     under DOS 5+ may be modified by SETVER--use AX=3306h to get the true</span><br /><span class="line">     version number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=3000h/BX=3000h,AX=3306h,AX=4452h,AH=87h,INT 15/AX=4900h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2F/AX=122Fh,INT 2F/AX=4010h,INT 2F/AX=4A33h,INT 2F/AX=E002h</span><br /><span class="line"></span><br /><span class="line">(Table 1082)</span><br /><span class="line">Values for DOS OEM number:</span><br /><span class="line"> 00h   IBM</span><br /><span class="line"> 01h   Compaq</span><br /><span class="line"> 02h   MS Packaged Product</span><br /><span class="line"> 04h   AT&amp;T</span><br /><span class="line"> 05h   ZDS (Zenith Electronics)</span><br /><span class="line"> 06h   Hewlett-Packard</span><br /><span class="line"> 07h   ZDS (Groupe Bull)</span><br /><span class="line"> 0Dh   Packard-Bell</span><br /><span class="line"> 16h   DEC</span><br /><span class="line"> 23h   Olivetti</span><br /><span class="line"> 28h   Texas Instruments</span><br /><span class="line"> 29h   Toshiba</span><br /><span class="line"> 33h   Novell (Windows/386 device IDs only)</span><br /><span class="line"> 34h   MS Multimedia Systems (Windows/386 device IDs only)</span><br /><span class="line"> 35h   MS Multimedia Systems (Windows/386 device IDs only)</span><br /><span class="line"> 4Dh   Hewlett-Packard</span><br /><span class="line"> 5Eh   RxDOS</span><br /><span class="line"> 66h   PhysTechSoft (PTS-DOS)</span><br /><span class="line"> 99h   General Software&#39;s Embedded DOS</span><br /><span class="line"> EEh   DR DOS</span><br /><span class="line"> EFh   Novell DOS</span><br /><span class="line"> FDh   FreeDOS</span><br /><span class="line"> FFh   Microsoft, Phoenix</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

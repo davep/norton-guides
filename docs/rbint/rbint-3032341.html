@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3029979.html">
+    <link rel="next" href="rbint-3034561.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3029979.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3002060.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3034561.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - File Server - Get Connection&#39;s Open File</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = E3h subfn DBh</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1733)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1734)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (00h,C6h) (see #1741)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is supported by Advanced NetWare 2.1+</span><br /><span class="line">   the calling workstation must have console operator privileges</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E2h/SF=1Ah,AH=E3h/SF=C8h,AH=E3h/SF=DAh,AH=E3h/SF=DCh,AH=E3h/SF=DFh</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=E1h,AX=F217h/SF=DBh</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Connection&#39;s Open Files (old)&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 1733)</span><br /><span class="line"> 00h   WORD    0005h (length of following data)</span><br /><span class="line"> 02h   BYTE    DBh (subfunction &#34;Get Connection&#39;s Open Files&#34;)</span><br /><span class="line"> 03h   WORD    (big-endian) logical connection number</span><br /><span class="line"> 05h   WORD    (big-endian) last record seen (0000h on first call)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1734,#1922 at AX=F217h/SF=DBh</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Connection&#39;s Open Files (old)&#34; reply buffer:</span><br /><span class="line">Offset Size    Description (Table 1734)</span><br /><span class="line"> 00h   WORD    (call) size of following results record (max 1FEh)</span><br /><span class="line"> 02h   WORD    next request record (place in &#34;last record&#34; field on next call)</span><br /><span class="line">       0000h if no more records</span><br /><span class="line"> 04h   BYTE    number of records following</span><br /><span class="line"> 05h   var array of File Information Records (see #1735)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1733,#1922 at AX=F217h/SF=DBh</span><br /><span class="line"></span><br /><span class="line">Format of NetWare File Information Record:</span><br /><span class="line">Offset Size    Description (Table 1735)</span><br /><span class="line"> 00h   BYTE    task number</span><br /><span class="line"> 01h   BYTE    lock flags (see #1736)</span><br /><span class="line"> 02h   BYTE    access flags (see #1737)</span><br /><span class="line"> 03h   BYTE    lock type</span><br /><span class="line">       00h no lock</span><br /><span class="line">       FEh file lock</span><br /><span class="line">       FFh locked by Begin Share File Set</span><br /><span class="line"> 04h   BYTE    volume number (00h-1Fh)</span><br /><span class="line"> 05h   WORD    (big-endian) directory entry number</span><br /><span class="line"> 07h 14 BYTEs  ASCIZ filename</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1734</span><br /><span class="line"></span><br /><span class="line">Bitfields for lock flags:</span><br /><span class="line">Bit(s) Description (Table 1736)</span><br /><span class="line"> 0 file is locked</span><br /><span class="line"> 1 file opened Shareable</span><br /><span class="line"> 2 logged</span><br /><span class="line"> 3 file opened Normal</span><br /><span class="line"> 6 TTS holding lock</span><br /><span class="line"> 7 Transaction Flag set on file</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1735,#1737</span><br /><span class="line"></span><br /><span class="line">Bitfields for access flags:</span><br /><span class="line">Bit(s) Description (Table 1737)</span><br /><span class="line"> 0 file open for reading by calling station</span><br /><span class="line"> 1 file open for writing by calling station</span><br /><span class="line"> 2 deny reads by other stations</span><br /><span class="line"> 3 deny writes by other stations</span><br /><span class="line"> 4 file detached</span><br /><span class="line"> 5 TTS Holding Detach</span><br /><span class="line"> 6 TTS Holding Open</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1735,#1736</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

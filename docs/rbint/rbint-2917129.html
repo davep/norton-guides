@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2916807.html">
+    <link rel="next" href="rbint-2919825.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2916807.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2919825.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - Connection Control                      </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = E3h</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1573)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1574)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h successful</span><br /><span class="line">       else error code</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  supported by NetWare 4.0+, Advanced NetWare 1.0+, and Alloy NTNX</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=0Ah,AH=E3h/SF=32h,AH=E3h/SF=64h,AH=E3h/SF=C8h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare request buffer:</span><br /><span class="line">Offset Size    Description (Table 1573)</span><br /><span class="line"> 00h   WORD    length of following data</span><br /><span class="line"> 02h   BYTE    subfunction number (see also AH=E3h/SF=01h,AH=E3h/SF=02h)</span><br /><span class="line">       00h login</span><br /><span class="line">       03h map object to number</span><br /><span class="line">       04h map number to object</span><br /><span class="line">       05h get station&#39;s logged information</span><br /><span class="line">       06h get station&#39;s root mask (obsolete)</span><br /><span class="line">       07h map group name to number</span><br /><span class="line">       08h map number to group name</span><br /><span class="line">       09h get memberset M of group G</span><br /><span class="line">   var depends on subfunction</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the above subfunctions are not described in _NetWare_System_Calls--DOS_</span><br /><span class="line">   see separate entries below for other subfunctions</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1574,#1575,#1578</span><br /><span class="line"></span><br /><span class="line">Format of NetWare reply buffer:</span><br /><span class="line">Offset Size    Description (Table 1574)</span><br /><span class="line"> 00h   WORD    (call) length of following buffer space for results</span><br /><span class="line">   var depends on subfunction</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1573</span><br /><span class="line"></span><br /><span class="line">Format of NetWare object property:</span><br /><span class="line">Offset Size    Description (Table 1575)</span><br /><span class="line"> 00h 1-16 BYTEs property name (see also #1576)</span><br /><span class="line">  N    BYTE    flags</span><br /><span class="line">       bit 0: property is dynamic</span><br /><span class="line">       bit 1: property is a set rather than an item</span><br /><span class="line"> N+1   BYTE    security levels (see #1577)</span><br /><span class="line">   ???</span><br /><span class="line"></span><br /><span class="line">(Table 1576)</span><br /><span class="line">Values for names of well-known NetWare properties:</span><br /><span class="line"> ACCOUNT_BALANCE</span><br /><span class="line"> ACCOUNT_SERVERS</span><br /><span class="line"> GROUP_MEMBERS</span><br /><span class="line"> GROUPS_I&#39;M_IN</span><br /><span class="line"> IDENTIFICATION        user&#39;s name</span><br /><span class="line"> LOGIN_CONTROL</span><br /><span class="line"> NET_ADDRESS</span><br /><span class="line"> OPERATORS</span><br /><span class="line"> PASSWORD</span><br /><span class="line"> SECURITY_EQUALS</span><br /><span class="line"></span><br /><span class="line">(Table 1577)</span><br /><span class="line">Values for NetWare security levels:</span><br /><span class="line"> 00h   &#34;anyone&#34; everyone may access</span><br /><span class="line"> 01h   &#34;logged&#34; only logged-in clients may access</span><br /><span class="line"> 02h   &#34;object&#34; only clients logged-in with object&#39;s name, type, and password</span><br /><span class="line"> 03h   &#34;supervisor&#34; only clients logged-in with supervisor privileges</span><br /><span class="line"> 04h   &#34;NetWare&#34; only NetWare may access</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the above values are stored in a nybble; the high half-byte is write</span><br /><span class="line">     access and the low half-byte is read access</span><br /><span class="line"></span><br /><span class="line">(Table 1578)</span><br /><span class="line">Values for NetWare object type:</span><br /><span class="line"> 0000h unknown</span><br /><span class="line"> 0001h user</span><br /><span class="line"> 0002h user group</span><br /><span class="line"> 0003h print queue / print server</span><br /><span class="line"> 0004h file server</span><br /><span class="line"> 0005h job server</span><br /><span class="line"> 0006h gateway</span><br /><span class="line"> 0007h print server</span><br /><span class="line"> 0008h archive queue</span><br /><span class="line"> 0009h archive server</span><br /><span class="line"> 000Ah job queue</span><br /><span class="line"> 000Bh administration</span><br /><span class="line"> 0021h NAS SNA gateway</span><br /><span class="line"> 0024h remote bridge server???</span><br /><span class="line"> 0026h remote bridge server</span><br /><span class="line"> 0027h TCPIP gateway</span><br /><span class="line"> 002Dh time synchronization server</span><br /><span class="line"> 002Eh archive server dynamic SAP</span><br /><span class="line"> 0047h advertising print server</span><br /><span class="line"> 0053h print queue uwer</span><br /><span class="line"> 0048h-8000h reserved</span><br /><span class="line"> FFFFh wild (used only for finding objects)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

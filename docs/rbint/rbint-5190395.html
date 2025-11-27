@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5189957.html">
+    <link rel="next" href="rbint-5191243.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5189957.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5191243.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 61 Fn 28  - Atari Portfolio - Get/set Text/keyboard Language         </span>  [<span class="ngb">b</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 28h</span><br /><span class="line">   AL = function</span><br /><span class="line">       00h get languages</span><br /><span class="line">       01h set languages</span><br /><span class="line">       DH = new text language (set bit 7 to leave unchanged)</span><br /><span class="line">       DL = new keyboard language (set bit 7 to leave unchanged)</span><br /><span class="line">       03h get language table pointers</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> if function 00h or 01h:</span><br /><span class="line">       DH = current/old text language</span><br /><span class="line">       DL = current/old keyboard language</span><br /><span class="line">   if function 03h</span><br /><span class="line">       ES:CX -&gt; keyboard table (see #3142)</span><br /><span class="line">       ES:DX -&gt; language table (see #3142)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=24h&#34;Portfolio&#34;,AH=26h&#34;Portfolio&#34;,AH=2Ch&#34;Portfolio&#34;</span><br /><span class="line"></span><br /><span class="line">Format of Atari Portfolio language table:</span><br /><span class="line">Offset Size    Description (Table 3142)</span><br /><span class="line"> 00h   BYTE    number of languages supported</span><br /><span class="line"> 01h  N BYTEs  supported languages</span><br /><span class="line">       00h English</span><br /><span class="line">       01h French</span><br /><span class="line">       02h German</span><br /><span class="line">       03h Spanish</span><br /><span class="line">       04h Italian</span><br /><span class="line">       05h Swedish</span><br /><span class="line">       06h Danish</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

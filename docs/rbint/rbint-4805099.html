@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4804648.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4804648.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4800373.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 4A Fn 05  - Ti Professional Pc - Keyboard - Insert Character Into Key</span>  [<span class="ngb">b</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 05h</span><br /><span class="line">   BX = character code (BH=00h if ASCII character, BL=00h/BH nonzero for</span><br /><span class="line">         extended codes) (see #2885)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ZF set if keyboard buffer was already full</span><br /><span class="line">   ZF clear if keystroke inserted into buffer</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=00h,AH=02h,AH=03h,AH=04h,AH=05h,INT 5B&#34;TI&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2885)</span><br /><span class="line">Values for TI Professional PC scan/character codes:</span><br /><span class="line"> Scan  Key Normal  Shift   Ctrl    Alt Notes</span><br /><span class="line"> 00h     -- unused</span><br /><span class="line"> 01h   F5  3F00h   5800h   6200h   6C00h</span><br /><span class="line"> 02h   F6  4000h   5900h   6300h   6D00h</span><br /><span class="line"> 03h   F7  4100h   5A00h   6400h   6E00h</span><br /><span class="line"> 04h   F8  4200h   5B00h   6500h   6F00h</span><br /><span class="line"> 05h   F9  4300h   5C00h   6600h   7000h</span><br /><span class="line"> 06h   F10 4400h   5D00h   6700h   7100h</span><br /><span class="line"> 07h   F11 4500h   0800h   0A00h   0C00h</span><br /><span class="line"> 08h   F12 4600h   0900h   0B00h   0D00h</span><br /><span class="line"> 09h   1 ! 0031h   0021h   ----    7800h</span><br /><span class="line"> 0Ah   2 @ 0032h   0040h   0300h   7900h</span><br /><span class="line"> 0Bh   3 # 0033h   0023h   ----    7A00h</span><br /><span class="line"> 0Ch   4 $ 0034h   0024h   ----    7B00h</span><br /><span class="line"> 0Dh   5 % 0035h   0025h   ----    7C00h</span><br /><span class="line"> 0Eh   6  0036h   005Eh   001Eh   7D00h</span><br /><span class="line"> 0Fh   7 &amp; 0037h   0026h   ----    7E00h</span><br /><span class="line"> 10h   8 * 0038h   002Ah   ----    7F00h</span><br /><span class="line"> 11h   9 ( 0039h   0028h   ----    8000h</span><br /><span class="line"> 12h   0 ) 0030h   0029h   ----    8100h</span><br /><span class="line"> 13h   - _ 002Dh   005Fh   001Fh   8200h</span><br /><span class="line"> 14h   = + 003Dh   002Bh   ----    8300h</span><br /><span class="line"> 15h BACK SPACE 0008h  0008h   007Fh   ----</span><br /><span class="line"> 16h   ` ~ 0060h   007Eh   ----    ----</span><br /><span class="line"> 17h   NUM =   003Dh   003Dh   003Dh   8C00h</span><br /><span class="line"> 18h   NUM +   002Bh   002Bh   002Bh   8D00h</span><br /><span class="line"> 19h   NUM SPAC    0020h   0020h   0020h   8E00h</span><br /><span class="line"> 1Ah   NUM TAB 0009h   0F00h   0009h   8F00h</span><br /><span class="line"> 1Bh   NUM 1   0031h   0031h   0031h   (alt-###)   [Note 5]</span><br /><span class="line"> 1Ch   (unused)</span><br /><span class="line"> 1Dh   NUM 0   0030h   0030h   0030h   (alt-###)   [Note 5]</span><br /><span class="line"> 1Eh  NUM ENTER    000Dh   000Dh   000Dh   ----</span><br /><span class="line"> 1Fh   NUM 4   0034h   0034h   0034h   (alt-###)   [Note 5]</span><br /><span class="line"> 20h   NUM 5   0035h   0035h   0035h   (alt-###)   [Note 5]</span><br /><span class="line"> 21h   NUM 9   0039h   0039h   0039h   (alt-###)   [Note 5]</span><br /><span class="line"> 22h   NUM -   002Dh   002Dh   002Dh   ----</span><br /><span class="line"> 23h   NUM 2   0032h   0032h   0032h   (alt-###)   [Note 5]</span><br /><span class="line"> 24h-26h  -- unused</span><br /><span class="line"> 27h   NUM 7   0037h   0037h   0037h   (alt-###)   [Note 5]</span><br /><span class="line"> 28h   NUM 8   0038h   0038h   0038h   (alt-###)   [Note 5]</span><br /><span class="line"> 29h   NUM 6   0036h   0036h   0036h   (alt-###)   [Note 5]</span><br /><span class="line"> 2Ah   NUM ,   002Ch   002Ch   002Ch   ----</span><br /><span class="line"> 2Bh   NUM 3   0033h   0033h   0033h   (alt-###)   [Note 5]</span><br /><span class="line"> 2Ch   NUM .   002Eh   002Eh   002Eh   ----</span><br /><span class="line"> 2Dh   PRINT   7200h   [Note2] ----    ----    [Notes 1,2]</span><br /><span class="line"> 2Eh   RtArrow 4D00h   8A00h   7400h   4E00h</span><br /><span class="line"> 2Fh   INS 5200h   2800h   2900h   2A00h   [Note 1]</span><br /><span class="line"> 30h   DEL 5300h   3800h   3900h   3A00h   [Note 1]</span><br /><span class="line"> 31h   TAB 0009h   0F00h   0009h   ----</span><br /><span class="line"> 32h   Q   0071h   0051h   0011h   1000h</span><br /><span class="line"> 33h   W   0077h   0057h   0017h   1100h</span><br /><span class="line"> 34h   E   0065h   0045h   0005h   1200h</span><br /><span class="line"> 35h   R   0072h   0052h   0012h   1300h</span><br /><span class="line"> 36h   T   0074h   0054h   0014h   1400h</span><br /><span class="line"> 37h   Y   0079h   0059h   0019h   1500h</span><br /><span class="line"> 38h   U   0075h   0055h   0015h   1600h</span><br /><span class="line"> 39h   I   0069h   0049h   0009h   1700h</span><br /><span class="line"> 3Ah   O   006Fh   004Fh   000Fh   1800h</span><br /><span class="line"> 3Bh   P   0070h   0050h   0010h   1900h</span><br /><span class="line"> 3Ch   [ { 005Bh   007Bh   001Bh   ----</span><br /><span class="line"> 3Dh   ] } 005Dh   007Dh   001Dh   ----</span><br /><span class="line"> 3Eh  LINE FEED    000Ah   000Ah   7500h   4F00h</span><br /><span class="line"> 3Fh  BRK/PAUS [Note3] [Note4] ----    ----    [Notes 1,3,4]</span><br /><span class="line"> 40h  UpArrow  4800h   8800h   8400h   4900h</span><br /><span class="line"> 41h   ESC 001Bh   001Bh   001Bh   ----</span><br /><span class="line"> 42h   A   0061h   0041h   0001h   1E00h</span><br /><span class="line"> 43h   S   0073h   0053h   0013h   1F00h</span><br /><span class="line"> 44h   D   0064h   0044h   0004h   2000h</span><br /><span class="line"> 45h   F   0066h   0046h   0006h   2100h</span><br /><span class="line"> 46h   G   0067h   0047h   0007h   2200h</span><br /><span class="line"> 47h   H   0068h   0048h   0008h   2300h</span><br /><span class="line"> 48h   J   006Ah   004Ah   000Ah   2400h</span><br /><span class="line"> 49h   K   006Bh   004Bh   000Bh   2500h</span><br /><span class="line"> 4Ah   L   006Ch   004Ch   000Ch   2600h</span><br /><span class="line"> 4Bh   ; : 003Bh   003Ah   ----    ----</span><br /><span class="line"> 4Ch   &#39; &#34; 0027h   0022h   ----    ----</span><br /><span class="line"> 4Dh   RETURN  000Dh   000Dh   000Dh   ----</span><br /><span class="line"> 4Eh   \ | 005Ch   007Ch   001Ch   ----</span><br /><span class="line"> 4Fh  LeftArrow    4B00h   8B00h   7300h   4C00h</span><br /><span class="line"> 50h   HOME    4700h   8600h   7700h   8500h</span><br /><span class="line"> 51h  Space Bar    0020h   0020h   0020h   0020h</span><br /><span class="line"> 52h   Z   007Ah   005Ah   001Ah   2C00h</span><br /><span class="line"> 53h   X   0078h   0058h   0018h   2D00h</span><br /><span class="line"> 54h   C   0063h   0043h   0003h   2E00h</span><br /><span class="line"> 55h   V   0076h   0056h   0016h   2F00h</span><br /><span class="line"> 56h   B   0062h   0042h   0002h   3000h</span><br /><span class="line"> 57h   N   006Eh   004Eh   000Eh   3100h</span><br /><span class="line"> 58h   M   006Dh   004Dh   000Dh   3200h</span><br /><span class="line"> 59h   , &lt; 002Ch   003Ch   ----    ----</span><br /><span class="line"> 5Ah  PRINT    7200h   [Note2] ----    ----    [Notes 1,2]</span><br /><span class="line"> 5Bh   . &gt; 002Eh   003Eh   ----    ----</span><br /><span class="line"> 5Ch   / ? 002Fh   003Fh   ----    ----</span><br /><span class="line"> 5Dh   (unused)</span><br /><span class="line"> 5Eh   DEL 5300h   3800h   3900h   3A00h   [Note 1]</span><br /><span class="line"> 5Fh   INS 5200h   2800h   2900h   2A00h   [Note 1]</span><br /><span class="line"> 60h  DownArrow    5000h   8900h   7600h   5100h</span><br /><span class="line"> 61h-63h  -- unused</span><br /><span class="line"> 64h  BRK/PAUS [Note3] [Note4] ----    ----    [Notes 1,3,4]</span><br /><span class="line"> 65h   F1  3B00h   5400h   5E00h   6800h</span><br /><span class="line"> 66h   F2  3C00h   5500h   5F00h   6900h</span><br /><span class="line"> 67h   F3  3D00h   5600h   6000h   6A00h</span><br /><span class="line"> 68h   F4  3E00h   5700h   6100h   6B00h</span><br /><span class="line"> 69h-6Fh  -- unused</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> [1] four of the keys can have differing scan codes, depending on the</span><br /><span class="line">     actual keyboard; the BIOS accepts either scan code (&#34;normal&#34;: 2Fh,</span><br /><span class="line">     30h, 5Ah, 64h; &#34;alternate&#34;: 2Dh,3Fh,5Eh,5Fh) for any of these keys</span><br /><span class="line">   [2] Shift-Print invokes INT 5E for a screen dump; the PRTSCRN.DEV</span><br /><span class="line">     device driver also supports Alt-Print, Ctrl-Print, Shift-Alt-Print,</span><br /><span class="line">     and Shift-Ctrl-Print for dumping graphics in various permutations</span><br /><span class="line">   [3] BRK/PAUS invokes INT 5C for a pause, then stuffs 0100h into the</span><br /><span class="line">     keyboard buffer</span><br /><span class="line">   [4] Shift-BRK/PAUS invokes INT 5D for the Break, then stuffs 0000h</span><br /><span class="line">     into the keyboard buffer; MS-DOS hooks INT 5D to keep the 0000h from</span><br /><span class="line">     appearing in the keyboard buffer</span><br /><span class="line">   [5] on the TI Pro, one enters an arbitrary character slightly</span><br /><span class="line">     differently than on a standard PC: exactly three numberpad digits</span><br /><span class="line">     must be pressed (using leading zeros for codes less than 100), and</span><br /><span class="line">     the key for the requested code is inserted into the keyboard buffer</span><br /><span class="line">     immediately on pressing the third key.  The Alt key may be released</span><br /><span class="line">     and re-pressed arbitrarily often between digits without affecting</span><br /><span class="line">     the Alt-digit-digit-digit sequence.</span><br /><span class="line">   scan codes with bit 7 set are not key releases, but rather</span><br /><span class="line">     auto-repeated keystrokes, which the BIOS only places into the</span><br /><span class="line">     keyboard buffer if the buffer is empty at the time (thus avoiding</span><br /><span class="line">     typeahead of repeated keystrokes faster than they can be processed)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0005 at INT 09</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

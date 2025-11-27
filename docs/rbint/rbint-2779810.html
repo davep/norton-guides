@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2779618.html">
+    <link rel="next" href="rbint-2781474.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2779618.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2781474.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 80  - European Ms-dos 4.0 - &#34;aexec&#34; - Execute Program In Backgr</span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 80h</span><br /><span class="line">   CX = mode</span><br /><span class="line">       0000h place child in zombie mode on exit to preserve exit code</span><br /><span class="line">       0001h discard child process and exit code on termination</span><br /><span class="line">   DS:DX -&gt; ASCIZ full program name</span><br /><span class="line">   ES:BX -&gt; parameter block (as for AX=4B00h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = Command Subgroup ID (CSID)</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line">Program: European MS-DOS 4.0 was written for Siemens in Germany and then used</span><br /><span class="line">     by several other European OEMs; its release falls between mainstream</span><br /><span class="line">     versions 3.2 and 3.3</span><br /><span class="line"><span class="ngb">Desc:</span>  asynchronously execute a program, creating a new process for it</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is called by the DETACH command</span><br /><span class="line">   there is a system-wide limit of 32 processes</span><br /><span class="line">   the CSID is used to identify all processes that have been spawned by</span><br /><span class="line">     a given process, whether directly or indirectly</span><br /><span class="line">   programs to be run in the background must use the new executable format</span><br /><span class="line">     (see #1282 at AH=4Bh)</span><br /><span class="line">   background processes may only perform asynchronous (background) EXECs,</span><br /><span class="line">     either this function or AX=4B04h</span><br /><span class="line">   background processes may execute INT 11, INT 12, INT 21, INT 2A, and</span><br /><span class="line">     INT 2F at any time; they may execute INT 10 and INT 16 only while</span><br /><span class="line">     they have opened a popup screen via INT 2F/AX=1401h; no other</span><br /><span class="line">     interrupts may be executed from the background</span><br /><span class="line">   background processes may not use drive B: or overlay their code</span><br /><span class="line">     segments</span><br /><span class="line">   see AX=8700h for an installation check</span><br /><span class="line">   the &#34;NE&#34; new executable format made its first appearance in European</span><br /><span class="line">     MS-DOS 4.0</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=4Bh,AH=87h,INT 2F/AX=1400h&#34;POPUP&#34;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

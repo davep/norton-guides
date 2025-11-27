@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-365830.html">
+    <link rel="next" href="rbint-366938.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-365830.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-366938.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Function:</span></span><br /><span class="line"></span><br /><span class="line">FSINCOS calculates both Sine and Cosine of an argument in ST.</span><br /><span class="line">The first result, sine, is stored into the original ST, destroying the</span><br /><span class="line">source value. The second result, cosine, is then pushed onto the stack.</span><br /><span class="line"></span><br /><span class="line">Note that ST(7) must be free or an invalid operation exception may occur</span><br /><span class="line">because the cosine is pushed onto the stack.</span><br /><span class="line"></span><br /><span class="line">The 486 bug occurs when a specific set of code is executed with a specific</span><br /><span class="line">set of data. There is no way you can anticipate this and the workaround</span><br /><span class="line">should always be implemented if code will run on a 486/487.</span><br /><span class="line">The bug corrupts the FPU stack without signalling it to either FPU or CPU.</span><br /><span class="line">Data corruption is usually the result.</span><br /><span class="line">Workaround: FSINCOS should always be followed by: FCLEX, FINIT, FLDCW,</span><br /><span class="line">FSTSW, FSTSWAX, &lt;FSAVE&gt; or &lt;FSTENV&gt; or by a WAIT</span><br /><span class="line">and a non-FPU instruction. Do note that some of these FPU instructions</span><br /><span class="line">contain bugs themselves.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">FSTENV  Store Floating point Environment</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

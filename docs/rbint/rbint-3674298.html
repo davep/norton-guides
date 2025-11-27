@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3673507.html">
+    <link rel="next" href="rbint-3675685.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3673507.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3675685.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 13  U - Dos 3.2+ - Set Disk Interrupt Handler                  </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 13h</span><br /><span class="line">   DS:DX -&gt; interrupt handler disk driver calls on read/write</span><br /><span class="line">   ES:BX = address to restore INT 13 to on system halt (exit from root</span><br /><span class="line">        shell) or warm boot (INT 19)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> DS:DX set by previous invocation of this function</span><br /><span class="line">   ES:BX set by previous invocation of this function</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> IO.SYS hooks INT 13 and inserts one or more filters ahead of the</span><br /><span class="line">     original INT 13 handler.  The first is for disk change detection</span><br /><span class="line">     on floppy drives, the second is for tracking formatting calls and</span><br /><span class="line">     correcting DMA boundary errors, the third is for working around</span><br /><span class="line">     problems in a particular version of IBM&#39;s ROM BIOS</span><br /><span class="line">   before the first call, ES:BX points at the original BIOS INT 13; DS:DX</span><br /><span class="line">     also points there unless IO.SYS has installed a special filter for</span><br /><span class="line">     hard disk reads (on systems with model byte FCh and BIOS date</span><br /><span class="line">     &#34;01/10/84&#34; only), in which case it points at the special filter</span><br /><span class="line">   most DOS 3.2+ disk access is via the vector in DS:DX, although a few</span><br /><span class="line">     functions are still invoked via an INT 13 instruction</span><br /><span class="line">   this is a dangerous security loophole for any virus-monitoring software</span><br /><span class="line">     which does not trap this call (&#34;INT13&#34;, &#34;Nomenklatura&#34;, and many</span><br /><span class="line">     Bulgarian viruses are known to use it to get the original ROM entry</span><br /><span class="line">     point)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 13/AH=01h,INT 19,INT 9D&#34;VIRUS&#34;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

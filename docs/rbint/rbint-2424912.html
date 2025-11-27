@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2424688.html">
+    <link rel="next" href="rbint-2429270.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2424688.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2429270.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 4458  U - Dr Dos 5.0+ Internal - Get Pointer To Internal Variab</span>  [<span class="ngb">O</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4458h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ES:BX -&gt; internal variable table (see #1270,#1271)</span><br /><span class="line">   AX = ??? (0B50h for DR DOS 5.0, 0A56h for DR DOS 6.0, 0FE4h for</span><br /><span class="line">         Novell DOS 7)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4452h</span><br /><span class="line"></span><br /><span class="line">Format of DR DOS 5.0-6.0 internal variable table:</span><br /><span class="line">Offset Size    Description (Table 1270)</span><br /><span class="line"> 00h   WORD    ???</span><br /><span class="line"> 02h   WORD    segment of ???</span><br /><span class="line"> 04h   WORD    offset within DOS data segment of history control structure</span><br /><span class="line">         for COMMAND.COM history buffer (see #1272)</span><br /><span class="line"> 06h   WORD    offset within DOS data segment of history control structure</span><br /><span class="line">         for application history buffer (see #1272)</span><br /><span class="line"> 08h   BYTE    initial history state flags (see #1269)</span><br /><span class="line"> 09h  2 BYTEs  ???</span><br /><span class="line"> 0Bh   WORD    KB of extended memory at startup</span><br /><span class="line"> 0Dh   BYTE    number of far jump entry points</span><br /><span class="line"> 0Eh   WORD    segment containing far jumps to DR DOS entry points (see #1273)</span><br /><span class="line"> 10h   WORD    (only if kernel loaded in HMA) offset in HMA of first free HMA</span><br /><span class="line">         memory block (see #1274) or 0000h if none; segment is FFFFh</span><br /><span class="line"> 12h   WORD    pointer to segment of environment variables set in CONFIG,</span><br /><span class="line">         or 0000h if already used</span><br /><span class="line">---DR DOS 6.0---</span><br /><span class="line"> 14h   WORD    (only if kernel loaded in HMA) offset in HMA of first used HMA</span><br /><span class="line">       memory block (see #1274) or 0000h if none; segment is FFFFh</span><br /><span class="line"> 16h  8 BYTEs  ???</span><br /><span class="line"> 1Eh   WORD    offset in DOS data segment of full COUNTRY.SYS filename</span><br /><span class="line"> 20h  8 BYTEs  ???</span><br /><span class="line"> 28h   WORD    offset in DOS data segment of SHARE hook table</span><br /><span class="line"> 2Ah  2 BYTEs  ???</span><br /><span class="line"> 2Ch   WORD    offset in DOS data segment of far pointer to INT 2F/AX=1000h</span><br /><span class="line">         handler</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the segment used for the DR DOS 6.0 CONFIG environment variables</span><br /><span class="line">     (excluding COMSPEC, VER and OS) is only useful for programs/drivers</span><br /><span class="line">     called from CONFIG.SYS. The word is set to zero later when the area</span><br /><span class="line">     is copied to the COMMAND.COM environment space.  This allows</span><br /><span class="line">     CONFIG.SYS to pass information to AUTOEXEC.BAT.</span><br /><span class="line">   the Novell DOS 7 KEYB uses offsets 10h,14h, and 2Ch in the same was</span><br /><span class="line">     as for DR DOS 6.0, so it is likely that the entire table is the same</span><br /><span class="line"></span><br /><span class="line">Format of Novell DOS 7 internal variable table:</span><br /><span class="line">Offset Size    Description (Table 1271)</span><br /><span class="line"> 00h   ???</span><br /><span class="line"> 1Eh   WORD    offset of COUNTRY.SYS filename</span><br /><span class="line"> 42h 16 DWORDs pointers to ??? entry points</span><br /><span class="line">   ???</span><br /><span class="line"></span><br /><span class="line">Format of history control structure:</span><br /><span class="line">Offset Size    Description (Table 1272)</span><br /><span class="line"> 00h   WORD    segment of buffer</span><br /><span class="line"> 02h   WORD    size of buffer in bytes</span><br /><span class="line"> 04h   WORD    ???</span><br /><span class="line"></span><br /><span class="line">Format of kernel entry jump table for DR DOS 5.0-6.0:</span><br /><span class="line">Offset Size    Description (Table 1273)</span><br /><span class="line"> 00h  5 BYTEs  far jump to kernel entry point for CP/M CALL 5</span><br /><span class="line"> 05h  5 BYTEs  far jump to kernel entry point for INT 20</span><br /><span class="line"> 0Ah  5 BYTEs  far jump to kernel entry point for INT 21</span><br /><span class="line"> 0Fh  5 BYTEs  far jump to kernel entry point for INT 22 (RETF)</span><br /><span class="line"> 14h  5 BYTEs  far jump to kernel entry point for INT 23 (RETF)</span><br /><span class="line"> 19h  5 BYTEs  far jump to kernel entry point for INT 24</span><br /><span class="line"> 1Eh  5 BYTEs  far jump to kernel entry point for INT 25</span><br /><span class="line"> 23h  5 BYTEs  far jump to kernel entry point for INT 26</span><br /><span class="line"> 28h  5 BYTEs  far jump to kernel entry point for INT 27</span><br /><span class="line"> 2Dh  5 BYTEs  far jump to kernel entry point for INT 28</span><br /><span class="line"> 32h  5 BYTEs  far jump to kernel entry point for INT 2A (IRET)</span><br /><span class="line"> 37h  5 BYTEs  far jump to kernel entry point for INT 2B (IRET)</span><br /><span class="line"> 3Ch  5 BYTEs  far jump to kernel entry point for INT 2C (IRET)</span><br /><span class="line"> 41h  5 BYTEs  far jump to kernel entry point for INT 2D (IRET)</span><br /><span class="line"> 46h  5 BYTEs  far jump to kernel entry point for INT 2E (IRET)</span><br /><span class="line"> 4Bh  5 BYTEs  far jump to kernel entry point for INT 2F</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> all of these entry points are indirected through this jump table</span><br /><span class="line">     to allow the kernel to be relocated into high memory while leaving</span><br /><span class="line">     the actual entry addresses in low memory for maximum compatibility</span><br /><span class="line">   some of these entry points (22h,23h,24h,2Eh,2Fh) are replaced as soon</span><br /><span class="line">     as COMMAND.COM is loaded, and return immediately to the caller, some</span><br /><span class="line">     returning an error code (the original handler for INT 2F returns</span><br /><span class="line">     AL=03h [fail]).</span><br /><span class="line"></span><br /><span class="line">Format of HMA Memory Block (DR DOS 6.0 kernel loaded in HMA):</span><br /><span class="line">Offset Size    Description (Table 1274)</span><br /><span class="line"> 00h   WORD    offset of next HMA Memory Block (0000h if last block)</span><br /><span class="line"> 02h   WORD    size of this block in bytes (at least 10h)</span><br /><span class="line"> 04h   BYTE    type of HMA Memory Block (interpreted by MEM)</span><br /><span class="line">       00h system</span><br /><span class="line">       01h KEYB</span><br /><span class="line">       02h NLSFUNC</span><br /><span class="line">       03h SHARE</span><br /><span class="line">       04h TaskMAX</span><br /><span class="line">       05h COMMAND</span><br /><span class="line"> 05h   var TSR (or system) code and data. DR DOS TSR&#39;s, such as KEYB,</span><br /><span class="line">         hooks interrupts using segment FFFEh instead FFFFh.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

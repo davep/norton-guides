@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5699907.html">
+    <link rel="next" href="rbint-5701168.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5699907.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5624141.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5701168.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 6F Fn 0D  - 10net - &#34;who&#34; - Enumerate Users On Network               </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 0Dh</span><br /><span class="line">   AL = type code</span><br /><span class="line">       01h return superstations only</span><br /><span class="line">       02h return non-superstations only</span><br /><span class="line">       otherwise return all</span><br /><span class="line">   CX = length of data buffer</span><br /><span class="line">   DS:DX -&gt; array of records to be filled (see #3439)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CL = number of records returned (responding stations)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=16h,AH=8Dh</span><br /><span class="line"></span><br /><span class="line">Format of station record:</span><br /><span class="line">Offset Size    Description (Table 3439)</span><br /><span class="line"> 00h 12 BYTEs  node ID</span><br /><span class="line"> 0Ch   BYTE    station flags (see #3440)</span><br /><span class="line">---if AL = 01h---</span><br /><span class="line"> 0Dh   BYTE    version number</span><br /><span class="line"> 0Eh   WORD    level number of 10Net software in responding node</span><br /><span class="line">---if AL = 02h---</span><br /><span class="line"> 0Dh  8 BYTEs  user ID</span><br /><span class="line"> 15h   BYTE    version number</span><br /><span class="line"> 16h   WORD    level number</span><br /><span class="line"></span><br /><span class="line">Bitfields for station flags:</span><br /><span class="line">Bit(s) Description (Table 3440)</span><br /><span class="line"> 1 workstation</span><br /><span class="line"> 2 superstation</span><br /><span class="line"> 3 xgate</span><br /><span class="line"> 4 active gate</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

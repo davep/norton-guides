@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2653775.html">
+    <link rel="next" href="rbint-2655755.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2653775.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2655755.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 5F53  u - Lan Manager Enhanced Dos - Netserverenum2            </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 5F53h</span><br /><span class="line">   DS:SI -&gt; NetServerEnum2 parameter structure (see #1413)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       BX = entries read</span><br /><span class="line">       CX = total entries available</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=5F4Ch</span><br /><span class="line"></span><br /><span class="line">Format of LAN Manager NetServerEnum2 parameter structure:</span><br /><span class="line">Offset Size    Description (Table 1413)</span><br /><span class="line"> 00h   WORD    level (0000h or 0001h)</span><br /><span class="line"> 02h   DWORD   -&gt; buffer as array of server_info_??? structures (see #1415)</span><br /><span class="line"> 06h   WORD    length of buffer</span><br /><span class="line"> 08h   DWORD   server type bitmask (see #1414)</span><br /><span class="line"> 0Ch   DWORD   -&gt; Domain name (may be 0000h:0000h for all local domains)</span><br /><span class="line"></span><br /><span class="line">Bitfields for LAN Manager server type:</span><br /><span class="line">Bit(s) Description (Table 1414)</span><br /><span class="line"> 0 workstation</span><br /><span class="line"> 1 server</span><br /><span class="line"> 2 SQL server</span><br /><span class="line"> 3 primary domain controller</span><br /><span class="line"> 4 backup domain controller</span><br /><span class="line"> 5 time server</span><br /><span class="line"> 6 Apple File Protocol (AFP) server</span><br /><span class="line"> 7 Novell server</span><br /><span class="line"> 8 Domain Member (v2.1+)</span><br /><span class="line"> 9 Print Queue server (v2.1+)</span><br /><span class="line"> 10    Dialin server (v2.1+)</span><br /><span class="line"> 11    Unix server (v2.1+)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  set all (FFFFFFFFh) for All Types</span><br /><span class="line"></span><br /><span class="line">Format of LAN Manager server_info_0 structure:</span><br /><span class="line">Offset Size    Description (Table 1415)</span><br /><span class="line"> 00h 16 BYTEs  name</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1416</span><br /><span class="line"></span><br /><span class="line">Format of LAN Manager server_info_1 structure:</span><br /><span class="line">Offset Size    Description (Table 1416)</span><br /><span class="line"> 00h 16 BYTEs  name</span><br /><span class="line"> 10h   BYTE    major version in lower nibble</span><br /><span class="line"> 11h   BYTE    minor version</span><br /><span class="line"> 12h   DWORD   server type (bits 0-11) (see #1414)</span><br /><span class="line"> 16h   DWORD   -&gt; comment string</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1415</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

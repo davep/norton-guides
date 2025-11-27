@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3991028.html">
+    <link rel="next" href="rbint-3992931.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3991028.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3870311.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3992931.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 4A11  - Dblspace.bin - &#34;getdrivemapping&#34; - Get Drive Mapping   </span>  [<span class="ngb">k</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4A11h</span><br /><span class="line">   BX = 0001h</span><br /><span class="line">   DL = drive number (0=A:)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (see also #2490)</span><br /><span class="line">       0000h successful</span><br /><span class="line">       if DL was compressed drive,</span><br /><span class="line">           BL = host drive (bit 7 set if drive is compressed)</span><br /><span class="line">       else if DL was host drive,</span><br /><span class="line">           BL = compressed drive</span><br /><span class="line">       else</span><br /><span class="line">           BL = specified drive (if available for DoubleSpace)</span><br /><span class="line">       BH = DoubleSpace sequence number</span><br /><span class="line">       other error code (0101h) (see #2490)</span><br /><span class="line">       apparently never returned for the MS-DOS 6.2 DoubleSpace</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the compressed volume file for the specified compressed drive is</span><br /><span class="line">     host:\DBLSPACE.sequence</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4A11h/BX=0000h</span><br /><span class="line"></span><br /><span class="line">(Table 2490)</span><br /><span class="line">Values for DBLSPACE function status:</span><br /><span class="line"> 0000h successful</span><br /><span class="line"> 0100h bad function</span><br /><span class="line"> 0101h invalid drive</span><br /><span class="line"> 0102h not a compressed drive</span><br /><span class="line"> 0103h drive already swapped</span><br /><span class="line"> 0104h drive not swapped</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2492</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

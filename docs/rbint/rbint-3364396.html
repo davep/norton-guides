@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3363260.html">
+    <link rel="next" href="rbint-3365405.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3363260.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3177957.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3365405.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn F25A  - Novell Netware - Get Migration Or Status Information   </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = F25Ah subfn 83h</span><br /><span class="line">   CX = length of request buffer in bytes</span><br /><span class="line">   DX = length of reply buffer in bytes</span><br /><span class="line">   DS:SI -&gt; request buffer (see #2145)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #2146)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=F2h&#34;Novell&#34;,AX=F25Ah/SF=82h,AX=F25Ah/SF=84h,AX=F25Ah/SF=85h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Migration or Status Information&#34; request packet:</span><br /><span class="line">Offset Size    Description (Table 2145)</span><br /><span class="line"> 00h   WORD    length of following data</span><br /><span class="line"> 02h   BYTE    83h (subfunction &#34;Get Migration or Status Information&#34;)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2146</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Migration or Status Information&#34; request packet:</span><br /><span class="line">Offset Size    Description (Table 2146)</span><br /><span class="line"> 00h   DWORD   presence flag</span><br /><span class="line">       FFFFFFFFh if Data Migration NLM is loaded and running</span><br /><span class="line"> 04h   DWORD   major version</span><br /><span class="line"> 08h   DWORD   minor version</span><br /><span class="line"> 0Ch   DWORD   flag: has support module registered with Data Migrator?</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2145</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

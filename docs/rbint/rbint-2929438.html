@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2927999.html">
+    <link rel="next" href="rbint-2931283.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2927999.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2931283.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - File Server - Get File Server Informatio</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = E3h subfn 11h</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1595)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1596)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h successful</span><br /><span class="line"><span class="ngb">Desc:</span>  determine the version of software installed on the file server and</span><br /><span class="line">     how it is configured</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this function is supported by Advanced NetWare 2.1+</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=0Eh,AH=E3h/SF=12h,AH=E3h/SF=CDh,AH=E3h/SF=D3h,AH=E3h/SF=E7h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E7h&#34;Novell&#34;,AX=F217h/SF=11h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get File Server Information&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 1595)</span><br /><span class="line"> 00h   WORD    0001h (length of following data)</span><br /><span class="line"> 02h   BYTE    11h (subfunction &#34;Get File Server Information&#34;)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1596,#1854 at AX=F217h/SF=11h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get File Server Information&#34; reply buffer:</span><br /><span class="line">Offset Size    Description (Table 1596)</span><br /><span class="line"> 00h   WORD    (call) 0080h (size of following results buffer)</span><br /><span class="line"> 02h 48 BYTEs  server&#39;s name</span><br /><span class="line"> 32h   BYTE    NetWare version</span><br /><span class="line"> 33h   BYTE    NetWare subversion (0-99)</span><br /><span class="line"> 34h   WORD    (big-endian) number of connections supported</span><br /><span class="line">       NetWare 4.01 reportedly returns maximum simulataneously-used</span><br /><span class="line">         connections</span><br /><span class="line"> 36h   WORD    (big-endian) number of connections in use</span><br /><span class="line"> 38h   WORD    (big-endian) maximum connected volumes</span><br /><span class="line">---Advanced NetWare 2.1+ ---</span><br /><span class="line"> 3Ah   BYTE    operating system revision number</span><br /><span class="line"> 3Bh   BYTE    fault tolerance (SFT) level</span><br /><span class="line"> 3Ch   BYTE    TTS level</span><br /><span class="line"> 3Dh   WORD    (big-endian) maximum simultaneously-used connections</span><br /><span class="line">       NetWare 4.01 reportedly returns number of connections in use</span><br /><span class="line"> 3Fh   BYTE    accounting version</span><br /><span class="line"> 40h   BYTE    VAP version</span><br /><span class="line"> 41h   BYTE    queueing version</span><br /><span class="line"> 42h   BYTE    print server version</span><br /><span class="line"> 43h   BYTE    virtual console version</span><br /><span class="line"> 44h   BYTE    security restrictions level</span><br /><span class="line"> 45h   BYTE    internetwork bridge version</span><br /><span class="line"> 46h 60 BYTEs  reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1595,#1854</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-566644.html">
+    <link rel="next" href="rbint-569358.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-566644.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-569358.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 10 Fn 3000  - Video - Locate 3270pc Configuration Table (installation</span>  [<span class="ngb">V</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 3000h</span><br /><span class="line">   CX = 0000h</span><br /><span class="line">   DX = 0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CX:DX -&gt; 3270PC configuration table (see #0060)</span><br /><span class="line">   CX:DX = 0000h:0000h if 3270PC Control Program not active</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1F01h</span><br /><span class="line"></span><br /><span class="line">Format of 3270 PC configuration table:</span><br /><span class="line">Offset Size    Description (Table 0060)</span><br /><span class="line"> 00h   BYTE    aspect ratio X</span><br /><span class="line"> 01h   BYTE    aspect ratio Y</span><br /><span class="line"> 02h   BYTE    monitor type (see #0061)</span><br /><span class="line"> 03h   BYTE    reserved</span><br /><span class="line"> 04h   BYTE    adapter ID</span><br /><span class="line">       00h = 5151/5272 adapter</span><br /><span class="line">       04h = 5151/5272 with XGA adapter</span><br /><span class="line">       30h = 3295 or 3270PC G/GX adapter</span><br /><span class="line"> 05h   BYTE    reserved</span><br /><span class="line"> 06h   BYTE    function flags 1 (see #0062)</span><br /><span class="line"> 07h   BYTE    function flags 2</span><br /><span class="line">       bit 6: GPI graphics supported</span><br /><span class="line"> 08h   WORD    segment address of Control Program Level table (see #0063)</span><br /><span class="line"> 0Ah 10 BYTEs  reserved</span><br /><span class="line"></span><br /><span class="line">(Table 0061)</span><br /><span class="line">Values for 3270 PC monitor type:</span><br /><span class="line"> 00h   5151 (mono) or 5272 (color)</span><br /><span class="line"> 01h   3295</span><br /><span class="line"> 02h   5151 or 5272 with XGA (???) graphics adapter</span><br /><span class="line"> 03h   5279 with 3270PC G adapter</span><br /><span class="line"> 04h   5379 model C01 with 3270PC GX adapter</span><br /><span class="line"> 05h   5379 model M01 with 3270PC GX adapter</span><br /><span class="line"> 07h   non-3270PC with 3270 Workstation Program</span><br /><span class="line"> FFh   3270PC Control Program not loaded</span><br /><span class="line"></span><br /><span class="line">Bitfields for 3270 PC function flags 1:</span><br /><span class="line">Bit(s) Description (Table 0062)</span><br /><span class="line"> 7 mono text, 1 page</span><br /><span class="line"> 6 color text, 1 page</span><br /><span class="line"> 5 color text, 4 pages</span><br /><span class="line"> 4 CGA color graphics</span><br /><span class="line"> 3 720x350 two-color graphics</span><br /><span class="line"> 2 360x350 four-color graphics</span><br /><span class="line"> 1 720x350 eight-color graphics</span><br /><span class="line"></span><br /><span class="line">Format of Control Program Level table:</span><br /><span class="line">Offset Size    Description (Table 0063)</span><br /><span class="line"> 00h   WORD    program version</span><br /><span class="line">       02xxh = 3270PC Control Program v2.xx</span><br /><span class="line">       03xxh = 3270PC Control Program v3.xx</span><br /><span class="line">       04xxh = 3270 Workstation Program v1.xx</span><br /><span class="line"> 02h   BYTE    Control Program ID (00h)</span><br /><span class="line"> 03h 27 BYTEs  Control Program Descriptor (&#34;IBM 3270 PC CONTROL PROGRAM&#34;)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-746540.html">
+    <link rel="next" href="rbint-748564.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-746540.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-744845.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-748564.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 11  - Bios - Get Equipment List                                      </span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> (E)AX = BIOS equipment list word (see #0158,#2886 at INT 4B&#34;Tandy&#34;)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  since older BIOSes do not know of the existence of EAX, the high word</span><br /><span class="line">     of EAX should be cleared before this call if any of the high bits</span><br /><span class="line">     will be tested</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 4B&#34;Tandy 2000&#34;,MEM 0040h:0010h</span><br /><span class="line"></span><br /><span class="line">Bitfields for BIOS equipment list:</span><br /><span class="line">Bit(s) Description (Table 0158)</span><br /><span class="line"> 0 floppy disk(s) installed (number specified by bits 7-6)</span><br /><span class="line"> 1 80x87 coprocessor installed</span><br /><span class="line"> 3-2   number of 16K banks of RAM on motherboard (PC only)</span><br /><span class="line">   number of 64K banks of RAM on motherboard (XT only)</span><br /><span class="line"> 2 pointing device installed (PS)</span><br /><span class="line"> 3 unused (PS)</span><br /><span class="line"> 5-4   initial video mode</span><br /><span class="line">   00 EGA, VGA, or PGA</span><br /><span class="line">   01 40x25 color</span><br /><span class="line">   10 80x25 color</span><br /><span class="line">   11 80x25 monochrome</span><br /><span class="line"> 7-6   number of floppies installed less 1 (if bit 0 set)</span><br /><span class="line"> 8 DMA support installed (PCjr, Tandy 1400LT)</span><br /><span class="line">   DMA support *not* installed (Tandy 1000&#39;s)</span><br /><span class="line"> 11-9  number of serial ports installed</span><br /><span class="line"> 12    game port installed</span><br /><span class="line"> 13    serial printer attached (PCjr)</span><br /><span class="line">   internal modem installed (PC/Convertible)</span><br /><span class="line"> 15-14 number of parallel ports installed</span><br /><span class="line">---Compaq, Dell, and many other 386/486 machines--</span><br /><span class="line"> 23    page tables set so that Weitek coprocessor addressable in real mode</span><br /><span class="line"> 24    Weitek math coprocessor present</span><br /><span class="line">---Compaq Systempro---</span><br /><span class="line"> 25    internal DMA parallel port available</span><br /><span class="line"> 26    IRQ for internal DMA parallel port (if bit 25 set)</span><br /><span class="line">   0 = IRQ5</span><br /><span class="line">   1 = IRQ7</span><br /><span class="line"> 28-27 parallel port DMA channel</span><br /><span class="line">   00 DMA channel 0</span><br /><span class="line">   01 DMA channel 0 ???</span><br /><span class="line">   10 reserved</span><br /><span class="line">   11 DMA channel 3</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 12&#34;BIOS&#34;,#2886 at INT 4B&#34;Tandy 2000&#34;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

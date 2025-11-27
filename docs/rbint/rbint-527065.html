@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-526826.html">
+    <link rel="next" href="rbint-529298.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-526826.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-529298.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 10 Fn 12  - Video - Alternate Func Select (ati,tatung,taxan) - Enhanc</span>  [<span class="ngb">V</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 12h</span><br /><span class="line">   BH = 55h</span><br /><span class="line">   BL = subfunction</span><br /><span class="line">       00h disable enhanced features</span><br /><span class="line">       01h enable enhanced features</span><br /><span class="line">       02h get status</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AL = status flags (see #0026)</span><br /><span class="line">       03h disable register trapping (CGA emulation)</span><br /><span class="line">       04h enable register trapping</span><br /><span class="line">       05h program video mode</span><br /><span class="line">       ES:BP -&gt; video mode table (see #0027)</span><br /><span class="line">       06h get mode table</span><br /><span class="line">       AL = video mode</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ES:BP -&gt; table suitable for mode AL</span><br /><span class="line">                 (and subfunc BL=05h) (see #0027)</span><br /><span class="line">           BP = FFFFh on error</span><br /><span class="line">           SI = 0000h (ATI Mach32)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the ATI Mouse driver (MOUSE.COM/MOUSE.SYS) uses subfunction 06h to get</span><br /><span class="line">     the mode table for mode 03h, and then looks for a signature string</span><br /><span class="line">     beginning within 32 bytes of the offset specified by the word at</span><br /><span class="line">     ES:000Ch</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=FFh&#34;Oak&#34;</span><br /><span class="line">Index: installation check;ATI video adapters</span><br /><span class="line"></span><br /><span class="line">Bitfields for status flags:</span><br /><span class="line">Bit(s) Description (Table 0026)</span><br /><span class="line"> 3 set if enhanced features enabled</span><br /><span class="line"> 7-5   monitor type</span><br /><span class="line">   000 PS/2 mono</span><br /><span class="line">   001 PS/2 color</span><br /><span class="line">   010 multi-sync</span><br /><span class="line">   011 Taxan 650 25kHz</span><br /><span class="line">   100 RGB</span><br /><span class="line">   101 mono</span><br /><span class="line">   110 EGA</span><br /><span class="line">   111 Compaq internal</span><br /><span class="line"></span><br /><span class="line">Format of ATI VGA Wonder video mode table:</span><br /><span class="line">Offset Size    Description (Table 0027)</span><br /><span class="line"> 00h   BYTE    number of columns</span><br /><span class="line"> 01h   BYTE    maximum row (number of rows - 1)</span><br /><span class="line"> 02h   BYTE    scan lines per row</span><br /><span class="line"> 03h   WORD    video buffer size in bytes</span><br /><span class="line"> 05h  4 BYTEs  values for Sequencer registers 1-4</span><br /><span class="line"> 09h   BYTE    value for Miscellaneous Output register</span><br /><span class="line"> 0Ah 25 BYTEs  values for CRTC registers 00h-18h</span><br /><span class="line">       00h horizontal total size (chars)</span><br /><span class="line">       01h horizontal displayed (chars)</span><br /><span class="line">       02h horizontal sync position (chars)</span><br /><span class="line">       03h horizontal sync width (chars)</span><br /><span class="line">       04h vertical total size (char rows)</span><br /><span class="line">       05h vertical total adjust (scan lines)</span><br /><span class="line">       06h vertical displayed (char rows)</span><br /><span class="line">       07h vertical sync position (char rows)</span><br /><span class="line">       08h interlace mode</span><br /><span class="line">       09h max scan line in row</span><br /><span class="line">       0Ah cursor start scan line</span><br /><span class="line">       0Bh cursor end scan line</span><br /><span class="line">       0Ch screen memory start (high)</span><br /><span class="line">       0Dh screen memory start (low)</span><br /><span class="line">       0Eh cursor address (high)</span><br /><span class="line">       0Fh cursor address (low)</span><br /><span class="line">       10h light pen (high)</span><br /><span class="line">       11h light pen (low)</span><br /><span class="line"> 23h 20 BYTEs  default palette (values for Attribute Controller regs 00h-13h)</span><br /><span class="line"> 37h  9 BYTEs  values for Graphics Controller registers 00h-08h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5012017.html">
+    <link rel="next" href="rbint-5014025.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5012017.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5006316.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5014025.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 60 Fn 00  - Mdebug - Get Status                                      </span>  [<span class="ngb">G</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 00h</span><br /><span class="line">   DS:SI -&gt; password or a null byte</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = return code</span><br /><span class="line">       FFFEh password is invalid</span><br /><span class="line">       FFFDh display mode is invalid</span><br /><span class="line">       else successful</span><br /><span class="line">       ES = value of the monitor register SE</span><br /><span class="line">       DI = value of the monitor register OF</span><br /><span class="line">       CH = monitor color</span><br /><span class="line">       CL = interpreter color</span><br /><span class="line">       BH = monitor start line</span><br /><span class="line">       BL = interpreter start line</span><br /><span class="line">       AH = makecode of the hotkey</span><br /><span class="line">       AL = ASCII code of the hotkey</span><br /><span class="line">       DL = status of special keys (only SHIFT, ALT, CTRL) for the</span><br /><span class="line">             hotkey (coded as for the keyboard flag at 0040h:0017h)</span><br /><span class="line">       DH = basic process number for the communication with drivers</span><br /><span class="line">             process number for the display driver, DH+1 = process</span><br /><span class="line">             number for the command driver(s)</span><br /><span class="line">   DS:SI -&gt; MDEBUG identification table (see #2975)</span><br /><span class="line">Program: MDEBUG is a shareware memory-resident debugging tool by Bernd</span><br /><span class="line">     Schemmer, including a memory monitor, an interpreter, and a</span><br /><span class="line">     disassembler</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> MDEBUG uses INT 60 by default, but may be directed to any of INT 60</span><br /><span class="line">     through INT 67; the interrupt handler is preceded by the signature</span><br /><span class="line">     &#34;USERINT&#34; and is not chained</span><br /><span class="line">   if DS:SI points at a null byte, MDEBUG will prompt for a password if</span><br /><span class="line">     passwords are active; enough stack space must be provided for an</span><br /><span class="line">     INT 10h call (which MDEBUG uses while prompting for the password)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=02h&#34;MDEBUG&#34;</span><br /><span class="line">Index: hotkeys;MDEBUG</span><br /><span class="line"></span><br /><span class="line">Format of MDEBUG identification table:</span><br /><span class="line">Offset Size    Description (Table 2975)</span><br /><span class="line"> -2    WORD    entry offset</span><br /><span class="line"> 00h   WORD    CS of MDEBUG</span><br /><span class="line"> 02h   DWORD   old INT 08h vector</span><br /><span class="line"> 06h   DWORD   old INT 09h vector</span><br /><span class="line"> 0Ah   DWORD   address INT 16h routine used by MDEBUG</span><br /><span class="line"> 0Eh   BYTE    length of version string</span><br /><span class="line"> 0Fh  N BYTEs  version string</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

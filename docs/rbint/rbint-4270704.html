@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4270381.html">
+    <link rel="next" href="rbint-4271440.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4270381.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4197937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4271440.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn B711  - Dos 4.0+ Append - Set Return Found Name State          </span>  [<span class="ngb">f</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = B711h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  if the next INT 21h call (and ONLY the next) is function 3Dh, 43h, or</span><br /><span class="line">     6Ch (also 4B03h and 4Eh if /X active), the fully qualified filename</span><br /><span class="line">     is written over top of the filename passed to the INT 21h call.  The</span><br /><span class="line">     application must provide a sufficiently large buffer.  This state is</span><br /><span class="line">     reset after the next INT 21h call processed by APPEND.</span><br /><span class="line">   APPEND uses the byte at offset 3Dh in the PSP</span><br /><span class="line">     (see #1066 at INT 21/AH=26h) to store the flag telling it to</span><br /><span class="line">     overwrite the filename</span><br /><span class="line">BUG:   DOS 4.0 APPEND reportedly overwrites DS:DX instead of DS:SI for</span><br /><span class="line">     INT 21/AH=6Ch</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 21/AH=26h,INT 21/AH=4Eh</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

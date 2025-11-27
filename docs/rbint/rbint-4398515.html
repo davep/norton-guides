@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4398366.html">
+    <link rel="next" href="rbint-4399418.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4398366.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4320812.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4399418.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn CD02  R - Interwave Game Api - Get Program Status And Informati</span>  [<span class="ngb">s</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = CD02h</span><br /><span class="line">   BX = program identifier</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CX = program status</span><br /><span class="line">       bit 0: using synthesizer</span><br /><span class="line">       bit 1: using Codec</span><br /><span class="line">       bit 2: supports at least one Game Device (see AX=CD21h,AX=CD22h)</span><br /><span class="line">   BX = supported API version (BCD, BH=major, BL=minor) if CX bit 2 set</span><br /><span class="line">   ES:DI -&gt; ASCIZ identification string</span><br /><span class="line">Range: AH=CDh-ECh, selected by scanning for an available multiplex number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  ordinarily, an application will loop through all valid program</span><br /><span class="line">     identifiers (as returned by AX=CD01h); if any of the installed</span><br /><span class="line">     programs conflicts with the use the caller wishes to make of the</span><br /><span class="line">     InterWave chip, it should be disabled with AX=CD03h first</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=CD00h&#34;InterWave&#34;,AX=CD01h&#34;InterWave&#34;,AX=CD03h&#34;InterWave&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=CD05h&#34;InterWave&#34;,AX=CD21h&#34;InterWave&#34;,AX=CD80h&#34;InterWave&#34;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

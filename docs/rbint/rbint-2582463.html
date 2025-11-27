@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2581356.html">
+    <link rel="next" href="rbint-2584291.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2581356.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2584291.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 5D00  U - Dos 3.1+ Internal - Server Function Call             </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 5D00h</span><br /><span class="line">   DS:DX -&gt; DOS parameter list (see #1372)</span><br /><span class="line">   DPL contains all register values for a call to INT 21h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> as appropriate for function being called</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> does not check AH.  Out of range values will crash the system</span><br /><span class="line">   executes using specified computer ID and process ID</span><br /><span class="line">   sharing delay loops skipped</span><br /><span class="line">   a special sharing mode is enabled to handle FCBs opened across network</span><br /><span class="line">   wildcards are enabled for DELETE (AH=41h) and RENAME (AH=56h) under</span><br /><span class="line">     MS-DOS; under DR DOS 3.41, wildcards corrupt the filesystem; and</span><br /><span class="line">     under DR DOS 5.0-6.0, the call returns error code 03h due to improper</span><br /><span class="line">     support for the server function call (refer to BUGS: section below)</span><br /><span class="line">   an extra file attribute parameter is enabled for OPEN (AH=3Dh),</span><br /><span class="line">     DELETE (AH=41h), and RENAME (AH=56h)</span><br /><span class="line">   functions which take filenames require canonical names (as returned</span><br /><span class="line">     by AH=60h); this is apparently to prevent multi-hop file forwarding</span><br /><span class="line">BUGS:  the OS/2 2.0 DOS Boot Session incorrectly maps DOS drive letters,</span><br /><span class="line">     seemingly ignoring HPFS drives</span><br /><span class="line">   DR DOS 5.0-6.0 merely recursively call INT 21 after loading the</span><br /><span class="line">     registers from the DPL, leading to problems for peer-to-peer</span><br /><span class="line">     networks</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=3Dh,AH=41h,AH=56h,AH=60h</span><br /><span class="line"></span><br /><span class="line">Format of DOS parameter list:</span><br /><span class="line">Offset Size    Description (Table 1372)</span><br /><span class="line"> 00h   WORD    AX</span><br /><span class="line"> 02h   WORD    BX</span><br /><span class="line"> 04h   WORD    CX</span><br /><span class="line"> 06h   WORD    DX</span><br /><span class="line"> 08h   WORD    SI</span><br /><span class="line"> 0Ah   WORD    DI</span><br /><span class="line"> 0Ch   WORD    DS</span><br /><span class="line"> 0Eh   WORD    ES</span><br /><span class="line"> 10h   WORD    reserved (0)</span><br /><span class="line"> 12h   WORD    computer ID (0 = current system)</span><br /><span class="line"> 14h   WORD    process ID (PSP segment on specified computer)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  under Windows Enhanced mode, the computer ID is normally the virtual</span><br /><span class="line">     machine ID (see INT 2F/AX=1683h), though this can reportedly be</span><br /><span class="line">     changed by setting UniqueDOSPSP= in SYSTEM.INI</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

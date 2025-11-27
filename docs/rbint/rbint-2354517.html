@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2353582.html">
+    <link rel="next" href="rbint-2356575.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2353582.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2356575.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 4403  - Smartdrv.sys V3.x Only - Ioctl - Cache Control         </span>  [<span class="ngb">c</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4403h</span><br /><span class="line">   BX = handle for device &#34;SMARTAAR&#34;</span><br /><span class="line">   CX = number of bytes to write</span><br /><span class="line">   DS:DX -&gt; SMARTDRV control block (see #1210)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = number of bytes actually written</span><br /><span class="line">       0000h if control block too small for given command</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (01h,05h,06h,0Dh) (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  NCache2 (from the Norton Utilities v8.0) attempts to support this</span><br /><span class="line">     interface, but does not do so correctly, often hanging the system;</span><br /><span class="line">     one should use the SmartDrive v4.x or NCache private interfaces</span><br /><span class="line">     (see INT 2F/AX=4A10h/BX=0000h,INT 2F/AX=FE00h/DI=4E55h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4402h&#34;SMARTDRV&#34;,INT 2F/AX=4A10h/BX=0000h</span><br /><span class="line"></span><br /><span class="line">(Table 1209)</span><br /><span class="line">Values for SMARTDRV function code:</span><br /><span class="line"> 00h   flush cache</span><br /><span class="line"> 01h   flush and discard cache</span><br /><span class="line"> 02h   disable caching (flushes and discards cache first)</span><br /><span class="line"> 03h   enable caching</span><br /><span class="line"> 04h   control write caching</span><br /><span class="line"> 05h   set flushing tick count</span><br /><span class="line"> 06h   lock cache contents</span><br /><span class="line"> 07h   unlock cache contents</span><br /><span class="line"> 08h   set flush-on-reboot flag</span><br /><span class="line"> 09h   unused</span><br /><span class="line"> 0Ah   control full-track caching</span><br /><span class="line"> 0Bh   reduce cache size</span><br /><span class="line"> 0Ch   increase cache size</span><br /><span class="line"> 0Dh   set INT 13 chain address</span><br /><span class="line"></span><br /><span class="line">Format of SMARTDRV control block:</span><br /><span class="line">Offset Size    Description (Table 1210)</span><br /><span class="line"> 00h   BYTE    function code (see #1209)</span><br /><span class="line">---functions 00h-03h,06h,07h---</span><br /><span class="line"> no additional fields</span><br /><span class="line">---function 04h---</span><br /><span class="line"> 01h   BYTE    write caching control action</span><br /><span class="line">       00h turn off write-through</span><br /><span class="line">       01h turn on write-through</span><br /><span class="line">       02h turn off write buffering (also flushes cache)</span><br /><span class="line">       03h turn on write buffering (also flushes cache)</span><br /><span class="line">---function 05h---</span><br /><span class="line"> 01h   WORD    number of timer ticks between cache flushes</span><br /><span class="line">---function 08h---</span><br /><span class="line"> 01h   BYTE    new flush-on-reboot flag (00h off, 01h on)</span><br /><span class="line">---function 0Ah---</span><br /><span class="line"> 01h   BYTE    full-track writes are</span><br /><span class="line">       00h not cached</span><br /><span class="line">       01h cached</span><br /><span class="line">---functions 0Bh,0Ch---</span><br /><span class="line"> 01h   WORD    number of 16K pages by which to increase/reduce cache size</span><br /><span class="line">---function 0Dh---</span><br /><span class="line"> 01h   DWORD   new address to which to chain on INT 13</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the previous address is not preserved</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

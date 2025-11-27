@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1296087.html">
+    <link rel="next" href="rbint-1301258.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1296087.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1227085.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1301258.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn 53B0  - Intel System Management Bus - Request                  </span>  [<span class="ngb">X</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 53B0h</span><br /><span class="line">   BH = 10h</span><br /><span class="line">   BL = protocol (see #0413)</span><br /><span class="line">   CH = device address</span><br /><span class="line">   CL = device command (see #0414)</span><br /><span class="line">   DH = MSB Data or block length (for BlockWrite)</span><br /><span class="line">   DL = LSB Data or first byte of block (for BlockWrite)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AH = 00h or 80h (SMBus OK)</span><br /><span class="line">        (80h indicates a previously unreported SMI took place)</span><br /><span class="line">   CF set if error</span><br /><span class="line">       AH = error code (05h,10h,11h,12h,13h,14h,17h,19h,1Ah,86h)</span><br /><span class="line">         (see #0410)</span><br /><span class="line"><span class="ngb">Desc:</span>  request access to a device on the SMBus</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=53B0h/BH=11h, AX=53B0h/BH=13h</span><br /><span class="line"></span><br /><span class="line">(Table 0413)</span><br /><span class="line">Values for Intel System Management Bus protocol codes:</span><br /><span class="line"> 00h   Quick Command</span><br /><span class="line"> 01h   Send Byte</span><br /><span class="line"> 02h   Receive Byte</span><br /><span class="line"> 03h   Write Byte</span><br /><span class="line"> 04h   Read Byte</span><br /><span class="line"> 05h   Write Word</span><br /><span class="line"> 06h   Read Word</span><br /><span class="line"> 07h   Block Write</span><br /><span class="line"> 08h   Block Read</span><br /><span class="line"> 09h   Process Call</span><br /><span class="line"> 0Ah-FFh reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0414</span><br /><span class="line"></span><br /><span class="line">(Table 0414)</span><br /><span class="line">Values for Intel System Management Bus Smart Battery command codes:</span><br /><span class="line"> Cmd   Protocol(s) Description</span><br /><span class="line"> 00h   Rd/Wr Word  &#34;ManufacturerAccess&#34; implementation-specific</span><br /><span class="line"> 01h   Rd/Wr Word  get/set Low Capacity Alarm threshold</span><br /><span class="line"> 02h   Rd/Wr Word  get/set Remaining Time Alarm value (in minutes)</span><br /><span class="line"> 03h   Rd/Wr Word  get/set battery characteristics (see #0415)</span><br /><span class="line"> 04h   Rd/Wr Word  &#34;AtRate&#34; indicate charge/discharge rate</span><br /><span class="line"> 05h   Read Word   &#34;AtRateTimeToFull&#34; time to completely charge (in min.)</span><br /><span class="line"> 06h   Read Word   &#34;AtRateTimeToEmpty&#34; time to entirely discharge (min.)</span><br /><span class="line"> 07h   Read Word   &#34;AtRateOK&#34; boolean: can battery supply another 10sec?</span><br /><span class="line"> 08h   Read Word   internal battery temperature (in 0.1 Kelvins)</span><br /><span class="line"> 09h   Read Word   current battery voltage in millivolts</span><br /><span class="line"> 0Ah   Read Word   current flowing through battery in milliamperes</span><br /><span class="line">           (positive if charging, negative if discharging)</span><br /><span class="line"> 0Bh   Read Word   average current over the past minute</span><br /><span class="line"> 0Ch   Read Word   expected error margin in capacity computations in %</span><br /><span class="line"> 0Dh   Read Word   predicted remaining charge as % of full charge</span><br /><span class="line"> 0Eh   Read Word   predicted remaining charge as % of design capacity</span><br /><span class="line"> 0Fh   Read Word   predicted remaining charge in mAh or 10mWh</span><br /><span class="line"> 10h   Read Word   predicted full charge capacity in mAh or 10mWh</span><br /><span class="line"> 11h   Read Word   predicted remaining battery life in minutes</span><br /><span class="line">           FFFFh = not discharging</span><br /><span class="line"> 12h   Read Word   rolling average of predicted life over past minute</span><br /><span class="line"> 13h   Read Word   rolling average of predicted charge time over past min.</span><br /><span class="line">           FFFFh = not charging</span><br /><span class="line"> 14h   Read Word   get battery&#39;s desired charging current in mA</span><br /><span class="line"> 14h   Write Word  set charging current in mA</span><br /><span class="line"> 15h   Read Word   get battery&#39;s desired charging current in mV</span><br /><span class="line"> 15h   Write Word  set desired charging voltage in mV</span><br /><span class="line"> 16h   Read Word   get current battery status (see #0416)</span><br /><span class="line"> 17h   Read Word   get number of charge/discharge cycles for battery</span><br /><span class="line"> 18h   Read Word   get design capacity in mAh or 10mWh</span><br /><span class="line"> 19h   Read Word   get design voltage</span><br /><span class="line"> 1Ah   Read Word   get specification information (see #0417)</span><br /><span class="line"> 1Bh   Read Word   get manufacture date (see #1351 at INT 21/AX=5700h)</span><br /><span class="line"> 1Ch   Read Word   get serial number</span><br /><span class="line"> 1Dh-1Fh       reserved</span><br /><span class="line"> 20h   Read Block  get manufacturer&#39;s name</span><br /><span class="line"> 21h   Read Block  get device name</span><br /><span class="line"> 22h   Read Block  get device chemistry (see #0418)</span><br /><span class="line"> 23h   Read Block  get manufacturer data</span><br /><span class="line"> 24h-2Eh       reserved</span><br /><span class="line"> 2Fh           manufacturer-specific</span><br /><span class="line"> 30h-3Bh       reserved</span><br /><span class="line"> 3Ch-3Fh       manufacturer-specific</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  bits 7-6 are reserved for addressing multiple batteries in a future</span><br /><span class="line">     version of the specification</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0413</span><br /><span class="line"></span><br /><span class="line">Bitfields for Smart Battery battery characteristics:</span><br /><span class="line">Bit(s) Description (Table 0415)</span><br /><span class="line"> 0 battery has internal charge controller (read-only)</span><br /><span class="line"> 1 primary/secondary battery support (read-only)</span><br /><span class="line"> 6-2   reserved</span><br /><span class="line"> 7 conditioning cycle requested</span><br /><span class="line"> 8 internal charge controller enabled</span><br /><span class="line"> 9 battery operating in primary mode</span><br /><span class="line"> 13-10 reserved</span><br /><span class="line"> 14    disable broadcast to charger</span><br /><span class="line"> 15    report capacity in units of 10mW / 10mWh instead of mA / mAh</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0414,#0416</span><br /><span class="line"></span><br /><span class="line">Bitfields for Smart Battery battery status:</span><br /><span class="line">Bit(s) Description (Table 0416)</span><br /><span class="line"> 15    overcharged</span><br /><span class="line"> 14    terminate-charge alarm</span><br /><span class="line"> 13    reserved</span><br /><span class="line"> 12    over-temperature alarm</span><br /><span class="line"> 11    terminate-discharge alarm</span><br /><span class="line"> 10    reserved</span><br /><span class="line"> 9 remaining-capacity alarm</span><br /><span class="line"> 8 remaining-time alarm</span><br /><span class="line"> 7 initialized</span><br /><span class="line"> 6 charging</span><br /><span class="line"> 5 fully charged</span><br /><span class="line"> 4 fully discharged</span><br /><span class="line"> 3-0   error codes</span><br /><span class="line">   0000 OK</span><br /><span class="line">   0001 busy</span><br /><span class="line">   0010 reserved command</span><br /><span class="line">   0011 unsupported command</span><br /><span class="line">   0100 access denied (tried to write to read-only value)</span><br /><span class="line">   0101 overflow/underflow</span><br /><span class="line">   0110 bad size</span><br /><span class="line">   0111 unknown error</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0414,#0415,#0417</span><br /><span class="line"></span><br /><span class="line">Bitfields for Smart Battery specification information:</span><br /><span class="line">Bit(s) Description (Table 0417)</span><br /><span class="line"> 3-0   SmartBattery specification minor revision number</span><br /><span class="line"> 7-4   SmartBattery specification version number</span><br /><span class="line"> 11-8  voltage scaling (0-3, multiply voltages by 10scale)</span><br /><span class="line"> 15-12 current scaling (0-3, multiply currents by 10scale)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0414,#0416</span><br /><span class="line"></span><br /><span class="line">(Table 0418)</span><br /><span class="line">Values for Smart Battery device chemistry (not case-sensitive):</span><br /><span class="line"> &#34;LION&#34;    Lithium ion</span><br /><span class="line"> &#34;NiMH&#34;    Nickel metal hydride</span><br /><span class="line"> &#34;PbAc&#34;    lead-acid</span><br /><span class="line"> &#34;NiCd&#34; Nickel Cadmium</span><br /><span class="line"> &#34;NiZn&#34; Nickel Zinc</span><br /><span class="line"> &#34;RAM&#34; rechargeable Alkaline Manganese</span><br /><span class="line"> &#34;ZnAr&#34; Zinc-Air</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0414</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

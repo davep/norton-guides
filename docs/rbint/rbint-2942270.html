@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2940972.html">
+    <link rel="next" href="rbint-2943638.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2940972.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2943638.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - Bindery Services - Scan Bindery Object  </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = E3h subfn 37h</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1618)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1619)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (see #1615)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is supported by Advanced NetWare 1.0+ and Alloy NTNX</span><br /><span class="line">   the requesting workstation must be logged into the file server with</span><br /><span class="line">     read access to the bindery object</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=32h,AH=E3h/SF=33h,AH=E3h/SF=38h,AH=E3h/SF=3Ch</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=F217h/SF=37h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Scan Bindery Object&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 1618)</span><br /><span class="line"> 00h   WORD    length of following data (max 37h)</span><br /><span class="line"> 02h   BYTE    37h (subfunction &#34;Scan Bindery Object&#34;)</span><br /><span class="line"> 03h   DWORD   (big-endian) last object ID</span><br /><span class="line"> 07h   WORD    (big-endian) type of object</span><br /><span class="line"> 09h   BYTE    length of object&#39;s name</span><br /><span class="line"> 0Ah  N BYTEs  object&#39;s name</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1619,#1874</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Scan Bindery Object&#34; reply buffer:</span><br /><span class="line">Offset Size    Description (Table 1619)</span><br /><span class="line"> 00h   WORD    (call) 0039h (length of following buffer space)</span><br /><span class="line"> 02h   DWORD   (big-endian) object ID</span><br /><span class="line">       FFFFFFFFh for first call</span><br /><span class="line"> 06h   WORD    (big-endian) type of object</span><br /><span class="line"> 08h 48 BYTEs  object name (counted string)</span><br /><span class="line"> 38h   BYTE    object flag (00h static, 01h dynamic)</span><br /><span class="line"> 39h   BYTE    object&#39;s security levels</span><br /><span class="line"> 3Ah   BYTE    object properties flag (00h no, FFh yes)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1618,#1874</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

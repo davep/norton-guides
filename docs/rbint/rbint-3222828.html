@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3222083.html">
+    <link rel="next" href="rbint-3223899.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3222083.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3177957.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3223899.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn F217  - Novell Netware - Get Account Status                    </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = F217h subfn 96h</span><br /><span class="line">   CX = length of request buffer in bytes</span><br /><span class="line">   DX = length of reply buffer in bytes</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1691 at AH=E3h/SF=96h)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1912)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=F2h&#34;Novell&#34;,AH=E3h/SF=96h,AX=F217h/SF=97h,AX=F217h/SF=98h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Account Status&#34; reply packet:</span><br /><span class="line">Offset Size    Description (Table 1912)</span><br /><span class="line"> 00h   DWORD   (big-endian) account balance</span><br /><span class="line"> 04h   DWORD   (big-endian) credit limit</span><br /><span class="line">       signed number indicating lowest allowable account balance</span><br /><span class="line"> 06h 120 BYTEs reserved</span><br /><span class="line"> 80h   DWORD   (big-endian) object ID, server 1</span><br /><span class="line"> 84h   DWORD   (big-endian) hold amount, server 1</span><br /><span class="line">   ...</span><br /><span class="line"> F6h   DWORD   (big-endian) object ID, server 16</span><br /><span class="line"> FAh   DWORD   (big-endian) hold amount, server 16</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the reply buffer lists the servers which have placed holds on a portion</span><br /><span class="line">     of the account balance, and the amount reserved by each</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1691,#1692 at AH=E3h/SF=96h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

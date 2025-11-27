@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2669063.html">
+    <link rel="next" href="rbint-2672135.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2669063.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2672135.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 5FB0  - Lantastic - Get Active User Information                </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 5FB0h</span><br /><span class="line">   BX = server login entry index</span><br /><span class="line">   DS:SI -&gt; buffer for active user entry (see #1428)</span><br /><span class="line">   ES:DI -&gt; ASCIZ machine name in form &#34;\\server&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code</span><br /><span class="line">   BX = next login index</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=5FB2h</span><br /><span class="line"></span><br /><span class="line">Format of LANtastic active user entry:</span><br /><span class="line">Offset Size    Description (Table 1428)</span><br /><span class="line"> 00h   WORD    virtual circuit number</span><br /><span class="line"> 02h   BYTE    login state (see #1429)</span><br /><span class="line"> 03h   BYTE    last command issued (see #1430)</span><br /><span class="line"> 04h  5 BYTEs  number of I/O bytes (40-bit unsigned number)</span><br /><span class="line"> 09h  3 BYTEs  number of server requests (24-bit unsigned)</span><br /><span class="line"> 0Ch 16 BYTEs  name of user who is logged in</span><br /><span class="line"> 1Ch 16 BYTEs  name of remote logged in machine</span><br /><span class="line"> 2Ch   BYTE    extended privileges (v4+???)</span><br /><span class="line">       bit 0: user cannot change his password</span><br /><span class="line"> 2Dh   WORD    time left in minutes (0000h = unlimited) (v4+???)</span><br /><span class="line"></span><br /><span class="line">Bitfields for login state:</span><br /><span class="line">Bit(s) Description (Table 1429)</span><br /><span class="line"> 0 fully logged in</span><br /><span class="line"> 1 remote program load login</span><br /><span class="line"> 2 user has system manager privileges</span><br /><span class="line"> 3 user can create audit entries</span><br /><span class="line"> 4 bypass mail protection</span><br /><span class="line"> 5 treat as local process</span><br /><span class="line"> 6 bypass queue protection</span><br /><span class="line"> 7 bypass access control lists</span><br /><span class="line"></span><br /><span class="line">(Table 1430)</span><br /><span class="line">Values for last LANtastic command:</span><br /><span class="line"> 00h   login</span><br /><span class="line"> 01h   process termination</span><br /><span class="line"> 02h   open file</span><br /><span class="line"> 03h   close file</span><br /><span class="line"> 04h   create file</span><br /><span class="line"> 05h   create new file</span><br /><span class="line"> 06h   create unique file</span><br /><span class="line"> 07h   commit data to disk</span><br /><span class="line"> 08h   read file</span><br /><span class="line"> 09h   write file</span><br /><span class="line"> 0Ah   delete file</span><br /><span class="line"> 0Bh   set file attributes</span><br /><span class="line"> 0Ch   lock byte range</span><br /><span class="line"> 0Dh   unlock byte range</span><br /><span class="line"> 0Eh   create subdirectory</span><br /><span class="line"> 0Fh   remove subdirectory</span><br /><span class="line"> 10h   rename file</span><br /><span class="line"> 11h   find first matching file</span><br /><span class="line"> 12h   find next matching file</span><br /><span class="line"> 13h   get disk free space</span><br /><span class="line"> 14h   get a queue entry</span><br /><span class="line"> 15h   set a queue entry</span><br /><span class="line"> 16h   control the queue</span><br /><span class="line"> 17h   return login information</span><br /><span class="line"> 18h   return link description</span><br /><span class="line"> 19h   seek on file</span><br /><span class="line"> 1Ah   get server&#39;s time</span><br /><span class="line"> 1Bh   create audit entry</span><br /><span class="line"> 1Ch   open file in multitude of modes</span><br /><span class="line"> 1Dh   change password</span><br /><span class="line"> 1Eh   disable account</span><br /><span class="line"> 1Fh   local server file copy</span><br /><span class="line">---v3+---</span><br /><span class="line"> 20h   get username from account file</span><br /><span class="line"> 21h   translate server&#39;s logical path</span><br /><span class="line"> 22h   make indirect file</span><br /><span class="line"> 23h   get indirect file contents</span><br /><span class="line"> 24h   get physical printer status</span><br /><span class="line"> 25h   get logical print stream info</span><br /><span class="line"> 26h   set logical print stream info</span><br /><span class="line"> 27h   get user&#39;s account record</span><br /><span class="line">---v4+---</span><br /><span class="line"> 28h   request server shutdown</span><br /><span class="line"> 29h   cancel server shutdown</span><br /><span class="line"> 2Ah   stuff server&#39;s keyboard</span><br /><span class="line"> 2Bh   write then commit data to disk</span><br /><span class="line"> 2Ch   set extended queue entry</span><br /><span class="line"> 2Dh   terminate user from server</span><br /><span class="line"> 2Eh   enable/disable logins</span><br /><span class="line"> 2Fh   flush server caches</span><br /><span class="line"> 30h   change username</span><br /><span class="line"> 31h   get extended queue entry</span><br /><span class="line">   (same as get queue, but can return named fields blanked)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

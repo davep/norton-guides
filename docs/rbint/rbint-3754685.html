@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3749230.html">
+    <link rel="next" href="rbint-3756700.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3749230.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3756700.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1684  - Ms Windows95 - Vmm - Get Api Entry Point               </span>  [<span class="ngb">W</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1684h</span><br /><span class="line">   BX = 0001h (virtual device ID for VMM) (see #2329)</span><br /><span class="line">   ES:DI = 0000h:0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ES:DI -&gt; VxD API entry point (see #2330)</span><br /><span class="line">         0000h:0000h if the VxD does not support an API</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1684h&#34;DEVICE API&#34;,INT 20&#34;Windows&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2330)</span><br /><span class="line">Call Windows VMM 16-bit entry point with:</span><br /><span class="line">   AX = function number</span><br /><span class="line">       ---registry functions---</span><br /><span class="line">       0100h &#34;RegOpenKey&#34;</span><br /><span class="line">       STACK:  DWORD   -&gt; DWORD for returned key handle</span><br /><span class="line">           DWORD   -&gt; ASCIZ registry key name</span><br /><span class="line">           DWORD   HKEY (see #2331)</span><br /><span class="line">       0101h &#34;RegCreateKey&#34;</span><br /><span class="line">       STACK:  DWORD   -&gt; DWORD for returned key handle</span><br /><span class="line">           DWORD   -&gt; ASCIZ registry key name</span><br /><span class="line">           DWORD   HKEY (see #2331)</span><br /><span class="line">       0102h &#34;RegCloseKey&#34;</span><br /><span class="line">       STACK:  DWORD   key handle from RegOpenKey or RegCreateKey</span><br /><span class="line">       0103h &#34;RegDeleteKey&#34;</span><br /><span class="line">       STACK:  DWORD   -&gt; ASCIZ registry key name</span><br /><span class="line">           DWORD   HKEY (see #2331)</span><br /><span class="line">       0104h &#34;RegSetValue&#34;</span><br /><span class="line">       STACK:  DWORD   ???</span><br /><span class="line">           DWORD   -&gt; ???</span><br /><span class="line">           DWORD   ???</span><br /><span class="line">           DWORD   -&gt; ???</span><br /><span class="line">           DWORD   HKEY (see #2331)</span><br /><span class="line">       0105h &#34;RegQueryValue&#34;</span><br /><span class="line">       STACK:  DWORD   -&gt; DWORD for ???</span><br /><span class="line">           DWORD   -&gt; ASCIZ ???</span><br /><span class="line">           DWORD   -&gt; ASCIZ ???</span><br /><span class="line">           DWORD   HKEY (see #2331)</span><br /><span class="line">       0106h &#34;RegEnumKey&#34;</span><br /><span class="line">       STACK:  DWORD   ???</span><br /><span class="line">           DWORD   -&gt; ASCIZ ???</span><br /><span class="line">           DWORD   ???</span><br /><span class="line">           DWORD   HKEY (see #2331)</span><br /><span class="line">       0107h &#34;RegDeleteValue&#34;</span><br /><span class="line">       0108h &#34;RegEnumValue&#34;</span><br /><span class="line">       STACK:  DWORD   -&gt; DWORD for ???</span><br /><span class="line">           DWORD   -&gt; BYTE ???</span><br /><span class="line">           DWORD   -&gt; DWORD for ???</span><br /><span class="line">           DWORD   -&gt; DWORD for ???</span><br /><span class="line">           DWORD   -&gt; DWORD for ???</span><br /><span class="line">           DWORD   -&gt; ASCIZ ???</span><br /><span class="line">           DWORD   ???</span><br /><span class="line">           DWORD   HKEY (see #2331)</span><br /><span class="line">       0109h &#34;RegQueryValueEx&#34;</span><br /><span class="line">       010Ah &#34;RegSetValueEx&#34;</span><br /><span class="line">       010Bh &#34;RegFlushKey&#34;</span><br /><span class="line">       010Ch &#34;RegLoadKey&#34;</span><br /><span class="line">       010Dh &#34;RegUnLoadKey&#34;</span><br /><span class="line">       010Eh &#34;RegSaveKey&#34;</span><br /><span class="line">       010Fh &#34;RegRestore&#34;</span><br /><span class="line">       0110h &#34;RegRemapPreDefKey&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> parameters popped from stack</span><br /><span class="line">   DX:AX = return value</span><br /><span class="line"></span><br /><span class="line">(Table 2331)</span><br /><span class="line">Values for Windows95 VMM predefined HKEY values:</span><br /><span class="line"> 80000000h HKEY_CLASSES_ROOT</span><br /><span class="line"> 80000001h HKEY_CURRENT_USER</span><br /><span class="line"> 80000002h HKEY_LOCAL_MACHINE</span><br /><span class="line"> 80000003h HKEY_USERS</span><br /><span class="line"> 80000004h HKEY_PERFORMANCE_DATA</span><br /><span class="line"> 80000005h HKEY_CURRENT_CONFIG</span><br /><span class="line"> 80000006h HKEY_DYN_DATA</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2330</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

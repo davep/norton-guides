@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5724852.html">
+    <link rel="next" href="rbint-5727010.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5724852.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5624141.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5727010.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 6F Fn 8D  - 10net V5.0 - &#34;who&#34; - Enumerate Users On Network          </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 8Dh</span><br /><span class="line">   BX = service mask (see #3450)</span><br /><span class="line">   CX = length of buffer</span><br /><span class="line">   DS:DX -&gt; buffer for array of Who data structures (see #3451)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       CX = number of nodes matching service mask</span><br /><span class="line">       DS:DX buffer filled</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = status (see #3411)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=0Dh</span><br /><span class="line"></span><br /><span class="line">Bitfields for 10NET service mask:</span><br /><span class="line">Bit(s) Description (Table 3450)</span><br /><span class="line"> 0 workstation</span><br /><span class="line"> 1 file server</span><br /><span class="line"> 2 print server</span><br /><span class="line"> 3 de-spool server</span><br /><span class="line"></span><br /><span class="line">Format of 10NET Who data structure:</span><br /><span class="line">Offset Size    Description (Table 3451)</span><br /><span class="line"> 00h  8 BYTEs  user name</span><br /><span class="line"> 08h 15 BYTEs  node ID</span><br /><span class="line"> 17h  3 BYTEs  unique portion of Ethernet address</span><br /><span class="line"> 1Ah   BYTE    Who group number</span><br /><span class="line"> 1Bh   WORD    service mask (see #3450)</span><br /><span class="line"> 1Dh   DWORD   serial number</span><br /><span class="line"> 21h   BYTE    maximum concurrent users with same serial number allowed on net</span><br /><span class="line"> 22h   BYTE    chat mask (see #3452)</span><br /><span class="line"> 23h   BYTE    internal system bits (see #3453)</span><br /><span class="line"> 24h  9 BYTEs  version number in format MM.mm.xxx</span><br /><span class="line"> 2Dh   BYTE    number of shared directories</span><br /><span class="line"> 2Eh   BYTE    number of shared printer queues</span><br /><span class="line"></span><br /><span class="line">Bitfields for 10NET chat mask:</span><br /><span class="line">Bit(s) Description (Table 3452)</span><br /><span class="line"> 0 chat permitted</span><br /><span class="line"> 1 bell enabled</span><br /><span class="line"> 2 chat keyboard initiated</span><br /><span class="line"> 3 in INT 16 handler</span><br /><span class="line"> 4 in Get Input</span><br /><span class="line"> 5 display has timed out</span><br /><span class="line"> 6 chat is idle</span><br /><span class="line"></span><br /><span class="line">Bitfields for 10NET internal system bits:</span><br /><span class="line">Bit(s) Description (Table 3453)</span><br /><span class="line"> 0 submit permitted</span><br /><span class="line"> 1 submit initiated</span><br /><span class="line"> 2 submit executing</span><br /><span class="line"> 3 internal client call/chat/spool/autospool</span><br /><span class="line"> 4 in spool termination</span><br /><span class="line"> 5 print permitted</span><br /><span class="line"> 6 waiting for keyboard input</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

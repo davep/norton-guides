@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2761956.html">
+    <link rel="next" href="rbint-2764723.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2761956.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2764723.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 71A0  - Windows95 - Long Filename - Get Volume Information     </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 71A0h</span><br /><span class="line">   DS:DX -&gt; ASCIZ root name (e.g. &#34;C:\&#34;)</span><br /><span class="line">   ES:DI -&gt; buffer for file system name</span><br /><span class="line">   CX = size of ES:DI buffer</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX destroyed (0000h and 0200h seen)</span><br /><span class="line">       BX = file system flags (see #1472)</span><br /><span class="line">       CX = maximum length of file name [usually 255]</span><br /><span class="line">       DX = maximum length of path [usually 260]</span><br /><span class="line">       ES:DI buffer filled (ASCIZ, e.g. &#34;FAT&#34;,&#34;NTFS&#34;,&#34;CDFS&#34;)</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code</span><br /><span class="line">       7100h if function not supported</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> for the file system name buffer, 32 bytes should be sufficient; that&#39;s</span><br /><span class="line">    what is used in some sample code by Walter Oney from Microsoft.</span><br /><span class="line">   this function accesses the disk the first time it is called</span><br /><span class="line">BUG:   this function returns DX=0000h for CD-ROM drives under Win95 SP1</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=714Eh,AX=7160h/CL=00h</span><br /><span class="line"></span><br /><span class="line">Bitfields for long filename volume information flags:</span><br /><span class="line">Bit(s) Description (Table 1472)</span><br /><span class="line"> 0 searches are case sensitive</span><br /><span class="line"> 1 preserves case in directory entries</span><br /><span class="line"> 2 uses Unicode characters in file and directory names</span><br /><span class="line"> 3-13  reserved (0)</span><br /><span class="line"> 14    supports DOS long filename functions</span><br /><span class="line"> 15    volume is compressed</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

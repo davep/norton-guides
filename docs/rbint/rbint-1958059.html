@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1957882.html">
+    <link rel="next" href="rbint-1959564.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1957882.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1712194.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1959564.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 1A Fn B406  - Intel Plug-and-play Auto-configuration - Get Pci Irq Ro</span>  [<span class="ngb">X</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = B406h</span><br /><span class="line">   ES:DI -&gt; IRQ routing table header (see #0955)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = 0000h</span><br /><span class="line">       WORD ES:[DI] = size of returned data</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (0059h) (see #0939)</span><br /><span class="line">       WORD ES:[DI] = required size of buffer</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=B400h,AX=B404h,AX=B10Eh,INT 2F/AX=1684h/BX=304Ch</span><br /><span class="line"></span><br /><span class="line">Format of Intel Plug-and-Play AUTO-CONFIGURATION PCI IRQ routing header:</span><br /><span class="line">Offset Size    Description (Table 0955)</span><br /><span class="line"> 00h   WORD    length of IRQ routing table buffer</span><br /><span class="line"> 02h   DWORD   -&gt; IRQ routing table array buffer (see #0956)</span><br /><span class="line"></span><br /><span class="line">Format of Intel Plug-and-Play ACFG PCI IRQ routing table entry [array]:</span><br /><span class="line">Offset Size    Description (Table 0956)</span><br /><span class="line"> 00h   BYTE    PCI bus number</span><br /><span class="line"> 01h   BYTE    PCI device number (bits 7-3)</span><br /><span class="line"> 02h   BYTE    link value for INTA#</span><br /><span class="line">       (if non-zero, wire-ORed together with any other PCI interrupts</span><br /><span class="line">         with same link value)</span><br /><span class="line"> 03h   WORD    IRQ connectivity bit map for INTA#</span><br /><span class="line">       (standard AT IRQs to which PCI interrupt can be routed)</span><br /><span class="line"> 05h   BYTE    link value for INTB#</span><br /><span class="line"> 06h   WORD    IRQ connectivity bit map for INTB#</span><br /><span class="line"> 08h   BYTE    link value for INTC#</span><br /><span class="line"> 09h   WORD    IRQ connectivity bit map for INTC#</span><br /><span class="line"> 0Bh   BYTE    link value for INTD#</span><br /><span class="line"> 0Ch   WORD    IRQ connectivity bit map for INTD#</span><br /><span class="line"> 0Eh   BYTE    (PCI BIOS v2.1+) device slot number (00h = motherboard)</span><br /><span class="line"> 0Fh   BYTE    reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  each item in the routing table corresponds to a motherboard PCI</span><br /><span class="line">     device or PCI slot</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0955,#M086</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

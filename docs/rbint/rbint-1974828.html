@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="rbint-1974751.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 1E  - System Data - Diskette Parameters                              </span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the default parameter table (see #0960) is located at F000h:EFC7h for</span><br /><span class="line">     100% compatible BIOSes</span><br /><span class="line">   if the table is changed, INT 13/AH=00h should be called to ensure that</span><br /><span class="line">     the floppy-disk controller is appropriately reprogrammed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 13/AH=0Fh,INT 41&#34;HARD DISK 0&#34;,INT 4D/AH=0Ah</span><br /><span class="line"></span><br /><span class="line">Format of diskette parameter table:</span><br /><span class="line">Offset Size    Description (Table 0960)</span><br /><span class="line"> 00h   BYTE    first specify byte</span><br /><span class="line">       bits 7-4: step rate (Fh=2ms,Eh=4ms,Dh=6ms,etc.)</span><br /><span class="line">       bits 3-0: head unload time (0Fh = 240 ms)</span><br /><span class="line"> 01h   BYTE    second specify byte</span><br /><span class="line">       bits 7-1: head load time (01h = 4 ms)</span><br /><span class="line">       bit    0: non-DMA mode (always 0)</span><br /><span class="line"> 02h   BYTE    delay until motor turned off (in clock ticks)</span><br /><span class="line"> 03h   BYTE    bytes per sector (00h = 128, 01h = 256, 02h = 512, 03h = 1024)</span><br /><span class="line"> 04h   BYTE    sectors per track</span><br /><span class="line"> 05h   BYTE    length of gap between sectors (2Ah for 5.25&#34;, 1Bh for 3.5&#34;)</span><br /><span class="line"> 06h   BYTE    data length (ignored if bytes-per-sector field nonzero)</span><br /><span class="line"> 07h   BYTE    gap length when formatting (50h for 5.25&#34;, 6Ch for 3.5&#34;)</span><br /><span class="line"> 08h   BYTE    format filler byte (default F6h)</span><br /><span class="line"> 09h   BYTE    head settle time in milliseconds</span><br /><span class="line"> 0Ah   BYTE    motor start time in 1/8 seconds</span><br /><span class="line">---IBM SurePath BIOS---</span><br /><span class="line"> 0Bh   BYTE    maximum track number</span><br /><span class="line"> 0Ch   BYTE    data transfer rate</span><br /><span class="line"> 0Dh   BYTE    drive type in CMOS</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2897 at INT 4D/AH=09h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

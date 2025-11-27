@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3504539.html">
+    <link rel="next" href="rbint-3506510.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3504539.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3496496.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3506510.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2C Fn 0009  P - Cloaking - Set Passalong Address                     </span>  [<span class="ngb">m</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 0009h</span><br /><span class="line">   DX:EBX = new value for passalong address (see #2246)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> when an INT 2C instruction is executed in V86 mode, the Cloaking host</span><br /><span class="line">     calls the passalong address.  The handler should check whether the</span><br /><span class="line">     upcall is of interest to it, and if not it should jump to the old</span><br /><span class="line">     passalong address (retrieved with AX=0008h before the handler was</span><br /><span class="line">     installed).  The final handler should return with CF clear to cause</span><br /><span class="line">     the interrupt to be reflected back to V86 mode if none of the</span><br /><span class="line">     passalong handlers is triggered</span><br /><span class="line">   this function was first introduced with RM386 (RAM-MAN/386) v6.00</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=0008h,AX=002Dh,INT 2C&#34;PASSALONG CHAIN&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2246)</span><br /><span class="line">Values Cloaking passalong address is called with:</span><br /><span class="line">   EAX = CS:IP of byte following INT 2C instruction invoking passalong</span><br /><span class="line">   SS:EBX -&gt; caller registers (see #2247)</span><br /><span class="line">   CF clear</span><br /><span class="line">   others undefined</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear: pass along to V86-mode INT 2C handler</span><br /><span class="line">   CF set: return immediately to V86 mode</span><br /><span class="line"></span><br /><span class="line">Format of Cloaking caller registers:</span><br /><span class="line">Offset Size    Description (Table 2247)</span><br /><span class="line"> 00h   DWORD   EDI</span><br /><span class="line"> 04h   DWORD   ESI</span><br /><span class="line"> 08h   DWORD   EBP</span><br /><span class="line"> 0Ch   DWORD   reserved (ESP from PUSHAD instruction)</span><br /><span class="line"> 10h   DWORD   EBX</span><br /><span class="line"> 14h   DWORD   EDX</span><br /><span class="line"> 18h   DWORD   ECX</span><br /><span class="line"> 1Ch   DWORD   EAX</span><br /><span class="line"> 20h   DWORD   error code</span><br /><span class="line"> 24h   DWORD   EIP</span><br /><span class="line"> 28h   WORD    CS</span><br /><span class="line"> 2Ah   WORD    padding</span><br /><span class="line"> 2Ch   DWORD   EFLAGS</span><br /><span class="line"> 30h   DWORD   ESP</span><br /><span class="line"> 34h   WORD    SS</span><br /><span class="line"> 36h   WORD    padding</span><br /><span class="line">--remainder not available if protected-mode ring3 trap---</span><br /><span class="line"> 38h   WORD    ES</span><br /><span class="line"> 3Ah   WORD    padding</span><br /><span class="line"> 3Ch   WORD    DS</span><br /><span class="line"> 3Eh   WORD    padding</span><br /><span class="line"> 40h   WORD    FS</span><br /><span class="line"> 42h   WORD    padding</span><br /><span class="line"> 44h   WORD    GS</span><br /><span class="line"> 46h   WORD    padding</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

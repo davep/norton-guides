@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2081277.html">
+    <link rel="next" href="rbint-2082619.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2081277.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2082619.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 0A  - Dos 1+ - Buffered Input                                  </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 0Ah</span><br /><span class="line">   DS:DX -&gt; buffer (see #1033)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> buffer filled with user input</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> ^C/<span class="ngb">reak are checked, and INT 23 is called if either detected</span></span><br /><span class="line">   reads from standard input, which may be redirected under DOS 2+</span><br /><span class="line">   if the maximum buffer size (see #1033) is set to 00h, this call returns</span><br /><span class="line">     immediately without reading any input</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=0Ch,INT 2F/AX=4810h</span><br /><span class="line"></span><br /><span class="line">Format of DOS input buffer:</span><br /><span class="line">Offset Size    Description (Table 1033)</span><br /><span class="line"> 00h   BYTE    maximum characters buffer can hold</span><br /><span class="line"> 01h   BYTE    (call) number of chars from last input which may be recalled</span><br /><span class="line">       (ret) number of characters actually read, excluding CR</span><br /><span class="line"> 02h  N BYTEs  actual characters read, including the final carriage return</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

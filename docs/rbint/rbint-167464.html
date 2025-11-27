@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Memory</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-166720.html">
+    <link rel="next" href="rbint-174960.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-166720.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-64347.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-174960.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Format of PCI IRQ Routing Table slot entry</span></span><br /><span class="line"></span><br /><span class="line">Offset  Size    Description     (Table M086)</span><br /><span class="line"> 00h   BYTE    PCI bus number</span><br /><span class="line"> 01h   BYTE    PCI device number (bits 7-3)</span><br /><span class="line"> 02h   BYTE    link value for INTA#</span><br /><span class="line"> 03h   WORD    IRQ bitmap for INTA#</span><br /><span class="line"> 05h   BYTE    link value for INTB#</span><br /><span class="line"> 06h   WORD    IRQ bitmap for INTB#</span><br /><span class="line"> 08h   BYTE    link value for INTC#</span><br /><span class="line"> 09h   WORD    IRQ bitmap for INTC#</span><br /><span class="line"> 0Bh   BYTE    link value for INTD#</span><br /><span class="line"> 0Ch   WORD    IRQ bitmap for INTD#</span><br /><span class="line"> 0Eh   BYTE    slot number (00h = motherboard, other = vendor-specific)</span><br /><span class="line"> 0Fh   BYTE    reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #M085,#0956 at INT 1A/AX=B406h</span><br /><span class="line">--------H-mFEC00000--------------------------</span><br /><span class="line">MEM FEC00000h - Pentium - 82379AB I/O APIC - I/O REGISTER SELECT</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"><span class="ngb">Desc:</span>  bits 7-0 of the I/O Register Select memory location specify which</span><br /><span class="line">     of the APIC&#39;s registers appears in the I/O Window at FExxx010h</span><br /><span class="line">Range: the Multiprocessor Specification calls for I/O APICs to be memory-</span><br /><span class="line">     mapped on 4K boundaries between FEC00000h and FEDFC000h; the Intel</span><br /><span class="line">     82379AB I/O APIC can be memory-mapped on any 1K boundary within</span><br /><span class="line">     FEC0000h-FEC0F800h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this memory-mapped register is also supported by the Intel 82093AA</span><br /><span class="line">     I/O APIC</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEC00010h,MEM FEE00000h,MEM xxxxh:xxx0h&#34;Multiprocessor&#34;</span><br /><span class="line">--------H-mFEC00010--------------------------</span><br /><span class="line">MEM FEC00010h - Pentium - 82379AB I/O APIC - I/O WINDOW</span><br /><span class="line">Size:  DWORD</span><br /><span class="line">Range: the Multiprocessor Specification calls for I/O APICs to be memory-</span><br /><span class="line">     mapped on 4K boundaries between FEC00000h and FEDFC000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this memory-mapped register is also supported by the Intel 82093AA</span><br /><span class="line">     I/O APIC</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEC00010h</span><br /><span class="line">(Table M087)</span><br /><span class="line">Values for Intel 82379AB/82093AA I/O APIC registers:</span><br /><span class="line"> 00h   APIC ID</span><br /><span class="line"> 01h   APIC version (read-only)</span><br /><span class="line">   bits 31-24: reserved</span><br /><span class="line">   bits 23-16: maximum redirection entry</span><br /><span class="line">   bits 15-8: reserved</span><br /><span class="line">   bits 7-0: APIC version (11h for 82093AA)</span><br /><span class="line"> 02h   APIC arbitration ID (read-only)</span><br /><span class="line">   bits 31-28: reserved</span><br /><span class="line">   bits 27-24: arbitration ID</span><br /><span class="line">   bits 23-0: reserved</span><br /><span class="line"> 10h-11h   redirection table entry 0 (10h=low DWORD, 11h=high DWORD)</span><br /><span class="line"> 12h-13h   redirection table entry 1 (see !!!)</span><br /><span class="line"> ...</span><br /><span class="line"> 2Eh-2Fh   redirection table entry 15</span><br /><span class="line">---82093AA only---</span><br /><span class="line"> 30h-31h   redirection table entry 16</span><br /><span class="line"> ...</span><br /><span class="line"> 3Eh-3Fh   redirection table entry 23</span><br /><span class="line">Bitfields for APIC redirection table entry:</span><br /><span class="line">Bit(s) Description (Table M088)</span><br /><span class="line"> 63-56 destination</span><br /><span class="line">!!!29056601.pdf pg. 10</span><br /><span class="line"> 55-17 reserved</span><br /><span class="line"> 16    interrupt mask</span><br /><span class="line"> 15    trigger mode</span><br /><span class="line"> 14    remote IRR (read-only)</span><br /><span class="line"> 13    interrupt input pin polarity</span><br /><span class="line"> 12    delivery status (read-only)</span><br /><span class="line"> 11    destination mode</span><br /><span class="line"> 10-8  delivery mode</span><br /><span class="line"> 7-0   interrupt vector (10h-FEh)</span><br /><span class="line">--------H-mFEE00000--------------------------</span><br /><span class="line">MEM FEE00000h - Pentium - LOCAL APIC</span><br /><span class="line">Size:  4096 BYTEs</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the Advanced Programmable Interrupt Controller built into</span><br /><span class="line">     multiprocessor-capable Pentiums (P54C, etc. -- basically 75MHz and</span><br /><span class="line">     faster Pentiums) maps its registers into the top of the physical</span><br /><span class="line">     address space on data reads and writes, but not on code reads;</span><br /><span class="line">     data accesses to the APIC registers do not cause external bus</span><br /><span class="line">     cycles</span><br /><span class="line">   the APIC&#39;s registers are only visible when the APIC is enabled (which</span><br /><span class="line">     occurs at CPU reset when external data lines contain proper signals);</span><br /><span class="line">     all accesses to APIC registers should use 32-bit reads or writes, as</span><br /><span class="line">     8-bit and 16-bit accesses may produce unpredictable results</span><br /><span class="line">   the PentiumPro (P6) permits the address at which the local APIC</span><br /><span class="line">     appears to be changed with Model-Specific Register 0000001Bh</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEC00000h,MEM FEE00020h,MEM xxxxh:xxx0h&#34;Multiprocessor&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MSR 0000001Bh</span><br /><span class="line">--------H-mFEE00020--------------------------</span><br /><span class="line">MEM FEE00020h - Pentium - LOCAL APIC - LOCAL APIC ID REGISTER</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00030h</span><br /><span class="line">--------H-mFEE00030--------------------------</span><br /><span class="line">MEM FEE00030h - Pentium - LOCAL APIC - LOCAL APIC VERSION REGISTER</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  read-only</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00020h</span><br /><span class="line">--------H-mFEE00040--------------------------</span><br /><span class="line">MEM FEE00040h - Pentium - LOCAL APIC - RESERVED</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00000h</span><br /><span class="line">--------H-mFEE00050--------------------------</span><br /><span class="line">MEM FEE00050h - Pentium - LOCAL APIC - RESERVED</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00000h</span><br /><span class="line">--------H-mFEE00060--------------------------</span><br /><span class="line">MEM FEE00060h - Pentium - LOCAL APIC - RESERVED</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00000h</span><br /><span class="line">--------H-mFEE00070--------------------------</span><br /><span class="line">MEM FEE00070h - Pentium - LOCAL APIC - RESERVED</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00000h</span><br /><span class="line">--------H-mFEE00080--------------------------</span><br /><span class="line">MEM FEE00080h - Pentium - LOCAL APIC - TASK PRIORITY REGISTER (TPR)</span><br /><span class="line">Size:  DWORD</span><br /><span class="line">--------H-mFEE00090--------------------------</span><br /><span class="line">MEM FEE00090h - Pentium - LOCAL APIC - ARBITRATION PRIORITY REGISTER (APR)</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  read-only</span><br /><span class="line">--------H-mFEE000A0--------------------------</span><br /><span class="line">MEM FEE000A0h - Pentium - LOCAL APIC - END OF INTERRUPT REGISTER (EOI)</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  write-only</span><br /><span class="line">--------H-mFEE000A0--------------------------</span><br /><span class="line">MEM FEE000A0h - Pentium - LOCAL APIC - PROCESSOR PRIORITY REGISTER (PPR)</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  read-only</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00000h</span><br /><span class="line">--------H-mFEE000B0--------------------------</span><br /><span class="line">MEM FEE000B0h - Pentium - LOCAL APIC - RESERVED</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00000h</span><br /><span class="line">--------H-mFEE000C0--------------------------</span><br /><span class="line">MEM FEE000C0h - Pentium - LOCAL APIC - REMOTE READ REGISTER</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  read-only</span><br /><span class="line">--------H-mFEE000D0--------------------------</span><br /><span class="line">MEM FEE000D0h - Pentium - LOCAL APIC - LOGICAL DURATION REGISTER (LDR)</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00000h</span><br /><span class="line">--------H-mFEE000E0--------------------------</span><br /><span class="line">MEM FEE000E0h - Pentium - LOCAL APIC - DESTINATION FORMAT REGISTER (DFR)</span><br /><span class="line">Size:  DWORD</span><br /><span class="line">   bits 27-0: read-only</span><br /><span class="line">   bits 31-28: read-write</span><br /><span class="line">--------H-mFEE000F0--------------------------</span><br /><span class="line">MEM FEE000F0h - Pentium - LOCAL APIC - SPURIOUS INTERRUPT VECTOR REGISTER</span><br /><span class="line">Size:  DWORD</span><br /><span class="line">   bits 3-0, read-only</span><br /><span class="line">   bits 9-4, read/write</span><br /><span class="line">--------H-mFEE00100--------------------------</span><br /><span class="line">MEM FEE00100h - Pentium - LOCAL APIC - IN-SERVICE REGISTER (ISR)</span><br /><span class="line">Size:  128 BYTEs</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  read-only</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00200h</span><br /><span class="line">--------H-mFEE00180--------------------------</span><br /><span class="line">MEM FEE00180h - Pentium - LOCAL APIC - TRIGGER MODE REGISTER (TMR)</span><br /><span class="line">Size:  128 BYTEs</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  read-only</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00000h</span><br /><span class="line">--------H-mFEE00200--------------------------</span><br /><span class="line">MEM FEE00200h - Pentium - LOCAL APIC - INTERRUPT REQUEST REGISTER (IRR)</span><br /><span class="line">Size:  128 BYTEs</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  read-only</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00100h</span><br /><span class="line">--------H-mFEE00280--------------------------</span><br /><span class="line">MEM FEE00280h - Pentium - LOCAL APIC - ERROR STATUS REGISTER</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  read-only</span><br /><span class="line">Bitfields for Pentium APIC error status register:</span><br /><span class="line">Bit(s) Description (Table M089)</span><br /><span class="line"> 0 send checksum error</span><br /><span class="line"> 1 receive checksum error</span><br /><span class="line"> 2 send accept error</span><br /><span class="line"> 3 receive accept error</span><br /><span class="line"> 4 reserved</span><br /><span class="line"> 5 send illegal vector</span><br /><span class="line"> 6 receive illegal vector</span><br /><span class="line"> 7 illegal register address</span><br /><span class="line"> 31-8  reserved</span><br /><span class="line">--------H-mFEE00300--------------------------</span><br /><span class="line">MEM FEE00300h - Pentium - LOCAL APIC - INTERRUPT COMMAND REGISTER (ICR)</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this is the low half of the 64-bit ICR</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM FEE00310h,#M090</span><br /><span class="line">Bitfields for Pentium APIC Interrupt Command Register:</span><br /><span class="line">Bit(s) Description (Table M090)</span><br /><span class="line"> 7-0   interrupt vector number</span><br /><span class="line"> 10-8  delivery mode (see #M091)</span><br /><span class="line"> 11    destination mode</span><br /><span class="line"> 12    delivery status (read-only)</span><br /><span class="line">   1 = transfer pending</span><br /><span class="line"> 13    reserved</span><br /><span class="line"> 14    level (0 = INIT Level Deassert message, 1 = anything else)</span><br /><span class="line"> 15    trigger mode (1)</span><br /><span class="line"> 17-16 remote read status (read-only)</span><br /><span class="line"> 19-18 destination shorthand</span><br /><span class="line">   00 as specified by destination field</span><br /><span class="line">   01 self</span><br /><span class="line">   10 all including self</span><br /><span class="line">   11 all except self</span><br /><span class="line"> 55-20 reserved</span><br /><span class="line"> 63-56 destination for interrupt request or message</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #M093</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

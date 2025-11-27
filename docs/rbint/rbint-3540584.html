@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3537095.html">
+    <link rel="next" href="rbint-3541726.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3537095.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3521795.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3541726.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2D  - Amis V3.6 - Get Device-driver Information                      </span>  [<span class="ngb">t</span>]</span><br /><span class="line"></span><br /><span class="line">   AL = 06h</span><br /><span class="line">   AH = multiplex number for program</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = number of device driver headers supplied by prog.</span><br /><span class="line">   AH = device-driver flags (see #2264)</span><br /><span class="line">   DX:BX -&gt; first device driver header (see #1332)</span><br /><span class="line">Program: AMIS is the Alternate Multiplex Interrupt Specification promulgated</span><br /><span class="line">     by Ralf Brown</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> if AL=00h, AH,BX,DX are meaningless and may be destroyed</span><br /><span class="line">   this function is not valid unless a program is installed on the</span><br /><span class="line">     specified multiplex number; use INT 2D/AL=00h to check</span><br /><span class="line">   programs which provide device drivers are required to support this</span><br /><span class="line">     function to be considered fully compliant with v3.6+ of the</span><br /><span class="line">     specification</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2D/AL=00h,INT 2D/AL=01h,INT 2D/AL=02h,INT 2D/AL=03h,INT 2D/AL=04h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2D/AL=05h</span><br /><span class="line"></span><br /><span class="line">Bitfields for AMIS device-driver information flags:</span><br /><span class="line">Bit(s) Description (Table 2264)</span><br /><span class="line"> 0 program loaded from CONFIG.SYS, and thus can not be removed from memory</span><br /><span class="line">   (leave clear if unable to determine)</span><br /><span class="line"> 1 device driver headers have not been linked into DOS device chain</span><br /><span class="line"> 2 reentrant device driver(s)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

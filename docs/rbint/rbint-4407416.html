@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4407176.html">
+    <link rel="next" href="rbint-4408940.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4407176.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4320812.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4408940.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn CD21  R - Interwave Game Api - Open Game Device                </span>  [<span class="ngb">s</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = CD21h</span><br /><span class="line">   BX = installed program identifier</span><br /><span class="line">   ES:DI -&gt; ASCIZ device name</span><br /><span class="line">       &#34;MIDISIMPLE&#34;</span><br /><span class="line">       &#34;MIDICOMPLEX&#34;</span><br /><span class="line">       &#34;DIRECTCODEC&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h successful</span><br /><span class="line">       DX = device handle</span><br /><span class="line">       ---MIDISIMPLE and MIDICOMPLEX---</span><br /><span class="line">       BX = real-mode interrupt number (see #2746,#2747)</span><br /><span class="line">       ---DIRECTCODEC---</span><br /><span class="line">       BX = base port</span><br /><span class="line">       CL = IRQ</span><br /><span class="line">       CH = DMA channel (04h = no DMA)</span><br /><span class="line">       SI = size of FIFO in bytes (0000h = use DMA)</span><br /><span class="line">       nonzero failed (not supported or already in use)</span><br /><span class="line">   AH may be destroyed</span><br /><span class="line">Range: AH=CDh-ECh, selected by scanning for an available multiplex number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=CD00h&#34;InterWave&#34;,AX=CD01h&#34;InterWave&#34;,AX=CD02h&#34;InterWave&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=CD05h&#34;InterWave&#34;,AX=CD22h&#34;InterWave&#34;,AX=CD80h&#34;InterWave&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2746)</span><br /><span class="line">Call MIDISIMPLE with:</span><br /><span class="line">   EAX = function number</span><br /><span class="line">       0001h MIDI byte out</span><br /><span class="line">       BL = MIDI byte to send</span><br /><span class="line">       0002h MIDI string out</span><br /><span class="line">       ECX = length of MIDI string in bytes</span><br /><span class="line">       ES:EDI -&gt; MIDI string to send (should not include timing info)</span><br /><span class="line">   DX = device handle</span><br /><span class="line">   INT xxh (as returned by AX=CD21h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> EAX = status</span><br /><span class="line">       00000000h if successful</span><br /><span class="line">       FFFFFFFFh on error (bad handle)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2747,INT 7E/AX=0001h&#34;IWSBSDRV&#34;,INT 7E/AX=0002h&#34;IWSBSDRV&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2747)</span><br /><span class="line">Call MIDICOMPLEX with:</span><br /><span class="line">   EAX = function number</span><br /><span class="line">       ??? (specification is still in development)</span><br /><span class="line">   DX = device handle</span><br /><span class="line">   INT xxh (as returned by AX=CD21h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> EAX = status</span><br /><span class="line">       00000000h if successful</span><br /><span class="line">       FFFFFFFFh on error (bad handle)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2746</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

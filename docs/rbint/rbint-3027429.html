@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3025733.html">
+    <link rel="next" href="rbint-3029979.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3025733.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3002060.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3029979.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - File Server - Get Disk Channel Statistic</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = E3h subfn D9h</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1725)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1726)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (00h,C6h) (see #1713)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is supported by Advanced NetWare 2.1+</span><br /><span class="line">   the calling workstation must have console operator privileges</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=C8h,AH=E3h/SF=D8h,AH=E3h/SF=E6h,AH=E3h/SF=E9h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=F217h/SF=D9h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Disk Channel Statistics&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 1725)</span><br /><span class="line"> 00h   WORD    0002h (length of following data)</span><br /><span class="line"> 02h   BYTE    D9h (subfunction &#34;Get Disk Channel Statistics&#34;)</span><br /><span class="line"> 03h   BYTE    channel number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1726,#1920 at AX=F217h/SF=D9h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Disk Channel Statistics&#34; reply buffer:</span><br /><span class="line">Offset Size    Description (Table 1726)</span><br /><span class="line"> 00h   WORD    (call) 00A8h (size of following results record)</span><br /><span class="line"> 02h   DWORD   (big-endian) clock ticks since system started</span><br /><span class="line"> 06h   WORD    (big-endian) channel run state (see #1727)</span><br /><span class="line"> 08h   WORD    (big-endian) channel synchronization state (see #1728)</span><br /><span class="line"> 0Ah   BYTE    driver type</span><br /><span class="line"> 0Bh   BYTE    major version of driver</span><br /><span class="line"> 0Ch   BYTE    minor version of driver</span><br /><span class="line"> 0Dh 65 BYTEs  ASCIZ driver description</span><br /><span class="line"> 4Eh   WORD    (big-endian) first I/O address used</span><br /><span class="line"> 50h   WORD    (big-endian) length of first I/O address</span><br /><span class="line"> 52h   WORD    (big-endian) second I/O address used</span><br /><span class="line"> 54h   WORD    (big-endian) length of second I/O address</span><br /><span class="line"> 56h  3 BYTEs  first shared memory address</span><br /><span class="line"> 59h  2 BYTEs  length of first shared memory address</span><br /><span class="line"> 5Bh  3 BYTEs  second shared memory address</span><br /><span class="line"> 5Eh  2 BYTEs  length of second shared memory address</span><br /><span class="line"> 60h   BYTE    first interrupt number in-use flag</span><br /><span class="line"> 61h   BYTE    first interrupt number used</span><br /><span class="line"> 62h   BYTE    second interrupt number in-use flag</span><br /><span class="line"> 63h   BYTE    second interrupt number used</span><br /><span class="line"> 64h   BYTE    first DMA channel in-use flag</span><br /><span class="line"> 65h   BYTE    first DMA channel used</span><br /><span class="line"> 66h   BYTE    second DMA channel in-use flag</span><br /><span class="line"> 67h   BYTE    second DMA channel used</span><br /><span class="line"> 68h   BYTE    flags</span><br /><span class="line"> 69h   BYTE    reserved</span><br /><span class="line"> 6Ah 80 BYTEs  ASCIZ configuration description</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1725,#1920 at AX=F217h/SF=D9h</span><br /><span class="line"></span><br /><span class="line">(Table 1727)</span><br /><span class="line">Values for channel run state:</span><br /><span class="line"> 0000h running</span><br /><span class="line"> 0001h being stopped</span><br /><span class="line"> 0002h stopped</span><br /><span class="line"> 0003h nonfunctional</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1726,#1728</span><br /><span class="line"></span><br /><span class="line">(Table 1728)</span><br /><span class="line">Values for channel synchronization state:</span><br /><span class="line"> 0000h not in use</span><br /><span class="line"> 0002h used by NetWare, no other requests</span><br /><span class="line"> 0004h used by NetWare, other requests</span><br /><span class="line"> 0006h in use, not needed by NetWare</span><br /><span class="line"> 0008h in use, needed by NetWare</span><br /><span class="line"> 000Ah channel released, NetWare should use it</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1726,#1727</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

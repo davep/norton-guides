@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5765300.html">
+    <link rel="next" href="rbint-5766635.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5765300.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5757296.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5766635.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 7A  - Novell Netware - Ipx Driver - Get Local Target                 </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   BX = 0002h</span><br /><span class="line">   ES:SI -&gt; target internetwork address (see #3495 at INT 7A/BX=000Bh)</span><br /><span class="line">   ES:DI -&gt; 6-byte buffer for local target</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = return code</span><br /><span class="line">       00h success</span><br /><span class="line">          CX = expected one-way transfer time (clock ticks) for a 576-byte</span><br /><span class="line">             packet</span><br /><span class="line">          ES:DI -&gt; local target</span><br /><span class="line">       FAh unsuccessful (no path to destination)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the internetwork address consists of a 4-byte network address followed</span><br /><span class="line">     by a 6-byte node address.  The local target is only a 6-byte node</span><br /><span class="line">     address.  If the target is in the same network, the local target is</span><br /><span class="line">     just the node address of target; otherwise, the local target is the</span><br /><span class="line">     node address of the bridge that leads to the target.</span><br /><span class="line">   this function may be called from inside IPX and AES Event Service</span><br /><span class="line">     Routines, but not from other interrupt handlers</span><br /><span class="line">   this function is supported by Advanced NetWare 1.02+</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> BX=0009h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

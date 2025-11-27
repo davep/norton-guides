@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1430331.html">
+    <link rel="next" href="rbint-1434373.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1430331.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1340639.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1434373.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn DB01  U - Ami Bios - Flash Rom - Get Bios Subsystem Information</span>  [<span class="ngb">b</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = DB01h</span><br /><span class="line">   CL = BIOS subsystem information identifier (see #0469)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = 0000h</span><br /><span class="line">       ES:DI -&gt; 56-byte record describing subsystem (see #0470)</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AH = status</span><br /><span class="line">       01h nonexistent subsystem</span><br /><span class="line">       86h function not supported</span><br /><span class="line">       AL = 00h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  used by FMUP.EXE, Intel&#39;s Flash Memory Update utility</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=DB00h,AX=DB02h</span><br /><span class="line"></span><br /><span class="line">(Table 0469)</span><br /><span class="line">Values for AMI BIOS subsystem identifier:</span><br /><span class="line"> 00h   recovery code</span><br /><span class="line"> 01h   system BIOS</span><br /><span class="line"> 02h   PCI configuration data</span><br /><span class="line"> 03h   OEM logo data area (see #0471)</span><br /><span class="line"> 04h   system BIOS/Language Set (one system)</span><br /><span class="line">   configuration utility (another system)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0470</span><br /><span class="line"></span><br /><span class="line">Format of AMI BIOS subsystem information:</span><br /><span class="line">Offset Size    Description (Table 0470)</span><br /><span class="line"> 00h   BYTE    subsystem identifier/logical area type (see #0469)</span><br /><span class="line"> 01h   DWORD   subsystem (FlashROM page) size in bytes</span><br /><span class="line"> 05h   BYTE    flag: loadable from file (FFh=yes)</span><br /><span class="line"> 06h   BYTE    flag: reboot after update (FFh=yes)</span><br /><span class="line"> 07h   BYTE    flag: update entire image (FFh=yes)</span><br /><span class="line"> 08h 24 BYTEs  subsystem/logical area name</span><br /><span class="line"> 20h   BYTE    subsystem identifier???</span><br /><span class="line"> 21h   BYTE    flag: reprogrammable if FFh</span><br /><span class="line"> 22h   BYTE    ??? (01h,02h seen)</span><br /><span class="line"> 23h  5 BYTEs  ??? (apparently always 00h)</span><br /><span class="line"> 28h 16 BYTEs  BIOS reserved string (usually version number)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0468</span><br /><span class="line"></span><br /><span class="line">Format of AMI OEM Logo data area:</span><br /><span class="line">Offset Size    Description (Table 0471)</span><br /><span class="line"> 00h  8 BYTEs  signature</span><br /><span class="line">       &#34;TEXTLOGO&#34; if text-mode OEM logo</span><br /><span class="line">       8 DUP (FFh) if unused</span><br /><span class="line"> 08h   WORD    offset of logo font definition table</span><br /><span class="line"> 0Ah   WORD    offset of logo data</span><br /><span class="line"> 0Ch   WORD    size of logo font table in words</span><br /><span class="line"> 0Eh   WORD    offset of upper left corner of logo in video page</span><br /><span class="line"> 10h   WORD    width of logo</span><br /><span class="line"> 12h   WORD    height of logo</span><br /><span class="line"> 14h   BYTE    reserved???</span><br /><span class="line"> var   var logo font definition (16 bytes per character)</span><br /><span class="line"> var   var logo data as character/attribute pairs</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the attribute for the logo characters specifies which font will be used</span><br /><span class="line">     for that character.  If bit 3 is cleared, the normal system font is</span><br /><span class="line">     used; if bit 3 is set, the logo font is used, with screen colors</span><br /><span class="line">     adjusted to match the corresponding non-bright attribute for the</span><br /><span class="line">     system font</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0469,#0470</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

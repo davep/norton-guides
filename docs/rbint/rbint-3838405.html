@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3838112.html">
+    <link rel="next" href="rbint-3839807.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3838112.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3839807.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1687  - Dos Protected-mode Interface - Installation Check      </span>  [<span class="ngb">E</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1687h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = 0000h if installed</span><br /><span class="line">       BX = flags</span><br /><span class="line">       bit 0: 32-bit programs supported</span><br /><span class="line">       CL = processor type (02h=80286, 03h=80386, 04h=80486)</span><br /><span class="line">       DH = DPMI major version</span><br /><span class="line">       DL = two-digit DPMI minor version (binary)</span><br /><span class="line">       SI = number of paragraphs of DOS extender private data</span><br /><span class="line">       ES:DI -&gt; DPMI mode-switch entry point (see #2405)</span><br /><span class="line">   AX nonzero if not installed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1686h,AX=43E0h,AX=DE01h/BX=4450h,AX=FB42h/BX=0001h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 31/AX=0400h,INT 31/AX=5702h,INT D4/AH=10h</span><br /><span class="line"></span><br /><span class="line">(Table 2405)</span><br /><span class="line">Call DPMI mode switch entry point with:</span><br /><span class="line">   AX = flags</span><br /><span class="line">       bit 0: set if 32-bit program</span><br /><span class="line">   ES = real mode segment of buffer for DPMI private data (ignored if</span><br /><span class="line">       SI was zero)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">       program still in real mode</span><br /><span class="line">       AX = error code (DPMI 1.0+)</span><br /><span class="line">          8011h unable to allocate all necessary descriptors</span><br /><span class="line">          8021h 32-bit program specified, but 16-bit DPMI host</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">       CS = 16-bit selector corresponding to real-mode CS</span><br /><span class="line">       SS = selector corresponding to real-mode SS (64K limit)</span><br /><span class="line">       DS = selector corresponding to real-mode DS (64K limit)</span><br /><span class="line">       ES = selector to program&#39;s PSP (100h byte limit)</span><br /><span class="line">       FS = GS = 0</span><br /><span class="line">       high word of ESP = 0 if 32-bit program</span><br /><span class="line">       program now in protected mode</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this entry point is only called for the initial switch to protected</span><br /><span class="line">     mode</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

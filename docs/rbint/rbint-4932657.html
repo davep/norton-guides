@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4932309.html">
+    <link rel="next" href="rbint-4935675.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4932309.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4908825.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4935675.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 60  - Excelan Lan Workplace For Dos 3.5 - Api                        </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   ES:BX -&gt; request packet (see #2943)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> request packet updated</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this interrupt is also supported by Beame&amp;Whiteside&#39;s BWLWP35 shim,</span><br /><span class="line">     which was used in creating this description</span><br /><span class="line">   the installation check consists of testing for the WORD 4142h (&#39;AB&#39;)</span><br /><span class="line">     immediately preceding the interrupt handler</span><br /><span class="line">BUG:   because BWLWP35 range-checks only the low byte of the function number,</span><br /><span class="line">     and has a fencepost error even in that test, functions 000Bh and</span><br /><span class="line">     XX01h-XX0Bh (XX nonzero) branch to random locations</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2F/AX=7A40h</span><br /><span class="line"></span><br /><span class="line">Format of Excelan request packet:</span><br /><span class="line">Offset Size    Description (Table 2943)</span><br /><span class="line"> 00h 12 BYTEs  ???</span><br /><span class="line"> 0Ch   WORD    (ret) error code (see #2944)</span><br /><span class="line"> 0Eh   DWORD   -&gt; FAR function for ???</span><br /><span class="line"> 12h   WORD    function number</span><br /><span class="line">       0001h ???</span><br /><span class="line">       0002h NOP</span><br /><span class="line">       0003h NOP</span><br /><span class="line">       0004h NOP</span><br /><span class="line">       0005h ???</span><br /><span class="line">       0006h get ??? record</span><br /><span class="line">       0007h NOP</span><br /><span class="line">       0008h reset ???</span><br /><span class="line">       0009h NOP</span><br /><span class="line">       000Ah set ???</span><br /><span class="line">   ???</span><br /><span class="line">---function 01h---</span><br /><span class="line"> 20h   BYTE    (call) subfunction (32h-3Bh)</span><br /><span class="line">       3Bh non-blocking I/O request (will be tested every clock tick)</span><br /><span class="line"> 21h   BYTE    (ret) error code</span><br /><span class="line">       00h successful</span><br /><span class="line">       09h invalid connection number</span><br /><span class="line">       2Ah bad connection type</span><br /><span class="line">       45h ???</span><br /><span class="line">---function 01h, subfunction 32h---</span><br /><span class="line"> 3Ah   WORD    (call) connection type (01h stream, 02h datagram)</span><br /><span class="line">---function 01h, subfunction 34h---</span><br /><span class="line"> 26h   WORD    (call) ???</span><br /><span class="line"> 28h   WORD    (call) ???</span><br /><span class="line"> 2Ah   WORD    (call) ???</span><br /><span class="line">---function 01h, subfunction 35h---</span><br /><span class="line"> 1Ah   WORD    (call) connection number???</span><br /><span class="line"> 26h   WORD    (ret) ???</span><br /><span class="line">---function 01h, subfunction 36h---</span><br /><span class="line"> 1Ah   WORD    (call) connection number???</span><br /><span class="line"> 38h   WORD    ???</span><br /><span class="line">---function 01h, subfunction 37h---</span><br /><span class="line"> 24h   WORD    (ret) ???</span><br /><span class="line"> 26h   WORD    (ret) ???</span><br /><span class="line">---function 01h, subfunction 38h---</span><br /><span class="line"> 1Ah   WORD    (call) connection number???</span><br /><span class="line">---function 01h, subfunction 3Ah---</span><br /><span class="line"> 22h   WORD    (call) ???</span><br /><span class="line">       667Eh ???</span><br /><span class="line">       667Fh ???</span><br /><span class="line"> 24h   BYTE    (call 667Eh) ???</span><br /><span class="line"> 24h   WORD    (return 667Fh) ???</span><br /><span class="line">---function 01h, subfunction 3Bh---</span><br /><span class="line"> 0Eh   DWORD   (call) -&gt; function to invoke for I/O or 0000h:0000h</span><br /><span class="line">       function called with AX = 0000h</span><br /><span class="line">                    STACK: DWORD -&gt; request packet</span><br /><span class="line">                       WORD 0000h</span><br /><span class="line">           should return STACK unchanged</span><br /><span class="line"> 1Ah   WORD    (call) connection number???</span><br /><span class="line"> 21h   BYTE    (ret) set to 01h when I/O becomes possible</span><br /><span class="line"> 22h   BYTE    (call) direction (00h write, 01h read)</span><br /><span class="line"> 34h   DWORD   (ret) -&gt; next pending request packet</span><br /><span class="line">---function 05h---</span><br /><span class="line"> 1Eh   WORD    (call) ???</span><br /><span class="line"> 20h   WORD    (call) ???</span><br /><span class="line"> 34h   DWORD   (call) -&gt; ???</span><br /><span class="line">---function 06h---</span><br /><span class="line"> 16h   DWORD   (call) -&gt; buffer for ??? record (see #2945)</span><br /><span class="line"> 1Ah   WORD    (call) number of bytes to copy</span><br /><span class="line"> 22h   WORD    (ret) number of bytes transferred</span><br /><span class="line">---function 08h---</span><br /><span class="line"> 14h   WORD    (ret) ??? (0001h)</span><br /><span class="line">---function 0Ah---</span><br /><span class="line"> 16h   DWORD   (call) -&gt; WORD ???</span><br /><span class="line"> 1Ch   WORD    (call) must be 000Ah for BWLWP35</span><br /><span class="line"></span><br /><span class="line">(Table 2944)</span><br /><span class="line">Values for Excelan error code:</span><br /><span class="line"> 0000h successful</span><br /><span class="line"> 002Dh invalid function</span><br /><span class="line"> 0050h ???</span><br /><span class="line"></span><br /><span class="line">Format of ??? record:</span><br /><span class="line">Offset Size    Description (Table 2945)</span><br /><span class="line"> 00h   WORD    offset of ???</span><br /><span class="line"> 02h  4 BYTEs  ???</span><br /><span class="line"> 06h   DWORD   IP address (big-endian)</span><br /><span class="line"> 0Ah  6 BYTEs  physical address (big-endian)</span><br /><span class="line">   ???</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

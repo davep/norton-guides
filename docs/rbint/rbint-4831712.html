@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4831481.html">
+    <link rel="next" href="rbint-4832624.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4831481.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4826723.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4832624.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 4D Fn 06  - Ti Professional Pc - Disk - Verify Disk Sector(s)        </span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 06h</span><br /><span class="line">   AL = number of sectors to verify (must be nonzero)</span><br /><span class="line">   CH = low eight bits of cylinder number</span><br /><span class="line">   CL = sector number 1-63 (bits 0-5)</span><br /><span class="line">        high two bits of cylinder (bits 6-7, hard disk only)</span><br /><span class="line">   DH = head number</span><br /><span class="line">   DL = drive number (bit 7 set for hard disk)</span><br /><span class="line">   ES:BX -&gt; data buffer</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">       if AH = 11h (corrected ECC error), AL = burst length</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">   AH = status (see #0166 at INT 13/AH=01h)</span><br /><span class="line">   AL = number of sectors transferred</span><br /><span class="line">   ES:BX -&gt; buffer for last sector processed (including one with errors)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  even though no data is transferred, ES:BX must still be valid because</span><br /><span class="line">     an actual comparison with disk data is performed, not just the CRC</span><br /><span class="line">     check of the standard PC BIOS or INT 4D/AH=04h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=00h,AH=01h,AH=02h,AH=04h,INT 13/AH=04h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

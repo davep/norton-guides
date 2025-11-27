@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5071465.html">
+    <link rel="next" href="rbint-5073896.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5071465.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5073896.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 61 Fn 0001  - Banyan Vines - &#34;soclose&#34; - Close A Socket              </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 0001h subfn 0004h</span><br /><span class="line">   DS:DX -&gt; communications control block (function 0004h) (see #3008)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (0000h-000Ah,0097h) (see #2996)</span><br /><span class="line">Range: INT 60h to INT 66h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  The Banyan interrupt handler is identified by the string &#34;BANV&#34; in</span><br /><span class="line">     the four bytes immediately preceding the interrupt handler</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=0001h/SF=0001h,INT 15/AX=DE2Eh</span><br /><span class="line"></span><br /><span class="line">Format of VINES control block to close socket:</span><br /><span class="line">Offset Size    Description (Table 3008)</span><br /><span class="line"> 00h   WORD    0004h</span><br /><span class="line"> 02h   WORD    pointer to argument block (see #3009)</span><br /><span class="line"> 04h   WORD    error return code (see #2996)</span><br /><span class="line"> 06h  4 BYTEs  reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #3005,#3011</span><br /><span class="line"></span><br /><span class="line">Format of VINES argument block for closing socket:</span><br /><span class="line">Offset Size    Description (Table 3009)</span><br /><span class="line"> 00h   WORD    socket identifier</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #3006,#3008,#3012</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2508879.html">
+    <link rel="next" href="rbint-2524127.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2508879.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2524127.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 52  U - Dos 2+ Internal - &#34;sysvars&#34; - Get List Of Lists  <span class="ngb">(Cont.)</span></span></span><br /><span class="line"></span><br /><span class="line">    17h    WORD    counter for last open of FCB</span><br /><span class="line">           (these are separate to determine the times of the</span><br /><span class="line">             latest I/O and open)</span><br /><span class="line">   ---</span><br /><span class="line">    19h    WORD    relative cluster within file of last cluster accessed</span><br /><span class="line">    1Bh    WORD    absolute cluster number of last cluster accessed</span><br /><span class="line">           0000h if file never read or written???</span><br /><span class="line">    1Dh    WORD    number of sector containing directory entry</span><br /><span class="line">           (see #1041)</span><br /><span class="line">    1Fh    BYTE    number of dir entry within sector (byte offset/32)</span><br /><span class="line">    20h 11 BYTEs   filename in FCB format (no path/period, blank-padded)</span><br /><span class="line">    2Bh    DWORD   (SHARE.EXE) pointer to previous SFT sharing same file</span><br /><span class="line">    2Fh    WORD    (SHARE.EXE) network machine number which opened file</span><br /><span class="line">           (Windows Enhanced mode DOSMGR uses the virtual machine</span><br /><span class="line">             ID as the machine number; see INT 2F/AX=1683h)</span><br /><span class="line">    31h    WORD    PSP segment of file&#39;s owner (see #1066 at AH=26h)</span><br /><span class="line">             (first three entries for AUX/CON/PRN contain segment</span><br /><span class="line">             of IO.SYS startup code)</span><br /><span class="line">    33h    WORD    offset within SHARE.EXE code segment of</span><br /><span class="line">             sharing record (see #1323) 0000h = none</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1325,#1326,#1328</span><br /><span class="line"></span><br /><span class="line">Format of DOS 4.0-6.0 system file tables and FCB tables:</span><br /><span class="line">Offset Size    Description (Table 1328)</span><br /><span class="line"> 00h   DWORD   pointer to next file table (offset FFFFh if last)</span><br /><span class="line"> 04h   WORD    number of files in this table</span><br /><span class="line"> 06h  3Bh bytes per file</span><br /><span class="line">   Offset  Size    Description</span><br /><span class="line">    00h    WORD    number of file handles referring to this file</span><br /><span class="line">           FFFFh if in use but not referenced</span><br /><span class="line">    02h    WORD    file open mode (see AX=6C00h,#1090 at AH=3Dh)</span><br /><span class="line">           bit 15 set if this file opened via FCB</span><br /><span class="line">    04h    BYTE    file attribute (see #1107 at AX=4301h)</span><br /><span class="line">    05h    WORD    device info word (see also #1110 at AX=4400h)</span><br /><span class="line">           bit 15 set if remote file</span><br /><span class="line">           bit 14 set means do not set file date/time on closing</span><br /><span class="line">           bit 13 set if named pipe</span><br /><span class="line">           bit 12 set if no inherit</span><br /><span class="line">           bit 11 set if network spooler</span><br /><span class="line">           bit 7  set if device, clear if file (only if local)</span><br /><span class="line">           bits 6-0 as for AX=4400h</span><br /><span class="line">    07h    DWORD   pointer to device driver header if character device</span><br /><span class="line">           else pointer to DOS Drive Parameter Block</span><br /><span class="line">             (see #1083 at AH=32h) or REDIR data</span><br /><span class="line">    0Bh    WORD    starting cluster of file (local files only)</span><br /><span class="line">    0Dh    WORD    file time in packed format (see #1351)</span><br /><span class="line">    0Fh    WORD    file date in packed format (see #1352)</span><br /><span class="line">    11h    DWORD   file size</span><br /><span class="line">    15h    DWORD   current offset in file (SFT)</span><br /><span class="line">           LRU counters (FCB table, two WORDs)</span><br /><span class="line">   ---local file---</span><br /><span class="line">    19h    WORD    relative cluster within file of last cluster accessed</span><br /><span class="line">    1Bh    DWORD   number of sector containing directory entry</span><br /><span class="line">    1Fh    BYTE    number of dir entry within sector (byte offset/32)</span><br /><span class="line">   ---network redirector---</span><br /><span class="line">    19h    DWORD   pointer to REDIRIFS record</span><br /><span class="line">    1Dh  3 BYTEs   ???</span><br /><span class="line">   ------</span><br /><span class="line">    20h 11 BYTEs   filename in FCB format (no path/period, blank-padded)</span><br /><span class="line">    2Bh    DWORD   (SHARE.EXE) pointer to previous SFT sharing same file</span><br /><span class="line">    2Fh    WORD    (SHARE.EXE) network machine number which opened file</span><br /><span class="line">           (Windows Enhanced mode DOSMGR uses the virtual machine</span><br /><span class="line">             ID as the machine number; see INT 2F/AX=1683h)</span><br /><span class="line">    31h    WORD    PSP segment of file&#39;s owner (see #1066 at AH=26h)</span><br /><span class="line">             (first three entries for AUX/CON/PRN contain segment</span><br /><span class="line">             of IO.SYS startup code)</span><br /><span class="line">    33h    WORD    offset within SHARE.EXE code segment of</span><br /><span class="line">           sharing record (see #1281)  0000h = none</span><br /><span class="line">    35h    WORD    (local) absolute cluster number of last clustr accessed</span><br /><span class="line">           (redirector) ???</span><br /><span class="line">    37h    DWORD   pointer to IFS driver for file, 0000000h if native DOS</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the OS/2 2.0 DOS Boot Session does not properly fill in the filename</span><br /><span class="line">     field due to incomplete support for SFTs; the OS/2 2.0 DOS Window</span><br /><span class="line">     does not appear to support SFTs at all</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1325,#1326,#1327</span><br /><span class="line"></span><br /><span class="line">Format of current directory structure (CDS) (array, LASTDRIVE entries):</span><br /><span class="line">Offset Size    Description (Table 1329)</span><br /><span class="line"> 00h 67 BYTEs  ASCIZ path in form X:\PATH (local) or UNC form</span><br /><span class="line">         \\SERVER\PATH (network, see notes below)</span><br /><span class="line"> 43h   WORD    drive attributes (also see note below) (see also AX=5F07h)</span><br /><span class="line">       bit 15: uses network redirector  \ invalid if 00, installable</span><br /><span class="line">       bit 14: physical drive       / file system if 11</span><br /><span class="line">       bit 13: JOIN&#39;ed   \ path above is true path that would be</span><br /><span class="line">       bit 12: SUBST&#39;ed  / needed if not under SUBST or JOIN</span><br /><span class="line">       bit  7: remote drive hidden from redirector&#39;s assign-list and</span><br /><span class="line">             exempt from network connection make/break commands;</span><br /><span class="line">             set for CD-ROM drives by MSCDEX (not supported by</span><br /><span class="line">             CORELCDX)</span><br /><span class="line"> 45h   DWORD   pointer to Drive Parameter Block for drive</span><br /><span class="line">         (see #1083 at AH=32h)</span><br /><span class="line">---local drives---</span><br /><span class="line"> 49h   WORD    starting cluster of current directory</span><br /><span class="line">       0000h = root, FFFFh = never accessed</span><br /><span class="line"> 4Bh   WORD    ??? seems to be FFFFh always</span><br /><span class="line"> 4Dh   WORD    ??? seems to be FFFFh always</span><br /><span class="line">---network drives---</span><br /><span class="line"> 49h   DWORD   pointer to redirector or REDIRIFS record, or FFFFh:FFFFh</span><br /><span class="line">       (DOS 4 only) available for use by IFS driver</span><br /><span class="line"> 4Dh   WORD    stored user data from INT 21/AX=5F03h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

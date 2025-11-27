@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-790269.html">
+    <link rel="next" href="rbint-793186.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-790269.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-793186.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 13 Fn 06  - Future Domain Scsi Bios - Format Drive With Bad Sector Ma</span>  [<span class="ngb">d</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 06h</span><br /><span class="line">   AL = interleave</span><br /><span class="line">        (0 = default, 1 = consecutive sectors, 2 - 255 = vendor unique)</span><br /><span class="line">   DL = hard drive ID</span><br /><span class="line">   DH = defect list info (see #0169)</span><br /><span class="line">   ES:BX -&gt; defect table A, B or C (see #0170,#0171,#0172)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">   AH = status code (see #0166)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> block addresses must be in ascending order (for table B, cylinder is</span><br /><span class="line">     most significant, byte from index least significant; for table C,</span><br /><span class="line">     cylinder is most significant, sector number least significant)</span><br /><span class="line">   table B defect bytes from index of FFFFFFFFh indicates that the entire</span><br /><span class="line">     track shall be reassigned</span><br /><span class="line">   table C defect sector number of FFFFFFFFh indicates that the entire</span><br /><span class="line">     track shall be reassigned</span><br /><span class="line">   the TMC-950 does not support any Future Domain BIOS calls; instead,</span><br /><span class="line">     it provides a full CAM implementation (see INT 4F/AX=8100h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=05h&#34;SCSI&#34;,AH=06h&#34;FIXED&#34;,AH=07h&#34;SCSI&#34;</span><br /><span class="line"></span><br /><span class="line">Bitfields for Future Domain SCSI defect list info:</span><br /><span class="line">Bit(s) Description (Table 0169)</span><br /><span class="line"> 7-5   drive LUN</span><br /><span class="line"> 4 defect list is available</span><br /><span class="line"> 3 defect list is complete (erase drive&#39;s defect list)</span><br /><span class="line"> 2-0   defect table format</span><br /><span class="line">   (000=use defect table A, 100=use defect table B,</span><br /><span class="line">    101=use defect table C)</span><br /><span class="line"></span><br /><span class="line">Format of Future Domain SCSI defect table A:</span><br /><span class="line">Offset Size    Description (Table 0170)</span><br /><span class="line"> 00h   WORD    number of bytes remaining in table</span><br /><span class="line"> 02h   BYTE    reserved (0)</span><br /><span class="line"> 03h   BYTE    reserved (0)</span><br /><span class="line"> 04h   WORD    (big-endian) defect list length (4*number of defects)</span><br /><span class="line"> 06h  4 DWORDs (big-endian) defect block addresses</span><br /><span class="line"></span><br /><span class="line">Format of Future Domain SCSI defect table B:</span><br /><span class="line">Offset Size    Description (Table 0171)</span><br /><span class="line"> 00h   WORD    number of bytes remaining in table</span><br /><span class="line"> 02h   BYTE    reserved (0)</span><br /><span class="line"> 03h   BYTE    reserved (0)</span><br /><span class="line"> 04h   WORD    (big-endian) defect list length (8*number of defects)</span><br /><span class="line"> 06h 8N BYTEs  defect list [array] (see #0173)</span><br /><span class="line"></span><br /><span class="line">Format of Future Domain SCSI defect table C:</span><br /><span class="line">Offset Size    Description (Table 0172)</span><br /><span class="line"> 00h   WORD    number of bytes remaining in table</span><br /><span class="line"> 02h   BYTE    reserved (0)</span><br /><span class="line"> 03h   BYTE    reserved (0)</span><br /><span class="line"> 04h   WORD    (big-endian) defect list length (8*number of defects)</span><br /><span class="line"> 06h 8N BYTEs  defect list [array] (see #0173)</span><br /><span class="line"></span><br /><span class="line">Format of Future Domain SCSI defect list entry:</span><br /><span class="line">Offset Size    Description (Table 0173)</span><br /><span class="line"> 00h  3 BYTEs  (big-endian) cylinder number of defect</span><br /><span class="line"> 03h   BYTE    head number of defect</span><br /><span class="line"> 04h   DWORD   (big-endian) defect bytes from index</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

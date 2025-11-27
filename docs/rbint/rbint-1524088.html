@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1523506.html">
+    <link rel="next" href="rbint-1525419.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1523506.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1484861.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1525419.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 16 Fn 4B  - Frank Klemm Keyboard Driver V2.0 - Api                   </span>  [<span class="ngb">K</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 4Bh</span><br /><span class="line">   CX = code or action</span><br /><span class="line">       0000h-FEFFh key code</span><br /><span class="line">       FF00h-FFFFh action (see #0518)</span><br /><span class="line">   BL = scan code (normal keys) or scan code + 60h (enhanced keys)</span><br /><span class="line">   BH = shift state (see #0519)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CX = previous code or action</span><br /><span class="line"></span><br /><span class="line">(Table 0518)</span><br /><span class="line">Values for Frank Klemm Keyboard Driver action code:</span><br /><span class="line"> FF00h no action</span><br /><span class="line"> FF01h hardcopy</span><br /><span class="line"> FF02h left shift</span><br /><span class="line"> FF03h right shift</span><br /><span class="line"> FF04h left Ctrl</span><br /><span class="line"> FF05h right Ctrl</span><br /><span class="line"> FF06h left Alt</span><br /><span class="line"> FF07h right Alt / AltGr</span><br /><span class="line"> FF08h CapsLock</span><br /><span class="line"> FF09h NumLock</span><br /><span class="line"> FF0Ah ScrlLock</span><br /><span class="line"> FF0Bh Insert (returns code 5200h or 52E0h)</span><br /><span class="line"> FF0Ch Pause</span><br /><span class="line"> FF0Dh Ctrl-Break function</span><br /><span class="line"> FF0Eh warm boot via far jump to F000h:FFF0h</span><br /><span class="line"> FF0Fh terminate current program</span><br /><span class="line"> FF10h key for entering keys via Alt-numpad (read-only)</span><br /><span class="line"> FF11h clear keyboard buffer</span><br /><span class="line"> FF12h reset (warmboot on XT)</span><br /><span class="line"> FF13h mouse sensitivity (read-only)</span><br /><span class="line"> FF14h keyjobs (read-only)</span><br /><span class="line"> FF15h SysRq</span><br /><span class="line"> FF16h turn on CPU cache (486+)</span><br /><span class="line"> FF17h turn off CPU cache (486+)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0519</span><br /><span class="line"></span><br /><span class="line">(Table 0519)</span><br /><span class="line">Values for Frank Klemm Keyboard Driver shift state:</span><br /><span class="line"> 00h   no shift keys</span><br /><span class="line"> 01h   either Shift</span><br /><span class="line"> 02h   either Ctrl</span><br /><span class="line"> 03h   left Alt</span><br /><span class="line"> 04h   Ctrl + Alt</span><br /><span class="line">---standard keyboard---</span><br /><span class="line"> 05h   right Alt / AltGr</span><br /><span class="line">---Russian keyboard---</span><br /><span class="line"> 05h   Russian + no shift keys</span><br /><span class="line"> 06h   Russian + either Shift</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0518</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

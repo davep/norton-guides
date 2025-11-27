@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3535278.html">
+    <link rel="next" href="rbint-3540584.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3535278.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3521795.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3540584.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2D  - Amis V3.5+ - Get Hotkeys                                       </span>  [<span class="ngb">t</span>]</span><br /><span class="line"></span><br /><span class="line">   AL = 05h</span><br /><span class="line">   AH = multiplex number for program</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h not implemented</span><br /><span class="line">       FFh supported</span><br /><span class="line">       DX:BX -&gt; hotkey list (see #2260)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is not valid unless a program is installed on the</span><br /><span class="line">     specified multiplex number; use INT 2D/AL=00h to check</span><br /><span class="line">   programs which provide hotkeys are required to provide this function</span><br /><span class="line">     to be fully compliant with this specification</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2D/AL=00h,INT 2D/AL=01h,INT 2D/AL=02h,INT 2D/AL=03h,INT 2D/AL=04h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2D/AL=06h</span><br /><span class="line"></span><br /><span class="line">Format of AMIS hotkey list:</span><br /><span class="line">Offset Size    Description (Table 2260)</span><br /><span class="line"> 00h   BYTE    type of hotkey checking (see #2261)</span><br /><span class="line"> 01h   BYTE    number of hotkeys (may be zero if TSR can disable hotkeys)</span><br /><span class="line"> 02h 6N BYTEs  array of hotkey definitions</span><br /><span class="line">       (one per hotkey, first should be primary hotkey)</span><br /><span class="line">       Offset  Size    Description</span><br /><span class="line">        00h    BYTE    hotkey scan code (00h/80h if shift states only)</span><br /><span class="line">               hotkey triggers on release if bit 7 set</span><br /><span class="line">        01h    WORD    required shift states (see #2262)</span><br /><span class="line">        03h    WORD    disallowed shift states (see #2262)</span><br /><span class="line">        05h    BYTE    hotkey flags (see #2263)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> except for bit 7, the shift states correspond exactly to the return</span><br /><span class="line">     values from INT 16/AH=12h.  A set bit in the required states word</span><br /><span class="line">     indicates that the corresponding shift state must be active when the</span><br /><span class="line">     hotkey&#39;s scan code is received for the hotkey to be recognized; a</span><br /><span class="line">     clear bit means that the corresponding state may be ignored.  A set</span><br /><span class="line">     bit in the disallowed shift states word indicates that the</span><br /><span class="line">     corresponding shift state must be inactive.</span><br /><span class="line">   for the disallowed-states word, if one of the &#34;either&#34; bits is set,</span><br /><span class="line">     then both the corresponding left bit and right bit must be set</span><br /><span class="line">   examples:</span><br /><span class="line">       Ctrl-Alt-Del monitoring: 53h 000Ch 0003h 06h</span><br /><span class="line">       Alt-key tap (DESQview):  B8h 0000h 0007h 08h</span><br /><span class="line">       Shf-Shf-N (NOTE.COM):    31h 0003h 000Ch 00h</span><br /><span class="line">Index: hotkeys;AMIS</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0005</span><br /><span class="line"></span><br /><span class="line">Bitfields for type of AMIS hotkey checking:</span><br /><span class="line">Bit(s) Description (Table 2261)</span><br /><span class="line"> 0 checks before chaining INT 09</span><br /><span class="line"> 1 checks after chaining INT 09</span><br /><span class="line"> 2 checks before chaining INT 15/AH=4Fh</span><br /><span class="line"> 3 checks after chaining INT 15/AH=4Fh</span><br /><span class="line"> 4 checks on INT 16/AH=00h,01h,02h</span><br /><span class="line"> 5 checks on INT 16/AH=10h,11h,12h</span><br /><span class="line"> 6 checks on INT 16/AH=20h,21h,22h</span><br /><span class="line"> 7 reserved (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2260</span><br /><span class="line"></span><br /><span class="line">Bitfields for AMIS shift states:</span><br /><span class="line">Bit(s) Description (Table 2262)</span><br /><span class="line"> 0 right shift pressed</span><br /><span class="line"> 1 left shift pressed</span><br /><span class="line"> 2 either control key pressed</span><br /><span class="line"> 3 either Alt key pressed</span><br /><span class="line"> 4 ScrollLock active</span><br /><span class="line"> 5 NumLock active</span><br /><span class="line"> 6 CapsLock active</span><br /><span class="line"> 7 either shift key pressed</span><br /><span class="line"> 8 left control key pressed</span><br /><span class="line"> 9 left Alt key pressed</span><br /><span class="line"> 10    right control key pressed</span><br /><span class="line"> 11    right Alt key pressed</span><br /><span class="line"> 12    ScrollLock pressed</span><br /><span class="line"> 13    NumLock pressed</span><br /><span class="line"> 14    CapsLock pressed</span><br /><span class="line"> 15    SysReq key pressed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> if bit 2 is set, either control key may be pressed for the hotkey; if</span><br /><span class="line">     bits 8 and 10 are both set, then both control keys must be pressed.</span><br /><span class="line">     Similarly for bits 3 and 9/11, as well as 7 and 0/1.</span><br /><span class="line">   the SysReq key is often labeled SysRq</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2260,#2263</span><br /><span class="line"></span><br /><span class="line">Bitfields for AMIS hotkey flags:</span><br /><span class="line">Bit(s) Description (Table 2263)</span><br /><span class="line"> 0 hotkey chained before processing</span><br /><span class="line"> 1 hotkey chained after processing</span><br /><span class="line"> 2 others should pass through this hotkey so that it can be monitored</span><br /><span class="line"> 3 hotkey will not activate if other keys pressed/released before hotkey</span><br /><span class="line">     press is completed</span><br /><span class="line"> 4 this key is remapped into some other key</span><br /><span class="line"> 5 this key is conditionally chained (sometimes passed on, sometimes</span><br /><span class="line">     swallowed)</span><br /><span class="line"> 6-7   reserved (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2260,#2262</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

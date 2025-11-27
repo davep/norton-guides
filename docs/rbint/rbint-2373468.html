@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2372560.html">
+    <link rel="next" href="rbint-2374256.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2372560.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2374256.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 4404  U - Doubletools V1.0 - Get ???                           </span>  [<span class="ngb">k</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4404h</span><br /><span class="line">   BL = drive number (00h = default, 01h = A:, etc)</span><br /><span class="line">   CX = 0006h</span><br /><span class="line">   DS:DX -&gt; DoubleTools structure (see #1221)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if IOCTL successful -- check DSPACKET for actual status</span><br /><span class="line">       AX = number of bytes actually transferred</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (01h,05h,06h,0Dh) (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the Transporter device driver has the signature 55h 61h 50h 74h</span><br /><span class="line">     (&#34;DaPt&#34;) twelve bytes after it beginning</span><br /><span class="line"></span><br /><span class="line">Format of DoubleTools structure:</span><br /><span class="line">Offset Size    Description (Table 1221)</span><br /><span class="line"> 00h   WORD    (call) signature 55h AAh</span><br /><span class="line">       (ret) signature 78h 70h (&#34;xp&#34;)</span><br /><span class="line"> 02h   WORD    (call) signature 52h 16h</span><br /><span class="line">       (ret) ???</span><br /><span class="line"> 04h   WORD    (ret) segment of driver&#39;s DS (same as its PSP)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

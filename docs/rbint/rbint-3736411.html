@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3735933.html">
+    <link rel="next" href="rbint-3737493.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3735933.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3737493.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1680  - Ms Windows, Dpmi, Various - Release Current Virtual Mac</span>  [<span class="ngb">W</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1680h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h if the call is supported</span><br /><span class="line">       80h (unchanged) if the call is not supported</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> programs can use this function in idle loops to enhance performance</span><br /><span class="line">     under multitaskers; this call is supported by MS Windows 3+, DOS 5+,</span><br /><span class="line">     DPMI 1.0+, and in OS/2 2.0+ for multitasking DOS applications</span><br /><span class="line">   does not block the program; it just gives up the remainder of the time</span><br /><span class="line">     slice</span><br /><span class="line">   should not be used by Windows-specific programs</span><br /><span class="line">   when called very often without intermediate screen output under</span><br /><span class="line">     MS Windows 3.x, the VM will go into an idle-state and will not</span><br /><span class="line">     receive the next slice before 8 seconds have elapsed. This time can</span><br /><span class="line">     be changed in SYSTEM.INI through &#34;IdleVMWakeUpTime=&lt;seconds&gt;&#34;.</span><br /><span class="line">     Setting it to zero results in a long wait.</span><br /><span class="line">   this function has no effect under OS/2 2.10-4.0 if the DOS box has an</span><br /><span class="line">     &#34;Idle Sensitivity&#34; setting of 100</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1689h,INT 15/AX=1000h,INT 15/AX=5305h,INT 21/AH=89h,INT 7A/BX=000Ah</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

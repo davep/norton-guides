@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5073027.html">
+    <link rel="next" href="rbint-5075169.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5073027.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5075169.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 61 Fn 0001  - Banyan Vines - &#34;sowait&#34; - Wait For Asynchronous Event C</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 0001h subfn 0005h</span><br /><span class="line">   DS:DX -&gt; communications control block (see #3011)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (0000h-000Ah,00A2h,00A3h) (see #3010)</span><br /><span class="line"><span class="ngb">Desc:</span>  returns results for all asynchronous operations invoked from the</span><br /><span class="line">     data segment used for this call</span><br /><span class="line">Range: INT 60h to INT 66h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> The Banyan interrupt handler is identified by the string &#34;BANV&#34; in</span><br /><span class="line">     the four bytes immediately preceding the interrupt handler</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=0001h/SF=0002h,AX=0001h/SF=0009h</span><br /><span class="line"></span><br /><span class="line">(Table 3010)</span><br /><span class="line">Values for VINES function status:</span><br /><span class="line"> 0000h successful</span><br /><span class="line"> 0001h service not installed</span><br /><span class="line"> 0002h invalid service ID</span><br /><span class="line"> 0003h-000Ah reserved for BANV interface errors</span><br /><span class="line"> 00A2h no more buffer space available</span><br /><span class="line"> 00A3h timeout event</span><br /><span class="line"></span><br /><span class="line">Format of VINES control block for subfunction 0005h:</span><br /><span class="line">Offset Size    Description (Table 3011)</span><br /><span class="line"> 00h   WORD    0005h</span><br /><span class="line"> 02h   WORD    pointer to argument block (see #3012)</span><br /><span class="line"> 04h   WORD    error return code</span><br /><span class="line"> 06h  4 BYTEs  reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #3008,#3013</span><br /><span class="line"></span><br /><span class="line">Format of VINES argument block for subfunction 0005h:</span><br /><span class="line">Offset Size    Description (Table 3012)</span><br /><span class="line"> 00h   WORD    pointer to WORD event pointer</span><br /><span class="line"> 02h   WORD    timeout in multiples of 200ms, FFFFh = infinite</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #3009,#3011</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

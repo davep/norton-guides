@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2201109.html">
+    <link rel="next" href="rbint-2202137.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2201109.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2202137.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 36  - Dos 2+ - Get Free Disk Space                             </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 36h</span><br /><span class="line">   DL = drive number (00h = default, 01h = A:, etc)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = FFFFh if invalid drive</span><br /><span class="line">   else</span><br /><span class="line">       AX = sectors per cluster</span><br /><span class="line">       BX = number of free clusters</span><br /><span class="line">       CX = bytes per sector</span><br /><span class="line">       DX = total clusters on drive</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> free space on drive in bytes is AX * BX * CX</span><br /><span class="line">   total space on drive in bytes is AX * CX * DX</span><br /><span class="line">   &#34;lost clusters&#34; are considered to be in use</span><br /><span class="line">   according to Dave Williams&#39; MS-DOS reference, the value in DX is</span><br /><span class="line">     incorrect for non-default drives after ASSIGN is run</span><br /><span class="line">   this function does not return proper results on CD-ROMs;</span><br /><span class="line">     use AX=4402h&#34;CD-ROM&#34; instead</span><br /><span class="line">   (FAT32 drive) the reported total and free space are limited to 2G-32K</span><br /><span class="line">     should they exceed that value</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=1Bh,AH=1Ch,AX=4402h&#34;CD-ROM&#34;,AX=7303h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

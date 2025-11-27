@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5543119.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5543119.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5448544.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 67 Fn FFA5  U - Compaq Cemm V5.10+ - Private Api                     </span>  [<span class="ngb">m</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = FFA5h</span><br /><span class="line">   BX = 4345h (&#34;CE&#34;)</span><br /><span class="line">   DX = subfunction</span><br /><span class="line">       0000h unshadow video ROM???</span><br /><span class="line">       0001h shadow video ROM???</span><br /><span class="line">       0002h map pages</span><br /><span class="line">       CX = number of pages (00h=one)</span><br /><span class="line">       ESI = linear address of first page to map into address space</span><br /><span class="line">       EDI = linear starting address at which pages are to be visible</span><br /><span class="line">       0003h get ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX = ??? (0-2)</span><br /><span class="line">       0004h BUG: crashes system due to fencepost error</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AH = 84h</span><br /><span class="line">   AL = status (84h = error, FFh = success)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  if BX &lt;&gt; 4345h or DX &gt; 0004h on entry, CEMM behaves identically to</span><br /><span class="line">     Microsoft&#39;s EMM386 (see AX=FFA5h&#34;EMM386&#34;)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=FFA5h&#34;EMM386&#34;,#1200 at INT 21/AX=4402h/SF=02h,#3337</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

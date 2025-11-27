@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1948742.html">
+    <link rel="next" href="rbint-1956351.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1948742.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1712194.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1956351.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 1A Fn B401  - Intel Plug-and-play Auto-configuration - Get Default Co</span>  [<span class="ngb">X</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = B401h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = 0000h</span><br /><span class="line">       BX = maximum size of configuration table in bytes</span><br /><span class="line">       CX = required configuration buffer size</span><br /><span class="line">       (includes scratch space used by ACFG code)</span><br /><span class="line">       EDI = linear/physical address of ESCD table (see #0940)</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (see #0939)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=B400h,AX=B402h,@xxxxh:xxxxh&#34;Plug-and-Play&#34;</span><br /><span class="line"></span><br /><span class="line">Format of Intel Plug-and-Play Extended System Configuration Data table:</span><br /><span class="line">Offset Size    Description (Table 0940)</span><br /><span class="line"> 00h   WORD    total length of this table</span><br /><span class="line"> 02h  4 BYTEs  signature &#34;ACFG&#34;</span><br /><span class="line"> 06h   BYTE    minor version number</span><br /><span class="line"> 07h   BYTE    major version number (currently 02h)</span><br /><span class="line"> 08h   BYTE    number of boards listed in the configuration data</span><br /><span class="line"> 09h  3 BYTEs  reserved (00h)</span><br /><span class="line"> 0Ch   var board data</span><br /><span class="line">   WORD    checksum</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this table contains information about the standard devices in the</span><br /><span class="line">     system, such as serial ports, parallel ports, etc.  For each device,</span><br /><span class="line">     it includes at least the I/O port address (03F8h,02F8h,0378h,etc).</span><br /><span class="line">   the sum of all words in the table, including the checksum field (with</span><br /><span class="line">     implied zero padding if the length is odd), must equal 0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0941</span><br /><span class="line"></span><br /><span class="line">Format of Extended System Configuration Data Board Header:</span><br /><span class="line">Offset Size    Description (Table 0941)</span><br /><span class="line"> 00h   WORD    length of this header in bytes</span><br /><span class="line"> 02h   BYTE    slot number</span><br /><span class="line">       00h motherboard</span><br /><span class="line">       01h-0Fh ISA/EISA</span><br /><span class="line">       10h-40h PCI</span><br /><span class="line"> 03h   BYTE    reserved (00h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0940,#0942</span><br /><span class="line"></span><br /><span class="line">Format of Extended System Configuration Data Freeform Board Header:</span><br /><span class="line">Offset Size    Description (Table 0942)</span><br /><span class="line"> 00h  4 BYTEs  signature &#34;ACFG&#34;</span><br /><span class="line"> 04h   BYTE    minor version number</span><br /><span class="line"> 05h   BYTE    major version number (currently 02h)</span><br /><span class="line"> 06h   BYTE    board type</span><br /><span class="line">       01h ISA</span><br /><span class="line">       02h EISA</span><br /><span class="line">       04h PCI</span><br /><span class="line">       08h PCMCIA</span><br /><span class="line">       10h PnPISA</span><br /><span class="line">       20h MCA</span><br /><span class="line"> 07h   BYTE    reserved (00h)</span><br /><span class="line"> 08h   WORD    disabled functions (bit N set = function N disabled)</span><br /><span class="line"> 0Ah   WORD    configuration error functions</span><br /><span class="line"> 0Ch   WORD    reconfigurable functions (bit N set = function N reconfig&#39;able)</span><br /><span class="line"> 0Eh  2 BYTEs  reserved (00h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0945,#0946</span><br /><span class="line"></span><br /><span class="line">Format of Extended System Configuration Data Freeform PCI Device Data:</span><br /><span class="line">Offset Size    Description (Table 0943)</span><br /><span class="line"> 00h   BYTE    PCI bus number</span><br /><span class="line"> 01h   BYTE    PCI device and function number</span><br /><span class="line"> 02h   WORD    PCI device identifier</span><br /><span class="line"> 04h   WORD    PCI vendor ID (see #0656 at INT 1A/AX=B102h)</span><br /><span class="line"> 06h  2 BYTEs  reserved (00h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0943,#0946</span><br /><span class="line"></span><br /><span class="line">Format of Extended System Configuration Data Freeform PnP ISA Board ID:</span><br /><span class="line">Offset Size    Description (Table 0944)</span><br /><span class="line"> 00h   DWORD   vendor ID (EISA device identifier)</span><br /><span class="line"> 04h   DWORD   serial number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0944,#0945</span><br /><span class="line"></span><br /><span class="line">Format of Extended System Configuration Data PnP ISA ECD Extension Function:</span><br /><span class="line">Offset Size    Description (Table 0945)</span><br /><span class="line"> 00h   WORD    001Eh (length of this structure)</span><br /><span class="line"> 02h   BYTE    01h (selection size)</span><br /><span class="line"> 03h   BYTE    00h (selection data)</span><br /><span class="line"> 04h   BYTE    C0h (function information byte) (see #0948)</span><br /><span class="line"> 05h   BYTE    18h (size of following free-format data)</span><br /><span class="line"> 06h 16 BYTEs  freeform board header (see #0942)</span><br /><span class="line"> 16h  8 BYTEs  Plug-and-Play board ID (see #0944)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  ECD = Extended Configuration Data; this structure must be the last</span><br /><span class="line">     &#34;function&#34; for a particular ISA Plug-and-Play board</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0946</span><br /><span class="line"></span><br /><span class="line">Format of Extended System Configuration Data PCI ECD Extension Function:</span><br /><span class="line">Offset Size    Description (Table 0946)</span><br /><span class="line"> 00h   WORD    length of this structure (at least 001Eh, up to 0056h)</span><br /><span class="line"> 02h   BYTE    01h (selection size)</span><br /><span class="line"> 03h   BYTE    00h (selection data)</span><br /><span class="line"> 04h   BYTE    C0h (function information byte) (see #0948)</span><br /><span class="line"> 05h   BYTE    size of following free-format data (at least 18h, max 50h)</span><br /><span class="line"> 06h 16 BYTEs  freeform board header (see #0942)</span><br /><span class="line"> 16h 8N BYTEs  PCI board ID (see #0943) for one to eight boards</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> ECD = Extended Configuration Data; this structure must be the last</span><br /><span class="line">     &#34;function&#34; for a particular PCI board</span><br /><span class="line">   AMI BIOS v1.00.05.AX1 sets the length field to 001Ch for entries with</span><br /><span class="line">     a single board ID, apparently treating the field as the length of</span><br /><span class="line">     the remainder of the structure instead of the full structure&#39;s length</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0945</span><br /><span class="line"></span><br /><span class="line">Bitfields for EISA ID and Slot Information:</span><br /><span class="line">Bit(s) Description (Table 0947)</span><br /><span class="line"> 3-0   selector among duplicate configuration file names (0000 if no dups)</span><br /><span class="line"> 5-4   slot type</span><br /><span class="line">   00 expansion slot</span><br /><span class="line">   01 embedded</span><br /><span class="line">   10 virtual slot</span><br /><span class="line">   11 reserved</span><br /><span class="line"> 6 ID is readable</span><br /><span class="line"> 7 duplicate IDs present</span><br /><span class="line"> 8 board can be disabled</span><br /><span class="line"> 9 IOCHKERR supported</span><br /><span class="line"> 10    board or entries locked</span><br /><span class="line"> 13-11 reserved</span><br /><span class="line"> 14    board does not have or need configuration file</span><br /><span class="line"> 15    configuration not complete</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0948</span><br /><span class="line"></span><br /><span class="line">Bitfields for EISA Function Information:</span><br /><span class="line">Bit(s) Description (Table 0948)</span><br /><span class="line"> 0 subtype data</span><br /><span class="line"> 1 memory information (see #0949)</span><br /><span class="line"> 2 IRQ information (see #0951)</span><br /><span class="line"> 3 DMA information (see #0952)</span><br /><span class="line"> 4 port range information (see #0953)</span><br /><span class="line"> 5 port initialization data (see #0954)</span><br /><span class="line"> 6 free form data</span><br /><span class="line"> 7 function disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0945,#0946,#0947</span><br /><span class="line"></span><br /><span class="line">Format of EISA Memory Information:</span><br /><span class="line">Offset Size    Description (Table 0949)</span><br /><span class="line"> 00h   WORD    memory information flags (see #0950)</span><br /><span class="line"> 02h  3 BYTEs  high 24 bits of memory start address (LSB first)</span><br /><span class="line"> 05h   WORD    memory size in K (0000h = 65536K)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0948</span><br /><span class="line"></span><br /><span class="line">Bitfields for EISA Memory Information Flags:</span><br /><span class="line">Bit(s) Description (Table 0950)</span><br /><span class="line"> 0 writable (RAM rather than ROM)</span><br /><span class="line"> 1 cached</span><br /><span class="line"> 2 write-back cache rather than write-through</span><br /><span class="line"> 4-3   memory type</span><br /><span class="line">   00 system</span><br /><span class="line">   01 expantion</span><br /><span class="line">   10 virtual</span><br /><span class="line">   11 other</span><br /><span class="line"> 5 shared</span><br /><span class="line"> 6 reserved (0)</span><br /><span class="line"> 7 more entries follow</span><br /><span class="line"> 9-8   memory width</span><br /><span class="line">   00 byte</span><br /><span class="line">   01 word</span><br /><span class="line">   10 dword</span><br /><span class="line">   11 reserved</span><br /><span class="line"> 11-10 decoded address lines</span><br /><span class="line">   00 = 20</span><br /><span class="line">   01 = 24</span><br /><span class="line">   10 = 32</span><br /><span class="line">   11 reserved</span><br /><span class="line"> 15-12 reserved (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0949</span><br /><span class="line"></span><br /><span class="line">Bitfields for EISA IRQ Information:</span><br /><span class="line">Bit(s) Description (Table 0951)</span><br /><span class="line"> 3-0   IRQ number</span><br /><span class="line"> 4 reserved (0)</span><br /><span class="line"> 5 IRQ triggering (0 = edge, 1 = level)</span><br /><span class="line"> 6 IRQ is shareable</span><br /><span class="line"> 7 more entries follow</span><br /><span class="line"> 15-8  reserved (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0948</span><br /><span class="line"></span><br /><span class="line">Bitfields for EISA DMA Information:</span><br /><span class="line">Bit(s) Description (Table 0952)</span><br /><span class="line"> 2-0   DMA channel number</span><br /><span class="line"> 5-3   reserved (0)</span><br /><span class="line"> 6 shareable</span><br /><span class="line"> 7 more entries follow</span><br /><span class="line"> 9-8   reserved</span><br /><span class="line"> 11-10 DMA transfer size</span><br /><span class="line">   00 byte</span><br /><span class="line">   01 word</span><br /><span class="line">   10 dword</span><br /><span class="line">   11 word, but count in bytes</span><br /><span class="line"> 13-12 DMA timing</span><br /><span class="line">   00 ISA-compatible</span><br /><span class="line">   01 EISA type &#34;A&#34;</span><br /><span class="line">   10 EISA type &#34;B&#34;</span><br /><span class="line">   11 EISA type &#34;C&#34;/&#34;F&#34; (burst)</span><br /><span class="line"> 15-14 reserved (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0948</span><br /><span class="line"></span><br /><span class="line">Format of EISA Port Range Information:</span><br /><span class="line">Offset Size    Description (Table 0953)</span><br /><span class="line"> 00h   BYTE    port description</span><br /><span class="line">       bits 4-0: number of sequential ports</span><br /><span class="line">       bit 5 reserved (0)</span><br /><span class="line">       bit 6: shareable</span><br /><span class="line">       bit 7: more entries follow</span><br /><span class="line"> 01h   WORD    I/O port address</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0948,#0954</span><br /><span class="line"></span><br /><span class="line">Format of EISA Port Initialization Data:</span><br /><span class="line">Offset Size    Description (Table 0954)</span><br /><span class="line"> 00h   BYTE    flags</span><br /><span class="line">       bits 1-0: port size</span><br /><span class="line">           00 byte</span><br /><span class="line">           01 word</span><br /><span class="line">           10 dword</span><br /><span class="line">           11 reserved</span><br /><span class="line">       bit 2: masked write</span><br /><span class="line">       bits 6-3 reserved (0)</span><br /><span class="line">       bit 7: more entries follow</span><br /><span class="line"> 01h   ???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0948,#0953</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

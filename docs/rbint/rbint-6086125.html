@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-6085619.html">
+    <link rel="next" href="rbint-6087411.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-6085619.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-6065199.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-6087411.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int D4 Fn 22  - Pc-mos/386 V5.01 - Add A Task To The System              </span>  [<span class="ngb">O</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 22h</span><br /><span class="line">   DS:SI -&gt; addtask data structure (see #3689)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       ES = segment address of the new task&#39;s TCB data structure</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (see #3688)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=21h</span><br /><span class="line"></span><br /><span class="line">(Table 3688)</span><br /><span class="line">Values for PC-MOS/386 error code:</span><br /><span class="line"> 08h   insufficient memory</span><br /><span class="line"> 0Bh   invalid addtask structure format</span><br /><span class="line"> 12h   insufficient available space in system memory pool</span><br /><span class="line"> 1Fh   general failure</span><br /><span class="line"> 55h   already allocated</span><br /><span class="line"> 57h   if task already in use or invalid parameter</span><br /><span class="line"></span><br /><span class="line">Format of PC-MOS/386 addtask data structure:</span><br /><span class="line">Offset Size    Description (Table 3689)</span><br /><span class="line"> 00h   WORD    task size in KB (min 16KB)</span><br /><span class="line"> 02h   WORD    task ID (0000h for automatic selection)</span><br /><span class="line"> 04h   BYTE    task class (&#39; &#39; or &#39;A&#39;-&#39;Z&#39;)</span><br /><span class="line"> 05h   DWORD   -&gt; ASCIZ name of task startup batchfile</span><br /><span class="line"> 09h   DWORD   -&gt; task&#39;s terminal driver (0000000h = background task)</span><br /><span class="line"> 0Dh   WORD    task port</span><br /><span class="line"> 0Fh   DWORD   task baud rate</span><br /><span class="line"> 13h   DWORD   (ret) total extended memory</span><br /><span class="line"> 17h   DWORD   (ret) number of 4K extended memory pages allocated</span><br /><span class="line"> 1Bh   WORD    (ret) paragraphs of system memory pool allocated</span><br /><span class="line"> 1Dh   WORD    (ret) system memory pool size in paragraphs</span><br /><span class="line"> 1Fh   WORD    (ret) ASCII task percentage of system memory pool</span><br /><span class="line"> 21h  3 BYTEs  reserved</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3853913.html">
+    <link rel="next" href="rbint-3855551.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3853913.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3855551.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1902  U - Dos 4.x Only Shellb.com - Command.com Interface      </span>  [<span class="ngb">l</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1902h</span><br /><span class="line">   ES:DI -&gt; ASCIZ full filename of current batch file, with at least the</span><br /><span class="line">         final filename element uppercased</span><br /><span class="line">   DS:DX -&gt; buffer for results</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 00h  failed, either</span><br /><span class="line">       (a) final filename element quoted at ES:DI does not match</span><br /><span class="line">             identity of shell batch file quoted as parameter of most</span><br /><span class="line">             recent call of SHELLB command, or</span><br /><span class="line">       (b) no more Program Start Commands available.</span><br /><span class="line">   AL= FFh  success, then:</span><br /><span class="line">       memory at DS:[DX+1] onwards filled as:</span><br /><span class="line">       DX+1:   BYTE    count of bytes of PSC</span><br /><span class="line">       DX+2: N BYTEs   Program Start Command text</span><br /><span class="line">           BYTE    0Dh terminator</span><br /><span class="line"><span class="ngb">Desc:</span>  COMMAND.COM executes the result of this call in preference to</span><br /><span class="line">     reading a command from a batch file.  Thus the batch file does not</span><br /><span class="line">     advance in execution for so long as SHELLB provides PSCs from its</span><br /><span class="line">     workspace.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  The PSCs are planted in SHELLB workspace by SHELLC, the user</span><br /><span class="line">     menu interface.  The final PSC of a sequence is finished with a</span><br /><span class="line">     GOTO COMMON, which causes a loop back in the batch file which called</span><br /><span class="line">     SHELLC so as to execute SHELLC again.  The check on batch file name</span><br /><span class="line">     permits PSCs to CALL nested batch files while PSCs are still stacked</span><br /><span class="line">     up for subsequent execution.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

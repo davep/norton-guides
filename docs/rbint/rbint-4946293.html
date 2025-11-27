@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4945782.html">
+    <link rel="next" href="rbint-4947961.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4945782.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4908825.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4947961.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 60  u - Hp 95lx System Manager - Initialize File Selection Menu      </span>  [<span class="ngb">b</span>]</span><br /><span class="line"></span><br /><span class="line">   DI = 0205h</span><br /><span class="line">   STACK:  2 WORDs unused dummies (for calls from high level languages)</span><br /><span class="line">       DWORD   pointer to file menu structure (see #2953)</span><br /><span class="line">       DWORD   pointer to edit record (see #2956 at INT 60/DI=0400h)</span><br /><span class="line">       DWORD   pointer to wildcard filespec for initial file list</span><br /><span class="line">       WORD    row???</span><br /><span class="line">       WORD    column???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ???</span><br /><span class="line">   STACK unchanged</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 60/DI=0200h,INT 60/DI=0206h,INT 60/DI=0208h</span><br /><span class="line"></span><br /><span class="line">Format of HP 95LX file menu structure:</span><br /><span class="line">Offset Size    Description (Table 2953)</span><br /><span class="line"> 00h   DWORD   pointer to ASCIZ base directory name</span><br /><span class="line"> 04h   DWORD   pointer to ASCIZ file pattern (wildcard filespec)</span><br /><span class="line"> 08h   DWORD   pointer to file list workspace, at least 1024 bytes (see #2954)</span><br /><span class="line"> 0Ch   WORD    size of file list workspace in bytes</span><br /><span class="line"> 0Eh   WORD    starting row (-3 is topmost, 0 is first non-&#34;reserved&#34; line)</span><br /><span class="line"> 10h   WORD    starting column</span><br /><span class="line"> 12h   WORD    number of lines</span><br /><span class="line"> 14h   WORD    number of columns</span><br /><span class="line"> 16h   WORD    number of files displayed on each line</span><br /><span class="line">---the remaining fields are initialized by the System Manager---</span><br /><span class="line"> 18h   WORD    0000h if first edit character, else multiline</span><br /><span class="line"> 1Ah   WORD    number of files in file list</span><br /><span class="line"> 1Ch   WORD    max files workspace has room for</span><br /><span class="line"> 1Eh   WORD    file at top of list</span><br /><span class="line"> 20h   WORD    index of file to highlight</span><br /><span class="line"> 22h   WORD    index of file to unhighlight</span><br /><span class="line"> 24h   WORD    current focus (01h FMENU, 02h EDIT)</span><br /><span class="line"></span><br /><span class="line">Format of HP 95LX file list workspace entry:</span><br /><span class="line">Offset Size    Description (Table 2954)</span><br /><span class="line"> 00h   BYTE    file attributes</span><br /><span class="line"> 01h   WORD    file time (see #1351 at INT 21/AX=5700h)</span><br /><span class="line"> 03h   WORD    file date (see #1352 at INT 21/AX=5700h)</span><br /><span class="line"> 05h   DWORD   file size</span><br /><span class="line"> 09h 13 BYTEs  ASCIZ filename</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

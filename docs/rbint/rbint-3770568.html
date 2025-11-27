@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3769311.html">
+    <link rel="next" href="rbint-3775928.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3769311.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3775928.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1684  U - Ms Windows - Shell - Get Api Entry Point             </span>  [<span class="ngb">W</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1684h</span><br /><span class="line">   BX = 0017h (virtual device ID for SHELL device) (see #2329)</span><br /><span class="line">   ES:DI = 0000h:0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ES:DI -&gt; VxD API entry point (see #2344)</span><br /><span class="line">         0000h:0000h if the VxD does not support an API</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1684h/BX=0021h,#0979 at INT 20&#34;Windows&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2344)</span><br /><span class="line">Call SHELL entry point with:</span><br /><span class="line">   EDX = function number (0000h-0027h,0100h-0108h, mostly unknown)</span><br /><span class="line">       0000h get version number</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = version number</span><br /><span class="line">           EBX = system VM handle</span><br /><span class="line">       0001h &#34;SHELL_Get_SYSVM_Info&#34; get system VM information</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           AX bit 0 set if system VM executing exclusively</span><br /><span class="line">           BX = background time slice priority</span><br /><span class="line">           CX = foreground time slice priority</span><br /><span class="line">           SI = minimum time slice in milliseconds</span><br /><span class="line">       0002h &#34;SHELL_Set_SYSVM_Info&#34; set system VM information</span><br /><span class="line">       AX bit 0 set if system VM should execute exclusively (ignored?)</span><br /><span class="line">       BX = background time slice priority (1-10000)</span><br /><span class="line">       CX = foreground time slice priority (1-10000)</span><br /><span class="line">       SI = minimum time slice in milliseconds (1-10000)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       0003h &#34;SHELL_Crt_VM&#34; create a virtual machine</span><br /><span class="line">       ES:EDI -&gt; SEB structure (see #2345)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">              EAX = VM handle</span><br /><span class="line">           CF set on error</span><br /><span class="line">              EDX,EAX = result from GetSetDetailedVMError()</span><br /><span class="line">       0004h &#34;SHELL_Destroy_VM&#34; destroy a virtual machine</span><br /><span class="line">       EBX = VM handle (not system VM)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> nothing</span><br /><span class="line">       0005h &#34;SHELL_Set_Focus&#34;</span><br /><span class="line">       EBX = VM handle</span><br /><span class="line">       ECX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> nothing</span><br /><span class="line">       0006h &#34;SHELL_Get_VM_State&#34;</span><br /><span class="line">       EBX = VM handle (not system VM)</span><br /><span class="line">       ES:EDI -&gt; ??? structure</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       0007h &#34;SHELL_Set_VM_State&#34;</span><br /><span class="line">       EBX = VM handle (not system VM)</span><br /><span class="line">       ES:EDI -&gt; ??? structure</span><br /><span class="line">       0008h &#34;SHELL_Debug_Out&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   dummy function in retail version of MS Windows</span><br /><span class="line">       0009h &#34;SHELL_VMDA_Init&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       000Ah &#34;SHELL_VMDA_Exit&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       000Bh &#34;SHELL_Get_Message_Txt&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       000Ch &#34;SHELL_Event_Complete&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       000Dh &#34;SHELL_Get_Contention_Info&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       000Eh &#34;SHELL_Get_Clip_Info&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       000Fh &#34;SHELL_Set_Paste&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       0010h &#34;SHELL_Switcher_Assist&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       0011h &#34;SHELL_Get_FileSysChng&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       0012h &#34;SHELL_Query_Destroy&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       0013h &#34;SHELL_SetFocus_Cur_VM&#34; set input focus to current VM</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       0014h &#34;SHELL_User_Busy_API&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       0015h &#34;SHELL_Chng_Hot_Key&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       0016h &#34;SHELL_Get_TermInfo&#34;</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       ---Windows95---</span><br /><span class="line">       0017h ???</span><br /><span class="line">       0018h ???</span><br /><span class="line">       0019h ???</span><br /><span class="line">       001Ah ???</span><br /><span class="line">       001Bh ???</span><br /><span class="line">       001Ch ???</span><br /><span class="line">       001Dh ???</span><br /><span class="line">       001Eh ???</span><br /><span class="line">       001Fh ???</span><br /><span class="line">       0020h ???</span><br /><span class="line">       0021h ???</span><br /><span class="line">       0022h ???</span><br /><span class="line">       0023h ???</span><br /><span class="line">       0024h ???</span><br /><span class="line">       0025h ???</span><br /><span class="line">       0026h ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   makes VxDCALL 00178002h (see INT 20&#34;Windows&#34;)</span><br /><span class="line">       0027h ???</span><br /><span class="line">       0100h get ??? version</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = version??? (0400h for Windows95)</span><br /><span class="line">       0101h not implemented</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF set</span><br /><span class="line">           EAX = FFFFFFFFh</span><br /><span class="line">       0102h not implemented</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF set</span><br /><span class="line">           EAX = FFFFFFFFh</span><br /><span class="line">       0103h not implemented</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF set</span><br /><span class="line">           EAX = FFFFFFFFh</span><br /><span class="line">       0104h ???</span><br /><span class="line">       0105h ???</span><br /><span class="line">       0106h ???</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">           CF set on error</span><br /><span class="line">       0107h get SDK version for VxD</span><br /><span class="line">       AX = VxD identifier</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> EAX = VxD ID (high word) and SDK version (low)</span><br /><span class="line">               00000000h if no such VxD loaded</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   makes a VMMCALL 0001013Fh (see INT 20&#34;Windows&#34;)</span><br /><span class="line">             followed by ???</span><br /><span class="line">       0108h ???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set if called from VM other than system VM</span><br /><span class="line">       EAX = FFFFFFFFh</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  except for functions 0013h,0026h,and 010xh, this API may only be</span><br /><span class="line">     called from the system VM</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0979 at INT 20&#34;Windows&#34;</span><br /><span class="line"></span><br /><span class="line">Format of Shell Execution Block (SEB):</span><br /><span class="line">Offset Size    Description (Table 2345)</span><br /><span class="line"> 00h   DWORD   PIF flags (see #2346)</span><br /><span class="line"> 04h   DWORD   display flags (see #2347)</span><br /><span class="line"> 08h   PWORD   -&gt; pathname of .EXE to run</span><br /><span class="line"> 0Eh   PWORD   -&gt; argument list</span><br /><span class="line"> 14h   PWORD   -&gt; working drive/directory</span><br /><span class="line"> 1Ah   WORD    desired number of V86 pages for virtual machine</span><br /><span class="line"> 1Ch   WORD    minimum number of V86 pages for VM</span><br /><span class="line"> 1Eh   WORD    foreground priority</span><br /><span class="line"> 20h   WORD    background priority</span><br /><span class="line"> 22h   WORD    maximum KB of EMS</span><br /><span class="line"> 24h   WORD    minimum KB of EMS</span><br /><span class="line"> 26h   WORD    maximum KB of XMS</span><br /><span class="line"> 28h   WORD    minimum KB of XMS</span><br /><span class="line"> 2Ah   WORD    maximum KB of DPMI???</span><br /><span class="line"> 2Ch   WORD    minimum KB of DPMI???</span><br /><span class="line"> 2Eh 128 BYTEs title</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the PWORDs at offsets 08h,0Eh, and 14h consist of a DWORD offset</span><br /><span class="line">     followed by a WORD selector</span><br /><span class="line"></span><br /><span class="line">Bitfields for 386 Enhanced Mode PIF flags:</span><br /><span class="line">Bit(s) Description (Table 2346)</span><br /><span class="line"> 0 exclusive use of processor when VM is fullscreen</span><br /><span class="line"> 1 VM runs in background</span><br /><span class="line"> 2 VM runs in window</span><br /><span class="line"> 3-4   ???</span><br /><span class="line"> 5 Alt-Tab reserved</span><br /><span class="line"> 6 Alt-Esc reserved</span><br /><span class="line"> 7 Alt-Space reserved</span><br /><span class="line"> 8 Alt-Enter reserved</span><br /><span class="line"> 9 Alt-PrtSc reserved</span><br /><span class="line"> 10    PrtSc reserved</span><br /><span class="line"> 11    Ctrl-Esc reserved</span><br /><span class="line"> 12    VM will release idle time slice</span><br /><span class="line"> 13    VM not allowed to use high memory</span><br /><span class="line"> 14    ???</span><br /><span class="line"> 15    VM expanded memory not pageable</span><br /><span class="line"> 16    VM extended memory not pageable</span><br /><span class="line"> 17    Fast paste from clipboard enabled</span><br /><span class="line"> 18    VM application memory not pageable</span><br /><span class="line"> 30    Close VM when application exits</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2345,#2347</span><br /><span class="line"></span><br /><span class="line">Bitfields for SHELL display options:</span><br /><span class="line">Bit(s) Description (Table 2347)</span><br /><span class="line"> 0 emulate text mode</span><br /><span class="line"> 1 monitor text port</span><br /><span class="line"> 2 monitor low graphics port</span><br /><span class="line"> 3 monitor high graphics port</span><br /><span class="line"> 7 Retain video memory</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2345,#2346</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

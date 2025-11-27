@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3955373.html">
+    <link rel="next" href="rbint-3957369.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3955373.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3870311.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3957369.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 43E0  - Dos Protected Mode Services (dpms) V1.0 - Installation </span>  [<span class="ngb">E</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 43E0h</span><br /><span class="line">   BX = 0000h</span><br /><span class="line">   CX = 4450h (&#39;DP&#39;)</span><br /><span class="line">   DX = 4D53h (&#39;MS&#39;)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = 0000h if installed</span><br /><span class="line">       CF clear</span><br /><span class="line">       ES:DI -&gt; server structure (see #2478)</span><br /><span class="line">       ES:BX -&gt; registration structure (pre-NWDOS 7 beta spec) (see #2480)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the DPMS 1.0 server included with the original release of Novell DOS</span><br /><span class="line">     7.0 supports both the beta and 1.0 specification, setting ES:BX even</span><br /><span class="line">     if CX and DX are not as specified on entry (since the beta</span><br /><span class="line">     specification did not use those registers).  However, the DPMS 1.1</span><br /><span class="line">     server included with the March 1994 update does not support the beta</span><br /><span class="line">     specification</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=43E1h,AX=43E2h,AX=43E3h,INT 2F/AX=1687h</span><br /><span class="line">Index: signature strings;DPMS</span><br /><span class="line"></span><br /><span class="line">Format of DPMS 1.0 server structure:</span><br /><span class="line">Offset Size    Description (Table 2478)</span><br /><span class="line"> 00h  4 BYTEs  signature string &#34;DPMS&#34;</span><br /><span class="line"> 04h  2 BYTEs  DPMS version (major,minor)</span><br /><span class="line"> 06h  8 BYTEs  blank-padded server OEM name</span><br /><span class="line"> 0Eh  2 BYTEs  OEM server version (major,minor)</span><br /><span class="line"> 10h   WORD    DPMS flags (see #2479)</span><br /><span class="line"> 12h   BYTE    CPU type</span><br /><span class="line">       (02h = 286, 03h = 386 or higher, higher values allowed)</span><br /><span class="line"></span><br /><span class="line">Bitfields for DPMS flags:</span><br /><span class="line">Bit(s) Description (Table 2479)</span><br /><span class="line"> 0 fast processor reset available (286 only)</span><br /><span class="line"> 1 DPMS server is enabled</span><br /><span class="line"> 2 memory is remapped</span><br /><span class="line"> 3-15  reserved (undefined)</span><br /><span class="line"></span><br /><span class="line">Format of beta DPMS registration structure:</span><br /><span class="line">Offset Size    Description (Table 2480)</span><br /><span class="line"> 00h   DWORD   real-mode API entry point (see #2482)</span><br /><span class="line"> 04h   DWORD   16-bit protected-mode API entry point (see #2482)</span><br /><span class="line"> 08h  8 BYTEs  reserved (0)</span><br /><span class="line"> 10h  8 BYTEs  blank-padded server OEM name</span><br /><span class="line"> 18h   WORD    flags</span><br /><span class="line">       bit 0: fast processor reset available (286 only)</span><br /><span class="line">       bits 1-15 reserved (undefined)</span><br /><span class="line"> 1Ah  2 BYTEs  DPMS version (major,minor)</span><br /><span class="line"> 1Ch   BYTE    CPU type (02h = 286, 03h = 386 or higher)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

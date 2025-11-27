@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2958653.html">
+    <link rel="next" href="rbint-2960781.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2958653.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2960781.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - Directory Services - Scan Bindery Obj Tr</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = E3h subfn 47h</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1647)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1648)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (00h,96h,F0h,F1h,FCh,FEh,FFh) (see #1649)</span><br /><span class="line"><span class="ngb">Desc:</span>  iterate through the directories to which an object is a trustee</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E2h/SF=0Ch,AH=E2h/SF=0Dh,AH=E2h/SF=0Eh,AX=F217h/SF=47h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Scan Bindery Object Trustee Paths&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 1647)</span><br /><span class="line"> 00h   WORD    0008h (length of following data)</span><br /><span class="line"> 02h   BYTE    47h (subfunction &#34;Scan Bindery Object Trustee Paths&#34;)</span><br /><span class="line"> 03h   BYTE    volume number (00h-1Fh)</span><br /><span class="line"> 04h   WORD    (big-endian) last sequence number (FFFFh on first call)</span><br /><span class="line"> 06h   DWORD   (big-endian) object ID</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1648,#1878</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Scan Bindery Object Trustee Paths&#34; reply buffer:</span><br /><span class="line">Offset Size    Description (Table 1648)</span><br /><span class="line"> 00h   WORD    (call) length of following results buffer (max 107h)</span><br /><span class="line"> 02h   WORD    (big-endian) next sequence number</span><br /><span class="line"> 04h   DWORD   (big-endian) object ID</span><br /><span class="line"> 08h   BYTE    trustee directory rights (see #1537 at AH=E2h/SF=03h)</span><br /><span class="line"> 09h   BYTE    length of trustee path</span><br /><span class="line"> 0Ah  N BYTEs  trustee path</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1647,#1878</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

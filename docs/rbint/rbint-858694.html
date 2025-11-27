@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-858330.html">
+    <link rel="next" href="rbint-860301.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-858330.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-860301.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 13 Fn 4A  - Bootable Cd-rom - Initiate Disk Emulation                </span>  [<span class="ngb">d</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 4Ah</span><br /><span class="line">   AL = 00h</span><br /><span class="line">   DS:SI -&gt; specification packet (see #0211)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error (drive will not be in emulation mode)</span><br /><span class="line">   AX = return codes</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=48h,AX=4B00h,AH=4Ch,AH=4Dh</span><br /><span class="line"></span><br /><span class="line">Format of Bootable CD-ROM Specification Packet:</span><br /><span class="line">Offset Size    Description (Table 0211)</span><br /><span class="line"> 00h   BYTE    size of packet in bytes (13h)</span><br /><span class="line"> 01h   BYTE    boot media type (see #0212)</span><br /><span class="line"> 02h   BYTE    drive number</span><br /><span class="line">       00h floppy image</span><br /><span class="line">       80h bootable hard disk</span><br /><span class="line">       81h-FFh nonbootable or no emulation</span><br /><span class="line"> 03h   BYTE    CD-ROM controller number</span><br /><span class="line"> 04h   DWORD   Logical Block Address of disk image to emulate</span><br /><span class="line"> 08h   WORD    device specification (see also #0212)</span><br /><span class="line">       (IDE) bit 0: drive is slave instead of master</span><br /><span class="line">       (SCSI)  bits 7-0: LUN and PUN</span><br /><span class="line">           bits 15-8: bus number</span><br /><span class="line"> 0Ah   WORD    segment of 3K buffer for caching CD-ROM reads</span><br /><span class="line"> 0Ch   WORD    load segment for initial boot image</span><br /><span class="line">       if 0000h, load at segment 07C0h</span><br /><span class="line"> 0Eh   WORD    number of 512-byte virtual sectors to load</span><br /><span class="line">       (only valid for AH=4Ch)</span><br /><span class="line"> 10h   BYTE    low byte of cylinder count (for INT 13/AH=08h)</span><br /><span class="line"> 11h   BYTE    sector count, high bits of cylinder count (for INT 13/AH=08h)</span><br /><span class="line"> 12h   BYTE    head count (for INT 13/AH=08h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0213,AH=08h</span><br /><span class="line"></span><br /><span class="line">Bitfields for Bootable CD-ROM boot media type:</span><br /><span class="line">Bit(s) Description (Table 0212)</span><br /><span class="line"> 3-0   media type</span><br /><span class="line">   0000 no emulation</span><br /><span class="line">   0001 1.2M diskette</span><br /><span class="line">   0010 1.44M diskette</span><br /><span class="line">   0011 2.88M diskette</span><br /><span class="line">   0100 hard disk (drive C:)</span><br /><span class="line">   other reserved</span><br /><span class="line"> 5-4   reserved (0)</span><br /><span class="line"> 6 image contains ATAPI driver</span><br /><span class="line"> 7 image contains SCSI driver(s)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0211</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

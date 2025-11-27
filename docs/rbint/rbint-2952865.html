@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2951763.html">
+    <link rel="next" href="rbint-2953879.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2951763.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2953879.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - Bindery Services - Change Bindery Object</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = E3h subfn 40h</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1636)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1637)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (see #1634)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=3Fh,AH=E3h/SF=41h,AX=F217h/SF=40h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Change Bindery Object Password&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 1636)</span><br /><span class="line"> 00h   WORD    length of following data (max 133h)</span><br /><span class="line"> 02h   BYTE    40h (subfunction &#34;Change Bindery Object Password&#34;)</span><br /><span class="line"> 03h   WORD    (big-endian) type of object</span><br /><span class="line"> 05h   BYTE    length of object&#39;s name (01h-2Fh)</span><br /><span class="line"> 06h  N BYTEs  object name</span><br /><span class="line">   BYTE    length of old password (00h-7Fh)</span><br /><span class="line">      N BYTEs  old password</span><br /><span class="line">   BYTE    length of new password (00h-7Fh)</span><br /><span class="line">      N BYTEs  new password</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1637,#1883</span><br /><span class="line"></span><br /><span class="line">Format of NetWare reply buffer:</span><br /><span class="line">Offset Size    Description (Table 1637)</span><br /><span class="line"> 00h   WORD    (call) 0000h (no data returned)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1636,#1639</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3954290.html">
+    <link rel="next" href="rbint-3955373.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3954290.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3870311.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3955373.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 4330  CU - Himem.sys V2.77+ - Get External A20 Handler Address </span>  [<span class="ngb">m</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4330h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 80h if external A20 handler provided</span><br /><span class="line">       ES:BX -&gt; external A20 handler (see #2477)</span><br /><span class="line">       CL = A20 detection support</span><br /><span class="line">       00h handler is unable to report A20 state</span><br /><span class="line">       01h handler supports function 0002h to report A20 state</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  HIMEM.SYS calls this function to allow an external program to provide</span><br /><span class="line">     an A20 handler (i.e. to support a machine not supported by HIMEM</span><br /><span class="line">     itself)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4308h,AX=4310h</span><br /><span class="line"></span><br /><span class="line">(Table 2477)</span><br /><span class="line">Call parameters for external A20 handler are:</span><br /><span class="line">   AX = function</span><br /><span class="line">       0000h disable A20</span><br /><span class="line">       0001h enable A20</span><br /><span class="line">       0002h get A20 state</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (functions 0000h and 0001h)</span><br /><span class="line">       0000h failure</span><br /><span class="line">       0001h successful</span><br /><span class="line">   AX = A20 state (function 0002h)</span><br /><span class="line">       0000h disabled</span><br /><span class="line">       0001h enabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  HIMEM.SYS only calls function 0002h if the returned CL indicated that</span><br /><span class="line">     the handler supports the call</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

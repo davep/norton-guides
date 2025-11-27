@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2952865.html">
+    <link rel="next" href="rbint-2955244.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2952865.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2955244.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - Bindery Services - Add Bindery Object To</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = E3h subfn 41h</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1639)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1637)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (see #1638)</span><br /><span class="line"><span class="ngb">Desc:</span>  add the specified object to an object&#39;s group property</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=40h,AH=E3h/SF=42h,AH=E3h/SF=43h,AX=F217h/SF=41h</span><br /><span class="line"></span><br /><span class="line">(Table 1638)</span><br /><span class="line">Values for NetWare function status:</span><br /><span class="line"> 00h   successful</span><br /><span class="line"> 96h   server out of memory</span><br /><span class="line"> E9h   member already exists</span><br /><span class="line"> EAh   member does not exist</span><br /><span class="line"> EBh   not a group property</span><br /><span class="line"> F0h   wildcard not allowed</span><br /><span class="line"> F8h   can&#39;t write property</span><br /><span class="line"> F9h   not permitted to read property</span><br /><span class="line"> FBh   no such property</span><br /><span class="line"> FCh   no such object</span><br /><span class="line"> FEh   server bindery locked</span><br /><span class="line"> FFh   bindery failure</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1634,#1649</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Add Bindery Object to Set&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 1639)</span><br /><span class="line"> 00h   WORD    length of following data (max 75h)</span><br /><span class="line"> 02h   BYTE    41h (subfunction &#34;Add Bindery Object to Set&#34;)</span><br /><span class="line"> 03h   WORD    (big-endian) type of object</span><br /><span class="line"> 05h   BYTE    length of object&#39;s name</span><br /><span class="line"> 06h  N BYTEs  object name</span><br /><span class="line">   BYTE    length of property name (01h-0Fh)</span><br /><span class="line">      N BYTEs  property name</span><br /><span class="line">   WORD    (big-endian) type of member object</span><br /><span class="line">   BYTE    length of member object&#39;s name</span><br /><span class="line">      N BYTEs  member object&#39;s name</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1637</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

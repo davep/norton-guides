@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1335106.html">
+    <link rel="next" href="rbint-1336750.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1335106.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1227085.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1336750.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn 90  - Os Hook - Device Busy (at,ps)                            </span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 90h</span><br /><span class="line">   AL = device type (see #0431)</span><br /><span class="line">   ES:BX -&gt; request block for type codes 80h through BFh</span><br /><span class="line">   CF clear</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set if wait time satisfied</span><br /><span class="line">   CF clear if driver must perform wait</span><br /><span class="line">       AH = 00h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> type codes are allocated as follows:</span><br /><span class="line">     00-7F non-reentrant devices; OS must arbitrate access</span><br /><span class="line">     80-BF reentrant devices; ES:BX points to a unique control block</span><br /><span class="line">     C0-FF wait-only calls, no complementary INT 15/AH=91h call</span><br /><span class="line">   floppy and hard disk BIOS code uses this call to implement a timeout;</span><br /><span class="line">     for device types 00h and 01h, a return of CF set means that the</span><br /><span class="line">     timeout expired before the disk responded.</span><br /><span class="line">   this function should be hooked by a multitasker to allow other tasks</span><br /><span class="line">     to execute while the BIOS is waiting for I/O completion; the default</span><br /><span class="line">     handler merely returns with AH=00h and CF clear</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=91h,INT 13/AH=00h,INT 17/AH=00h,INT 1A/AH=83h</span><br /><span class="line"></span><br /><span class="line">(Table 0431)</span><br /><span class="line">Values for device type:</span><br /><span class="line"> 00h   disk</span><br /><span class="line"> 01h   diskette</span><br /><span class="line"> 02h   keyboard</span><br /><span class="line"> 03h   PS/2 pointing device</span><br /><span class="line"> 21h   waiting for keyboard input (Phoenix BIOS)</span><br /><span class="line"> 80h   network</span><br /><span class="line"> FBh   digital sound (Tandy)</span><br /><span class="line"> FCh   disk reset (PS)</span><br /><span class="line"> FDh   diskette motor start</span><br /><span class="line"> FEh   printer</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

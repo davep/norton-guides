@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2642149.html">
+    <link rel="next" href="rbint-2645883.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2642149.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2645883.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 5F44  - Lan Manager Enhanced Dos - Local Netwkstagetinfo       </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 5F44h</span><br /><span class="line">   BX = information level (00h, 01h, or 0Ah)</span><br /><span class="line">   CX = buffer size</span><br /><span class="line">   DX = 0000h</span><br /><span class="line">   ES:DI -&gt; buffer in which to store info (see #1400,#1401,#1402),</span><br /><span class="line">         including any returned strings</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = error code</span><br /><span class="line">   DX = amount of buffer required, unchanged if supplied buffer large</span><br /><span class="line">         enough to hold data</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=5F45h,AX=5F49h</span><br /><span class="line"></span><br /><span class="line">Format of LAN Manager wksta_info_0 structure:</span><br /><span class="line">Offset Size    Description (Table 1400)</span><br /><span class="line"> 00h   WORD     reserved (0)</span><br /><span class="line"> 02h   DWORD    reserved (0)</span><br /><span class="line"> 06h   DWORD    -&gt; path to computer&#39;s LANMAN directory</span><br /><span class="line"> 0Ah   DWORD    -&gt; computername of the workstation</span><br /><span class="line"> 0Eh   DWORD    -&gt; username of user logged onto workstation</span><br /><span class="line"> 12h   DWORD    -&gt; domain to which workstation belongs</span><br /><span class="line"> 16h   WORD     LAN Manager version number (2 bytes, Major, Minor)</span><br /><span class="line"> 18h   DWORD    reserved (0)</span><br /><span class="line"> 1Ch   WORD     number of seconds workstation waits for resource availability</span><br /><span class="line"> 1Eh   DWORD    delay (in millsecs) before sending data to resource</span><br /><span class="line"> 22h   WORD     reserved (0)</span><br /><span class="line"> 24h   WORD     reserved (0)</span><br /><span class="line"> 26h   WORD     ???</span><br /><span class="line"> 28h   WORD     number of seconds to maintain an inactive connection</span><br /><span class="line"> 2Ah   WORD     number of seconds an inactive search continues</span><br /><span class="line"> 2Ch   WORD     threads to dedicate to network (not supported in MSDOS)</span><br /><span class="line"> 2Eh   WORD     number of simultaneous commands sent to network</span><br /><span class="line"> 30h   WORD     reserved6 (must be 0)</span><br /><span class="line"> 32h   WORD     number of internal buffers</span><br /><span class="line"> 34h   WORD     size (in bytes) of each internal buffer</span><br /><span class="line"> 36h   WORD     max size (in bytes) of an internal cache buffer (not MSDOS)</span><br /><span class="line"> 38h   WORD     seconds before disconnecting inactive session (not MSDOS)</span><br /><span class="line"> 3Ah   WORD     size (in bytes) of an internal error buffer (not MSDOS)</span><br /><span class="line"> 3Ch   WORD     number of clients that can receive alert messages (not MSDOS)</span><br /><span class="line"> 3Eh   WORD     number of services that can be started on workstation</span><br /><span class="line"> 40h   WORD     max size (in kilobytes) of error log (not MSDOS)</span><br /><span class="line"> 42h   WORD     number of secs before closing inactive print jobs (not MSDOS)</span><br /><span class="line"> 44h   WORD     number of character buffers for workstation</span><br /><span class="line"> 46h   WORD     max size (in bytes) of character buffer</span><br /><span class="line"> 48h   DWORD    -&gt; name of server that validated logon</span><br /><span class="line"> 4Ch   DWORD    -&gt; workstation heuristics</span><br /><span class="line"> 50h   WORD     number of mailslots allowed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  pointers to strings are set to 0000h:0000h if there is insufficient</span><br /><span class="line">     space in the buffer to hold them</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1401,#1402</span><br /><span class="line"></span><br /><span class="line">Format of LAN Manager wksta_info_1 structure:</span><br /><span class="line">Offset Size    Description (Table 1401)</span><br /><span class="line"> 00h 82 BYTEs  wksta_info_0 structure (see #1400)</span><br /><span class="line"> 52h   DWORD    -&gt; name of domain which user is logged on to</span><br /><span class="line"> 56h   DWORD    -&gt; all domains in which computer is enlisted</span><br /><span class="line"> 5Ah   WORD     number of buffers to allocate for receiving datagrams</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1402</span><br /><span class="line"></span><br /><span class="line">Format of LAN Manager wksta_info_10 structure:</span><br /><span class="line">Offset Size    Description (Table 1402)</span><br /><span class="line"> 00h   DWORD    -&gt; computername of the workstation</span><br /><span class="line"> 04h   DWORD    -&gt; username of user logged onto workstation</span><br /><span class="line"> 08h   DWORD    -&gt; domain to which workstation belongs</span><br /><span class="line"> 0Ch   WORD     LAN Manager version number (2 bytes, Major, Minor)</span><br /><span class="line"> 0Eh   DWORD    -&gt; name of domain which user is loggod on to</span><br /><span class="line"> 12h   DWORD    -&gt; all domains in which computer is enlisted</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  pointers to strings are set to 0000h:0000h if there is insufficient</span><br /><span class="line">     space in the buffer to hold them</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1400,#1401</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

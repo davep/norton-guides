@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2187221.html">
+    <link rel="next" href="rbint-2188384.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2187221.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2188384.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 31  - Dos 2+ - Terminate And Stay Resident                     </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 31h</span><br /><span class="line">   AL = return code</span><br /><span class="line">   DX = number of paragraphs to keep resident</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> never</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the value in DX only affects the memory block containing the PSP;</span><br /><span class="line">     additional memory allocated via AH=48h is not affected</span><br /><span class="line">   the minimum number of paragraphs which will remain resident is 11h</span><br /><span class="line">     for DOS 2.x and 06h for DOS 3.0+</span><br /><span class="line">   most TSRs can save some memory by releasing their environment block</span><br /><span class="line">     before terminating (see #1066 at AH=26h,AH=49h)</span><br /><span class="line">   any open files remain open, so one should close any files which will</span><br /><span class="line">     not be used before going resident; to access a file which is left</span><br /><span class="line">     open from the TSR, one must switch PSP segments first (see AH=50h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=00h,AH=4Ch,AH=4Dh,INT 20,INT 22,INT 27</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

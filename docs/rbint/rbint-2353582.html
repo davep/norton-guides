@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2353159.html">
+    <link rel="next" href="rbint-2354517.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2353159.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2354517.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 4403  - Dos 2+ - Ioctl - Write To Character Device Control Chan</span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4403h</span><br /><span class="line">   BX = file handle referencing character device</span><br /><span class="line">   CX = number of bytes to write</span><br /><span class="line">   DS:DX -&gt; data to write</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = number of bytes actually written</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (01h,05h,06h,0Dh) (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> format of data is driver-specific</span><br /><span class="line">     (also see separate entries below for some specific cases)</span><br /><span class="line">   if the file handle refers to &#34;4DOSSTAK&#34;, the 4DOS (v2.x-3.03)</span><br /><span class="line">     KEYSTACK.SYS driver will push the specified characters on the</span><br /><span class="line">     keyboard stack; similarly for &#34;NDOSSTAK&#34;, the NDOS KEYSTACK.SYS</span><br /><span class="line">     driver will push the characters onto the keyboard stack</span><br /><span class="line">   this function was not supported by Digital Research&#39;s DOS-Plus</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4400h,AX=4402h&#34;DOS 2+&#34;,AX=4405h&#34;DOS&#34;,INT 2F/AX=122Bh</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2F/AX=D44Dh,INT 2F/AX=D44Fh</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-566412.html">
+    <link rel="next" href="rbint-567591.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-566412.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-567591.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 10 Fn 1F03  - Video - Xga - Get Svga Dmqs Data                       </span>  [<span class="ngb">V</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1F03h</span><br /><span class="line">   ES:DI -&gt; buffer for SVGA DMQS data (see #0059)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 1Fh if function supported</span><br /><span class="line">       ES:DI buffer filled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1F00h,AX=1F02h</span><br /><span class="line"></span><br /><span class="line">Format of SVGA DMQS data:</span><br /><span class="line">Offset Size    Description (Table 0059)</span><br /><span class="line"> 00h   WORD    offset to DMQS data for next SVGA instance or 0000h</span><br /><span class="line"> 02h   BYTE    reserved</span><br /><span class="line"> 03h   BYTE    SVGA implementation functional level</span><br /><span class="line"> 04h   BYTE    SVGA implementation resolution level</span><br /><span class="line"> 05h   WORD    vendor ID</span><br /><span class="line"> 07h   WORD    vendor-specific</span><br /><span class="line"> 09h  7 BYTEs  reserved</span><br /><span class="line"> 10h   BYTE    SVGA linear address window size</span><br /><span class="line">       00h 64K</span><br /><span class="line">       01h 1M</span><br /><span class="line">       02h 2M</span><br /><span class="line">       03h 4M</span><br /><span class="line"> 11h   WORD    SVGA linear address window location or 0000h if not allocated</span><br /><span class="line">       (multiply by 10000h [shift left 16 bits] to get physical addr)</span><br /><span class="line"> 13h   WORD    attached monitor&#39;s composite monitor ID</span><br /><span class="line"> 15h   BYTE    available video RAM in multiples of 256K</span><br /><span class="line"> 16h 11 BYTEs  reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0058</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

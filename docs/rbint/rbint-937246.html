@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-936882.html">
+    <link rel="next" href="rbint-938170.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-936882.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-891034.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-938170.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 14 Fn 0A  - Mbbios - Write Buffer                                    </span>  [<span class="ngb">S</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 0Ah</span><br /><span class="line">   CX = count</span><br /><span class="line">   ES:DI -&gt; buffer (see #0264)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (see #0230,#0231)</span><br /><span class="line">   CX = unsent character count</span><br /><span class="line">   DI updated</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the PACCOM version of MBBIOS does not use CX or ES:DI; instead, ES</span><br /><span class="line">     contains the segment of a buffer containing the packet to be sent,</span><br /><span class="line">     which by default will be freed once the packet has been sent.  Use</span><br /><span class="line">     AH=0Ch&#34;MBBIOS&#34; to allocate the buffer.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=01h,AH=0Bh&#34;MBBIOS&#34;,AH=0Ch&#34;MBBIOS&#34;,AH=19h&#34;FOSSIL&#34;</span><br /><span class="line"></span><br /><span class="line">Format of MBBIOS PACCOM buffer:</span><br /><span class="line">Offset Size    Description (Table 0264)</span><br /><span class="line"> 00h 504 BYTEs data area</span><br /><span class="line">1F8h   WORD    length of data in data area</span><br /><span class="line">1FAh   BYTE    flags/status</span><br /><span class="line">       bit 7: don&#39;t discard buffer after transmitting data</span><br /><span class="line">       bit 6: buffer has been transmitted</span><br /><span class="line">1FBh   BYTE    reserved (0) for additional flags/status</span><br /><span class="line">1FCh   WORD    user data</span><br /><span class="line">1FEh   WORD    MBBIOS-internal pointer to next buffer</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

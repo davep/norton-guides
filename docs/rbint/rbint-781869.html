@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-779828.html">
+    <link rel="next" href="rbint-783665.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-779828.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-783665.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 13 Fn 03  - Disk - Write Disk Sector(s)                              </span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 03h</span><br /><span class="line">   AL = number of sectors to write (must be nonzero)</span><br /><span class="line">   CH = low eight bits of cylinder number</span><br /><span class="line">   CL = sector number 1-63 (bits 0-5)</span><br /><span class="line">        high two bits of cylinder (bits 6-7, hard disk only)</span><br /><span class="line">   DH = head number</span><br /><span class="line">   DL = drive number (bit 7 set for hard disk)</span><br /><span class="line">   ES:BX -&gt; data buffer</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">   AH = status (see #0166)</span><br /><span class="line">   AL = number of sectors transferred</span><br /><span class="line">         (only valid if CF set for some BIOSes)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> errors on a floppy may be due to the motor failing to spin up quickly</span><br /><span class="line">     enough; the write should be retried at least three times, resetting</span><br /><span class="line">     the disk with AH=00h between attempts</span><br /><span class="line">   most BIOSes support &#34;multitrack&#34; writes, where the value in AL</span><br /><span class="line">     exceeds the number of sectors remaining on the track, in which</span><br /><span class="line">     case any additional sectors are written beginning at sector 1 on</span><br /><span class="line">     the following head in the same cylinder; the CONFIG.SYS command</span><br /><span class="line">     MULTITRACK can be used to force DOS to split disk accesses which</span><br /><span class="line">     would wrap across a track boundary into two separate calls</span><br /><span class="line">   the IBM AT BIOS and many other BIOSes use only the low four bits of</span><br /><span class="line">     DH (head number) since the WD-1003 controller which is the standard</span><br /><span class="line">     AT controller (and the controller that IDE emulates) only supports</span><br /><span class="line">     16 heads</span><br /><span class="line">   AWARD AT BIOS and AMI 386sx BIOS have been extended to handle more</span><br /><span class="line">     than 1024 cylinders by placing bits 10 and 11 of the cylinder number</span><br /><span class="line">     into bits 6 and 7 of DH</span><br /><span class="line">   under Windows95, an application must issue a physical volume lock on</span><br /><span class="line">     the drive via INT 21/AX=440Dh before it can successfully write to</span><br /><span class="line">     the disk with this function</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=02h,AH=0Bh,AH=07h&#34;V10DISK.SYS&#34;,AH=22h&#34;PS/1&#34;,AH=43h&#34;IBM&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 21/AX=440Dh&#34;DOS 3.2+&#34;,INT 4D/AH=03h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

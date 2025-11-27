@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    
+    <link rel="next" href="rbint-4890988.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="rbint-4884456.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4890988.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 5C  - Netbios Interface                                              </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   ES:BX -&gt; network control block (NCB) (see #2920)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (see #2919)</span><br /><span class="line">Program: NetBIOS was developed by Sytek, Inc. in 1984 as a high-level</span><br /><span class="line">     programming interface to the IBM PC Network; the first implementation</span><br /><span class="line">     was a ROM BIOS extension on Sytek&#39;s PCnet LAN adapter card, but many</span><br /><span class="line">     current networks support NetBIOS as the session layer.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  The Sytek PCnet card uses DMA 3.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2A/AH=01h,INT 2A/AH=04h,INT 5B&#34;Extended NetBIOS&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2919)</span><br /><span class="line">Values for NetBIOS status:</span><br /><span class="line"> 00h   successful</span><br /><span class="line"> 01h   bad buffer size</span><br /><span class="line"> 03h   invalid NETBIOS command</span><br /><span class="line"> 05h   timeout</span><br /><span class="line"> 06h   receive buffer too small</span><br /><span class="line"> 07h   No-ACK command failed</span><br /><span class="line"> 08h   bad session number</span><br /><span class="line"> 09h   LAN card out of memory</span><br /><span class="line"> 0Ah   session closed</span><br /><span class="line"> 0Bh   command has been cancelled</span><br /><span class="line"> 0Dh   name already exists</span><br /><span class="line"> 0Eh   local name table full</span><br /><span class="line"> 0Fh   name still in use, can&#39;t delete</span><br /><span class="line"> 11h   local session table full</span><br /><span class="line"> 12h   remote PC not listening</span><br /><span class="line"> 13h   bad NCB_NUM field</span><br /><span class="line"> 14h   no answer to CALL or no such remote</span><br /><span class="line"> 15h   name not in local name table</span><br /><span class="line"> 16h   duplicate name</span><br /><span class="line"> 17h   bad delete</span><br /><span class="line"> 18h   abnormal end</span><br /><span class="line"> 19h   name error, multiple identical names in use</span><br /><span class="line"> 1Ah   bad packet</span><br /><span class="line"> 21h   network card busy</span><br /><span class="line"> 22h   too many commands queued</span><br /><span class="line"> 23h   bad LAN card number</span><br /><span class="line"> 24h   command finished while cancelling</span><br /><span class="line"> 26h   command can&#39;t be cancelled</span><br /><span class="line"> 30h   name defined by another process (OS/2)</span><br /><span class="line"> 34h   NetBIOS environment not defined, must issue reset (OS/2)</span><br /><span class="line"> 35h   required operating system resources exhausted (OS/2)</span><br /><span class="line"> 36h   maximum applications exceeded (OS/2)</span><br /><span class="line"> 37h   no SAPs available for NetBIOS (OS/2)</span><br /><span class="line"> 38h   requested resources not available (OS/2)</span><br /><span class="line"> 40h   Lana System Error</span><br /><span class="line"> 41h   Lana Remote Hot Carrier</span><br /><span class="line"> 42h   Lana Local Hot Carrier</span><br /><span class="line"> 43h   Lana No Carrier Detected</span><br /><span class="line"> 44h   unusual network condition</span><br /><span class="line"> 45h-4Dh hardware error</span><br /><span class="line"> 4Eh   token ring is broken</span><br /><span class="line"> 4Fh   token ring error</span><br /><span class="line"> 50h   adapter malfunction</span><br /><span class="line"> F7h   error in explicit INITIALIZE</span><br /><span class="line"> F8h   error in implicit OPEN</span><br /><span class="line"> F9h   TOKREUI internal error</span><br /><span class="line"> FAh   hardware adapter testing</span><br /><span class="line"> FBh   NetBIOS emulator not found</span><br /><span class="line"> FCh   OPEN or OPEN_SAP failure</span><br /><span class="line"> FDh   unexpected adapter closure</span><br /><span class="line"> FFh   NetBIOS busy (command pending)</span><br /><span class="line"></span><br /><span class="line">Format of NetBIOS Network Control Block:</span><br /><span class="line">Offset Size    Description (Table 2920)</span><br /><span class="line"> 00h   BYTE    command code (see #2921)</span><br /><span class="line"> 01h   BYTE    return code (see #2919)</span><br /><span class="line"> 02h   BYTE    local session number (LSN)</span><br /><span class="line"> 03h   BYTE    &#34;ncb_num&#34; datagram table entry from ADD NAME</span><br /><span class="line"> 04h   DWORD   -&gt; I/O buffer</span><br /><span class="line"> 08h   WORD    length of data in buffer</span><br /><span class="line"> 0Ah 16 BYTEs  remote system to call</span><br /><span class="line"> 1Ah 16 BYTEs  network name of local machine</span><br /><span class="line"> 2Ah   BYTE    receive timeout in 1/2 seconds</span><br /><span class="line"> 2Bh   BYTE    send timeout in 1/2 seconds</span><br /><span class="line"> 2Ch   DWORD   -&gt; FAR post handler /* int (far *ncb_post)(); */</span><br /><span class="line"> 30h   BYTE    network adapter number on which to execute command</span><br /><span class="line">       00h-03h IBM NetBIOS specs</span><br /><span class="line">       F0h-FFh Eicon NABios interface (see also INT 7B&#34;Eicon&#34;)</span><br /><span class="line"> 31h   BYTE    command completion code (see #2919)</span><br /><span class="line"> 32h 14 BYTEs  reserved for network card</span><br /><span class="line"></span><br /><span class="line">(Table 2921)</span><br /><span class="line">Values for NetBIOS command code field in NCB:</span><br /><span class="line"> 10h   start session with NCB_NAME name (call)</span><br /><span class="line"> 11h   listen for call</span><br /><span class="line"> 12h   end session with NCB_NAME name (hangup)</span><br /><span class="line"> 14h   send data via NCB_LSN</span><br /><span class="line"> 15h   receive data from a session</span><br /><span class="line"> 16h   receive data from any session</span><br /><span class="line"> 17h   send multiple data buffers</span><br /><span class="line"> 20h   send unACKed message (datagram)</span><br /><span class="line"> 21h   receive datagram</span><br /><span class="line"> 22h   send broadcast datagram</span><br /><span class="line"> 23h   receive broadcast datagram</span><br /><span class="line"> 30h   add name to name table</span><br /><span class="line"> 31h   delete name from name table</span><br /><span class="line"> 32h   reset adapter card and tables</span><br /><span class="line"> 33h   get adapter status (see #2922)</span><br /><span class="line"> 34h   status of all sessions for name (see #2924)</span><br /><span class="line"> 35h   cancel</span><br /><span class="line"> 36h   add group name to name table</span><br /><span class="line"> 48h   send data and receive data (LAN Manager NETBEUI.DOS)</span><br /><span class="line"> 70h   unlink from IBM remote program (no F0h function)</span><br /><span class="line"> 71h   send data without ACK</span><br /><span class="line"> 72h   send multiple buffers without ACK</span><br /><span class="line"> 72h   UngermannBass Register (conflicts with above function)</span><br /><span class="line"> 73h   UngermannBass SendNmc</span><br /><span class="line"> 74h   UngermannBass Callniu</span><br /><span class="line"> 75h   UngermannBass Calladdr</span><br /><span class="line"> 76h   UngermannBass Listenaddr</span><br /><span class="line"> 77h   UngermannBass SendPkt</span><br /><span class="line"> 78h   find name</span><br /><span class="line"> 78h   UngermannBass RcvPkt (conflicts with above function)</span><br /><span class="line"> 79h   token-ring protocol trace</span><br /><span class="line"> 79h   UngermannBass SendAttn (conflicts with above function)</span><br /><span class="line"> 7Ah   UngermannBass RcvAttn</span><br /><span class="line"> 7Bh   UngermannBass Listenniu</span><br /><span class="line"> 7Ch   UngermannBass RcvRaw</span><br /><span class="line"> 7Dh   UngermannBass SendNmc2</span><br /><span class="line"> 7Fh   Beame&amp;Whiteside BWNB installation check (returns with return code and</span><br /><span class="line">     completion code both set to 03h, while invalid functions return only</span><br /><span class="line">     return code field set to 03h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  OR any of the above except 70h with 80h for non-waiting call</span><br /><span class="line"></span><br /><span class="line">Format of NetBIOS structure &#34;astatus&#34;:</span><br /><span class="line">Offset Size    Description (Table 2922)</span><br /><span class="line"> 00h  6 BYTEs as_id</span><br /><span class="line"> 06h   BYTE  as_jumpers</span><br /><span class="line"> 07h   BYTE  as_post</span><br /><span class="line"> 08h   BYTE  as_major</span><br /><span class="line"> 09h   BYTE  as_minor</span><br /><span class="line"> 0Ah   WORD  as_interval</span><br /><span class="line"> 0Ch   WORD  as_crcerr</span><br /><span class="line"> 0Eh   WORD  as_algerr</span><br /><span class="line"> 10h   WORD  as_colerr</span><br /><span class="line"> 12h   WORD  as_abterr</span><br /><span class="line"> 14h   DWORD as_tcount</span><br /><span class="line"> 18h   DWORD as_rcount</span><br /><span class="line"> 1Ch   WORD  as_retran</span><br /><span class="line"> 1Eh   WORD  as_xresrc</span><br /><span class="line"> 20h  8 BYTEs as_res0</span><br /><span class="line"> 28h   WORD  as_ncbfree</span><br /><span class="line"> 2Ah   WORD  as_ncbmax</span><br /><span class="line"> 2Ch   WORD  as_ncbx</span><br /><span class="line"> 2Eh  4 BYTEs as_res1</span><br /><span class="line"> 32h   WORD  as_sespend</span><br /><span class="line"> 34h   WORD  as_msp</span><br /><span class="line"> 36h   WORD  as_sesmax</span><br /><span class="line"> 38h   WORD  as_bufsize</span><br /><span class="line"> 3Ah   WORD  as_names</span><br /><span class="line"> 3Ch 16 name structures     as_name (see #2923)</span><br /><span class="line"></span><br /><span class="line">Format of NetBIOS structure &#34;name&#34;:</span><br /><span class="line">Offset Size    Description (Table 2923)</span><br /><span class="line"> 00h 16 BYTEs &#34;nm_name&#34; symbolic name</span><br /><span class="line"> 10h   BYTE  &#34;nm_num&#34; number associated with name</span><br /><span class="line"> 11h   BYTE  nm_status</span><br /><span class="line"></span><br /><span class="line">Format of NetBIOS structure &#34;sstatus&#34;:</span><br /><span class="line">Offset Size    Description (Table 2924)</span><br /><span class="line"> 00h   BYTE    number of sessions being reported</span><br /><span class="line"> 01h   BYTE    number of sessions with this name</span><br /><span class="line"> 02h   BYTE    number of outstanding receive datagrams</span><br /><span class="line"> 03h   BYTE    number of outstanding ReceiveAnys</span><br /><span class="line"> 04h   var session structures (see #2925)</span><br /><span class="line"></span><br /><span class="line">Format of NetBIOS structure &#34;session&#34;:</span><br /><span class="line">Offset Size    Description (Table 2925)</span><br /><span class="line"> 00h   BYTE    local session number</span><br /><span class="line"> 01h   BYTE    state</span><br /><span class="line">       01h listen pending</span><br /><span class="line">       02h call pending</span><br /><span class="line">       03h session established</span><br /><span class="line">       04h hangup pending</span><br /><span class="line">       05h hangup done</span><br /><span class="line">       06h session aborted</span><br /><span class="line"> 02h 16 BYTEs  local name</span><br /><span class="line"> 12h 16 BYTEs  remote name</span><br /><span class="line"> 22h   BYTE    number of outstanding receives</span><br /><span class="line"> 23h   BYTE    number of outstanding sends/chainsends</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

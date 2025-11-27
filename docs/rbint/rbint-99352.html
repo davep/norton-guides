@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Memory</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-91210.html">
+    <link rel="next" href="rbint-106657.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-91210.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-64347.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-106657.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Format of Extended BIOS Data Area (PhoenixBIOS 4.0)  <span class="ngb">(Cont.)</span></span></span><br /><span class="line"></span><br /><span class="line">MEM 0040h:0089h U - VIDEO (MCGA/VGA) - MODE-SET OPTION CONTROL</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0087h,MEM 0040h:0088h</span><br /><span class="line">Bitfields for Video mode-set option control:</span><br /><span class="line">Bit(s) Description (Table M027)</span><br /><span class="line"> 7,4   requested scan lines</span><br /><span class="line">   0 0  350-line mode requested</span><br /><span class="line">   0 1  400-line mode at next mode set</span><br /><span class="line">   1 0  200-line mode requested</span><br /><span class="line">   1 1  reserved</span><br /><span class="line"></span><br /><span class="line">   <span class="ngb">Note:</span>   Apparently VGA BIOS mode set disregards bit 7 and uses</span><br /><span class="line">         byte 40h:88h to determine 200/350 selection when bit 4</span><br /><span class="line">         is zero. Presumably bit 7 is a convenience for other</span><br /><span class="line">         purposes. Bit 7 is reset to zero after the mode set.</span><br /><span class="line"> 6 display switching enabled</span><br /><span class="line"> 5 reserved</span><br /><span class="line"> 4 if set:   use 400-line mode at next mode set</span><br /><span class="line">   if clear: [VGA] emulate EGA at next mode set</span><br /><span class="line">       [MCGA] emulate CGA, digital monitor, 200 lines, 8x8 text</span><br /><span class="line"></span><br /><span class="line">   <span class="ngb">Note:</span> this bit is set by the video mode set on VGA, unchanged on MCGA</span><br /><span class="line"> 3 default palette loading DISabled at mode set</span><br /><span class="line"> 2 mono display</span><br /><span class="line"> 1 gray scale summing enabled</span><br /><span class="line"> 0 [VGA] =1 if VGA active, =0 if not</span><br /><span class="line">   [MCGA] reserved, zero</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the Tseng ET4000 BIOS v3.00 uses bits 6-4 of 88h and bits 6-5 of 89h</span><br /><span class="line">     to specify graphics-mode refresh rates as follows</span><br /><span class="line">       88h/6       640x480:  1 for 72Hz,0 for 60Hz</span><br /><span class="line">       88h/5+89h/6 800x600:  00  60Hz</span><br /><span class="line">                     01  56Hz</span><br /><span class="line">                     11  72Hz</span><br /><span class="line">       88h/4+89h/5 1024x768: 00  interlaced</span><br /><span class="line">                     01  60Hz</span><br /><span class="line">                     10  72Hz???</span><br /><span class="line">                     11  70Hz</span><br /><span class="line">--------V-M0040008A--------------------------</span><br /><span class="line">MEM 0040h:008Ah U - VIDEO (MCGA/VGA) - INDEX INTO DISPLAY COMBINATION CODE TBL</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 10/AX=1A00h,#M039</span><br /><span class="line">--------*-M0040008B--------------------------</span><br /><span class="line">MEM 0040h:008Bh - PC, PCjr, PC/XT 11/8/82, Convertible - RESERVED</span><br /><span class="line">Size:  11 BYTEs</span><br /><span class="line">--------B-M0040008B--------------------------</span><br /><span class="line">MEM 0040h:008Bh - DISKETTE MEDIA CONTROL</span><br /><span class="line">Size:  BYTE</span><br /><span class="line">Bitfields for diskette media control:</span><br /><span class="line">Bit(s) Description (Table M028)</span><br /><span class="line"> 7-6   last data rate set by controller</span><br /><span class="line">   00=500kbps, 01=300kbps, 10=250kbps, 11=1Mbps</span><br /><span class="line"> 5-4   last diskette drive step rate selected</span><br /><span class="line">   00=0Ch, 01=0Dh, 10=0Eh, 11=0Ah</span><br /><span class="line"> 3-2   {data rate at start of operation}</span><br /><span class="line"> 1-0   reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  EHD BIOS sets this byte to 01h and never reads it back</span><br /><span class="line">--------B-M0040008C--------------------------</span><br /><span class="line">MEM 0040h:008Ch - FIXED DISK - CONTROLLER STATUS [not XT]</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:008Dh,MEM 0040h:008Eh</span><br /><span class="line">--------B-M0040008D--------------------------</span><br /><span class="line">MEM 0040h:008Dh - FIXED DISK - CONTROLLER ERROR STATUS [not XT]</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:008Ch,MEM 0040h:008Eh</span><br /><span class="line">--------B-M0040008E--------------------------</span><br /><span class="line">MEM 0040h:008Eh - FIXED DISK - INTERRUPT CONTROL [not XT]</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  cleared to 00h at start of disk operation, set to FFh by IRQ14</span><br /><span class="line">     handler when hard disk controller completes command</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:008Ch,MEM 0040h:008Dh,MEM 0040h:008Fh</span><br /><span class="line">--------B-M0040008F--------------------------</span><br /><span class="line">MEM 0040h:008Fh U - DISKETTE CONTROLLER INFORMATION [not XT]</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:008Ch,MEM 0040h:008Dh,MEM 0040h:008Eh</span><br /><span class="line">Bitfields for diskette controller information:</span><br /><span class="line">Bit(s) Description (Table M029)</span><br /><span class="line"> 7 reserved</span><br /><span class="line"> 6 =1 drive 1 determined</span><br /><span class="line"> 5 =1 drive 1 is multi-rate, valid if drive determined</span><br /><span class="line"> 4 =1 drive 1 supports 80 tracks, always valid</span><br /><span class="line"> 3 reserved</span><br /><span class="line"> 2 =1 drive 0 determined</span><br /><span class="line"> 1 =1 drive 0 is multi-rate, valid if drive determined</span><br /><span class="line"> 0 =1 drive 0 supports 80 tracks, always valid</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  EHD BIOS sets this byte to 01h and never alters it again</span><br /><span class="line">--------B-M00400090--------------------------</span><br /><span class="line">MEM 0040h:0090h - DISKETTE DRIVE 0 MEDIA STATE</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0091h</span><br /><span class="line">Bitfields for diskette drive media state:</span><br /><span class="line">Bit(s) Description (Table M030)</span><br /><span class="line"> 7-6   data rate</span><br /><span class="line">   00=500kbps, 01=300kbps, 10=250kbps, 11=1Mbps</span><br /><span class="line"> 5 double stepping required (e.g. 360kB in 1.2MB)</span><br /><span class="line"> 4 media type established</span><br /><span class="line"> 3 drive capable of supporting 4MB media</span><br /><span class="line"> 2-0   on exit from BIOS, contains</span><br /><span class="line">   000 trying 360kB in 360kB</span><br /><span class="line">   001 trying 360kB in 1.2MB</span><br /><span class="line">   010 trying 1.2MB in 1.2MB</span><br /><span class="line">   011 360kB in 360kB established</span><br /><span class="line">   100 360kB in 1.2MB established</span><br /><span class="line">   101 1.2MB in 1.2MB established</span><br /><span class="line">   110 reserved</span><br /><span class="line">   111 all other formats/drives</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #M031,#M032</span><br /><span class="line">--------B-M00400091--------------------------</span><br /><span class="line">MEM 0040h:0091h - DISKETTE DRIVE 1 MEDIA STATE</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0090h,#M030</span><br /><span class="line">--------B-M00400092--------------------------</span><br /><span class="line">MEM 0040h:0092h U - DISKETTE DRIVE 0 MEDIA STATE AT START OF OPERATION</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  officially &#34;Drive 2 media state&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0093h&#34;DRIVE 1&#34;</span><br /><span class="line">Bitfields for diskette drive 0 media state at start of operation:</span><br /><span class="line">Bit(s) Description (Table M031)</span><br /><span class="line"> 7-3 (see #M030)</span><br /><span class="line"> 2 multiple data rate capability determined</span><br /><span class="line"> 1 multiple data rate capability</span><br /><span class="line"> 0 =1 if drive has 80 tracks, =0 if 40 tracks</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #M030,#M032</span><br /><span class="line">--------d-M00400092--------------------------</span><br /><span class="line">MEM 0040h:0092h - Olivetti Quaderno - HARD DISK POWERDOWN COUNTDOWN CLOCK TICKS</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  hard disk is turned off when counter reaches zero</span><br /><span class="line">--------B-M00400093--------------------------</span><br /><span class="line">MEM 0040h:0093h U - DISKETTE DRIVE 1 MEDIA STATE AT START OF OPERATION</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  officially &#34;Drive 3 media state&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0092h&#34;DRIVE 0&#34;</span><br /><span class="line">Bitfields for diskette drive 1 media state at start of operation:</span><br /><span class="line">Bit(s) Description (Table M032)</span><br /><span class="line"> 7-3   (see #M030)</span><br /><span class="line"> 2 multiple data rate capability determined</span><br /><span class="line"> 1 multiple data rate capability</span><br /><span class="line"> 0 =1 if drive has 80 tracks, =0 if 40 tracks</span><br /><span class="line">--HP 100LX/200LX--</span><br /><span class="line">   display control status</span><br /><span class="line"> 0 =1 if DISPCTL -K</span><br /><span class="line"> 1 =1 if DISPCTL -C</span><br /><span class="line">--------B-M00400094--------------------------</span><br /><span class="line">MEM 0040h:0094h - DISKETTE DRIVE 0 CURRENT TRACK NUMBER</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0095h</span><br /><span class="line">--------B-M00400095--------------------------</span><br /><span class="line">MEM 0040h:0095h - DISKETTE DRIVE 1 CURRENT TRACK NUMBER</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0094h</span><br /><span class="line">--------K-M00400096--------------------------</span><br /><span class="line">MEM 0040h:0096h - KEYBOARD STATUS BYTE 1</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0097h,INT 16/AH=11h</span><br /><span class="line">Bitfields for keyboard status byte 1:</span><br /><span class="line">Bit(s) Description (Table M033)</span><br /><span class="line"> 7 =1 read-ID in progress</span><br /><span class="line"> 6 =1 last code read was first of two ID codes</span><br /><span class="line"> 5 =1 force Num Lock if read-ID and enhanced keyboard</span><br /><span class="line"> 4 =1 enhanced keyboard installed</span><br /><span class="line"> 3 =1 Right Alt pressed</span><br /><span class="line"> 2 =1 Right Ctrl pressed</span><br /><span class="line"> 1 =1 last code read was E0h</span><br /><span class="line"> 0 =1 last code read was E1h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #M034,#M010</span><br /><span class="line">--------K-M00400097--------------------------</span><br /><span class="line">MEM 0040h:0097h - KEYBOARD STATUS BYTE 2</span><br /><span class="line">Size:  BYTE</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0096h,INT 16/AH=11h</span><br /><span class="line">Bitfields for keyboard status byte 2:</span><br /><span class="line">Bit(s) Description (Table M034)</span><br /><span class="line"> 7 =1 keyboard transmit error flag</span><br /><span class="line"> 6 =1 LED update in progress</span><br /><span class="line"> 5 =1 RESEND received from keyboard</span><br /><span class="line"> 4 =1 ACK received from keyboard</span><br /><span class="line"> 3 reserved, must be zero</span><br /><span class="line"> 2 Caps Lock LED</span><br /><span class="line"> 1 Num Lock LED</span><br /><span class="line"> 0 Scroll Lock LED</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #M033,#M010</span><br /><span class="line">--------B-M00400098--------------------------</span><br /><span class="line">MEM 0040h:0098h - TIMER2 (AT, PS exc Mod 30) - PTR TO USER WAIT-COMPLETE FLAG</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  (see INT 15/AX=8300h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:009Ch,INT 15/AH=83h,INT 15/AH=86h</span><br /><span class="line">--------B-M0040009C--------------------------</span><br /><span class="line">MEM 0040h:009Ch - TIMER2 (AT, PS exc Mod 30) - USER WAIT COUNT IN MICROSECONDS</span><br /><span class="line">Size:  DWORD</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> MEM 0040h:0098h,MEM 0040h:00A0h,INT 15/AH=83h,INT 15/AH=86h</span><br /><span class="line">--------V-M0040009F--------------------------</span><br /><span class="line">MEM 0040h:009Fh - HP 100LX/200LX - VIDEO ZOOM MODE</span><br /><span class="line">Size:  BYTE</span><br /><span class="line">(Table M035)</span><br /><span class="line">Values for HP 100LX/200LX video zoom mode:</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

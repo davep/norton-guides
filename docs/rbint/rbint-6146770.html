@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-6139959.html">
+    <link rel="next" href="rbint-6147574.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-6139959.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-6101071.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-6147574.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int E0  - Real/32 - &#34;m_alloc&#34; - Allocate Memory                          </span>  [<span class="ngb">O</span>]</span><br /><span class="line"></span><br /><span class="line">   CL = 80h</span><br /><span class="line">   DS:DX -&gt; Memory Parameter Block (MPB) (see #3775)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (0000h success, else error code)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT E0/CL=81h</span><br /><span class="line"></span><br /><span class="line">Format of REAL/32 Memory Parameter Block (MPB):</span><br /><span class="line">Offset Size    Description (Table 3775)</span><br /><span class="line"> 00h   WORD    (call) desired starting paragraph of block, or</span><br /><span class="line">         0000h for anywhere</span><br /><span class="line">       (ret) starting paragraph of allocated block</span><br /><span class="line"> 02h   WORD    (call) minimum number of paragraphs required</span><br /><span class="line">       (ret) actual number of paragraphs allocated</span><br /><span class="line"> 04h   WORD    (call) maximum number of paragraphs to allocate</span><br /><span class="line">       (ret) actual number of paragraphs allocated</span><br /><span class="line"> 06h   WORD    process descriptor (see #3768) of memory&#39;s owner or 0000h</span><br /><span class="line"> 08h   WORD    flags (normally set to 0000h on call)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #3776</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

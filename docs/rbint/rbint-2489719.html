@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2489513.html">
+    <link rel="next" href="rbint-2490703.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2489513.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2490703.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 4D  - Dos 2+ - Get Return Code (errorlevel)                    </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 4Dh</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AH = termination type</span><br /><span class="line">       00h normal (INT 20,INT 21/AH=00h, or INT 21/AH=4Ch)</span><br /><span class="line">       01h control-C abort</span><br /><span class="line">       02h critical error abort</span><br /><span class="line">       03h terminate and stay resident (INT 21/AH=31h or INT 27)</span><br /><span class="line">   AL = return code</span><br /><span class="line">   CF clear</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the word in which DOS stores the return code is cleared after being</span><br /><span class="line">     read by this function, so the return code can only be retrieved once</span><br /><span class="line">   COMMAND.COM stores the return code of the last external command it</span><br /><span class="line">     executed as ERRORLEVEL</span><br /><span class="line">   this call should not be used if the child was started with AX=4B04h;</span><br /><span class="line">     use AH=8Ah instead</span><br /><span class="line">   the following sequence will close a Virtual DOS Machine under OS/2 2.0</span><br /><span class="line">     through OS/2 Merlin (but may change in the future):</span><br /><span class="line">       MOV AH,4Dh</span><br /><span class="line">       INT 21h</span><br /><span class="line">       HLT</span><br /><span class="line">       DB  02h,0FDh</span><br /><span class="line">     This sequence is the only way to close a specific VDM which was</span><br /><span class="line">     booted from floppy or a disk image.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=4Bh,AH=4Ch,AH=8Ah</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

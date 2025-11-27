@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3671809.html">
+    <link rel="next" href="rbint-3673339.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3671809.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3673339.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 12FF  U - Novell Dos 7 - Emm386.exe - Get Version???           </span>  [<span class="ngb">m</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 12FFh</span><br /><span class="line">   BX = 0106h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = 0000h (successful)</span><br /><span class="line">       BX = EDC0h (signature)</span><br /><span class="line">       CL = memory manager variant (02h,03h)</span><br /><span class="line">       (02h when DPMI/VCPI disabled, 03h when DPMI/VCPI loaded)</span><br /><span class="line">       CH = ??? (00h)</span><br /><span class="line">       DX = version??? (0300h for v3.0)</span><br /><span class="line">       ES = segment of EMM386 low-memory stub</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> BL specifies which program handles the call, BH is the function number</span><br /><span class="line">   if the word at ES:0012h is nonzero, if contains the offset within</span><br /><span class="line">     segment ES of the CEMM-compatible entry point (see #2304)</span><br /><span class="line">   if no other program has hooked INT 67, an alternate installation</span><br /><span class="line">     check is to test for the string</span><br /><span class="line">     &#34;NOVELL EXPANDED MEMORY MANAGER 386&#34; at offset 14h in the INT 67</span><br /><span class="line">     handler&#39;s segment; the word immediately preceding this string</span><br /><span class="line">     contains the offset of the API entry point if it is nonzero</span><br /><span class="line">Index: entry point;Novell EMM386</span><br /><span class="line"></span><br /><span class="line">(Table 2304)</span><br /><span class="line">Call Novell EMM386.EXE entry point with:</span><br /><span class="line">   AH = 00h get memory manager&#39;s status???</span><br /><span class="line">       ???</span><br /><span class="line">   AH = 01h set memory manager&#39;s status???</span><br /><span class="line">       ???</span><br /><span class="line">   AH = 02h Weitek coprocessor support???</span><br /><span class="line">       AL = subfunction???</span><br /><span class="line">   more functions???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1200 at INT 21/AX=4402h/SF=02h,#3337 at INT 67/AX=FFA5h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

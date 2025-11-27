@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3778030.html">
+    <link rel="next" href="rbint-3781218.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3778030.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3781218.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1684  P - Ms Windows - Vpowerd - Get Api Entry Point           </span>  [<span class="ngb">W</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1684h</span><br /><span class="line">   BX = 0026h (virtual device ID for VPOWERD device) (see #2329)</span><br /><span class="line">   ES:DI = 0000h:0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ES:DI -&gt; VxD API entry point (see #2351)</span><br /><span class="line">         0000h:0000h if the VxD does not support API in current mode</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1684h&#34;DEVICE API&#34;,INT 20&#34;Windows&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2351)</span><br /><span class="line">Call VPOWERD.VXD entry point with:</span><br /><span class="line">   AX = function number</span><br /><span class="line">       0000h get VPOWERD version</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX = 0000h</span><br /><span class="line">           AX = version (AH = major, AL = minor)</span><br /><span class="line">       0001h get APM BIOS version</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX:AX = APM BIOS version</span><br /><span class="line">       0002h get current power management level</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX:AX = power management level</span><br /><span class="line">       0003h enable/disable power management (see INT 15/AX=5308h)</span><br /><span class="line">       ??? = new state of power management</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX:AX = 0000h:0000h if successful</span><br /><span class="line">              else error code (see #2352)</span><br /><span class="line">       0004h set power state (see INT 15/AX=5307h)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX:AX = 0000h:0000h if successful</span><br /><span class="line">              else error code (see #2352)</span><br /><span class="line">       0005h set system power status</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX:AX = 0000h:0000h if successful</span><br /><span class="line">              else error code (see #2352)</span><br /><span class="line">       0006h restore APM power-on defaults (see INT 15/AX=5309h)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX:AX = 0000h:0000h if successful</span><br /><span class="line">              else error code (see #2352)</span><br /><span class="line">       0007h get power status (see INT 15/AX=530Ah)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       0008h get APM 1.1 power state (see INT 15/AX=530Ch)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ???</span><br /><span class="line">       0009h invoke OEM APM function</span><br /><span class="line">       ??? -&gt; buffer containing parameters for INT 15/AX=5380h</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX:AX = 0000h:0000h or error code (see #2352)</span><br /><span class="line">           buffer updated if successful</span><br /><span class="line">       000Ah register power handler</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX:AX = 0000h:0000h or error code</span><br /><span class="line">       000Bh deregister power handler</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX:AX = 0000h:0000h or error code (see #2352)</span><br /><span class="line">       000Ch Win32 get system power status</span><br /><span class="line">       000Dh Win32 set system power status</span><br /><span class="line">       else</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX = 0000h</span><br /><span class="line">           AX = 00FFh</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2350,#2353</span><br /><span class="line"></span><br /><span class="line">(Table 2352)</span><br /><span class="line">Values for VPOWERD.VXD error code:</span><br /><span class="line"> 000000xxh APM error code</span><br /><span class="line"> 000000FFh function number out of range</span><br /><span class="line"> 80000001h ??? (service 05h)</span><br /><span class="line"> 80000002h ??? (service 0Dh)</span><br /><span class="line"> 80000003h specified NULL buffer pointer (service 07h,08h,09h)</span><br /><span class="line"> 80000005h ??? (service 03h)</span><br /><span class="line"> 80000006h ??? (service 04h)</span><br /><span class="line"> 80000007h ??? (service 05h)</span><br /><span class="line"> 80000008h ??? (service 05h)</span><br /><span class="line"> 80000009h out of memory (service 0Ah)</span><br /><span class="line"> 8000000Ah ??? (service 0Ah)</span><br /><span class="line"> 8000000Bh invalid power handler (service 0Bh)</span><br /><span class="line"> 8000000Ch unsupported/disabled??? function</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2351,#0986</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

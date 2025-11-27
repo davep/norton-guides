@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3401149.html">
+    <link rel="next" href="rbint-3406068.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3401149.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3368614.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3406068.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn F27B  - Novell Netware V4+ - Get Volume Switch Information     </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = F27Bh subfn 09h</span><br /><span class="line">   CX = length of request buffer in bytes</span><br /><span class="line">   DX = length of reply buffer in bytes</span><br /><span class="line">   DS:SI -&gt; request buffer (see #2188)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #2189)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br /><span class="line">   reply buffer filled</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Volume Switch Information&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 2188)</span><br /><span class="line"> 00h   WORD    0005h (length of following data)</span><br /><span class="line"> 02h   BYTE    09h (subfunction &#34;Get Volume Switch Information&#34;)</span><br /><span class="line"> 03h   DWORD   starting item number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2189</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Volume Switch Information&#34; reply buffer:</span><br /><span class="line">Offset Size    Description (Table 2189)</span><br /><span class="line"> 00h   DWORD   current server time</span><br /><span class="line"> 04h   BYTE    vconsole version</span><br /><span class="line"> 05h   BYTE    vconsole revision</span><br /><span class="line"> 06h   WORD    reserved</span><br /><span class="line"> 08h   DWORD   total LFS counters</span><br /><span class="line"> 0Ch   DWORD   current LFS counters</span><br /><span class="line"> 10h   DWORD   &#34;readFile&#34;</span><br /><span class="line"> 14h   DWORD   &#34;writeFile&#34;</span><br /><span class="line"> 18h   DWORD   &#34;deleteFile&#34;</span><br /><span class="line"> 1Ch   DWORD   &#34;renMove&#34;</span><br /><span class="line"> 20h   DWORD   &#34;openFile&#34;</span><br /><span class="line"> 24h   DWORD   &#34;createFile&#34;</span><br /><span class="line"> 28h   DWORD   &#34;createAndOpenFile&#34;</span><br /><span class="line"> 2Ch   DWORD   &#34;closeFile&#34;</span><br /><span class="line"> 30h   DWORD   &#34;scanDeleteFile&#34;</span><br /><span class="line"> 34h   DWORD   &#34;salvageFile&#34;</span><br /><span class="line"> 38h   DWORD   &#34;purgeFile&#34;</span><br /><span class="line"> 3Ch   DWORD   &#34;migrateFile&#34;</span><br /><span class="line"> 40h   DWORD   &#34;deMigrateFile&#34;</span><br /><span class="line"> 44h   DWORD   &#34;createDir&#34;</span><br /><span class="line"> 48h   DWORD   &#34;deleteDir&#34;</span><br /><span class="line"> 4Ch   DWORD   &#34;directoryScans&#34;</span><br /><span class="line"> 50h   DWORD   &#34;mapPathToDirNum&#34;</span><br /><span class="line"> 54h   DWORD   &#34;modifyDirEntry&#34;</span><br /><span class="line"> 58h   DWORD   &#34;getAccessRights&#34;</span><br /><span class="line"> 5Ch   DWORD   &#34;getAccessRightsFromIDs&#34;</span><br /><span class="line"> 60h   DWORD   &#34;mapDirNumToPath&#34;</span><br /><span class="line"> 64h   DWORD   &#34;getEntryFromPathStrBase&#34;</span><br /><span class="line"> 68h   DWORD   &#34;getOtherNSEntry&#34;</span><br /><span class="line"> 6Ch   DWORD   &#34;getExtDirInfo&#34;</span><br /><span class="line"> 70h   DWORD   &#34;getParentDirNum&#34;</span><br /><span class="line"> 74h   DWORD   &#34;addTrusteeR&#34;</span><br /><span class="line"> 78h   DWORD   &#34;scanTrusteeR&#34;</span><br /><span class="line"> 7Ch   DWORD   &#34;delTrusteeR&#34;</span><br /><span class="line"> 80h   DWORD   &#34;purgeTrust&#34;</span><br /><span class="line"> 84h   DWORD   &#34;findNextTrustRef&#34;</span><br /><span class="line"> 88h   DWORD   &#34;scanUserRestNodes&#34;</span><br /><span class="line"> 8Ch   DWORD   &#34;addUserRest&#34;</span><br /><span class="line"> 90h   DWORD   &#34;deleteUserRest&#34;</span><br /><span class="line"> 94h   DWORD   &#34;rtnDirSpaceRest&#34;</span><br /><span class="line"> 98h   DWORD   &#34;getActualAvailDskSp&#34;</span><br /><span class="line"> 9Ch   DWORD   &#34;cntOwnedFilesAndDirs&#34;</span><br /><span class="line"> A0h   DWORD   &#34;migFileInfo&#34;</span><br /><span class="line"> A4h   DWORD   &#34;volMigInfo&#34;</span><br /><span class="line"> A8h   DWORD   &#34;readMigFileData&#34;</span><br /><span class="line"> ACh   DWORD   &#34;getVolusageStats&#34;</span><br /><span class="line"> B0h   DWORD   &#34;getActualVolUsageStats&#34;</span><br /><span class="line"> B4h   DWORD   &#34;getDirUsageStats&#34;</span><br /><span class="line"> B8h   DWORD   &#34;NMFileReadsCount&#34;</span><br /><span class="line"> BCh   DWORD   &#34;NMFileWritesCount&#34;</span><br /><span class="line"> C0h   DWORD   &#34;mapPathToDirNumOrPhantom&#34;</span><br /><span class="line"> C4h   DWORD   &#34;stationsHasAccessRgtsGntedBelow&#34;</span><br /><span class="line"> C8h   DWORD   &#34;gtDataSteamLensFromPathStrBase&#34;</span><br /><span class="line"> CCh   DWORD   &#34;checkAndGetDirectoryEntry&#34;</span><br /><span class="line"> D0h   DWORD   &#34;getDeletedEntry&#34;</span><br /><span class="line"> D4h   DWORD   &#34;getOriginalNameSpace&#34;</span><br /><span class="line"> D8h   DWORD   &#34;getActualFileSize&#34;</span><br /><span class="line"> DCh   DWORD   &#34;verifyNameSpaceNumber&#34;</span><br /><span class="line"> E0h   DWORD   &#34;verifyDataStreamNumber&#34;</span><br /><span class="line"> E4h   DWORD   &#34;checkVolumeNumber&#34;</span><br /><span class="line"> E8h   DWORD   &#34;commitFile&#34;</span><br /><span class="line"> ECh   DWORD   &#34;VMGetDirectoryEntry&#34;</span><br /><span class="line"> F0h   DWORD   &#34;createDMFileEntry&#34;</span><br /><span class="line"> F4h   DWORD   &#34;renameNameSpaceEntry&#34;</span><br /><span class="line"> F8h   DWORD   &#34;logFile&#34;</span><br /><span class="line"> FCh   DWORD   &#34;releaseFile&#34;</span><br /><span class="line">100h   DWORD   &#34;clearFile&#34;</span><br /><span class="line">104h   DWORD   &#34;setVolumeFlag&#34;</span><br /><span class="line">108h   DWORD   &#34;clearVolumeFlag&#34;</span><br /><span class="line">10Ch   DWORD   &#34;getOriginalInfo&#34;</span><br /><span class="line">110h   DWORD   &#34;createMigratedDir&#34;</span><br /><span class="line">114h   DWORD   &#34;F3OpenCreate&#34;</span><br /><span class="line">118h   DWORD   &#34;F3InitFileSearch&#34;</span><br /><span class="line">11Ch   DWORD   &#34;F3ContinueFileSearch&#34;</span><br /><span class="line">120h   DWORD   &#34;F3RenameFile&#34;</span><br /><span class="line">124h   DWORD   &#34;F3ScanForTrustees&#34;</span><br /><span class="line">128h   DWORD   &#34;F3ObtainFileInfo&#34;</span><br /><span class="line">12Ch   DWORD   &#34;F3ModifyInfo&#34;</span><br /><span class="line">130h   DWORD   &#34;F3EraseFile&#34;</span><br /><span class="line">134h   DWORD   &#34;F3SetDirHandle&#34;</span><br /><span class="line">138h   DWORD   &#34;F3AddTrustees&#34;</span><br /><span class="line">13Ch   DWORD   &#34;F3DeleteTrustees&#34;</span><br /><span class="line">140h   DWORD   &#34;F3AllocDirHandle&#34;</span><br /><span class="line">144h   DWORD   &#34;F3ScanSalvagedFiles&#34;</span><br /><span class="line">148h   DWORD   &#34;F3RecoverSalvagedFiles&#34;</span><br /><span class="line">14Ch   DWORD   &#34;F3PurgeSalvageableFile&#34;</span><br /><span class="line">150h   DWORD   &#34;F3GetNSSpecificInfo&#34;</span><br /><span class="line">154h   DWORD   &#34;F3ModifyNSSpecificInfo&#34;</span><br /><span class="line">158h   DWORD   &#34;F3SearchSet&#34;</span><br /><span class="line">15Ch   DWORD   &#34;F3GetDirBase&#34;</span><br /><span class="line">160h   DWORD   &#34;F3QueryNameSpaceInfo&#34;</span><br /><span class="line">164h   DWORD   &#34;F3GetNameSpaceList&#34;</span><br /><span class="line">168h   DWORD   &#34;F3GetHugeInfo&#34;</span><br /><span class="line">16Ch   DWORD   &#34;F3SetHugeInfo&#34;</span><br /><span class="line">170h   DWORD   &#34;F3GetFullPathString&#34;</span><br /><span class="line">174h   DWORD   &#34;F3GetEffectiveDirectoryRights&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2188</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

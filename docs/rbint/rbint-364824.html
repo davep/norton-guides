@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-364774.html">
+    <link rel="next" href="rbint-365781.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-364774.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-365781.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Function:</span></span><br /><span class="line"></span><br /><span class="line">FSCALE multiplies the value in ST by a power of two, given in ST(1).</span><br /><span class="line">Pre-387s assume the value in ST(1) to be an integer in the range</span><br /><span class="line">-215 &lt;= , &lt; +215. 387+ do not assume anything about the value.</span><br /><span class="line">The value in ST(1) is always chopped to the nearest integer closest</span><br /><span class="line">to zero.</span><br /><span class="line"></span><br /><span class="line">There is a bug in some 486s which allows denormal or pseudo-denormals to</span><br /><span class="line">be returned as a result, apparently without issuing an Invalid Operation</span><br /><span class="line">exception. For this to happen, ST(1) must be within the range</span><br /><span class="line">-1 &lt; ST(1) &lt; 1 and ST must be a pseudo-denormal or denormal while</span><br /><span class="line">underflow exceptions must not be masked. When it occurs, the value from</span><br /><span class="line">ST is returned as the result.</span><br /><span class="line"></span><br /><span class="line">There is no workaround other than to avoid the situation. Leaving</span><br /><span class="line">underflow exceptions masked may prevent this bug from showing up.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">FSINCOS  Calculate both Sine and Cosine of ST</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

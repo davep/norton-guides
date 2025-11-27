@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5586454.html">
+    <link rel="next" href="rbint-5589042.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5586454.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5581792.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5589042.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 69 Fn 0A  - Decnet Dos 2.1+ - Data Link Layer                        </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 0Ah</span><br /><span class="line">   AL = function number (see #3383)</span><br /><span class="line">   ES:BX -&gt; Datalink Communication Block (see #3385)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (see #3384)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 6D&#34;DECnet&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 3383)</span><br /><span class="line">Values for DECnet DOS Data Link Layer function:</span><br /><span class="line"> 00h   initialize</span><br /><span class="line"> 01h   open portal</span><br /><span class="line"> 02h   close portal</span><br /><span class="line"> 03h   enable multicast address</span><br /><span class="line"> 04h   disable multicast address</span><br /><span class="line"> 05h   transmit</span><br /><span class="line"> 06h   request transmit buffer</span><br /><span class="line"> 07h   deallocate transmit buffer</span><br /><span class="line"> 08h   read channel status</span><br /><span class="line"> 09h   read datalink portal list</span><br /><span class="line"> 0Ah   read information about a datalink portal</span><br /><span class="line"> 0Bh   read and/or clear counters</span><br /><span class="line"> 0Ch   request to boot from a network server</span><br /><span class="line"> 0Dh   enable Ethernet channel</span><br /><span class="line"> 0Eh   disable Ethernet channel</span><br /><span class="line"> 0Fh   start MOP/send a System ID message</span><br /><span class="line"> 10h   stop MOP</span><br /><span class="line"> 11h   get DECPARM</span><br /><span class="line"> 12h   set DECPARM</span><br /><span class="line"> 13h   external loopback</span><br /><span class="line"></span><br /><span class="line">(Table 3384)</span><br /><span class="line">Values for DECnet DOS Data Link Layer status:</span><br /><span class="line"> 00h   successful</span><br /><span class="line"> 01h   hardware failed to initialize</span><br /><span class="line"> 02h   channel state was not off (must be off to execute that command)</span><br /><span class="line"> 03h   channel state is off (must be on to execute that command)</span><br /><span class="line"> 04h   address not set</span><br /><span class="line"> 05h   hardware missing</span><br /><span class="line"> 06h   buffer too small</span><br /><span class="line"> 07h   no more buffers available</span><br /><span class="line"> 08h   no more resources available</span><br /><span class="line"> 09h   promiscuous receiver active</span><br /><span class="line"> 0Ah   non exclusive</span><br /><span class="line"> 0Bh   unrecognized portal</span><br /><span class="line"> 0Ch   protocol type in use</span><br /><span class="line"> 0Dh   not a valid Multicast address</span><br /><span class="line"> 0Eh   outstanding calls</span><br /><span class="line"> 0Fh   hardware doesn&#39;t support receiving bad frames</span><br /><span class="line"> 10h   none outstanding</span><br /><span class="line"> 11h   no events</span><br /><span class="line"> 12h   broken</span><br /><span class="line"> 13h   buffer quota exceeded</span><br /><span class="line"> 14h   already initialized</span><br /><span class="line"> 15h   loopback failure</span><br /><span class="line">Index: error codes;DECnet DOS|DECnet DOS;error codes</span><br /><span class="line"></span><br /><span class="line">Format of Datalink Communication Block:</span><br /><span class="line">Offset Size    Description (Table 3385)</span><br /><span class="line"> 00h   WORD    portal ID</span><br /><span class="line"> 02h  6 BYTEs  source address</span><br /><span class="line"> 08h  6 BYTEs  destination address</span><br /><span class="line"> 0Eh   DWORD   buffer pointer</span><br /><span class="line"> 12h   WORD    buffer length</span><br /><span class="line"> 14h   WORD    operation</span><br /><span class="line"> 16h   BYTE    pad flag (used on open)</span><br /><span class="line">       00h no pad</span><br /><span class="line">       01h pad</span><br /><span class="line"> 17h   BYTE    mode flag (used on open)</span><br /><span class="line">       00h 802.3</span><br /><span class="line">       01h Ethernet</span><br /><span class="line">       02h promiscuous</span><br /><span class="line"> 18h   DWORD   line status change function</span><br /><span class="line"> 1Ch   DWORD   received data function</span><br /><span class="line"> 20h   DWORD   transmitted data function</span><br /><span class="line"> 24h   BYTE    maximum outstanding transmits/receives</span><br /><span class="line"> 25h  2 BYTEs  protocol type</span><br /><span class="line"> 27h   WORD    buffers lost</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

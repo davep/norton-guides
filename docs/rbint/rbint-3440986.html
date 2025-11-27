@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3440808.html">
+    <link rel="next" href="rbint-3441782.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3440808.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3368614.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3441782.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn FF80  - Topware Network Os V5.10+ - Send Message               </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = FF80h</span><br /><span class="line">   DH = FFh</span><br /><span class="line">   DL = destination address (FFh for broadcast)</span><br /><span class="line">   CX = message length (max 2000)</span><br /><span class="line">   DS:SI -&gt; message to be sent (see #2218)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> nothing</span><br /><span class="line">Program: TopWare Network Operating System is manufactured by Grand Computer</span><br /><span class="line">     Company</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is supported on both Workstations and the server</span><br /><span class="line">   there is no guarantee that the message will be received correctly, or</span><br /><span class="line">     at all, by the destination</span><br /><span class="line"></span><br /><span class="line">Format of TopWare message:</span><br /><span class="line">Offset Size    Description (Table 2218)</span><br /><span class="line"> 00h   BYTE    type code</span><br /><span class="line">       07h TopSend</span><br /><span class="line">       11h user application</span><br /><span class="line">       other reserved for TopWare</span><br /><span class="line"> 01h   var data</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  sending messages with a type code other than 11h will cause</span><br /><span class="line">     unpredictable results</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

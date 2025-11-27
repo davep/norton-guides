@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5821677.html">
+    <link rel="next" href="rbint-5822946.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5821677.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5812979.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5822946.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 7C Fn 0006  - Sk-upps Data Link Interface Api - Transmit Frame       </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 0006h</span><br /><span class="line">   ES:BX -&gt; Mbuf (see #3518)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> nothing</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> The DLI will send LENGTH bytes found in the Mbuf&#39;s DATA area starting</span><br /><span class="line">     at OFFSET. A complete and valid frame must be stored there. The DLI</span><br /><span class="line">     will only copy the current node address (see AX=0003h) to the</span><br /><span class="line">     source node field of the frame&#39;s MAC header.</span><br /><span class="line">   On Ethernet, the DLI will always send a minimum of 60 bytes, regardless</span><br /><span class="line">     of the value found in the LENGTH field.</span><br /><span class="line">   This function returns immediately; the DLI will call the protocol&#39;s</span><br /><span class="line">     Transmit Upcall (see #3519) when the frame has been sent.</span><br /><span class="line">   The Mbuf&#39;s IN USE field will be non-zero until the DLI calls the</span><br /><span class="line">     Transmit Upcall.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=0002h,AX=0004h,AX=0013h</span><br /><span class="line"></span><br /><span class="line">(Table 3519)</span><br /><span class="line">Values SK-UPPS Transmit Upcall is called with:</span><br /><span class="line">   ES:BX -&gt; Mbuf (NEXT field destroyed)</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  On FDDI the bytes of the source and destination node fields in the MAC</span><br /><span class="line">     header have been bit-swapped to physical address format.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

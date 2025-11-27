@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2549643.html">
+    <link rel="next" href="rbint-2550685.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2549643.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2550685.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 55  - Dos 2+ Internal - Create Child Psp                       </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 55h</span><br /><span class="line">   DX = segment at which to create new PSP</span><br /><span class="line">   SI = (DOS 3.0+) value to place in memory size field at DX:[0002h]</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL destroyed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> creates a &#34;child&#34; PSP rather than making an exact copy of the current</span><br /><span class="line">     PSP; the new PSP&#39;s parent pointer is set to the current PSP and the</span><br /><span class="line">     reference count for each inherited file is incremented</span><br /><span class="line">   (DOS 2.0+) sets current PSP to DX</span><br /><span class="line">   (DOS 3.0+) marks &#34;no inherit&#34; file handles as closed in child PSP</span><br /><span class="line">   this function is implemented using the same code as AH=26h, so unlike</span><br /><span class="line">     other DOS 2+ functions, it does not return status in CF, instead</span><br /><span class="line">     returning status in AL as DOS 1.x functions do (but it never puts an</span><br /><span class="line">     explicit return value in AL)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=26h,AH=50h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

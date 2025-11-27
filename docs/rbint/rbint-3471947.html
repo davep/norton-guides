@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    
+    <link rel="next" href="rbint-3473433.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="rbint-3471811.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3473433.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 28  C - Dos 2+ - Dos Idle Interrupt                                  </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   SS:SP = top of MS-DOS stack for I/O functions</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> all registers preserved</span><br /><span class="line"><span class="ngb">Desc:</span>  This interrupt is invoked each time one of the DOS character input</span><br /><span class="line">     functions loops while waiting for input.  Since a DOS call is in</span><br /><span class="line">     progress even though DOS is actually idle during such input waits,</span><br /><span class="line">     hooking this function is necessary to allow a TSR to perform DOS</span><br /><span class="line">     calls while the foreground program is waiting for user input.  The</span><br /><span class="line">     INT 28h handler may invoke any INT 21h function except functions</span><br /><span class="line">     00h through 0Ch.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> under DOS 2.x, the critical error flag (the byte immediately after the</span><br /><span class="line">     InDOS flag) must be set in order to call DOS functions 50h/51h from</span><br /><span class="line">     the INT 28h handler without destroying the DOS stacks.</span><br /><span class="line">   calls to INT 21/AH=3Fh,40h from within an INT 28 handler may not use a</span><br /><span class="line">     handle which refers to CON</span><br /><span class="line">   at the time of the call, the InDOS flag (see INT 21/AH=34h) is normally</span><br /><span class="line">     set to 01h; if larger, DOS is truly busy and should not be reentered</span><br /><span class="line">   the default handler is an IRET instruction</span><br /><span class="line">   supported in OS/2 compatibility box</span><br /><span class="line">   the _MS-DOS_Programmer&#39;s_Reference_ for DOS 5.0 incorrectly documents</span><br /><span class="line">     this interrupt as superseded</span><br /><span class="line">   the performance of NetWare Lite servers (and probably other peer-to-</span><br /><span class="line">     peer networks) can be dramatically improved by calling INT 28</span><br /><span class="line">     frequently from an application&#39;s idle loop</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 21/AH=34h,INT 2A/AH=84h,INT 2F/AX=1680h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

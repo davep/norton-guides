@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2553401.html">
+    <link rel="next" href="rbint-2555733.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2553401.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2555733.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 5702  - Dos 4.x Only - Get Extended Attributes For File        </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 5702h</span><br /><span class="line">   BX = file handle</span><br /><span class="line">   CX = size of result buffer or 0000h</span><br /><span class="line">   DS:SI -&gt; EAP list (see #1353)</span><br /><span class="line">   ES:DI -&gt; buffer for returned EAV list (see #1356)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       CX = size of returned data</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (see #1366)</span><br /><span class="line"><span class="ngb">Desc:</span>  get the current value of one or more extended attributes</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> if CX=0000h on entry, ES:DI is ignored and no data is actually</span><br /><span class="line">     returned, only the amount of data which is available</span><br /><span class="line">   the default DOS 4 behavior is to return a single word of 0000h (no</span><br /><span class="line">     structures) in the result buffer if CX&gt;=0002h on entry; this</span><br /><span class="line">     functionality was apparently never released to the public</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=5703h,AX=5704h,AH=6Eh,INT 2F/AX=112Dh</span><br /><span class="line"></span><br /><span class="line">Format of EAP (extended attribute properties) list:</span><br /><span class="line">Offset Size    Description (Table 1353)</span><br /><span class="line"> 00h   WORD    number of EAP structures following</span><br /><span class="line"> 02h   var array of EAP structures (see #1354)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1356</span><br /><span class="line"></span><br /><span class="line">Format of EAP (extended attribute property) structure:</span><br /><span class="line">Offset Size    Description (Table 1354)</span><br /><span class="line"> 00h   BYTE    attribute type</span><br /><span class="line">       01h boolean (either 00h or 01h)</span><br /><span class="line">       02h number (BYTE, WORD, or DWORD)</span><br /><span class="line">       03h string</span><br /><span class="line">       04h date stamp</span><br /><span class="line">       05h time stamp</span><br /><span class="line"> 01h   WORD    EAP flags (see #1355)</span><br /><span class="line"> 03h   BYTE    size of reference string (name)</span><br /><span class="line"> 04h  N BYTEs  reference string</span><br /><span class="line"></span><br /><span class="line">Bitfields for EAP flags:</span><br /><span class="line">Bit(s) Description (Table 1355)</span><br /><span class="line"> 12    unchangeable</span><br /><span class="line"> 13    ignore</span><br /><span class="line"> 14    unchangeable</span><br /><span class="line"> 15    used by COMMAND.COM for code page, but not understood by ATTRIB</span><br /><span class="line"></span><br /><span class="line">Format of EAV (extended attribute value) list:</span><br /><span class="line">Offset Size    Description (Table 1356)</span><br /><span class="line"> 00h   WORD    number of EAV structures following</span><br /><span class="line"> 02h   var array of Extended Attribute Value structures (see #1357)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1353</span><br /><span class="line"></span><br /><span class="line">Format of Extended Attribute Value structures:</span><br /><span class="line">Offset Size    Description (Table 1357)</span><br /><span class="line"> 00h  4 BYTEs  ???</span><br /><span class="line"> 04h   BYTE    size of reference string</span><br /><span class="line"> 05h   WORD    size of value</span><br /><span class="line"> 07h   var reference string</span><br /><span class="line">   var value</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

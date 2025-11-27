@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2084584.html">
+    <link rel="next" href="rbint-2085731.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2084584.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2085731.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 0E  - Dos 1+ - Select Default Drive                            </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 0Eh</span><br /><span class="line">   DL = new default drive (00h = A:, 01h = B:, etc)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = number of potentially valid drive letters</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> under Novell NetWare, the return value is always 32, the number of</span><br /><span class="line">     drives that NetWare supports</span><br /><span class="line">   under DOS 3.0+, the return value is the greatest of 5, the value of</span><br /><span class="line">     LASTDRIVE= in CONFIG.SYS, and the number of drives actually present</span><br /><span class="line">   on a DOS 1.x/2.x single-floppy system, AL returns 2 since the floppy</span><br /><span class="line">     may be accessed as either A: or B:</span><br /><span class="line">   otherwise, the return value is the highest drive actually present</span><br /><span class="line">   DOS 1.x supports a maximum of 16 drives, 2.x a maximum of 63 drives,</span><br /><span class="line">     and 3+ a maximum of 26 drives</span><br /><span class="line">   under Novell DOS 7, this function returns the correct LASTDRIVE value</span><br /><span class="line">     even when the undocumented LASTDRIVE=27..32 directive was used in</span><br /><span class="line">     CONFIG.SYS</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=19h,AH=3Bh,AH=DBh</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

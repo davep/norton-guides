@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4317563.html">
+    <link rel="next" href="rbint-4320012.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4317563.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4197937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4320012.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn C000  U - Printcache V3.1 Pcache.exe - Installation Check      </span>  [<span class="ngb">c</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = C000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = FFh if installed</span><br /><span class="line">       SI = signature value 20D6h</span><br /><span class="line">       DI = signature value 8761h</span><br /><span class="line">       ES:BX -&gt; configuration table (see #2713)</span><br /><span class="line">       CX = ??? (0300h)</span><br /><span class="line">       DX = ??? (0020h)</span><br /><span class="line">Program: PCACHE is the resident print spooler portion of PrintCache by</span><br /><span class="line">     LaserTools; it may use either memory or disk space to spool output</span><br /><span class="line">Range: AH=C0h to AH=FFh, selected by commandline switch</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=0100h/SI=20D6h,AX=C001h&#34;PCACHE&#34;</span><br /><span class="line"></span><br /><span class="line">Format of PrintCache configuration table:</span><br /><span class="line">Offset Size    Description (Table 2713)</span><br /><span class="line"> 00h 26 BYTEs  ASCIZ signature string &#34;TORQ Configuration Table: &#34;</span><br /><span class="line"> 1Ah  2 BYTEs  ???</span><br /><span class="line"> 1Ch   DWORD   -&gt; data table (see #2714)</span><br /><span class="line"> 20h  4 BYTEs  ASCIZ version string (&#34;3.1&#34; for v3.1)</span><br /><span class="line"> 24h  5 BYTEs  ???</span><br /><span class="line"> 29h 12 BYTEs  ASCIZ version date string (&#34;Aug 31 1993&#34; for v3.1)</span><br /><span class="line"> 35h   WORD    buffered port type (01h = LPT, 02h = COM)</span><br /><span class="line"> 37h   WORD    buffered port BIOS port number</span><br /><span class="line"> 39h  5 BYTEs  ASCIZ buffered port name (&#34;LPTn&#34; or &#34;COMn&#34;)</span><br /><span class="line"> 3Eh   WORD    physical port type (01h = LPT, 02h = COM)</span><br /><span class="line"> 40h   WORD    physical port BIOS port number</span><br /><span class="line"> 42h  5 BYTEs  ASCIZ physical port name (&#34;LPTn&#34; or &#34;COMn&#34;)</span><br /><span class="line"> 47h   BYTE    port driver IRQ</span><br /><span class="line"> 48h 21 BYTEs  ???</span><br /><span class="line"> 5Dh   WORD    buffer size in K</span><br /><span class="line"> 5Fh 27 BYTEs  ???</span><br /><span class="line"> 7Ah   BYTE    popup hotkey shift states (see #0506 at INT 16/AH=02h)</span><br /><span class="line"> 7Bh   BYTE    popup hotkey scan code (see #0005 at INT 09&#34;IRQ1&#34;)</span><br /><span class="line"> 7Ch  4 BYTEs  ???</span><br /><span class="line"> 80h 20 BYTEs  ASCIZ printer type name</span><br /><span class="line">   ???</span><br /><span class="line"></span><br /><span class="line">Format of PrintCache data table:</span><br /><span class="line">Offset Size    Description (Table 2714)</span><br /><span class="line"> 00h  2 BYTEs  ???</span><br /><span class="line"> 02h   DWORD   -&gt; ??? entry point</span><br /><span class="line">   ???</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

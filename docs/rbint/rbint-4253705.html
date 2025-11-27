@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4253495.html">
+    <link rel="next" href="rbint-4254987.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4253495.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4197937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4254987.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn AE00  U - Dos 3.3+ Internal - Installable Command - Installatio</span>  [<span class="ngb">l</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = AE00h</span><br /><span class="line">   DX = magic value FFFFh</span><br /><span class="line">   CH = FFh</span><br /><span class="line">   CL = length of command line tail (4DOS v4.0)</span><br /><span class="line">   DS:BX -&gt; command line buffer (see #2661)</span><br /><span class="line">   DS:SI -&gt; command name buffer (see #2662)</span><br /><span class="line">   DI = 0000h (4DOS v4.0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = FFh if this command is a TSR extension to COMMAND.COM</span><br /><span class="line">   AL = 00h if the command should be executed as usual</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> This call provides a mechanism for TSRs to install permanent</span><br /><span class="line">     extensions to the command repertoire of COMMAND.COM.  It appears</span><br /><span class="line">     that COMMAND.COM makes this call before executing the current</span><br /><span class="line">     command line, and does not execute it itself if the return is FFh.</span><br /><span class="line">   APPEND hooks this call, to allow subsequent APPEND commands to</span><br /><span class="line">     execute without re-running APPEND</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=AE01h</span><br /><span class="line"></span><br /><span class="line">Format of COMMAND.COM command line buffer:</span><br /><span class="line">Offset Size    Description (Table 2661)</span><br /><span class="line"> 00h   BYTE    max length of command line, as in INT 21/AH=0Ah</span><br /><span class="line"> 01h   BYTE    count of bytes to follow, excluding terminating 0Dh</span><br /><span class="line">      N BYTEs  command line text, terminated by 0Dh</span><br /><span class="line"></span><br /><span class="line">Format of command name buffer:</span><br /><span class="line">Offset Size    Description (Table 2662)</span><br /><span class="line"> 00h   BYTE    length of command name</span><br /><span class="line"> 01h  N BYTEs  uppercased command name (blank-padded to 11 chars by 4DOS v4)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

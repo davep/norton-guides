@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2374256.html">
+    <link rel="next" href="rbint-2376868.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2374256.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2376868.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 4404  - Combi-disk V1.13 - Get Data Record                     </span>  [<span class="ngb">c</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4404h</span><br /><span class="line">   BL = drive number (00h = default, 01h = A:, etc)</span><br /><span class="line">   CX = 0032h (length of data packet)</span><br /><span class="line">   DS:DX -&gt; buffer for data packet (see #1222)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = number of bytes actually transferred</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (01h,05h,06h,0Dh) (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line">Program: COMBI-disk is a shareware combination cache and RAMdisk sharing a</span><br /><span class="line">     single pool of memory by Vadim V. Vlasov</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the installation check consists of scanning the valid drives for one</span><br /><span class="line">     which returns a correctly-sized data packet with the proper</span><br /><span class="line">     signature in the first field</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4405h&#34;COMBI&#34;</span><br /><span class="line">Index: installation check;COMBI-disk</span><br /><span class="line"></span><br /><span class="line">Format of COMBI-disk data packet:</span><br /><span class="line">Offset Size    Description (Table 1222)</span><br /><span class="line"> 00h  6 BYTEs  ASCIZ signature &#34;COMBI&#34;</span><br /><span class="line"> 06h   WORD    version (high byte = major, low = decimal minor version)</span><br /><span class="line"> 08h   BYTE    current options</span><br /><span class="line"> 09h   BYTE    sectors per allocation block</span><br /><span class="line"> 0Ah   WORD    maximum buffer in KB</span><br /><span class="line"> 0Ch   WORD    current buffer in KB (less than max if XMS memory being lent)</span><br /><span class="line"> 0Eh   WORD    total number of allocation blocks</span><br /><span class="line"> 10h   WORD    current number of allocation blocks</span><br /><span class="line"> 12h   WORD    number of blocks being used by RAM disk</span><br /><span class="line"> 14h   WORD    number of blocks being used by cache or unused</span><br /><span class="line"> 16h   WORD    number of dirty cache blocks</span><br /><span class="line"> 18h   WORD    number of blocks which could not be written out due to errors</span><br /><span class="line"> 1Ah   WORD    total number of read requests</span><br /><span class="line"> 1Ch   WORD    total number of sectors read</span><br /><span class="line"> 1Eh   WORD    number of BIOS read requests (cache misses)</span><br /><span class="line"> 20h   WORD    number of sectors read via BIOS (cache misses)</span><br /><span class="line"> 22h   WORD    total number of write requests</span><br /><span class="line"> 24h   WORD    total number of sectors written</span><br /><span class="line"> 26h   WORD    number of BIOS write requests</span><br /><span class="line"> 28h   WORD    number of sectors written via BIOS</span><br /><span class="line"> 2Ah   WORD    number of RAM disk read requests</span><br /><span class="line"> 2Ch   WORD    number of sectors read from RAM disk</span><br /><span class="line"> 2Eh   WORD    number of RAM disk write requests</span><br /><span class="line"> 30h   WORD    number of sectors written to RAM disk</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

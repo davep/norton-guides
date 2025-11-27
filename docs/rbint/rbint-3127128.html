@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3126517.html">
+    <link rel="next" href="rbint-3128656.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3126517.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3002060.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3128656.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn F216  - Novell Netware - Scan Salvageable Files (old)          </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = F216h subfn 1Bh</span><br /><span class="line">   CX = length of request packet in bytes</span><br /><span class="line">   DX = length of reply buffer in bytes</span><br /><span class="line">   DS:SI -&gt; request packet (see #1811)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1812)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=F2h&#34;Novell&#34;,AX=F216h/SF=1Ch,AX=F216h/SF=1Dh,AX=F257h/SF=10h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Scan Salvageable Files (Old)&#34; request packet:</span><br /><span class="line">Offset Size    Description (Table 1811)</span><br /><span class="line"> 00h   WORD    length of following data</span><br /><span class="line"> 02h   BYTE    1Bh (subfunction &#34;Scan Salvageable Files (Old)&#34;)</span><br /><span class="line"> 03h   BYTE    directory handle</span><br /><span class="line"> 04h   DWORD   last sequence number (set to FFFFFFFFh before first call)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1812,#2087</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Scan Salvageable Files (Old)&#34; reply packet:</span><br /><span class="line">Offset Size    Description (Table 1812)</span><br /><span class="line"> 00h   DWORD   next sequence number</span><br /><span class="line"> 04h   WORD    subdirectory</span><br /><span class="line"> 06h   DWORD   attributes</span><br /><span class="line"> 0Ah   BYTE    unique ID</span><br /><span class="line"> 0Bh   BYTE    flags</span><br /><span class="line"> 0Ch   BYTE    name space</span><br /><span class="line"> 0Dh   BYTE    length of filename</span><br /><span class="line"> 0Eh 14 BYTEs  filename</span><br /><span class="line"> 1Ah   DWORD   creation date and time</span><br /><span class="line"> 1Eh   DWORD   owner ID</span><br /><span class="line"> 22h   DWORD   last-backup date and time</span><br /><span class="line"> 26h   DWORD   last-backup ID</span><br /><span class="line"> 2Ah   DWORD   last-modified date and time</span><br /><span class="line"> 2Eh   WORD    ???</span><br /><span class="line"> 30h   DWORD   last-modified ID</span><br /><span class="line"> 34h   DWORD   file size</span><br /><span class="line"> 38h 44 BYTEs  reserved</span><br /><span class="line"> 62h   WORD    inherited rights mask</span><br /><span class="line"> 64h   WORD    last-access date</span><br /><span class="line"> 66h   DWORD   deleted file&#39;s time</span><br /><span class="line"> 6Ah   DWORD   deletion date and time</span><br /><span class="line"> 6Eh   DWORD   ID of deletor</span><br /><span class="line"> 72h 16 BYTEs  reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1811,#2088</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

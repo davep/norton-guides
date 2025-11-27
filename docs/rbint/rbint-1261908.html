@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1261495.html">
+    <link rel="next" href="rbint-1263683.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1261495.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1227085.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1263683.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn 5300  - Advanced Power Management V1.0+ - Installation Check   </span>  [<span class="ngb">p</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 5300h</span><br /><span class="line">   BX = device ID of system BIOS (0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AH = major version (BCD)</span><br /><span class="line">       AL = minor version (BCD)</span><br /><span class="line">       BX = 504Dh (&#34;PM&#34;)</span><br /><span class="line">       CX = flags (see #0398)</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AH = error code (06h,09h,86h) (see #0399)</span><br /><span class="line">BUG:   early versions of the Award Modular BIOS with built-in APM support</span><br /><span class="line">     reportedly do not set BX on return</span><br /><span class="line"></span><br /><span class="line">Bitfields for APM flags:</span><br /><span class="line">Bit(s) Description (Table 0398)</span><br /><span class="line"> 0 16-bit protected mode interface supported</span><br /><span class="line"> 1 32-bit protected mode interface supported</span><br /><span class="line"> 2 CPU idle call reduces processor speed</span><br /><span class="line"> 3 BIOS power management disabled</span><br /><span class="line"> 4 BIOS power management disengaged (APM v1.1)</span><br /><span class="line"> 5-7   reserved</span><br /><span class="line"></span><br /><span class="line">(Table 0399)</span><br /><span class="line">Values for APM error code:</span><br /><span class="line"> 01h   power management functionality disabled</span><br /><span class="line"> 02h   interface connection already in effect</span><br /><span class="line"> 03h   interface not connected</span><br /><span class="line"> 04h   real-mode interface not connected</span><br /><span class="line"> 05h   16-bit protected-mode interface already connected</span><br /><span class="line"> 06h   16-bit protected-mode interface not supported</span><br /><span class="line"> 07h   32-bit protected-mode interface already connected</span><br /><span class="line"> 08h   32-bit protected-mode interface not supported</span><br /><span class="line"> 09h   unrecognized device ID</span><br /><span class="line"> 0Ah   invalid parameter value in CX</span><br /><span class="line"> 0Bh   (APM v1.1) interface not engaged</span><br /><span class="line"> 0Ch   (APM v1.2) function not supported</span><br /><span class="line"> 0Dh   (APM v1.2) Resume Timer disabled</span><br /><span class="line"> 0Eh-1Fh reserved for other interface and general errors</span><br /><span class="line"> 20h-3Fh reserved for CPU errors</span><br /><span class="line"> 40h-5Fh reserved for device errors</span><br /><span class="line"> 60h   can&#39;t enter requested state</span><br /><span class="line"> 61h-7Fh reserved for other system errors</span><br /><span class="line"> 80h   no power management events pending</span><br /><span class="line"> 81h-85h reserved for other power management event errors</span><br /><span class="line"> 86h   APM not present</span><br /><span class="line"> 87h-9Fh reserved for other power management event errors</span><br /><span class="line"> A0h-FEh reserved</span><br /><span class="line"> FFh   undefined</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

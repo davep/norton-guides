@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1413065.html">
+    <link rel="next" href="rbint-1415038.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1413065.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1340639.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1415038.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn D800  - Eisa System Rom - Read Slot Configuration Information  </span>  [<span class="ngb">X</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = D800h</span><br /><span class="line">   CL = slot number (including embedded and virtual)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AH = 00h</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AH = error code (80h,82h,83h,86h,87h)(see #0463)</span><br /><span class="line">   AL = bit flags (see #0462)</span><br /><span class="line">   BH = major revision level of configuration utility</span><br /><span class="line">   BL = minor revision level of configuration utility</span><br /><span class="line">   CX = checksum of configuration file</span><br /><span class="line">   DH = number of device functions</span><br /><span class="line">   DL = combined function information byte (see #0464)</span><br /><span class="line">   SI:DI = 4-byte compressed ID (DI = bytes 0&amp;1, SI = bytes 2&amp;3)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  call with AL=80h if using 32-bit CS addressing mode instead of 16-bit</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=D801h,AX=D804h</span><br /><span class="line"></span><br /><span class="line">Bitfields for EISA AL bit flags:</span><br /><span class="line">Bit(s) Description (Table 0462)</span><br /><span class="line"> 7 set if duplicate IDs</span><br /><span class="line"> 6 set if product ID readable</span><br /><span class="line"> 4,5   slot type (00=expansion, 01=embedded, 10=virtual device)</span><br /><span class="line"> 0-3   duplicate ID number if bit 7 set</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0464</span><br /><span class="line"></span><br /><span class="line">(Table 0463)</span><br /><span class="line">Values for EISA error code:</span><br /><span class="line"> 80h   invalid slot number</span><br /><span class="line"> 81h   invalid function number</span><br /><span class="line"> 82h   EISA CMOS corrupt</span><br /><span class="line"> 83h   empty slot</span><br /><span class="line"> 84h   error clearing CMOS</span><br /><span class="line"> 85h   EISA CMOS is full</span><br /><span class="line"> 86h   invalid BIOS-FW function call</span><br /><span class="line"> 87h   invalid system configuration</span><br /><span class="line"> 88h   config utility version not supported</span><br /><span class="line"></span><br /><span class="line">Bitfields for EISA combined function information byte:</span><br /><span class="line">Bit(s) Description (Table 0464)</span><br /><span class="line"> 7 reserved</span><br /><span class="line"> 6 slot has free-form data entries</span><br /><span class="line"> 5 slot has port initialization entries</span><br /><span class="line"> 4 slot has port-range entries</span><br /><span class="line"> 3 slot has DMA entries</span><br /><span class="line"> 2 slot has IRQ entries</span><br /><span class="line"> 1 slot has memory entries</span><br /><span class="line"> 0 slot has function type entries</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0462</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

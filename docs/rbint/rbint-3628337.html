@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3627750.html">
+    <link rel="next" href="rbint-3629081.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3627750.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3629081.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1119  CU - Network Redirector - Find First File Without Cds    </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1119h</span><br /><span class="line">   SS = DS = DOS DS</span><br /><span class="line">   [DTA] = uninitialized 21-byte findfirst search data</span><br /><span class="line">         (see #1312 at INT 21/AH=4Eh)</span><br /><span class="line">   SDA first filename pointer -&gt; fully-qualified search template</span><br /><span class="line">   SDA search attribute = attribute mask for search</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">       AX = DOS error code (see #1366 at INT 21/AH=59h/BX=0000h)</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">       [DTA] = updated findfirst search data</span><br /><span class="line">           (bit 7 of first byte must be set)</span><br /><span class="line">       [DTA+15h] = standard directory entry for file (see #1041)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is called by the DOS 3.1+ kernel</span><br /><span class="line">   DOS 4.x IFSFUNC returns CF set, AX=0003h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=111Ah,AX=111Bh,INT 21/AH=1Ah</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

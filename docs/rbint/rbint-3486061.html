@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3485713.html">
+    <link rel="next" href="rbint-3487885.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3485713.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3476002.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3487885.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2A Fn 80  CU - Network - Begin Dos Critical Section                  </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 80h</span><br /><span class="line">   AL = critical section number (00h-0Fh) (see #2243)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> normally hooked to avoid interrupting a critical section, rather than</span><br /><span class="line">     called</span><br /><span class="line">   the handler should ensure that none of the critical sections are</span><br /><span class="line">     reentered, usually by suspending a task which attempts to reenter</span><br /><span class="line">     an active critical section</span><br /><span class="line">   the DOS kernel does not invoke critical sections 01h and 02h unless it</span><br /><span class="line">     is patched.  DOS 3.1+ contains a zero-terminated list of words</span><br /><span class="line">     beginning at offset -11 from the Swappable Data Area</span><br /><span class="line">     (see #1373 at INT 21/AX=5D06h); each word contains the offset within</span><br /><span class="line">     the DOS data segment of a byte which must be changed from C3h (RET)</span><br /><span class="line">     to 50h (PUSH AX) under DOS 3.x or from 00h to a nonzero value under</span><br /><span class="line">     DOS 4.0+ to enable use of critical sections.  For DOS 4.0+, all</span><br /><span class="line">     words in this list point at the byte at offset 0D0Ch.</span><br /><span class="line">   MS Windows patches the DOS kernel&#39;s calls to INT 2A/AH=80h-81h into</span><br /><span class="line">     far calls to its own handler, and does not reflect the calls back</span><br /><span class="line">     to INT 2A unless SYSTEM.INI contains ReflectDOSInt2A=1 or</span><br /><span class="line">     ModifyDOSInt2A=0 in the [386Enh] section</span><br /><span class="line">   Novell NETX does not issue INT 2A/AH=80h and INT 2A/AH=81h calls when</span><br /><span class="line">     it intercepts INT 21 calls and processes them itself</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=81h,AH=82h,AX=8700h,INT 21/AX=5D06h,INT 21/AX=5D0Bh</span><br /><span class="line"></span><br /><span class="line">(Table 2243)</span><br /><span class="line">Values for DOS critical section number:</span><br /><span class="line"> 01h   DOS kernel, SHARE.EXE, DOSMGR</span><br /><span class="line">   apparently for maintaining the integrity of DOS/SHARE/NET</span><br /><span class="line">     data structures</span><br /><span class="line"> 02h   DOS kernel, DOSMGR</span><br /><span class="line">   ensures that no multitasking occurs while DOS is calling an</span><br /><span class="line">     installable device driver</span><br /><span class="line"> 05h   network redirector</span><br /><span class="line"> 06h   DOS 4.x only IFSFUNC</span><br /><span class="line"> 08h   ASSIGN.COM</span><br /><span class="line"> 0Ah   MSCDEX, CORELCDX</span><br /><span class="line"> 0Fh   IBM PC LAN server (while intercepting INT 10/AH=06h,07h,0Eh)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

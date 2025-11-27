@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3410208.html">
+    <link rel="next" href="rbint-3413185.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3410208.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3368614.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3413185.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn F27B  - Novell Netware V4+ - Get Lan Configuration             </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = F27Bh subfn 15h</span><br /><span class="line">   CX = length of request buffer in bytes</span><br /><span class="line">   DX = length of reply buffer in bytes</span><br /><span class="line">   DS:SI -&gt; request buffer (see #2199)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #2200)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br /><span class="line">   reply buffer filled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=F27Bh/SF=16h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get LAN Configuration&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 2199)</span><br /><span class="line"> 00h   WORD    0005h (length of following data)</span><br /><span class="line"> 02h   BYTE    15h (subfunction &#34;Get LAN Configuration&#34;)</span><br /><span class="line"> 03h   DWORD   LAN board number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2200</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get LAN Configuration&#34; reply buffer:</span><br /><span class="line">Offset Size    Description (Table 2200)</span><br /><span class="line"> 00h   DWORD   current server time</span><br /><span class="line"> 04h   BYTE    vconsole version</span><br /><span class="line"> 05h   BYTE    vconsole revision</span><br /><span class="line"> 06h   WORD    reserved</span><br /><span class="line"> 08h   BYTE    driver configuration major version</span><br /><span class="line"> 09h   BYTE    driver configuration minor version</span><br /><span class="line"> 0Ah  6 BYTEs  driver node address</span><br /><span class="line"> 10h   WORD    driver mode flags</span><br /><span class="line"> 12h   WORD    driver board number</span><br /><span class="line"> 14h   WORD    driver board instance</span><br /><span class="line"> 16h   DWORD   driver maximum size</span><br /><span class="line"> 1Ah   DWORD   driver maximum receive size</span><br /><span class="line"> 1Eh   DWORD   driver receive size</span><br /><span class="line"> 22h  3 DWORDs reserved</span><br /><span class="line"> 2Eh   WORD    driver card ID</span><br /><span class="line"> 30h   WORD    driver transport time</span><br /><span class="line"> 32h   DWORD   driver source routing</span><br /><span class="line"> 36h   WORD    driver line speed</span><br /><span class="line"> 38h   WORD    driver reserved</span><br /><span class="line"> 3Ah   BYTE    driver major version</span><br /><span class="line"> 3Bh   BYTE    driver minor version</span><br /><span class="line"> 3Ch   WORD    driver flags</span><br /><span class="line"> 3Eh   WORD    driver send retries</span><br /><span class="line"> 40h   DWORD   driver link</span><br /><span class="line"> 44h   WORD    driver sharing flags</span><br /><span class="line"> 46h   WORD    driver slot</span><br /><span class="line"> 48h  4 WORDs  driver I/O port and lengths</span><br /><span class="line"> 50h   DWORD   driver memory decode 0</span><br /><span class="line"> 54h   WORD    driver length 0</span><br /><span class="line"> 56h   DWORD   driver memory decode 1</span><br /><span class="line"> 5Ah   WORD    driver length 1</span><br /><span class="line"> 5Ch  2 BYTEs  driver&#39;s interrupts</span><br /><span class="line"> 5Eh  2 BYTEs  driver&#39;s DMA usage</span><br /><span class="line"> 60h 18 BYTEs  driver&#39;s logical name</span><br /><span class="line"> 72h 14 BYTEs  driver I/O reserved</span><br /><span class="line"> 80h 128 BYTEs driver card name</span><br /><span class="line">100h 40 BYTEs  driver media type</span><br /><span class="line">128h 180 BYTEs driver custom variables</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2199</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

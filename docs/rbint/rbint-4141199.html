@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4140989.html">
+    <link rel="next" href="rbint-4147279.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4140989.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4031282.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4147279.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 7AF1  - Novell Netware - Access Server Driver - Installation Ch</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 7AF1h</span><br /><span class="line">   BL = sequence number (01h first driver, 02h second, 00h no driver)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX &lt;&gt; 7AF1h if present</span><br /><span class="line">       BH = total number of drivers</span><br /><span class="line">       ---if BL nonzero on entry---</span><br /><span class="line">       AL = number of ports provided by specified driver</span><br /><span class="line">       ES:DI -&gt; driver entry point</span><br /><span class="line">             (see #2596,#2597,#2598,#2599,#2600,#2601,#2602,#2603)</span><br /><span class="line">       ES:DX -&gt; ID string</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 7A/BX=001Ch</span><br /><span class="line"></span><br /><span class="line">(Table 2596)</span><br /><span class="line">Call Access Server driver &#34;initialize port&#34; function with:</span><br /><span class="line">   AH = 01h</span><br /><span class="line">   AL = port number (00h-0Fh)</span><br /><span class="line">   ES:BX -&gt; configuration parameter block (see #2609)</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2597</span><br /><span class="line"></span><br /><span class="line">(Table 2597)</span><br /><span class="line">Call Access Server driver &#34;get port status&#34; function with:</span><br /><span class="line">   AH = 02h</span><br /><span class="line">   AL = port number (00h-0Fh)</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       BL = transmitter status (see #2606)</span><br /><span class="line">       BH = receiver status (see #2607)</span><br /><span class="line">       DL = external status signals (see #2608)</span><br /><span class="line">   CF set on error</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2596,#2598,#2601</span><br /><span class="line"></span><br /><span class="line">(Table 2598)</span><br /><span class="line">Call Access Server driver &#34;get input from port&#34; function with:</span><br /><span class="line">   AH = 03h</span><br /><span class="line">   AL = port number (00h-0Fh)</span><br /><span class="line">   CX = size of data buffer</span><br /><span class="line">   ES:BX -&gt; buffer for data</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error</span><br /><span class="line">   interrupts disabled</span><br /><span class="line">   CX = number of bytes read</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the driver will add a NUL to the buffer when a break signal is detected</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2598,#2599</span><br /><span class="line"></span><br /><span class="line">(Table 2599)</span><br /><span class="line">Call driver &#34;send output data to port&#34; function with:</span><br /><span class="line">   AH = 04h</span><br /><span class="line">   AL = port number (00h-0Fh)</span><br /><span class="line">   CX = number of bytes to send</span><br /><span class="line">   ES:BX -&gt; buffer containing data</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error</span><br /><span class="line">   interrupts disabled</span><br /><span class="line">   CX = number of bytes actually written</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2598,#2600</span><br /><span class="line"></span><br /><span class="line">(Table 2600)</span><br /><span class="line">Call driver &#34;get I/O character counts&#34; function with:</span><br /><span class="line">   AH = 05h</span><br /><span class="line">   AL = port number (00h-0Fh)</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       BX = number of bytes pending transmission</span><br /><span class="line">       CX = number of bytes available for reading</span><br /><span class="line">   CF set on error</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2598,#2599</span><br /><span class="line"></span><br /><span class="line">(Table 2601)</span><br /><span class="line">Call driver &#34;control XON/XOFF&#34; function with:</span><br /><span class="line">   AH = 06h</span><br /><span class="line">   AL = port number (00h-0Fh)</span><br /><span class="line">   DL = new state</span><br /><span class="line">       (00h software flow control disabled, else enabled)</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2602</span><br /><span class="line"></span><br /><span class="line">(Table 2602)</span><br /><span class="line">Call driver &#34;get error counts and statistics&#34; function with:</span><br /><span class="line">   AH = 07h</span><br /><span class="line">   AL = port number (00h-0Fh)</span><br /><span class="line">   ES:BX -&gt; buffer for statistics (see #2610)</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       ES:BX buffer filled</span><br /><span class="line">   CF set on error</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2603,#2604,#2605</span><br /><span class="line"></span><br /><span class="line">(Table 2603)</span><br /><span class="line">Call driver &#34;general request&#34; function with:</span><br /><span class="line">   AH = 08h</span><br /><span class="line">   AL = port number (00h-0Fh)</span><br /><span class="line">   DX = requested operations</span><br /><span class="line">       bit 0: flush transmit buffers</span><br /><span class="line">       bit 1: flush receive buffers</span><br /><span class="line">       bit 4: define XON/XOFF characters</span><br /><span class="line">   ES:BX -&gt; XON/XOFF characters (see #2611) if DX bit 4 set</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line">(Table 2604)</span><br /><span class="line">Call driver &#34;deadman timer management&#34; function with:</span><br /><span class="line">   AH = 09h</span><br /><span class="line">   AL = port number (00h-0Fh)</span><br /><span class="line">   BX = next time interval in seconds (0000h to disable timer)</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2605</span><br /><span class="line"></span><br /><span class="line">(Table 2605)</span><br /><span class="line">Call driver &#34;get buffer sizes&#34; function with:</span><br /><span class="line">   AH = 0Ah</span><br /><span class="line">   AL = port number (00h-0Fh)</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">      BX = size of transmit buffer</span><br /><span class="line">      CX = size of receive buffer</span><br /><span class="line">   CF set on error</span><br /><span class="line">   interrupts disabled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2604</span><br /><span class="line"></span><br /><span class="line">(Table 2606)</span><br /><span class="line">Values for Access Server transmitter status:</span><br /><span class="line"> 00h   uninitialized</span><br /><span class="line"> 01h   ready, not transmitting</span><br /><span class="line"> 02h   transmitting</span><br /><span class="line"> 03h   XOFF received</span><br /><span class="line"> 04h   transmitting, buffer full</span><br /><span class="line"> 05h   XOFF received and buffer full</span><br /><span class="line"></span><br /><span class="line">(Table 2607)</span><br /><span class="line">Values for Access Server receiver status:</span><br /><span class="line"> 00h   uninitialized</span><br /><span class="line"> 01h   ready</span><br /><span class="line"> 02h   receive buffer full, data may have been lost</span><br /><span class="line"></span><br /><span class="line">Bitfields for external status signals:</span><br /><span class="line">Bit(s) Description (Table 2608)</span><br /><span class="line"> 7,6   undefined</span><br /><span class="line"> 5 CTS active</span><br /><span class="line"> 4 DSR active</span><br /><span class="line"> 3 DCD active</span><br /><span class="line"> 2,1   undefined</span><br /><span class="line"> 0 ring indicator</span><br /><span class="line"></span><br /><span class="line">Format of Access Server configuration parameter block:</span><br /><span class="line">Offset Size    Description (Table 2609)</span><br /><span class="line"> 00h   BYTE    receive baud rate index</span><br /><span class="line">       00h 50 bps, 01h 75 bps, 02h 110 bps, 03h 134.5 bps,</span><br /><span class="line">       04h 150 bps, 05h 300 bps, 06h 600 bps, 07h 1200 bps,</span><br /><span class="line">       08h 1800 bps, 09h 2000 bps, 0Ah 2400 bps, 0Bh 3600 bps,</span><br /><span class="line">       0Ch 4800 bps, 0Dh 7200 bps, 0Eh 9600 bps, 0Fh 19200 bps,</span><br /><span class="line">       10h 38400 bps, 11h 57600 bps, 12h 115200 bps</span><br /><span class="line"> 01h   BYTE    receive bits per character (0=5 bits..3=8 bits)</span><br /><span class="line"> 02h   BYTE    receive stop bits</span><br /><span class="line"> 03h   BYTE    receive parity</span><br /><span class="line">       00h none, 01h odd, 02h even, 03h mark, 04h space</span><br /><span class="line"> 04h   BYTE    transmit baud rate index (same as receive baud rate)</span><br /><span class="line"> 05h   BYTE    transmit bits per character (0=5 bits..3=8 bits)</span><br /><span class="line"> 06h   BYTE    transmit stop bits</span><br /><span class="line"> 07h   BYTE    transmit parity (same as receive parity)</span><br /><span class="line"> 08h   BYTE    DTR state (00h off, 01h on)</span><br /><span class="line"> 09h   BYTE    RTS state (00h off, 01h on)</span><br /><span class="line"> 0Ah   BYTE    flow control (00h none, 01h XON/XOFF, 02h RTS/CTS, 03h both)</span><br /><span class="line"> 0Bh   BYTE    break control (00h off, 01h on)</span><br /><span class="line"></span><br /><span class="line">Format of Access Server statistics:</span><br /><span class="line">Offset Size    Description (Table 2610)</span><br /><span class="line"> 00h   BYTE    port number</span><br /><span class="line"> 01h   BYTE    external status signals (see #2608)</span><br /><span class="line"> 02h   BYTE    transmitter status (see #2606)</span><br /><span class="line"> 03h   BYTE    receiver status (see #2607)</span><br /><span class="line"> 04h   DWORD   number of characters received</span><br /><span class="line"> 08h   DWORD   number of characters transmitted</span><br /><span class="line"> 0Ch   WORD    input parity errors</span><br /><span class="line"> 0Eh   WORD    input framing errors</span><br /><span class="line"> 10h   WORD    lost characters due to hardware overrun</span><br /><span class="line"> 12h   WORD    lost characters due to data buffer overrun</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the counts are not allowed to wrap around; once a count reaches FFFFh</span><br /><span class="line">     or FFFFFFFFh, it is no longer incremented</span><br /><span class="line"></span><br /><span class="line">Format of Access Server XON/XOFF characters:</span><br /><span class="line">Offset Size    Description (Table 2611)</span><br /><span class="line"> 00h   BYTE    04h (number of bytes following)</span><br /><span class="line"> 01h   BYTE    transmit XON character</span><br /><span class="line"> 02h   BYTE    transmit XOFF character</span><br /><span class="line"> 03h   BYTE    receive XON character</span><br /><span class="line"> 04h   BYTE    receive XOFF character</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

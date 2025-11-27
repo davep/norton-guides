@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-6069801.html">
+    <link rel="next" href="rbint-6079984.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-6069801.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-6065199.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-6079984.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int D4 Fn 07  - Pc-mos/386 V3.0+ - Wait For Event                        </span>  [<span class="ngb">O</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 07h</span><br /><span class="line">   AL = events to monitor (see #3686)</span><br /><span class="line">   BX = number of timer ticks until timeout if AL bit 1 set</span><br /><span class="line">   CX = bitmap of IRQs to monitor if AL bit 2 set</span><br /><span class="line">       (bit 0 = IRQ0 .. bit 15 = IRQ15)</span><br /><span class="line">   DX = port to monitor if AL bit 3 set</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AL = type of event which woke up task (see #3686)</span><br /><span class="line">       CX = IRQ (if any) which awakened task</span><br /><span class="line">       DX = port (if any) which awakened task</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (see #1366 at INT 21/AH=59h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  a device driver may make this call with AL=00h, which indicates that</span><br /><span class="line">     the driver is responsible for setting and clearing the TCBWAIT field</span><br /><span class="line">     in the TCB.  To put task to sleep, set TCBWAIT bits 2-0 to 001; to</span><br /><span class="line">     reawaken it, set bit 1 (leaving other bits unchanged)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=04h,INT 16/AH=00h,INT 38</span><br /><span class="line"></span><br /><span class="line">Bitfields for PC-MOS/386 events to monitor:</span><br /><span class="line">Bit(s) Description (Table 3686)</span><br /><span class="line"> 0 keystroke</span><br /><span class="line"> 1 timeout</span><br /><span class="line"> 2 IRQ</span><br /><span class="line"> 3 port access</span><br /><span class="line"> 7 return status of user poll routine (other ignored if set)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

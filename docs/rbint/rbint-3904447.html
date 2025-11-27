@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3898129.html">
+    <link rel="next" href="rbint-3910431.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3898129.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3870311.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3910431.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 2780  U - Novell Dos 7 - Emm386.exe - Multitasking Api - Real-t</span>  [<span class="ngb">m</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 2780h</span><br /><span class="line">   CL = 02h (module: Real-Time Monitor)</span><br /><span class="line">   CH = subfunction</span><br /><span class="line">       00h ???</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0023h, others???) (see #2426)</span><br /><span class="line">           BX = ??? (0000h if CX=0000h, FFFFh if CX=0023h)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   calls func 04h/sf 03h, func 04h/sf 1Eh,func 02h/sf 43h,</span><br /><span class="line">             func 02h/sf 0Bh, and func 04h/sf 01h</span><br /><span class="line">       01h &#34;Z_PCountGet&#34; get and clear count of dispatches</span><br /><span class="line">       DX = ??? handle or 0000h for default</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,000Bh) (see #2426)</span><br /><span class="line">           EBX = old value of ??? if successful</span><br /><span class="line">           EDX destroyed</span><br /><span class="line">       02h &#34;Z_FlagWait&#34; wait on semaphore</span><br /><span class="line">       DX = index of semaphore???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0004h,0005h) (see #2426)</span><br /><span class="line">           EBX = 0000FFFFh on error, 00000000h if successful</span><br /><span class="line">       03h &#34;Z_FlagSet&#34; set a semaphore flag</span><br /><span class="line">       DX = index of semaphore???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0004h,0006h) (see #2426)</span><br /><span class="line">           BX = FFFFh on error, 0000h if successful</span><br /><span class="line">       04h &#34;X_QCreate&#34; create a new queue</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0007h,000Ah) (see #2426)</span><br /><span class="line">       05h &#34;X_QOpen&#34; open queue for reading/writing</span><br /><span class="line">       EDX -&gt; ??? data (first 8 bytes seem to be name)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0009h,000Dh) (see #2426)</span><br /><span class="line">       06h &#34;X_QDelete&#34; delete a queue</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   calls fn 02h/subfn 05h, then fn 02h/subfn 40h</span><br /><span class="line">       07h &#34;X_QRead&#34; read message from queue</span><br /><span class="line">       EDX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0009h,000Eh) (see #2426)</span><br /><span class="line">       08h &#34;X_QReadC&#34; read message from queue, if any</span><br /><span class="line">       EDX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0009h,000Eh) (see #2426)</span><br /><span class="line">       09h &#34;X_QWrite&#34; write message to queue</span><br /><span class="line">       EDX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0009h,000Fh) (see #2426)</span><br /><span class="line">       0Ah &#34;X_QWriteC&#34; write message to queue, if space available</span><br /><span class="line">       EDX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0009h,000Fh) (see #2426)</span><br /><span class="line">       0Bh &#34;X_PDelay&#34; put process to sleep for specified period</span><br /><span class="line">       DX = number of clock ticks to sleep???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = 0000h (successful)</span><br /><span class="line">       0Ch &#34;X_PDispatch&#34; force a dispatch (run scheduler)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = 0000h (successful)</span><br /><span class="line">       0Dh &#34;F_PTerm&#34; terminate process???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0023h) (see #2426)</span><br /><span class="line">           BX = FFFFh on error, 0000h if successful</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   calls fn 04h/subfn 03h, fn 04h/subfn 1Eh,</span><br /><span class="line">             fn 02h/subfn 43h, fn 02h/subfn 0Bh, fn 04h/sub 01h</span><br /><span class="line">       0Eh &#34;X_PCreate&#34; create new process</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,000Ch) (see #2426)</span><br /><span class="line">           EBX = ??? if successful</span><br /><span class="line">       0Fh &#34;Z_PPriorSet&#34; set process priority</span><br /><span class="line">       BX = ???</span><br /><span class="line">       DX = ??? handle or 0000h for default</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,000Bh) (see #2426)</span><br /><span class="line">       10h &#34;X_PHandleGet&#34; get current process handle</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = 0000h (successful)</span><br /><span class="line">           BX = handle of default ???</span><br /><span class="line">           EBX high word cleared</span><br /><span class="line">       11h &#34;X_PTerm&#34; terminate process</span><br /><span class="line">       DX = process handle or 0000h for current</span><br /><span class="line">       BX = ??? (handle???)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,000Bh,0014h) (see #2426)</span><br /><span class="line">       12h &#34;F_Sleep&#34; ???</span><br /><span class="line">       BX = ???</span><br /><span class="line">       DX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = 0000h (successful)</span><br /><span class="line">       13h &#34;F_Wakeup&#34; ???</span><br /><span class="line">       DX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (see #2426)</span><br /><span class="line">       14h &#34;F_FindPDName&#34; find process by name???</span><br /><span class="line">       BX = ???</span><br /><span class="line">       DX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,0014h) (see #2426)</span><br /><span class="line">           BX = FFFFh on error, ??? if successful</span><br /><span class="line">       15h &#34;F_SetFlags&#34; set ??? flags</span><br /><span class="line">       BX = ??? (low two bits only)</span><br /><span class="line">       DX = ??? handle or 0000h for default</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = status (0000h,000Bh) (see #2426)</span><br /><span class="line">           BX = new value of ??? flags (entire word)</span><br /><span class="line">           EBX high register cleared</span><br /><span class="line">       16h &#34;F_EndOfInterrupt&#34; issue EOI to PIC</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = 0000h (successful)</span><br /><span class="line">       17h &#34;X_PTermOff&#34; disable process termination</span><br /><span class="line">       18h &#34;X_PTermOK&#34; enable process termination</span><br /><span class="line">       19h &#34;Z_FlagStatusGet&#34; get semahprore&#39;s status</span><br /><span class="line">       1Ah &#34;F_QRdMX&#34; ???</span><br /><span class="line">       1Bh &#34;F_QWrMX&#34; ???</span><br /><span class="line">       1Ch &#34;Z_FlagAlloc&#34; allocate a new semaphore</span><br /><span class="line">       1Dh &#34;Z_FlagFree&#34; free semaphore</span><br /><span class="line">       1Eh &#34;X_FlagsMaxGet&#34; get number of semaphores supported</span><br /><span class="line">       1Fh &#34;X_QReadNDC&#34; non-destructive read from queue (peek)</span><br /><span class="line">       20h &#34;Z_FlagWWTO&#34; wait on semaphore, with timeout</span><br /><span class="line">       21h &#34;F_UdaAlloc&#34; ???</span><br /><span class="line">       22h &#34;F_UdaFree&#34; ???</span><br /><span class="line">       23h &#34;X_PSuspend&#34; suspend process</span><br /><span class="line">       24h &#34;X_PUnsuspend&#34; restart process after suspension</span><br /><span class="line">       25h &#34;X_CritEnter&#34; enter critical region</span><br /><span class="line">       26h &#34;X_CritExit&#34; leave critical region</span><br /><span class="line">       27h &#34;F_PCreate&#34; ???</span><br /><span class="line">       28h &#34;Z_PHandleListGet&#34; get list of process handles</span><br /><span class="line">       29h &#34;Z_PNameGet&#34; get process name</span><br /><span class="line">       2Ah &#34;Z_PStatusGet&#34; get process status</span><br /><span class="line">       2Bh &#34;F_PDToDomain&#34; get process&#39; domain???</span><br /><span class="line">       2Ch &#34;Z_PPriorGet&#34; get process priority</span><br /><span class="line">       2Dh &#34;F_QDList&#34; get list of queues???</span><br /><span class="line">       2Eh &#34;Z_QNameGet&#34; get queue&#39;s name</span><br /><span class="line">       2Fh &#34;X_QMsgLenGet&#34; get message length of queue</span><br /><span class="line">       30h &#34;X_QMsgMaxGet&#34; get message capacity of queue</span><br /><span class="line">       31h &#34;Z_QWriterGet&#34; get handle of process waiting to write queue</span><br /><span class="line">       32h &#34;Z_QReaderGet&#34; get handle of process waiting to read queue</span><br /><span class="line">       33h &#34;X_QMsgNumGet&#34; get number of messages in queue</span><br /><span class="line">       34h &#34;Z_QFlagsGet&#34; get queue&#39;s flags</span><br /><span class="line">       35h &#34;F_NameToQD&#34; get queue by name???</span><br /><span class="line">       36h &#34;F_NameToPD&#34; get process by name???</span><br /><span class="line">       37h &#34;X_MXCreate&#34; create a mutex</span><br /><span class="line">       38h &#34;X_MXDelete&#34; delete a mutex</span><br /><span class="line">       39h &#34;X_MXEnter&#34; enter mutual-exclusion zone</span><br /><span class="line">       3Ah &#34;X_MXEnterC&#34; enter mutual-exclusion zone if it is free</span><br /><span class="line">       3Bh &#34;X_MXExit&#34; leave mutual-exclusion zone</span><br /><span class="line">       3Ch &#34;Z_TicksSet&#34; set length of foreground time slices</span><br /><span class="line">       3Dh &#34;X_TickGet&#34; get clock tick period</span><br /><span class="line">       3Eh &#34;F_ProcessID&#34; ???</span><br /><span class="line">       3Fh &#34;X_QClose&#34; close a queue</span><br /><span class="line">       40h &#34;F_QDispose&#34; delete queue???</span><br /><span class="line">       41h &#34;F_PDToFlags&#34; get process flags???</span><br /><span class="line">       42h &#34;F_PDToDParam&#34; ???</span><br /><span class="line">       43h &#34;F_ReleaseMX&#34; release mutex???</span><br /><span class="line">       44h &#34;F_SimulateInt&#34; ???</span><br /><span class="line">       45h &#34;Z_QFlagsSet&#34; set queue&#39;s flags</span><br /><span class="line">       46h &#34;F_TickRate&#34; ???</span><br /><span class="line">       47h ???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CX = status (most subfunctions)</span><br /><span class="line">   (E)AX and/or (E)BX contain return values, depending on function</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> called by DPMS.EXE and EMM386.EXE</span><br /><span class="line">   this API is only available if AX=12FFh/BX=0EDCh returns successfully;</span><br /><span class="line">     because the request is handled on the initial trap to the memory</span><br /><span class="line">     manager caused by INT instructions, this API must be invoked with</span><br /><span class="line">     an actual INT 2F instruction instead of some simulation such as a</span><br /><span class="line">     far call to the address in the interrupt vector table</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=12FFh/BX=0EDCh,AX=2780h/CL=01h,AX=2780h/CL=03h,AX=2780h/CL=04h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

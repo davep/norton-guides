@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3524089.html">
+    <link rel="next" href="rbint-3532310.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3524089.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3521795.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3532310.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2D  - Amis V3.0+ - Installation Check                                </span>  [<span class="ngb">t</span>]</span><br /><span class="line"></span><br /><span class="line">   AL = 00h</span><br /><span class="line">   AH = multiplex number for program</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 00h if free</span><br /><span class="line">   AL = FFh if multiplex number in use</span><br /><span class="line">       CX = binary version number (CH = major, CL = minor)</span><br /><span class="line">       DX:DI -&gt; signature string (see #2257) identifying the program</span><br /><span class="line">         using the multiplex number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2D/AL=01h,INT 2D/AL=02h,INT 2D/AL=03h,INT 2D/AL=04h,INT 2D/AL=05h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 2D/AL=06h</span><br /><span class="line">Index: installation check;Alternate Multiplex Interrupt Specification</span><br /><span class="line">Index: installation check;AMIS|installation check;FASTMOUS</span><br /><span class="line">Index: installation check;SPELLER|installation check;Monitor</span><br /><span class="line">Index: installation check;NOLPT|installation check;NOTE</span><br /><span class="line">Index: installation check;RBkeyswp|installation check;SWITCHAR</span><br /><span class="line">Index: installation check;VGABLANK|installation check;EATMEM</span><br /><span class="line">Index: installation check;RECALL|installation check;XPTR2</span><br /><span class="line"></span><br /><span class="line">Format of AMIS signature string:</span><br /><span class="line">Offset Size    Description (Table 2257)</span><br /><span class="line"> 00h  8 BYTEs  blank-padded manufacturer&#39;s name (possibly abbreviated)</span><br /><span class="line"> 08h  8 BYTEs  blank-padded product name</span><br /><span class="line"> 10h 64 BYTEs  ASCIZ product description (optional, may be a single 00h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  it is not necessary to reserve a full 64 bytes for the description,</span><br /><span class="line">     just enough to store the actual ASCIZ string</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2258</span><br /><span class="line"></span><br /><span class="line">(Table 2258)</span><br /><span class="line">Values for AMIS signatures known to be in use:</span><br /><span class="line"> &#39;Byrial J&#39; &#39;EKLAVO  &#39; permits keyboard entry of Esperanto accented letters</span><br /><span class="line"> &#39;CoveSoft&#39; &#39;Burnout+&#39; shareware screen saver Burnout Plus</span><br /><span class="line"> &#39;Crynwr  &#39; &#39;SPELLER &#39; TSR spelling-checker</span><br /><span class="line"> &#39;CPH1995 &#39; &#39;CDTSR   &#39; resident CD-Audio player</span><br /><span class="line"> &#39;CPH1996 &#39; &#39;DSAPI   &#39;</span><br /><span class="line"> &#39;CSJewell&#39; &#39;Modula3L&#39; Curtis Jewell&#39;s Modula-3 compiler (non-TSR)</span><br /><span class="line"> &#39;DAISYCHA&#39; &#39;INDRIVER&#39; Advanced Parallel Port daisy chain driver (vendor name</span><br /><span class="line">             in product description field, if desired)</span><br /><span class="line">           (see also INT 2D/AL=DCh)</span><br /><span class="line"> &#39;DTown SD&#39; &#39;DTU     &#39; DTown Software Development&#39;s DTown Utilities</span><br /><span class="line">           (see also INT 2D/AL=20h)</span><br /><span class="line"> &#39;ECLIPSE &#39; &#39;PLUMP   &#39; Eclipse Software&#39;s printer and plotter spooler</span><br /><span class="line"> &#39;GraySoft&#39; &#39;GIPC    &#39; GraySoft&#39;s Inter-Process Communications driver</span><br /><span class="line"> &#39;heathh  &#39; &#39;Monitor &#39;</span><br /><span class="line"> &#39;Helge O &#39;        TSRs by Helge Olav Helgesen</span><br /><span class="line"> &#39;J. Berry&#39; &#39;RATSR   &#39; RemoteAccess Network Manager workstation module</span><br /><span class="line"> &#39;JWB    &#39; &#39;RAMLIGHT&#39;  James Birdsall&#39;s on-screen RAMdisk activity indicator</span><br /><span class="line"> &#39;M Better&#39; &#39;iHPFS   &#39; Marcus Better&#39;s HPFS filesystem driver for DOS</span><br /><span class="line"> &#39;M. Paul &#39; &#39;FREEVER &#39; DOS version-faking TSR by Matthias Paul</span><br /><span class="line"> &#39;Nildram &#39; &#39;ST         &#39;  Screen Thief graphics screen grabber</span><br /><span class="line"> &#39;Pino Nav&#39; &#39;ALTMENU &#39; activate any program&#39;s menu bar by pressing Alt key</span><br /><span class="line"> &#39;Pino Nav&#39; &#39;Keybit  &#39; Pino Navato&#39;s KEYBIT Lite Italian keyboard driver v4+</span><br /><span class="line"> &#39;PowrQuot&#39; &#39;CAPRILOG&#39;</span><br /><span class="line"> &#39;PowrQuot&#39; &#39;CAPRITSR&#39;</span><br /><span class="line"> &#39;PowrQuot&#39; &#39;CAPRIWIN&#39;</span><br /><span class="line"> &#39;R-Ware  &#39; &#39;dLite   &#39; run-time data decompression TSR</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;disaXXYY&#39; RBdisabl -- disable key scancode XX w/ shift states YY</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;DUALVGA &#39; dual-VGA support, screen blanker, and DPMS driver</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;FASTMOUS&#39; example TSR included with sample AMIS library code</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;NoBreak &#39; disable Ctrl-@, Ctrl-C, and Ctrl-Break keys</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;NOLPT n &#39; example TSR -- turn LPTn into bit-bucket</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;NOTE    &#39; example TSR -- popup note-taker</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;RBclock &#39; RBclock -- on-screen real-time clock</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;RBclockE&#39; RBclock -- on-screen elapsed-time clock</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;RBdvorak&#39; Dvorak keyboard mapping w/ opt Esc/~, LCtrl/CapsLk swap</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;RBkcount&#39; display count of keystrokes on screen</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;RBkeyswp&#39; RBkeyswap v3.0+ -- swap Esc/~ and LCtrl/CapsLock keys</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;RBnoboot&#39; disable Ctrl-Alt-Del key combination</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;ShftCaps&#39; require Shift-CapsLock to turn on CapsLock</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;ShftNumL&#39; require Shift-NumLock to turn off NumLock</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;SWITCHAR&#39; example TSR -- add switchar() support removed from DOS5</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;VGABLANK&#39; VGA-only screen blanker</span><br /><span class="line"> &#39;Ralf B  &#39; &#39;WINTAME &#39; yield CPU when program in Win95 DOS box is idle</span><br /><span class="line"> &#39;Sally IS&#39; &#39;Mdisk   &#39; removeable, resizeable RAMdisk</span><br /><span class="line"> &#39;Sally IS&#39; &#39;Scr2Tex &#39; screen dumper with output in (La)Tex format</span><br /><span class="line"> &#39;SRT    &#39; &#39;STOPBOOT&#39;  reboot preventer by Steve Talbot</span><br /><span class="line"> &#39;Thaco      &#39; &#39;NEST    &#39;  Eirik Pedersen&#39;s programmer&#39;s delimiter matcher</span><br /><span class="line"> &#39;TifaWARE&#39; &#39;EATMEM  &#39; George A. Theall&#39;s public domain memory restrictor for</span><br /><span class="line">           testing programs (v1.1+)</span><br /><span class="line"> &#39;TifaWARE&#39; &#39;RECALL  &#39; public domain commandline editor and history (v1.2+)</span><br /><span class="line"> &#39;Todd   &#39; &#39;XPTR2   &#39;  PC-to-Transputer interface by Todd Radel</span><br /><span class="line"> &#39;WlkngOwl&#39; &#39;NoiseSYS&#39; NOISE.SYS random-number generator</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2257</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

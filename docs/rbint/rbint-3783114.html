@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3782426.html">
+    <link rel="next" href="rbint-3785297.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3782426.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3785297.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1684  P - Ms Windows - Vwin32 - Get Api Entry Point            </span>  [<span class="ngb">W</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1684h</span><br /><span class="line">   BX = 002Ah (virtual device ID for VWIN32 device) (see #2329)</span><br /><span class="line">   ES:DI = 0000h:0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ES:DI -&gt; VxD API entry point (see #2356)</span><br /><span class="line">         0000h:0000h if the VxD does not support API in current mode</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1684h&#34;DEVICE API&#34;,INT 20&#34;Windows&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2356)</span><br /><span class="line">Call VWIN32.VXD entry point with:</span><br /><span class="line">   AH = function number</span><br /><span class="line">       00h get VWIN32 version and ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           AH = major version</span><br /><span class="line">           AL = minor version</span><br /><span class="line">           EDX = ???</span><br /><span class="line">       01h ???</span><br /><span class="line">       EBX = ???</span><br /><span class="line">       ECX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           EAX = ???</span><br /><span class="line">       02h ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           AX = ??? or 0000h</span><br /><span class="line">       03h address allocation</span><br /><span class="line">       DS:??? -&gt; buffer containing/for page data</span><br /><span class="line">       ECX = length of buffer</span><br /><span class="line">       AL = subfunction</span><br /><span class="line">           00h reserve page(s)</span><br /><span class="line">           01h commit page(s)</span><br /><span class="line">           02h decommit page(s)</span><br /><span class="line">           03h free page(s)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">           CF set on error</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   this function uses ECX bytes of stack</span><br /><span class="line">       04h get ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           EAX = ???</span><br /><span class="line">       05h ???</span><br /><span class="line">       EBX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           EAX = ???</span><br /><span class="line">       06h ???</span><br /><span class="line">       EBX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           EAX = ???</span><br /><span class="line">       07h ???</span><br /><span class="line">       EBX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           EAX = ???</span><br /><span class="line">       08h get ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           AX = ???</span><br /><span class="line">       09h ???</span><br /><span class="line">       EBX = ???</span><br /><span class="line">       ECX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">       0Ah ???</span><br /><span class="line">       EBX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">       0Bh ???</span><br /><span class="line">       EBX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">       0Ch ???</span><br /><span class="line">       EBX = ???</span><br /><span class="line">       ECX = ???</span><br /><span class="line">       EDX = ???</span><br /><span class="line">       ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">               EAX = ???</span><br /><span class="line">           CF set on error</span><br /><span class="line">       0Dh clear ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">       0Eh ???</span><br /><span class="line">       EBX = ???</span><br /><span class="line">       ECX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">       0Fh ???</span><br /><span class="line">       EBX = ???</span><br /><span class="line">       ECX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">       10h ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   invokes VMMcall 00010184h</span><br /><span class="line">       11h ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   invokes VMMcall 00010160h</span><br /><span class="line">       12h ???</span><br /><span class="line">       ???</span><br /><span class="line">       13h pop up system error dialogue</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           AX = ??? or 0000h</span><br /><span class="line">       14h &#34;IFSMgr_GetConversionTablePtrs&#34;</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">           DX:AX -&gt; ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   invokes VxDcall 00400051h</span><br /><span class="line">       15h &#34;Boost_With_Decay&#34;</span><br /><span class="line">       EBX = ???</span><br /><span class="line">       ECX = ???</span><br /><span class="line">       EDX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF clear</span><br /><span class="line">       else</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CF set</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2355,#2357</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

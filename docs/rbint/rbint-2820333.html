@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2820188.html">
+    <link rel="next" href="rbint-2820949.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2820188.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2820949.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn C2  - Novell Netware - Synchronization Services - Lock Physical</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = C2h</span><br /><span class="line">   AL = flags</span><br /><span class="line">       bit 1: non-exclusive lock</span><br /><span class="line">   BP = lock timeout in timer ticks (1/18 sec) 0000h = no wait</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h successful</span><br /><span class="line">       FEh timed out</span><br /><span class="line">       FFh failed</span><br /><span class="line"><span class="ngb">Desc:</span>  attempt to lock all physical records listed in the log table</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is supported by NetWare 4.6+, Advanced NetWare 1.0+, and</span><br /><span class="line">     Alloy NTNX</span><br /><span class="line">   status FFh will be returned if one or more physical records have been</span><br /><span class="line">     exclusively locked by another process</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=BFh,AH=C3h,AH=D1h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

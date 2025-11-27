@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-795048.html">
+    <link rel="next" href="rbint-797338.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-795048.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-797338.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 13 Fn 08  - Disk - Get Drive Parameters (pc,xt286,conv,ps,esdi,scsi) </span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 08h</span><br /><span class="line">   DL = drive (bit 7 set for hard disk)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">       AH = status (07h) (see #0166)</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">       AH = 00h</span><br /><span class="line">       AL = 00h on at least some BIOSes</span><br /><span class="line">       BL = drive type (AT/PS2 floppies only) (see #0174)</span><br /><span class="line">       CH = low eight bits of maximum cylinder number</span><br /><span class="line">       CL = maximum sector number (bits 5-0)</span><br /><span class="line">        high two bits of maximum cylinder number (bits 7-6)</span><br /><span class="line">       DH = maximum head number</span><br /><span class="line">       DL = number of drives</span><br /><span class="line">       ES:DI -&gt; drive parameter table (floppies only)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> may return successful even though specified drive is greater than the</span><br /><span class="line">     number of attached drives of that type (floppy/hard); check DL to</span><br /><span class="line">     ensure validity</span><br /><span class="line">   for systems predating the IBM AT, this call is only valid for hard</span><br /><span class="line">     disks, as it is implemented by the hard disk BIOS rather than the</span><br /><span class="line">     ROM BIOS</span><br /><span class="line">   Toshiba laptops with HardRAM return DL=02h when called with DL=80h,</span><br /><span class="line">     but fail on DL=81h.  The BIOS data at 40h:75h correctly reports 01h.</span><br /><span class="line">   may indicate only two drives present even if more are attached; to</span><br /><span class="line">     ensure a correct count, one can use AH=15h to scan through possible</span><br /><span class="line">     drives</span><br /><span class="line">   for BIOSes which reserve the last cylinder for testing purposes, the</span><br /><span class="line">     cylinder count is automatically decremented</span><br /><span class="line">   on PS/1s with IBM ROM DOS 4, nonexistent drives return CF clear,</span><br /><span class="line">     BX=CX=0000h, and ES:DI = 0000h:0000h</span><br /><span class="line">   the PC-Tools PCFORMAT program requires that AL=00h before it will</span><br /><span class="line">     proceed with the formatting</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=06h&#34;Adaptec&#34;,AH=13h&#34;SyQuest&#34;,AH=48h,AH=15h,INT 1E</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 41&#34;HARD DISK 0&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 0174)</span><br /><span class="line">Values for diskette drive type:</span><br /><span class="line"> 01h   360K</span><br /><span class="line"> 02h   1.2M</span><br /><span class="line"> 03h   720K</span><br /><span class="line"> 04h   1.44M</span><br /><span class="line"> 05h   ??? (reportedly an obscure drive type shipped on some IBM machines)</span><br /><span class="line">   2.88M on some machines (at least AMI 486 BIOS)</span><br /><span class="line"> 06h   2.88M</span><br /><span class="line"> 10h   ATAPI Removable Media Device</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

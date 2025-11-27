@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3820322.html">
+    <link rel="next" href="rbint-3821730.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3820322.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3821730.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1684  - Ms Windows - Edos - Get Api Entry Point                </span>  [<span class="ngb">W</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1684h</span><br /><span class="line">   BX = 2925h (virtual device ID for EDOS device) (see #2329)</span><br /><span class="line">   ES:DI = 0000h:0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ES:DI -&gt; VxD API entry point (see #2386)</span><br /><span class="line">         0000h:0000h if the VxD does not support an API</span><br /><span class="line"></span><br /><span class="line">(Table 2386)</span><br /><span class="line">Call EDOS entry point with:</span><br /><span class="line">   AX = 0000h get EDOS version number</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AH = major version</span><br /><span class="line">           AL = minor version</span><br /><span class="line">   AX = 0001h display message</span><br /><span class="line">       CX = 0</span><br /><span class="line">       DX:BX -&gt; ASCIZ Message</span><br /><span class="line">   AX = 0002h get EDOS error coded</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> EAX = time in milliseconds that Windows has been running</span><br /><span class="line">   AX = 0003h execute windows program</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> EAX = cumulative amount of time the virtual machine has</span><br /><span class="line">           been active, in milliseconds</span><br /><span class="line">   AX = 0008h get/set priority</span><br /><span class="line">       BX = 0000h??? foreground</span><br /><span class="line">        0001h background</span><br /><span class="line">       DI = 0000h get</span><br /><span class="line">        0001h set</span><br /><span class="line">       DX = priority setting</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = foreground priority</span><br /><span class="line">           DX = background priority</span><br /><span class="line">           BX:AX = flags</span><br /><span class="line">           00000001h exclusive ON</span><br /><span class="line">           00000010h background ON</span><br /><span class="line">           SI = CPU percentage</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

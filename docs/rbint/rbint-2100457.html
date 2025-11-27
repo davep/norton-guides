@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2099765.html">
+    <link rel="next" href="rbint-2101146.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2099765.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2101146.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 17  - Dos 1+ - Rename File Using Fcb                           </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 17h</span><br /><span class="line">   DS:DX -&gt; modified FCB (see also #1034)</span><br /><span class="line">       the old filename (&#39;?&#39; wildcards OK) is in the standard location</span><br /><span class="line">       while the new filename (&#39;?&#39; wildcards OK, no drive) is stored</span><br /><span class="line">       in the 11 bytes beginning at offset 11h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h successfully renamed</span><br /><span class="line">       FFh no matching files,file is read-only, or new name already exists</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> subdirectories may be renamed using an extended FCB with the</span><br /><span class="line">     appropriate attribute, as may volume labels</span><br /><span class="line">   DR DOS checks password attached with AX=4303h before permitting rename</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=0Fh,AH=13h,AX=4303h,AH=56h,INT 2F/AX=1111h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

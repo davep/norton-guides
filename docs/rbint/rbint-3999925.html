@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3999298.html">
+    <link rel="next" href="rbint-4003140.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3999298.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3870311.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4003140.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 4A12  - Stacker 4 Lzs Compression Interface (lzsapi)           </span>  [<span class="ngb">k</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4A12h</span><br /><span class="line">   CX = 5354h (&#34;ST&#34;)</span><br /><span class="line">   DX = 4143h (&#34;AC&#34;)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = 4F4Bh (&#34;OK&#34;) if installed</span><br /><span class="line">   CX = 7374h (&#34;st&#34;) if installed</span><br /><span class="line">   DX = 6163h (&#34;ac&#34;) if installed</span><br /><span class="line">       ES:DI -&gt; entry point in LZSAPI server (usually, driver</span><br /><span class="line">             STACKER.COM) containing far address of an actual</span><br /><span class="line">             LZSINFO structure (see #2494)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4A12h/CX=4D52h,INT 25/AX=CDCDh</span><br /><span class="line"></span><br /><span class="line">Format of LZSINFO structure:</span><br /><span class="line">Offset Size    Description (Table 2494)</span><br /><span class="line"> 00h  6 BYTEs  signature &#34;LZSAPI&#34;</span><br /><span class="line"> 06h   WORD    server version (200 (0C8h) for Stacker 4 and Stacker Anywhere)</span><br /><span class="line"> 08h  4 BYTEs  vendor signature</span><br /><span class="line">       &#34;STAC&#34; = Stac Electronics, Inc.</span><br /><span class="line"> 0Ch  6 BYTEs  ???</span><br /><span class="line"> 12h   WORD    bit flags: server status/capabilities (see #2495)</span><br /><span class="line"> 14h   DWORD   -&gt; Stacker 3.X-compatible compression procedure</span><br /><span class="line"> 18h   DWORD   -&gt; Stacker 3.X-compatible decompression procedure</span><br /><span class="line"> 1Ch  4 BYTEs  reserved (always set to 0)</span><br /><span class="line"> 20h   DWORD   -&gt; incremental Stacker 3.x-compatible compression procedure</span><br /><span class="line">         (see #2496)</span><br /><span class="line"> 24h  4 BYTEs  ???</span><br /><span class="line"> 28h   DWORD   -&gt; incremental Stacker 3.x-compatible decompression procedure</span><br /><span class="line">         (see #2497)</span><br /><span class="line"> 2Ch  4    BYTES   ???</span><br /><span class="line"> 30h   DWORD   -&gt; new (Stacker 4) compression procedure</span><br /><span class="line"> 34h  4 BYTEs  ???</span><br /><span class="line"> 38h   DWORD   -&gt; new (Stacker 4) decompression procedure</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> Stacker 4 usally keeps two different data-compression algorithms in</span><br /><span class="line">     memory (preferably in XMA):</span><br /><span class="line">       1) new (Stacker 4) data compression algorithm (4K LZ77 with hashing</span><br /><span class="line">         and static Huffman encoding), and</span><br /><span class="line">       2) old (Stacker 3.x-compatible) one (2K LZ77 with hashing), which</span><br /><span class="line">         is used to work with STACVOL files created under older</span><br /><span class="line">         versions of Stacker.</span><br /><span class="line"></span><br /><span class="line">Bitfields for LZSAPI capabilities:</span><br /><span class="line">Bit(s) Description (Table 2495)</span><br /><span class="line"> 0 ???</span><br /><span class="line"> 1 busy/error flag</span><br /><span class="line"> 2-10  ???</span><br /><span class="line"> 11    maximum compressor/decompressor presented</span><br /><span class="line"></span><br /><span class="line">(Table 2496)</span><br /><span class="line">Call Stacker 3.x-style non-incremental functions with:</span><br /><span class="line">   STACK:  DWORD   return address for compress/decompress procedure</span><br /><span class="line">       WORD    compression algorithm parameters (see #2498)</span><br /><span class="line">       WORD    size of destination buffer (in bytes)</span><br /><span class="line">       DWORD   address of destination buffer</span><br /><span class="line">       WORD    size of source buffer (in bytes)</span><br /><span class="line">       DWORD   address of source buffer</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> (compression/decompression procedure)</span><br /><span class="line">   AX = size of resulting data in destination buffer</span><br /><span class="line">       0000h if error (either destination buffer too small or error in</span><br /><span class="line">         compressed data)</span><br /><span class="line"></span><br /><span class="line">(Table 2497)</span><br /><span class="line">Call Stacker 4-style incremental procedures with:</span><br /><span class="line">   STACK:  DWORD   return address for compr./decompr. procedure</span><br /><span class="line">       DWORD   address of LZSSWAP structure (see #2499)</span><br /><span class="line">           if 0000:0000, procedure uses non-incremental technique</span><br /><span class="line">       WORD    compression algorithm parameters (see #2498)</span><br /><span class="line">       WORD    size of destination buffer (in bytes)</span><br /><span class="line">       DWORD   address of destination buffer</span><br /><span class="line">       WORD    size of source buffer (in bytes)</span><br /><span class="line">       DWORD   address of source buffer</span><br /><span class="line"></span><br /><span class="line">(Table 2498)</span><br /><span class="line">Values for Compression algorithm parameters:</span><br /><span class="line">Value  Compression level (/P=xx parameter)</span><br /><span class="line"> 07F9h   1</span><br /><span class="line"> 0621h   2</span><br /><span class="line"> 0625h   3</span><br /><span class="line"> 0665h   4</span><br /><span class="line"> 0669h   5</span><br /><span class="line"> 06E9h   6</span><br /><span class="line"> 06EDh   7</span><br /><span class="line"> 07D1h   8</span><br /><span class="line"> 07D9h   9</span><br /><span class="line"></span><br /><span class="line">Format of LZSSWAP structure:</span><br /><span class="line">Offset Size    Description (Table 2499)</span><br /><span class="line"> 00h  2 BYTEs  signature &#34;CS&#34;</span><br /><span class="line"> 02h  6 BYTEs  reserved</span><br /><span class="line"> 08h   DWORD   address of destination buffer swapping procedure</span><br /><span class="line"> 0Ch   DWORD   address of stack swapping procedure</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

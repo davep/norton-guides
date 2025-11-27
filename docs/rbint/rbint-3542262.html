@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3541726.html">
+    <link rel="next" href="rbint-3543530.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3541726.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3521795.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3543530.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2D  - Dlite 1.0+ - Get Parameter Block Address                       </span>  [<span class="ngb">d</span>]</span><br /><span class="line"></span><br /><span class="line">   AL = 10h</span><br /><span class="line">   AH = AMIS multiplex number for dLite</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       ES:BX -&gt; parameter block (see #2265)</span><br /><span class="line">   CF set on error</span><br /><span class="line">Program: dLite is a shareware TSR by Rainer Schuetze which transparently</span><br /><span class="line">     expands compressed files when they are read</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AL=11h&#34;dLite&#34;,AL=12h&#34;dLite&#34;,INT 21/AX=FEDCh&#34;PCMANAGE&#34;</span><br /><span class="line"></span><br /><span class="line">Format of dLite parameter block:</span><br /><span class="line">Offset Size    Description (Table 2265)</span><br /><span class="line"> 00h   BYTE    TSR flags (see #2266)</span><br /><span class="line"> 01h   WORD    maximum number of programs needing original filesize</span><br /><span class="line"> 03h   WORD    current number of programs needing original filesize</span><br /><span class="line"> 05h   WORD    maximum number of files that can be handled by dLite (should</span><br /><span class="line">         be the same as FILES= in CONFIG.SYS)</span><br /><span class="line"> 07h   WORD    offset (in the same segment as the parameter block) of the</span><br /><span class="line">         table of programs needing the original filesize (8 bytes</span><br /><span class="line">         each, without path or extension, uppercase, and zero \</span><br /><span class="line">         terminated if shorter than 8 bytes)</span><br /><span class="line"></span><br /><span class="line">Bitfields for dLite TSR flags:</span><br /><span class="line">Bit(s) Description (Table 2266)</span><br /><span class="line"> 0 deny FCB access</span><br /><span class="line"> 1 dLite sleeping rather than activated</span><br /><span class="line"> 2 always indicate original filesize when reading directory entries,</span><br /><span class="line">     rather than only for specified programs</span><br /><span class="line"> 3-7   reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2265</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

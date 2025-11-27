@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1394693.html">
+    <link rel="next" href="rbint-1397140.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1394693.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1340639.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1397140.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn C8  - System - Enable/disable Processor Functions              </span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = C8h</span><br /><span class="line">   AL = function</span><br /><span class="line">       00h disable L1 cache</span><br /><span class="line">       01h enable L1 cache</span><br /><span class="line">       ---models 90 and 95 only---</span><br /><span class="line">       02h disable L2 cache</span><br /><span class="line">       03h enable L2 cache</span><br /><span class="line">       04h disable both caches</span><br /><span class="line">       05h enable both caches</span><br /><span class="line">       06h return status of both caches</span><br /><span class="line">       07h-FFh Reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">   AH = status (see #0451)</span><br /><span class="line">   For subfunction 06h only:</span><br /><span class="line">       BL = status of L1 cache</span><br /><span class="line">       00h enabled</span><br /><span class="line">       01h disabled or not installed</span><br /><span class="line">       02h disabled due to test error (can not be enabled)</span><br /><span class="line">       BH = status of L2 cache (same codes as BL)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span>  supported by at least PS/2 70, 70/486, 80-A21, 90, 95</span><br /><span class="line">   call AH=C0h and examine bit 3 of feature byte 2 to check if this</span><br /><span class="line">     function is supported.</span><br /><span class="line">   on a 486 system, any external caches must be disabled when the</span><br /><span class="line">     on-chip cache (L1) is disabled.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=C0h</span><br /><span class="line"></span><br /><span class="line">(Table 0451)</span><br /><span class="line">Values for status:</span><br /><span class="line"> 00h   operation successful</span><br /><span class="line"> 01h   function choice (in AL) is invalid</span><br /><span class="line"> 02h   NVRAM data is invalid</span><br /><span class="line"> 03h   cache test error</span><br /><span class="line"> 04h   (90 and 95 only) cannot perform operation requested due to state of</span><br /><span class="line">     other cache (also see note above)</span><br /><span class="line"> 05h   no L2 cache is present</span><br /><span class="line"> 07h   invalid input values</span><br /><span class="line"> 09h   CPU in protected mode</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

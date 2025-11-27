@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3831068.html">
+    <link rel="next" href="rbint-3834033.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3831068.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3834033.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1684  - Ms Windows - Mx1501had - Get Api Entry Point           </span>  [<span class="ngb">-</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1684h</span><br /><span class="line">   BX = 377Bh (virtual device ID for MX1501HAD device)</span><br /><span class="line">   ES:DI = 0000h:0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ES:DI -&gt; VxD API entry point (see #2395)</span><br /><span class="line">         0000h:0000h if the VxD does not support an API</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  The drivers VCMD95C.VXD and VCMD.386 are part of the driver disks</span><br /><span class="line">     provided with the chip-card-reader/keyboard combination MX 1501 HAD,</span><br /><span class="line">     produced by Cherry</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1684h&#34;DEVICE API&#34;,INT 20&#34;Windows&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2395)</span><br /><span class="line">Call CHERRY VCMD95C.VXD entry point with:</span><br /><span class="line">   AX = function</span><br /><span class="line">       0001h get version</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = version number (0100h) (AH = major, AL = minor)</span><br /><span class="line">       0002h hook INT 09 (and 8???)</span><br /><span class="line">       0003h unhook INT 09 (and 8???)</span><br /><span class="line">       0004h get number of bytes in FIFO</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = bytes in FIFO</span><br /><span class="line">       0005h get next FIFO-data</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = data</span><br /><span class="line">           BL = port number</span><br /><span class="line">           BH = direction (1=in, 0=out)</span><br /><span class="line">           DX:CX = timestamp</span><br /><span class="line">       0006h clear FIFO</span><br /><span class="line">       0007h output byte</span><br /><span class="line">       DX = port number</span><br /><span class="line">       BL = keyboard command</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> data in FIFO (see #2397)</span><br /><span class="line">              (value, port, in/out, timestamp)</span><br /><span class="line">       0008h input byte</span><br /><span class="line">       DX = port number</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> data in FIFO (see #2397)</span><br /><span class="line">           (value, port, in/out, timestamp)</span><br /><span class="line">       0009h input byte immediately</span><br /><span class="line">       DX = port number</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = data</span><br /><span class="line">       000Ah read next FIFO data (nondestructive)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = data</span><br /><span class="line">           BL = port number</span><br /><span class="line">           BH = direction (1=in, 0=out)</span><br /><span class="line">           DX:CX = timestamp</span><br /><span class="line">       000Bh get timestamp</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX:CX = timestamp (in ms)</span><br /><span class="line">       000Ch enable IRQ 1</span><br /><span class="line">       000Dh disable IRQ 1</span><br /><span class="line">       000Eh enable data retrieval</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   Sets a flag in the internal mode-byte which</span><br /><span class="line">             tells the driver to recognize the data</span><br /><span class="line">       000Fh disable data retrieval</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   resets a flag in the internal mode-byte</span><br /><span class="line">       0010h get retrieval mode</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = current retrieval mode</span><br /><span class="line">       0011h set retrieval mode</span><br /><span class="line">       BX = new retrieval mode (see #2396)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = old retrieval mode</span><br /><span class="line">       0012h get command value</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = command value</span><br /><span class="line">       0013h set command value</span><br /><span class="line">       BX = command value</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2393,#2398</span><br /><span class="line"></span><br /><span class="line">Bitfields for retrieval mode:</span><br /><span class="line">Bit(s) Description (Table 2396)</span><br /><span class="line"> 0 enable data retrieval</span><br /><span class="line"> 1 0 = interrupt-driven</span><br /><span class="line">   1 = polling mode</span><br /><span class="line"> 2 0 = read port 60h everytime</span><br /><span class="line">   1 = read port 60h only when OBF of port 64h is set</span><br /><span class="line"> 3 0 = don&#39;t call old INT 9</span><br /><span class="line">   1 = call INT 9 before our INT-handler</span><br /><span class="line"> 4-7   reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2395,#2397</span><br /><span class="line"></span><br /><span class="line">Format of FIFO entry (1024 entries in FIFO):</span><br /><span class="line">Offset Size    Description (Table 2397)</span><br /><span class="line"> 00h   BYTE    data byte</span><br /><span class="line"> 01h   BYTE    I/O port</span><br /><span class="line"> 02h   BYTE    direction (1=in, 0=out)</span><br /><span class="line"> 03h   BYTE    reserved</span><br /><span class="line"> 04h   DWORD   timestamp</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2395,#2396</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

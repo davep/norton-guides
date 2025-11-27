@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5815243.html">
+    <link rel="next" href="rbint-5817243.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5815243.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5812979.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5817243.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 7C  - Prindir V8.02-8.xx - Api                                       </span>  [<span class="ngb">P</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = function</span><br /><span class="line">      00h set output to Invisible mode</span><br /><span class="line">      01h set output to LPT1</span><br /><span class="line">      02h set output to LPT2</span><br /><span class="line">      03h set output to LPT3</span><br /><span class="line">      04h set output to COM1</span><br /><span class="line">      05h set output to COM2</span><br /><span class="line">      06h set output to COM3</span><br /><span class="line">      07h set output to COM4</span><br /><span class="line">      08h set output to screen</span><br /><span class="line">      09h set output to file</span><br /><span class="line">      0Ah change file path</span><br /><span class="line">          ES:DI -&gt; new path</span><br /><span class="line">          CX = length of path (max 41, but not range-checked)</span><br /><span class="line">      0Bh change file name</span><br /><span class="line">          ES:DI -&gt; new filename</span><br /><span class="line">          CX = length of new name (max 41, but not range-checked)</span><br /><span class="line">      0Ch set redirected device</span><br /><span class="line">       (01h = LPT1 ... 03h = LPT3, 04h = COM1 ... 07h = COM4)</span><br /><span class="line">      0Dh force buffer dump</span><br /><span class="line">      0Eh set display color</span><br /><span class="line">          AL = new color attribute (see #0013 at INT 10/AH=08h)</span><br /><span class="line">      0Fh set popup hotkey</span><br /><span class="line">          AL = hotkey scancode</span><br /><span class="line">      10h toggle byte display</span><br /><span class="line">          AL = new state (00h off, 01h on)</span><br /><span class="line">      11h change buffer flush delay</span><br /><span class="line">          AL = timer ticks before flush</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status</span><br /><span class="line">       0000h successful</span><br /><span class="line">       0001h invalid function or nothing in buffer to be dumped</span><br /><span class="line">       (documented as &#34;nonzero = error&#34;)</span><br /><span class="line">Program: PRINDIR is a shareware printer-redirection program by J.M. Allen</span><br /><span class="line">     Creations</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the installation check consists of testing for the ASCIZ signature</span><br /><span class="line">     &#34;PRINDIR N.NN&#34; (where N.NN is the version number) two bytes beyond</span><br /><span class="line">     the start of the interrupt handler</span><br /><span class="line">   prior versions of PRINDIR used INT 7A instead of INT 7C</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 7A&#34;PRINDIR&#34;,INT 2F/AX=7F00h&#34;PRINDIR&#34;</span><br /><span class="line">Index: hotkeys;PRINDIR</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

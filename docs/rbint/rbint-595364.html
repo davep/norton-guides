@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-593721.html">
+    <link rel="next" href="rbint-597014.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-593721.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-578992.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-597014.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 10 Fn 4E02  - Vesa Xga Bios Extensions - Return Xga Mode Information </span>  [<span class="ngb">V</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4E02h</span><br /><span class="line">   CX = Video mode</span><br /><span class="line">   DX = XGA handle</span><br /><span class="line">   ES:DI -&gt; 256 byte buffer for mode information (see #0071)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 4Eh if function supported</span><br /><span class="line">   AH = status</span><br /><span class="line">       00h  function successful</span><br /><span class="line">       else error code</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4E00h,AX=4E01h</span><br /><span class="line"></span><br /><span class="line">Format of XGA mode information:</span><br /><span class="line">Offset Size    Description (Table 0071)</span><br /><span class="line"> 00h   WORD    attributes of the mode (see #0072)</span><br /><span class="line"> 02h   WORD    bytes per logical scanline</span><br /><span class="line"> 04h   WORD    horizontal resolution in pixels</span><br /><span class="line"> 06h   WORD    vertical resolution in scanlines</span><br /><span class="line"> 08h   BYTE    character Width in pixels</span><br /><span class="line"> 09h   BYTE    character Height in pixels</span><br /><span class="line"> 0Ah   BYTE    number of planes</span><br /><span class="line"> 0Bh   BYTE    bits per pixels</span><br /><span class="line"> 0Ch   BYTE    memory model (see #0073)</span><br /><span class="line"> 0Dh   BYTE    number of Image Pages</span><br /><span class="line"> 0Eh   BYTE    number of Red bits</span><br /><span class="line"> 0Fh   BYTE    bit position of Red bit field</span><br /><span class="line"> 10h   BYTE    number of Green bits</span><br /><span class="line"> 11h   BYTE    bit position of Green bit field</span><br /><span class="line"> 12h   BYTE    number of Blue bits</span><br /><span class="line"> 13h   BYTE    bit position of Blue bit field</span><br /><span class="line"> 14h   BYTE    number of Reserved bits</span><br /><span class="line"> 15h   BYTE    bit position of Reserved bit field</span><br /><span class="line"> 16h 235 BYTEs reserved</span><br /><span class="line"></span><br /><span class="line">Bitfields for XGA mode attributes:</span><br /><span class="line">Bit(s) Description (Table 0072)</span><br /><span class="line"> 0 set if mode is supported</span><br /><span class="line"> 1 reserved</span><br /><span class="line"> 2 output is supported by the BIOS</span><br /><span class="line"> 3 reserved</span><br /><span class="line"> 4 if set this is a graphics mode (VGA registers inactive, XGA active),</span><br /><span class="line">     if clear this is a text mode (VGA registers active, XGA inactive)</span><br /><span class="line"></span><br /><span class="line">(Table 0073)</span><br /><span class="line">Values for XGA video memory model:</span><br /><span class="line"> 00h   Text Mode</span><br /><span class="line"> 01h   CGA graphics</span><br /><span class="line"> 02h   Hercules graphics</span><br /><span class="line"> 03h   4-planar graphics</span><br /><span class="line"> 04h   Packed Pixel</span><br /><span class="line"> 05h   Non-chain 4, 256 color</span><br /><span class="line"> 06h   Direct Color</span><br /><span class="line"> 07h   YUV-24</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

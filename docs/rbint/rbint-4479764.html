@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4479264.html">
+    <link rel="next" href="rbint-4480858.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4479264.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4422878.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4480858.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn DE01  - Desqview V2.26+ Xdi - Custom Subfunction, Ralf Brown&#39;s </span>  [<span class="ngb">U</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = DE01h</span><br /><span class="line">   BX = 5242h (&#34;RB&#34;)</span><br /><span class="line">   CX:DX = program identifier</span><br /><span class="line">       656F7000h (&#34;eop&#34;,0) for DVeop</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = 5242h (&#34;RB&#34;) if installed</span><br /><span class="line">       ES:BX -&gt; data or entry point (see #2772)</span><br /><span class="line">       CX = version number (CH = major, CL = minor)</span><br /><span class="line"></span><br /><span class="line">(Table 2772)</span><br /><span class="line">Call DVeop entry point with:</span><br /><span class="line">   ES:DI -&gt; callback address or 0000h:0000h to remove callback</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status</span><br /><span class="line">       0000h failed (callback table full or attempted to remove non-</span><br /><span class="line">         existent callback)</span><br /><span class="line">       0001h successful</span><br /><span class="line">       ES:DI -&gt; chaining address</span><br /><span class="line">   BX,CX,DX destroyed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the callback function is called with a simulated interrupt when the</span><br /><span class="line">     DESQview window containing it is closed; it should perform all</span><br /><span class="line">     necessary cleanup and then perform a FAR jump to the chaining address</span><br /><span class="line">     or an IRET if the chaining address is 0000h:0000h</span><br /><span class="line">   if the program wishes to remove itself before the window is closed, it</span><br /><span class="line">     should call the DVeop entry point with the previously returned</span><br /><span class="line">     chaining address and ignore the returned chaining address.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

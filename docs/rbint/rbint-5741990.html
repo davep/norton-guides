@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5740003.html">
+    <link rel="next" href="rbint-5743214.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5740003.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5735217.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5743214.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 78 Fn 00  - Targa.dev - Cmc International Scsi Device Driver - Set I/</span>  [<span class="ngb">d</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 00h</span><br /><span class="line">   DX = interface board I/O port</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">       AL = error code (see #3457)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  if this routine is not called, the port is the driver&#39;s default</span><br /><span class="line">     (usually 0280h or 0300h)</span><br /><span class="line">   an installation check is performed by TARGA.DEV upon initialization</span><br /><span class="line">     by checking for the string &#34;SCSI&#34; at offset 03h into the interrupt</span><br /><span class="line">     handler</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=01h,AH=02h</span><br /><span class="line">Index: installation check;TARGA.DEV</span><br /><span class="line"></span><br /><span class="line">(Table 3457)</span><br /><span class="line">Values for TARGA.DEV error code:</span><br /><span class="line"> 00h   illegal command given to SCSI code</span><br /><span class="line"> 01h   invalid I/O port specified (must be from 100H to 3F8H, and must be on</span><br /><span class="line">     an 8-port boundary)</span><br /><span class="line"> 02h   invalid DMA channel specified (must be from 1 to 3)</span><br /><span class="line"> 03h   invalid SCSI board number specified (must be from 0 to 7)</span><br /><span class="line"> 04h   error from data register test during self-test</span><br /><span class="line"> 05h   SCSI input signals not all 0 when SCSI RST activated</span><br /><span class="line"> 06h   SCSI input signals not all 0 before selecting a SCSI device</span><br /><span class="line"> 07h   BSY signal is active; SCSI bus is busy</span><br /><span class="line"> 08h   SCSI board not selected, BSY signal did not come on in response to</span><br /><span class="line">     raising SEL</span><br /><span class="line"> 09h   time-out waiting for status state, signifying end of DMA transfer</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

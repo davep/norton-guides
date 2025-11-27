@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4445705.html">
+    <link rel="next" href="rbint-4447896.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4445705.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4422878.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4447896.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn D44D  - 4dos.com V2.1+ - Api                                   </span>  [<span class="ngb">l</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = D44Dh</span><br /><span class="line">   BH = function</span><br /><span class="line">       00h installation check</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = 44DDh</span><br /><span class="line">           BL = major version number</span><br /><span class="line">           BH = minor version number</span><br /><span class="line">           CX = PSP segment address for current invocation</span><br /><span class="line">           DL = 4DOS shell number (0 for the first (root) shell,</span><br /><span class="line">                 updated each time a new copy is loaded)</span><br /><span class="line">       01h (internal, v2.1-3.03) terminate current copy of 4DOS</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> nothing</span><br /><span class="line">       (internal, v4.0+) ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = 44DDh</span><br /><span class="line">           ES:BX -&gt; data area (see #2758)</span><br /><span class="line">       02h ???</span><br /><span class="line">       DX = ???</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   v5.52 signals &#34;unrecoverable error&#34; and then terminates</span><br /><span class="line">             with INT 21/AH=4Ch or enters a deliberate infinite</span><br /><span class="line">             loop if ???</span><br /><span class="line">   ---v2.1-3.03 only---</span><br /><span class="line">       03h EXEC program</span><br /><span class="line">       CX:DX -&gt; EXEC record (see #2759)</span><br /><span class="line">       FEh deallocate shell number (passed through to root shell)</span><br /><span class="line">       ???</span><br /><span class="line">       FFh allocate shell number (passed through to root shell)</span><br /><span class="line">   ---v5.52---</span><br /><span class="line">       03h get ???</span><br /><span class="line">       BL = ??? (00h/01h)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> DX = current value of ???</span><br /><span class="line">       04h set ???</span><br /><span class="line">       BL = ??? (00h/01h)</span><br /><span class="line">       DX = new value for ???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  a bug in v3.00 will crash the system if unrecognized value in BH</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=D44Eh,AX=D44Fh/BX=0000h,AX=E44Dh,INT 21/AX=4403h&#34;DOS&#34;</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 14/AX=7000h</span><br /><span class="line">Index: installation check;4DOS|installation check;NDOS</span><br /><span class="line"></span><br /><span class="line">Format of 4DOS v4.0 data area:</span><br /><span class="line">Offset Size    Description (Table 2758)</span><br /><span class="line"> 00h  2 BYTEs  ???</span><br /><span class="line"> 06h   WORD    XMS handle for swapping</span><br /><span class="line">   ???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2759</span><br /><span class="line"></span><br /><span class="line">Format of 4DOS EXEC v2.1-v3.03 record:</span><br /><span class="line">Offset Size    Description (Table 2759)</span><br /><span class="line"> 00h   WORD    offset of ASCIZ program name in same segment as EXEC record</span><br /><span class="line"> 02h   WORD    offset of DOS commandline in same segment as EXEC record</span><br /><span class="line"> 04h   WORD    segment of environment for child process (see INT 21/AH=26h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2758</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

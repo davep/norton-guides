@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4801640.html">
+    <link rel="next" href="rbint-4803288.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4801640.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4800373.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4803288.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 4A  - Acorn Bbc Master 512 - &#34;osword&#34; - Misc Functions Using Control </span>  [<span class="ngb">O</span>]</span><br /><span class="line"></span><br /><span class="line">   AL = function code</span><br /><span class="line">       FAh transfer data between 80186 and 65C12 I/O processor</span><br /><span class="line">   DS:BX -&gt; control block (see #2882)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> FLAGS destroyed</span><br /><span class="line">   control block updated</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  there are more functions than are listed here, but details are not</span><br /><span class="line">     available</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 40&#34;Acorn&#34;,INT 4B&#34;Acorn&#34;,INT 4C&#34;Acorn&#34;</span><br /><span class="line"></span><br /><span class="line">Format of BBC Master control block for function FAh:</span><br /><span class="line">Offset Size    Description (Table 2882)</span><br /><span class="line"> 00h   BYTE    number of parameters sent to I/O processor (0Dh,0Eh)</span><br /><span class="line"> 01h   BYTE    number of parameters read from I/O processor (01h)</span><br /><span class="line"> 02h   DWORD   I/O processor address</span><br /><span class="line"> 06h   DWORD   80186 segment:offset address</span><br /><span class="line"> 0Ah   WORD    number of bytes to transfer</span><br /><span class="line"> 0Ch   BYTE    operation type</span><br /><span class="line">       00h write to 65C12 at 24 us/byte</span><br /><span class="line">       01h read from 65C12 at 24 us/byte</span><br /><span class="line">       02h write to 65C12 at 26 us/word</span><br /><span class="line">       03h read from 65C12 at 26 us/word</span><br /><span class="line">       04h write to 65C12 at 10 us/byte using 256-byte blocks</span><br /><span class="line">       05h read from 65C12 at 10 us/byte using 256-byte blocks</span><br /><span class="line"> 0Dh   BYTE    65C12 memory access control (only used if offset 00h = 0Eh)</span><br /><span class="line">       (see #2883)</span><br /><span class="line"></span><br /><span class="line">Bitfields for 65C12 memory access control:</span><br /><span class="line">Bit(s) Description (Table 2883)</span><br /><span class="line"> 7 unused</span><br /><span class="line"> 6 always use main screen memory if I/O addr 3000h-7FFFh (overrides bit 5)</span><br /><span class="line"> 5 use shadow screen memory if screen address specified</span><br /><span class="line"> 4 use current ROM rather than ROM selected by bits 3-0 (only if I/O</span><br /><span class="line">     address between 8000h and BFFFh)</span><br /><span class="line"> 3-0   paged ROM number</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

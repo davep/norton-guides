@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Memory</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-155148.html">
+    <link rel="next" href="rbint-159292.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-155148.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-64347.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-159292.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Format of ACPI Fixed ACPI Description Table</span></span><br /><span class="line"></span><br /><span class="line">Offset  Size    Description     (Table M072)</span><br /><span class="line"> 00h 28 BYTEs  System Description Table Header (see #M070)</span><br /><span class="line">       signature &#34;FACP&#34;</span><br /><span class="line"> 1Ch   DWORD   physical address of the Firmware ACPI Control Structure</span><br /><span class="line">         (see #M076)</span><br /><span class="line"> 20h   DWORD   physical address of the Differentiated System Description Table</span><br /><span class="line">         (see #M074)</span><br /><span class="line"> 24h   BYTE    interrupt mode</span><br /><span class="line">       00h dual PIC (industry-standard AT-type)</span><br /><span class="line">       01h multiple APIC (see #M075)</span><br /><span class="line"> 25h   BYTE    reserved</span><br /><span class="line"> 26h   WORD    system vector of SCI interrupt</span><br /><span class="line"> 28h   DWORD   I/O port address of SMI command port</span><br /><span class="line"> 2Ch   BYTE    value to write to SMI comamnd port to disable SMI ownership</span><br /><span class="line">         of ACPI hardware registers</span><br /><span class="line"> 2Dh   BYTE    value to write to SMI comamnd port to re-enable SMI ownership</span><br /><span class="line">         of ACPI hardware registers</span><br /><span class="line"> 2Eh  2 BYTEs  reserved</span><br /><span class="line"> 30h   DWORD   I/O port address of Power Management 1a Event Register Block</span><br /><span class="line"> 34h   DWORD   I/O port address of Power Management 1b Event Register Block</span><br /><span class="line">       (optional, 00000000h if not supported)</span><br /><span class="line"> 38h   DWORD   I/O port address of Power Management 1a Control Register Block</span><br /><span class="line"> 3Ch   DWORD   I/O port address of Power Management 1b Control Register Block</span><br /><span class="line">       (optional, 00000000h if not supported)</span><br /><span class="line"> 40h   DWORD   I/O port address of Power Management 2 Control Register Block</span><br /><span class="line">       (optional, 00000000h if not supported)</span><br /><span class="line"> 44h   DWORD   I/O port address of Power Management Timer Control Reg. Block</span><br /><span class="line"> 48h   DWORD   I/O port address of Generic Purpose Event 0 Register Block</span><br /><span class="line">       (optional, 00000000h if not supported)</span><br /><span class="line"> 4Ch   DWORD   I/O port address of Generic Purpose Event 1 Register Block</span><br /><span class="line">       (optional, 00000000h if not supported)</span><br /><span class="line"> 50h   BYTE    size of Power Management 1a/1b Event Register Block (&gt;= 4)</span><br /><span class="line"> 51h   BYTE    size of Power Management 1a/1b Control Register Block (&gt;= 1)</span><br /><span class="line"> 52h   BYTE    size of Power Management 2 Control Register Block (&gt;= 1)</span><br /><span class="line"> 53h   BYTE    size of Power Management Timer Control Register Block (&gt;= 1)</span><br /><span class="line"> 54h   BYTE    size of Generic Purpose Event 0 Register Block (multiple of 2)</span><br /><span class="line"> 55h   BYTE    size of Generic Purpose Event 1 Register Block (multiple of 2)</span><br /><span class="line"> 56h   BYTE    offset within General Purpose Event model for GPE1-based events</span><br /><span class="line"> 57h   BYTE    reserved</span><br /><span class="line"> 58h   WORD    worst-case hardware latency (microseconds) for entering/leaving</span><br /><span class="line">         state C2; &gt;100 if C2 not supported</span><br /><span class="line"> 5Ah   WORD    worst-case hardware latency (microseconds) for entering/leaving</span><br /><span class="line">         state C3; &gt;100 if C3 not supported</span><br /><span class="line"> 5Ch   WORD    size of contiguous cacheable memory which must be read to flush</span><br /><span class="line">         all dirty lines from a processor&#39;s memory cache; use if</span><br /><span class="line">         fixed feature flag WBINVD (see #M073) is clear</span><br /><span class="line">       0000h if flushing not supported</span><br /><span class="line"> 5Eh   WORD    memory stride size (in bytes) to flush processor&#39;s memory cache</span><br /><span class="line"> 60h   BYTE    index of processor&#39;s duty cycle setting within</span><br /><span class="line">         processor&#39;s P_CNT register</span><br /><span class="line"> 61h   BYTE    size of processor&#39;s duty cycle setting in bits</span><br /><span class="line"> 62h   BYTE    index within RTC CMOS RAM of the day-of-month alarm value</span><br /><span class="line">       00h = not supported</span><br /><span class="line"> 63h   BYTE    index within RTC CMOS RAM of the month-of-year alarm value</span><br /><span class="line">       00h = not supported</span><br /><span class="line"> 64h   BYTE    index within RTC CMOS RAM of the century alarm value</span><br /><span class="line">       00h = not supported</span><br /><span class="line"> 65h   BYTE    reserved</span><br /><span class="line"> 66h   DWORD   fixed feature flags (see #M073)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #M069</span><br /><span class="line">Bitfields for ACPI Fixed Feature Flags:</span><br /><span class="line">Bit(s) Description (Table M073)</span><br /><span class="line"> 0 WBINVD instruction is currectly supported by processor</span><br /><span class="line"> 1 WBINVD instruction flushes all caches and maintains coherency, but</span><br /><span class="line">     does not guarantee invalidation of all caches</span><br /><span class="line"> 2 all processors support C1 sleep state</span><br /><span class="line"> 3 C2 sleep state is configured to work on multiprocessor system</span><br /><span class="line"> 4 power button is handled as a generic feature</span><br /><span class="line"> 5 RTC wake-up state is not supported in fixed register space</span><br /><span class="line"> 6 TMR_VAL size</span><br /><span class="line">   =0 24 bits</span><br /><span class="line">   =1 32 bits</span><br /><span class="line"> 7-31  reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #M072</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

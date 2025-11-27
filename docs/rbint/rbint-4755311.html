@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4755046.html">
+    <link rel="next" href="rbint-4756186.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4755046.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4750752.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4756186.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 41  - Acorn Bbc Master 512 - &#34;osgbpb&#34; - Multi-byte Get/put           </span>  [<span class="ngb">O</span>]</span><br /><span class="line"></span><br /><span class="line">   AL = function</span><br /><span class="line">       01h put bytes sequentially</span><br /><span class="line">       02h put bytes, ignoring sequential pointer</span><br /><span class="line">       03h get bytes sequentially</span><br /><span class="line">       04h get bytes, ignoring sequential pointer</span><br /><span class="line">       05h get media title and boot option</span><br /><span class="line">       06h get current device and directory</span><br /><span class="line">       07h get current library and device</span><br /><span class="line">       08h search directory</span><br /><span class="line">   DS:BX -&gt; control block (see #2870)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error</span><br /><span class="line">   AL = 00h if operation attempted</span><br /><span class="line">   AL unchanged if unsupported function</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 40&#34;Acorn&#34;,INT 42&#34;Acorn&#34;,INT 43&#34;Acorn&#34;</span><br /><span class="line"></span><br /><span class="line">Format of BBC Master control block:</span><br /><span class="line">Offset Size    Description (Table 2870)</span><br /><span class="line"> 00h   BYTE    file handle</span><br /><span class="line"> 01h   DWORD   pointer to data in either I/O processor or Tube processor</span><br /><span class="line"> 05h   DWORD   number of bytes to be transferred</span><br /><span class="line"> 09h   DWORD   transfer address</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1320895.html">
+    <link rel="next" href="rbint-1322870.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1320895.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1227085.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1322870.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn 83  - Bios - Set Event Wait Interval (at,ps50+)                </span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 83h</span><br /><span class="line">   AL = subfunction</span><br /><span class="line">       00h set interval</span><br /><span class="line">       CX:DX = microseconds to delay</span><br /><span class="line">       ES:BX -&gt; byte whose high bit is to be set at end of interval</span><br /><span class="line">       01h cancel wait interval</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error or function already busy</span><br /><span class="line">       AH = status</span><br /><span class="line">       80h invalid command (PC,PCjr)</span><br /><span class="line">       86h function not supported (XT and later)</span><br /><span class="line">   CF clear if successful</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the resolution of the wait period is 977 microseconds on many systems</span><br /><span class="line">     because many BIOSes use the 1/1024 second fast interrupt from the AT</span><br /><span class="line">     real-time clock chip which is available on INT 70</span><br /><span class="line">   IBM AT 1/10/84 BIOS ignores AL and always performs subfunction 00h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=41h,AH=86h,INT 70,MEM 0040h:0098h,MEM 0040h:009Ch</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

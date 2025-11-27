@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3027429.html">
+    <link rel="next" href="rbint-3032341.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3027429.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3002060.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3032341.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - File Server - Get Connection&#39;s Task Info</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = E3h subfn DAh</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1729)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1730)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (00h,C6h) (see #1741)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is supported by Advanced NetWare 2.1+</span><br /><span class="line">   the calling workstation must have console operator privileges</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=C8h,AH=E3h/SF=DBh,AH=E3h/SF=DFh,AH=E3h/SF=E1h,AH=E3h/SF=E5h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=F217h/SF=DAh</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Connection&#39;s Task Information&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 1729)</span><br /><span class="line"> 00h   WORD    0003h (length of following data)</span><br /><span class="line"> 02h   BYTE    DAh (subfunction &#34;Get Connection&#39;s Task Information&#34;)</span><br /><span class="line"> 03h   WORD    (big-endian) logical connection number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1730,#1921 at AX=F217h/SF=DAh</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Connection&#39;s Task Information&#34; reply buffer:</span><br /><span class="line">Offset Size    Description (Table 1730)</span><br /><span class="line"> 00h   WORD    (call) size of following results record (max 1FEh)</span><br /><span class="line"> 02h   BYTE    lock status of connection (see #1731)</span><br /><span class="line"> 03h   var Lock Status Information (see #1732)</span><br /><span class="line"> N BYTE    number of records following</span><br /><span class="line"> N+1   Active Task Information Records [array]</span><br /><span class="line">   Offset  Size    Description</span><br /><span class="line">    00h    BYTE    task number (01h-FFh)</span><br /><span class="line">    01h    BYTE    task state</span><br /><span class="line">           01h in TTS explicit transaction</span><br /><span class="line">           02h in TTS implicit transaction</span><br /><span class="line">           04h shared fileset lock active</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1729,#1921 at AX=F217h/SF=DAh</span><br /><span class="line"></span><br /><span class="line">(Table 1731)</span><br /><span class="line">Values for lock status of connection:</span><br /><span class="line"> 00h   no locks</span><br /><span class="line"> 01h   waiting on physical record lock</span><br /><span class="line"> 02h   waiting on file lock</span><br /><span class="line"> 03h   waiting on logical record lock</span><br /><span class="line"> 04h   waiting on semaphore</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1730,#1732</span><br /><span class="line"></span><br /><span class="line">Format of Lock Status Information:</span><br /><span class="line">Offset Size    Description (Table 1732)</span><br /><span class="line">---lock status 00h---</span><br /><span class="line"> no fields</span><br /><span class="line">---lock status 01h---</span><br /><span class="line"> 00h   BYTE    number of waiting task</span><br /><span class="line"> 01h   DWORD   start address</span><br /><span class="line"> 05h   DWORD   end address</span><br /><span class="line"> 09h   BYTE    volume number</span><br /><span class="line"> 0Ah   WORD    directory entry number</span><br /><span class="line"> 0Ch 14 BYTEs  ASCIZ filename</span><br /><span class="line">---lock status 02h---</span><br /><span class="line"> 00h   BYTE    number of waiting task</span><br /><span class="line"> 01h   BYTE    volume number</span><br /><span class="line"> 02h   WORD    directory entry number</span><br /><span class="line"> 04h 14 BYTEs  ASCIZ filename</span><br /><span class="line">---lock status 03h---</span><br /><span class="line"> 00h   BYTE    number of waiting task</span><br /><span class="line"> 01h   BYTE    length of record name</span><br /><span class="line"> 02h  N BYTEs  ASCIZ record name</span><br /><span class="line">---lock status 04h---</span><br /><span class="line"> 00h   BYTE    number of waiting task</span><br /><span class="line"> 01h   BYTE    length of semaphore&#39;s name</span><br /><span class="line"> 02h  N BYTEs  ASCIZ semaphore name</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1730,#1731</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

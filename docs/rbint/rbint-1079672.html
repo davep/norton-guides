@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1077306.html">
+    <link rel="next" href="rbint-1081141.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1077306.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1061380.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1081141.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn 01  - Vmix - &#34;sys_chanreq&#34; - I/o Channel Object Manager        </span>  [<span class="ngb">O</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 01h</span><br /><span class="line">   STACK:  WORD    object ID of requestor</span><br /><span class="line">       DWORD   pointer to ASCIZ name of requested method</span><br /><span class="line">           &#34;assign&#34; assign channel to object</span><br /><span class="line">           &#34;deassign&#34; deassign channel</span><br /><span class="line">           &#34;cursor&#34; set cursor on/off</span><br /><span class="line">           &#34;init&#34; initialize comm port</span><br /><span class="line">           &#34;open&#34; open I/O channel</span><br /><span class="line">           &#34;position&#34; set cursor position</span><br /><span class="line">           &#34;receive&#34; get buffered packet from comm port</span><br /><span class="line">           &#34;send&#34; send buffered packet to comm port</span><br /><span class="line">           &#34;vio&#34; set current virtual I/O to specified channel</span><br /><span class="line">           &#34;window&#34; make window at cursor position</span><br /><span class="line">       ---if &#34;assign&#34;---</span><br /><span class="line">        WORD   object UID</span><br /><span class="line">        WORD   caller UID/PID</span><br /><span class="line">        DWORD  CSL with port</span><br /><span class="line">       ---if &#34;deassign&#34;---</span><br /><span class="line">        WORD   channel ID</span><br /><span class="line">       ---if &#34;cursor&#34;---</span><br /><span class="line">        WORD   channel ID (must be a SRCSINK)</span><br /><span class="line">        WORD   new state (0000h off, 0001h on)</span><br /><span class="line">       ---if &#34;init&#34;---</span><br /><span class="line">        WORD   channel ID (must be a SRCSINK)</span><br /><span class="line">        WORD   comm port number (00h-03h)</span><br /><span class="line">        WORD   UART init code</span><br /><span class="line">       ---if &#34;open&#34;---</span><br /><span class="line">        WORD   channel ID</span><br /><span class="line">       ---if &#34;position&#34;---</span><br /><span class="line">        WORD   channel ID (must be a SRCSINK)</span><br /><span class="line">        WORD   position (high byte = row, low byte = column)</span><br /><span class="line">       ---if &#34;receive&#34;---</span><br /><span class="line">        DWORD  pointer to buffer</span><br /><span class="line">       ---if &#34;send&#34;---</span><br /><span class="line">        WORD   length of buffer</span><br /><span class="line">        DWORD  pointer to buffer</span><br /><span class="line">       ---if &#34;vio&#34;---</span><br /><span class="line">        WORD   channel ID (must be a SRCSINK)</span><br /><span class="line">       ---if &#34;window&#34;---</span><br /><span class="line">        WORD   top left (high byte = row, low byte = column)</span><br /><span class="line">        WORD   bottom right (high byte = row, low byte = column)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> DX:AX -&gt; IRP structure or 0000h:0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=00h&#34;VMiX&#34;,AH=02h&#34;VMiX&#34;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

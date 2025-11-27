@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3517175.html">
+    <link rel="next" href="rbint-3518659.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3517175.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3496496.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3518659.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2C Fn 002D  P - Cloaking - Set Port-trapping Passalong               </span>  [<span class="ngb">m</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 002Dh</span><br /><span class="line">   DX:EBX = new I/O trapping passalong address (see #2254)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> RM386 calls the passalong address whenever an access to a monitored</span><br /><span class="line">     I/O port is attempted; the handler should check whether it is a port</span><br /><span class="line">     that it is interested in, and if not call the previous passalong</span><br /><span class="line">     address (which was retrieved with AX=002Ch before installing the</span><br /><span class="line">     new handler)</span><br /><span class="line">   this function was first introduced with RM386 (RAM-MAN/386) v6.00</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=0009h,AX=002Ch,INT 67/AX=5DEAh</span><br /><span class="line"></span><br /><span class="line">(Table 2254)</span><br /><span class="line">Values Cloaking port-trapping passalong address is called with:</span><br /><span class="line">   EAX = CS:IP of faulting instruction (unless executing in protected-mode</span><br /><span class="line">       ring 3)</span><br /><span class="line">   SS:EBX -&gt; caller register structure (see #2247)</span><br /><span class="line">       check EFLAGS V86-mode bit for type</span><br /><span class="line">   CX = first two bytes of I/O instruction which was trapped</span><br /><span class="line">   DX = port to which I/O is being performed</span><br /><span class="line">   CF clear</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if RM386 should perform I/O operation</span><br /><span class="line">   CF set if I/O should be skipped</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  RM386 skips the trapped I/O instruction, so the passalong handler</span><br /><span class="line">     should not modify the client CS:EIP</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

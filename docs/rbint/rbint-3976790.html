@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3976243.html">
+    <link rel="next" href="rbint-3977919.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3976243.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3870311.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3977919.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 4810  - Dos 5+ Doskey, Pced V2.1 - Read Input Line From Console</span>  [<span class="ngb">K</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4810h</span><br /><span class="line">   DS:DX -&gt; line buffer (see #1033 at INT 21/AH=0Ah)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = 0000h if successful</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the first byte (length) of the buffer MUST be 80h, or MS-DOS&#39;s DOSKEY</span><br /><span class="line">     chains to the previous handler; PCED and Novell DOS allow sizes</span><br /><span class="line">     other than 80h</span><br /><span class="line">   if the user&#39;s input is a macro name, no text is placed in the buffer</span><br /><span class="line">     even though AX=0000h on return; the program must immediately issue</span><br /><span class="line">     this call again to retrieve the expansion of the macro.  Similarly,</span><br /><span class="line">     if the user enters a special parameter such as $*, this call must</span><br /><span class="line">     be repeated to retrieve the expansion; on the second call, DOSKEY</span><br /><span class="line">     overwrites the macro name on the screen with its expansion.</span><br /><span class="line">   unlike DOSKEY, PCED expands all macros on the first call, so it is</span><br /><span class="line">     not necessary to make two calls; since the buffer is not empty on</span><br /><span class="line">     return, DOSKEY-aware programs will not make the second call</span><br /><span class="line">   DOSKEY chains if AL is not 00h or 10h on entry</span><br /><span class="line">   this function is supported by Novell DOS 7 DOSKEY</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4800h,INT 21/AH=0Ah</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

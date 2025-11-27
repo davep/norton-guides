@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-546598.html">
+    <link rel="next" href="rbint-554089.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-546598.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-554089.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 10 Fn 1C  - Video - Save/restore Video State (ps50+,vga)             </span>  [<span class="ngb">V</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 1Ch</span><br /><span class="line">   AL = function</span><br /><span class="line">       00h return state buffer size</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> BX = number of 64-byte blocks needed</span><br /><span class="line">       01h save video state</span><br /><span class="line">       ES:BX -&gt; buffer</span><br /><span class="line">       02h restore video state</span><br /><span class="line">       ES:BX -&gt; buffer containing previously saved state</span><br /><span class="line">   CX = requested states (see #0046)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 1Ch if function supported</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> many BIOSes corrupt the video registers when saving the state, so a</span><br /><span class="line">     program should restore the state immediately after saving it (the</span><br /><span class="line">     saved data is uncorrupted)</span><br /><span class="line">   the BIOS data area consists of the 96 bytes from 0040h:0049h-00A8h</span><br /><span class="line">   this function is not supported when DOS/V is running</span><br /><span class="line">   this function may be a better VGA installation check than the usual</span><br /><span class="line">     INT 10/AX=1A00h, since some late-model EGA cards (such as the ATI</span><br /><span class="line">     EGA Wonder) supported that call</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1A00h,MEM 0040h:00A8h</span><br /><span class="line"></span><br /><span class="line">Bitfields for requested states:</span><br /><span class="line">Bit(s) Description (Table 0046)</span><br /><span class="line"> 0 video hardware (see #0047)</span><br /><span class="line"> 1 BIOS data areas</span><br /><span class="line"> 2 color registers and DAC state (see #0048)</span><br /><span class="line"> 3-15  unused (0)</span><br /><span class="line"></span><br /><span class="line">Format of VGA video hardware state:</span><br /><span class="line">Offset Size    Description (Table 0047)</span><br /><span class="line"> 00h   BYTE    sequencer index register</span><br /><span class="line"> 01h   BYTE    CRTC index register</span><br /><span class="line"> 02h   BYTE    graphics controller index register</span><br /><span class="line"> 03h   BYTE    attribute controller index register</span><br /><span class="line"> 04h   BYTE    feature controller register</span><br /><span class="line"> 05h  4 BYTEs  sequencer registers</span><br /><span class="line"> 09h   BYTE    sequencer register 0</span><br /><span class="line"> 0Ah 25 BYTEs  CRTC registers 0-8</span><br /><span class="line"> 23h 16 BYTEs  palette registers 00h-0Fh</span><br /><span class="line"> 33h  4 BYTEs  attribute registers 10h-13h</span><br /><span class="line"> 37h  9 BYTEs  graphics controller registers 0-8</span><br /><span class="line"> 40h   BYTE    CRTC base address (low)</span><br /><span class="line"> 41h   BYTE    CRTC base address (high)</span><br /><span class="line"> 42h   BYTE    plane 0 latch</span><br /><span class="line"> 43h   BYTE    plane 1 latch</span><br /><span class="line"> 44h   BYTE    plane 2 latch</span><br /><span class="line"> 45h   BYTE    plane 3 latch</span><br /><span class="line"></span><br /><span class="line">Format of VGA DAC state:</span><br /><span class="line">Offset Size    Description (Table 0048)</span><br /><span class="line"> 00h   BYTE    read/write mode DAC</span><br /><span class="line"> 01h   BYTE    pixel address</span><br /><span class="line"> 02h   BYTE    pixel mask</span><br /><span class="line"> 03h 768 BYTEs color data (256 triples)</span><br /><span class="line">303h   BYTE    color select register</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

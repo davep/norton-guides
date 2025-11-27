@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2201304.html">
+    <link rel="next" href="rbint-2203257.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2201304.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2203257.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 3700  - Dos 2+ - &#34;switchar&#34; - Get Switch Character             </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 3700h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h successful</span><br /><span class="line">       DL = current switch character</span><br /><span class="line">       FFh unsupported subfunction</span><br /><span class="line"><span class="ngb">Desc:</span>  Determine the character which is used to introduce command switches.</span><br /><span class="line">     This setting is ignored by MS-DOS commands in version 4.0 and higher,</span><br /><span class="line">     but is honored by many third-party programs and by Novell DOS 7</span><br /><span class="line">     external commands</span><br /><span class="line">BUG:   Novell DOS 7&#39;s COMMAND.COM (prior to Update 15) fails to honor the</span><br /><span class="line">     SwitChar setting for internal commands even though COMMAND.COM</span><br /><span class="line">     honors it in its own command tail (i.e. COMMAND /?); even in Update</span><br /><span class="line">     15, internal commands fail to honor SwitChar for the /? help option</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> documented in some OEM versions of some releases of DOS</span><br /><span class="line">   supported by OS/2 compatibility box</span><br /><span class="line">   always returns AL=00h/DL=2Fh for MS-DOS 5+ and DR DOS 3.41-6.0</span><br /><span class="line">   Novell DOS 7 COMMAND.COM indicates switch characters other than &#39;/&#39;</span><br /><span class="line">     by changing the first backslash (and only the first one) in the</span><br /><span class="line">     path it prints for PROMPT $p with a forward slash</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=3701h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

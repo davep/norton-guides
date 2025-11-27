@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5830780.html">
+    <link rel="next" href="rbint-5833483.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5830780.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5812979.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5833483.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 7C Fn 000E  - Sk-upps Data Link Interface Api - Dli 2.5+ - Get Driver</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 000Eh</span><br /><span class="line">   ES:DI -&gt; Driver Information Block (see #3529)</span><br /><span class="line">   BX = offset of 1st field within DIB to be returned</span><br /><span class="line">   CX = number of bytes to be returned</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = completion code (see #3517)</span><br /><span class="line">   CX = number of bytes copied (regardless of value returned in AX)</span><br /><span class="line">Program: SK-UPPS is the Schneider &amp; Koch Universal Portable Protocol Stack,</span><br /><span class="line">     which provides an API on top of its Data Link Interface, allowing the</span><br /><span class="line">     use of any of several network transport layers</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=0000h,AX=0002h,AX=000Bh,AX=000Dh,AX=0015h</span><br /><span class="line"></span><br /><span class="line">Format of SK-UPPS Driver Information Block (DIB):</span><br /><span class="line">Offset Size    Description (Table 3529)</span><br /><span class="line"> 00h  6 BYTEs  physical node address (from adapter&#39;s ROM)</span><br /><span class="line"> 06h  6 BYTEs  current node address (see AX=0003h)</span><br /><span class="line"> 0Ch   BYTE    adapter id (defined by OEM)</span><br /><span class="line"> 0Dh   BYTE    IRQ line (FFh if none)</span><br /><span class="line"> 0Eh   DWORD   -&gt; shared memory (zero if none)</span><br /><span class="line"> 12h   DWORD   size of shared memory (zero if none)</span><br /><span class="line"> 16h   WORD    base I/O port (zero if none)</span><br /><span class="line"> 18h   BYTE    DMA line (FFh if none)</span><br /><span class="line"> 19h   BYTE    DLI 2.4+ topology (see AX=0000h)</span><br /><span class="line"> 1Ah   WORD    size of an Mbuf&#39;s DATA area (see #3518)</span><br /><span class="line"> 1Ch  2 BYTEs  reserved (currently unused)</span><br /><span class="line"> 1Eh   WORD    total number of Mbufs the DLI has</span><br /><span class="line"> 20h   WORD    maximum number of Mbufs that can be allocated via REQUEST</span><br /><span class="line">         BUFFER (AX=0004h) and SYNC REQUEST BUFFER (AX=0012h)</span><br /><span class="line"> ---- end of Status Information Block returned by GET DRIVER STATUS (AX=0002h)</span><br /><span class="line"> 22h   DWORD   -&gt; ASCIZ adapter name</span><br /><span class="line"> 26h   WORD    number of I/O ports used (zero if none)</span><br /><span class="line"> 28h   DWORD   line speed in bits/sec.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

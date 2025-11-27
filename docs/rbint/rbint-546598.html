@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-546318.html">
+    <link rel="next" href="rbint-552076.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-546318.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-552076.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 10 Fn 1B  - Video - Functionality/state Information (ps,vga/mcga)    </span>  [<span class="ngb">V</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 1Bh</span><br /><span class="line">   BX = implementation type</span><br /><span class="line">       0000h return funtionality/state information</span><br /><span class="line">   ES:DI -&gt; 64-byte buffer for state information (see #0038)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 1Bh if function supported</span><br /><span class="line">       ES:DI buffer filled with state information</span><br /><span class="line">BUG:   Trident 8900 (BIOS D3.0 11/12/91) and Trident 9000 (C3.0 10/25/91)</span><br /><span class="line">     do not correctly set the fields at offsets 27h and 29h of the</span><br /><span class="line">     state information</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=15h,AX=1A00h,AX=1F01h</span><br /><span class="line"></span><br /><span class="line">Format of MCGA+ state information:</span><br /><span class="line">Offset Size    Description (Table 0038)</span><br /><span class="line"> 00h   DWORD   address of static funtionality table (see #0043)</span><br /><span class="line"> 04h   BYTE    video mode in effect</span><br /><span class="line"> 05h   WORD    number of columns</span><br /><span class="line"> 07h   WORD    length of regen buffer in bytes</span><br /><span class="line"> 09h   WORD    starting address of regen buffer</span><br /><span class="line"> 0Bh   WORD    cursor position for page 0</span><br /><span class="line"> 0Dh   WORD    cursor position for page 1</span><br /><span class="line"> 0Fh   WORD    cursor position for page 2</span><br /><span class="line"> 11h   WORD    cursor position for page 3</span><br /><span class="line"> 13h   WORD    cursor position for page 4</span><br /><span class="line"> 15h   WORD    cursor position for page 5</span><br /><span class="line"> 17h   WORD    cursor position for page 6</span><br /><span class="line"> 19h   WORD    cursor position for page 7</span><br /><span class="line"> 1Bh   WORD    cursor &#34;type&#34; (start/stop scan lines)</span><br /><span class="line"> 1Dh   BYTE    active display page</span><br /><span class="line"> 1Eh   WORD    CRTC port address</span><br /><span class="line"> 20h   BYTE    current setting of PORT 03x8h</span><br /><span class="line"> 21h   BYTE    current setting of PORT 03x9h</span><br /><span class="line"> 22h   BYTE    number of rows - 1</span><br /><span class="line"> 23h   WORD    bytes/character</span><br /><span class="line"> 25h   BYTE    display combination code of active display</span><br /><span class="line"> 26h   BYTE    DCC of alternate display</span><br /><span class="line"> 27h   WORD    number of colors supported in current mode (0000h = mono)</span><br /><span class="line"> 29h   BYTE    number of pages supported in current mode</span><br /><span class="line"> 2Ah   BYTE    number of scan lines active</span><br /><span class="line">       (0,1,2,3) = (200,350,400,480)</span><br /><span class="line">       Tseng ET3000: (4,5,6 = 512,600,768)</span><br /><span class="line"> 2Bh   BYTE    primary character block</span><br /><span class="line"> 2Ch   BYTE    secondary character block</span><br /><span class="line"> 2Dh   BYTE    miscellaneous flags (see #0039)</span><br /><span class="line"> 2Eh   BYTE    non-VGA mode support (see #0040)</span><br /><span class="line"> 2Fh  2 BYTEs  reserved (00h)</span><br /><span class="line"> 31h   BYTE    video memory available</span><br /><span class="line">       00h = 64K, 01h = 128K, 02h = 192K, 03h = 256K</span><br /><span class="line"> 32h   BYTE    save pointer state flags (see #0041)</span><br /><span class="line"> 33h   BYTE    display information and status (see #0042)</span><br /><span class="line"> 34h 12 BYTEs  reserved (00h)</span><br /><span class="line"></span><br /><span class="line">Bitfields for miscellaneous flags:</span><br /><span class="line">Bit(s) Description (Table 0039)</span><br /><span class="line"> 0 all modes on all displays on</span><br /><span class="line"> 1 gray summing on</span><br /><span class="line"> 2 monochrome display attached</span><br /><span class="line"> 3 default palette loading disabled</span><br /><span class="line"> 4 cursor emulation enabled</span><br /><span class="line"> 5 0 = intensity; 1 = blinking</span><br /><span class="line"> 6 flat-panel display is active</span><br /><span class="line"> 7 unused (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0038</span><br /><span class="line"></span><br /><span class="line">Bitfields for non-VGA mode support:</span><br /><span class="line">Bit(s) Description (Table 0040)</span><br /><span class="line"> 7-5   reserved</span><br /><span class="line"> 4 132-column mode supported</span><br /><span class="line"> 3 =1 MFI attributes enabled (see AH=12h/BL=37h)</span><br /><span class="line">   =0 VGA attributes</span><br /><span class="line"> 2 16-bit VGA graphics present</span><br /><span class="line"> 1 adapter interface driver required</span><br /><span class="line"> 0 BIOS supports information return for adapter interface</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0038</span><br /><span class="line"></span><br /><span class="line">Bitfields for save pointer state flags:</span><br /><span class="line">Bit(s) Description (Table 0041)</span><br /><span class="line"> 0 512 character set active</span><br /><span class="line"> 1 dynamic save area present</span><br /><span class="line"> 2 alpha font override active</span><br /><span class="line"> 3 graphics font override active</span><br /><span class="line"> 4 palette override active</span><br /><span class="line"> 5 DCC override active</span><br /><span class="line"> 6-7   unused (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0038</span><br /><span class="line"></span><br /><span class="line">Bitfields for display information and status:</span><br /><span class="line">Bit(s) Description (Table 0042)</span><br /><span class="line"> 7 640x480 flat-panel can be used simultaneously with CRT controller</span><br /><span class="line"> 6-3   reserved</span><br /><span class="line"> 2 color display</span><br /><span class="line"> 1 flat-panel display active</span><br /><span class="line"> 0 flat-panel display attached</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0038</span><br /><span class="line"></span><br /><span class="line">Format of Static Functionality Table:</span><br /><span class="line">Offset Size    Description (Table 0043)</span><br /><span class="line"> 00h   BYTE    modes supported 1</span><br /><span class="line">       bit 0 to bit 7 = 1 modes 0,1,2,3,4,5,6,7 supported</span><br /><span class="line"> 01h   BYTE    modes supported 2</span><br /><span class="line">       bit 0 to bit 7 = 1 modes 8,9,0Ah,0Bh,0Ch,0Dh,0Eh,0Fh supported</span><br /><span class="line"> 02h   BYTE    modes supported 3</span><br /><span class="line">       bit 0 to bit 3 = 1 modes 10h,11h,12h,13h supported</span><br /><span class="line">       bit 4 to bit 7 unused (0)</span><br /><span class="line"> 03h   BYTE    (IBM) reserved</span><br /><span class="line">       (Tseng ET3000/4000) modes supported 4</span><br /><span class="line">               bit 0 to bit 7 = modes 18h-1Fh supported</span><br /><span class="line"> 04h   BYTE    (IBM) reserved</span><br /><span class="line">       (Tseng ET3000/4000) modes supported 5</span><br /><span class="line">               bit 0 to bit 7 = modes 20h-27h supported</span><br /><span class="line"> 05h   BYTE    (IBM) reserved</span><br /><span class="line">       (Tseng ET3000/4000) modes supported 6</span><br /><span class="line">               bit 0 to bit 7 = modes 28h-2Fh supported</span><br /><span class="line"> 06h   BYTE    (IBM) reserved</span><br /><span class="line">       (Tseng ET3000/4000) modes supported 7</span><br /><span class="line">               bit 0 to bit 7 = modes 30h-37h supported</span><br /><span class="line"> 07h   BYTE    scan lines supported</span><br /><span class="line">       bit 0 to bit 2 = 1 if scan lines 200,350,400 supported</span><br /><span class="line">       bits 3-7 = unused (0)</span><br /><span class="line"> 08h   BYTE    total number of character blocks available in text modes</span><br /><span class="line"> 09h   BYTE    maximum number of active character blocks in text modes</span><br /><span class="line"> 0Ah   WORD    miscellaneous function support flags (see #0044)</span><br /><span class="line"> 0Ch   WORD    reserved</span><br /><span class="line"> 0Eh   BYTE    save pointer function flags (see #0045)</span><br /><span class="line"> 0Fh   BYTE    reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0038</span><br /><span class="line"></span><br /><span class="line">Bitfields for miscellaneous function support flags:</span><br /><span class="line">Bit(s) Description (Table 0044)</span><br /><span class="line"> 0 all modes on all displays function supported</span><br /><span class="line"> 1 gray summing function supported</span><br /><span class="line"> 2 character font loading function supported</span><br /><span class="line"> 3 default palette loading enable/disable supported</span><br /><span class="line"> 4 cursor emulation function supported</span><br /><span class="line"> 5 EGA palette present</span><br /><span class="line"> 6 color palette present</span><br /><span class="line"> 7 color-register paging function supported</span><br /><span class="line"> 8 light pen supported (see AH=04h)</span><br /><span class="line"> 9 save/restore state function 1Ch supported</span><br /><span class="line"> 10    intensity/blinking function supported (see AX=1003h)</span><br /><span class="line"> 11    Display Combination Code supported (see #0037)</span><br /><span class="line"> 12-15 unused (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0038</span><br /><span class="line"></span><br /><span class="line">Bitfields for save pointer function flags:</span><br /><span class="line">Bit(s) Description (Table 0045)</span><br /><span class="line"> 0 512 character set supported</span><br /><span class="line"> 1 dynamic save area supported</span><br /><span class="line"> 2 alpha font override supported</span><br /><span class="line"> 3 graphics font override supported</span><br /><span class="line"> 4 palette override supported</span><br /><span class="line"> 5 DCC extension supported</span><br /><span class="line"> 6-7   unused (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0038</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

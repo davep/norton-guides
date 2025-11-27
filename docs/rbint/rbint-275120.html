@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-275040.html">
+    <link rel="next" href="rbint-276623.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-275040.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-276623.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Function:</span></span><br /><span class="line"></span><br /><span class="line">Basically copies bit(op2) from op1 into CY and sets bit(op2) of op1 to 1.</span><br /><span class="line">Memory variant is more complex. Do not use on memory mapped I/O ports or</span><br /><span class="line">memory operands that span into or lie completely within nonexistent memory.</span><br /><span class="line">In the case of memory mapped I/O ports, use MOV and TEST instead.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">Chip Step information for Intel CPUs</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">CPUs are manufactured in models (like the 80386). While these models are</span><br /><span class="line">manufactured, errors in the mask layout and mask design may become</span><br /><span class="line">apparent. These errors may be corrected before a new batch of chips is</span><br /><span class="line">made. To distinguish between these revisions an identification code is</span><br /><span class="line">placed within the mask design on 386+ CPUs. By testing the CPU with CPUID</span><br /><span class="line">or by performing a RESET, this information is copied to specific registers.</span><br /><span class="line"></span><br /><span class="line">The register used to hold mask info after a RESET is DX (apparently also</span><br /><span class="line">sometimes the high word of EDX on some 486s).</span><br /><span class="line"></span><br /><span class="line">This page lists some component and revision ID&#39;s found in the DX register</span><br /><span class="line">for the 386SX, 386DX, 486SX and 486DX models from Intel.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        CPU:        DX:     Step:</span><br /><span class="line">        386SX       2304h   A0</span><br /><span class="line">                    2305h   B</span><br /><span class="line">                    2306h   C</span><br /><span class="line">                    2308h   D1</span><br /><span class="line"></span><br /><span class="line">        386DX       0303h   B0 - B10</span><br /><span class="line">                    0305h   D0</span><br /><span class="line">                    0308h   D1 &amp; D2</span><br /><span class="line"></span><br /><span class="line">        486SX       0420h   A0</span><br /><span class="line"></span><br /><span class="line">        486DX       0000h   A1</span><br /><span class="line">                    0401h   Bn</span><br /><span class="line">                    0302h   C0</span><br /><span class="line">                    0404h   D0</span><br /><span class="line">                    0410h   cAn</span><br /><span class="line">                    0411h   cBn</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">CLEAR1  Clears a specific bit to 0 (NEC V20/30 only)</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

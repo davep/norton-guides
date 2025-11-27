@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3583878.html">
+    <link rel="next" href="rbint-3584828.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3583878.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3584828.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 0104  - Dos 3.0+ Print - Freeze Print Queue To Read Job Status </span>  [<span class="ngb">c</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 0104h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       DX = error count since status last read</span><br /><span class="line">       DS:SI -&gt; print queue</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (see #2281)</span><br /><span class="line"><span class="ngb">Desc:</span>  get the list of print jobs, temporarily suspending PRINT&#39;s activities</span><br /><span class="line">     to avoid changing the list while it is being examined</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the print queue is an array of 64-byte ASCIZ filenames terminated by</span><br /><span class="line">     an empty filename; the first name is the file currently being printed</span><br /><span class="line">   printing is stopped until AX=0105h is called to prevent the queue</span><br /><span class="line">     from changing while the filenames are being read</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=0101h,AX=0105h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

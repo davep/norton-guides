@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1449376.html">
+    <link rel="next" href="rbint-1450840.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1449376.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1340639.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1450840.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn DE22  - Desqview V2.26+ - &#34;processmem&#34; - Get Task Memory Status</span>  [<span class="ngb">Q</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = DE22h</span><br /><span class="line">   DX = segment of task handle</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> DX = total amount of memory in paragraphs</span><br /><span class="line">   BX = amount of system memory in paragraphs</span><br /><span class="line">   CX = largest block of system memory available in paragraphs</span><br /><span class="line">   AX = memory flags (see #0476)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> if the task handle is a child task, the returned values will be for the</span><br /><span class="line">     process containing the task, rather than the task itself</span><br /><span class="line">   if the process&#39;s system memory is swapped out, BX,CX,DX remain</span><br /><span class="line">     unchanged, because the memory usage cannot be determined</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=DE04h,AX=DE05h,AX=DE06h</span><br /><span class="line"></span><br /><span class="line">Bitfields for DESQview process memory flags:</span><br /><span class="line">Bit(s) Description (Table 0476)</span><br /><span class="line"> 0 system memory resides in shared memory</span><br /><span class="line"> 1 process&#39;s memory is swapped out</span><br /><span class="line"> 2 process&#39;s system memory is swapped out</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

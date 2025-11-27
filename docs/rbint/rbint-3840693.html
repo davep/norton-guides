@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3840303.html">
+    <link rel="next" href="rbint-3842201.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3840303.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3842201.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 168A  - Dpmi 0.9+ - Get Vendor-specific Api Entry Point        </span>  [<span class="ngb">E</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 168Ah</span><br /><span class="line">   DS:(E)SI = selector:offset of ASCIZ vendor name (see #2406)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h successful</span><br /><span class="line">          ES:(E)DI -&gt; extended API entry point</span><br /><span class="line">       8Ah unsuccessful</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the vendor name is used to determine which entry point to return; it is</span><br /><span class="line">     case-sensitive</span><br /><span class="line">   available in protected mode only</span><br /><span class="line">   32-bit applications use ESI and EDI, 16-bit applications use SI and DI</span><br /><span class="line">   this call is present but not documented for DPMI 0.9</span><br /><span class="line">   the Borland C++ 3.1 DPMILOAD does not handle requests for entry points</span><br /><span class="line">     other than the MS-DOS one gracefully, producing an unhandled</span><br /><span class="line">     exception report; this has been fixed in the Borland Pascal 7 version</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1687h,INT 31/AX=0A00h,INT 31/AH=57h</span><br /><span class="line"></span><br /><span class="line">(Table 2406)</span><br /><span class="line">Values for DPMI vendor-specific API names:</span><br /><span class="line"> &#34;MS-DOS&#34;  MS Windows and 386MAX v6.00+ (see #2407)</span><br /><span class="line"> &#34;386MAX&#34;  386MAX v6.00+</span><br /><span class="line"> &#34;HELIX_DPMI&#34;  Helix Netroom&#39;s DPMI server</span><br /><span class="line"> &#34;Phar Lap&#34;    Phar Lap 286|DOS-Extender RUN286 (see #2408)</span><br /><span class="line"> &#34;RATIONAL DOS/4G&#34;  DOS/4G, DOS/4GW</span><br /><span class="line"> &#34;VIRTUAL SUPPORT&#34;  Borland 32RTM</span><br /><span class="line"></span><br /><span class="line">(Table 2407)</span><br /><span class="line">Call Windows-support (&#34;MS-DOS&#34;) entry point with:</span><br /><span class="line">   AX = 0100h get LDT alias selector</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = alias selector</span><br /><span class="line">   CF set on error</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2406,AX=1688h/BX=0BADh</span><br /><span class="line"></span><br /><span class="line">(Table 2408)</span><br /><span class="line">Call Phar Lap RUN286 entry point with:</span><br /><span class="line">   AX = 0000h (function &#34;load MSW&#34;)</span><br /><span class="line">   BX = new value for MSW register (low word of CR0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2406</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

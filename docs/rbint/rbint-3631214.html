@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3630739.html">
+    <link rel="next" href="rbint-3632879.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3630739.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3632879.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 111E  CU - Network Redirector - Do Redirection                 </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 111Eh</span><br /><span class="line">   SS = DOS DS</span><br /><span class="line">   STACK: WORD function to execute</span><br /><span class="line">       5F00h  get redirection mode</span><br /><span class="line">           BL = type (03h printer, 04h disk)</span><br /><span class="line"></span><br /><span class="line">           <span class="ngb">Return:</span> BH = state (00h off, 01h on)</span><br /><span class="line">       5F01h  set redirection mode</span><br /><span class="line">           BL = type (03h printer, 04h disk)</span><br /><span class="line">           BH = state (00h off, 01h on)</span><br /><span class="line">       5F02h  get redirection list entry</span><br /><span class="line">           BX = redirection list index</span><br /><span class="line">           DS:SI -&gt; 16-byte local device name buffer</span><br /><span class="line">           ES:DI -&gt; 128-byte network name buffer</span><br /><span class="line"></span><br /><span class="line">           <span class="ngb">Return:</span> must set user&#39;s BX to device type and CX to</span><br /><span class="line">               stored parameter value, using AX=1218h to get</span><br /><span class="line">               stack frame address</span><br /><span class="line">       5F03h  redirect device</span><br /><span class="line">           BL = device type (see INT 21/AX=5F03h)</span><br /><span class="line">           CX = stored parameter value</span><br /><span class="line">           DS:SI -&gt; ASCIZ source device name</span><br /><span class="line">           ES:DI -&gt; destination ASCIZ network path + ASCIZ passwd</span><br /><span class="line">       5F04h  cancel redirection</span><br /><span class="line">           DS:SI -&gt; ASCIZ device name or network path</span><br /><span class="line">       5F05h  get redirection list extended entry</span><br /><span class="line">           BX = redirection list index</span><br /><span class="line">           DS:SI -&gt; buffer for ASCIZ source device name</span><br /><span class="line">           ES:DI -&gt; buffer for destination ASCIZ network path</span><br /><span class="line"></span><br /><span class="line">           <span class="ngb">Return:</span> BH = status flag</span><br /><span class="line">               BL = type (03h printer, 04h disk)</span><br /><span class="line">               CX = stored parameter value</span><br /><span class="line">               BP = NETBIOS local session number</span><br /><span class="line">       5F06h  similar to 5F05h???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">       AX = error code (see #1366 at INT 21/AH=59h/BX=0000h)</span><br /><span class="line">   STACK unchanged</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is called by the DOS 3.1+ kernel on INT 21/AH=5Fh</span><br /><span class="line">     (including LAN Manager calls)</span><br /><span class="line">   the PC Network 1.00 redirector does not support function 5F06h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 21/AX=5F00h,INT 21/AX=5F01h,INT 21/AX=5F02h,INT 21/AX=5F03h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 21/AX=5F04h,INT 21/AX=5F05h,INT 21/AX=5F06h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

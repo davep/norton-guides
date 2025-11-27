@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4767756.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4767756.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4767432.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 45  - Acorn Bbc Master 512 - &#34;osfile&#34; - Read/write File Or Directory </span>  [<span class="ngb">O</span>]</span><br /><span class="line"></span><br /><span class="line">   AL = function</span><br /><span class="line">       00h save block of memory as file</span><br /><span class="line">       01h update directory entry for existing file</span><br /><span class="line">       02h set load address for existing file</span><br /><span class="line">       03h set execution address for existing file</span><br /><span class="line">       04h set attributes for existing file</span><br /><span class="line">       05h read directory</span><br /><span class="line">       06h delete file</span><br /><span class="line">       FFh load file</span><br /><span class="line">   DS:BX -&gt; control block (see #2872)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> FLAGS destroyed</span><br /><span class="line">   AL = file type</span><br /><span class="line">       00h not found</span><br /><span class="line">       01h file found</span><br /><span class="line">       02h directory found</span><br /><span class="line">       FFh protected file</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 40&#34;Acorn&#34;,INT 41&#34;Acorn&#34;,INT 44&#34;Acorn&#34;,INT 46&#34;Acorn&#34;</span><br /><span class="line"></span><br /><span class="line">Format of BBC Master control block:</span><br /><span class="line">Offset Size    Description (Table 2872)</span><br /><span class="line"> 00h   WORD    address of CR-terminated filename</span><br /><span class="line"> 02h   DWORD   load address of file</span><br /><span class="line"> 06h   DWORD   execution address of file</span><br /><span class="line"> 0Ah   DWORD   start address of data to save</span><br /><span class="line"> 0Eh   DWORD   end address of data to save, or file attributes</span><br /><span class="line">       file attributes in low byte (see #2873)</span><br /><span class="line">       other three bytes are filing-system specific file attributes</span><br /><span class="line"></span><br /><span class="line">Bitfields for BBC Master file attributes:</span><br /><span class="line">Bit(s) Description (Table 2873)</span><br /><span class="line"> 0 no owner read access</span><br /><span class="line"> 1 no owner write access</span><br /><span class="line"> 2 not executable by owner</span><br /><span class="line"> 3 not deletable by owner</span><br /><span class="line"> 4 no public read access</span><br /><span class="line"> 5 no public write access</span><br /><span class="line"> 6 not executable with public access</span><br /><span class="line"> 7 not deletable with public access</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

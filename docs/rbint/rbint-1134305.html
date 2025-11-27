@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1133988.html">
+    <link rel="next" href="rbint-1135065.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1133988.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1061380.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1135065.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn 102E  - Desqview V2.40+ - Allocate System Memory               </span>  [<span class="ngb">Q</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 102Eh</span><br /><span class="line">   BX = number of bytes</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status</span><br /><span class="line">       0000h successful</span><br /><span class="line">       ES:DI -&gt; allocated system memory (see #0359)</span><br /><span class="line">       0001h failed</span><br /><span class="line">       ES:DI = 0000h:0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  under DV 2.42, this call is identical to AX=1001h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1001h,AX=1002h,AX=DE0Ch</span><br /><span class="line"></span><br /><span class="line">Format of DESQview system memory block header:</span><br /><span class="line">Offset Size    Description (Table 0359)</span><br /><span class="line"> 00h   WORD    segment of next header or 0000h</span><br /><span class="line"> 02h   WORD    segment of previous header or 0000h</span><br /><span class="line"> 04h   WORD    size of block in paragraphs, including header</span><br /><span class="line"> 06h   BYTE    availability flag (00h in use, 01h free)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this header is located one paragraph before the memory block proper</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0349</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

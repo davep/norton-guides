@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1221721.html">
+    <link rel="next" href="rbint-1222729.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1221721.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1061380.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1222729.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn 21  - System - Power-on Self-test Error Log (ps50+)            </span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 21h</span><br /><span class="line">   AL = subfunction</span><br /><span class="line">       00h read POST log</span><br /><span class="line">       01h write POST log</span><br /><span class="line">       BH = device ID</span><br /><span class="line">       BL = error code</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error</span><br /><span class="line">   AH = status</span><br /><span class="line">       00h OK</span><br /><span class="line">       01h list full</span><br /><span class="line">       02h unsupported subfunction</span><br /><span class="line">       80h invalid command</span><br /><span class="line">       86h unsupported function</span><br /><span class="line">   if function 00h:</span><br /><span class="line">      BX = number of error codes stored</span><br /><span class="line">      ES:DI -&gt; error log</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the log is a series of words, the first byte of which identifies the</span><br /><span class="line">     error code and the second the device.</span><br /><span class="line">   supported by AMI PCI BIOS</span><br /><span class="line">   IBM considers this a required BIOS function</span><br /><span class="line">   if the device ID is FFh, the &#34;error code&#34; is the actual device number</span><br /><span class="line">     minus 255 (thus these devices have no specific error codes)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=23h&#34;SYSTEM&#34;,AH=24h&#34;SYSTEM&#34;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

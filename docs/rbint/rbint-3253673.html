@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3252357.html">
+    <link rel="next" href="rbint-3254907.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3252357.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3177957.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3254907.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn F217  - Novell Netware - Get Volume Information                </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = F217h subfn E9h</span><br /><span class="line">   CX = length of request buffer in bytes</span><br /><span class="line">   DX = length of reply buffer in bytes</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1772 at AH=E3h/SF=E9h)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1935)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=F2h&#34;Novell&#34;,AH=E3h/SF=E9h,AX=F212h,AX=F216h/SF=15h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Volume Information&#34; reply packet:</span><br /><span class="line">Offset Size    Description (Table 1935)</span><br /><span class="line"> 00h   DWORD   (big-endian) elapsed system time</span><br /><span class="line"> 04h   BYTE    volume number</span><br /><span class="line"> 05h   BYTE    logical drive number</span><br /><span class="line"> 06h   WORD    (big-endian) sectors per block</span><br /><span class="line"> 08h   WORD    (big-endian) starting block</span><br /><span class="line"> 0Ah   WORD    (big-endian) total blocks on volume</span><br /><span class="line"> 0Ch   WORD    (big-endian) blocks available on volume</span><br /><span class="line"> 0Eh   WORD    (big-endian) total directory slots</span><br /><span class="line"> 10h   WORD    (big-endian) directory slots available</span><br /><span class="line"> 12h   WORD    (big-endian) maximum directory entries actually used</span><br /><span class="line"> 14h   BYTE    flag: volume hashed if nonzero</span><br /><span class="line"> 15h   BYTE    flag: volume cached if nonzero</span><br /><span class="line"> 16h   BYTE    flag: volume removable if nonzero</span><br /><span class="line"> 17h   BYTE    flag: volume mounted if nonzero</span><br /><span class="line"> 18h 16 BYTEs  NUL-padded volume name</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1772,#1773 at AH=E3h/SF=E9h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

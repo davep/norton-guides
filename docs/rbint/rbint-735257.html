@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-735122.html">
+    <link rel="next" href="rbint-736469.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-735122.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-712089.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-736469.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 10 Fn EF  - Video - Msherc.com - Get Video Adapter Type And Mode     </span>  [<span class="ngb">V</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = EFh</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> DL = video adapter type</span><br /><span class="line">       00h original Hercules</span><br /><span class="line">       01h Hercules Plus    (port 03BAh reads x001xxxxx)</span><br /><span class="line">       02h Hercules InColor (port 03BAh reads x101xxxxx)</span><br /><span class="line">       FFh not a Hercules-compatible card (port 03BAh bit 7 not pulsing)</span><br /><span class="line">   DH = memory mode byte</span><br /><span class="line">       00h &#34;half&#34; mode</span><br /><span class="line">       01h &#34;full&#34; mode</span><br /><span class="line">       FFh not a Hercules-compatible card</span><br /><span class="line">Program: MSHERC.COM/QBHERC.COM is a support program for the Microsoft Quick</span><br /><span class="line">     languages which makes their graphics libraries compatible with a</span><br /><span class="line">     Hercules card by adding video modes 08h and 88h, and supporting</span><br /><span class="line">     text in the new graphics modes.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> while in mode 08h or 88h, INT 10 supports the Hercules card much like</span><br /><span class="line">     a CGA.</span><br /><span class="line">   MSHERC performs an installation check by setting DL=FFh and testing</span><br /><span class="line">     whether it has been changed on return, which causes it to reinstall</span><br /><span class="line">     itself when no HGC is present (or HGC emulation has temporarily been</span><br /><span class="line">     disabled); a better installation check would be to use DX=80FFh and</span><br /><span class="line">     check whether DX has been changed</span><br /><span class="line">   reportedly returns DH=00h on some not-entirely-Hercules-compatible</span><br /><span class="line">     cards</span><br /><span class="line">Index: installation check;MSHERC</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

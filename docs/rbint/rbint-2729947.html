@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2719801.html">
+    <link rel="next" href="rbint-2731534.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2719801.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2731534.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 67  - Dos 3.3+ - Set Handle Count                              </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 67h</span><br /><span class="line">   BX = size of new file handle table for process</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line"><span class="ngb">Desc:</span>  adjust the size of the per-process open file table, thus raising or</span><br /><span class="line">     lowering the limit on the number of files the caller can open</span><br /><span class="line">     simultaneously</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> if BX &lt;= 20, no action is taken if the handle limit has not yet been</span><br /><span class="line">     increased, and the table is copied back into the PSP if the limit</span><br /><span class="line">     is currently &gt; 20 handles</span><br /><span class="line">   for file handle tables of &gt; 20 handles, DOS 3.30 never reuses the</span><br /><span class="line">     same memory block, even if the limit is being reduced; this can lead</span><br /><span class="line">     to memory fragmentation as a new block is allocated and the existing</span><br /><span class="line">     one freed</span><br /><span class="line">   only the first 20 handles are copied to child processes in DOS 3.3-6.0</span><br /><span class="line">   increasing the file handles here will not, in general, increase the</span><br /><span class="line">     number of files that can be opened using the runtime library of a</span><br /><span class="line">     high-level language such as C</span><br /><span class="line">   Novell DOS 7 reportedly terminates the calling program if the JFT is</span><br /><span class="line">     being reduced in size and there are any open file handles beyond</span><br /><span class="line">     the portion of the JFT being retained</span><br /><span class="line">BUGS:  the original release of DOS 3.30 allocates a full 64K for the handle</span><br /><span class="line">     table on requests for an even number of handles</span><br /><span class="line">   DR DOS 3.41 and 5.0 will lose track of any open file handles beyond</span><br /><span class="line">     the portion of the JFT retained after the call; MS-DOS will indicate</span><br /><span class="line">     error 04h if any of the JFT entries to be removed are open</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=26h,AH=86h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

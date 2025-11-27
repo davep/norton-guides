@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1507351.html">
+    <link rel="next" href="rbint-1509457.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1507351.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1484861.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1509457.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 16 Fn 12  - Keyboard - Get Extended Shift States (enh Kbd Support Onl</span>  [<span class="ngb">B</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 12h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = shift flags 1 (same as returned by AH=02h) (see #0511)</span><br /><span class="line">   AH = shift flags 2 (see #0512)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> AL bit 3 set only for left Alt key on many machines</span><br /><span class="line">   AH bits 7 through 4 always clear on a Compaq SLT/286</span><br /><span class="line">   INT 16/AH=09h can be used to determine whether this function is</span><br /><span class="line">     supported, but only on later model PS/2s</span><br /><span class="line">   many BIOSes (including at least some versions of Phoenix and AMI) will</span><br /><span class="line">     destroy AH on return from functions higher than AH=12h, returning</span><br /><span class="line">     12h less than was in AH on entry (due to a chain of DEC/JZ</span><br /><span class="line">     instructions)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=02h,AH=09h,AH=22h,AH=51h,INT 17/AH=0Dh,MEM 0040h:0017h</span><br /><span class="line"></span><br /><span class="line">Bitfields for keyboard shift flags 1:</span><br /><span class="line">Bit(s) Description (Table 0511)</span><br /><span class="line"> 7 Insert active</span><br /><span class="line"> 6 CapsLock active</span><br /><span class="line"> 5 NumLock active</span><br /><span class="line"> 4 ScrollLock active</span><br /><span class="line"> 3 Alt key pressed (either Alt on 101/102-key keyboards)</span><br /><span class="line"> 2 Ctrl key pressed (either Ctrl on 101/102-key keyboards)</span><br /><span class="line"> 1 left shift key pressed</span><br /><span class="line"> 0 right shift key pressed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0506,#0512,MEM 0040h:0017h,#M010</span><br /><span class="line"></span><br /><span class="line">Bitfields for keyboard shift flags 2:</span><br /><span class="line">Bit(s) Description (Table 0512)</span><br /><span class="line"> 7 SysReq key pressed (SysReq is often labeled SysRq)</span><br /><span class="line"> 6 CapsLock pressed</span><br /><span class="line"> 5 NumLock pressed</span><br /><span class="line"> 4 ScrollLock pressed</span><br /><span class="line"> 3 right Alt key pressed</span><br /><span class="line"> 2 right Ctrl key pressed</span><br /><span class="line"> 1 left Alt key pressed</span><br /><span class="line"> 0 left Ctrl key pressed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0511,MEM 0040h:0018h,#M011</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

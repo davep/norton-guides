@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1757053.html">
+    <link rel="next" href="rbint-1759214.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1757053.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1712194.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1759214.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 1A Fn 8C  - Pcmcia Socket Services V1.00 - Inquire Socket            </span>  [<span class="ngb">X</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 8Ch</span><br /><span class="line">   AL = adapter number</span><br /><span class="line">   BL = socket number (01h to maximum supported by adapter)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AH destroyed</span><br /><span class="line">       DH = capabilities (see #0604)</span><br /><span class="line">       DL = hardware indicators (see #0605)</span><br /><span class="line">       DS:SI -&gt; Socket Characteristics table (see #0606)</span><br /><span class="line">       DS:DI -&gt; Power Management table (see #0608)</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AH = error code (01h,0Bh) (see #0580)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=87h,AH=8Dh,AH=8Eh</span><br /><span class="line"></span><br /><span class="line">Bitfields for PCMCIA socket capabilities:</span><br /><span class="line">Bit(s) Description (Table 0604)</span><br /><span class="line"> 0 card change</span><br /><span class="line"> 1 card lock</span><br /><span class="line"> 2 insert card (motor control)</span><br /><span class="line"> 3 eject card (motor control)</span><br /><span class="line"> 4-7   reserved (0)</span><br /><span class="line"></span><br /><span class="line">Bitfields for PCMCIA socket hardware indicators:</span><br /><span class="line">Bit(s) Description (Table 0605)</span><br /><span class="line"> 0 busy status</span><br /><span class="line"> 1 write-protected</span><br /><span class="line"> 2 battery status</span><br /><span class="line"> 3 card lock status</span><br /><span class="line"> 4 XIP status (eXecute-In-Place)</span><br /><span class="line"> 5-7   reserved (0)</span><br /><span class="line"></span><br /><span class="line">Format of PCMCIA Socket Characteristics table:</span><br /><span class="line">Offset Size    Description (Table 0606)</span><br /><span class="line"> 00h   WORD    supported card types (see #0607)</span><br /><span class="line"> 02h   WORD    steerable IRQ levels (bit 0 = IRQ0 to bit 15 = IRQ15)</span><br /><span class="line"> 04h   WORD    additional steerable IRQ levels</span><br /><span class="line">       bit 0: NMI</span><br /><span class="line">       bit 1: I/O check</span><br /><span class="line">       bit 2: bus error</span><br /><span class="line">       bit 3: vendor-unique</span><br /><span class="line">       bits 4-7 reserved (0)</span><br /><span class="line"></span><br /><span class="line">Bitfields for supported card types:</span><br /><span class="line">Bit(s) Description (Table 0607)</span><br /><span class="line"> 0 memory card</span><br /><span class="line"> 1 I/O card</span><br /><span class="line"> 2-7   reserved (0)</span><br /><span class="line"></span><br /><span class="line">Format of PCMCIA Power Management table:</span><br /><span class="line">Offset Size    Description (Table 0608)</span><br /><span class="line"> 00h   WORD    number of entries in table (0 if power management not avail)</span><br /><span class="line"> 02h 2N BYTEs  power levels</span><br /><span class="line">       byte 0: voltage in 0.1V units</span><br /><span class="line">       byte 1: power supply</span><br /><span class="line">           bit 7: Vcc</span><br /><span class="line">           bit 6: Vpp1</span><br /><span class="line">           bit 5: Vpp2</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

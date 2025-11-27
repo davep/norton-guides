@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-490288.html">
+    <link rel="next" href="rbint-492144.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-490288.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-492144.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 10 Fn 0F  - Video - Get Current Video Mode                           </span>  [<span class="ngb">V</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 0Fh</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AH = number of character columns</span><br /><span class="line">   AL = display mode (see #0009 at AH=00h)</span><br /><span class="line">   BH = active page (see AH=05h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> if mode was set with bit 7 set (&#34;no blanking&#34;), the returned mode will</span><br /><span class="line">     also have bit 7 set</span><br /><span class="line">   EGA, VGA, and UltraVision return either AL=03h (color) or AL=07h</span><br /><span class="line">     (monochrome) in all extended-row text modes</span><br /><span class="line">   HP 200LX returns AL=07h (monochrome) if mode was set to AL=21h</span><br /><span class="line">     and always 80 resp. 40 columns in all text modes regardless of</span><br /><span class="line">     current zoom setting (see AH=D0h)</span><br /><span class="line">   when using a Hercules Graphics Card, additional checks are necessary:</span><br /><span class="line">       mode 05h: if WORD 0040h:0063h is 03B4h, may be in graphics page 1</span><br /><span class="line">         (as set by DOSSHELL and other Microsoft software)</span><br /><span class="line">       mode 06h: if WORD 0040h:0063h is 03B4h, may be in graphics page 0</span><br /><span class="line">         (as set by DOSSHELL and other Microsoft software)</span><br /><span class="line">       mode 07h: if BYTE 0040h:0065h bit 1 is set, Hercules card is in</span><br /><span class="line">         graphics mode, with bit 7 indicating the page (mode set by</span><br /><span class="line">         Hercules driver for Borland Turbo C)</span><br /><span class="line">   the Tandy 2000 BIOS is only documented as returning AL, not AH or BH</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=00h,AH=05h,AX=10F2h,AX=1130h,AX=CD04h,MEM 0040h:004Ah</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

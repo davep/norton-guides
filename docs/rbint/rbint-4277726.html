@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4277086.html">
+    <link rel="next" href="rbint-4279474.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4277086.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4197937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4279474.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn B80F  - Dos Lan Requester - Get Start Parameters               </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = B80Fh</span><br /><span class="line">   CX = size of return data buffer</span><br /><span class="line">   ES:DI -&gt; return data buffer (see #2668)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status</span><br /><span class="line">        00h     network started</span><br /><span class="line">        nonzero network not started</span><br /><span class="line">   CX = number of bytes returned in buffer</span><br /><span class="line">   ES:DI buffer filled</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=B809h&#34;PC LAN Program&#34;,AX=B80Eh</span><br /><span class="line"></span><br /><span class="line">Format of DOS LAN Requester return data buffer:</span><br /><span class="line">Offset Size    Description (Table 2668)</span><br /><span class="line"> 00h   BYTE    major version</span><br /><span class="line"> 01h   BYTE    minor version</span><br /><span class="line"> 02h   WORD    configuration flags given when network was started (see #2669)</span><br /><span class="line"> 04h 15 BYTEs  NET START machine name (space padded)</span><br /><span class="line"> 13h   BYTE    00h</span><br /><span class="line"> 14h 9 BYTEs   NET START domain name (NULL padded)</span><br /><span class="line"> 1Dh   BYTE    00h</span><br /><span class="line"> 1Eh 32 BYTEs  /WRK heuristics string (space padded, not terminated)</span><br /><span class="line"> 3Eh   WORD    /SRV value</span><br /><span class="line"> 40h   WORD    /ASG value</span><br /><span class="line"> 42h   WORD    /NBC value</span><br /><span class="line"> 44h   WORD    /NBS value</span><br /><span class="line"> 46h   WORD    /BBC value</span><br /><span class="line"> 48h   WORD    /BBS value</span><br /><span class="line"> 4Ah   WORD    /PBC value</span><br /><span class="line"> 4Ch   WORD    /PBS value</span><br /><span class="line"> 4Eh   WORD    /PFS value</span><br /><span class="line"> 50h   WORD    /PFT value</span><br /><span class="line"> 52h   WORD    /PWT value</span><br /><span class="line"> 54h   WORD    /KUC value</span><br /><span class="line"> 56h   WORD    /KST value</span><br /><span class="line"> 58h   WORD    /NVS value</span><br /><span class="line"> 5Ah   WORD    /NMS value</span><br /><span class="line"> 5Ch   WORD    /NDB value</span><br /><span class="line"> 5Eh   WORD    /MBI value</span><br /><span class="line"> 60h   BYTE    NetBIOS name number for machine name</span><br /><span class="line"> 61h   BYTE    NetBIOS name number for domain name</span><br /><span class="line"> 62h   WORD    NetBIOS sessions required for configuration</span><br /><span class="line"> 64h   WORD    NetBIOS commands required for configuration</span><br /><span class="line"> 66h   WORD    NetBIOS names required for configuration</span><br /><span class="line"> 68h 128 BYTEs NET START path (LANROOT)</span><br /><span class="line"> E8h   BYTE    00h</span><br /><span class="line"></span><br /><span class="line">Bitfields for configuration flags:</span><br /><span class="line">Bit(s) Description (Table 2669)</span><br /><span class="line"> 0 /NVS nonzero</span><br /><span class="line"> 1 /NMS nonzero</span><br /><span class="line"> 2 /API</span><br /><span class="line"> 3 /HIM</span><br /><span class="line"> 4 /LIM</span><br /><span class="line"> 5 /ENC</span><br /><span class="line"> 6 /POP</span><br /><span class="line"> 7 /EMS</span><br /><span class="line"> 8 /RPL</span><br /><span class="line"> 9-12  reserved</span><br /><span class="line"> 13    RDR started</span><br /><span class="line"> 14    RCV started</span><br /><span class="line"> 15    User is currently logged on</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

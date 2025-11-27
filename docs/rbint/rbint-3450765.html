@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3450436.html">
+    <link rel="next" href="rbint-3451486.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3450436.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3368614.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3451486.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn FFCC  - Topware Network Os V5.10+ - Get Print Server&#39;s Spooling</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = FFCCh</span><br /><span class="line">   CL = printer server station address</span><br /><span class="line">   BH = start item number of spooling file for print server</span><br /><span class="line">   BL = number of the item to be retrieved</span><br /><span class="line">   DS:DX -&gt; buffer for queued file information (see #2227)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h successful</span><br /><span class="line">       AH = number of spool files</span><br /><span class="line">       DS:DX buffer filled</span><br /><span class="line">       nonzero failed</span><br /><span class="line"></span><br /><span class="line">Format of TopWare queued file information buffer [16-item array, one element]:</span><br /><span class="line">Offset Size    Description (Table 2227)</span><br /><span class="line"> 00h 12 BYTEs  filename</span><br /><span class="line"> 0Ch   DWORD   size</span><br /><span class="line"> 10h   WORD    date</span><br /><span class="line"> 12h   WORD    time</span><br /><span class="line"> 14h 15 BYTEs  username</span><br /><span class="line"> 23h   BYTE    count</span><br /><span class="line"> 24h   BYTE    flag: header</span><br /><span class="line"> 25h   BYTE    print number</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

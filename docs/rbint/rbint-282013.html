@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-281922.html">
+    <link rel="next" href="rbint-289234.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-281922.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-289234.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Output: after CPUID:</span></span><br /><span class="line"></span><br /><span class="line">        EAX = RRRR RFMS : revision information</span><br /><span class="line">            R = Reserved  Zero, but reserved</span><br /><span class="line">            F = Family    (4=486, 5=Pentium)</span><br /><span class="line">            M = Model     (3 on tested 486DX-2/66, 1 on tested Pentium/60)</span><br /><span class="line">            S = Stepping  (5 on tested 486DX-2/66, 3 on tested Pentium/60)</span><br /><span class="line">        EBX = RRRR RRRR</span><br /><span class="line">            R = Reserved  Zero, but reserved</span><br /><span class="line">        ECX = RRRR RRRR</span><br /><span class="line">            R = Reserved  Zero, but reserved</span><br /><span class="line">        EDX = xxxx xxxx : Bitmapped features, 1 means option available</span><br /><span class="line">            Bit 0 =       FPU built-in (supported on 486 and Pentium)</span><br /><span class="line">            Bit 1 =       V-86 mode extensions present</span><br /><span class="line">            Bit 2 =       I/O breakpoints possible</span><br /><span class="line">            Bit 3 =       4 MB paging supported</span><br /><span class="line">            Bit 4 =       Time Stamp Counter present</span><br /><span class="line">            Bit 5 =       Has Pentium compatible Model Specific Registers</span><br /><span class="line">            Bit 6 =       Reserved (0)</span><br /><span class="line">            Bit 7 =       Machine Check Exception supported (P5 only)</span><br /><span class="line">            Bit 8 =       CMPXCHG8B supported (apparently Pentium only)</span><br /><span class="line">            Bits 9-31     Reserved</span><br /><span class="line">            Assume zero if bit is not mentioned.</span><br /><span class="line"></span><br /><span class="line">Note that this instruction is not supported on all 486 CPUs. However,</span><br /><span class="line">Christian Ludloff has tested it on some 486 DX and 486 SX models, in</span><br /><span class="line">addition to the Pentium/60 and found them to be present on those machines.</span><br /><span class="line">Any step and model information you find this instruction to run on is</span><br /><span class="line">welcomed. Please forward it to Christian.</span><br /><span class="line"></span><br /><span class="line">Apparently all new(er) Intel CPUs are equipped with (some) of these</span><br /><span class="line">extensions, not just the Pentium.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">CR0-4 register layout (386+)</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">    = CR0: Some bits remain from the Machine Status Word of the 286.</span><br /><span class="line"></span><br /><span class="line">      Bit 31                         16                              0</span><br /><span class="line">      ┌─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬┴┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┐</span><br /><span class="line">      │P│C│N│r│r│r│r│r│r│r│r│r│r│A│r│W│r│r│r│r│r│r│r│r│r│r│n│e│t│E│m│p│</span><br /><span class="line">      └┼┴┼┴┼┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴┼┴─┴┼┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴┼┴┼┴┼┴┼┴┼┴┼┛</span><br /><span class="line">       │┌┛ │                     │   └───────────────────┐ │ │ │ │ │ │</span><br /><span class="line">       ││┌─┛                     └─────────────────────┐ │ │ │ │ │ │ │</span><br /><span class="line">       ││└NW Not Write through (1 if write through)    │ │ │ │ │ │ │ │</span><br /><span class="line">       │└─CD Cache Disable (1 if disabled)             │ │ │ │ │ │ │ │</span><br /><span class="line">       └──PE Paging Enabled                            │ │ │ │ │ │ │ │</span><br /><span class="line">          AC Alignment mask (1=masked)─────────────────┛ │ │ │ │ │ │ │</span><br /><span class="line">          WP Write Protect (1 if read-only pages protected)│ │ │ │ │ │</span><br /><span class="line">          NE Numeric Error (1 if errors should be ignored)─┛ │ │ │ │ │</span><br /><span class="line">          ET Extension Type (1=387 type FPU,0=287 type FPU)──┛ │ │ │ │</span><br /><span class="line">          TS Task Switch (1=task switch has occurred)──────────┛ │ │ │</span><br /><span class="line">          EP Emulate Processor Extension ────────────────────────┛ │ │</span><br /><span class="line">             (1=execute exception 7 on FPU codes)                  │ │</span><br /><span class="line">          MP Math Present (1=_FPU_ will handle FPU codes)──────────┛ │</span><br /><span class="line">          PE Protection Enabled (1=Protected mode activated)─────────┛</span><br /><span class="line"></span><br /><span class="line">      If EP=1 and MP=0, the FPU codes will be handled by software routines</span><br /><span class="line">      via exception 7. Coprocessor emulators use this property.</span><br /><span class="line"></span><br /><span class="line">    = CR1: Is reserved</span><br /><span class="line">    = CR2: Linear 32-bit address of Page Fault</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    = CR3: Page Directory Base Register (386+)</span><br /><span class="line"></span><br /><span class="line">      Bit 31                         16                              0</span><br /><span class="line">      ┌─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬┴┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┐</span><br /><span class="line">      │x│x│x│x│x│x│x│x│x│x│x│x│x│x│x│x│x│x│x│x│r│r│r│r│r│r│r│p│P│r│r│r│</span><br /><span class="line">      └┼┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴┼┴─┴─┴─┴─┴─┴─┴─┴┼┴┼┴─┴─┴─┛</span><br /><span class="line">       └─────Page Directory Base Register────┛               │ │       PDBR</span><br /><span class="line">       (used in the Paging process implemented on the 386+)  │ │</span><br /><span class="line">                                                             │ │</span><br /><span class="line">       Page-level Cache Disable (486+)───────────────────────┛ │       PCD</span><br /><span class="line">       Page-level Writes Transparent (486+)────────────────────┛       PWT</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    = CR4: Extended Machine Control (Pentium+)</span><br /><span class="line"></span><br /><span class="line">      Bit 31                         16                              0</span><br /><span class="line">      ┌─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬┴┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┐</span><br /><span class="line">      │r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│r│M│r│p│D│T│P│V│</span><br /><span class="line">      └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴┼┴─┴┼┴┼┴┼┴┼┴┼┛</span><br /><span class="line">       Machine Check Enable (1=enabled)──────────────────┛   │ │ │ │ │ MCE</span><br /><span class="line">       Page Size Extension (1=4 Mb paging instead of 4 Kb)───┛ │ │ │ │ PSE</span><br /><span class="line">       Debugging Extension (1=breakpoints also valid for I/O)──┛ │ │ │ DE</span><br /><span class="line">       Time Stamp instruction Disable (1=RDTSC only with CPL=0)──┛ │ │ TSD</span><br /><span class="line">       Protected mode Virtual Interrupts (1=use VI flag in PM)─────┛ │ PVI</span><br /><span class="line">       Virtual86 mode Virtual Interrupts (1=use VI flag in VM)───────┛ VME</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">       The VME bit allows a V86 (or VM) task to use the &#39;virtual&#39; interrupt</span><br /><span class="line">       flag. Setting and clearing the interrupt flag (IF) in EFLAGS is no</span><br /><span class="line">       longer intercepted by the V86 Monitor program (a very time consuming</span><br /><span class="line">       procedure), instead, the Pentium+ sets and clears the VI flag in</span><br /><span class="line">       EFLAGS, instead of the IF flag. This saves task switches to the</span><br /><span class="line">       monitor to handle the CLI and STI instructions and thus a lot</span><br /><span class="line">       of time in general purpose 8086 programs running in V86 mode.</span><br /><span class="line"></span><br /><span class="line">       The PVI bit allows the same for Protected Mode procedures who would</span><br /><span class="line">       otherwise need supervision by a different task. That is:</span><br /><span class="line">       Tasks with CPL&lt;0 may now call tasks with CPL=0 without crashing</span><br /><span class="line">       the system, but only under specific circumstances.</span><br /><span class="line"></span><br /><span class="line">       The TSD bit changes the CPL-sensitivity of the RDTSC (Read Time</span><br /><span class="line">       Stamp Counter) instruction, a built-in CPU counter which is</span><br /><span class="line">       incremented every internal clockpulse.</span><br /><span class="line">       When TSD is 0, &lt;RDTSC&gt; is accessible for all CPL levels.</span><br /><span class="line">       With TSD set to 1 however, RDTSC is available only to tasks with</span><br /><span class="line">       CPL=0.</span><br /><span class="line"></span><br /><span class="line">       The DE bit allows the Pentium+ to set breakpoints in I/O space</span><br /><span class="line">       using the breakpoint registers. The R/W coding 10b is used to</span><br /><span class="line">       indicate that the breakpoint is in I/O space on the Pentium+.</span><br /><span class="line">       The 10b encoding was marked as &#39;invalid&#39; for pre-Pentium CPUs.</span><br /><span class="line"></span><br /><span class="line">       The PSE bit determines the size of the pages controlled by the</span><br /><span class="line">       Paging Unit. With PSE = 0, the Paging mechanism uses 4 Kb pages.</span><br /><span class="line">       With PSE set to 1 however, the Paging mechanism uses 4 Mb pages.</span><br /><span class="line"></span><br /><span class="line">       The MCE bit is used to allow generation of a Machine Check Exception.</span><br /><span class="line">       This exception is the result of a Parity error _within_ the Pentium</span><br /><span class="line">       or an active BUSCHK signal (low) on pin T3 (upper right hand corner,</span><br /><span class="line">       fourth pin from right, third from top when pin A1 is upper left</span><br /><span class="line">       corner, TOP view). The exception is vectored through interrupt 18d</span><br /><span class="line">       (or 12h). Execution after this exception may void system integrity.</span><br /><span class="line">       The Machine Check Address register holds the value of the address</span><br /><span class="line">       bus at the moment the event took place.</span><br /><span class="line">       The Machine Check Type register holds the type of bus access at the</span><br /><span class="line">       time the event took place.</span><br /><span class="line">       Both these registers are internal 64 bit registers which can only be</span><br /><span class="line">       read through the instruction &lt;RDMSR&gt; (Read Model Specific Register).</span><br /><span class="line">       See also &lt;WRMSR&gt; (Write Model Specific Register).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">EFLAGS register layout (8088 to Pentium &amp; NEC)</span><br /><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br /><span class="line"></span><br /><span class="line">      Bit 31                         16                              0</span><br /><span class="line">      ┌─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬┴┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┐</span><br /><span class="line">      │r│r│r│r│r│r│r│r│r│r│c│p│v│a│V│R│M│N│IOP│O│D│I│T│S│Z│r│A│r│P│r│C│</span><br /><span class="line">      └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴┼┴┼┴┼┴┼┴┼┴┼┴┼┴┼┴┼┴─┴┼┴┼┴┼┴┼┴┼┴┼┴─┴┼┴─┴┼┴─┴┼┛</span><br /><span class="line">                           │ │ │ │ │ │ │ │ │   │ │ │ │ │ │   │   │Carry</span><br /><span class="line">      CPUID available ─────┛ │ │ │ │ │ │ │ │   │ │ │ │ │ │   │   Parity</span><br /><span class="line">      Virtual Interrupt Pending│ │ │ │ │ │ │   │ │ │ │ │ │   └Aux carry</span><br /><span class="line">      Virtual Interrupt flag ──┛ │ │ │ │ │ │   │ │ │ │ │ └──────── Zero</span><br /><span class="line">      Alignment check ───────────┛ │ │ │ │ │   │ │ │ │ └────────── Sign</span><br /><span class="line">      Virtual-86 mode enabled ─────┛ │ │ │ │   │ │ │ └ Trap (step mode)</span><br /><span class="line">      Resume flag ───────────────────┛ │ │ │   │ │ └── Interrupt enable</span><br /><span class="line">      Mode Flag ───────────────────────┛ │ │   │ └──── Direction (1=up)</span><br /><span class="line">      Nested Task ───────────────────────┛ │   └────────────── Overflow</span><br /><span class="line">                                           └── I/O privilege level 0..3</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

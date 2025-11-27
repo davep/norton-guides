@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-853954.html">
+    <link rel="next" href="rbint-858330.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-853954.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-858330.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 13 Fn 48  - Ibm/ms Int 13 Extensions - Get Drive Parameters          </span>  [<span class="ngb">d</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 48h</span><br /><span class="line">   DL = drive (80h-FFh)</span><br /><span class="line">   DS:SI -&gt; buffer for drive parameters (see #0205)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AH = 00h</span><br /><span class="line">       DS:SI buffer filled</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AH = error code (see #0166)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=08h,AH=41h,AH=49h</span><br /><span class="line"></span><br /><span class="line">Format of IBM/MS INT 13 Extensions drive parameters:</span><br /><span class="line">Offset Size    Description (Table 0205)</span><br /><span class="line"> 00h   WORD    (call) size of buffer (001Ah for v1.x, 001Eh for v2.x)</span><br /><span class="line">       (ret) size of returned data</span><br /><span class="line"> 02h   WORD    information flags (see #0206)</span><br /><span class="line"> 04h   DWORD   number of physical cylinders on drive</span><br /><span class="line"> 08h   DWORD   number of physical heads on drive</span><br /><span class="line"> 0Ch   DWORD   number of physical sectors per track</span><br /><span class="line"> 10h   QWORD   total number of sectors on drive</span><br /><span class="line"> 18h   WORD    bytes per sector</span><br /><span class="line">---v2.0+ ---</span><br /><span class="line"> 1Ah   DWORD   -&gt; EDD configuration parameters (see #0208)</span><br /><span class="line">       FFFFh:FFFFh if not available</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  if the size is less than 30 on call, the final DWORD will not be</span><br /><span class="line">     returned by a v2.x implementation</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0207,#2867</span><br /><span class="line"></span><br /><span class="line">Bitfields for IBM/MS INT 13 Extensions information flags:</span><br /><span class="line">Bit(s) Description (Table 0206)</span><br /><span class="line"> 0 DMA boundary errors handled transparently</span><br /><span class="line"> 1 cylinder/head/sectors-per-track information is valid</span><br /><span class="line"> 2 removable drive</span><br /><span class="line"> 3 write with verify supported</span><br /><span class="line"> 4 drive has change-line support (required if drive &gt;= 80h is removable)</span><br /><span class="line"> 5 drive can be locked (required if drive &gt;= 80h is removable)</span><br /><span class="line"> 6 CHS information set to maximum supported values, not current media</span><br /><span class="line"> 15-7  reserved (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0205</span><br /><span class="line"></span><br /><span class="line">Format of Phoenix Enhanced Disk Drive Spec translated drive parameter table:</span><br /><span class="line">Offset Size    Description (Table 0207)</span><br /><span class="line"> 00h   WORD    number of cylinders</span><br /><span class="line"> 02h   BYTE    number of heads</span><br /><span class="line"> 03h   BYTE    A0h (signature indicating translated table)</span><br /><span class="line"> 04h   BYTE    number of physical sectors per track</span><br /><span class="line"> 05h   WORD    starting write precompensation cylinder number</span><br /><span class="line"> 07h   BYTE    reserved</span><br /><span class="line"> 08h   BYTE    control byte (see #2869 at INT 41&#34;DISK 0&#34;)</span><br /><span class="line"> 09h   WORD    number of physical cylinders</span><br /><span class="line"> 0Bh   BYTE    number of physical heads</span><br /><span class="line"> 0Ch   WORD    cylinder number of landing zone</span><br /><span class="line"> 0Eh   BYTE    number of logical sectors per track</span><br /><span class="line"> 0Fh   BYTE    checksum</span><br /><span class="line">Program: the Phoenix Enhanced Disk Drive Specification is an addition to the</span><br /><span class="line">     IBM/MS INT 13 extensions</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0208,#2867</span><br /><span class="line"></span><br /><span class="line">Format of Phoenix Enhanced Disk Drive Spec Fixed Disk Parameter Table:</span><br /><span class="line">Offset Size    Description (Table 0208)</span><br /><span class="line"> 00h   WORD    physical I/O port base address</span><br /><span class="line"> 02h   WORD    disk-drive control port address</span><br /><span class="line"> 04h   BYTE    drive flags (see #0209)</span><br /><span class="line"> 05h   BYTE    proprietary information</span><br /><span class="line">       bits 7-4 reserved (0)</span><br /><span class="line">       bits 3-0: Phoenix proprietary (used by BIOS)</span><br /><span class="line"> 06h   BYTE    IRQ (bits 3-0; bits 7-4 reserved and must be 0)</span><br /><span class="line"> 07h   BYTE    sector count for multi-sector transfers</span><br /><span class="line"> 08h   BYTE    DMA control</span><br /><span class="line">       bits 7-4: DMA type (0-2) as per ATA-2 specification</span><br /><span class="line">       bits 3-0: DMA channel</span><br /><span class="line"> 09h   BYTE    programmed I/O control</span><br /><span class="line">       bits 7-4: reserved (0)</span><br /><span class="line">       bits 3-0: PIO type (1-4) as per ATA-2 specification</span><br /><span class="line"> 0Ah   WORD    drive options (see #0210)</span><br /><span class="line"> 0Ch  2 BYTEs  reserved (0)</span><br /><span class="line"> 0Eh   BYTE    extension revision level (high nybble=major, low nybble=minor)</span><br /><span class="line">       (currently 10h for v1.0 and 11h for v1.1)</span><br /><span class="line"> 0Fh   BYTE    2&#39;s complement checksum of bytes 00h-0Eh</span><br /><span class="line">       8-bit sum of all bytes 00h-0Fh should equal 00h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0207</span><br /><span class="line"></span><br /><span class="line">Bitfields for Phoenix Enhanced Disk Drive Spec drive flags:</span><br /><span class="line">Bit(s) Description (Table 0209)</span><br /><span class="line"> 7 reserved (1)</span><br /><span class="line"> 6 LBA enabled</span><br /><span class="line"> 5 reserved (1)</span><br /><span class="line"> 4 drive is slave</span><br /><span class="line"> 3-0   reserved (0)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0208,#0210</span><br /><span class="line"></span><br /><span class="line">Bitfields for Phoenix Enhanced Disk Drive Spec drive options:</span><br /><span class="line">Bit(s) Description (Table 0210)</span><br /><span class="line"> 0 fast PIO enabled</span><br /><span class="line"> 1 fast DMA access enabled</span><br /><span class="line"> 2 block PIO (multi-sector transfers) enabled</span><br /><span class="line"> 3 CHS translation enabled</span><br /><span class="line"> 4 LBA translation enabled</span><br /><span class="line"> 5 removable media</span><br /><span class="line"> 6 ATAPI device (CD-ROM)</span><br /><span class="line"> 7 32-bit transfer mode</span><br /><span class="line">---v1.1---</span><br /><span class="line"> 8 ATAPI device uses DRQ to signal readiness for packet command</span><br /><span class="line">   (must be 0 if bit 6 is 0)</span><br /><span class="line"> 10-9  translation type (must be 00 if bit 3 is 0)</span><br /><span class="line">   00 Phoenix bit-shifting translation</span><br /><span class="line">   01 LBA-assisted translation</span><br /><span class="line">   10 reserved</span><br /><span class="line">   11 proprietary translation</span><br /><span class="line"> 15-8  reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0208,#0209</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

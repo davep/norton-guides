@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2897744.html">
+    <link rel="next" href="rbint-2899737.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2897744.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2899737.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn E2  - Novell Netware - Directory Services - Get Volume Name    </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = E2h subfn 06h</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1542)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1543)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status (00h,98h) (see #1527)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and</span><br /><span class="line">     Alloy NTNX</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=DAh,AH=E2h/SF=02h,AH=E2h/SF=05h,AH=E2h/SF=15h,AH=E2h/SF=1Ah</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=E9h,AX=F216h/SF=06h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Volume Name&#34; request buffer:</span><br /><span class="line">Offset Size    Description (Table 1542)</span><br /><span class="line"> 00h   WORD    0002h (length of following data)</span><br /><span class="line"> 02h   BYTE    06h (subfunction &#34;Get Volume Name&#34;)</span><br /><span class="line"> 03h   BYTE    volume number</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1543,#1802 at AX=F216h/SF=06h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Get Volume Name&#34; reply buffer:</span><br /><span class="line">Offset Size    Description (Table 1543)</span><br /><span class="line"> 00h   WORD    (call) 0011h (length of following results buffer)</span><br /><span class="line"> 02h   BYTE    length of volume name</span><br /><span class="line"> 03h 16 BYTEs  NUL-padded volume name</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1542,#1802 at AX=F216h/SF=06h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

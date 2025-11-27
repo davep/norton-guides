@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3676340.html">
+    <link rel="next" href="rbint-3682486.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3676340.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3682486.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1401  CU - Nlsfunc.com - Change Code Page                      </span>  [<span class="ngb">U</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1401h</span><br /><span class="line">   DS:SI -&gt; internal code page structure (see #2305)</span><br /><span class="line">   BX = new code page (see #1446 at INT 21/AX=6602h)</span><br /><span class="line">   DX = country code???</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">        00h successful</span><br /><span class="line">        else DOS error code</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this function is called by the DOS v3.3+ kernel</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1400h&#34;NLSFUNC&#34;,AX=1402h&#34;NLSFUNC&#34;,INT 21/AH=66h</span><br /><span class="line"></span><br /><span class="line">Format of DOS 3.30 internal code page structure:</span><br /><span class="line">Offset Size    Description (Table 2305)</span><br /><span class="line"> 00h  8 BYTEs  ???</span><br /><span class="line"> 08h 64 BYTEs  name of country information file (see #2306)</span><br /><span class="line"> 48h   WORD    system code page (see #1446 at INT 21/AX=6602h)</span><br /><span class="line"> 4Ah   WORD    number of supported subfunctions</span><br /><span class="line"> 4Ch  5 BYTEs  data to return for INT 21/AX=6502h</span><br /><span class="line"> 51h  5 BYTEs  data to return for INT 21/AX=6504h</span><br /><span class="line"> 56h  5 BYTEs  data to return for INT 21/AX=6505h</span><br /><span class="line"> 5Bh  5 BYTEs  data to return for INT 21/AX=6506h</span><br /><span class="line"> 60h 41 BYTEs  data to return for INT 21/AX=6501h</span><br /><span class="line"></span><br /><span class="line">Format of MS-DOS/PC-DOS/OS2/WinNT/PTS-DOS COUNTRY.SYS file:</span><br /><span class="line">Offset Size    Description (Table 2306)</span><br /><span class="line"> 00h   BYTE    ID tag (FFh)</span><br /><span class="line"> 01h  7 BYTEs  ASCII &#34;COUNTRY&#34;</span><br /><span class="line"> 08h  8 BYTEs  ??? (00h)</span><br /><span class="line"> 10h   BYTE    ??? (01h)</span><br /><span class="line"> 11h   BYTE    ??? (00h)</span><br /><span class="line"> 12h   BYTE    ??? (01h)</span><br /><span class="line"> 13h   DWORD   offset of first entry in file (see #2307)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2310</span><br /><span class="line"></span><br /><span class="line">Format of MS-DOS/PC-DOS/OS2/WinNT/PTS-DOS COUNTRY.SYS entry:</span><br /><span class="line">Offset Size    Description (Table 2307)</span><br /><span class="line"> 00h   WORD    number of country-codepage entries following</span><br /><span class="line"> 02h       N Country-Codepage entries:</span><br /><span class="line">       Offset  Size    Description</span><br /><span class="line">        00h    WORD    length of entry, not counting this word (000Ch)</span><br /><span class="line">        02h    WORD    country ID</span><br /><span class="line">        04h    WORD    codepage ID</span><br /><span class="line">        06h    WORD    ??? (0000h)</span><br /><span class="line">        08h    WORD    ??? (0000h)</span><br /><span class="line">        0Ah    DWORD   offset of country-subfunction-header in file</span><br /><span class="line">                 (see #2308)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> multiple codepages for a country are stored consecutively</span><br /><span class="line">   PTS/DOS places a copyright string immediately following this structure,</span><br /><span class="line">     though a copyright at the end of the file is preferable</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2306</span><br /><span class="line"></span><br /><span class="line">Format of MS-DOS/PC-DOS/OS2/WinNT/PTS-DOS COUNTRY.SYS country-subfunc header:</span><br /><span class="line">Offset Size    Description (Table 2308)</span><br /><span class="line"> 00h   WORD    number of subfunction entries following</span><br /><span class="line"> 02h       N subfunction entries</span><br /><span class="line">       Offset  Size    Description</span><br /><span class="line">        00h    WORD    length of subfunction entry, not counting this</span><br /><span class="line">                 word (usually 06h)</span><br /><span class="line">        02h    WORD    subfunction ID</span><br /><span class="line">               (value passed to INT 21/AH=65h in AL)</span><br /><span class="line">        04h    DWORD   offset within file of subfunction data entry</span><br /><span class="line">                 (see #2309)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2307</span><br /><span class="line"></span><br /><span class="line">Format of MS-DOS/PC-DOS/OS2/WinNT/PTS-DOS COUNTRY.SYS country-subfunc data::</span><br /><span class="line">Offset Size    Description (Table 2309)</span><br /><span class="line"> 00h   BYTE    ID-tag (FFh)</span><br /><span class="line"> 01h  7 BYTEs  table-type signature (blank-padded)</span><br /><span class="line">       &#34;CTYINFO&#34;   general country info (subfn 01h)</span><br /><span class="line">       &#34;UCASE  &#34;   uppercase table (subfn 02h)</span><br /><span class="line">       &#34;LCASE  &#34;   lowercase table (subfn 03h) (DOS 6.2_)</span><br /><span class="line">       &#34;FUCASE &#34;   filename uppercase table (subfn 04h)</span><br /><span class="line">       &#34;FCHAR  &#34;   filename terminator table (subfn 05h)</span><br /><span class="line">       &#34;COLLATE&#34;   collating sequence (subfn 06h)</span><br /><span class="line">       &#34;DBCS   &#34;   double-byte character table (subfn 07h)</span><br /><span class="line"> 08h   WORD    length of following table in bytes</span><br /><span class="line">       (if 0000h for DBCS table, there will still be a word of 0000h)</span><br /><span class="line">---country info (01h)---</span><br /><span class="line"> 0Ah   WORD    country ID (see #1088 at AH=38h)</span><br /><span class="line"> 0Ch   WORD    code page (see #1446)</span><br /><span class="line"> 0Eh 34 BYTEs  country-dependent info (see #1087 at AH=38h)</span><br /><span class="line">---uppercase table (02h)---</span><br /><span class="line"> 0Ah 128 BYTEs uppercase equivalents (if any) of chars 80h to FFh</span><br /><span class="line">---lowercase table (03h)---</span><br /><span class="line"> 0Ah 256 BYTEs lowercase equivalents (if any) of chars 00h to FFh</span><br /><span class="line">---filename uppercase table (04h)---</span><br /><span class="line"> 0Ah 128 BYTEs uppercase equivalents (if any) of chars 80h to FFh</span><br /><span class="line">---filename terminator table (05h)---</span><br /><span class="line"> 0Ah   BYTE    ??? (01h for MS-DOS 3.30-6.00)</span><br /><span class="line"> 0Bh   BYTE    lowest permissible character value for filename</span><br /><span class="line"> 0Ch   BYTE    highest permissible character value for filename</span><br /><span class="line"> 0Dh   BYTE    ??? (00h for MS-DOS 3.30-6.00)</span><br /><span class="line"> 0Eh   BYTE    first excluded character in range \ all characters in this</span><br /><span class="line"> 0Fh   BYTE    last excluded character in range  / range are illegal</span><br /><span class="line"> 10h   BYTE    ??? (02h for MS-DOS 3.30-6.00)</span><br /><span class="line"> 11h   BYTE    number of illegal (terminator) characters</span><br /><span class="line"> 12h  N BYTEs  characters which terminate a filename:  .&#34;/\[]:|&lt;&gt;+=;,</span><br /><span class="line">---collating sequence (06h)---</span><br /><span class="line"> 0Ah 256 BYTEs values used to sort characters 00h to FFh</span><br /><span class="line">---DBCS table (07h)---</span><br /><span class="line"> 0Ah 2N BYTEs  start/end for N lead byte ranges</span><br /><span class="line">   WORD    0000h   (end of table)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2308,#1439,#1440,#1442,#1443,#1444,#1445</span><br /><span class="line"></span><br /><span class="line">Format of DR DOS/Novell DOS/OpenDOS COUNTRY.SYS file:</span><br /><span class="line">Offset Size    Description (Table 2310)</span><br /><span class="line"> 00h 126 BYTEs copyright notice (terminated with Ctrl-Z; NUL-padded)</span><br /><span class="line">       the copyright notice starts with the signature</span><br /><span class="line">       &#34;COUNTRY.SYS Rx.xx&#34; where &#34;x.xx&#34; indicates the file format</span><br /><span class="line">       revision, which is checked by the OS (revision is 2.00 for</span><br /><span class="line">       DR DOS 3.41 and 2.01 for all newer versions of DR DOS,</span><br /><span class="line">       Novell DOS, and OpenDOS)</span><br /><span class="line"> 7Eh   WORD    signature of file format revision</span><br /><span class="line">       0EDCh = 2.00 (DR DOS 3.41)</span><br /><span class="line">       EDC1h = 2.01 (all newer versions)</span><br /><span class="line"> 80h   var country pointer records (see #2311)</span><br /><span class="line">       (packed array of variable-size records)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2306</span><br /><span class="line"></span><br /><span class="line">Format of DR DOS/Novell DOS/OpenDOS COUNTRY.SYS country pointer record::</span><br /><span class="line">Offset Size    Description (Table 2311)</span><br /><span class="line"> 00h   WORD    country code (0000h if end of array)</span><br /><span class="line"> 02h   WORD    code page (see #1446)</span><br /><span class="line"> 04h   WORD    ??? (0000h)</span><br /><span class="line"> 06h  7    WORDs   offsets in file for INT 21/AH=65h subfunctions 01h to 07h, or</span><br /><span class="line">         0000h if no table for that subfunction</span><br /><span class="line"> 14h   var country information</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the end-of-file marker is a country pointer record filled entirely with</span><br /><span class="line">     zeros</span><br /><span class="line">   the data at which the pointers point is in the same format as the</span><br /><span class="line">     tables returned by INT 21/AH=65h, except that the general-info</span><br /><span class="line">     table for subfunction 01h does not contain the length word at the</span><br /><span class="line">     beginning</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2310</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

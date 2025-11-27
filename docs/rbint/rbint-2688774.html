@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2688128.html">
+    <link rel="next" href="rbint-2689524.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2688128.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2689524.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 6302  - Dos 2.25, Dos 3.2+ - Get Korean (hangeul) Input Mode   </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 6302h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h successful</span><br /><span class="line">       DL = current input mode</span><br /><span class="line">           00h return only full characters (clears interim flag)</span><br /><span class="line">           01h return partial characters (sets interim flag)</span><br /><span class="line">       FFh not supported</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> Novell DOS 7 simply reads the value out of the caller&#39;s PSP, so it</span><br /><span class="line">     can return values other than 00h or 01h if the last call to AX=6301h</span><br /><span class="line">     used another value</span><br /><span class="line">   the US version of MS-DOS 3.30 treats this as an unused function,</span><br /><span class="line">     setting AL=00h and returning immediately, WITHOUT setting DL; only</span><br /><span class="line">     the Far East versions of MS-DOS 3.2 and 3.3 supported this call</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=07h,AH=08h,AH=0Bh,AX=6300h,AX=6301h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

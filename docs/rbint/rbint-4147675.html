@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4147279.html">
+    <link rel="next" href="rbint-4148861.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4147279.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4031282.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4148861.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 7AFF  - Novell Netware - Tbmi V1.1+ - Installation Check / Wind</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 7AFFh</span><br /><span class="line">   BX = 0000h</span><br /><span class="line">   CX = 4E65h (&#34;Ne&#34;)</span><br /><span class="line">   DX = 7457h (&#34;tW&#34;)</span><br /><span class="line">   ES:DI -&gt; Windows support procedure (see #2612)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = FFh if installed</span><br /><span class="line">       CX = configured sockets (14h)</span><br /><span class="line">       DS:SI -&gt; data table ???</span><br /><span class="line">       ES:DI -&gt; IPX far call handler</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> for IPX/SPX this call reportedly returns DS:SI pointing to the table</span><br /><span class="line">     of pointers to service events queue head and tail</span><br /><span class="line">   this function is also supported by IPXODI; v2.12 does not change DS,</span><br /><span class="line">     but does set SI to an internal address</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=7AFFh/BX=0001h</span><br /><span class="line"></span><br /><span class="line">(Table 2612)</span><br /><span class="line">Values Windows support procedure called with:</span><br /><span class="line">   BP = function</span><br /><span class="line">       0001h Get ECB</span><br /><span class="line">       BX = socket number</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> ES:SI -&gt; ECB or 0000h:0000h if none available</span><br /><span class="line">       0002h Count Listen ECBs</span><br /><span class="line">       AX = BX = socket</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> CX = number of listen ECBs for socket</span><br /><span class="line">               (must be &gt;= 2 for SPX to work)</span><br /><span class="line">       0003h ???</span><br /><span class="line">       0004h Inform task switcher of ECB locations</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span>   registers other than those listed above are equal</span><br /><span class="line">             to the values when IPX was called</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the support function will not be called if IPX is called with BX</span><br /><span class="line">     bit 15 set</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2744243.html">
+    <link rel="next" href="rbint-2747021.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2744243.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2747021.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 70  - Ms-dos 7 (windows95) - Get/set Internationalization Infor</span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 70h</span><br /><span class="line">   AL = subfunction</span><br /><span class="line">       00h get ??? info</span><br /><span class="line">       CX = buffer size (3Ah bytes needed)</span><br /><span class="line">       ES:DI -&gt; buffer</span><br /><span class="line">       01h set above info</span><br /><span class="line">       CX = number of bytes to set</span><br /><span class="line">       DS:SI -&gt; buffer containing ??? info (see #1463)</span><br /><span class="line">       02h set general internationalization info</span><br /><span class="line">       DS:SI -&gt; buffer containing info (see #1464)</span><br /><span class="line">       CX = buffer size in bytes (up to 26h bytes used)</span><br /><span class="line">       first three bytes are skipped, the rest is copied to somewhere</span><br /><span class="line">         in the DOS data segment</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       ES:DI buffer filled (func 00h) (see #1463)</span><br /><span class="line">       CX = number of bytes actually set or returned</span><br /><span class="line">         (max 003Ah for functions 00h and 01h under v7.00, 0026h for</span><br /><span class="line">         function 02h)</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code</span><br /><span class="line">       7000h if function not supported</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=38h,AH=65h</span><br /><span class="line"></span><br /><span class="line">Format of MS-DOS v7.0 ??? table:</span><br /><span class="line">Offset Size    Description (Table 1463)</span><br /><span class="line"> 00h 58 BYTEs  ??? country-specific information</span><br /><span class="line">       returned was (among others) &#34;ENU USA GR&#34;...&#34;AM PM M/d/yy&#34;...</span><br /><span class="line">        &#34;dddd,MMMMdd,yyyy&#34; in the German Preview version, and &#34;US&#34;</span><br /><span class="line">        instead of &#34;GR&#34; in the US build 450 version (with German</span><br /><span class="line">        country setting) and the US build 950a version with US</span><br /><span class="line">        country settings</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1464</span><br /><span class="line"></span><br /><span class="line">Format of MS-DOS v7.0 internationalization table:</span><br /><span class="line">Offset Size    Description (Table 1464)</span><br /><span class="line"> 00h  3 BYTEs  unused (and ignored by DOS)</span><br /><span class="line"> 03h   WORD    country ID (see #1088 at AH=38h)</span><br /><span class="line"> 05h   WORD    code page (see #1446)</span><br /><span class="line"> 07h   WORD    date format</span><br /><span class="line"> 09h  5 BYTEs  ASCIZ current symbol string</span><br /><span class="line"> 07h  2 BYTEs  ASCIZ thousands separator</span><br /><span class="line"> 09h  2 BYTEs  ASCIZ decimal separator</span><br /><span class="line"> 0Bh  2 BYTEs  ASCIZ date separator</span><br /><span class="line"> 0Dh  2 BYTEs  ASCIZ time separator</span><br /><span class="line"> 0Fh   BYTE    currency format</span><br /><span class="line">       bit 2 = set if currency symbol replaces decimal point</span><br /><span class="line">       bit 1 = number of spaces between value and currency symbol</span><br /><span class="line">       bit 0 = 0 if currency symbol precedes value</span><br /><span class="line">           1 if currency symbol follows value</span><br /><span class="line"> 10h   BYTE    number of digits after decimal in currency</span><br /><span class="line"> 11h   BYTE    time format</span><br /><span class="line">       bit 0 = 0 if 12-hour clock</span><br /><span class="line">           1 if 24-hour clock</span><br /><span class="line"> 12h   DWORD   address of case map routine</span><br /><span class="line">       (FAR CALL, AL = character to map to upper case [&gt;= 80h])</span><br /><span class="line"> 16h  2 BYTEs  ASCIZ data-list separator</span><br /><span class="line"> 18h 10 BYTEs  reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this table has the identical format to the extended country information</span><br /><span class="line">     retrieved via AH=65h with info ID = 01h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1087,#1439</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

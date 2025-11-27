@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="rbint-3458463.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 24  C - Dos 1+ - Critical Error Handler                              </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> invoked when a critical (usually hardware) error is encountered by DOS</span><br /><span class="line">     (see #2231); should never be called directly</span><br /><span class="line">   when DOS terminates a program, it copies the previous value of the</span><br /><span class="line">     INT 24 vector out of the PSP (see #1066) and into the interrupt</span><br /><span class="line">     vector table</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 21/AH=95h</span><br /><span class="line"></span><br /><span class="line">(Table 2231)</span><br /><span class="line">Values critical error handler is called with:</span><br /><span class="line">   AH = type and processing flags (see #2232)</span><br /><span class="line">   AL = drive number if AH bit 7 clear</span><br /><span class="line">   BP:SI -&gt; device driver header (see #1332 at INT 21/AH=52h)</span><br /><span class="line">       (BP:[SI+4] bit 15 set if character device)</span><br /><span class="line">   DI low byte contains error code if AH bit 7 set (see #2233)</span><br /><span class="line">   STACK:  DWORD   return address for INT 24 call</span><br /><span class="line">       WORD    flags pushed by INT 24</span><br /><span class="line">       WORD    original AX on entry to INT 21</span><br /><span class="line">       WORD    BX</span><br /><span class="line">       WORD    CX</span><br /><span class="line">       WORD    DX</span><br /><span class="line">       WORD    SI</span><br /><span class="line">       WORD    DI</span><br /><span class="line">       WORD    BP</span><br /><span class="line">       WORD    DS</span><br /><span class="line">       WORD    ES</span><br /><span class="line">       DWORD   return address for INT 21 call</span><br /><span class="line">       WORD    flags pushed by INT 21</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = action code (see #2234)</span><br /><span class="line">   SS,SP,DS,ES,BX,CX,DX preserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the only DOS calls the handler may make are INT 21/AH=01h-0Ch,30h,59h</span><br /><span class="line">   if the handler returns to the application by popping the stack, DOS</span><br /><span class="line">     will be in an unstable state until the first call with AH &gt; 0Ch</span><br /><span class="line">   for DOS 3.1+, IGNORE (AL=00h) is turned into FAIL (AL=03h) on network</span><br /><span class="line">     critical errors</span><br /><span class="line">   if IGNORE specified but not allowed, it is turned into FAIL</span><br /><span class="line">   if RETRY specified but not allowed, it is turned into FAIL</span><br /><span class="line">   if FAIL specified but not allowed, it is turned into ABORT</span><br /><span class="line">   (DOS 3.0+) if a critical error occurs inside the critical error</span><br /><span class="line">     handler, the DOS call is automatically failed (AL set to 03h and</span><br /><span class="line">     the INT 24 call skipped)</span><br /><span class="line"></span><br /><span class="line">Bitfields for critical error type and processing flags:</span><br /><span class="line">Bit(s) Description (Table 2232)</span><br /><span class="line"> 7 clear = disk I/O error</span><br /><span class="line">   set   = -- if block device, bad FAT image in memory</span><br /><span class="line">       -- if char device, error code in DI</span><br /><span class="line"> 6 unused</span><br /><span class="line"> 5 Ignore allowed (DOS 3.0+)</span><br /><span class="line"> 4 Retry allowed (DOS 3.0+)</span><br /><span class="line"> 3 Fail allowed (DOS 3.0+)</span><br /><span class="line"> 2-1   disk area of error</span><br /><span class="line">   00 = DOS area   01 = FAT</span><br /><span class="line">   10 = root dir   11 = data area</span><br /><span class="line"> 0 set if write, clear if read</span><br /><span class="line"></span><br /><span class="line">(Table 2233)</span><br /><span class="line">Values for critical error code:</span><br /><span class="line"> 00h   write-protection violation attempted</span><br /><span class="line"> 01h   unknown unit for driver</span><br /><span class="line"> 02h   drive not ready</span><br /><span class="line"> 03h   unknown command given to driver</span><br /><span class="line"> 04h   data error (bad CRC)</span><br /><span class="line"> 05h   bad device driver request structure length</span><br /><span class="line"> 06h   seek error</span><br /><span class="line"> 07h   unknown media type</span><br /><span class="line"> 08h   sector not found</span><br /><span class="line"> 09h   printer out of paper</span><br /><span class="line"> 0Ah   write fault</span><br /><span class="line"> 0Bh   read fault</span><br /><span class="line"> 0Ch   general failure</span><br /><span class="line"> 0Dh   (DOS 3.0+) sharing violation</span><br /><span class="line"> 0Eh   (DOS 3.0+) lock violation</span><br /><span class="line"> 0Fh   invalid disk change</span><br /><span class="line"> 10h   (DOS 3.0+) FCB unavailable</span><br /><span class="line"> 11h   (DOS 3.0+) sharing buffer overflow</span><br /><span class="line"> 12h   (DOS 4.0+) code page mismatch</span><br /><span class="line"> 13h   (DOS 4.0+) out of input</span><br /><span class="line"> 14h   (DOS 4.0+) insufficient disk space</span><br /><span class="line"></span><br /><span class="line">(Table 2234)</span><br /><span class="line">Values for critical error handler action code:</span><br /><span class="line"> 00h   ignore error and continue processing request</span><br /><span class="line"> 01h   retry operation</span><br /><span class="line"> 02h   terminate program as though INT 21/AH=4Ch called (INT 20h for DOS 1.x)</span><br /><span class="line"> 03h   fail system call in progress (DOS 3+)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

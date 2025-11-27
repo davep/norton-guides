@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4418236.html">
+    <link rel="next" href="rbint-4421877.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4418236.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4320812.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4421877.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn D102  - Mdebug Command Driver - Execute Interpreter Command    </span>  [<span class="ngb">G</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = D102h</span><br /><span class="line">   BL = first character of the interpreter command</span><br /><span class="line">   BH = last character of the interpreter command (or blank)</span><br /><span class="line">   DS:SI -&gt; parameter for the interpreter command as ASCIZ string</span><br /><span class="line">   DS:DI -&gt; MDEBUG data structure (see #2750)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = FFh</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AH = error number (see #2749)</span><br /><span class="line">       DS:SI -&gt; ASCIZ error message (max 30 characters) if AH=0Ch</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">       AH = return code</span><br /><span class="line">       00h continue processing the command line</span><br /><span class="line">       01h leave MDEBUG popup session</span><br /><span class="line">       02h leave MDEBUG popup session and automatically popup again</span><br /><span class="line">             if the InDOS flag is zero</span><br /><span class="line">       03h not used (same as 00h)</span><br /><span class="line">       04h not used (same as 00h)</span><br /><span class="line">       05h put new command line into the input buffer,</span><br /><span class="line">           DS:SI -&gt; new command line (ASCIZ string, max 66 chars)</span><br /><span class="line">       06h process new command line</span><br /><span class="line">           DS:SI -&gt; new command line (ASCIZ string, max 66 chars)</span><br /><span class="line">          else unknown status, but continue processing commmand line</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this function must end with a far call to the old INT 2F handler (with</span><br /><span class="line">     registers unchanged) if the driver does not support the interpreter</span><br /><span class="line">     command in BX.  Otherwise, the driver must not chain to the old</span><br /><span class="line">     INT 2F.</span><br /><span class="line"></span><br /><span class="line">(Table 2749)</span><br /><span class="line">Values for MDEBUG error number:</span><br /><span class="line"> 01h   syntax error</span><br /><span class="line"> 02h   first shell of the command.com is activ</span><br /><span class="line"> 03h   Esc pressed</span><br /><span class="line"> 04h   break pressed</span><br /><span class="line"> 05h   DOS is busy</span><br /><span class="line"> 06h   command ended</span><br /><span class="line"> 07h   division by zero</span><br /><span class="line"> 08h   invalid display driver</span><br /><span class="line"> 09h   invalid command driver</span><br /><span class="line"> 0Ah   error 8 and 9</span><br /><span class="line"> 0Bh   unknown error</span><br /><span class="line"> 0Ch   new error</span><br /><span class="line"> else  unknown error</span><br /><span class="line"></span><br /><span class="line">Format of MDEBUG data structure:</span><br /><span class="line">Offset Size    Description (Table 2750)</span><br /><span class="line"> 00h   WORD    register SE</span><br /><span class="line"> 02h   WORD    register OF</span><br /><span class="line"> 04h   WORD    register FS</span><br /><span class="line"> 06h   WORD    register FO</span><br /><span class="line"> 08h   WORD    register AX</span><br /><span class="line"> 0Ah   WORD    register BX</span><br /><span class="line"> 0Ch   WORD    register CX</span><br /><span class="line"> 0Eh   WORD    register DX</span><br /><span class="line"> 10h   WORD    register SI</span><br /><span class="line"> 12h   WORD    register DI</span><br /><span class="line"> 14h   WORD    register DS</span><br /><span class="line"> 16h   WORD    register ES</span><br /><span class="line"> 18h   WORD    register BP</span><br /><span class="line"> 1Ah   WORD    register SS</span><br /><span class="line"> 1Ch   WORD    register SP</span><br /><span class="line"> 1Eh   WORD    register FL (flags)</span><br /><span class="line"> 20h   WORD    register R0</span><br /><span class="line"> 22h   WORD    register R1</span><br /><span class="line"> 24h   WORD    register R2</span><br /><span class="line"> 26h   WORD    register R3</span><br /><span class="line"> 28h   WORD    register R4</span><br /><span class="line"> 2Ah   WORD    register R5</span><br /><span class="line"> 2Ch   WORD    register R6</span><br /><span class="line"> 2Eh   WORD    register R7</span><br /><span class="line"> 30h   WORD    register R8</span><br /><span class="line"> 32h   WORD    register CS, return-address</span><br /><span class="line"> 34h   WORD    register IP, return-address</span><br /><span class="line"> 36h   DWORD   saved pointer to data for key &lt;F6&gt; (v1.60)</span><br /><span class="line">       saved monitor address (v1.70)</span><br /><span class="line"> 3Ah 12 WORDs  saved register values on last popup entry (for &lt;F8&gt; key)</span><br /><span class="line">       (original register values at popup entry of MDEBUG)</span><br /><span class="line">       AX, BX, CX, DX, SI, DI, DS, ES, BP, SS, SP, flags</span><br /><span class="line"> 52h 12 WORDs  saved register values on last popup exit (for &lt;SHIFT-F8&gt; key)</span><br /><span class="line">       AX, BX, CX, DX, SI, DI, DS, ES, BP, SS, SP, flags</span><br /><span class="line"> 6Ah   DWORD   address of the DOS-invars-table</span><br /><span class="line"> 6Eh   DWORD   address of the InDOS flag</span><br /><span class="line"> 72h   WORD    offset of the register which is used for the segment of the</span><br /><span class="line">         first monitor window</span><br /><span class="line"> 74h   WORD    offset of the register which is used for the offset of the</span><br /><span class="line">         first monitor window</span><br /><span class="line"> 76h   WORD    name of the register which is used for the segment of the</span><br /><span class="line">         first monitor segment</span><br /><span class="line"> 78h   WORD    name of the register which is used for the offset of the first</span><br /><span class="line">         monitor window</span><br /><span class="line"> 7Ah   WORD    pseudo register 1</span><br /><span class="line"> 7Ch   WORD    pseudo register 2</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

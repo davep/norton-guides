@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2339327.html">
+    <link rel="next" href="rbint-2341859.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2339327.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2341859.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 4402  U - Pc Tools 9 Cprlow.exe - Get Code And Data Addresses  </span>  [<span class="ngb">y</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4402h</span><br /><span class="line">   BX = file handle referencing device &#34;RECLOWLD&#34;</span><br /><span class="line">   DS:DX -&gt; buffer for address list (see #1192)</span><br /><span class="line">   CX ignored</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       buffer filled</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (01h,05h,06h,0Dh) (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line">Format of CPRLOW address list:</span><br /><span class="line">Offset Size    Description (Table 1192)</span><br /><span class="line"> 00h   WORD    segment of CPRLOW code</span><br /><span class="line"> 02h   WORD    offset in code segment of ??? entry point</span><br /><span class="line">       (switches into protected mode)</span><br /><span class="line"> 04h   WORD    offset in code segment of jump array (see #1193)</span><br /><span class="line"> 06h   WORD    segment of copy of interrupt vector table at CPRLOW load time</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  neither the entry point nor the jump array is valid until after a</span><br /><span class="line">     CPR /LOAD, because CPR.EXE installs the code into CPRLOW at runtime.</span><br /><span class="line"></span><br /><span class="line">Format of CPRLOW jump array:</span><br /><span class="line">Offset Size    Description (Table 1193)</span><br /><span class="line"> 00h  3 BYTEs  initialize CPRLOW interrupt hooks</span><br /><span class="line"> 03h  3 BYTEs  reset timers and enable CPR (hotkey enable)</span><br /><span class="line"> 06h  3 BYTEs  disable CPR (hotkey disable)</span><br /><span class="line"> 09h  3 BYTEs  clear ??? flag, hotkey disable, and ???</span><br /><span class="line"> 0Ch  3 BYTEs  initialize delay loop counter (destroys AX,BX,CX,DX)</span><br /><span class="line"> 0Fh  3 BYTEs  disable CPR completely (commandline /DISABLE)</span><br /><span class="line"> 12h  3 BYTEs  enable ??? if CPR enabled by both cmdline and hotkey</span><br /><span class="line"> 15h  3 BYTEs  enable CPR (commandline /ENABLE)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1624204.html">
+    <link rel="next" href="rbint-1625784.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1624204.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1588018.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1625784.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 16 Fn FFEE  U - Pc Tools V5.1-8.0 Desktop - Define Pulldown Menus    </span>  [<span class="ngb">U</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = FFEEh</span><br /><span class="line">   DS:SI -&gt; pulldown menu system description (see #0549)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX destroyed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> available only when popped up</span><br /><span class="line">   if the accessory does not need any menu items of its own, it should</span><br /><span class="line">     call AX=FFFAh instead</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=FFF7h,AX=FFFAh</span><br /><span class="line"></span><br /><span class="line">Format of PC Tools DESKTOP pulldown menu system description:</span><br /><span class="line">Offset Size    Description (Table 0549)</span><br /><span class="line"> 00h   WORD    offset of menu bar contents (counted string)</span><br /><span class="line"> 02h   WORD    number of items on menu bar</span><br /><span class="line"> 04h 10 BYTEs  scan codes for hotkeying to each of up to ten menu items</span><br /><span class="line"> 0Eh 10 BYTEs  which character to highlight in each menu item (01h=first)</span><br /><span class="line"> 18h   WORD    offset of first menu definition (see #0550)</span><br /><span class="line"> 1Ah   WORD    offset of second menu definition</span><br /><span class="line">   ...</span><br /><span class="line"></span><br /><span class="line">Format of PC Tools DESKTOP menu definition:</span><br /><span class="line">Offset Size    Description (Table 0550)</span><br /><span class="line"> 00h   WORD    offset of menu contents (see #0551)</span><br /><span class="line"> 02h   WORD    number of entries in menu</span><br /><span class="line"> 04h   for each entry:</span><br /><span class="line">       Offset  Size    Description</span><br /><span class="line">        00h    BYTE    scancode of Alt-key to invoke entry</span><br /><span class="line">        01h    BYTE    character to highlight (01h=first, etc)</span><br /><span class="line">        02h    WORD    offset of FAR routine to handle selection</span><br /><span class="line"></span><br /><span class="line">Format of PC Tools DESKTOP menu contents:</span><br /><span class="line">Offset Size    Description (Table 0551)</span><br /><span class="line"> 00h   BYTE    number of lines in menu</span><br /><span class="line"> 01h   BYTE    width of menu</span><br /><span class="line"> 02h  N BYTEs  counted strings, one for each line in menu</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

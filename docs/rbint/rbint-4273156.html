@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4272840.html">
+    <link rel="next" href="rbint-4275054.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4272840.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4197937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4275054.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn B804  - Network - Set Network Event Post Handler               </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = B804h</span><br /><span class="line">   CX = (10NET) 0370h if 10Windows is hooking post handler</span><br /><span class="line">   ES:BX -&gt; new event post handler (see #2665)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> used in conjunction with AX=B803h to hook into the network event post</span><br /><span class="line">     routine</span><br /><span class="line">   this function is supported by PC LAN Program, 10NET v5.0,</span><br /><span class="line">     NetSoft DOS-NET v1.20+</span><br /><span class="line">   The specified handler is called on any network event.  Two events are</span><br /><span class="line">     defined: message received and critical network error.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=B800h,AX=B803h,AX=B904h</span><br /><span class="line"></span><br /><span class="line">(Table 2665)</span><br /><span class="line">Values network post routine is called with:</span><br /><span class="line">   AX = 0000h single block message</span><br /><span class="line">       DS:SI -&gt; ASCIZ originator name</span><br /><span class="line">       DS:DI -&gt; ASCIZ destination name</span><br /><span class="line">       ES:BX -&gt; text header (see #2666)</span><br /><span class="line">   AX = 0001h start multiple message block</span><br /><span class="line">       CX = block group ID</span><br /><span class="line">       DS:SI -&gt; ASCIZ originator name</span><br /><span class="line">       DS:DI -&gt; ASCIZ destination name</span><br /><span class="line">   AX = 0002h multiple block text</span><br /><span class="line">       CX = block group ID</span><br /><span class="line">       ES:BX -&gt; text header (see #2666)</span><br /><span class="line">   AX = 0003h end multiple block message</span><br /><span class="line">       CX = block group ID</span><br /><span class="line">   AX = 0004h message aborted due to error</span><br /><span class="line">       CX = block group ID</span><br /><span class="line">   AX = 0101h server received badly formatted network request</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> AX = FFFFh (PC LAN will process error)</span><br /><span class="line">   AX = 0102h unexpected network error</span><br /><span class="line">       ES:BX -&gt; NCB (see #2920 at INT 5C&#34;NetBIOS&#34;)</span><br /><span class="line">   AX = 0103h server received INT 24 error</span><br /><span class="line">       other registers as for INT 24, except AH is in BH</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> as below, but only 0000h and FFFFh allowed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = response code</span><br /><span class="line">       0000h user post routine processed message</span><br /><span class="line">       0001h PC LAN will process message, but message window not displayed</span><br /><span class="line">       FFFFh PC LAN will process message</span><br /><span class="line"></span><br /><span class="line">Format of text header:</span><br /><span class="line">Offset Size    Description (Table 2666)</span><br /><span class="line"> 00h   WORD    length of text (maximum 512 bytes)</span><br /><span class="line"> 02h  N BYTEs  text of message</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  all CRLF sequences in message text are replaced by 14h; all other</span><br /><span class="line">     values below 20h (space) are reserved</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

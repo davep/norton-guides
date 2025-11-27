@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5946204.html">
+    <link rel="next" href="rbint-5948543.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5946204.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5854784.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5948543.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 7F Fn ABCD  - Ibm 8516 Touch Screen Device Driver - Get Api Entry    </span>  [<span class="ngb">V</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = ABCDh</span><br /><span class="line">   BX = 0000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = total number of functions available</span><br /><span class="line">   ES:BX -&gt; entry point array (see #3638)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=0104h,AX=0105h</span><br /><span class="line"></span><br /><span class="line">(Table 3638)</span><br /><span class="line">Values for 8516 Touch Screen function number:</span><br /><span class="line"> 00h   check initialization and reset (see #3639)</span><br /><span class="line"> 14h   set user-defined subroutine (see #3640)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> each driver function takes two stack parameters using Pascal calling</span><br /><span class="line">     conventions: address of parameter block and address of results buffer</span><br /><span class="line">   all pointers are FAR pointers</span><br /><span class="line">   on return, AX contains the status of the call:</span><br /><span class="line">       AX = 0000h successful</span><br /><span class="line">        0001h invalid input</span><br /><span class="line">        0002h interface error</span><br /><span class="line">        0003h unable to perform function</span><br /><span class="line"></span><br /><span class="line">Format of 8516 Touch Screen Function 00h parameter block:</span><br /><span class="line">Offset Size    Description (Table 3639)</span><br /><span class="line"> 00h   WORD    0000h (function number)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  this function should be called before any other device driver functions</span><br /><span class="line"></span><br /><span class="line">Format of 8516 Touch Screen Function 00h results buffer:</span><br /><span class="line">Offset Size    Description (Table 3640)</span><br /><span class="line"> 00h   WORD    touch screen status</span><br /><span class="line">       0000h unavailable</span><br /><span class="line">       0001h uncalibrated</span><br /><span class="line">       FFFFh available</span><br /><span class="line"> 02h   WORD    aux mouse status (0000h not present, FFFFh present)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the following driver parameters will have been reset to zero:</span><br /><span class="line">     touchdown counter, liftoff counter, position at last touch, position</span><br /><span class="line">     at last lift, int call mask, select on count, select off count,</span><br /><span class="line">     pos select on count, pos select off count.</span><br /><span class="line">   the following driver parameters will have been reset as listed:</span><br /><span class="line">     mouse emulation mode: left on</span><br /><span class="line">     thresholds: 46 on screen, 96 push harder, 80 push release</span><br /><span class="line">     x, y hysteresis: 400</span><br /><span class="line">     data repeat rate: 40/sec</span><br /><span class="line">     select mechanism: push-harder - first-touch</span><br /><span class="line">     coordinate origin: upper left corner</span><br /><span class="line">     filter frequency: medium</span><br /><span class="line">     data block mask: all enabled</span><br /><span class="line">     click lock: on</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

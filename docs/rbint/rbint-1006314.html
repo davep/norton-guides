@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1005202.html">
+    <link rel="next" href="rbint-1007753.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1005202.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-993233.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1007753.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 14 Fn 8007  - Articom - Get Redirected Port Information              </span>  [<span class="ngb">S</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 8007h</span><br /><span class="line">   DX = port index (COM1=0, COM2=1, ...)</span><br /><span class="line">   ES:DI -&gt; buffer for port information structure (see #0289)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if redirection info returned and port is redirected</span><br /><span class="line">   CF set if not a redirected port</span><br /><span class="line">   AX = error code, if error (see #0286)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=8000h,AX=8003h,AX=8006h,AX=8008h</span><br /><span class="line"></span><br /><span class="line">Format of ARTICOM port information structure:</span><br /><span class="line">Offset Size    Description (Table 0289)</span><br /><span class="line"> 00h 16 BYTEs  server name resource is on</span><br /><span class="line"> 10h   BYTE    adapter number server is on</span><br /><span class="line"> 11h 16 BYTEs  resource name</span><br /><span class="line"> 21h   WORD    remote port index, use to get additional information</span><br /><span class="line"> 23h   WORD    buffer size</span><br /><span class="line"> 25h   WORD    baud rate (see #0290)</span><br /><span class="line"> 26h   BYTE    modem status register</span><br /><span class="line"> 27h   BYTE    modem control register</span><br /><span class="line"> 28h   BYTE    line status register</span><br /><span class="line"> 29h   BYTE    line control register</span><br /><span class="line"> 2Ah   BYTE    flow control in use: 0 - NONE, 1 - XON/XOFF, 2 - RTS/CTS</span><br /><span class="line"> 2Bh   WORD    send timeout in ticks</span><br /><span class="line"> 2Dh   WORD    receive timeout in ticks</span><br /><span class="line"> 2Fh   WORD    time used on remote port</span><br /><span class="line"> 31h   WORD    time left before timeout</span><br /><span class="line"> 33h   BYTE    if server changes allowed?</span><br /><span class="line"> 34h   WORD    FFFFh (-1) if connection ok, else old port index</span><br /><span class="line"></span><br /><span class="line">(Table 0290)</span><br /><span class="line">Values for ARTICOM baud rate:</span><br /><span class="line"> 00h   110</span><br /><span class="line"> 01h   150</span><br /><span class="line"> 02h   300</span><br /><span class="line"> 03h   600</span><br /><span class="line"> 04h   1200</span><br /><span class="line"> 05h   2400</span><br /><span class="line"> 06h   4800</span><br /><span class="line"> 07h   9600</span><br /><span class="line"> 08h   19200</span><br /><span class="line"> 09h   38400</span><br /><span class="line"> 0Ah   57600</span><br /><span class="line"> 0Bh   115200</span><br /><span class="line"> 0Ch   134.5</span><br /><span class="line"> 0Dh   1800</span><br /><span class="line"> 0Eh   2000</span><br /><span class="line"> 0Fh   3600</span><br /><span class="line"> 10h   7200</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0235</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

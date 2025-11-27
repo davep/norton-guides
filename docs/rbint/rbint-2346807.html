@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2344536.html">
+    <link rel="next" href="rbint-2351266.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2344536.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2351266.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 4402  U - Memory Managers - Get Emm Import Structure Address   </span>  [<span class="ngb">m</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4402h subfn 01h</span><br /><span class="line">   BX = file handle for device &#34;EMMXXXX0&#34;</span><br /><span class="line">   CX = 0006h (size of buffer in bytes)</span><br /><span class="line">   DS:DX -&gt; buffer for EMM import structure record (see #1201)</span><br /><span class="line">       first byte must be 01h on entry</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       buffer filled (see also #3274 at INT 67/AH=3Fh)</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (01h,05h,06h,0Dh) (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is supported by Microsoft EMM386.EXE v4.45+,</span><br /><span class="line">     QEMM-386 v6+, and CEMM v5.10+, and is intended for use by MS Windows</span><br /><span class="line">     as it starts up</span><br /><span class="line">   for QEMM-386, this call always returns an error if Windows3 support</span><br /><span class="line">     has been disabled with the NW3 switch</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4402h/SF=00h,AX=4402h&#34;EMM386&#34;,INT 2F/AX=D201h/BX=5145h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 67/AH=3Fh</span><br /><span class="line"></span><br /><span class="line">Format of EMM import structure record:</span><br /><span class="line">Offset Size    Description (Table 1201)</span><br /><span class="line"> 00h   DWORD   physical address of EMM import structure (see #1202)</span><br /><span class="line"> 04h   BYTE    EMM import structure major version</span><br /><span class="line"> 05h   BYTE    EMM import structure minor version</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  version 1.00 contains only EMS information (Windows 3.0+)</span><br /><span class="line">   version 1.10 contains UMB/XMS/HMA/EMS information (Windows 3.1)</span><br /><span class="line">   version 1.11 is version 1.10 plus memory manager maker/product name</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #3314</span><br /><span class="line"></span><br /><span class="line">Format of Global EMM Import record:</span><br /><span class="line">Offset Size    Description (Table 1202)</span><br /><span class="line"> 00h   BYTE    bit flags</span><br /><span class="line">       bit 2: ???</span><br /><span class="line">       bit 3: free EMM386 virtual HMA only if hma_page_table_paddr!=0</span><br /><span class="line">       bit 4: no UMB???</span><br /><span class="line"> 01h   BYTE    reserved (0)</span><br /><span class="line"> 02h   WORD    size of structure in bytes</span><br /><span class="line"> 04h   WORD    structure version</span><br /><span class="line"> 06h   DWORD   reserved</span><br /><span class="line"> 0Ah 384 BYTEs 64 EMS frame status records (see #1203), one per 16K of</span><br /><span class="line">         real-mode 1M address space</span><br /><span class="line">18Ah   BYTE    ??? (must be at least 3*number_of_EMS_frames+4)</span><br /><span class="line">18Bh   BYTE    number of UMB frame descriptors following</span><br /><span class="line">18Ch 4N DWORDs UMB frame descriptors</span><br /><span class="line">       each is 4 DWORDs giving physical page numbers for the four</span><br /><span class="line">         4K pages of a 16K EMS frame (00000000h if non-UMB page)</span><br /><span class="line">var    BYTE    number of EMS handle info records following</span><br /><span class="line">    16N BYTEs  EMS handle info records (see #1205)</span><br /><span class="line">---version 1.10+ ---</span><br /><span class="line">   DWORD   realmode INT 67 vector (used by Windows to set breakpoints)</span><br /><span class="line">   DWORD   physical address of HMA page table values</span><br /><span class="line">   BYTE    number of free page entries following</span><br /><span class="line">     2N DWORDs free page entries</span><br /><span class="line">       each is:</span><br /><span class="line">           DWORD   physical page number</span><br /><span class="line">           DWORD   number of consecutive physical pages</span><br /><span class="line">   BYTE    number of XMS handle info records following</span><br /><span class="line">       00h if memory manager does not emulate XMS or has real mode</span><br /><span class="line">         XMS code which can execute in the Windows environment</span><br /><span class="line">    12N BYTEs  XMS handle info records (see #1206)</span><br /><span class="line">   BYTE    number of free UMB info records following</span><br /><span class="line">     2N WORDs  free UMB info records</span><br /><span class="line">       each is:</span><br /><span class="line">           WORD    real mode start segment</span><br /><span class="line">           WORD    size in paragraphs</span><br /><span class="line">---version 1.11---</span><br /><span class="line">     20 BYTEs  blank-padded maker name</span><br /><span class="line">     20 BYTEs  blank-padded product name</span><br /><span class="line"></span><br /><span class="line">Format of EMS frame status record:</span><br /><span class="line">Offset Size    Description (Table 1203)</span><br /><span class="line"> 00h   BYTE    frame type (see #1204)</span><br /><span class="line"> 01h   BYTE    owner handle (00h/FFh = none) from frame including UMB</span><br /><span class="line">       index to UMB frame descriptors</span><br /><span class="line"> 02h   WORD    logical page for frame, 7FFFh if none, FFFFh if non-EMS frame</span><br /><span class="line"> 04h   BYTE    EMS physical page number (FFh for non-EMS = don&#39;t care???)</span><br /><span class="line"> 05h   BYTE    flags for non-EMS frames (00h for EMS frame)</span><br /><span class="line">       bits 0,1 for first 4K, bits 2,3 for second 4K, etc:</span><br /><span class="line">         10: direct mapping (linear address = physical address)</span><br /><span class="line">         01: UMB mapping</span><br /><span class="line"></span><br /><span class="line">Bitfields for EMS frame type:</span><br /><span class="line">Bit(s) Description (Table 1204)</span><br /><span class="line"> 0 EMS frame</span><br /><span class="line"> 1 (if EMS frame) in standard 64K page frame</span><br /><span class="line"> 2 first 4K of frame is UMB</span><br /><span class="line"> 3 second 4K of frame is UMB</span><br /><span class="line"> 4 third 4K of frame is UMB</span><br /><span class="line"> 5 last 4K of frame is UMB</span><br /><span class="line"></span><br /><span class="line">Format of EMS handle info record:</span><br /><span class="line">Offset Size    Description (Table 1205)</span><br /><span class="line"> 00h   BYTE    handle number (00h = system handle)</span><br /><span class="line"> 01h   BYTE    flags</span><br /><span class="line">       bit 0: normal handle rather than system handle</span><br /><span class="line">       bit 2: ??? (set by some EMS managers)</span><br /><span class="line"> 02h  8 BYTEs  EMS handle&#39;s name</span><br /><span class="line"> 0Ah   WORD    number of 16K pages for handle</span><br /><span class="line"> 0Ch   DWORD   physical address of page table entries forming page map</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  all values should be zero for the system handle if no large frame</span><br /><span class="line">     support is present</span><br /><span class="line"></span><br /><span class="line">Format of XMS handle info record:</span><br /><span class="line">Offset Size    Description (Table 1206)</span><br /><span class="line"> 00h   WORD    handle</span><br /><span class="line"> 02h   WORD    flags</span><br /><span class="line">       bit 0: handle usable by Windows</span><br /><span class="line">           (already in use when Windows started if clear)</span><br /><span class="line">       bit 1: reserved (0)</span><br /><span class="line"> 04h   DWORD   size in KB (may be zero, used only if flags bit 0 set)</span><br /><span class="line"> 08h   DWORD   physical address (only if flags bit 0 set)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

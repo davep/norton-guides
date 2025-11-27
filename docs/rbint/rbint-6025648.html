@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-6025461.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-6025461.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-6025328.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 96  U - Kill.com, Qkill.com - Pop Up                                 </span>  [<span class="ngb">U</span>]</span><br /><span class="line"></span><br /><span class="line">Program: KILL.COM is a TSR utility that allows you to terminate programs</span><br /><span class="line">    by calling INT 21/AH=4Ch or reboot the computer (author unknown);</span><br /><span class="line">    QKILL.COM is a modification of KILL.COM by Solar Designer that</span><br /><span class="line">    supports QEMM&#39;s Quick Boot feature</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> This interrupt is intercepted but not chained by KILL.COM; it is never</span><br /><span class="line">     called by KILL.COM itself. It points into the middle of KILL.COM&#39;s</span><br /><span class="line">     INT 09 handler and assumes specific values have been placed on the</span><br /><span class="line">     stack (thus it can&#39;t be called as an interrupt).</span><br /><span class="line">   To invoke KILL, use the following code:</span><br /><span class="line">       pushf</span><br /><span class="line">       push cs</span><br /><span class="line">       push offset $+0Dh</span><br /><span class="line">       push ax</span><br /><span class="line">       push es</span><br /><span class="line">       push 0</span><br /><span class="line">       pop  es</span><br /><span class="line">       jmp  dword ptr es:[96h*4]</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

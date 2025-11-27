@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5175676.html">
+    <link rel="next" href="rbint-5177063.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5175676.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5177063.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 61 Fn 1A  - Pc/tcp Kernel V2.05+ - &#34;net_write&#34; - Write To The Network</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 1Ah</span><br /><span class="line">   BX = network descriptor</span><br /><span class="line">   CX = number of bytes to transmit (0000h allowed)</span><br /><span class="line">   DX = send options (see #3135)</span><br /><span class="line">   DS:SI -&gt; data to be written</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       AX = number of bytes actually written</span><br /><span class="line">       DX = ???</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AX = error code (see #2990 at INT 61&#34;FTP Software&#34;)</span><br /><span class="line">Range: INT 20h to INT E0h, selected by configuration</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the installation check consists of testing for the signature &#34;TCPTSR&#34;</span><br /><span class="line">     three bytes beyond the start of the interrupt handler</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 61&#34;FTP Software&#34;,INT 61/AH=00h&#34;PC/TCP&#34;,INT 61/AH=1Bh,INT 61/AH=1Ch</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 63/AH=19h&#34;BW-TCP&#34;,INT 63/AH=1Bh&#34;BW-TCP&#34;</span><br /><span class="line"></span><br /><span class="line">Bitfields for PC/TCP send options:</span><br /><span class="line">Bit(s) Description (Table 3135)</span><br /><span class="line"> 0 signal &#34;URG&#34;ent data</span><br /><span class="line"> 3 attempt rerouting on non-stream calls if first attempt fails</span><br /><span class="line"> 4 send data with PUSH flag (no override of Nagle)</span><br /><span class="line"> 5 fail rather than truncating datagram</span><br /><span class="line"> 6 fail rather than blocking</span><br /><span class="line"> 7 broadcast packet</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

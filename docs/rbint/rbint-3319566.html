@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3318464.html">
+    <link rel="next" href="rbint-3321769.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3318464.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3177957.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3321769.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn F256  - Novell Netware - Enumerate Extended Attributes         </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = F256h subfn 04h</span><br /><span class="line">   CX = length of request buffer in bytes</span><br /><span class="line">   DX = length of reply buffer in bytes</span><br /><span class="line">   DS:SI -&gt; request buffer (see #2053)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #2054)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=F2h&#34;Novell&#34;,AX=F256h/SF=01h,AX=F256h/SF=02h,AX=F256h/SF=05h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Enumerate Extended Attributes&#34; request packet:</span><br /><span class="line">Offset Size    Description (Table 2053)</span><br /><span class="line"> 00h   BYTE    04h (subfunction &#34;Enumerate Extended Attributes&#34;)</span><br /><span class="line"> 01h   WORD    flags (see #2060)</span><br /><span class="line"> 03h  8 BYTEs  extended attribute handle structure (see #2061)</span><br /><span class="line"> 0Bh   DWORD   inspect size</span><br /><span class="line"> 0Fh   WORD    enumeration sequence</span><br /><span class="line"> 11h   WORD    key length</span><br /><span class="line"> 13h  N BYTEs  key</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2054</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;Enumerate Extended Attributes&#34; reply packet:</span><br /><span class="line">Offset Size    Description (Table 2054)</span><br /><span class="line"> 00h   DWORD   error code</span><br /><span class="line"> 04h   DWORD   total extended attributes</span><br /><span class="line"> 08h   DWORD   total extended attribute data size</span><br /><span class="line"> 0Ch   DWORD   total extended attribute key size</span><br /><span class="line"> 10h   DWORD   new extended attribute handle</span><br /><span class="line">---information level 0---</span><br /><span class="line"> 14h  2 WORDs  reserved</span><br /><span class="line">---information level 1---</span><br /><span class="line"> 14h   WORD    number of enumerated extended attribute structures</span><br /><span class="line"> 16h   var EA structure level 1</span><br /><span class="line">---information level 6---</span><br /><span class="line"> 14h   WORD    reserved</span><br /><span class="line"> 16h   var EA structure level 6</span><br /><span class="line">---information level 7---</span><br /><span class="line"> 14h   WORD    number of enumerated extended attribute structures</span><br /><span class="line"> 16h   var EA structure level 7</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2053</span><br /><span class="line"></span><br /><span class="line">Format of NetWare Extended Attribute structure level 1:</span><br /><span class="line">Offset Size    Description (Table 2055)</span><br /><span class="line"> 00h   DWORD   length of EA value</span><br /><span class="line"> 04h   WORD    length of EA key</span><br /><span class="line"> 06h   DWORD   access flag</span><br /><span class="line"> 0Ah  N BYTEs  key</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2054,#2056,#2057</span><br /><span class="line"></span><br /><span class="line">Format of NetWare Extended Attribute structure level 6:</span><br /><span class="line">Offset Size    Description (Table 2056)</span><br /><span class="line"> 00h   DWORD   length of EA value</span><br /><span class="line"> 04h   WORD    length of EA key</span><br /><span class="line"> 06h   DWORD   access flag</span><br /><span class="line"> 0Ah   DWORD   key extents</span><br /><span class="line"> 0Eh   DWORD   value extents</span><br /><span class="line"> 12h  N BYTEs  key</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2054,#2055,#2057</span><br /><span class="line"></span><br /><span class="line">Format of NetWare Extended Attribute structure level 7:</span><br /><span class="line">Offset Size    Description (Table 2057)</span><br /><span class="line"> 00h   BYTE    key length</span><br /><span class="line"> 01h  N BYTEs  key</span><br /><span class="line">   BYTE    00h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2054,#2055,#2056</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

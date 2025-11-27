@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3286566.html">
+    <link rel="next" href="rbint-3288347.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3286566.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3177957.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3288347.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn F223  - Novell Netware V2+ - Afp Get Entry Id From Filename    </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = F223h subfn 04h</span><br /><span class="line">   CX = length of request buffer in bytes</span><br /><span class="line">   DX = length of reply buffer in bytes</span><br /><span class="line">   DS:SI -&gt; request buffer (see #1995)</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1996)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=F2h&#34;Novell&#34;,AX=F223h/SF=06h,AX=F223h/SF=0Ch,AX=F223h/SF=12h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;AFP Get Entry ID from Name&#34; request packet:</span><br /><span class="line">Offset Size    Description (Table 1995)</span><br /><span class="line"> 00h   WORD    (big-endian) length of following data</span><br /><span class="line"> 02h   BYTE    04h (subfunction &#34;AFP Get Entry ID from Name&#34;)</span><br /><span class="line"> 03h   BYTE    volume number</span><br /><span class="line"> 04h   DWORD   AFP entry ID</span><br /><span class="line"> 08h   BYTE    path length</span><br /><span class="line"> 09h  N BYTEs  AFP-style pathname (relative to AFP entry ID)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1996,#2002</span><br /><span class="line"></span><br /><span class="line">Format of NetWare &#34;AFP Get Entry ID from Name&#34; reply packet:</span><br /><span class="line">Offset Size    Description (Table 1996)</span><br /><span class="line"> 00h   DWORD   AFP entry ID corresponding to specified file/directory</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #1995,#2003</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

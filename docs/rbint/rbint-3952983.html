@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3951312.html">
+    <link rel="next" href="rbint-3954290.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3951312.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3870311.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3954290.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 4310  - Nec Pc-9800 - Xmz - Private Api                        </span>  [<span class="ngb">m</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 4310h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> ES:BX -&gt; driver entry point (see #2474,#2475)</span><br /><span class="line">Program: XMZ is an XMS 2.x-compatible driver for the NEC PC-98 series written</span><br /><span class="line">     by ZOBplus Hayami and available at</span><br /><span class="line">     ftp:/ftp.tohoku.ac.jp/pub/msdos/Memory/xmz/</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=4300h,AX=4310h&#34;XMS&#34;</span><br /><span class="line"></span><br /><span class="line">(Table 2474)</span><br /><span class="line">Call XMZ v1.02 &#34;Get HMA Information&#34; function with:</span><br /><span class="line">   AH = FFh  (XMZ only)</span><br /><span class="line">   AL = 01h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = 1 on success</span><br /><span class="line">   DX = minimum HMA allocation size (/HMAMIN=)</span><br /><span class="line">   BX = actual size of HMA allocation, if in use (i.e. the value in DX</span><br /><span class="line">         when XMS function 1 was called)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2475</span><br /><span class="line"></span><br /><span class="line">(Table 2475)</span><br /><span class="line">Call XMZ v1.02 &#34;Get EMB Handle Information&#34; function with:</span><br /><span class="line">   AH = FFh  (XMZ only)</span><br /><span class="line">   AL = 02h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = 1 on success</span><br /><span class="line">   DX = number of EMB handles configured (/NUMHANDLES=)</span><br /><span class="line">   BX = offset in XMZ&#39;s segment of the handle table (use segment of</span><br /><span class="line">         entry point) (see #2476)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2474</span><br /><span class="line"></span><br /><span class="line">Format of XMZ v1.02 EMB Handle structure:</span><br /><span class="line">Offset Size    Description (Table 2476)</span><br /><span class="line"> 00h   BYTE    flag byte</span><br /><span class="line">       04h unused handle slot</span><br /><span class="line">       02h in-use handle slot</span><br /><span class="line">       01h handle slot that represents a free block</span><br /><span class="line"> 01h   BYTE    lock count</span><br /><span class="line"> 02h   WORD    block start address (1K increments)</span><br /><span class="line"> 04h   WORD    block length (1K increments)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2475</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

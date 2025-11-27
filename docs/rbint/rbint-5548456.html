@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5548293.html">
+    <link rel="next" href="rbint-5550499.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5548293.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5545384.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5550499.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 68 Fn 01  - Appc/pc - Network Device Control - Display               </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 01h subfn 1B00h</span><br /><span class="line">   DS:DX -&gt; control block (see #3338)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> control block updated</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=01h/SF=2000h,AH=01h/SF=2B00h,INT 68&#34;Novell&#34;</span><br /><span class="line"></span><br /><span class="line">Format of APPC/PC &#34;DISPLAY&#34; control block:</span><br /><span class="line">Offset Size    Description (Table 3338)</span><br /><span class="line"> 00h 12 BYTEs  reserved</span><br /><span class="line"> 0Ch   WORD    1B00h (verb &#34;DISPLAY&#34;)</span><br /><span class="line"> 0Eh  6 BYTEs  00h</span><br /><span class="line"> 14h   DWORD   (big-endian) return code (see #3339)</span><br /><span class="line"> 18h   WORD    00h</span><br /><span class="line"> 1Ah  8 BYTEs  (big-endian) logical unit ID</span><br /><span class="line"> 22h  8 BYTEs  (big-endian) partner logical unit name</span><br /><span class="line"> 2Ah  8 BYTEs  (big-endian) mode name</span><br /><span class="line"> 32h   BYTE    logical unit session limit</span><br /><span class="line"> 33h   BYTE    partner logical unit session limit</span><br /><span class="line"> 34h   BYTE    node maximum negotiable session limit</span><br /><span class="line"> 35h   BYTE    current session limit</span><br /><span class="line"> 36h   BYTE    minimum negotiated winner limit</span><br /><span class="line"> 37h   BYTE    maximum negotiated loser limit</span><br /><span class="line"> 38h   BYTE    active session count</span><br /><span class="line"> 39h   BYTE    active CONWINNER session count</span><br /><span class="line"> 3Ah   BYTE    active CONLOSER session count</span><br /><span class="line"> 3Bh   BYTE    session termination count</span><br /><span class="line"> 3Ch   BYTE    bit 7: SESSION_TERMINATION_TARGET_DRAIN</span><br /><span class="line">       bit 6: SESSION_TERMINATION_SOURCE_DRAIN</span><br /><span class="line"></span><br /><span class="line">(Table 3339)</span><br /><span class="line">Values for APPC/PC return code:</span><br /><span class="line"> 0000h successful</span><br /><span class="line"> 0001h BAD_TP_ID</span><br /><span class="line"> 0002h BAD_CONV_ID</span><br /><span class="line"> 0003h bad logical unit ID</span><br /><span class="line"> 0008h no physical unit attached</span><br /><span class="line"> 0110h bad state</span><br /><span class="line"> 01B1h BAD_PART_LUNAME</span><br /><span class="line"> 01B2h bad mode name</span><br /><span class="line"> 0201h physical unit already active</span><br /><span class="line"> 0211h logical unit already active</span><br /><span class="line"> 0212h BAD_PART_SESS</span><br /><span class="line"> 0213h BAD_RU_SIZES</span><br /><span class="line"> 0214h BAD_MODE_SESS</span><br /><span class="line"> 0216h BAD_PACING_CNT</span><br /><span class="line"> 0219h EXTREME_RUS</span><br /><span class="line"> 021Ah SNASVCMG_1</span><br /><span class="line"> 0223h SSCP_CONNECTED_LU</span><br /><span class="line"> 0230h invalid change</span><br /><span class="line"> 0243h too many TPs</span><br /><span class="line"> 0272h adapter close failure</span><br /><span class="line"> 0281h GET_ALLOC_BAD_TYPE</span><br /><span class="line"> 0282h unsuccessful</span><br /><span class="line"> 0283h DLC failure</span><br /><span class="line"> 0284h unrecognized DLC</span><br /><span class="line"> 0286h duplicate DLC</span><br /><span class="line"> 0301h SSCP_PU_SESSION_NOT_ACTIVE</span><br /><span class="line"> 0302h data exceeds RU size</span><br /><span class="line"> 0401h invalid direction</span><br /><span class="line"> 0402h invalid type</span><br /><span class="line"> 0403h segment overlap</span><br /><span class="line"> 0404h invalid first character</span><br /><span class="line"> 0405h table error</span><br /><span class="line"> 0406h conversion error</span><br /><span class="line"> F0010000h APPC disabled</span><br /><span class="line"> F0020000h APPC busy</span><br /><span class="line"> F0030000h APPC abended</span><br /><span class="line"> F0040000h incomplete</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

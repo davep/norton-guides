@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2858670.html">
+    <link rel="next" href="rbint-2859941.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2858670.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2859941.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn DA  - Novell Netware - Directory Services - Get Volume Info Wit</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = DAh</span><br /><span class="line">   DL = volume number</span><br /><span class="line">   ES:DI -&gt; reply buffer (see #1500)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 00h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is supported by NetWare 4.0+ and Advanced NetWare 1.0+</span><br /><span class="line">   operator console rights are not required to make this call</span><br /><span class="line">   reported total blocks and total unused blocks include the Hot Fix</span><br /><span class="line">     Table; the NetWare shell&#39;s implementation of INT 21/AH=36h will</span><br /><span class="line">     report values larger than 268MB as 268MB.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=36h,AH=E2h/SF=15h,AH=E3h/SF=E9h</span><br /><span class="line"></span><br /><span class="line">Format of NetWare reply buffer:</span><br /><span class="line">Offset Size    Description (Table 1500)</span><br /><span class="line"> 00h   WORD    sectors/block</span><br /><span class="line"> 02h   WORD    total blocks on volume</span><br /><span class="line"> 04h   WORD    unused blocks</span><br /><span class="line"> 06h   WORD    total directory entries</span><br /><span class="line"> 08h   WORD    unused directory entries</span><br /><span class="line"> 0Ah 16 BYTEs  volume name, null padded</span><br /><span class="line"> 1Ah   WORD    removable flag, 0000h = not removable</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  all words are big-endian</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

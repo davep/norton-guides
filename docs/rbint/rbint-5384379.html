@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5384280.html">
+    <link rel="next" href="rbint-5385252.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5384280.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5380204.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5385252.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 63  - Desqview/x - Socket Api                                        </span>  [<span class="ngb">Q</span>]</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> parameters are passed by patching (!) data field immediately following</span><br /><span class="line">     the entry point, as detailed below (see #3186); the preferred</span><br /><span class="line">     method for calling the socket API is via INT 15/AX=DE2Eh</span><br /><span class="line">   the installation check consists of testing for the string &#34;dvxunix&#34;</span><br /><span class="line">     (yes, lowercase) at offset 9 from the interrupt handler start</span><br /><span class="line">     (see #3186)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 15/AX=DE2Eh,INT BE&#34;DESQview&#34;</span><br /><span class="line">Index: installation check;DESQview/X socket interface</span><br /><span class="line"></span><br /><span class="line">Format of DESQview/X socket interrupt handler entry:</span><br /><span class="line">Offset Size    Description (Table 3186)</span><br /><span class="line"> 00h  3 BYTEs  near jump or short jump + NOP to actual interrupt handler</span><br /><span class="line"> 03h   WORD    offset from following pointer for initial top of local stack</span><br /><span class="line"> 05h   DWORD   pointer to argument/stack block (see INT 15/AX=DE2Eh)</span><br /><span class="line"> 09h  7 BYTEs  signature &#34;dvxunix&#34;</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

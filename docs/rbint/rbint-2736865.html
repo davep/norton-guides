@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2736656.html">
+    <link rel="next" href="rbint-2738832.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2736656.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2738832.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 6C00  - Dos 4.0+ - Extended Open/create                        </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 6C00h</span><br /><span class="line">   BL = open mode as in AL for normal open (see also AH=3Dh)</span><br /><span class="line">       bit 7: inheritance</span><br /><span class="line">       bits 4-6: sharing mode</span><br /><span class="line">       bit 3 reserved</span><br /><span class="line">       bits 0-2: access mode</span><br /><span class="line">       100 read-only, do not modify file&#39;s last-access time (DOS 7.0)</span><br /><span class="line">   BH = flags</span><br /><span class="line">       bit 6 = auto commit on every write (see also AH=68h)</span><br /><span class="line">       bit 5 = return error rather than doing INT 24h</span><br /><span class="line">       bit 4 = (FAT32) extended size (&gt;= 2GB)</span><br /><span class="line">   CX = create attribute (see #1458)</span><br /><span class="line">   DL = action if file exists/does not exist (see #1459)</span><br /><span class="line">   DH = 00h (reserved)</span><br /><span class="line">   DS:SI -&gt; ASCIZ file name</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">      AX = error code (see #1366 at AH=59h/BX=0000h)</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">      AX = file handle</span><br /><span class="line">      CX = status (see #1457)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the PC LAN Program only supports existence actions (in DL) of 01h,</span><br /><span class="line">     10h with sharing=compatibility, and 12h</span><br /><span class="line">   DR DOS reportedly does not support this function and does not return</span><br /><span class="line">     an &#34;invalid function call&#34; error when this function is used.</span><br /><span class="line">   the documented bits of BX are stored in the SFT when the file is opened</span><br /><span class="line">     (see #1327,#1328)</span><br /><span class="line">BUG:   this function has bugs (at least in DOS 5.0 and 6.2) when used with</span><br /><span class="line">     drives handled via the network redirector (INT 2F/AX=112Eh):</span><br /><span class="line">       - CX (attribute) is not passed to the redirector if DL=11h,</span><br /><span class="line">       - CX does not return the status, it is returned unchanged because</span><br /><span class="line">         DOS does a PUSH CX/POP CX when calling the redirector.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=3Ch,AH=3Dh,AX=6C01h,AX=7160h/CL=00h,INT 2F/AX=112Eh</span><br /><span class="line"></span><br /><span class="line">(Table 1457)</span><br /><span class="line">Values for extended open function status:</span><br /><span class="line"> 01h   file opened</span><br /><span class="line"> 02h   file created</span><br /><span class="line"> 03h   file replaced</span><br /><span class="line"></span><br /><span class="line">Bitfields for file create attribute:</span><br /><span class="line">Bit(s) Description (Table 1458)</span><br /><span class="line"> 6-15  reserved</span><br /><span class="line"> 5 archive</span><br /><span class="line"> 4 reserved</span><br /><span class="line"> 3 volume label</span><br /><span class="line"> 2 system</span><br /><span class="line"> 1 hidden</span><br /><span class="line"> 0 readonly</span><br /><span class="line"></span><br /><span class="line">Bitfields for action:</span><br /><span class="line">Bit(s) Description (Table 1459)</span><br /><span class="line"> 7-4   action if file does not exist</span><br /><span class="line">   0000 fail</span><br /><span class="line">   0001 create</span><br /><span class="line"> 3-0   action if file exists</span><br /><span class="line">   0000 fail</span><br /><span class="line">   0001 open</span><br /><span class="line">   0010 replace/open</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

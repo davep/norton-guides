@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3608759.html">
+    <link rel="next" href="rbint-3610652.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3608759.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3610652.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 1000  - Share - Installation Check                             </span>  [<span class="ngb">f</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 1000h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = status</span><br /><span class="line">       00h not installed, OK to install</span><br /><span class="line">       01h not installed, not OK to install</span><br /><span class="line">       FFh installed</span><br /><span class="line">BUGS:  values of AL other than 00h put DOS 3.x SHARE into an infinite loop</span><br /><span class="line">     (08E9: OR  AL,AL</span><br /><span class="line">      08EB: JNZ 08EB) &lt;- the buggy instruction (DOS 3.3)</span><br /><span class="line">   values of AL other than described here put PC-DOS 4.00 into the same</span><br /><span class="line">     loop (the buggy instructions are the same)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> supported by OS/2 v1.3+ compatibility box, which always returns AL=FFh</span><br /><span class="line">   if DOS 4.01 SHARE was automatically loaded, file sharing is in an</span><br /><span class="line">     inactive state (due to the undocumented /NC flag used by the autoload</span><br /><span class="line">     code) until this call is made</span><br /><span class="line">   DOS 5+ chains to the previous handler if AL &lt;&gt; 00h on entry</span><br /><span class="line">   Windows Enhanced mode hooks this call and reports that SHARE is</span><br /><span class="line">     installed even when it is not</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=1080h,INT 21/AH=52h,INT 21/AX=4457h/DX=FFFFh</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2163058.html">
+    <link rel="next" href="rbint-2164984.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2163058.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2164984.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 2B  - Desqview - Installation Check                            </span>  [<span class="ngb">Q</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 2Bh</span><br /><span class="line">   CX = 4445h (&#39;DE&#39;)</span><br /><span class="line">   DX = 5351h (&#39;SQ&#39;)</span><br /><span class="line">   AL = subfunction (DV v2.00+)</span><br /><span class="line">       01h get version</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> BX = version (BH = major, BL = minor)</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Note:</span> early copies of v2.00 return 0002h</span><br /><span class="line">       02h get shadow buffer info, and start shadowing</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> BH = rows in shadow buffer</span><br /><span class="line">           BL = columns in shadow buffer</span><br /><span class="line">           DX = segment of shadow buffer</span><br /><span class="line">       04h get shadow buffer info</span><br /><span class="line"></span><br /><span class="line">       <span class="ngb">Return:</span> BH = rows in shadow buffer</span><br /><span class="line">           BL = columns in shadow buffer</span><br /><span class="line">           DX = segment of shadow buffer</span><br /><span class="line">       05h stop shadowing</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = FFh if DESQview not installed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> in DESQview v1.x, there were no subfunctions; this call only identified</span><br /><span class="line">     whether or not DESQview was loaded.  DESQview v2.52 performs function</span><br /><span class="line">     01h for all subfunction requests 0Ch and higher and appears to ignore</span><br /><span class="line">     all lower-numbered functions not listed here.</span><br /><span class="line">   DESQview versions 2.50-2.52 are part of DESQview/X v1.0x; version 2.53</span><br /><span class="line">     is part of DESQview/X v1.10; and version 2.63 is part of DESQview/X</span><br /><span class="line">     v2.00.</span><br /><span class="line">BUG:   subfunction 05h does not appear to work correctly in DESQview 2.52</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> INT 10/AH=FEh,INT 10/AH=FFh,INT 15/AX=1024h,INT 15/AX=DE30h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

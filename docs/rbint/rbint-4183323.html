@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4182803.html">
+    <link rel="next" href="rbint-4184624.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4182803.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4031282.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4184624.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 8220  - Modres - Play Module                                   </span>  [<span class="ngb">s</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 8220h</span><br /><span class="line">   DX:CX -&gt; MODPARM structure (see #2646)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status</span><br /><span class="line">       5722h succesful</span><br /><span class="line">       2000h parameters out of range</span><br /><span class="line">       other MODRES not installed</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=8221h,AX=8223h,AX=8225h,AX=8227h,AX=8200h&#34;RESPLAY&#34;</span><br /><span class="line"></span><br /><span class="line">Format of MODPARM Structure:</span><br /><span class="line">Offset Size    Description (Table 2646)</span><br /><span class="line"> 00h   WORD    signature 504Dh (&#34;MP&#34; = Modparm)</span><br /><span class="line"> 02h   BYTE    output device (see #2648 at INT 2F/AX=8221h)</span><br /><span class="line"> 03h   WORD    segment of start of main module (pattern) data</span><br /><span class="line"> 05h 31    WORDs   segment of start of sample numbers 1-31</span><br /><span class="line"> 43h   BYTE    pattern at which to start playing (00h to 7Fh)</span><br /><span class="line"> 44h   BYTE    function</span><br /><span class="line">       00h play from pattern [offset 43h] until end of the song</span><br /><span class="line">       01h play indicated pattern [offset 43h] only</span><br /><span class="line"> 45h   BYTE    Machine speed</span><br /><span class="line">       00h 10-12Mhz</span><br /><span class="line">       01h 12-25Mhz (default)</span><br /><span class="line">       02h 25Mhz+</span><br /><span class="line">       03h mix speed 10kHz (fast 8Mhz machines)</span><br /><span class="line">       04h mix speed 12kHz (10Mhz machines)</span><br /><span class="line">       05h mix speed 13kHz</span><br /><span class="line">       06h mix speed 8kHz (test for 8Mhz machines)</span><br /><span class="line"> 46h   BYTE    allow &gt;64k sample playing</span><br /><span class="line">       80h MOD has samples &gt;64k in it</span><br /><span class="line">       else all samples in MOD are &lt;64k</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> Main module data and all samples must start on segment boundaries.</span><br /><span class="line">   In version 2.00 (ONLY) this function carries on playing (works in</span><br /><span class="line">     the background)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2647</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

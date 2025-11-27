@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3620496.html">
+    <link rel="next" href="rbint-3621828.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3620496.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3621828.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn 110A  CU - Network Redirector (dos 4.0+) - Lock/unlock Region O</span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 110Ah</span><br /><span class="line">   BL = function</span><br /><span class="line">       00h lock</span><br /><span class="line">       01h unlock</span><br /><span class="line">   CX = number of lock/unlock parameters (0001h for DOS 4.0-6.1)</span><br /><span class="line">   DS:DX -&gt; parameter block (see #2293)</span><br /><span class="line">   ES:DI -&gt; SFT</span><br /><span class="line">       SFT DPB field -&gt; DPB of drive containing file</span><br /><span class="line">   SS = DOS DS</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">      AL = DOS error code (see #1366 at INT 21/AH=59h/BX=0000h)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> this function is called by the DOS 4.0+ kernel</span><br /><span class="line">   the redirector is expected to resolve lock conflicts</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=110Bh,INT 21/AH=5Ch</span><br /><span class="line"></span><br /><span class="line">Format of parameter block entry [array, but currently limited to single entry]:</span><br /><span class="line">Offset Size    Description (Table 2293)</span><br /><span class="line"> 00h   DWORD   start offset</span><br /><span class="line"> 04h   DWORD   size of region</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

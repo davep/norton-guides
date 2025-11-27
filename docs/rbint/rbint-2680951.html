@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2680568.html">
+    <link rel="next" href="rbint-2684934.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2680568.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2684934.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 21 Fn 60  - Dos 3.0+ - &#34;truename&#34; - Canonicalize Filename Or Path    </span>  [<span class="ngb">D</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 60h</span><br /><span class="line">   DS:SI -&gt; ASCIZ filename or path</span><br /><span class="line">   ES:DI -&gt; 128-byte buffer for canonicalized name</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">       AX = error code</span><br /><span class="line">       02h invalid component in directory path or drive letter only</span><br /><span class="line">       03h malformed path or invalid drive letter</span><br /><span class="line">       ES:DI buffer unchanged</span><br /><span class="line">   CF clear if successful</span><br /><span class="line">       AH = 00h or 3Ah (DOS 6.1/6.2 for character device)</span><br /><span class="line">       AL = destroyed (00h or 2Fh or 5Ch or last character of current</span><br /><span class="line">         directory on drive)</span><br /><span class="line">       buffer filled with qualified name of form D:\PATH\FILE.EXT or</span><br /><span class="line">         \\MACHINE\PATH\FILE.EXT</span><br /><span class="line"><span class="ngb">Desc:</span>  determine the canonical name of the specified filename or path,</span><br /><span class="line">     corresponding to the undocumented TRUENAME command in COMMAND.COM</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the input path need not actually exist</span><br /><span class="line">   letters are uppercased, forward slashes converted to backslashes,</span><br /><span class="line">     asterisks converted to appropriate number of question marks, and</span><br /><span class="line">     file and directory names are truncated to 8.3 if necessary.  (DR DOS</span><br /><span class="line">     3.41 and 5.0 do not expand asterisks)</span><br /><span class="line">   &#39;.&#39; and &#39;..&#39; in the path are resolved</span><br /><span class="line">   filespecs on local drives always start with &#34;d:&#34;, those on network</span><br /><span class="line">     drives always start with &#34;\\&#34;</span><br /><span class="line">   if path string is on a JOINed drive, the returned name is the one that</span><br /><span class="line">     would be needed if the drive were not JOINed; similarly for a</span><br /><span class="line">     SUBSTed, ASSIGNed, or network drive letter.   Because of this, it is</span><br /><span class="line">     possible to get a qualified name that is not legal under the current</span><br /><span class="line">     combination of SUBSTs, ASSIGNs, JOINs, and network redirections</span><br /><span class="line">   under DOS 3.3 through 6.00, a device name is translated differently if</span><br /><span class="line">     the device name does not have an explicit directory or the directory</span><br /><span class="line">     is \DEV (relative directory DEV from the root directory works</span><br /><span class="line">     correctly).  In these cases, the returned string consists of the</span><br /><span class="line">     unchanged device name and extension appended to the string X:/</span><br /><span class="line">     (forward slash instead of backward slash as in all other cases) where</span><br /><span class="line">     X is the default or explicit drive letter.</span><br /><span class="line">   under MS-DOS 7.0, this call returns the short name for any</span><br /><span class="line">     long-filename portions of the provided pathname or filename</span><br /><span class="line">   functions which take pathnames require canonical paths if invoked via</span><br /><span class="line">     INT 21/AX=5D00h</span><br /><span class="line">   supported by OS/2 v1.1 compatibility box</span><br /><span class="line">   NetWare 2.1x does not support characters with the high bit set; early</span><br /><span class="line">     versions of NetWare 386 support such characters except in this call.</span><br /><span class="line">     In addition, NetWare returns error code 3 for the path &#34;X:\&#34;; one</span><br /><span class="line">     should use &#34;X:\.&#34; instead.</span><br /><span class="line">   Novell DOS 7 reportedly has difficulty with non-MS-DOS filenames on</span><br /><span class="line">     network drives, and can return &#34;D:&#34; instead of &#34;SERVER/VOLUME&#34;</span><br /><span class="line">   for DOS 3.3-6.0, the input and output buffers may be the same, as the</span><br /><span class="line">     canonicalized name is built in an internal buffer and copied to the</span><br /><span class="line">     specified output buffer as the very last step</span><br /><span class="line">   for DR DOS 6.0, this function is not automatically called when on a</span><br /><span class="line">     network.  Device drivers reportedly cannot make this call from their</span><br /><span class="line">     INIT function.  Using the same pointer for both input and output</span><br /><span class="line">     buffers is not supported in the April 1992 and earlier versions of</span><br /><span class="line">     DR DOS</span><br /><span class="line">   Windows for Workgroups 3.11, Windows95 and even MS-DOS 7.00 only</span><br /><span class="line">     return the local drive path; to obtain network paths use</span><br /><span class="line">     INT 21/AX=5F02h or INT 21/AX=5F46h instead</span><br /><span class="line">   Corel&#39;s CORELCDX and MSCDEX without the /S switch return canonical</span><br /><span class="line">     names of the form &#34;\\D.\A.\path&#34;, where &#34;D&#34; is the CD-ROM drive</span><br /><span class="line">     letter and &#34;A&#34; appears to indicate the first physical CD-ROM drive;</span><br /><span class="line">     MSCDEX with the /S switch returns a canonical name with embedded</span><br /><span class="line">     blanks.  Novell DOS 7 NWCDEX as of the 11/16/94 update returns the</span><br /><span class="line">     same canonical path as MSCDEX; earlier revisions returned</span><br /><span class="line">     &#34;Cdex.   D:\path&#34;, where &#34;D&#34; is the CD-ROM drive letter</span><br /><span class="line">   the Windows95 MSCDEX-replacement VxD returns &#34;D:\path&#34;, even though the</span><br /><span class="line">     MS-DOS 7.00 MSCDEX behaves identically to older versions (above)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=5F02h,AX=5FB3h,AX=7160h/CL=00h,INT 2F/AX=1123h,INT 2F/AX=1221h</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

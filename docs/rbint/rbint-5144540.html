@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5143337.html">
+    <link rel="next" href="rbint-5145998.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5143337.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5145998.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 61 Fn 000F  - Banyan Vines - Send Message On A Socket                </span>  [<span class="ngb">N</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 000Fh subfn 0002h</span><br /><span class="line">   CX:BX -&gt; request block (see #3118)</span><br /><span class="line">   DX = application&#39;s data segment (should be = CX)</span><br /><span class="line">   ES = DS</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AX = status</span><br /><span class="line">       0000h successful</span><br /><span class="line">       00A5h resource not available</span><br /><span class="line"><span class="ngb">Desc:</span>  send data to a socket identified by its socket handle</span><br /><span class="line"></span><br /><span class="line">Format of request block:</span><br /><span class="line">Offset Size    Description (Table 3118)</span><br /><span class="line"> 00h   WORD    0002h</span><br /><span class="line"> 02h   WORD    magic number (FEFEh)</span><br /><span class="line"> 04h   WORD    buffer for return code (set to 0 before calling)</span><br /><span class="line"> 06h   WORD    reserved (will be set to client DS)</span><br /><span class="line"> 08h   WORD    reserved (obviously not used; set to 0 before calling)</span><br /><span class="line"> 0Ah   DWORD   far pointer to parameter block (see #3119)</span><br /><span class="line"> 0Eh   WORD    process handle (see AX=000Fh/SF=0008h)</span><br /><span class="line"></span><br /><span class="line">Format of parameter block:</span><br /><span class="line">Offset Size    Description (Table 3119)</span><br /><span class="line"> 00h   WORD    buffer for estimated communication cost in 220 msec ticks</span><br /><span class="line"> 02h   WORD    buffer for return code (set to 0 before calling)</span><br /><span class="line"> 04h   WORD    socket handle</span><br /><span class="line"> 06h   DWORD   far pointer to IPC/SPP message buffer</span><br /><span class="line"> 0Ah   WORD    length of IPC/SPP message buffer</span><br /><span class="line"> 0Ch   WORD    option flags</span><br /><span class="line">       bit 0: asynchronous communication</span><br /><span class="line">       bit 1: reliable message</span><br /><span class="line">       bit 3: end of message</span><br /><span class="line">       bit 4: vectored I/O</span><br /><span class="line"> 0Eh 16    BYTEs   socket address (IPC port of source)</span><br /><span class="line"> 1Eh   WORD    not used (set to 0 before calling)</span><br /><span class="line"> 20h   WORD    SPP connection id (0 for IPC messages)</span><br /><span class="line"> 22h   WORD    request type (1 = data, 2 = connect SPP, 3 = disconnect SPP)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #3118</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

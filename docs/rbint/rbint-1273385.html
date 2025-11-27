@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1272938.html">
+    <link rel="next" href="rbint-1275006.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1272938.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1227085.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1275006.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 15 Fn 530A  - Advanced Power Management V1.0+ - Get Power Status     </span>  [<span class="ngb">p</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = 530Ah</span><br /><span class="line">   BX = device ID</span><br /><span class="line">       0001h all devices power-managed by APM</span><br /><span class="line">       80xxh specific battery unit number XXh (01h-FFh) (APM v1.2)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">       BH = AC line status</span><br /><span class="line">       00h off-line</span><br /><span class="line">       01h on-line</span><br /><span class="line">       02h on backup power (APM v1.1)</span><br /><span class="line">       FFh unknown</span><br /><span class="line">       other reserved</span><br /><span class="line">       BL = battery status (see #0402)</span><br /><span class="line">       CH = battery flag (APM v1.1+) (see #0403)</span><br /><span class="line">       CL = remaining battery life, percentage</span><br /><span class="line">       00h-64h (0-100) percentage of full charge</span><br /><span class="line">       FFh unknown</span><br /><span class="line">       DX = remaining battery life, time (APM v1.1) (see #0404)</span><br /><span class="line">       ---if specific battery unit specified---</span><br /><span class="line">       SI = number of battery units currently installed</span><br /><span class="line">   CF set on error</span><br /><span class="line">       AH = error code (09h,0Ah) (see #0399)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> should not be called from within a hardware interrupt handler to avoid</span><br /><span class="line">     reentrance problems</span><br /><span class="line">   supported in real mode (INT 15) and both 16-bit and 32-bit protected</span><br /><span class="line">     mode</span><br /><span class="line"></span><br /><span class="line">(Table 0402)</span><br /><span class="line">Values for APM v1.0+ battery status:</span><br /><span class="line"> 00h   high</span><br /><span class="line"> 01h   low</span><br /><span class="line"> 02h   critical</span><br /><span class="line"> 03h   charging</span><br /><span class="line"> FFh   unknown</span><br /><span class="line"> other reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0403,#0404</span><br /><span class="line"></span><br /><span class="line">Bitfields for APM v1.1+ battery flag:</span><br /><span class="line">Bit(s) Description (Table 0403)</span><br /><span class="line"> 0 high</span><br /><span class="line"> 1 low</span><br /><span class="line"> 2 critical</span><br /><span class="line"> 3 charging</span><br /><span class="line"> 4 selected battery not present (APM v1.2)</span><br /><span class="line"> 5-6   reserved (0)</span><br /><span class="line"> 7 no system battery</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  all bits set (FFh) if unknown</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0402,#0404</span><br /><span class="line"></span><br /><span class="line">Bitfields for APM v1.1+ remaining battery life:</span><br /><span class="line">Bit(s) Description (Table 0404)</span><br /><span class="line"> 15    time units: 0=seconds, 1=minutes</span><br /><span class="line"> 14-0  battery life in minutes or seconds</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  all bits set (FFFFh) if unknown</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #0402,#0403</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

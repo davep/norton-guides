@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4458538.html">
+    <link rel="next" href="rbint-4463440.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4458538.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4422878.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4463440.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 2F Fn DB00  - Zyxel Zfax V2+ - Installation Check                    </span>  [<span class="ngb">F</span>]</span><br /><span class="line"></span><br /><span class="line">   AX = DB00h</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> AL = 5Bh if installed (v2.x)</span><br /><span class="line">       ES:BX -&gt; configuration table???</span><br /><span class="line">   AX = 00DBh if installed (v3)</span><br /><span class="line">       ES:BX -&gt; ZFAX configuration table (see #2764)</span><br /><span class="line">Program: ZFAX is the bundled FAX software which comes with the ZyXEL model</span><br /><span class="line">     Fax modems.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AX=CBDCh,AX=DA00h,AX=DB01h,AX=DB02h,AX=DB03h</span><br /><span class="line"></span><br /><span class="line">Format of ZFAX Configuration Table:</span><br /><span class="line">Offset Size    Description (Table 2764)</span><br /><span class="line"> 00h   WORD    table version number (0300h for v3.0-v4.01)</span><br /><span class="line"> 02h   BYTE    reserved</span><br /><span class="line"> 03h 70 BYTEs  ZFAX working path</span><br /><span class="line"> 49h 128 BYTEs path to external editor</span><br /><span class="line"> C9h 128 BYTEs path to external terminal emulator</span><br /><span class="line">149h 128 BYTEs path to Ring Shell</span><br /><span class="line">1C9h 128 BYTEs path to DOS Shell</span><br /><span class="line">249h 128 BYTEs path to Data Shell</span><br /><span class="line">2C9h 70 BYTEs  path to Chinese font</span><br /><span class="line">30Fh   BYTE    printer type (see #2765)</span><br /><span class="line">310h   BYTE    printer port (00h = LPT1, etc.)</span><br /><span class="line">311h   BYTE    type of graphics adapter</span><br /><span class="line">       (00h auto-detect, 01h VGA, 02h EGA, 03h CGA, 04h Hercules)</span><br /><span class="line">312h   BYTE    display type</span><br /><span class="line">       (00h auto-detect, 01h LCD, 02h color, 03h mono)</span><br /><span class="line">313h   BYTE    scan code for ZFAX hotkey (see #0005)</span><br /><span class="line">314h   BYTE    shift mask for ZFAX hotkey</span><br /><span class="line">315h   BYTE    tone/pulse dialing (00h tone, 01h pulse)</span><br /><span class="line">316h   BYTE    Caller ID (00h disabled, 01h enabled)</span><br /><span class="line">317h   BYTE    Distinctive Ring (00h disabled, 01h enabled)</span><br /><span class="line">318h   BYTE    normal ring answer type (see #2766)</span><br /><span class="line">319h   BYTE    Ring 1 answer type (see #2766)</span><br /><span class="line">31Ah   BYTE    Ring 2 answer type (see #2766)</span><br /><span class="line">31Bh   BYTE    Ring 3 answer type (see #2766)</span><br /><span class="line">31Ch   BYTE    COM port for modem</span><br /><span class="line">31Dh   BYTE    speaker volume (00h-07h)</span><br /><span class="line">31Eh   BYTE    modem dial timer, seconds</span><br /><span class="line">31Fh   WORD    user-defined COM port I/O address</span><br /><span class="line">321h   BYTE    user-defined COM port IRQ number</span><br /><span class="line">322h 81 BYTEs  dial prefix string</span><br /><span class="line">373h 79 BYTEs  dial postfix string</span><br /><span class="line">3C2h   BYTE    ring count until automatic answer</span><br /><span class="line">3C3h   BYTE    retry count on busy signal</span><br /><span class="line">3C4h   BYTE    redial delay in seconds</span><br /><span class="line">3C5h   WORD    system password</span><br /><span class="line">3C7h   BYTE    reserved</span><br /><span class="line">3C8h   BYTE    voice file compression format</span><br /><span class="line">       00h CELP at 9600bps</span><br /><span class="line">       01h two-bit ADPCM at 19200bps</span><br /><span class="line">       02h three-bit ADPCM at 28800bps</span><br /><span class="line">3C9h   BYTE    voice system: DTMF 0 action (see #2767)</span><br /><span class="line">3CAh   BYTE    voice system: DTMF 1 action</span><br /><span class="line">3CBh   BYTE    voice system: DTMF 2 action</span><br /><span class="line">3CCh   BYTE    voice system: DTMF 3 action</span><br /><span class="line">3CDh   BYTE    voice system: DTMF 4 action</span><br /><span class="line">3CEh   BYTE    voice system: DTMF 5 action</span><br /><span class="line">3CFh   BYTE    voice system: DTMF 6 action</span><br /><span class="line">3D0h   BYTE    voice system: DTMF 7 action</span><br /><span class="line">3D1h   BYTE    voice system: DTMF 8 action</span><br /><span class="line">3D2h   BYTE    voice system: DTMF 9 action (see #2767)</span><br /><span class="line">3D3h   WORD    reserved</span><br /><span class="line">3D5h 25 BYTEs  local FAX ID to display on page header</span><br /><span class="line">3EEh 20 BYTEs  local FAX ID sent to remote FAX</span><br /><span class="line">402h   BYTE    FAX page size</span><br /><span class="line">       00h A4 (210x297mm)</span><br /><span class="line">       01h B4 (250x353mm)</span><br /><span class="line">       02h A3 (297x420mm)</span><br /><span class="line">403h   BYTE    FAX resolution</span><br /><span class="line">       00h normal (3.85 pixels/mm)</span><br /><span class="line">       01h high (7.7 pixels/mm)</span><br /><span class="line">404h   BYTE    FAX coding scheme</span><br /><span class="line">       00h 1-D, modified Huffman coding</span><br /><span class="line">       01h 2-D, modified READ coding</span><br /><span class="line">405h   BYTE    left margin for text in millimeters</span><br /><span class="line">406h   BYTE    vertical insertion for text in mm (0-20)</span><br /><span class="line">407h   BYTE    horizontal insertion in mm (0-20)</span><br /><span class="line">408h   BYTE    maximum text lines per page</span><br /><span class="line">409h   BYTE    text type (00h ASCII, 01h WordStar-formatted)</span><br /><span class="line">40Ah   BYTE    PCX image resize (00h disabled, 01h enabled)</span><br /><span class="line">40Bh   BYTE    AutoPrint (00h disabled, 01h enabled)</span><br /><span class="line">40Ch   BYTE    cover page (00h disabled, 01h enabled)</span><br /><span class="line">40Dh 81 BYTEs  cover page logo filename</span><br /><span class="line">45Eh 65 BYTEs  cover page sender name</span><br /><span class="line">49Fh   BYTE    print capture (00h disabled, 01h enabled)</span><br /><span class="line">4A0h   BYTE    send immediately (00h disabled, 01h enabled)</span><br /><span class="line">4A1h   BYTE    print capture printer port</span><br /><span class="line">4A2h   BYTE    print capture timer in seconds</span><br /><span class="line">4A3h   BYTE    scan code for print capture hotkey (see #0005)</span><br /><span class="line">4A4h   BYTE    shift mask for print capture hotkey</span><br /><span class="line">4A5h   BYTE    DataShell type</span><br /><span class="line">       00h internal Zmodem, 01h Data Shell, 02h disable</span><br /><span class="line">4A6h   BYTE    video I/O type</span><br /><span class="line">       00h auto-detect, 01h use BIOS, 02h direct writes</span><br /><span class="line">4A7h   BYTE    call transfer digits (0-9)</span><br /><span class="line">4A8h   WORD    voice recorder maximum time in seconds (0-999)</span><br /><span class="line"></span><br /><span class="line">(Table 2765)</span><br /><span class="line">Values for ZFAX printer type:</span><br /><span class="line"> 00h   EPSON FX (9 pins)</span><br /><span class="line"> 01h   EPSON LQ (24 pins)</span><br /><span class="line"> 02h   HP Laser Jet II, letter size</span><br /><span class="line"> 03h   HP Laser Jet II, legal size</span><br /><span class="line"> 04h   HP Laser Jet II, A4 size</span><br /><span class="line"> 05h   HP Laser Jet III, letter size</span><br /><span class="line"> 06h   HP Laser Jet III, legal size</span><br /><span class="line"> 07h   HP Laser Jet III, A4 size</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2764</span><br /><span class="line"></span><br /><span class="line">(Table 2766)</span><br /><span class="line">Values for Ring Answer Type:</span><br /><span class="line"> 00h   voice system</span><br /><span class="line"> 01h   FAX only</span><br /><span class="line"> 02h   Data Shell</span><br /><span class="line"> 03h   Ring Shell</span><br /><span class="line"> 04h   DOS Shell</span><br /><span class="line"> 05h   ignore</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2764</span><br /><span class="line"></span><br /><span class="line">(Table 2767)</span><br /><span class="line">Values for DTMF action:</span><br /><span class="line"> 00h   none</span><br /><span class="line"> 01h   page operator</span><br /><span class="line"> 02h   FaxBack</span><br /><span class="line"> 03h   announcement</span><br /><span class="line"> 04h   call transfer</span><br /><span class="line"> 05h   receive FAX</span><br /><span class="line"> 06h   receive data</span><br /><span class="line"> 07h   voice mailbox</span><br /><span class="line"> 08h   DOS Shell Out</span><br /><span class="line"> 09h   Data Shell Out</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #2764</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5867871.html">
+    <link rel="next" href="rbint-5870361.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5867871.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5854784.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5870361.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 7F  - Telebit Acs Serial I/o                                         </span>  [<span class="ngb">S</span>]</span><br /><span class="line"></span><br /><span class="line">   ES:SI-&gt; parameter block (see #3538)</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF set on error</span><br /><span class="line">   CF clear on success</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the signature &#34;PDGATEWRKSTNIF&#34; appears just prior to the interrupt</span><br /><span class="line">     handler; this serves as the installation check</span><br /><span class="line">Index: installation check;Telebit ACS Serial I/O</span><br /><span class="line"></span><br /><span class="line">Format of Telebit ACS parameter block:</span><br /><span class="line">Offset Size    Description (Table 3538)</span><br /><span class="line"> 00h   BYTE    command (see #3539)</span><br /><span class="line"> 01h   BYTE    gateway number</span><br /><span class="line"> 02h   BYTE    reserved</span><br /><span class="line"> 03h   BYTE    port</span><br /><span class="line"> 04h 17 BYTEs  auxiliary buffer</span><br /><span class="line"> 15h   BYTE    session</span><br /><span class="line"> 16h   WORD    count of bytes passed to API</span><br /><span class="line"> 18h   DWORD   buffer pointer passed to/from API</span><br /><span class="line"> 1Ch   WORD    count of bytes passed from API</span><br /><span class="line"> 1Eh   BYTE    return code (see #3540)</span><br /><span class="line"></span><br /><span class="line">(Table 3539)</span><br /><span class="line">Values for Telebit ACS command:</span><br /><span class="line"> 3Ch   status</span><br /><span class="line"> 3Dh   connect</span><br /><span class="line"> 3Eh   disconnect</span><br /><span class="line"> 3Fh   read</span><br /><span class="line"> 40h   data/command write</span><br /><span class="line"> 41h   clear receive buffer</span><br /><span class="line"> 42h   get configuration</span><br /><span class="line"> 43h   get receiver status</span><br /><span class="line"> 44h   raw write</span><br /><span class="line"> 45h   search servers</span><br /><span class="line"> 46h   set transmit buffer size</span><br /><span class="line"></span><br /><span class="line">(Table 3540)</span><br /><span class="line">Values for Telebit ACS return code:</span><br /><span class="line"> 00h   success</span><br /><span class="line"> 01h   invalid session</span><br /><span class="line"> 05h   servername invalid</span><br /><span class="line"> 06h   NetWare fileserver bindery is locked</span><br /><span class="line"> 07h   communication server not active</span><br /><span class="line"> 08h   general failure in NetWare fileserver</span><br /><span class="line"> 09h   not logged into a fileserver</span><br /><span class="line"> 10h   connection table full</span><br /><span class="line"> 11h   no response from communication server</span><br /><span class="line"> 12h   connection attempt terminated abnormally</span><br /><span class="line"> 13h   connection refused - no sessions available</span><br /><span class="line"> 14h   gateway number/port already in use</span><br /><span class="line"> 15h   invalid connection response</span><br /><span class="line"> 16h   port invalid</span><br /><span class="line"> 17h   incorrect version in server response</span><br /><span class="line"> 18h   gateway number/port combination not configured</span><br /><span class="line"> 19h   initialization has not been completed</span><br /><span class="line"> 20h   no more sockets are available</span><br /><span class="line"> 21h   no active poolname</span><br /><span class="line"> 23h   FATAL internal interface error</span><br /><span class="line"> 24h   registration of host workstation failed - name is already in use</span><br /><span class="line"> 25h   registration of host workstation failed - workstation name table full</span><br /><span class="line"> 26h   registration of host workstation failed - only one session may be</span><br /><span class="line">     registered for dial-in</span><br /><span class="line"> FFh   Telebit ACS API is busy - retry later</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

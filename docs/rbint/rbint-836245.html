@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-835952.html">
+    <link rel="next" href="rbint-839263.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-835952.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-839263.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Lists</li>
+            <ul>
+              <li><a href="index.html">Comments</a></li>
+              <li><a href="rbint-7995.html">Interrupts</a></li>
+              <li><a href="rbint-15401.html">Glossary</a></li>
+              <li><a href="rbint-64347.html">Memory</a></li>
+              <li><a href="rbint-180090.html">CMOS</a></li>
+              <li><a href="rbint-250757.html">86 Bugs</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngu">Int 13 Fn 25  - Hard Disk - Ps/1 And Newer Ps/2 - Identify Drive         </span>  [<span class="ngb">d</span>]</span><br /><span class="line"></span><br /><span class="line">   AH = 25h</span><br /><span class="line">   DL = drive number (80h,81h)</span><br /><span class="line">   ES:BX-&gt; 512 byte buffer for reply packet</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br /><span class="line">   CF set on error</span><br /><span class="line">   AH = status (see #0166 at AH=01h)</span><br /><span class="line">   buffer filled with ATA/IDE-style drive information block (see #0199)</span><br /><span class="line"><span class="ngb">Desc:</span>  retrieves the 256 words of drive data stored on an IDE hard disk</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Notes:</span> the byte at address 0040h:0074h is set to the status of the operation</span><br /><span class="line">   IBM officially classifies this function as optional</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> AH=23h&#34;PS/1&#34;</span><br /><span class="line"></span><br /><span class="line">Format of drive information block:</span><br /><span class="line">Offset Size    Description (Table 0199)</span><br /><span class="line"> 00h   WORD    general drive configuration (see #0200)</span><br /><span class="line"> 02h   WORD    number of cylinders</span><br /><span class="line"> 04h   WORD    reserved</span><br /><span class="line"> 06h   WORD    number of heads</span><br /><span class="line"> 08h   WORD    number of unformatted bytes per track</span><br /><span class="line"> 0Ah   WORD    number of unformatted bytes per sector</span><br /><span class="line"> 0Ch   WORD    number of sectors per track</span><br /><span class="line"> 0Eh  6 BYTEs  vendor unique</span><br /><span class="line"> 14h 20 BYTEs  serial number in ASCII, 0000h=not specified)</span><br /><span class="line"> 28h   WORD    buffer type</span><br /><span class="line"> 2Ah   WORD    buffer size in 512 byte increments (0000h=not specified)</span><br /><span class="line"> 2Ch   WORD    number of ECC bytes passed on Read/Write Long cmds</span><br /><span class="line">       0000h = not specified</span><br /><span class="line"> 2Eh  8 BYTEs  firmware revision in ASCII, 0000h=not specified</span><br /><span class="line"> 36h 40 BYTEs  model number in ASCII, 0000h=not specified</span><br /><span class="line"> 5Eh   WORD    bits 15-8  Vendor Unique</span><br /><span class="line">       bits 7-0  00h = Read/Write Multiple commands not implemented</span><br /><span class="line">             xxh = Maximum number of sectors that can be</span><br /><span class="line">             transferred per interrupt on Read and Write</span><br /><span class="line">             Multiple commands</span><br /><span class="line"> 60h   WORD    0000h = cannot perform doubleword I/O</span><br /><span class="line">       0001h = can perform doubleword I/O</span><br /><span class="line"> 62h   WORD    capabilities</span><br /><span class="line">       bit 15-9  0=reserved</span><br /><span class="line">       bit 8  1=DMA Supported</span><br /><span class="line">       bit 7-0  Vendor Unique</span><br /><span class="line"> 64h   WORD    reserved</span><br /><span class="line"> 66h   WORD    bits 15-8 PIO data transfer cycle timing mode</span><br /><span class="line">       bits 7-0  Vendor Unique</span><br /><span class="line"> 68h   WORD    bits 15-8 DMA data transfer cycle timing mode</span><br /><span class="line">       bits 7-0  Vendor Unique</span><br /><span class="line"> 6Ah   WORD    bits 15-1 reserved</span><br /><span class="line">       bit 0   1=the fields reported in tranlation mode are valid</span><br /><span class="line">           0=the fields reported in translation mode may be valid</span><br /><span class="line"> 6Ch   WORD    number of current cylinders</span><br /><span class="line"> 6Eh   WORD    number of current heads</span><br /><span class="line"> 70h   WORD    number of current sectors per track</span><br /><span class="line"> 72h   DWORD   current capacity in sectors</span><br /><span class="line"> 76h   WORD    reserved</span><br /><span class="line"> 78h 136 BYTEs not defined by ATA spec 2.6</span><br /><span class="line">100h 64 BYTEs  vendor unique</span><br /><span class="line">140h 96 BYTEs  reserved</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">Note:</span>  the above description is as in the ATA (AT Attachment) Specification.</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">See Also:</span> #P157</span><br /><span class="line"></span><br /><span class="line">Bitfields for general drive configuration:</span><br /><span class="line">Bit(s) Description (Table 0200)</span><br /><span class="line"> 15    0   reserved for non-magnetic drives</span><br /><span class="line"> 14    format speed tolerance gap required</span><br /><span class="line"> 13    track offset option available</span><br /><span class="line"> 12    data strobe offset option available</span><br /><span class="line"> 11    rotational speed tolerance is &gt; 0.5%</span><br /><span class="line"> 10    disk transfer rate &gt; 10 Mbs</span><br /><span class="line"> 9 disk transfer rate &gt; 5Mbs but &lt;= 10Mbs</span><br /><span class="line"> 8 disk transfer rate &lt;= 5Mbs</span><br /><span class="line"> 7 removable cartridge drive</span><br /><span class="line"> 6 fixed drive</span><br /><span class="line"> 5 spindle motor control option implemented</span><br /><span class="line"> 4 head switch time &gt; 15 usec</span><br /><span class="line"> 3 not MFM encoded</span><br /><span class="line"> 2 soft sectored</span><br /><span class="line"> 1 hard sectored</span><br /><span class="line"> 0 reserved (0)</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
