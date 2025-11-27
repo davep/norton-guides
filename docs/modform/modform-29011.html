@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .MOD  (Sound)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-26015.html">
+    <link rel="next" href="modform-30817.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-26015.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-30817.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">.MOD  (Sound)</a></li>
+              <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+              <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+              <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+              <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+              <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Subfunction 21 : Test for residency</span></span><br /><span class="line"></span><br /><span class="line"> AH = 82</span><br /><span class="line"> AL = 21</span><br /><span class="line"> If MODRES is resident, AX will be set to 5722h, and BX will hold the version</span><br /><span class="line"> number in hex (i.e. 0120h means version 1.20). DX:CX will point to a table</span><br /><span class="line"> containing the available devices. Note that this information is not available</span><br /><span class="line"> in the old versions of MODRES.</span><br /><span class="line"></span><br /><span class="line"> The table has the following format:</span><br /><span class="line"></span><br /><span class="line"> ┌────────┬─────┬───────────────────────────────────────────────────────────┐</span><br /><span class="line"> │ Offset │ Len │ Contents                                                  │</span><br /><span class="line"> ├────────┼─────┼───────────────────────────────────────────────────────────┤</span><br /><span class="line"> │   0    │  20 │ The name of the device - blank padded and null            │</span><br /><span class="line"> │        │     │ terminated.                                               │</span><br /><span class="line"> │   20   │  2  │ Always seems to be FFFF hex.                              │</span><br /><span class="line"> │   22   │  2  │ Usually the port associated with the device. This will    │</span><br /><span class="line"> │        │     │ be set to zero if the device is not available.            │</span><br /><span class="line"> │   24   │  2  │ Usually the second port associated with stero devices.    │</span><br /><span class="line"> │   26   │  2  │ The address of the int 8 routine for playing a sample.    │</span><br /><span class="line"> │   28   │  1  │ The type of device. See table below.                      │</span><br /><span class="line"> │   29   │  2  │ The address of the int 8 routine for playing a module     │</span><br /><span class="line"> │        │     │ with all samples &lt; 64K.                                   │</span><br /><span class="line"> │   31   │  2  │ The address of the int 8 routine for playing a module     │</span><br /><span class="line"> │        │     │ with some samples &gt; 64K.                                  │</span><br /><span class="line"> └────────┴─────┴───────────────────────────────────────────────────────────┛</span><br /><span class="line"></span><br /><span class="line"> The end of the table will be marked with a FF hex as the first byte in the</span><br /><span class="line"> name field. The possible device types known to me are as follows:</span><br /><span class="line"></span><br /><span class="line"> ┌────────┬─────────────────────┐</span><br /><span class="line"> │ Number │ Name                │</span><br /><span class="line"> ├────────┼─────────────────────┤</span><br /><span class="line"> │   0    │ Speaker             │</span><br /><span class="line"> │   1    │ Soundblaster        │</span><br /><span class="line"> │   2    │ D/A on an LPT port  │</span><br /><span class="line"> │   4    │ D/A on 1&amp;2 (stereo) │</span><br /><span class="line"> │   5    │ D/A on 1&amp;2 (mono)   │</span><br /><span class="line"> │   7    │ Stereo-on-1         │</span><br /><span class="line"> │   8    │ Disney Sound Source │</span><br /><span class="line"> └────────┴─────────────────────┛</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

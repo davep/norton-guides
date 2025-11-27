@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .MOD  (Sound)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-2251.html">
+    <link rel="next" href="modform-5530.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-2251.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-5530.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">.MOD  (Sound)</a></li>
+              <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+              <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+              <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+              <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+              <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Pattern Sequence<span class="ngu"></span></span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngu">(Offset 470 - 15 samples; Offset 950 - 31 samples)</span></span><br /><span class="line"></span><br /><span class="line"> A module is divided into a number of patterns. These patterns can be played</span><br /><span class="line"> in any order and any number of times - it is in this area that you specify</span><br /><span class="line"> what gets played when. It has the following format.</span><br /><span class="line"></span><br /><span class="line">  ┌──────────┬─────────┬─────────┬─────────┬─────────┬─ ∙∙∙ ─┬─────────┐</span><br /><span class="line">  │ Offset   │ 0       │ 1       │ 2       │ 3       │       │ 130     │</span><br /><span class="line">  ├──────────┼─────────┼─────────┼─────────┼─────────┼─ ∙∙∙ ─┼─────────┤</span><br /><span class="line">  │ Contents │ Length  │ Repeat  │ 1st Pat │ 2nd Pat │       │ Last    │</span><br /><span class="line">  └──────────┴─────────┴─────────┴─────────┴─────────┴─ ∙∙∙ ─┴─────────┛</span><br /><span class="line"></span><br /><span class="line"> The length is the number of patterns in the sequence.</span><br /><span class="line"></span><br /><span class="line"> Repeat is the offset in the sequence from which the module will begin</span><br /><span class="line"> playing when it reaches the end of the sequence. A value of zero means to</span><br /><span class="line"> repeat from the 1st pattern. A value of 7F hex (possibly 78) means that</span><br /><span class="line"> the module does not repeat.</span><br /><span class="line"></span><br /><span class="line"> The next 128 bytes specify which patterns should be played when (1 byte for</span><br /><span class="line"> each pattern). A value of zero refers to the first pattern defined, etc.</span><br /><span class="line"></span><br /><span class="line"> For example, the following sequence of bytes:</span><br /><span class="line"></span><br /><span class="line">    07 7F 01 02 02 00 03 04 04 00 00 .......</span><br /><span class="line">    │  │</span><br /><span class="line">    │  └─ don&#39;t repeat</span><br /><span class="line">    └── the sequence length</span><br /><span class="line"></span><br /><span class="line"> will play pattern number 1 (the second pattern defined), then play pattern</span><br /><span class="line"> number 2 twice, then pattern zero (the first pattern defined), then pattern</span><br /><span class="line"> 3, and finally play pattern number 4 twice - a total of 7 patterns. Notice</span><br /><span class="line"> that all positions past the end of the sequence should be set to zero.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="modform-6428.html">Pattern Details</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,85 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .GIF  (Graphics)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-63416.html">
+    <link rel="next" href="modform-71900.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-63416.html">Previous</a></li>
+
+
+          
+
+<li><a href="modform-45998.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-71900.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">.MOD  (Sound)</a></li>
+              <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+              <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+              <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+              <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+              <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Image Packaging &amp; Compression</span></span><br /><span class="line"></span><br /><span class="line"> The Raster Data stream that represents the actual output image  can be</span><br /><span class="line"> represented as:</span><br /><span class="line"></span><br /><span class="line">         7 6 5 4 3 2 1 0</span><br /><span class="line">        ┌───────────────┐</span><br /><span class="line">        │   code size   │</span><br /><span class="line">        ├───────────────┤     ───┐</span><br /><span class="line">        │blok byte count│        │</span><br /><span class="line">        ├───────────────┤        │</span><br /><span class="line">        │               │        ├── Repeated as many times as necessary</span><br /><span class="line">        │  data bytes   │        │</span><br /><span class="line">        │               │        │</span><br /><span class="line">        ├───────────────┤     ───┛</span><br /><span class="line">        | . .       . . |</span><br /><span class="line">        ├───────────────┤</span><br /><span class="line">        │0 0 0 0 0 0 0 0│       zero byte count (terminates data stream)</span><br /><span class="line">        └───────────────┛</span><br /><span class="line"></span><br /><span class="line"> The conversion of the image from a series  of  pixel  values  to  a</span><br /><span class="line"> transmitted or stored character stream involves several steps.  In brief</span><br /><span class="line"> these steps are:</span><br /><span class="line"></span><br /><span class="line">   1.  Establish the Code Size -  Define  the  number  of  bits  needed  to</span><br /><span class="line">       represent the actual data.</span><br /><span class="line"></span><br /><span class="line">   2.  Compress the Data - Compress the series of image pixels to a  series</span><br /><span class="line">       of compression codes.</span><br /><span class="line"></span><br /><span class="line">   3.  Build a Series of Bytes - Take the  set  of  compression  codes  and</span><br /><span class="line">       convert to a string of 8-bit bytes.</span><br /><span class="line"></span><br /><span class="line">   4.  Package the Bytes - Package sets of bytes into blocks  preceeded  by</span><br /><span class="line">       character counts and output.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> <span class="ngu">ESTABLISH CODE SIZE</span></span><br /><span class="line">   The first byte of the GIF Raster Data stream is a value  indicating the</span><br /><span class="line">   minimum number of bits required to represent the set of actual pixel</span><br /><span class="line">   values.  Normally this will be the same as the  number  of  colour  bits.</span><br /><span class="line">   Because  of  some  algorithmic constraints however, black &amp; white images</span><br /><span class="line">   which have one colour bit must be indicated as having a code size  of  2.</span><br /><span class="line">   This  code size value also implies that the compression codes must start</span><br /><span class="line">   out one bit longer.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> <span class="ngu">COMPRESSION</span></span><br /><span class="line">   The LZW algorithm converts a series of data values into a series of</span><br /><span class="line">   codes  which may be raw values or a code designating a series of values.</span><br /><span class="line">   Using text characters as an analogy,  the  output  code  consists  of  a</span><br /><span class="line">   character or a code representing a string of characters.</span><br /><span class="line"></span><br /><span class="line">   The LZW algorithm used in  GIF  matches  algorithmically  with  the</span><br /><span class="line">   standard LZW algorithm with the following differences:</span><br /><span class="line"></span><br /><span class="line">   1.  A   special   Clear   code   is    defined    which    resets    all</span><br /><span class="line">       compression/decompression parameters and tables to a start-up state.</span><br /><span class="line">       The value of this code is 2**&lt;code size&gt;.  For example if  the  code</span><br /><span class="line">       size  indicated  was 4 (image was 4 bits/pixel) the Clear code value</span><br /><span class="line">       would be 16 (10000 binary).  The Clear code can appear at any  point</span><br /><span class="line">       in the image data stream and therefore requires the LZW algorithm to</span><br /><span class="line">       process succeeding codes as if  a  new  data  stream  was  starting.</span><br /><span class="line">       Encoders  should output a Clear code as the first code of each image</span><br /><span class="line">       data stream.</span><br /><span class="line"></span><br /><span class="line">   2.  An End of Information code is defined that explicitly indicates  the</span><br /><span class="line">       end  of  the image data stream.  LZW processing terminates when this</span><br /><span class="line">       code is encountered.  It must be the last code output by the encoder</span><br /><span class="line">       for an image.  The value of this code is &lt;Clear code&gt;+1.</span><br /><span class="line"></span><br /><span class="line">   3.  The first available compression code value is &lt;Clear code&gt;+2.</span><br /><span class="line"></span><br /><span class="line">   4.  The output codes are of variable length, starting  at  &lt;code size&gt;+1</span><br /><span class="line">       bits  per code, up to 12 bits per code.  This defines a maximum code</span><br /><span class="line">       value of 4095 (hex FFF).  Whenever the LZW code value  would  exceed</span><br /><span class="line">       the  current  code length, the code length is increased by one.  The</span><br /><span class="line">       packing/unpacking of these codes must then be altered to reflect the</span><br /><span class="line">       new code length.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> <span class="ngu">BUILD 8-BIT BYTES</span></span><br /><span class="line">   Because the LZW compression  used  for  GIF  creates  a  series  of</span><br /><span class="line">   variable  length  codes, of between 3 and 12 bits each, these codes must</span><br /><span class="line">   be reformed into a series of 8-bit bytes that  will  be  the  characters</span><br /><span class="line">   actually stored or transmitted.  This provides additional compression of</span><br /><span class="line">   the image.  The codes are formed into a stream of bits as if  they  were</span><br /><span class="line">   packed  right to left and then picked off 8 bits at a time to be output.</span><br /><span class="line">   Assuming a character array of 8 bits per character and using 5 bit codes</span><br /><span class="line">   to be packed, an example layout would be similar to:</span><br /><span class="line"></span><br /><span class="line">         byte n       byte 5   byte 4   byte 3   byte 2   byte 1</span><br /><span class="line">        ┌─-----─────┬────────┬────────┬────────┬────────┬────────┐</span><br /><span class="line">        │ and so on │hhhhhggg│ggfffffe│eeeedddd│dcccccbb│bbbaaaaa│</span><br /><span class="line">        └─-----─────┴────────┴────────┴────────┴────────┴────────┛</span><br /><span class="line"></span><br /><span class="line">   Note that the physical  packing  arrangement  will  change  as  the</span><br /><span class="line">   number  of  bits per compression code change but the concept remains the</span><br /><span class="line">   same.</span><br /><span class="line"></span><br /><span class="line"> <span class="ngu">PACKAGE THE BYTES</span></span><br /><span class="line">   Once the bytes have been created, they are grouped into blocks  for</span><br /><span class="line">   output by preceeding each block of 0 to 255 bytes with a character count</span><br /><span class="line">   byte.  A block with a zero byte count terminates the Raster Data  stream</span><br /><span class="line">   for  a  given  image.  These blocks are what are actually output for the</span><br /><span class="line"></span><br /><span class="line">   GIF image.  This block format has the side effect of allowing a decoding</span><br /><span class="line">   program  the  ability to read past the actual image data if necessary by</span><br /><span class="line">   reading block counts and then skipping over the data.</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

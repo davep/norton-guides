@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .GIF  (Graphics)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-56136.html">
+    <link rel="next" href="modform-58736.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-56136.html">Previous</a></li>
+
+
+          
+
+<li><a href="modform-45998.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-58736.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">.MOD  (Sound)</a></li>
+              <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+              <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+              <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+              <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+              <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Raster Data</span></span><br /><span class="line"></span><br /><span class="line"> The format of the actual image is defined as the  series  of  pixel colour</span><br /><span class="line"> index  values that make up the image.  The pixels are stored left to right</span><br /><span class="line"> sequentially for an image row.  By default each  image  row  is written</span><br /><span class="line"> sequentially, top to bottom.  In the case that the Interlace or &#39;I&#39; bit is</span><br /><span class="line"> set in byte 10 of the Image Descriptor then the row order  of the  image</span><br /><span class="line"> display  follows  a  four-pass process in which the image is filled in by</span><br /><span class="line"> widely spaced rows.  The first pass writes every  8th  row, starting  with</span><br /><span class="line"> the top row of the image window.  The second pass writes every 8th row</span><br /><span class="line"> starting at the fifth row from the top.   The  third  pass writes every</span><br /><span class="line"> 4th row starting at the third row from the top.  The fourth pass completes</span><br /><span class="line"> the image, writing  every  other  row,  starting  at  the second row from</span><br /><span class="line"> the top.  A graphic description of this process follows:</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">   Image</span><br /><span class="line">   Row  Pass 1  Pass 2  Pass 3  Pass 4          Result</span><br /><span class="line">  ─────────────────────────────────────────────────────</span><br /><span class="line">     0  **1a**                                  **1a**</span><br /><span class="line">     1                          **4a**          **4a**</span><br /><span class="line">     2                  **3a**                  **3a**</span><br /><span class="line">     3                          **4b**          **4b**</span><br /><span class="line">     4          **2a**                          **2a**</span><br /><span class="line">     5                          **4c**          **4c**</span><br /><span class="line">     6                  **3b**                  **3b**</span><br /><span class="line">     7                          **4d**          **4d**</span><br /><span class="line">     8  **1b**                                  **1b**</span><br /><span class="line">     9                          **4e**          **4e**</span><br /><span class="line">    10                  **3c**                  **3c**</span><br /><span class="line">    11                          **4f**          **4f**</span><br /><span class="line">    12          **2b**                          **2b**</span><br /><span class="line">   . . .</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> The image pixel values are processed as a series of  colour  indices which</span><br /><span class="line"> map  into the existing colour map.  The resulting colour value from the map</span><br /><span class="line"> is what is actually displayed.  This series  of  pixel  indices, the</span><br /><span class="line"> number  of  which  is equal to image-width*image-height pixels, are passed</span><br /><span class="line"> to the GIF image data stream one value per pixel, compressed  and packaged</span><br /><span class="line"> according  to  a  version  of the LZW compression algorithm as defined in</span><br /><span class="line"> a later entry.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="modform-72746.html">Encoding</a></li>
+        
+          <li><a href="modform-75950.html">Decoding</a></li>
+        
+          <li><a href="modform-67072.html">Image Packaging</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

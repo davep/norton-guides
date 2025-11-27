@@ -1,0 +1,98 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .MOD  (Sound)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-24464.html">
+    <link rel="next" href="modform-29011.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-24464.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-29011.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">.MOD  (Sound)</a></li>
+              <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+              <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+              <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+              <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+              <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Subfunction 20 : Play a module</span></span><br /><span class="line"></span><br /><span class="line"> AH    = 82</span><br /><span class="line"> AL    = 20</span><br /><span class="line"> DX:CX = Buffer with the following data</span><br /><span class="line"> If the function is successful, AX will hold 5722h on return.</span><br /><span class="line"></span><br /><span class="line"> ┌────────┬────────┬────────────────────────────────────────────────────────┐</span><br /><span class="line"> │ Offset │ Length │ Description                                            │</span><br /><span class="line"> ├────────┼────────┼────────────────────────────────────────────────────────┤</span><br /><span class="line"> │   00   │  Byte  │ This byte must be set to &#39;M&#39;.                          │</span><br /><span class="line"> │   01   │  Byte  │ This byte must be set to &#39;P&#39;.                          │</span><br /><span class="line"> │   02   │  Byte  │ This byte represents the output device. The possible   │</span><br /><span class="line"> │        │        │ output devices can be determined from the device table │</span><br /><span class="line"> │        │        │ returned in the test for residency (function 21).      │</span><br /><span class="line"> │        │        │ For older versions of MODRES which don&#39;t support this  │</span><br /><span class="line"> │        │        │ table, the following values can be assumed:            │</span><br /><span class="line"> │        │        │  0 - PC Speaker                                        │</span><br /><span class="line"> │        │        │  1 - D/A on LPT1                                       │</span><br /><span class="line"> │        │        │  2 - D/A on LPT2                                       │</span><br /><span class="line"> │        │        │  3 - D/A on 1&amp;2 (Stereo)                               │</span><br /><span class="line"> │        │        │  4 - D/A on 1&amp;2 (Mono)                                 │</span><br /><span class="line"> │        │        │  5 - LPT1 on Video Card                                │</span><br /><span class="line"> │        │        │  6 - D/A @300/2 (Stereo)                               │</span><br /><span class="line"> │        │        │  7 - Sound Blaster (210)                               │</span><br /><span class="line"> │        │        │  8 - Sound Blaster (220)                               │</span><br /><span class="line"> │        │        │  9 - Sound Blaster (230)                               │</span><br /><span class="line"> │        │        │  A - Sound Blaster (240)                               │</span><br /><span class="line"> │        │        │  B - Sound Blaster (250)                               │</span><br /><span class="line"> │        │        │  C - Sound Blaster (260)                               │</span><br /><span class="line"> │        │        │  D - Mono D/A User Def                                 │</span><br /><span class="line"> │        │        │  E - Stereo D/A User Def                               │</span><br /><span class="line"> │   03   │  Word  │ Segment of data area holding the first 5 sections of   │</span><br /><span class="line"> │        │        │ the MOD file structure. Note that the data area must   │</span><br /><span class="line"> │        │        │ be paragraph aligned since only the segment is given.  │</span><br /><span class="line"> │   05   │   62   │ The 31 segment addresses of the sample data for each   │</span><br /><span class="line"> │        │        │ of the 31 samples (the sample data is the data         │</span><br /><span class="line"> │        │        │ described in section 6 of the MOD file structure).     │</span><br /><span class="line"> │        │        │ Note that the data areas must be paragraph aligned     │</span><br /><span class="line"> │        │        │ since only the segment is given in each case.          │</span><br /><span class="line"> │   67   │  Byte  │ The pattern number at which to start playing.          │</span><br /><span class="line"> │   68   │  Byte  │ If this byte is set to 1 only the starting pattern     │</span><br /><span class="line"> │        │        │ will be played. If this is set to 0, the entire module │</span><br /><span class="line"> │        │        │ will be played, starting at the specified pattern.     │</span><br /><span class="line"> ├────────┼────────┼────────────────────────────────────────────────────────┤</span><br /><span class="line"> │   69   │  Byte  │ This byte is used to specify the quality of sound      │</span><br /><span class="line"> │        │        │ output required. It can have a value in the range 0 to │</span><br /><span class="line"> │        │        │ 6 - the lower the value, the better the quality. Note, │</span><br /><span class="line"> │        │        │ however, that you will need a fast machinve to use the │</span><br /><span class="line"> │        │        │ low values without crashing. A value of 1 is assumed   │</span><br /><span class="line"> │        │        │ if an out of range value is specified.                 │</span><br /><span class="line"> │   70   │  Byte  │ If this is set to 80, then the mod contains samples    │</span><br /><span class="line"> │        │        │ with lengths greater then 64K. If anything else, then  │</span><br /><span class="line"> │        │        │ all samples must be less than 64K.                     │</span><br /><span class="line"> └────────┴────────┴────────────────────────────────────────────────────────┛</span><br /><span class="line"></span><br /><span class="line"> Note that bytes 69 and 70 were not available in the old versions of MODRES.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="modform-29011.html">Subfunction 21</a></li>
+        
+          <li><a href="modform-1776.html">Module Overview</a></li>
+        
+          <li><a href="modform-22078.html">Sampled Sound Data</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,94 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .GIF  (Graphics)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-49162.html">
+    <link rel="next" href="modform-51294.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-49162.html">Previous</a></li>
+
+
+          
+
+<li><a href="modform-45998.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-51294.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">.MOD  (Sound)</a></li>
+              <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+              <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+              <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+              <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+              <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Screen Descriptor</span></span><br /><span class="line"></span><br /><span class="line"> The Screen Descriptor describes the overall parameters for all  GIF images</span><br /><span class="line"> following.  It defines the overall dimensions of the image space or</span><br /><span class="line"> logical screen required, the existance of colour mapping  information,</span><br /><span class="line"> background  screen colour, and colour depth information.  This information</span><br /><span class="line"> is stored in a series of 8-bit bytes as described below.</span><br /><span class="line"></span><br /><span class="line">              bits</span><br /><span class="line">         7 6 5 4 3 2 1 0  Byte #</span><br /><span class="line">        ┌───────────────┐</span><br /><span class="line">        │               │  1</span><br /><span class="line">        ├ Screen Width  ┤      Raster width in pixels (LSB first)</span><br /><span class="line">        │               │  2</span><br /><span class="line">        ├───────────────┤</span><br /><span class="line">        │               │  3</span><br /><span class="line">        ├ Screen Height ┤      Raster height in pixels (LSB first)</span><br /><span class="line">        │               │  4</span><br /><span class="line">        ├─┬─────┬─┬─────┤      M = 1, Global colour map follows Descriptor</span><br /><span class="line">        │M│  cr │0│pixel│  5   cr+1 = # bits of colour resolution</span><br /><span class="line">        ├─┴─────┴─┴─────┤      pixel+1 = # bits/pixel in image</span><br /><span class="line">        │   background  │  6   background=colour index of screen background</span><br /><span class="line">        ├───────────────┤          (colour is defined from the Global colour</span><br /><span class="line">        │0 0 0 0 0 0 0 0│  7        map or default map if none specified)</span><br /><span class="line">        └───────────────┛</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"> The logical screen width and height can both  be  larger  than  the</span><br /><span class="line"> physical  display.   How  images  larger  than  the physical display are</span><br /><span class="line"> handled is implementation dependent and can take advantage  of  hardware</span><br /><span class="line"> characteristics  (e.g.   Macintosh scrolling windows).  Otherwise images</span><br /><span class="line"> can be clipped to the edges of the display.</span><br /><span class="line"></span><br /><span class="line"> The value of &#39;pixel&#39; also defines  the  maximum  number  of  colours within</span><br /><span class="line"> an  image.   The  range  of  values  for &#39;pixel&#39; is 0 to 7 which</span><br /><span class="line"> represents 1 to 8 bits.  This translates to a range of 2 (B &amp; W) to  256</span><br /><span class="line"> colours.   Bit  3 of word 5 is reserved for future definition and must be</span><br /><span class="line"> zero.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="modform-51294.html">Global Colour Map</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

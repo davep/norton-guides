@@ -1,0 +1,96 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .MOD  (Sound)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-2072.html">
+    <link rel="next" href="modform-3960.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-2072.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-3960.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>Reference</li>
+            <ul>
+              <li><a href="index.html">.MOD  (Sound)</a></li>
+              <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+              <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+              <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+              <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+              <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Sample Details</span></span><br /><span class="line"></span><br /><span class="line"> <span class="ngu">(Offset 20)</span></span><br /><span class="line"></span><br /><span class="line"> There can be either 15 or 31 samples (the number of samples can be</span><br /><span class="line"> determined from the sample count marker - see below). There is an entry</span><br /><span class="line"> here for each sample with the following information:</span><br /><span class="line"></span><br /><span class="line"> ■ A 22 byte character string (padded with null characters) holding the name</span><br /><span class="line">   of the sample. There should be at least one null character.</span><br /><span class="line"> ■ The length of the sampled sound in words. The value is stored in a</span><br /><span class="line">   word in AMIGA format, i.e. most significant byte first - opposite to the</span><br /><span class="line">   way a word is stored on an 80?86.</span><br /><span class="line"> ■ The fine-tuning information for the sample stored in a byte. Only 4 bits</span><br /><span class="line">   are actually used. The number is signed, so a value of F (hex) would be</span><br /><span class="line">   a fine-tuning of -1.</span><br /><span class="line"> ■ The default volume of the sample stored in a byte. The maximum the volume</span><br /><span class="line">   can be is 64 (decimal).</span><br /><span class="line"> ■ Two words in AMIGA format holding the loop start and the loop length.</span><br /><span class="line">   These are used for samples that need to be continous. Since a sample</span><br /><span class="line">   can only be a finite length, the loop start value specifies where to</span><br /><span class="line">   continue playing from when the end of the sample is reached, and the</span><br /><span class="line">   loop length value specifies how far to continue playing once you have</span><br /><span class="line">   looped (you may not want to continue to the end).</span><br /><span class="line">   * Note that these values are word offsets, e.g. a loop offset of 4 means</span><br /><span class="line">     the sample will loop back to byte number 8 (word number 4).</span><br /><span class="line">   * I have also seen occurences of these values being out of range. It is</span><br /><span class="line">     possible that certain trackers interpret the loop length as a loop end.</span><br /><span class="line"></span><br /><span class="line"> Note that the actual sampled sound data is stored in the sixth section at</span><br /><span class="line"> the very end of the MOD file.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="modform-5530.html">Sample Count Marker</a></li>
+        
+          <li><a href="modform-22078.html">Sampled Sound Data</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
