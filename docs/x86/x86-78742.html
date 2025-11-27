@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-76751.html">
+    <link rel="next" href="x86-79599.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-76751.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-79599.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">LEAVE           High Level Procedure Exit            Flags: Not altered</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">LEAVE</span>                                                CPU: 186+</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   MOV eSP,eBP</span><br /><span class="line">                POP eBP</span><br /><span class="line"></span><br /><span class="line">    LEAVE reverses the action of a previous ENTER. By copying the</span><br /><span class="line">    frame pointer to the stack pointer, LEAVE releases the stack space</span><br /><span class="line">    used by a procedure for its local variables. The old frame pointer</span><br /><span class="line">    is popped into BP or EBP, restoring the caller&#39;s stack frame. A</span><br /><span class="line">    subsequent RET nn instruction removes any arguments pushed onto</span><br /><span class="line">    the stack of the exiting procedure.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    Some assemblers support LEAVE extensions that force the use of</span><br /><span class="line">    SP,BP (LEAVEW) or ESP,EBP (LEAVED) regardless of the segment&#39;s</span><br /><span class="line">    size attribute (80386+).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    C9          LEAVE</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    -             1      -       8       5       4       5       3   NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-46760.html">ENTER</a></li>
+        
+          <li><a href="x86-127835.html">RET</a></li>
+        
+          <li><a href="x86-21292.html">CALL</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,96 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » MMX » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-322654.html">
+    <link rel="next" href="x86-327362.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-322654.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-318646.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-327362.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">EMMS            Empty MMX State</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">EMMS</span>                                                 CPU: MMX</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>    TAG word &lt;- 0FFFFh</span><br /><span class="line"></span><br /><span class="line">    The EMMS instruction sets the values of the floating-point tag word</span><br /><span class="line">    to empty (all ones). EMMS marks the registers as available, so they</span><br /><span class="line">    can subsequently be used by FPU instructions.</span><br /><span class="line"></span><br /><span class="line">    If an FP instruction loads into one of the registers before it has</span><br /><span class="line">    been reset by EMMS, an FP stack overflow can occur, which results in</span><br /><span class="line">    an FP exception or incorrect result. </span><br /><span class="line"></span><br /><span class="line">    All other MMX instructions validate the entire FP tag word (all</span><br /><span class="line">    zeros).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    This instruction must be used to clear the MMX state at the end of</span><br /><span class="line">    all MMX routines/code blocks, and before calling other routines that</span><br /><span class="line">    may execute floating-point instructions.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    0F 77       EMMS</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

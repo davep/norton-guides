@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-252847.html">
+    <link rel="next" href="x86-256851.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-252847.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-256851.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FCOM            Compare real                         Exceptions: I D</span></span><br /><span class="line"><span class="ngb">FCOMP           Compare real and pop</span>                 C3 C2 C1 C0: * * * *</span><br /><span class="line"><span class="ngb">FCOMPP          Compare real and pop twice</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">FCOM</span> [source]</span><br /><span class="line"><span class="ngb">FCOMP</span> [source]</span><br /><span class="line"><span class="ngb">FCOMPP</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span></span><br /><span class="line">        ; FCOM                 ; FCOMP                ; FCOMPP</span><br /><span class="line">        if source operand      if source operand      CMP ST, ST(1)</span><br /><span class="line">           CMP ST, source         CMP ST, source      set condition codes</span><br /><span class="line">        else                   else                   pop ST</span><br /><span class="line">           CMP ST, ST(1)          CMP ST, ST(1)       pop ST</span><br /><span class="line">        endif                  endif</span><br /><span class="line">        set condition codes    set condition codes</span><br /><span class="line">                               pop ST</span><br /><span class="line"></span><br /><span class="line">                <span class="ngb">C3 C1 C0</span></span><br /><span class="line">                0  0  0     ST &gt; source</span><br /><span class="line">                0  0  1     ST &lt; source</span><br /><span class="line">                1  0  0     ST = source</span><br /><span class="line">                1  1  1     ST not comparable to source</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    FCOM compares a real number to ST and leaves the result encoded in</span><br /><span class="line">    the status word as shown above. If no source operand is specified,</span><br /><span class="line">    ST(1) is compared to ST. Otherwise, source is compared to ST.</span><br /><span class="line"></span><br /><span class="line">    FCOMP operates like FCOM, except that it also pops the stack.</span><br /><span class="line"></span><br /><span class="line">    FCOMPP compares ST to ST(1), sets the condition codes as shown</span><br /><span class="line">    above, and pops the stack twice. It takes no operands.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    If ST contains a NaN or has an undefined format, or a stack fault</span><br /><span class="line">    occurs, the invalid-operand exception is raised and the condition</span><br /><span class="line">    bits are set to &#39;unordered&#39;.</span><br /><span class="line">    The sign of zero is ignored, so that -0.0 = +0.0.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    The FCOM instructions perform the same operation as the FUCOM</span><br /><span class="line">    instructions. The only difference is how they handle QNaN operands.</span><br /><span class="line">    The FCOM instructions raise an invalid-arithmetic-operand exception</span><br /><span class="line">    (#IA) when either or both of the operands is a NaN value or is in an</span><br /><span class="line">    unsupported format. The FUCOM instructions perform the same</span><br /><span class="line">    operation as the FCOM instructions, except that they do not generate</span><br /><span class="line">    an invalid-arithmetic-operand exception for QNaNs.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    D8 /2       FCOM m32</span><br /><span class="line">    DC /2       FCOM m64</span><br /><span class="line">    D8 D0 + i   FCOM ST(i)</span><br /><span class="line">    D8 D1       FCOM</span><br /><span class="line">    D8 /3       FCOMP m32</span><br /><span class="line">    DC /3       FCOMP m64</span><br /><span class="line">    D8 D8 + i   FCOMP ST(i)</span><br /><span class="line">    D8 D9       FCOMP</span><br /><span class="line">    DE D9       FCOMPP</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Variations/</span><br /><span class="line">    operand      8087         287        387      486     Pentium</span><br /><span class="line">    fcom reg     40-50        40-50       24        4      4/1     FX</span><br /><span class="line">    fcom m32    (60-70)+EA    60-70       26        4      4/1     FX</span><br /><span class="line">    fcom m64    (65-75)+EA    65-75       31        4      4/1     FX</span><br /><span class="line">    fcomp        42-52        42-52       26        4      4/1     FX</span><br /><span class="line">    fcompp       45-55        45-55       26        5      4/1     FX</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-298400.html">FUCOM</a></li>
+        
+          <li><a href="x86-301502.html">FXAM</a></li>
+        
+          <li><a href="x86-293372.html">FSTSW</a></li>
+        
+          <li><a href="x86-315779.html">CC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

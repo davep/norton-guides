@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-52849.html">
+    <link rel="next" href="x86-57138.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-52849.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-57138.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">IN              Input from Port                      Flags: Not altered</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">IN</span> accumulator,port                                  <span class="ngb">IOpm</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   accumulator ← [port]</span><br /><span class="line"></span><br /><span class="line">    IN reads a byte, word, or a doubleword from a specified port and</span><br /><span class="line">    stores it in AL, AX, or EAX. The port number is specified as an</span><br /><span class="line">    immediate byte value (for ports 0 thru 255) or by the DX register</span><br /><span class="line">    (allowing access to all ports).</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Protected mode</span></span><br /><span class="line">    An exception occurs if the current task has insufficient privilege</span><br /><span class="line">    for the I/O. IN is not IOPL-sensitive in V86 mode.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    E4 ib       IN  AL,imm8</span><br /><span class="line">    E5 ib       IN  AX,imm8</span><br /><span class="line">    E5 ib       IN  EAX,imm8</span><br /><span class="line">    EC          IN  AL,DX</span><br /><span class="line">    ED          IN  AX,DX</span><br /><span class="line">    ED          IN  EAX,DX</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    al, imm8     2      14      10       5      12      14       7   NP</span><br /><span class="line">    ax, imm8     2      14      10       5      12      14       7   NP</span><br /><span class="line">    eax, imm8    2       -       -       -      12      14       7   NP</span><br /><span class="line">    al, dx       1      12       8       5      13      14       7   NP</span><br /><span class="line">    ax, dx       1      12       8       5      13      14       7   NP</span><br /><span class="line">    eax, dx      1       -       -       -      13      14       7   NP</span><br /><span class="line"></span><br /><span class="line">                             Protected mode</span><br /><span class="line">    acc, imm     2                           6/26/26  9/29/27  4/21/19 NP</span><br /><span class="line">    acc, dx      1                           7/27/27  8/28/27  4/21/19 NP</span><br /><span class="line"></span><br /><span class="line">                   Cycles for: CPL &lt;= IOPL / CPL &gt; IOPL / V86</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-57745.html">INS</a></li>
+        
+          <li><a href="x86-103734.html">OUT</a></li>
+        
+          <li><a href="x86-194054.html">IOPL</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

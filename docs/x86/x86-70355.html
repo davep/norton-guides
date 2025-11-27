@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-69579.html">
+    <link rel="next" href="x86-72399.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-69579.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-72399.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">JMP             Jump Unconditionally                 Flags: Not altered (*)</span></span><br /><span class="line">                                                     (*) If task switch</span><br /><span class="line"><span class="ngb">JMP</span> destination                                      occurs, all flags</span><br /><span class="line">                                                     are affected</span><br /><span class="line">        <span class="ngb">Logic</span>   if FAR jump</span><br /><span class="line">                   CS ← destination_segment</span><br /><span class="line">                endif</span><br /><span class="line">                eIP ← destination_offset</span><br /><span class="line"></span><br /><span class="line">    JMP unconditionally transfers control from one code segment</span><br /><span class="line">    location to another. These locations can be within the same code</span><br /><span class="line">    segment (near jump = intra-segment) or in different code segments</span><br /><span class="line">    (far jump = inter-segment).</span><br /><span class="line"></span><br /><span class="line">    JMP&#39;s implementation varies depending on whether the address is</span><br /><span class="line">    directly specified within the instruction or indirectly through a</span><br /><span class="line">    register or memory operand. A direct JMP includes the destination</span><br /><span class="line">    address as part of the instruction. An indirect JMP gets the</span><br /><span class="line">    destination address through a register or pointer variable. An</span><br /><span class="line">    indirect JMP specifies an absolute address in one of the following</span><br /><span class="line">    ways:</span><br /><span class="line"></span><br /><span class="line">    - a register modifies the address of the memory pointer to select</span><br /><span class="line">      a destination address</span><br /><span class="line">    - the program can JMP to a location specified by a general</span><br /><span class="line">      register -- the CPU moves this value into the instruction</span><br /><span class="line">      pointer and resumes execution</span><br /><span class="line">    - the CPU obtains the destination address from a memory operand</span><br /><span class="line">      specified in the instruction</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    JMP does not save a return address on the stack as CALL does.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    E9 cw       JMP  rel16</span><br /><span class="line">    E9 cd       JMP  rel32</span><br /><span class="line">    EA cd       JMP  ptr16:16</span><br /><span class="line">    EA cp       JMP  ptr16:32</span><br /><span class="line">    EB cb       JMP  rel8</span><br /><span class="line">    FF /4       JMP  r/m16</span><br /><span class="line">    FF /4       JMP  r/m32</span><br /><span class="line">    FF /5       JMP  m16:16</span><br /><span class="line">    FF /5       JMP  m16:32</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    short        2      15      13      7+m     7+m      3       1   PV</span><br /><span class="line">    near         3      15      13      7+m     7+m      3       1   PV</span><br /><span class="line">    far          5      15      13     11+m    12+m     17       3   NP</span><br /><span class="line">    r16          2      11      11      7+m     7+m      5       2   NP</span><br /><span class="line">    mem16      2+d(0,2) 18+EA   17     11+m    10+m      5       2   NP</span><br /><span class="line">    mem32      2+d(4)   24+EA   26     15+m    12+m     13       4   NP</span><br /><span class="line"></span><br /><span class="line">    r32          2       -       -       -      7+m      5       2   NP</span><br /><span class="line">    mem32      2+d(0,2)  -       -       -     10+m      5       2   NP</span><br /><span class="line">    mem48      2+d(6)    -       -       -     12+m     13       4   NP</span><br /><span class="line"></span><br /><span class="line">             Cycles for jumps through call gates not shown</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-21292.html">CALL</a></li>
+        
+          <li><a href="x86-66690.html">Jcc</a></li>
+        
+          <li><a href="x86-217619.html">Task switch</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

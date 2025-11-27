@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-102430.html">
+    <link rel="next" href="x86-105098.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-102430.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-105098.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">OUT             Output to Port                       Flags: Not altered</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">OUT</span> port,accumulator                                 <span class="ngb">IOpm</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   [port] ← accumulator</span><br /><span class="line"></span><br /><span class="line">    OUT transfers a byte, a word, or a doubleword from the accumulator</span><br /><span class="line">    (AL, AX, or EAX) to a specified port. The port number is specified</span><br /><span class="line">    as an immediate byte value (for ports 0 thru 255) or by the DX</span><br /><span class="line">    register (allowing access to all ports).</span><br /><span class="line">    If the instruction contains an 8-bit port ID, that value is zero-</span><br /><span class="line">    extended to 16 bits.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Protected mode</span></span><br /><span class="line">    An exception occurs if the current task has insufficient privilege</span><br /><span class="line">    for the I/O. OUT is not IOPL-sensitive in V86 mode.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    I/O ports F8h through FFh are reserved by Intel.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    E6 ib       OUT  imm8,AL</span><br /><span class="line">    E7 ib       OUT  imm8,AX</span><br /><span class="line">    E7 ib       OUT  imm8,EAX</span><br /><span class="line">    EE          OUT  DX,AL</span><br /><span class="line">    EF          OUT  DX,AX</span><br /><span class="line">    EF          OUT  DX,EAX</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    imm8, al     2      14       9       3      10      16      12   NP</span><br /><span class="line">    imm8, ax     2      14       9       3      10      16      12   NP</span><br /><span class="line">    imm8, eax    2       -       -       -      10      16      12   NP</span><br /><span class="line">    dx, al       1      12       7       3      11      16      12   NP</span><br /><span class="line">    dx, ax       1      12       7       3      11      16      12   NP</span><br /><span class="line">    dx, eax      1       -       -       -      11      16      12   NP</span><br /><span class="line"></span><br /><span class="line">                             <span class="ngb">Protected Mode</span></span><br /><span class="line"></span><br /><span class="line">    Operands    Bytes                           386     486     Pentium</span><br /><span class="line">    imm8, acc    2                            4/24/24 11/31/29 9/26/24 NP</span><br /><span class="line">    dx, acc      1                            5/25/25 10/30/29 9/26/24 NP</span><br /><span class="line"></span><br /><span class="line">               Cycles for: CPL &lt;= IOPL / CPL &gt; IOPL / V86</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-105098.html">OUTS</a></li>
+        
+          <li><a href="x86-55994.html">IN</a></li>
+        
+          <li><a href="x86-194054.html">IOPL</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

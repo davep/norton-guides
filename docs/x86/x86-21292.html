@@ -1,0 +1,119 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-20581.html">
+    <link rel="next" href="x86-24749.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-20581.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-24749.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">CALL            Call Procedure                       Flags: Not altered (*)</span></span><br /><span class="line">                                                     (*) If task switch</span><br /><span class="line"><span class="ngb">CALL</span> destination                                         occurs, all flags</span><br /><span class="line">                                                         are affected</span><br /><span class="line">        <span class="ngb">Logic</span></span><br /><span class="line">        ; near call (intra-segment)     ; far call (inter-segment)</span><br /><span class="line">        PUSH eIP                        PUSH CS</span><br /><span class="line">        eIP ← destination_offset        CS ← destination_segment</span><br /><span class="line">                                        PUSH eIP</span><br /><span class="line">                                        eIP ← destination_offset</span><br /><span class="line"></span><br /><span class="line">    The CALL instruction causes the procedure named in the operand to</span><br /><span class="line">    be executed. When the procedure is complete (a return instruction</span><br /><span class="line">    is executed within the procedure), execution continues at the</span><br /><span class="line">    instruction that follows the CALL.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">NEAR</span> calls are those with destinations of type r/m16, r/m32, rel16,</span><br /><span class="line">    rel32; changing or saving the segment register value is not</span><br /><span class="line">    necessary. The CALL rel16 and CALL rel32 forms add a signed offset</span><br /><span class="line">    to the address of the instruction following CALL to determine the</span><br /><span class="line">    destination. The rel16 form is used when the instruction&#39;s</span><br /><span class="line">    operand-size attribute is 16 bits; rel32 is used when the</span><br /><span class="line">    operand-size attribute is 32 bits. The result is stored in the</span><br /><span class="line">    32-bit EIP register. With rel16, the upper 16 bits of EIP are</span><br /><span class="line">    cleared, resulting in an offset whose value does not exceed 16</span><br /><span class="line">    bits. CALL r/m16 and CALL r/m32 specify a register or memory</span><br /><span class="line">    location from which the absolute segment offset is fetched. The</span><br /><span class="line">    offset fetched from r/m is 32 bits for an operand-size attribute</span><br /><span class="line">    of 32 bits (r/m32), or 16 bits for an operand-size of 16 (r/m16).</span><br /><span class="line">    The offset of the instruction following CALL is pushed onto the</span><br /><span class="line">    stack. It will be popped by a near RET instruction within the</span><br /><span class="line">    procedure called. The CS register is not changed by these forms of</span><br /><span class="line">    CALL.</span><br /><span class="line"></span><br /><span class="line">    The <span class="ngb">FAR</span> calls, CALL ptr16:16 and CALL ptr16:32, use a 4-byte or</span><br /><span class="line">    6-byte operand as a long pointer to the procedure called. The CALL</span><br /><span class="line">    m16:16 and CALL m16:32 forms fetch the long pointer from the</span><br /><span class="line">    memory location specified (indirection). In real-address mode or</span><br /><span class="line">    virtual 8086 mode, the long pointer provides 16 bits for the CS</span><br /><span class="line">    register and 16 or 32 bits for the EIP register (depending on the</span><br /><span class="line">    operand-size attribute). These forms of CALL push both CS and IP</span><br /><span class="line">    or EIP on the stack as a return address.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    In protected mode, both long pointer forms of the CALL instruction</span><br /><span class="line">    consult the access rights (AR) byte in the descriptor indexed by</span><br /><span class="line">    the selector part of the long pointer. Depending on the value of</span><br /><span class="line">    the AR byte, the call will perform one of the following types of</span><br /><span class="line">    control transfers:</span><br /><span class="line"></span><br /><span class="line">        - a far call to the same protection level</span><br /><span class="line">        - an inter-protection-level far call</span><br /><span class="line">        - a task switch</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    9A cd       CALL ptr16:16   ; call far direct</span><br /><span class="line">    9A cp       CALL ptr16:32   ; call far direct</span><br /><span class="line">    E8 cw       CALL rel16      ; call near relative</span><br /><span class="line">    E8 cd       CALL rel32      ; call near relative</span><br /><span class="line">    FF /2       CALL r/m16      ; call near indirect</span><br /><span class="line">    FF /2       CALL r/m32      ; call near indirect</span><br /><span class="line">    FF /3       CALL m16:16     ; call far indirect</span><br /><span class="line">    FF /3       CALL m16:32     ; call far indirect</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    near         3      23      14      7+m     7+m      3       1   PV</span><br /><span class="line">    reg          2      20      13      7+m     7+m      5       2   NP</span><br /><span class="line">    mem16     2+d(0-2)  29+EA   19      11+m    10+m     5       2   NP</span><br /><span class="line">    far          5      36      23      13+m    17+m    18       4   NP</span><br /><span class="line">    mem32     2+d(0-2)  53+EA   38      16+m    22+m    17       4   NP</span><br /><span class="line"></span><br /><span class="line">                            Protected Mode</span><br /><span class="line">    far          5                      26+m    34+m    20     4-13  NP</span><br /><span class="line">    mem32     2+d(0-2)                  29+m    38+m    20     5-14  NP</span><br /><span class="line">           (Cycles not shown for calls through call and task gates)</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-46760.html">ENTER</a></li>
+        
+          <li><a href="x86-78742.html">LEAVE</a></li>
+        
+          <li><a href="x86-127835.html">RET</a></li>
+        
+          <li><a href="x86-111661.html">PUSH</a></li>
+        
+          <li><a href="x86-70355.html">JMP</a></li>
+        
+          <li><a href="x86-195957.html">Selectors</a></li>
+        
+          <li><a href="x86-197219.html">Descriptors</a></li>
+        
+          <li><a href="x86-217619.html">Task switch</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

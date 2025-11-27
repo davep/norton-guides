@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-268370.html">
+    <link rel="next" href="x86-270154.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-268370.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-270154.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FINIT           Initialize FPU                       Exceptions: None</span></span><br /><span class="line"><span class="ngb">FNINIT          Initialize FPU, no wait</span>              C3 C2 C1 C0: 0 0 0 0</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">FINIT</span></span><br /><span class="line"><span class="ngb">FNINIT</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   control word ← 037Fh</span><br /><span class="line">                status word ← 0000h</span><br /><span class="line">                tag word ← 0FFFFh</span><br /><span class="line"></span><br /><span class="line">    FINIT/FNINIT put the FPU in a known state, unaffected by any</span><br /><span class="line">    previous activity. In fact, FINIT/FNINIT affect the FPU in the same</span><br /><span class="line">    way as a hardware RESET signal with Built-In Self-Test. They do not</span><br /><span class="line">    affect the synchronization between the 80x86 and the 80x87.</span><br /><span class="line"></span><br /><span class="line">    Before initializing the FPU, FINIT checks for unmasked FP error</span><br /><span class="line">    conditions (using an FWAIT instruction); FNINIT does not make this</span><br /><span class="line">    check.</span><br /><span class="line"></span><br /><span class="line">    FINIT/FNINIT do the following:</span><br /><span class="line">    - set the FPU control word to 037Fh, i.e. round to nearest, 64-bit</span><br /><span class="line">      precision, all exceptions masked</span><br /><span class="line">    - clear the status word, i.e. no exception flags set and stack</span><br /><span class="line">      register R0 = ST(0)</span><br /><span class="line">    - tag all stack registers as empty</span><br /><span class="line">    - clear instruction and error data pointers (80486 FPU+ only)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    9B DB E3    FINIT</span><br /><span class="line">    DB E3       FNINIT</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Variations    8087         287        387      486     Pentium</span><br /><span class="line">    finit         2-8          2-8        33       17      16      NP</span><br /><span class="line">    fninit        2-8          2-8        33       17      12      NP</span><br /><span class="line"></span><br /><span class="line">                The wait version may take additional cycles</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-251838.html">FCLEX</a></li>
+        
+          <li><a href="x86-284016.html">FSAVE</a></li>
+        
+          <li><a href="x86-300510.html">FWAIT</a></li>
+        
+          <li><a href="x86-310852.html">FPU registers</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

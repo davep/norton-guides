@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-275332.html">
+    <link rel="next" href="x86-278317.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-275332.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-278317.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FMUL            Multiply real                        Exceptions: I D O U P</span></span><br /><span class="line"><span class="ngb">FMULP           Multiply real and pop</span>                C3 C2 C1 C0: ? ? * ?</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">FMUL</span> [[destination,] source]</span><br /><span class="line"><span class="ngb">FMULP</span> [destination, ST]</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   ; FMUL source                   ; FMUL and FMULP</span><br /><span class="line">                ST ← ST * source                ST(1) ← ST(1) * ST</span><br /><span class="line">                                                pop ST</span><br /><span class="line"></span><br /><span class="line">                ; FMUL dest, source             ; FMULP dest, ST</span><br /><span class="line">                ST(dest) ← ST(dest) * ST(src)   ST(dest) ← ST(dest) * ST</span><br /><span class="line">                                                pop ST</span><br /><span class="line"></span><br /><span class="line">    FMUL/FMULP multiply the destination operand by the source operand</span><br /><span class="line">    and return the product to the destination.</span><br /><span class="line"></span><br /><span class="line">    The one-operand form of FMUL multiplies ST by a (single or double</span><br /><span class="line">    real) memory operand.</span><br /><span class="line">    The two-operand form of FMUL multiplies two register operands (one</span><br /><span class="line">    of these must be ST) and stores the result in the destination</span><br /><span class="line">    register.</span><br /><span class="line">    FMULP works like the two-operand FMUL but requires ST to be the</span><br /><span class="line">    source operand; it also pops the stack.</span><br /><span class="line">    The no-operand forms FMUL and FMULP equal &#39;FMULP ST(1), ST&#39;.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Example</span></span><br /><span class="line">        ; C-callable integer power function</span><br /><span class="line">        ; by Nicholas Wilt, 1991 (DDJ 9203)</span><br /><span class="line">        ;</span><br /><span class="line">        ; double intpow(double x, unsigned int y);</span><br /><span class="line">        ; returns x**y</span><br /><span class="line"></span><br /><span class="line">        model   small, C</span><br /><span class="line">        public  intpow</span><br /><span class="line"></span><br /><span class="line">        proc    intpow</span><br /><span class="line">        arg     x:qword, y:word</span><br /><span class="line">                fld1            ; result = 1.0</span><br /><span class="line">                mov   cx, [y]</span><br /><span class="line">                fld   [x]       ; load x</span><br /><span class="line">                jcxz  @@ret     ; if exponent zero, result made</span><br /><span class="line">        @@1:    test  cx, 1</span><br /><span class="line">                jz    @@2</span><br /><span class="line">                fmul  st(1), st ; multiply result by x</span><br /><span class="line">        @@2:    fmul  st, st    ; square x</span><br /><span class="line">                shr   cx, 1</span><br /><span class="line">                jnz   @@1</span><br /><span class="line">        @@ret:  fstp  st        ; discard x</span><br /><span class="line">                ret             ; return result in st(0)</span><br /><span class="line">        endp</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    D8 /1       FMUL m32</span><br /><span class="line">    DC /1       FMUL m64</span><br /><span class="line">    D8 C8 + i   FMUL ST, ST(i)</span><br /><span class="line">    DC C8 + i   FMUL ST(i), ST</span><br /><span class="line">    DE C8 + i   FMULP ST(i), ST</span><br /><span class="line">    DE C9       FMUL</span><br /><span class="line">    DE C9       FMULP</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Variations/</span><br /><span class="line">    operand       8087         287        387      486     Pentium</span><br /><span class="line">    fmul reg s    90-105       90-105    29-52     16      3/1     FX</span><br /><span class="line">    fmul reg     130-145      130-145    46-57     16      3/1     FX</span><br /><span class="line">    fmul m32    (110-125)+EA  110-125    27-35     11      3/1     FX</span><br /><span class="line">    fmul m64    (154-168)+EA  154-168    32-57     14      3/1     FX</span><br /><span class="line">    fmulp reg s   94-108       94-108    29-52     16      3/1     FX</span><br /><span class="line">    fmulp reg    134-148      134-148    29-57     16      3/1     FX</span><br /><span class="line"></span><br /><span class="line">            s = register with 40 trailing zeros in fraction</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-267872.html">FIMUL</a></li>
+        
+          <li><a href="x86-285963.html">FSCALE</a></li>
+        
+          <li><a href="x86-248918.html">FADD</a></li>
+        
+          <li><a href="x86-260444.html">FDIV</a></li>
+        
+          <li><a href="x86-315779.html">CC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

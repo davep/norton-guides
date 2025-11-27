@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-105098.html">
+    <link rel="next" href="x86-109182.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-105098.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-109182.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">POP             Pop Operand from Stack               Flags: Not altered</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">POP</span> destination</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   destination ← [SS:eSP]</span><br /><span class="line">                eSP ← eSP + n</span><br /><span class="line">                ; n = 2 if operand-size attribute is 16 bits, else 4</span><br /><span class="line"></span><br /><span class="line">    POP replaces the contents of the destination operand with the word</span><br /><span class="line">    or doubleword at the current top of stack, addressed by SS:SP</span><br /><span class="line">    (stack address-size attribute 16) or SS:ESP (stack address-size</span><br /><span class="line">    attribute 32). The stack pointer is then incremented by 2 for an</span><br /><span class="line">    operand-size of 16 bits, or by 4 for an operand-size of 32 bits,</span><br /><span class="line">    to point to the new top of stack.</span><br /><span class="line"></span><br /><span class="line">    The CS register cannot be used as the destination of a POP</span><br /><span class="line">    instruction.</span><br /><span class="line"></span><br /><span class="line">    A POP SS instruction inhibits all interrupts, including NMI, until</span><br /><span class="line">    after execution of the next instruction. This allows sequential</span><br /><span class="line">    execution of POP SS, POP SP without danger of having an invalid</span><br /><span class="line">    stack during an interrupt. However, using the LSS instruction is</span><br /><span class="line">    preferred.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Protected mode</span></span><br /><span class="line">    If the destination operand is a segment register (DS,ES,FS,GS, or</span><br /><span class="line">    SS), the value popped must be a selector. Loading the selector</span><br /><span class="line">    initiates automatic loading of the descriptor information</span><br /><span class="line">    associated with that selector into the programmer-invisible part</span><br /><span class="line">    of the segment register; loading also initates validation of both</span><br /><span class="line">    the selector and the descriptor information.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    07          POP  ES</span><br /><span class="line">    0F A1       POP  FS</span><br /><span class="line">    0F A9       POP  GS</span><br /><span class="line">    17          POP  SS</span><br /><span class="line">    1F          POP  DS</span><br /><span class="line">    58 + rw     POP  r16</span><br /><span class="line">    58 + rd     POP  r32</span><br /><span class="line">    8F /0       POP  m16</span><br /><span class="line">    8F /0       POP  m32</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    reg          1      12      10       5       4       1       1   UV</span><br /><span class="line">    mem       2+d(0-2)  25+EA   20       5       5       6       3   NP</span><br /><span class="line">    seg          1      12       8       5       7       3       3   NP</span><br /><span class="line">    FS/GS        2       -       -       -       7       3       3   NP</span><br /><span class="line"></span><br /><span class="line">                             <span class="ngb">Protected Mode</span></span><br /><span class="line"></span><br /><span class="line">    Operand     Bytes                   286     386     486     Pentium</span><br /><span class="line">    CS/DS/ES     1                      20      21       9     3-12  NP</span><br /><span class="line">    SS           1                      20      21       9     8-17  NP</span><br /><span class="line">    FS/GS        2                       -      21       9     3-12  NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-109182.html">POPA</a></li>
+        
+          <li><a href="x86-110035.html">POPF</a></li>
+        
+          <li><a href="x86-111661.html">PUSH</a></li>
+        
+          <li><a href="x86-113238.html">PUSHA</a></li>
+        
+          <li><a href="x86-114130.html">PUSHF</a></li>
+        
+          <li><a href="x86-78742.html">LEAVE</a></li>
+        
+          <li><a href="x86-92014.html">MOV</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Protection, privilege</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-197219.html">
+    <link rel="next" href="x86-211438.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-197219.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-190707.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-211438.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngb">V86 - virtual 8086 environment</span></span><br /><span class="line"></span><br /><span class="line">    On the 80386+, 8086 applications and operating systems can run in</span><br /><span class="line">    protected mode as part of a virtual task (V86) that takes advantage</span><br /><span class="line">    of the hardware support of multitasking offered by protected mode.</span><br /><span class="line"></span><br /><span class="line">    The V86 task forms a &#34;virtual machine&#34; that consists of the 80386</span><br /><span class="line">    hardware and systems software. The software controls the V86</span><br /><span class="line">    external interfacing, the interrupts and I/O. The hardware provides</span><br /><span class="line">    the TSS (task state segment) containing the virtual registers (a</span><br /><span class="line">    virtual memory space that is the task&#39;s first megabyte of the</span><br /><span class="line">    linear address space) and executes the instructions that deal with</span><br /><span class="line">    the registers and address space.</span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    <span class="ngb">Virtual 8086 mode addressing</span></span><br /><span class="line">    The 80386 executes V86 mode when the VM (virtual mode) flag is</span><br /><span class="line">    set in the EFLAGS register. The processor tests the VM flag when</span><br /><span class="line">    decoding instructions to determine which instructions are</span><br /><span class="line">    sensitive to IOPL, and when loading segment registers to determine</span><br /><span class="line">    if it is to use 8086-style address formation.</span><br /><span class="line"></span><br /><span class="line">    All 80386 registers are accessible to V86, including the segment</span><br /><span class="line">    registers FS and GS, but subject to protected mode limitations.</span><br /><span class="line">    V86 code also may use non-privileged 80386 instructions, including</span><br /><span class="line">    LSS, LFS, LGS, bit scan, double-shift, byte set on condition,</span><br /><span class="line">    long-displacement conditional jumps, move with sign/zero</span><br /><span class="line">    extension, and a generalized multiply.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    <span class="ngb">Address formation</span></span><br /><span class="line">    When in V86 mode, the 80386 does not interpret 8086 selectors by</span><br /><span class="line">    referring to descriptors; it forms linear addresses as if it were</span><br /><span class="line">    an 8086. The selector is shifted left by 4 bits to form the 20-bit</span><br /><span class="line">    base address. The effective address is extended with 4 high-order</span><br /><span class="line">    zeros and added to the base address. Range is 0-10FFEFh.</span><br /><span class="line"></span><br /><span class="line">    V86 tasks actually generate 32-bit linear addresses. However, if</span><br /><span class="line">    the value of the 32-bit address exceeds 65535 (0FFFFh), an</span><br /><span class="line">    exception is generated (12: stack exception, or 13: general</span><br /><span class="line">    protection exception).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    <span class="ngb">Virtual 86 task</span></span><br /><span class="line">    A virtual 8086 task must be represented by an 80386 task state</span><br /><span class="line">    segment (TSS), which the 80386 uses to execute the 8086 program</span><br /><span class="line">    before it returns to protected mode to execute the 80386 tasks.</span><br /><span class="line">    The V86 task consists of two parts:</span><br /><span class="line">        - the 8086 program to be executed, and</span><br /><span class="line">        - 80386 code that serves as the virtual machine monitor</span><br /><span class="line"></span><br /><span class="line">    The V86 monitor is actually 80386 protected mode code that</span><br /><span class="line">    executes at privilege level zero and consists mainly of</span><br /><span class="line">    initialization and exception handling procedures. The monitor, as</span><br /><span class="line">    with any other 80386 program, uses executable segment descriptors</span><br /><span class="line">    that must exist in the GDT or in the task&#39;s LDT. The monitor may</span><br /><span class="line">    also need data segment descriptors to allow it to examine the</span><br /><span class="line">    interrupt vector table or other parts of the 8086 program that are</span><br /><span class="line">    in the first megabyte of address space.</span><br /><span class="line"></span><br /><span class="line">    Operating system services can be left as part of the 8086 code or</span><br /><span class="line">    emulated in the V86 monitor. Regardless how V86 is implemented,</span><br /><span class="line">    note that different V86 tasks can use different 8086 operating</span><br /><span class="line">    systems, which opens choices available to systems programmers.</span><br /><span class="line"></span><br /><span class="line">    Paging is not required for a single V86 task but is useful in</span><br /><span class="line">    order to do the following:</span><br /><span class="line"></span><br /><span class="line">        ■ Redirect or trap references to memory-mapped I/O devices.</span><br /><span class="line">        ■ Share 8086 operating system code or ROM code common to</span><br /><span class="line">          several 8086 programs that may be executing simultaneously.</span><br /><span class="line">        ■ Create a virtual address space larger than the physical</span><br /><span class="line">          address space.</span><br /><span class="line">        ■ Create multiple V86 tasks, in which each task must map the</span><br /><span class="line">          lower megabyte of linear addresses to different physical</span><br /><span class="line">          locations.</span><br /><span class="line">        ■ Emulate the megabyte wrap of the 8086.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    The 80386 does not refer to descriptors while executing 8086</span><br /><span class="line">    programs, so it does not use the protection mechanisms offered by</span><br /><span class="line">    descriptors. A couple of approaches can be used to protect the</span><br /><span class="line">    systems software in a V86 task from the 8086 program. The software</span><br /><span class="line">    designer may choose to use the U/S bit of the page table entries</span><br /><span class="line">    to protect the virtual machine monitor and other systems software</span><br /><span class="line">    that is in each V86 task&#39;s task space. When the 80386 is in V86</span><br /><span class="line">    mode, the current privilege level is 3 (CPL=3), which means that</span><br /><span class="line">    the 8086 program has only user privileges. If the virtual machine</span><br /><span class="line">    monitor&#39;s pages have supervisor privileges, they cannot be</span><br /><span class="line">    accessed by the 8086 program.</span><br /><span class="line">    Another way to protect the V86 system from a V86 application is to</span><br /><span class="line">    reserve the first megabyte and 64K of each task&#39;s linear address</span><br /><span class="line">    space for the 8086 program. The 8086 tasks cannot generate</span><br /><span class="line">    addresses outside that range.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    <span class="ngb">Sensitive instructions in V86 mode</span></span><br /><span class="line">    Refer to IOPL-sensitive instructions.</span><br /><span class="line"></span><br /><span class="line">    </span><br /><span class="line">    ──────────────────────────────────────────────────────────────────</span><br /><span class="line">    <span class="ngb">Virtual mode input/output</span></span><br /><span class="line">    Some 8086 programs are designed to operate on a single-task system</span><br /><span class="line">    and use I/O devices directly. These programs are disruptive when</span><br /><span class="line">    running in a multitasking environment. Instead of direct control,</span><br /><span class="line">    system designers may take other approaches. The method chosen to</span><br /><span class="line">    control the I/O depends on whether the I/O ports are memory-mapped</span><br /><span class="line">    or I/O-mapped. Some options for control are to</span><br /><span class="line"></span><br /><span class="line">        ■ selectively trap and then emulate references that a task</span><br /><span class="line">          makes to specifie I/O ports</span><br /><span class="line">        ■ trap or redirect references to memory-mapped I/O addresses</span><br /><span class="line">        ■ emulate the 8086 operating system as an 80386 program and</span><br /><span class="line">          require it to do I/O via software interrupts to the</span><br /><span class="line">          operating system (trap all attempts to do I/O directly)</span><br /><span class="line"></span><br /><span class="line">    I/O-mapped input/output in the V86 differs from protected mode in</span><br /><span class="line">    one way. The protection mechanism does not consult IOPL when it</span><br /><span class="line">    executes the IN,INS,OUT, and OUTS instructions; only the I/O</span><br /><span class="line">    Permission Bit Map controls whether the V86 tasks execute these</span><br /><span class="line">    I/O instructions. The I/O Permission Bit Map traps I/O</span><br /><span class="line">    instructions selectively, depending on the I/O address to which</span><br /><span class="line">    they refer. Because each task has its own I/O Permission Bit Map,</span><br /><span class="line">    the addresses trapped for one task may be different for those</span><br /><span class="line">    trapped for others.</span><br /><span class="line"></span><br /><span class="line">    Each task that executes memory-mapped I/O must have a page (or</span><br /><span class="line">    several pages) for the memory-mapped address space. The V86</span><br /><span class="line">    monitor can control the memory-mapped I/O by</span><br /><span class="line"></span><br /><span class="line">        ■ causing a monitor trap, which forces a page fault on the</span><br /><span class="line">          memory-mapped page (read-only pages will trap writes and</span><br /><span class="line">          not-present pages will trap both reads and writes), or</span><br /><span class="line">        ■ assigning the memory-mapped page to appropriate physical</span><br /><span class="line">          addresses</span><br /><span class="line"></span><br /><span class="line">    Intervening for each I/O may be excessive for some kinds of I/O</span><br /><span class="line">    devices. In this case, a page fault can intervene on the first I/O</span><br /><span class="line">    operation. The the monitor can make sure that the task has</span><br /><span class="line">    exclusive access to the device and can change the page status to</span><br /><span class="line">    present and read/write, which allows subsequent I/O to proceed at</span><br /><span class="line">    full speed.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-176171.html">Register availability</a></li>
+        
+          <li><a href="x86-179453.html">Flags</a></li>
+        
+          <li><a href="x86-213542.html">TSS</a></li>
+        
+          <li><a href="x86-194054.html">IOPL</a></li>
+        
+          <li><a href="x86-225699.html">Addressing modes</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

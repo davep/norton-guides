@@ -1,0 +1,96 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » MMX » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-329322.html">
+    <link rel="next" href="x86-331435.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-329322.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-318646.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-331435.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">PACKSSWB        Pack Words into Bytes (Signed with Saturation)</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">PACKSSWB</span> destination, source                         CPU: MMX</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span></span><br /><span class="line">        mm(7..0)   &lt;- SaturateSignedWordToSignedByte mm(15..0)</span><br /><span class="line">        mm(15..8)  &lt;- SaturateSignedWordToSignedByte mm(31..16) </span><br /><span class="line">        mm(23..16) &lt;- SaturateSignedWordToSignedByte mm(47..32)</span><br /><span class="line">        mm(31..24) &lt;- SaturateSignedWordToSignedByte mm(63..48)</span><br /><span class="line">        mm(39..32) &lt;- SaturateSignedWordToSignedByte mm/m64(15..0)</span><br /><span class="line">        mm(47..40) &lt;- SaturateSignedWordToSignedByte mm/m64(31..16)</span><br /><span class="line">        mm(55..48) &lt;- SaturateSignedWordToSignedByte mm/m64(47..32)</span><br /><span class="line">        mm(63..56) &lt;- SaturateSignedWordToSignedByte mm/m64(63..48)</span><br /><span class="line"></span><br /><span class="line">    PACKSSWB packs four signed words from the source operand and four</span><br /><span class="line">    signed words from the destination operand into eight signed bytes in</span><br /><span class="line">    the destination register.</span><br /><span class="line">    If the signed value of a word is larger or smaller than the range of</span><br /><span class="line">    a signed byte, the value is saturated (in the case of an overflow to</span><br /><span class="line">    7Fh, and in the case of an underflow to 80h).</span><br /><span class="line"></span><br /><span class="line">    The destination operand is an MMX register. The source operand can</span><br /><span class="line">    either be an MMX register or a 64-bit memory operand. </span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    0F 63 /r    PACKSSWB mm, mm/m64</span><br /></pre>
+  
+  
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

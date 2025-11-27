@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-171402.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-171402.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Abbreviations and legends</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">286+</span>            Instruction executes only on an 80286 CPU</span><br /><span class="line">                        or later. Requires a p286 or p286n directive</span><br /><span class="line">                        to assemble. Appears as &#39;CPU: 286+&#39; in text</span><br /><span class="line">                        entry.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">P</span> or <span class="ngb">p</span>          Instruction is normally used only in</span><br /><span class="line">                        system software (protected mode).</span><br /><span class="line">        <span class="ngb">P</span>               Instruction is privileged in protected</span><br /><span class="line">                        mode, including V86 mode. Appears as &#39;<span class="ngu">Priv</span>&#39;</span><br /><span class="line">                        in text entry.</span><br /><span class="line">        <span class="ngb">r</span>               Use of instruction is restricted.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">IO</span>              Instruction is IOPL-sensitive in protected</span><br /><span class="line">                        mode, including V86 mode (CLI and STI only).</span><br /><span class="line">        <span class="ngb">IOpm</span>            Instruction is IOPL-sensitive in protected</span><br /><span class="line">                        mode (except in V86 mode).</span><br /><span class="line">        <span class="ngb">IOv86</span>           Instruction is IOPL-sensitive in virtual</span><br /><span class="line">                        8086 mode (V86) only.</span><br /><span class="line"></span><br /><span class="line">        eBX             BX or EBX, depending on operand-size attribute</span><br /><span class="line">                        or address-size attribute.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        acc             AL, AX or EAX unless specified otherwise</span><br /><span class="line">        reg             any general register</span><br /><span class="line">        r8              any 8-bit register</span><br /><span class="line">        r16             any general purpose 16-bit register</span><br /><span class="line">        r32             any general purpose 32-bit register</span><br /><span class="line">        r/m8            a one-byte operand that is either a byte</span><br /><span class="line">                        register or a byte from memory</span><br /><span class="line">        r/m16           a word register or memory operand used for</span><br /><span class="line">                        instructions whose operand-size attribute is 16 bits</span><br /><span class="line">        r/m32           a doubleword register or memory operand used for</span><br /><span class="line">                        instructions whose operand-size attribute is 32 bits</span><br /><span class="line">        imm             immediate data</span><br /><span class="line">        imm8            immediate signed 8-bit value</span><br /><span class="line">        imm16           immediate signed 16-bit value</span><br /><span class="line">        imm32           immediate signed 32-bit value</span><br /><span class="line">        mem             memory address</span><br /><span class="line">        mem8            address of 8-bit data item</span><br /><span class="line">        mem16           address of 16-bit data item</span><br /><span class="line">        mem32           address of 32-bit data item</span><br /><span class="line">        mem48           address of 48-bit data item</span><br /><span class="line">        rel8            a relative address (distance -128 to +127 bytes)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Flags</span>           *  Changed to reflect the results of</span><br /><span class="line">                           instruction</span><br /><span class="line">                        0  Always cleared</span><br /><span class="line">                        1  Always set</span><br /><span class="line">                        -  Unchanged</span><br /><span class="line">                        ?  Undefined after operation (flag may or may</span><br /><span class="line">                           not have changed)</span><br /><span class="line"></span><br /><span class="line">        BCD             Binary-Coded Decimal</span><br /><span class="line">        CPL             Current Privilege Level (protected mode)</span><br /><span class="line">        IOPL            Input/Output Privilege Level (protected mode)</span><br /><span class="line">        SMM             System Management Mode</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Instruction timings</span></span><br /><span class="line">        n       generally refers to a number of repeated counts</span><br /><span class="line">        m       in a jump or call,</span><br /><span class="line">                286:     bytes in next instruction</span><br /><span class="line">                386/486: number of components in instruction</span><br /><span class="line">                         (each byte of opcode) + 1 (if immediate data)</span><br /><span class="line">                         + 1 (if displacement)</span><br /><span class="line"></span><br /><span class="line">        EA      cycles to calculate the Effective Address</span><br /><span class="line">                8088/8086:</span><br /><span class="line">                  base = 5,  index = 5,  disp = 6</span><br /><span class="line">                  bp+di or bx+si = 7</span><br /><span class="line">                  bx+di or bp+si = 8</span><br /><span class="line">                  bp+di+disp or bx+si+disp = 11</span><br /><span class="line">                  bx+di+disp or bp+si+disp = 12</span><br /><span class="line">                  segment override = +2</span><br /><span class="line">                286 - 486:</span><br /><span class="line">                  base+index+disp = +1    all others, no penalty</span><br /><span class="line"></span><br /><span class="line">        NP      not pairable                      } pairing</span><br /><span class="line">        UV      pairable in the U pipe or V pipe  } categories</span><br /><span class="line">        PU      pairable in the U pipe only       } for</span><br /><span class="line">        PV      pairable in the V pipe only       } Pentium</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Instruction length</span></span><br /><span class="line">        The byte count includes the opcode length and length of any required</span><br /><span class="line">        displacement or immediate data. If the displacement is optional, it</span><br /><span class="line">        is shown as d() with the possible lengths in parentheses. If the</span><br /><span class="line">        immediate data is optional, it is shown as i() with the possible</span><br /><span class="line">        lengths in parentheses.</span><br /><span class="line"></span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-193225.html">Privileged</a></li>
+        
+          <li><a href="x86-194054.html">IOPL</a></li>
+        
+          <li><a href="x86-179453.html">Flags</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

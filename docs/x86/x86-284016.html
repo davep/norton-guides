@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-282906.html">
+    <link rel="next" href="x86-285963.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-282906.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-285963.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FSAVE           Save FPU state                       Exceptions: None</span></span><br /><span class="line"><span class="ngb">FNSAVE          Save FPU state, no wait</span>              C3 C2 C1 C0: 0 0 0 0</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">FSAVE</span> destination</span><br /><span class="line"><span class="ngb">FNSAVE</span> destination</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   destination ← FPU state</span><br /><span class="line"></span><br /><span class="line">    FSAVE/FNSAVE write the FPU state to destination (a 94- or 108-byte</span><br /><span class="line">    memory location), then reinitialize the FPU. FSAVE checks for</span><br /><span class="line">    unmasked FP error conditions before writing the state; FNSAVE does</span><br /><span class="line">    not make this check.</span><br /><span class="line"></span><br /><span class="line">    The FPU state includes the environment (14 or 28 bytes) and the</span><br /><span class="line">    register stack, ST(0) thru ST(7) (80 bytes).</span><br /><span class="line">    The environment includes the control word, the status word, the tag</span><br /><span class="line">    word, and an error block (see FSTENV).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    FSAVE/FNSAVE are typically used when an operating system needs to</span><br /><span class="line">    perform a context switch, an exception handler needs to use the FPU,</span><br /><span class="line">    or an application program wants to &#39;clean&#39; the FPU before a</span><br /><span class="line">    subroutine uses it.</span><br /><span class="line"></span><br /><span class="line">    </span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    FSAVE/FNSAVE do not store the FPU state until all FPU activity has</span><br /><span class="line">    finished. To restore a saved state, use the FRSTOR instruction. If a</span><br /><span class="line">    program is to read from the state&#39;s memory image following a save</span><br /><span class="line">    instruction, it must issue an FWAIT instruction to ensure that the</span><br /><span class="line">    storage operation is complete.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    9B DD /6    FSAVE m94byte   ; 16-bit code segment</span><br /><span class="line">    9B DD /6    FSAVE m108byte  ; 32-bit code segment</span><br /><span class="line">    DD /6       FNSAVE m94byte  ; 16-bit code segment</span><br /><span class="line">    DD /6       FNSAVE m108byte ; 32-bit code segment</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Variations    8087         287        387      486     Pentium</span><br /><span class="line">    fsave      (197-207)+EA  197-207    375-376  154/143  127-151/124 NP</span><br /><span class="line">    fsavew                              375-376  154/143  127-151/124 NP</span><br /><span class="line">    fsaved                              375-376  154/143  127-151/124 NP</span><br /><span class="line">    fnsave     (197-207)+EA  197-207    375-376  154/143  127-151/124 NP</span><br /><span class="line">    fnsavew                             375-376  154/143  127-151/124 NP</span><br /><span class="line">    fnsaved                             375-376  154/143  127-151/124 NP</span><br /><span class="line"></span><br /><span class="line">                Cycles for real mode/protected mode</span><br /><span class="line">                The wait version may take additional cycles</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-291419.html">FSTENV</a></li>
+        
+          <li><a href="x86-282906.html">FRSTOR</a></li>
+        
+          <li><a href="x86-300510.html">FWAIT</a></li>
+        
+          <li><a href="x86-268908.html">FINIT</a></li>
+        
+          <li><a href="x86-310852.html">FPU registers</a></li>
+        
+          <li><a href="x86-315779.html">CC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

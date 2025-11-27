@@ -1,0 +1,119 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-271460.html">
+    <link rel="next" href="x86-273240.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-271460.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-273240.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FLD             Load real                            Exceptions: I D</span></span><br /><span class="line">                                                     C3 C2 C1 C0: ? ? * ?</span><br /><span class="line"><span class="ngb">FLD</span> source</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   push source into ST</span><br /><span class="line"></span><br /><span class="line">    FLD pushes source onto the FPU stack and is the basic instruction</span><br /><span class="line">    for moving data into the FPU.</span><br /><span class="line">    If the source is a register, the register number used is that before</span><br /><span class="line">    the stack-top pointer is decremented. If source is in single or</span><br /><span class="line">    double FP format, it is automatically converted to extended real</span><br /><span class="line">    format.</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Example</span></span><br /><span class="line">        fld   [mem64]   ; load double</span><br /><span class="line">        fld   ST(0)     ; duplicate stack top</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    ST(7) must be empty; otherwise, the CPU receives an invalid</span><br /><span class="line">    operation exception.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    D9 /0       FLD m32</span><br /><span class="line">    DD /0       FLD m64</span><br /><span class="line">    DB /5       FLD m80</span><br /><span class="line">    D9 C0 + i   FLD ST(i)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Operand       8087         287        387      486     Pentium</span><br /><span class="line">    reg          17-22        17-22       14        4       1      FX</span><br /><span class="line">    m32         (38-56)+EA    38-56       20        3       1      FX</span><br /><span class="line">    m64         (40-60)+EA    40-60       25        3       1      FX</span><br /><span class="line">    m80         (53-65)+EA    53-65       44        6       3      NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-273240.html">FLDxx</a></li>
+        
+          <li><a href="x86-267134.html">FILD</a></li>
+        
+          <li><a href="x86-250240.html">FBLD</a></li>
+        
+          <li><a href="x86-301956.html">FXCH</a></li>
+        
+          <li><a href="x86-288647.html">FST</a></li>
+        
+          <li><a href="x86-307944.html">FPU data types</a></li>
+        
+          <li><a href="x86-310852.html">FPU registers</a></li>
+        
+          <li><a href="x86-315779.html">CC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

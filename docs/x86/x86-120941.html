@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-119088.html">
+    <link rel="next" href="x86-123791.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-119088.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-123791.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">RDPMC           Read Performance-Monitoring Counters</span> Flags: <span class="ngb">Not altered</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">RDPMC</span>                                                CPU: PPro+ <span class="ngu">r</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   if (ECX &lt; 2) and</span><br /><span class="line">                   ((CR4.PCE = 1) or ((CR4.PCE = 0) and (CPL=0)))</span><br /><span class="line">                   EDX:EAX ← PMC[ECX]</span><br /><span class="line">                else</span><br /><span class="line">                   #GP(0)</span><br /><span class="line">                endif</span><br /><span class="line"></span><br /><span class="line">    Loads the contents of the 40-bit performance-monitoring counter</span><br /><span class="line">    specified in the ECX register into registers EDX:EAX. The EDX</span><br /><span class="line">    register is loaded with the high-order 8 bits of the counter and the</span><br /><span class="line">    EAX register is loaded with the low-order 32 bits. The Pentium Pro</span><br /><span class="line">    processor has two performance-monitoring counters (0 and 1), which</span><br /><span class="line">    are specified by placing 0000H or 0001H, respectively, in the ECX</span><br /><span class="line">    register.</span><br /><span class="line"></span><br /><span class="line">    The RDPMC instruction allows application code running at a privilege</span><br /><span class="line">    level of 1, 2, or 3 to read the performance-monitoring counters if</span><br /><span class="line">    the PCE flag in the CR4 register is set. This instruction is</span><br /><span class="line">    provided to allow performance monitoring by application code without</span><br /><span class="line">    incurring the overhead of a call to an operating-system procedure.</span><br /><span class="line"></span><br /><span class="line">    The performance-monitoring counters are event counters that can be</span><br /><span class="line">    programmed to count events such as the number of instructions</span><br /><span class="line">    decoded, number of interrupts received, or number of cache loads.</span><br /><span class="line">    Appendix B, Performance Monitoring Counters, in the Pentium Pro</span><br /><span class="line">    Family Developer&#39;s Manual, Volume 3 lists all the events that can be</span><br /><span class="line">    counted.</span><br /><span class="line"></span><br /><span class="line">    The RDPMC instruction does not serialize instruction execution. That</span><br /><span class="line">    is, it does not imply that all the events caused by the preceding</span><br /><span class="line">    instructions have been completed or that events caused by subsequent</span><br /><span class="line">    instructions have not begun. If an exact event count is desired,</span><br /><span class="line">    software must use a serializing instruction (such as the CPUID</span><br /><span class="line">    instruction) before and/or after the execution of the RDPCM</span><br /><span class="line">    instruction.</span><br /><span class="line"></span><br /><span class="line">    The RDPMC instruction can execute in 16-bit addressing mode or</span><br /><span class="line">    virtual 8086 mode; however, the full contents of the ECX register</span><br /><span class="line">    are used to determine the counter to access and a full 40-bit result</span><br /><span class="line">    is returned (the low-order 32 bits in the EAX register and the</span><br /><span class="line">    high-order 9 bits in the EDX register).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    According to Intel&#39;s Pentium Pro manual, &#34;this instruction was</span><br /><span class="line">    available in the Pentium processor, but was undocumented&#34;.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    Protected Mode Exceptions</span><br /><span class="line">    #GP(0) If the current privilege level is not 0 and the PCE flag in the</span><br /><span class="line">    CR4 register is clear.</span><br /><span class="line">    If the value in the ECX register is not 0 or 1.</span><br /><span class="line"></span><br /><span class="line">    Real Address Mode Exceptions</span><br /><span class="line">    #GP If the PCE flag in the CR4 register is clear.</span><br /><span class="line">    If the value in the ECX register is not 0 or 1.</span><br /><span class="line"></span><br /><span class="line">    Virtual 8086 Mode Exceptions</span><br /><span class="line">    #GP(0) If the PCE flag in the CR4 register is clear.</span><br /><span class="line">    If the value in the ECX register is not 0 or 1.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    0F 33       RDPMC</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    -           2       -       -       -       -       -       -</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-123791.html">RDTSC</a></li>
+        
+          <li><a href="x86-38316.html">CPUID</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

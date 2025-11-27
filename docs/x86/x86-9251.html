@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-8296.html">
+    <link rel="next" href="x86-10496.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-8296.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-10496.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">ADC             Add with Carry                       Flags: O D I T S Z A P C</span></span><br /><span class="line">                                                            * - - - * * * * *</span><br /><span class="line"><span class="ngb">ADC</span> destination,source</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   destination ← destination + source + CF</span><br /><span class="line"></span><br /><span class="line">    ADC sums the operands, adds 1 if the carry flag (CF) is set and</span><br /><span class="line">    replaces the destination operand with the result. If CF is</span><br /><span class="line">    cleared, ADC does the same operation as the ADD instruction.</span><br /><span class="line"></span><br /><span class="line">        Example:        add     eax,ebx</span><br /><span class="line">                        adc     edx,0   ; Add 1 if CF set</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    10 /r       ADC  r/m8,r8</span><br /><span class="line">    11 /r       ADC  r/m16,r16</span><br /><span class="line">    11 /r       ADC  r/m32,r32</span><br /><span class="line">    12 /r       ADC  r8,r/m8</span><br /><span class="line">    13 /r       ADC  r16,r/m16</span><br /><span class="line">    13 /r       ADC  r32,r/m32</span><br /><span class="line">    14 ib       ADC  AL,imm8</span><br /><span class="line">    15 iw       ADC  AX,imm16</span><br /><span class="line">    15 id       ADC  EAX,imm32</span><br /><span class="line">    80 /2 ib    ADC  r/m8,imm8</span><br /><span class="line">    81 /2 iw    ADC  r/m16,imm16</span><br /><span class="line">    81 /2 id    ADC  r/m32,imm32</span><br /><span class="line">    83 /2 ib    ADC  r/m16,imm8</span><br /><span class="line">    83 /2 ib    ADC  r/m32,imm8</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    reg, reg     2       3       3       2       2       1       1   PU</span><br /><span class="line">    mem, reg  2+d(0,2)  24+EA   10       7       7       3       3   PU</span><br /><span class="line">    reg, mem  2+d(0,2)  13+EA   10       7       6       2       2   PU</span><br /><span class="line">    reg, imm  2+i(1,2)   4       4       3       2       1       1   PU</span><br /><span class="line">    mem, imm  2+d(0,2)  23+EA   16       7       7       3       3   PU*</span><br /><span class="line">               +i(1,2)</span><br /><span class="line">    acc, imm  1+i(1,2)   4       4       3       2       1       1   PU</span><br /><span class="line"></span><br /><span class="line">        * = not pairable if there is a displacement and immediate</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-10496.html">ADD</a></li>
+        
+          <li><a href="x86-57138.html">INC</a></li>
+        
+          <li><a href="x86-179453.html">Flags</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

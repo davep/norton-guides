@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-120941.html">
+    <link rel="next" href="x86-125491.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-120941.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-125491.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">RDTSC           Read Time-Stamp Counter              Flags: Not altered</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">RDTSC</span>                                                CPU: Pentium+ <span class="ngu">r</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   if (CR4.TSD = 0) or ((CR4.TSD = 1) and (CPL = 0))</span><br /><span class="line">                   EDX:EAX ← TimeStampCounter</span><br /><span class="line">                else</span><br /><span class="line">                   #GP(0)</span><br /><span class="line">                endif</span><br /><span class="line"></span><br /><span class="line">    Loads the current value of the processor&#39;s time-stamp counter into</span><br /><span class="line">    the EDX:EAX registers. The time-stamp counter is contained in a</span><br /><span class="line">    64-bit MSR. The high-order 32 bits of the MSR are loaded into the</span><br /><span class="line">    EDX register, and the low-order 32 bits are loaded into the EAX</span><br /><span class="line">    register. The processor increments the time-stamp counter MSR every</span><br /><span class="line">    clock cycle and resets it to 0 whenever the processor is reset.</span><br /><span class="line"></span><br /><span class="line">    The time stamp disable (TSD) flag in register CR4 restricts the use</span><br /><span class="line">    of the RDTSC instruction. When the TSD flag is clear, the RDTSC</span><br /><span class="line">    instruction can be executed at any privilege level; when the flag is</span><br /><span class="line">    set, the instruction can only be executed at privilege level 0. The</span><br /><span class="line">    time-stamp counter can also be read with the RDMSR instruction.</span><br /><span class="line"></span><br /><span class="line">    The RDTSC instruction is not serializing instruction. Thus, it does</span><br /><span class="line">    not necessarily wait until all previous instructions have been</span><br /><span class="line">    executed before reading the counter. Similarly, subsequent</span><br /><span class="line">    instructions may begin execution before the read operation is</span><br /><span class="line">    performed.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    Protected Mode Exceptions</span><br /><span class="line">    #GP(0) If the TSD flag in register CR4 is set and the CPL is greater</span><br /><span class="line">    than 0.</span><br /><span class="line"></span><br /><span class="line">    Real Address Mode Exceptions</span><br /><span class="line">    #GP If the TSD flag in register CR4 is set.</span><br /><span class="line"></span><br /><span class="line">    Virtual 8086 Mode Exceptions</span><br /><span class="line">    #GP(0) If the TSD flag in register CR4 is set.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    0F 31       RDTSC</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    -           2       -       -       -       -       -       ??</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-119088.html">RDMSR</a></li>
+        
+          <li><a href="x86-120941.html">RDPMC</a></li>
+        
+          <li><a href="x86-38316.html">CPUID</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

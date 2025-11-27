@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-84253.html">
+    <link rel="next" href="x86-87899.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-84253.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-87899.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">LODS            Load String                          Flags: Not altered</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">LODS</span> source_string</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   accumulator ← [DS:eSI]</span><br /><span class="line">                if DF = 0</span><br /><span class="line">                   eSI ← eSI + n        ; n = 1 for byte, 2 for word,</span><br /><span class="line">                else                    ;     4 for dword (386+)</span><br /><span class="line">                   eSI ← eSI - n</span><br /><span class="line">                endif</span><br /><span class="line"></span><br /><span class="line">    This instruction loads the AL, AX, or EAX register with the memory</span><br /><span class="line">    byte, word, or doubleword pointed to by DS (default) and the</span><br /><span class="line">    source-index register (SI or ESI). After the transfer is made,</span><br /><span class="line">    eSI is automatically incremented (if the direction flag is</span><br /><span class="line">    cleared) or decremented (if the direction flag is set), in</span><br /><span class="line">    preparation for loading the next element of the string.</span><br /><span class="line"></span><br /><span class="line">    If the address-size attribute of LODS is 16 bits, SI is used for</span><br /><span class="line">    the source-index register; otherwise the the address-size</span><br /><span class="line">    attribute is 32 bits, and the ESI register will be used.</span><br /><span class="line"></span><br /><span class="line">    The source segment can be changed with a segment override.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span>:       This instruction is always translated by the</span><br /><span class="line">                assembler into LODSB, Load String Byte, LODSW, Load</span><br /><span class="line">                String Word, or LODSD, Load String Dword, depending</span><br /><span class="line">                upon whether source refers to a string of bytes, words</span><br /><span class="line">                or doublewords. In either case, you must explicitly</span><br /><span class="line">                load the eSI register with the offset of the source</span><br /><span class="line">                string.</span><br /><span class="line"></span><br /><span class="line">                LODSB, LODSW, and LODSD are synonyms for the byte,</span><br /><span class="line">                word, and doubleword LODS instructions that do not</span><br /><span class="line">                require an operand. They are simpler to use but</span><br /><span class="line">                provide no type or segment checking.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    LODS can be preceded with a REP prefix, but this will continually</span><br /><span class="line">    overwrite the contents of the accumulator; LODS is typically used</span><br /><span class="line">    within a LOOP construct.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    AC          LODS m8                 ; = LODSB</span><br /><span class="line">    AD          LODS m16                ; = LODSW</span><br /><span class="line">    AD          LODS m32                ; = LODSD</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Variations  Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    lodsb        1      16      10       5       5       5       2   NP</span><br /><span class="line">    lodsw        1      16      10       5       5       5       2   NP</span><br /><span class="line">    lodsd        1       -       -       -       5       5       2   NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-87899.html">LOOP</a></li>
+        
+          <li><a href="x86-125491.html">REP</a></li>
+        
+          <li><a href="x86-95607.html">MOVS</a></li>
+        
+          <li><a href="x86-57745.html">INS</a></li>
+        
+          <li><a href="x86-26242.html">CLD</a></li>
+        
+          <li><a href="x86-179453.html">Flags</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

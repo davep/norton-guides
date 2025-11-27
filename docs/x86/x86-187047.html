@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Registers</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-185529.html">
+    <link rel="next" href="x86-190132.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-185529.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-175915.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-190132.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line"><span class="ngb">Control registers</span></span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">     3               2         1   1         1</span><br /><span class="line">     1               3         8   6         1           5 4 3 2 1 0</span><br /><span class="line">    ┌───────────────────────────────────────┬─────────────┬─┬─┬─┬─┬─┐</span><br /><span class="line">    │ Page directory base register (PDBR)   │ Reserved    │P│P│0 0 0│ CR3</span><br /><span class="line">    │                                       │             │C│W│     │</span><br /><span class="line">    ├───────────────────────────────────────┴─────────────┴─┴─┴─┴─┴─┤</span><br /><span class="line">    │                  Page fault linear address                    │ CR2</span><br /><span class="line">    │                                                               │</span><br /><span class="line">    ├───────────────────────────────────────────────────────────────┤</span><br /><span class="line">    │                          Reserved                             │ CR1</span><br /><span class="line">    │                                                               │</span><br /><span class="line">    ├─┬─┬─┬───────────────────┬─┬─┬─┬───────────────────┬─┬─┬─┬─┬─┬─┤</span><br /><span class="line">    │P│C│N│ Reserved          │A│ │W│ Reserved          │N│E│T│E│M│P│ CR0</span><br /><span class="line">    │G│D│W│                   │M│ │P│                   │E│T│S│M│P│E│</span><br /><span class="line">    └─┴─┴─┴───────────────────┴─┴─┴─┴───────────────────┴─┴─┴─┴─┴─┴─┛</span><br /><span class="line">     7 6 5 4 3 2 1 0                 7 6 5 4 3 2 1 0</span><br /><span class="line">                     7 6 5 4 3 2 1 0                 7 6 5 4 3 2 1 0</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">CR0 - Control Register 0</span></span><br /><span class="line"></span><br /><span class="line">    The low 16 bits of CR0 contain the MSW register (80286 machine</span><br /><span class="line">    status word).</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">PG</span> bit 31           PG (paging) indicates whether the 80486 uses</span><br /><span class="line">                        page tables to translate linear addresses into</span><br /><span class="line">                        physical addresses.         (80386+)</span><br /><span class="line">    <span class="ngb">CD</span> bit 30           CD (1 = cache disabled)     (80486+)</span><br /><span class="line">    <span class="ngb">NW</span> bit 29           NW (0 = not write-through)  (80486+)</span><br /><span class="line">    <span class="ngb">AM</span> bit 18           AM (alignment mask) enables (when set) or</span><br /><span class="line">                        disables (when clear) checking the alignment</span><br /><span class="line">                        of memory operands.         (80486+)</span><br /><span class="line">    <span class="ngb">WP</span> bit 16           WP (write-protect)          (80486+)</span><br /><span class="line">                        (1 if read-only pages protected)</span><br /><span class="line">    <span class="ngb">NE</span> bit  5           NE (numeric error)          (80486+)</span><br /><span class="line">                        (1 if errors should be ignored)</span><br /><span class="line">    <span class="ngb">ET</span> bit  4           ET (extension type)         (80386+)</span><br /><span class="line">                        (1= 80387,0=80287 type)</span><br /><span class="line">    <span class="ngb">TS</span> bit  3           TS (1 = task switched)      (80286+)</span><br /><span class="line">    <span class="ngb">EM</span> bit  2           EM (emulation)              (80286+)</span><br /><span class="line">                        (1= execute exception 7 on FPU codes)</span><br /><span class="line">    <span class="ngb">MP</span> bit  1           MP (math present)           (80286+)</span><br /><span class="line">                        (1 if FPU handles FPU codes)</span><br /><span class="line">    <span class="ngb">PE</span> bit  0           Setting PE (protection enable) causes the</span><br /><span class="line">                        processor to begin executing in protected</span><br /><span class="line">                        mode. Resetting PE returns to real-address</span><br /><span class="line">                        mode.                       (80286+)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">CR1 - Control Register 1</span></span><br /><span class="line"></span><br /><span class="line">    Reserved for future Intel processors.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">CR2 - Control Register 2</span></span><br /><span class="line"></span><br /><span class="line">    Used for handling exceptions generated during paging, or page</span><br /><span class="line">    faults, when the PG flag in CR0 is set.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">CR3 - Control Register 3</span></span><br /><span class="line"></span><br /><span class="line">    Used when the PG flag in CR0 is set. CR3 contains the physical</span><br /><span class="line">    base address of the page directory table for the current task. The</span><br /><span class="line">    page directory must be aligned to a page (4 KB-aligned), so the</span><br /><span class="line">    low 12 bits of CR3 are ignored.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">PCD</span> bit 4           PCD (page-level cache disable)  (80486+)</span><br /><span class="line">    <span class="ngb">PWT</span> bit 3           PWT (page-level write through)  (80486+)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">CR4 - Control Register 4</span>  (Pentium and PPro)</span><br /><span class="line"></span><br /><span class="line">    Extended Machine Control</span><br /><span class="line">    Bit</span><br /><span class="line">     0  VME  Virtual86 mode Virtual Interrupts (1=use VIF flag in VM)</span><br /><span class="line">     1  PVI  Protected mode Virtual Interrupts (1=use VIF flag in PM)</span><br /><span class="line">     2  TSD  Time Stamp instruction Disable (1=RDTSC only with CPL=0)</span><br /><span class="line">     3  DE   Debugging Extension (1=breakpoints also valid for I/O)</span><br /><span class="line">     4  PSE  Page Size Extension (1=4 Mb paging instead of 4 Kb)</span><br /><span class="line">     5  PAE  Physical Address Extension                 (PPro)</span><br /><span class="line">     6  MCE  Machine Check Enable (1=enabled)</span><br /><span class="line">     7  PGE  Page Global Enable                         (PPro)</span><br /><span class="line">     8  PCE  Performance counters enable                (PPro)</span><br /><span class="line">    9-31 Reserved</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-92014.html">MOV</a></li>
+        
+          <li><a href="x86-38316.html">CPUID</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

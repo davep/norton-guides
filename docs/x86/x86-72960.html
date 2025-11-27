@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-72399.html">
+    <link rel="next" href="x86-74971.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-72399.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-74971.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">LAR             Load Access Rights                   Flags: O D I T S Z A P C</span></span><br /><span class="line">                                                            - - - - - * - - -</span><br /><span class="line"><span class="ngb">LAR</span> destination,source                               CPU: 286+ <span class="ngb">p</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   dest16 ← (bits 32-47 of descriptor) AND FF00h</span><br /><span class="line">             or dest32 ← (bits 32-63 of descriptor) AND 00F0FF00h</span><br /><span class="line">                if error</span><br /><span class="line">                   ZF ← 0</span><br /><span class="line">                else</span><br /><span class="line">                   ZF ← 1</span><br /><span class="line">                endif</span><br /><span class="line"></span><br /><span class="line">    This instruction reads a masked form of a segment descriptor and</span><br /><span class="line">    returns the following bits to the destination register:</span><br /><span class="line"></span><br /><span class="line">                <span class="ngb">Bits    Contents</span></span><br /><span class="line">    dest32   |  23      Granularity</span><br /><span class="line">             |  22      Default Operation Size</span><br /><span class="line">             |  20      Programmer-available</span><br /><span class="line">             |  15      Segment Present        |</span><br /><span class="line">             |  14-13   DPL                    |</span><br /><span class="line">             |  12      Segment                |  dest16</span><br /><span class="line">             |  11-9    Type                   |</span><br /><span class="line">             |  8       Accessed               |</span><br /><span class="line">             |  (Other bits zero)              |</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    The descriptor specified by the selector in the first operand must</span><br /><span class="line">    be within the descriptor table limits, have a valid type field,</span><br /><span class="line">    and be accessible at both CPL (Current Privilege Level) and RPL</span><br /><span class="line">    (Requestor&#39;s Privilege Level) of the selector in the second</span><br /><span class="line">    operand compared to DPL (Descriptor Privilege Level). If so, ZF is</span><br /><span class="line">    set to 1 and the segment attributes are loaded to the first</span><br /><span class="line">    operand. If not, ZF is set to zero, and the first operand is</span><br /><span class="line">    unmodified (due to privilege or GDT or LDT limits).</span><br /><span class="line"></span><br /><span class="line">    If the 32-bit operand size is specified, the entire 32-bit value</span><br /><span class="line">    is loaded into the 32-bit destination. If the 16-bit operand size</span><br /><span class="line">    is specified, the lower 16 bits of this value are stored in the</span><br /><span class="line">    16-bit destination register.</span><br /><span class="line"></span><br /><span class="line">    The following special-segment and gate-descriptor types are valid</span><br /><span class="line">    for LAR: 1,2,3,4,5,6,7,9,B,C,E,F. All application code and data</span><br /><span class="line">    segment descriptors are valid.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        Example:        sub     eax,eax</span><br /><span class="line">                        mov     ax,cs</span><br /><span class="line">                        mov     ebx,eax</span><br /><span class="line">                        lar     eax,ebx</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    0F 02 /r    LAR  r16,r/m16</span><br /><span class="line">    0F 02 /r    LAR  r32,r/m32</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    r16, r16     3                      14      15      11       8   NP</span><br /><span class="line">    r32, r32     3                       -      15      11       8   NP</span><br /><span class="line">    r16, m16     3                      16      16      11       8   NP</span><br /><span class="line">    r32, m32     3                       -      16      11       8   NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-89671.html">LSL</a></li>
+        
+          <li><a href="x86-161868.html">VERR</a></li>
+        
+          <li><a href="x86-12925.html">ARPL</a></li>
+        
+          <li><a href="x86-197219.html">Descriptors</a></li>
+        
+          <li><a href="x86-195957.html">Selectors</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

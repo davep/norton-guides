@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Registers, data types</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-307944.html">
+    <link rel="next" href="x86-315779.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-307944.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-307843.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-315779.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">        <span class="ngb">FPU registers</span></span><br /><span class="line">        The FPU has 13 registers: 8 data registers, a control register,</span><br /><span class="line">        a status register, a tag register, an instruction pointer, and</span><br /><span class="line">        a data pointer.</span><br /><span class="line"></span><br /><span class="line">            79       64         Data registers                0    1 0</span><br /><span class="line">        R7  ┌─┬────────┬───────────────────────────────────────┐  ┌───┐</span><br /><span class="line">        R6  ├─┼────────┼───────────────────────────────────────┤  ├───┤</span><br /><span class="line">        R5  ├─┼────────┼───────────────────────────────────────┤  ├───┤</span><br /><span class="line">        R4  ├─┼────────┼───────────────────────────────────────┤  ├───┤</span><br /><span class="line">        R3  ├─┼────────┼───────────────────────────────────────┤  ├───┤</span><br /><span class="line">        R2  ├─┼────────┼───────────────────────────────────────┤  ├───┤</span><br /><span class="line">        R1  ├─┼────────┼───────────────────────────────────────┤  ├───┤</span><br /><span class="line">        R0  ├─┼────────┼───────────────────────────────────────┤  ├───┤</span><br /><span class="line">            └─┴────────┴───────────────────────────────────────┛  └───┛</span><br /><span class="line">             bit  79     sign                                       ▲</span><br /><span class="line">             bits 78..64 exponent                                   │</span><br /><span class="line">             bits 63..0  significand             15           0     │</span><br /><span class="line">                                                 ┌─────────────┐    │</span><br /><span class="line">                                                 │ Control reg │    │</span><br /><span class="line">        ┌─────────────────────────────┐          ├─────────────┤    │</span><br /><span class="line">        │ Instruction pointer         │          │ Status reg  │    │</span><br /><span class="line">        ├─────────────────────────────┤          ├─────────────┤    │</span><br /><span class="line">        │ Data pointer                │          │ Tag word    │  ◄─┛</span><br /><span class="line">        └─────────────────────────────┛          └─────────────┛</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">The FPU register stack</span></span><br /><span class="line">        Some FPU instructions operate on the data registers explicitly,</span><br /><span class="line">        others access the registers as a stack. Those instructions</span><br /><span class="line">        operate on the top one or two stack elements. Here, the TOP</span><br /><span class="line">        field in the FPU status word identifies the current top-of-stack</span><br /><span class="line">        register. A push operation decrements TOP by one and loads a</span><br /><span class="line">        value into the new top register. A pop operation stores the</span><br /><span class="line">        value from the current top register and increments TOP by one.</span><br /><span class="line">        Like other x86 stacks, the FPU register stack grows downward,</span><br /><span class="line">        toward lower-numbered registers.</span><br /><span class="line"></span><br /><span class="line">        Some FPU instructions address the data registers implicitly,</span><br /><span class="line">        while others address them explicitly. Many instructions operate</span><br /><span class="line">        on the register at the top of the stack by implicitly addressing</span><br /><span class="line">        the register at which TOP points. Other instructions let the</span><br /><span class="line">        programmer specify which register to use, <span class="ngb">relative</span> to TOP,</span><br /><span class="line">        using the ST(i) notation.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Status word</span></span><br /><span class="line">        The status word reflects the overall state of the FPU.</span><br /><span class="line"></span><br /><span class="line">          15  14  13  12  11  10  9   8   7   6   5   4   3   2   1   0</span><br /><span class="line">        ┌───┬───┬───────────┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐</span><br /><span class="line">        │ B │ C3│    TOP    │ C2│ C1│ C0│ ES│ S │ P │ U │ O │ Z │ D │ I │</span><br /><span class="line">        └───┴───┴───────────┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┛</span><br /><span class="line"></span><br /><span class="line">        B       busy; reflects the contents of the ES field</span><br /><span class="line">                (for 8087 compatibility)</span><br /><span class="line">        TOP     register number of the top of stack</span><br /><span class="line">        C3..C0  condition codes</span><br /><span class="line">        ES      error status, holds the logical OR of bits 0..5</span><br /><span class="line">                (a.k.a. IR field -- interrupt request pending)</span><br /><span class="line">        Exception flags:</span><br /><span class="line">        S       stack over/underflow (387+)</span><br /><span class="line">        P       precision lost</span><br /><span class="line">        U       underflow</span><br /><span class="line">        O       overflow</span><br /><span class="line">        Z       zero-divide</span><br /><span class="line">        D       denormalization</span><br /><span class="line">        I       invalid operation (e.g. stack overflow)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Control word</span></span><br /><span class="line">        The contents of the control word determine the FPU&#39;s mode of</span><br /><span class="line">        operation.</span><br /><span class="line"></span><br /><span class="line">          15  14  13  12  11  10  9   8   7   6   5   4   3   2   1   0</span><br /><span class="line">        ┌───┬───┬───┬───┬───────┬───────┬───┬───┬───┬───┬───┬───┬───┬───┐</span><br /><span class="line">        │   │   │   │ IN│  RC   │  PC   │ IE│   │ P │ U │ O │ Z │ D │ I │</span><br /><span class="line">        └───┴───┴───┴───┴───────┴───────┴───┴───┴───┴───┴───┴───┴───┴───┛</span><br /><span class="line"></span><br /><span class="line">        IN      infinity (8087 and 80287 only)</span><br /><span class="line">        RC      rounding control (default is 00)</span><br /><span class="line">                00  to nearest or even</span><br /><span class="line">                01  round down</span><br /><span class="line">                10  round up</span><br /><span class="line">                11  truncate (chop)</span><br /><span class="line">        PC      mantissa precision control</span><br /><span class="line">                00  24 bits</span><br /><span class="line">                01  reserved</span><br /><span class="line">                10  53 bits</span><br /><span class="line">                11  64 bits</span><br /><span class="line">        IE      FPU interrupt enable (active on 8087 only)</span><br /><span class="line">        5..0    Exception masks (if set, condition is ignored)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Tag word</span></span><br /><span class="line">        The 16-bit tag word contains 8 two-bit tags where each tag</span><br /><span class="line">        reports on the content of an FPU data register. Primarily, the</span><br /><span class="line">        tag word optimizes the FPU&#39;s performance and stack handling by</span><br /><span class="line">        making it possible to distinguish between empty and non-empty</span><br /><span class="line">        register locations. It also enables exception handlers to check</span><br /><span class="line">        the contents of a stack location without having to decode the</span><br /><span class="line">        actual data.</span><br /><span class="line"></span><br /><span class="line">        15                                                             0</span><br /><span class="line">        ┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┐</span><br /><span class="line">        │ Tag(7)│ Tag(6)│ Tag(5)│ Tag(4)│ Tag(3)│ Tag(2)│ Tag(1)│ Tag(0)│</span><br /><span class="line">        └───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┛</span><br /><span class="line"></span><br /><span class="line">        A tag can have the following values:</span><br /><span class="line">                00  valid</span><br /><span class="line">                01  zero</span><br /><span class="line">                10  QNaN, SNaN, infinity, denormal and unsupported formats</span><br /><span class="line">                11  empty</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Instruction and data pointers</span></span><br /><span class="line">        Because the FPU operates in parallel with the CPU&#39;s ALU</span><br /><span class="line">        (arithmetic and logic unit), an error the FPU detects may be</span><br /><span class="line">        reported after the ALU executes the instruction that caused the</span><br /><span class="line">        error. To allow a failing numeric instruction to be identified,</span><br /><span class="line">        the FPU contains two pointer registers that supply the address</span><br /><span class="line">        of the failing instruction and (if appropriate) the address of</span><br /><span class="line">        its numeric operand.</span><br /><span class="line">        Refer to Intel&#39;s documentation for details, esp. for pre-387</span><br /><span class="line">        FPUs.</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-307944.html">FPU data types</a></li>
+        
+          <li><a href="x86-315779.html">CC - FPU condition codes</a></li>
+        
+          <li><a href="x86-268908.html">FINIT</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

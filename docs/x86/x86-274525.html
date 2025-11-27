@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-273240.html">
+    <link rel="next" href="x86-275332.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-273240.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-275332.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FLDCW           Load control word                    Exceptions: None</span></span><br /><span class="line">                                                     C3 C2 C1 C0: ? ? ? ?</span><br /><span class="line"><span class="ngb">FLDCW</span> source</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   control word ← source</span><br /><span class="line"></span><br /><span class="line">    FLDCW replaces the current value of the FPU control word register</span><br /><span class="line">    with the value contained in the specified memory word; it is used to</span><br /><span class="line">    change the FPU&#39;s mode of operation, e.g. rounding control.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    If an exception bit in the status word is set, loading a new control</span><br /><span class="line">    word will produce a floating-point error condition. To avoid this</span><br /><span class="line">    problem, any pending exceptions should be cleared (for example, by</span><br /><span class="line">    using FCLEX) before loading the new control word.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    D9 /5       FLDCW m16</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Operand       8087         287        387      486     Pentium</span><br /><span class="line">    m16          (7-14)+EA     7-14       19        4       7      NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-251838.html">FCLEX</a></li>
+        
+          <li><a href="x86-290628.html">FSTCW</a></li>
+        
+          <li><a href="x86-293372.html">FSTSW</a></li>
+        
+          <li><a href="x86-310852.html">FPU registers</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-264769.html">
+    <link rel="next" href="x86-266264.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-264769.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-266264.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FICOM           Integer compare                      Exceptions: I D</span></span><br /><span class="line"><span class="ngb">FICOMP          Integer compare and pop</span>              C3 C2 C1 C0: * * * *</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">FICOM</span> source</span><br /><span class="line"><span class="ngb">FICOMP</span> source</span><br /><span class="line"></span><br /><span class="line">                ; FICOM                 ; FICOMP</span><br /><span class="line">        <span class="ngb">Logic</span>   CMP ST, source          CMP ST, source</span><br /><span class="line">                set condition codes     pop ST</span><br /><span class="line">                                        set condition codes</span><br /><span class="line"></span><br /><span class="line">                <span class="ngb">C3 C1 C0</span></span><br /><span class="line">                0  0  0     ST &gt; source</span><br /><span class="line">                0  0  1     ST &lt; source</span><br /><span class="line">                1  0  0     ST = source</span><br /><span class="line">                1  1  1     ST not comparable to source</span><br /><span class="line"></span><br /><span class="line">    FICOM/FICOMP compare the stack top to a word or short-integer memory</span><br /><span class="line">    operand and leave the result encoded in the status word as shown</span><br /><span class="line">    above. FICOMP also pops the stack.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    DE /2       FICOM m16</span><br /><span class="line">    DA /2       FICOM m32</span><br /><span class="line">    DE /3       FICOMP m16</span><br /><span class="line">    DA /3       FICOMP m32</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Variations/</span><br /><span class="line">    operand       8087         287        387      486     Pentium</span><br /><span class="line">    ficom  m16    (72-86)+EA  72-86      71-75    16-20    8/4     NP</span><br /><span class="line">    ficom  m32    (78-91)+EA  78-91      56-63    15-17    8/4     NP</span><br /><span class="line">    ficomp m16    (74-88)+EA  74-88      71-75    16-20    8/4     NP</span><br /><span class="line">    ficomp m32    (80-93)+EA  80-93      56-63    15-17    8/4     NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-254647.html">FCOM</a></li>
+        
+          <li><a href="x86-301502.html">FXAM</a></li>
+        
+          <li><a href="x86-315779.html">CC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

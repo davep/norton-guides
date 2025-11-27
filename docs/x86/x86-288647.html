@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-288219.html">
+    <link rel="next" href="x86-290628.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-288219.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-290628.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FST             Store real                           Exceptions: I O U P</span></span><br /><span class="line"><span class="ngb">FSTP            Store real and pop</span>                   C3 C2 C1 C0: ? ? * ?</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">FST</span> destination</span><br /><span class="line"><span class="ngb">FSTP</span> destination</span><br /><span class="line"></span><br /><span class="line">                ; FST dest              ; FSTP dest</span><br /><span class="line">        <span class="ngb">Logic</span>   destination ← ST        destination ← ST</span><br /><span class="line">                                        pop ST</span><br /><span class="line"></span><br /><span class="line">    FST copies the value in ST to the destination which can be another</span><br /><span class="line">    register or a single or double real memory operand. FSTP copies and</span><br /><span class="line">    then pops ST; it also accepts an extended real memory operand.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    If the destination is single or double real, the significand is</span><br /><span class="line">    rounded to the width of the destination (according to the RC field</span><br /><span class="line">    of the control word) and the exponent is converted to the width and</span><br /><span class="line">    bias of the destination format. The instructions also check for the</span><br /><span class="line">    over/underflow condition.</span><br /><span class="line">    If ST contains zero, infinity, or a NaN, the significand is not</span><br /><span class="line">    rounded but chopped on the right to fit the destination. The</span><br /><span class="line">    exponent is also chopped on the right. These operations preserve the</span><br /><span class="line">    value&#39;s identity as infinity or NaN (exponent all ones).</span><br /><span class="line">    The invalid operation exception is not raised when the destination</span><br /><span class="line">    is a non-empty stack element.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Examples</span></span><br /><span class="line">        fst   [mem64]   ; store data, keep it on the top of the stack</span><br /><span class="line">        fstp  ST(0)     ; pop data off the top of stack, no data transfer</span><br /><span class="line">        fstp  ST(1)     ; pop ST(1), leaving ST(0) on the top of the stack</span><br /><span class="line">        fst   ST(4)     ; store ST(4)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    D9 /2       FST m32</span><br /><span class="line">    DD /2       FST m64</span><br /><span class="line">    DD D0 + i   FST ST(i)</span><br /><span class="line">    D9 /3       FSTP m32</span><br /><span class="line">    DD /3       FSTP m64</span><br /><span class="line">    DB /7       FSTP m80</span><br /><span class="line">    DD D8 + i   FSTP ST(i)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Variations/</span><br /><span class="line">    operand       8087         287        387      486     Pentium</span><br /><span class="line">    fst  reg     15-22        15-22       11        3       1      NP</span><br /><span class="line">    fst  m32    (84-90)+EA    84-90       44        7       2      NP</span><br /><span class="line">    fst  m64    (96-104)+EA   96-104      45        8       2      NP</span><br /><span class="line">    fstp reg     17-24        17-24       12        3       1      NP</span><br /><span class="line">    fstp m32    (86-92)+EA    86-92       44        7       2      NP</span><br /><span class="line">    fstp m64    (98-106)+EA   98-106      45        8       2      NP</span><br /><span class="line">    fstp m80    (52-58)+EA    52-58       53        6       3      NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-270154.html">FIST</a></li>
+        
+          <li><a href="x86-282484.html">FRNDINT</a></li>
+        
+          <li><a href="x86-301956.html">FXCH</a></li>
+        
+          <li><a href="x86-302767.html">FXTRACT</a></li>
+        
+          <li><a href="x86-307944.html">FPU data types</a></li>
+        
+          <li><a href="x86-310852.html">FPU registers</a></li>
+        
+          <li><a href="x86-315779.html">CC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

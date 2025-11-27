@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-290628.html">
+    <link rel="next" href="x86-293372.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-290628.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-293372.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FSTENV          Store FPU environment                Exceptions: None</span></span><br /><span class="line"><span class="ngb">FNSTENV         Store FPU environment, no wait</span>       C3 C2 C1 C0: ? ? ? ?</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">FSTENV</span> destination</span><br /><span class="line"><span class="ngb">FNSTENV</span> destination</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   destination ← FPU environment</span><br /><span class="line"></span><br /><span class="line">    FSTENV/FNSTENV store the FPU environment at destination (a 14- or</span><br /><span class="line">    28-byte memory location) and then mask all FP exceptions. FSTENV</span><br /><span class="line">    checks for unmasked FP error conditions before writing the state;</span><br /><span class="line">    FNSTENV does not make this check.</span><br /><span class="line">    After saving the environment, FSTENV/FNSTENV set all the exception</span><br /><span class="line">    masks in the FPU control word, preventing FP errors from</span><br /><span class="line">    interrupting an exception handler.</span><br /><span class="line">    </span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Code</span></span><br /><span class="line">    <span class="ngb">segment Operation           Req&#39;d size of   Offset into dest. of</span></span><br /><span class="line">    <span class="ngb">size    mode                destination     CW   SW   Tag word</span></span><br /><span class="line">    16-bit  Real mode/V86 mode  14 bytes        0    2    4</span><br /><span class="line">    16-bit  Protected mode      14 bytes        0    2    4</span><br /><span class="line">    32-bit  Real mode           28 bytes        0    4    8</span><br /><span class="line">    32-bit  Protected mode      28 bytes        0    4    8</span><br /><span class="line"></span><br /><span class="line">    Note: For use in FPU error handlers, an error block is included in</span><br /><span class="line">          the environment. Refer to Intel&#39;s documentation for details.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Example</span></span><br /><span class="line">        pushf</span><br /><span class="line">        cli             ; No interrupts</span><br /><span class="line">        fstenv [bp-14]  ; Wait until not busy, then store env.</span><br /><span class="line">        fwait           ; Wait for instruction to finish</span><br /><span class="line">        popf            ; Restore flags</span><br /><span class="line">        ; ...</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    9B D9 /6    FSTENV m14byte  ; 16-bit code segment</span><br /><span class="line">    9B D9 /6    FSTENV m28byte  ; 32-bit code segment</span><br /><span class="line">    D9 /6       FNSTENV m14byte ; 16-bit code segment</span><br /><span class="line">    D9 /6       FNSTENV m28byte ; 32-bit code segment</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Variations/</span><br /><span class="line">    operand       8087         287        387      486     Pentium</span><br /><span class="line">    fstenv   mem  (40-50)+EA    40-50     103-104   67/56    48-50   NP</span><br /><span class="line">    fstenvw  mem                          103-104   67/56    48-50   NP</span><br /><span class="line">    fstenvd  mem                          103-104   67/56    48-50   NP</span><br /><span class="line">    fnstenv  mem  (40-50)+EA    40-50     103-104   67/56    48-50   NP</span><br /><span class="line">    fnstenvw mem                          103-104   67/56    48-50   NP</span><br /><span class="line">    fnstenvd mem                          103-104   67/56    48-50   NP</span><br /><span class="line"></span><br /><span class="line">                Cycles for real mode/protected mode</span><br /><span class="line">                The wait version may take additional cycles</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-275332.html">FLDENV</a></li>
+        
+          <li><a href="x86-284016.html">FSAVE</a></li>
+        
+          <li><a href="x86-310852.html">FPU registers</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-61664.html">
+    <link rel="next" href="x86-63875.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-61664.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-63875.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INVD            Invalidate Internal Caches           Flags: Not altered</span></span><br /><span class="line"></span><br /><span class="line"><span class="ngb">INVD</span>                                                 CPU: 486+ <span class="ngu">Priv</span></span><br /><span class="line"></span><br /><span class="line">    Invalidates (flushes) the processor&#39;s internal caches and issues a</span><br /><span class="line">    special-function bus cycle that directs external caches to also</span><br /><span class="line">    flush themselves. Data held in internal caches is not written back</span><br /><span class="line">    to main memory.</span><br /><span class="line"></span><br /><span class="line">    After executing this instruction, the processor does not wait for</span><br /><span class="line">    the external caches to complete their flushing operation before</span><br /><span class="line">    proceeding with instruction execution. It is the responsibility of</span><br /><span class="line">    hardware to respond to the cache flush signal.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    The INVD instruction is a privileged instruction. When the processor</span><br /><span class="line">    is running in protected mode, the CPL of a program or procedure must</span><br /><span class="line">    be 0 to execute this instruction. This instruction is also</span><br /><span class="line">    implementation-dependent; its function may be implemented</span><br /><span class="line">    differently on future Intel Architecture processors.</span><br /><span class="line"></span><br /><span class="line">    Use this instruction with care. Data cached internally and not</span><br /><span class="line">    written back to main memory will be lost. Unless there is a specific</span><br /><span class="line">    requirement or benefit to flushing caches without writing back</span><br /><span class="line">    modified cache lines (for example, testing or fault recovery where</span><br /><span class="line">    cache coherency with main memory is not a concern), software should</span><br /><span class="line">    use the WBINVD instruction.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    0F 08       INVD</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    -             2     -       -       -       -       ??     ??    NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-164479.html">WBINVD</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

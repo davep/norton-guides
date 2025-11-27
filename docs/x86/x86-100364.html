@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-99341.html">
+    <link rel="next" href="x86-101366.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-99341.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-101366.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">NEG             Negate                               Flags: O D I T S Z A P C</span></span><br /><span class="line">                                                            * - - - * * * * *</span><br /><span class="line"><span class="ngb">NEG</span> destination</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   destination ← -destination      ; Two&#39;s complement</span><br /><span class="line"></span><br /><span class="line">    NEG subtracts the destination operand from 0 and returns the</span><br /><span class="line">    result in the destination. This effectively produces the two&#39;s</span><br /><span class="line">    complement of the operand.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span>:</span><br /><span class="line">    If the operand is zero, the carry flag is cleared; in all other</span><br /><span class="line">    cases, the carry flag is set.</span><br /><span class="line"></span><br /><span class="line">    Attempting to negate a byte containing -128 or a word containing</span><br /><span class="line">    -32,768 causes no change to the operand and sets the Overflow</span><br /><span class="line">    Flag.</span><br /><span class="line"></span><br /><span class="line">        Example:        test    dx,dx</span><br /><span class="line">                        jns     positive</span><br /><span class="line">                        neg     dx      ; negate</span><br /><span class="line">                        neg     ax      ;   doubleword</span><br /><span class="line">                        sbb     dx,0    ;   in dx:ax</span><br /><span class="line">                     positive:</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    F6 /3       NEG  r/m8,r8</span><br /><span class="line">    F7 /3       NEG  r/m16,r16</span><br /><span class="line">    F7 /3       NEG  r/m32,r32</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    reg          2       3       3       2       2       1       1   NP</span><br /><span class="line">    mem       2+d(0-2)  24+EA   13       7       6       3       3   NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-101863.html">NOT</a></li>
+        
+          <li><a href="x86-159707.html">TEST</a></li>
+        
+          <li><a href="x86-138798.html">SBB</a></li>
+        
+          <li><a href="x86-24749.html">CBW</a></li>
+        
+          <li><a href="x86-42192.html">CWD</a></li>
+        
+          <li><a href="x86-179453.html">Flags</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

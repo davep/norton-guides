@@ -1,0 +1,119 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-144694.html">
+    <link rel="next" href="x86-147826.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-144694.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-147826.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">SHL             Shift Logical Left                   Flags: O D I T S Z A P C</span></span><br /><span class="line">                                                            * - - - * * ? * *</span><br /><span class="line"><span class="ngb">SHL</span> destination,count</span><br /><span class="line"></span><br /><span class="line">                    ┌────┐   ┌───────────────┐</span><br /><span class="line">                    │ CF │◄──│  destination  │◄── 0</span><br /><span class="line">                    └────┛   └───────────────┛</span><br /><span class="line"></span><br /><span class="line">    SHL shifts the bits of the destination operand upward (toward the</span><br /><span class="line">    most significant bit) by the number of bit positions specified in</span><br /><span class="line">    the second operand (count). As bits are transferred out of the</span><br /><span class="line">    left (high-order) end of the destination, zero bits are shifted</span><br /><span class="line">    into the right (low-order) end. The carry flag (CF) is set equal</span><br /><span class="line">    to the last bit shifted out of the left end.</span><br /><span class="line"></span><br /><span class="line">    The shift is repeated the number of times indicated by the second</span><br /><span class="line">    operand, which is either an immediate 8-bit value (<span class="ngb">max</span>. 1 on the</span><br /><span class="line">    8086 processor) or the contents of the CL register. To reduce the</span><br /><span class="line">    maximum execution time, the 80186+ uses only the lower 5 bits of</span><br /><span class="line">    the count, limiting the count value to 31; the 8086 uses all 8</span><br /><span class="line">    bits of count.</span><br /><span class="line"></span><br /><span class="line">    If the count operand is not an immediate 1, the overflow flag (OF)</span><br /><span class="line">    is undefined; otherwise SHL sets OF to 0 if destination&#39;s sign bit</span><br /><span class="line">    was not changed by the operation, to 1 if the sign bit was changed.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    SHL multiplies an unsigned integer by a power-of-two.</span><br /><span class="line"></span><br /><span class="line">        Example:        shl   ax, 1     ; Shift left 1 bit</span><br /><span class="line">                        rcl   dx, 1     ; Propagate carry</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    SHL is the same instruction as SAL (shift arithmetic left).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    C0 /4 ib    SHL  r/m8,imm8</span><br /><span class="line">    C1 /4 ib    SHL  r/m16,imm8</span><br /><span class="line">    C1 /4 ib    SHL  r/m32,imm8</span><br /><span class="line">    D0 /4       SHL  r/m8,1</span><br /><span class="line">    D1 /4       SHL  r/m16,1</span><br /><span class="line">    D1 /4       SHL  r/m32,1</span><br /><span class="line">    D2 /4       SHL  r/m8,CL</span><br /><span class="line">    D3 /4       SHL  r/m16,CL</span><br /><span class="line">    D3 /4       SHL  r/m32,CL</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Same as SAR</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-130554.html">ROL</a></li>
+        
+          <li><a href="x86-115209.html">RCL</a></li>
+        
+          <li><a href="x86-136567.html">SAL</a></li>
+        
+          <li><a href="x86-147826.html">SHLD</a></li>
+        
+          <li><a href="x86-149277.html">SHR</a></li>
+        
+          <li><a href="x86-136688.html">SAR</a></li>
+        
+          <li><a href="x86-150912.html">SHRD</a></li>
+        
+          <li><a href="x86-179453.html">Flags</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

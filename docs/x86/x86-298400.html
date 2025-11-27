@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-297636.html">
+    <link rel="next" href="x86-300260.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-297636.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-300260.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FUCOM           Unordered compare real               Exceptions: I D S</span></span><br /><span class="line"><span class="ngb">FUCOMP          Unordered compare real and pop</span>       C3 C2 C1 C0: * * * *</span><br /><span class="line"><span class="ngb">FUCOMPP         Unordered compare real and pop twice</span> FPU: 387+</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">FUCOM</span> [source]</span><br /><span class="line"><span class="ngb">FUCOMP</span> [source]</span><br /><span class="line"><span class="ngb">FUCOMPP</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span></span><br /><span class="line">        ; FUCOM                ; FUCOMP              ; FUCOMPP</span><br /><span class="line">        if source operand      if source operand     CMP ST, ST(1)</span><br /><span class="line">           CMP ST, ST(i)          CMP ST, ST(i)      set condition codes</span><br /><span class="line">        else                   else                  pop ST</span><br /><span class="line">           CMP ST, ST(1)          CMP ST, ST(1)      pop ST</span><br /><span class="line">        endif                  endif</span><br /><span class="line">        set condition codes    set condition codes</span><br /><span class="line">                               pop ST</span><br /><span class="line"></span><br /><span class="line">                <span class="ngb">C3 C1 C0</span></span><br /><span class="line">                0  0  0     ST &gt; source</span><br /><span class="line">                0  0  1     ST &lt; source</span><br /><span class="line">                1  0  0     ST = source</span><br /><span class="line">                1  1  1     unordered</span><br /><span class="line"></span><br /><span class="line">    FUCOM compares two registers and leaves the result encoded in the</span><br /><span class="line">    status word as shown above. If no source is specified, ST(1) is</span><br /><span class="line">    compared to ST. Otherwise, the source register is compared to ST.</span><br /><span class="line"></span><br /><span class="line">    FUCOMP does what FUCOM does, and then pops the stack.</span><br /><span class="line"></span><br /><span class="line">    FUCOMPP compares ST and ST(1), leaves the result encoded in the</span><br /><span class="line">    status word as shown above, and pops the stack twice.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    The FUCOM instructions perform the same operation as the FCOM</span><br /><span class="line">    instructions. The only difference is that the FUCOM instruction</span><br /><span class="line">    raises the invalid-arithmetic-operand exception (#IA) only when</span><br /><span class="line">    either or both operands is an SNaN or is in an unsupported format;</span><br /><span class="line">    QNaNs cause the condition code flags to be set to unordered, but do</span><br /><span class="line">    not cause an exception to be generated. The FCOM instruction raises</span><br /><span class="line">    an invalid-operation exception when either or both of the operands</span><br /><span class="line">    is a NaN value of any kind or is in an unsupported format.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    DD E0 + i   FUCOM ST(i)</span><br /><span class="line">    DD E1       FUCOM</span><br /><span class="line">    DD E8 + i   FUCOMP ST(i)</span><br /><span class="line">    DD E9       FUCOMP</span><br /><span class="line">    DD EA       FUCOMPP</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Variations    8087         287        387      486     Pentium</span><br /><span class="line">    fucom          -            -         24        4      4/1     FX</span><br /><span class="line">    fucomp         -            -         26        4      4/1     FX</span><br /><span class="line">    fucompp        -            -         26        5      4/1     FX</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-254647.html">FCOM</a></li>
+        
+          <li><a href="x86-301502.html">FXAM</a></li>
+        
+          <li><a href="x86-315779.html">CC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

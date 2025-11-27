@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Opcodes</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-240581.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-240581.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-229455.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">   <span class="ngb">Instruction set matrix (IV) - 80286+ extension</span></span><br /><span class="line">   (Opcode 0F xx - part II)</span><br /><span class="line"></span><br /><span class="line">       Lo 8       9       A       B       C       D       E       F</span><br /><span class="line">      ┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┐</span><br /><span class="line">   Hi │ INVD  │WBINVD │       │  UD2  │       │       │       │       │</span><br /><span class="line">    0 │       │       │       │       │       │       │       │       │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      &lt;                                                               &lt;</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │CMOVS  │CMOVNS │CMOVP/ │CMOVNP/│CMOVL/ │CMOVNL/│CMOVLE/│CMOVNLE│</span><br /><span class="line">    4 │       │       │CMOVPE │CMOVPO │CMOVNGE│CMOVGE │CMOVNG │/CMOVG │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      &lt;                                                               &lt;</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │  JS   │  JNS  │  JP/  │ JNP/  │  JL/  │ JNL/  │ JLE/  │ JNLE/ │</span><br /><span class="line">    8 │       │       │  JPE  │  JPO  │ JNGE  │  JGE  │  JNG  │  JG   │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │ SETS  │ SETNS │ SETP/ │SETNP/ │ SETL/ │SETNL/ │SETLE/ │SETNLE/│</span><br /><span class="line">    9 │       │       │ SETPE │ SETPO │SETNGE │ SETGE │ SETNG │ SETG  │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │ PUSH  │  POP  │  RSM  │  BTS  │ SHRD  │ SHRD  │       │ IMUL  │</span><br /><span class="line">    A │  GS   │  GS   │       │  r,r  │ r,r,ib│ r,r,CL│       │ r,r   │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │       │       │<span class="ngb">BitTest</span>│  BTC  │  BSF  │  BSR  │ MOVSX │ MOVSX │</span><br /><span class="line">    B │       │       │ r,ib  │  r,r  │  r,r  │  r,r  │ r,r/m8│r,r/m16│</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │ BSWAP │       │       │       │       │       │       │       │</span><br /><span class="line">    C │  r32  │       │       │       │       │       │       │       │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      &lt;                                                               &lt;</span><br /><span class="line">      └───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┛</span><br /><span class="line">          8       9       A       B       C       D       E       F</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">      ┌─────────┬──────┬─────┬──────┬──────┬──────┬──────┬──────┬─────┐</span><br /><span class="line">      │ mod■r/m │ 000  │ 001 │ 010  │ 011  │ 100  │ 101  │ 110  │ 111 │</span><br /><span class="line">      ├─────────┼──────┼─────┼──────┼──────┼──────┼──────┼──────┼─────┤</span><br /><span class="line">      │<span class="ngb"> BitTest</span> │      │     │      │      │ BT   │ BTS  │ BTR  │ BTC │</span><br /><span class="line">      └─────────┴──────┴─────┴──────┴──────┴──────┴──────┴──────┴─────┛</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-240581.html">Instruction set matrix (III)</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

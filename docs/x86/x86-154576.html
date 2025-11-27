@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-154030.html">
+    <link rel="next" href="x86-155712.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-154030.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-155712.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">STI             Set Interrupt Enable Flag            Flags: O D I T S Z A P C</span></span><br /><span class="line">                                                            - - 1 - - - - - -</span><br /><span class="line"><span class="ngb">STI</span>                                                  <span class="ngb">IO</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   IF ← 1</span><br /><span class="line"></span><br /><span class="line">    STI sets the interrupt-enable flag (IF). After executing the</span><br /><span class="line">    instruction following STI, the CPU responds to external</span><br /><span class="line">    interrupts, but only if the next instruction allows the interrupt</span><br /><span class="line">    flag to remain enabled.</span><br /><span class="line"></span><br /><span class="line">    If external interrupts are disabled and you code STI,RET (such as</span><br /><span class="line">    at the end of a subroutine), the RET is allowed to execute before</span><br /><span class="line">    external interrupts are recognized. Also, if external interrupts</span><br /><span class="line">    are disabled and you code STI,CLI, then external interrupts are</span><br /><span class="line">    not recognized because the CLI instruction clears the interrupt</span><br /><span class="line">    flag during its execution.</span><br /><span class="line"></span><br /><span class="line">    Non-maskable interrupts are recognized no matter what the state of</span><br /><span class="line">    the IF flag.</span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Protected mode</span></span><br /><span class="line">    If the current task has insufficient privilege to alter IF, a</span><br /><span class="line">    general protection exception is generated.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    FB          STI</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    -            1       2       2       2       3       5       7   NP</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-26807.html">CLI</a></li>
+        
+          <li><a href="x86-110035.html">POPF</a></li>
+        
+          <li><a href="x86-179453.html">Flags</a></li>
+        
+          <li><a href="x86-194054.html">IOPL</a></li>
+        
+          <li><a href="x86-224627.html">Exceptions</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-251457.html">
+    <link rel="next" href="x86-252847.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-251457.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-252847.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FCLEX           Clear exceptions, with error check   Exceptions: None</span></span><br /><span class="line"><span class="ngb">FNCLEX          Clear exceptions, no wait</span>            C3 C2 C1 C0: ? ? ? ?</span><br /><span class="line"></span><br /><span class="line"><span class="ngb">FCLEX</span></span><br /><span class="line"><span class="ngb">FNCLEX</span></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   status word ← status word AND 7F00h</span><br /><span class="line"></span><br /><span class="line">    These instructions clear the FP exception flags, the exception</span><br /><span class="line">    status flag (bit 7 -- the interrupt request flag in the 8087), and</span><br /><span class="line">    the busy flag of the FPU status word.</span><br /><span class="line">    Before clearing the exception flags, FCLEX checks for unmasked FP</span><br /><span class="line">    error conditions (using an FWAIT); FNCLEX does not make this check.</span><br /><span class="line"></span><br /><span class="line">    FCLEX/FNCLEX can be used by an exception handler after it has</span><br /><span class="line">    processed an exception. If the exception flags are not cleared, a</span><br /><span class="line">    second interrupt request would be issued immediately.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    9B DB E2    FCLEX</span><br /><span class="line">    DB E2       FNCLEX</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Variations    8087         287        387      486     Pentium</span><br /><span class="line">    fclex         2-8          2-8        11        7       9      NP</span><br /><span class="line">    fnclex        2-8          2-8        11        7       9      NP</span><br /><span class="line"></span><br /><span class="line">                The wait version may take additional cycles</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-274525.html">FLDCW</a></li>
+        
+          <li><a href="x86-268908.html">FINIT</a></li>
+        
+          <li><a href="x86-300510.html">FWAIT</a></li>
+        
+          <li><a href="x86-310852.html">FPU registers</a></li>
+        
+          <li><a href="x86-315779.html">CC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

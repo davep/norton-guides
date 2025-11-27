@@ -1,0 +1,109 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-301502.html">
+    <link rel="next" href="x86-302767.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-301502.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-302767.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FXCH            Exchange register contents           Exceptions: I</span></span><br /><span class="line">                                                     C3 C2 C1 C0: ? ? 0 ?</span><br /><span class="line"><span class="ngb">FXCH</span> [destination]</span><br /><span class="line"></span><br /><span class="line">                ; FXCH          ; FXCH dest</span><br /><span class="line">        <span class="ngb">Logic</span>   temp ← ST(1)    temp ← ST(i)</span><br /><span class="line">                ST(1) ← ST      ST(i) ← ST</span><br /><span class="line">                ST ← temp       ST ← temp</span><br /><span class="line"></span><br /><span class="line">    FXCH swaps the contents of the destination and stack-top registers.</span><br /><span class="line">    If no destination is specified, ST is exchanged with ST(1).</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Note</span></span><br /><span class="line">    Many FPU instructions operate only on ST. FXCH provides a handy way</span><br /><span class="line">    to operate on lower stack elements.</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Example</span></span><br /><span class="line">        ; compute SQRT of ST(4)</span><br /><span class="line">        fxch ST(4)</span><br /><span class="line">        fsqrt</span><br /><span class="line">        fxch ST(4)</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    D9 C8 + i   FXCH ST(i)</span><br /><span class="line">    D9 C9       FXCH</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Timing</span></span><br /><span class="line">    Operand       8087         287        387      486     Pentium</span><br /><span class="line">    -            10-15        10-15       18        4      0-1     *</span><br /><span class="line"></span><br /><span class="line">        * FCXH is pairable in the V pipe with all FX pairable instructions</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-272217.html">FLD</a></li>
+        
+          <li><a href="x86-267134.html">FILD</a></li>
+        
+          <li><a href="x86-315779.html">CC</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+

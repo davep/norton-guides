@@ -1,0 +1,123 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.1.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-158455.html">
+    <link rel="next" href="x86-161141.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-158455.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-161141.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      <nav class="menu box">
+        <ul>
+            <li>CPU</li>
+            <ul>
+              <li><a href="index.html">Instruction set</a></li>
+              <li><a href="x86-175915.html">Registers</a></li>
+              <li><a href="x86-190707.html">Protection, privilege</a></li>
+              <li><a href="x86-224627.html">Exceptions</a></li>
+              <li><a href="x86-225699.html">Addressing modes</a></li>
+              <li><a href="x86-229455.html">Opcodes</a></li>
+              
+            </ul>
+            <li>FPU</li>
+            <ul>
+              <li><a href="x86-245307.html">Instruction set</a></li>
+              <li><a href="x86-307843.html">Registers, data types</a></li>
+              
+            </ul>
+            <li>MMX</li>
+            <ul>
+              <li><a href="x86-318646.html">Instruction set</a></li>
+              
+            </ul>
+        </ul>
+      </nav>
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">TEST            Test                                 Flags: O D I T S Z A P C</span></span><br /><span class="line">                                                            0 - - - * * ? * 0</span><br /><span class="line"><span class="ngb">TEST</span> destination,source</span><br /><span class="line"></span><br /><span class="line">        <span class="ngb">Logic</span>   (AND destination,source)  ; Set flags only</span><br /><span class="line"></span><br /><span class="line">    TEST performs a logical AND operation on its two operands and</span><br /><span class="line">    updates the flags. None of the operands are changed.</span><br /><span class="line"></span><br /><span class="line">        Example:        test  eax, eax</span><br /><span class="line">                        jz    ahead     ; Skip if eax = 0</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">        Example:</span><br /><span class="line">        test  al, 00100100b     ; Test for bits 2 and 5</span><br /><span class="line">        jz    two_five_off      ; If result is zero, both were off</span><br /><span class="line">      one_or_both_set:</span><br /><span class="line">        jpe   two_five_set      ; Can use parity flag in a byte result</span><br /><span class="line">      two_or_five_set:          ; Bit 2 or bit 5 was set</span><br /><span class="line">        ; ...</span><br /><span class="line">      two_five_set:             ; Both bits were set</span><br /><span class="line">        ; ...</span><br /><span class="line">      two_five_off:             ; Both bits were clear</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Opcode      Format</span></span><br /><span class="line">    84 /r       TEST r/m8,r8</span><br /><span class="line">    85 /r       TEST r/m16,r16</span><br /><span class="line">    85 /r       TEST r/m32,r32</span><br /><span class="line">    A8 ib       TEST AL,imm8</span><br /><span class="line">    A9 iw       TEST AX,imm16</span><br /><span class="line">    A9 id       TEST EAX,imm32</span><br /><span class="line">    F6 /0 ib    TEST r/m8,imm8</span><br /><span class="line">    F7 /0 iw    TEST r/m16,imm16</span><br /><span class="line">    F7 /0 id    TEST r/m32,imm32</span><br /><span class="line"></span><br /><span class="line"></span><br /><span class="line">    <span class="ngb">Length and timing</span></span><br /><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br /><span class="line">    reg, reg     2       3       3       2       2       1       1   UV</span><br /><span class="line">    mem, reg  2+d(0,2)  13+EA   10       6       5       2       2   UV</span><br /><span class="line">    reg, mem  2+d(0,2)  13+EA   10       6       5       2       2   UV</span><br /><span class="line">    reg, imm  2+i(1,2)   5       4       3       2       1       1   UV</span><br /><span class="line">    mem, imm  2+d(0,2)  11+EA   10       6       5       2       2   UV*</span><br /><span class="line">               +i(1,2)</span><br /><span class="line">    acc, imm  1+i(1,2)   4       4       3       2       1       1   UV</span><br /><span class="line"></span><br /><span class="line">        * = not pairable if there is a displacement and immediate</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li><a href="x86-11621.html">AND</a></li>
+        
+          <li><a href="x86-100364.html">NEG</a></li>
+        
+          <li><a href="x86-101863.html">NOT</a></li>
+        
+          <li><a href="x86-102430.html">OR</a></li>
+        
+          <li><a href="x86-171402.html">XOR</a></li>
+        
+          <li><a href="x86-72399.html">LAHF</a></li>
+        
+          <li><a href="x86-66690.html">Jcc</a></li>
+        
+          <li><a href="x86-142724.html">SETcc</a></li>
+        
+          <li><a href="x86-18442.html">BT</a></li>
+        
+          <li><a href="x86-179453.html">Flags</a></li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+  </body>
+
+</html>
+
