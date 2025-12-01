@@ -10,8 +10,13 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 
 ##############################################################################
+# ng2web imports
+from ng2web import __version__ as ng2web_version
+
+##############################################################################
 # NGDB imports.
 from ngdb import NortonGuide
+from ngdb import __version__ as ngdb_version
 
 
 ##############################################################################
@@ -20,7 +25,8 @@ def main() -> None:
     env = Environment(loader=FileSystemLoader("templates/index"))
     env.globals = {
         "guides": [NortonGuide(guide) for guide in sorted(Path("guides").glob("*.ng"))],
-        "generation_time": datetime.now().isoformat(),
+        "generator": f"ng2web v{ng2web_version} (ngdb v{ngdb_version})",
+        "generation_time": datetime.now(),
     }
     Path("docs/index.html").open("w", encoding="utf8").write(
         env.get_template("index.html").render()

@@ -31,24 +31,37 @@
 
     <section>
 
-      <nav class="menu box">
-        <ul>
-          {%- for menu in guide.menus %}
-            <li>{{ menu }}</li>
-            <ul>
-              {% for option in menu -%}
-                <li><a href="{{ option|urlify }}">{{ option.text }}</a></li>
-              {% endfor %}
-            </ul>
-          {%- endfor %}
-        </ul>
-      </nav>
+      {% if guide.menus %}
+        <nav class="menu box">
+          <ul>
+            {%- for menu in guide.menus %}
+              <li>{{ menu }}</li>
+              <ul>
+                {% for option in menu -%}
+                  <li><a href="{{ option|urlify }}">{{ option.text }}</a></li>
+                {% endfor %}
+              </ul>
+            {%- endfor %}
+          </ul>
+        </nav>
+      {% endif %}
 
       <article class="box">
         {% block content %}{% endblock %}
       </article>
 
     </section>
+
+    {% block advert %}
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>{{ generation_time.strftime("%Y-%m-%d %H:%M:%S") }}</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">{{ generator }}</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    {% endblock %}
 
   </body>
 
