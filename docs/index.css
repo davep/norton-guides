@@ -8,7 +8,7 @@ a {
   color: inherit;
 }
 
-nav a:hover, nav a:hover * {
+a:hover, a:hover * {
   background: red;
   color: white;
 }
@@ -40,6 +40,29 @@ section article {
   overflow: scroll;
   padding: 0.5em;
   margin-bottom: 1ex;
+}
+
+.site-footer dl {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+}
+
+.site-footer dt, .site-footer dd {
+  margin: 0;
+}
+
+.site-footer dt::after {
+  content: ":"
+}
+
+.site-footer dd:not(:last-child)::after {
+  content: ","
+}
+
+.site-footer dd {
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 /* index.css ends here */
