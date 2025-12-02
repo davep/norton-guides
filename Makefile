@@ -49,8 +49,8 @@ resetup: realclean		# Recreate the virtual environment from scratch
 # Utility.
 .PHONY: realclean
 realclean: clean		# Clean the venv and build directories
-
 	rm -rf .venv
+
 .PHONY: help
 help:				# Display this help
 	@grep -Eh "^[a-z]+:.+# " $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.+# "}; {printf "%-20s %s\n", $$1, $$2}'
