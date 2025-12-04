@@ -27,7 +27,6 @@ $(INDEX): $(NG_FILES) mkindex templates/index/index.html templates/index/index.c
 clean:				# Erase the built version of the site
 	rm -rf $(OUTPUT)/
 	mkdir -p $(OUTPUT)
-	echo norton-guides.davep.dev > $(OUTPUT)/CNAME
 
 ##############################################################################
 # Setup/update packages the system requires.

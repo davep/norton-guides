@@ -1,0 +1,46 @@
+name: Publish Norton Guides
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build-and-publish:
+
+    name: Build and publish Norton Guides site
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout source
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "latest"
+
+      - name: Install dependencies
+        run: |
+          make setup
+
+      - name: Build the site
+        run: |
+          make
+          cp CNAME ./docs/
+
+      - name: 📤 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          force_orphan: true
+
+### publish.yaml ends here
