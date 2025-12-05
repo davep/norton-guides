@@ -18,7 +18,7 @@ all: $(OUTPUT_DIRS) $(INDEX)
 
 $(OUTPUT)/%: $(GUIDES)/%.ng
 	@mkdir -p $@
-	uv run ng2web --index --templates=templates/guides/ --output $@ $<
+	uv run ng2web --quiet --index --templates=templates/guides/ --output $@ $<
 
 $(INDEX): $(NG_FILES) mkindex templates/index/index.html templates/index/index.css
 	uv run ./mkindex
