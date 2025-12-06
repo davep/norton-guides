@@ -1,0 +1,133 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.4.0 (ngdb v1.1.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Opcodes</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-232733.html">
+    <link rel="next" href="x86-237182.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-232733.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-229455.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-237182.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <ul>
+                <li><a href="index.html">Instruction set</a></li>
+                <li><a href="x86-175915.html">Registers</a></li>
+                <li><a href="x86-190707.html">Protection, privilege</a></li>
+                <li><a href="x86-224627.html">Exceptions</a></li>
+                <li><a href="x86-225699.html">Addressing modes</a></li>
+                <li><a href="x86-229455.html">Opcodes</a></li>
+                
+              </ul>
+              <li>FPU</li>
+              <ul>
+                <li><a href="x86-245307.html">Instruction set</a></li>
+                <li><a href="x86-307843.html">Registers, data types</a></li>
+                
+              </ul>
+              <li>MMX</li>
+              <ul>
+                <li><a href="x86-318646.html">Instruction set</a></li>
+                
+              </ul>
+          </ul>
+        </nav>
+      
+
+      <article class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br /><span class="line">   <span class="ngb">8086/286/386/486/Pentium instruction set matrix (I)</span></span><br /><span class="line"></span><br /><span class="line">       Lo 0       1       2       3       4       5       6       7</span><br /><span class="line">      ┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┐</span><br /><span class="line">   Hi │  ADD  │  ADD  │  ADD  │  ADD  │  ADD  │  ADD  │ PUSH  │  POP  │</span><br /><span class="line">    0 │r/m,r8 │r/m,r16│r8, r/m│r16,r/m│ AL,ib │ AX,iw │  ES   │  ES   │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │  ADC  │  ADC  │  ADC  │  ADC  │  ADC  │  ADC  │ PUSH  │  POP  │</span><br /><span class="line">    1 │r/m,r8 │r/m,r16│r8, r/m│r16,r/m│ AL,ib │ AX,iw │  SS   │  SS   │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │  AND  │  AND  │  AND  │  AND  │  AND  │  AND  │  SEG  │  DAA  │</span><br /><span class="line">    2 │r/m,r8 │r/m,r16│r8, r/m│r16,r/m│ AL,ib │ AX,iw │  =ES  │       │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │  XOR  │  XOR  │  XOR  │  XOR  │  XOR  │  XOR  │  SEG  │  AAA  │</span><br /><span class="line">    3 │r/m,r8 │r/m,r16│r8, r/m│r16,r/m│ AL,ib │ AX,iw │  =SS  │       │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │  INC  │  INC  │  INC  │  INC  │  INC  │  INC  │  INC  │  INC  │</span><br /><span class="line">    4 │  AX   │  CX   │  DX   │  BX   │  SP   │  BP   │  SI   │  DI   │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │ PUSH  │ PUSH  │ PUSH  │ PUSH  │ PUSH  │ PUSH  │ PUSH  │ PUSH  │</span><br /><span class="line">    5 │  AX   │  CX   │  DX   │  BX   │  SP   │  BP   │  SI   │  DI   │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │ PUSHA │ POPA  │ BOUND │ ARPL  │       │       │       │       │</span><br /><span class="line">    6 │       │       │  r,m  │r/m,r16│       │       │       │       │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │  JO   │  JNO  │  JB/  │ JNB/  │  JE/  │ JNE/  │ JBE/  │ JNBE/ │</span><br /><span class="line">    7 │       │       │ JNAE  │  JAE  │  JZ   │  JNZ  │  JNA  │  JA   │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │<span class="ngb"> immed │ immed │ immed │ immed</span> │ TEST  │ TEST  │ XCHG  │ XCHG  │</span><br /><span class="line">    8 │<span class="ngb"> r/m,ib│ r/m,iw│  ??   │r/m,sb</span> │r/m,r8 │r/m,r16│r/m,r8 │r/m,r16│</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │  NOP  │ XCHG  │ XCHG  │ XCHG  │ XCHG  │ XCHG  │ XCHG  │ XCHG  │</span><br /><span class="line">    9 │       │  CX   │  DX   │  BX   │  SP   │  BP   │  SI   │  DI   │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │  MOV  │  MOV  │  MOV  │  MOV  │ MOVS  │ MOVS  │ CMPS  │ CMPS  │</span><br /><span class="line">    A │ AL,m  │ AX,m  │ m,AL  │ m,AX  │   b   │   w   │   b   │   w   │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │  MOV  │  MOV  │  MOV  │  MOV  │  MOV  │  MOV  │  MOV  │  MOV  │</span><br /><span class="line">    B │ AL,ib │ CL,ib │ DL,ib │ BL,ib │ AH,ib │ CH,ib │ DH,ib │ BH,ib │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │<span class="ngb"> shift │ shift </span>│  RETN │  RETN │  LES  │  LDS  │  MOV  │  MOV  │</span><br /><span class="line">    C │<span class="ngb">r/m8, b│r/m16,w</span>│   iw  │       │       │       │  m,ib │  m,iw │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │<span class="ngb"> shift │ shift │ shift │ shift </span>│  AAM  │  AAD  │ SALC  │ XLAT  │</span><br /><span class="line">    D │<span class="ngb"> r/m8,1│r/m16,1│r/m8,CL│r/m16CL</span>│       │       │       │       │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │LOOPNZ/│ LOOPZ/│ LOOP  │ JCXZ  │  IN   │  IN   │  OUT  │  OUT  │</span><br /><span class="line">    E │LOOPNE │ LOOPE │       │       │ AL,ib │ AX,ib │ ib,AL │ ib,AX │</span><br /><span class="line">      ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤</span><br /><span class="line">      │ LOCK  │       │ REPNZ │  REP/ │  HLT  │  CMC  │<span class="ngb"> Grp1  │ Grp1  </span>│</span><br /><span class="line">    F │       │       │       │  REPE │       │       │<span class="ngb">r/m8,b │r/m16,w</span>│</span><br /><span class="line">      └───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┛</span><br /><span class="line">          0       1       2       3       4       5       6       7</span><br /></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-237182.html">Instruction set matrix (II)</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-232733.html">Matrix symbols</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </article>
+
+    </section>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-06 11:19:33</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.4.0 (ngdb v1.1.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+
