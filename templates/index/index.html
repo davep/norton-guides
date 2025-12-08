@@ -10,50 +10,46 @@
 
   <body>
 
-    <section id="introduction">
-      <article class="box">
-        <p>
-          Because of <a href="https://www.davep.org/norton-guides/" target="_blank">the number of Norton Guide tools I've published</a>,
-          on occasion I get asked if I have a copy of a particular Norton
-          Guide file. I've never been that comfortable with just handing out
-          guides that are still licenced in a way that doesn't allow
-          distribution. Meanwhile, for the longest time, were a couple of
-          very large collections of guides out there on the web that people
-          could go to, but it looks like they're starting to disappear; at
-          least one that was built using <a href="https://github.com/davep/ng2html" target="_blank"><code>ng2html</code></a> seems
-          to have gone offline.
-        </p>
-        <p>
-          With this in mind, I'm going to populate this little site with all
-          the guides I have that I have a licence to publish in public, or
-          which appear to have a licence that allowed in in the spirit of
-          <a href="https://en.wikipedia.org/wiki/Shareware" target="_blank">shareware</a>. Let me repeat and make clear that part:
-          <strong>The only guides that are published here are guides that permit distribution and republishing in some way</strong>.
-        </p>
-        <p>
-          If there is a particular guide you are after, and it isn't listed
-          here, there's little point in contacting me and asking for a copy;
-          as much as I'd love to help I would prefer not to distribute files
-          I don't have a licence to distribute.
-        </p>
-        <p>
-          If you want to know what guides I do have to hand, and especially
-          if you can help gain permission to publish any of them, please see
-          <a href="https://github.com/davep/norton-guides/wiki">the Wiki for this project</a>
-          and perhaps <a href="https://github.com/davep/norton-guides/discussions">start a discussion</a>.
-        </p>
-      </article>
-    </section>
+    <div id="introduction" class="box">
+      <p>
+        Because of <a href="https://www.davep.org/norton-guides/" target="_blank">the number of Norton Guide tools I've published</a>,
+        on occasion I get asked if I have a copy of a particular Norton
+        Guide file. I've never been that comfortable with just handing out
+        guides that are still licenced in a way that doesn't allow
+        distribution. Meanwhile, for the longest time, were a couple of
+        very large collections of guides out there on the web that people
+        could go to, but it looks like they're starting to disappear; at
+        least one that was built using <a href="https://github.com/davep/ng2html" target="_blank"><code>ng2html</code></a> seems
+        to have gone offline.
+      </p>
+      <p>
+        With this in mind, I'm going to populate this little site with all
+        the guides I have that I have a licence to publish in public, or
+        which appear to have a licence that allowed in in the spirit of
+        <a href="https://en.wikipedia.org/wiki/Shareware" target="_blank">shareware</a>. Let me repeat and make clear that part:
+        <strong>The only guides that are published here are guides that permit distribution and republishing in some way</strong>.
+      </p>
+      <p>
+        If there is a particular guide you are after, and it isn't listed
+        here, there's little point in contacting me and asking for a copy;
+        as much as I'd love to help I would prefer not to distribute files
+        I don't have a licence to distribute.
+      </p>
+      <p>
+        If you want to know what guides I do have to hand, and especially
+        if you can help gain permission to publish any of them, please see
+        <a href="https://github.com/davep/norton-guides/wiki">the Wiki for this project</a>
+        and perhaps <a href="https://github.com/davep/norton-guides/discussions">start a discussion</a>.
+      </p>
+    </div>
 
-    <section>
-      <nav class="menu box">
-        <ul>
-          {%- for guide in guides %}
-            <li><a href="{{guide.path.stem}}/index.html">{{"{:<12}".format(guide.path.name)}} &mdash; {{guide.title}}</a></li>
-          {%- endfor %}
-        </ul>
-      </nav>
-    </section>
+    <nav class="menu box">
+      <ul>
+        {%- for guide in guides %}
+          <li><a href="{{guide.path.stem}}/index.html">{{"{:<12}".format(guide.path.name)}} &mdash; {{guide.title}}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
 
     <footer>
       <nav class="box">
