@@ -15,7 +15,7 @@ from ng2web import __version__ as ng2web_version
 
 ##############################################################################
 # NGDB imports.
-from ngdb import NortonGuide
+from ngdb import NortonGuide, make_dos_like
 from ngdb import __version__ as ngdb_version
 
 
@@ -28,6 +28,7 @@ def main() -> None:
         "generator": f"ng2web v{ng2web_version} (ngdb v{ngdb_version})",
         "generation_time": datetime.now(),
     }
+    env.filters = {"make_dos_like": make_dos_like}
     Path("docs/index.html").open("w", encoding="utf8").write(
         env.get_template("index.html").render()
     )
