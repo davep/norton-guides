@@ -4,8 +4,9 @@
 <html lang="en">
 
   <head>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta charset="utf-8">
     <title>davep's Public Norton Guide Collection</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
   </head>
 
   <body>
@@ -46,7 +47,7 @@
     <nav class="menu box">
       <ul>
         {%- for guide in guides %}
-          <li><a href="{{guide.path.stem}}/index.html">{{"{:<12}".format(guide.path.name)}} &mdash; {{guide.title}}</a></li>
+          <li><a href="{{guide.path.stem}}/index.html">{{"{:<12}".format(guide.path.name)}} &mdash; {{guide.title|make_dos_like}}</a></li>
         {%- endfor %}
       </ul>
     </nav>
