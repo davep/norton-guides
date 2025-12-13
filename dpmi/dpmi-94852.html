@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-94279.html">
+    <link rel="next" href="dpmi-95747.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-94279.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-95747.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">OverView</a></li>
+                  <li><a href="dpmi-38393.html">DPMI API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Unlock Linear Region</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                 This function  unlocks a specified linear address range</span><br><span class="line">                 that was previously locked using the Lock Linear Region</span><br><span class="line">                 function.</span><br><span class="line"></span><br><span class="line">            To Call</span><br><span class="line"></span><br><span class="line">                 AX = 0601h</span><br><span class="line">                 BX:CX = Starting linear address of memory to unlock</span><br><span class="line">                 SI:DI = Size of region to unlock in bytes</span><br><span class="line"></span><br><span class="line">            Returns</span><br><span class="line"></span><br><span class="line">                 If function was successful:</span><br><span class="line">                 Carry flag is clear.</span><br><span class="line"></span><br><span class="line">                 If function was not successful:</span><br><span class="line">                 Carry flag is set.</span><br><span class="line"></span><br><span class="line">            Programmer&#39;s Notes</span><br><span class="line"></span><br><span class="line">                 o    If this  function fails  then none  of the  memory</span><br><span class="line">                      will be unlocked.</span><br><span class="line">                 o    An error  will be  returned if  the memory was not</span><br><span class="line">                      previously locked  or if  the specified  region is</span><br><span class="line">                      invalid.</span><br><span class="line">                 o    If the specified region overlaps part of a page at</span><br><span class="line">                      the beginning  or end  of the  region, the page(s)</span><br><span class="line">                      will be unlocked.</span><br><span class="line">                 o    Even if  the function  succeeds, the  memory  will</span><br><span class="line">                      remain locked if the lock count is not decremented</span><br><span class="line">                      to zero.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

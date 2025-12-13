@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-83858.html">
+    <link rel="next" href="tasm4-85392.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-83858.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-85392.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">PUBLICDLL        Make symbol available in DLL                       Directive</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">PUBLICDLL</span> [language] symbol [,[language] symbol]...</span><br><span class="line"></span><br><span class="line">    Declares symbol to be accessible from other modules as a dynamic link</span><br><span class="line">    entry point. Symbol is published in the object file as a dynamic link</span><br><span class="line">    entry point (using EXPDEF and IMPDEF records) so that it can be</span><br><span class="line">    accessed by other programs.</span><br><span class="line"></span><br><span class="line">    If language is specified (C, CPP, PASCAL, BASIC, FORTRAN, PROLOG, or</span><br><span class="line">    NOLANGUAGE), symbol is made public after having the naming conventions</span><br><span class="line">    of the specified language applied to it.</span><br><span class="line"></span><br><span class="line">    Example:    model small</span><br><span class="line">                includelib &#34;SDLLCEW&#34;</span><br><span class="line">                includelib &#34;LIBW&#34;</span><br><span class="line">                dataseg</span><br><span class="line">                extrn    C acrtused:abs</span><br><span class="line">                include    &#34;windows.inc&#34;</span><br><span class="line">                ;...</span><br><span class="line">                codeseg</span><br><span class="line">                proc SetHello windows pascal FAR</span><br><span class="line">                     PUBLICDLL pascal SetHello       ; Make public</span><br><span class="line">                arg  @@arg1 :dword</span><br><span class="line">                uses es,si,di</span><br><span class="line">                ;...</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-83858.html">PUBLIC</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-199535.html">Syntax</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

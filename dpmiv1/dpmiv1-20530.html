@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-19537.html">
+    <link rel="next" href="dpmiv1-21135.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-19537.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-21135.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Get Descriptor</span><br><span class="line"></span><br><span class="line">Copies the local descriptor table (LDT) entry for the</span><br><span class="line">specified selector into an 8-byte buffer.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 000BH</span><br><span class="line">   BX     = selector</span><br><span class="line">   ES:(E)DI= selector:offset of 8-byte buffer</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   if function successful</span><br><span class="line">   Carry flag= clear</span><br><span class="line"></span><br><span class="line">   and buffer pointed to by ES:(E)DI contains descriptor</span><br><span class="line">   if function unsuccessful</span><br><span class="line">   Carry flag= set</span><br><span class="line">   AX     = error code</span><br><span class="line">           8022H   invalid selector</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  32-bit programs must use ES:EDI to point to the buffer.</span><br><span class="line">   16-bit programs should use ES:DI.</span><br><span class="line">o  Refer to the rules for descriptor usage in Appendix D.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

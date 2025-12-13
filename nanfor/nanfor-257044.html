@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » String</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-256038.html">
+    <link rel="next" href="nanfor-259659.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-256038.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-237863.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-259659.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_PCHR()</span></span><br><span class="line"> Convert printer control codes</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">      <span class="fg15 bg1"> FT_PCHR( &lt;cString&gt; )  -&gt;  &lt;cPrinterFormat&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">       <span class="ngb">&lt;cString&gt;</span> is the representation of the printer control codes in</span><br><span class="line">       text, numeric, hexadecimal, Epson command format, or any combination</span><br><span class="line">       separated by commas.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">       A character string of printer control codes.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">       This function is useful for allowing the user to enter printer</span><br><span class="line">       control codes in text (enclosed in double quotes), numeric,</span><br><span class="line">       hexadecimal, or Epson commands preceded by a slash and returns</span><br><span class="line">       the printer control code equivalent.</span><br><span class="line"></span><br><span class="line">       NOTES&#34;</span><br><span class="line"></span><br><span class="line">         - Combinations of text, numbers, hex, and commands must be</span><br><span class="line">            separated by commas (&#34;A&#34;,27,&amp;1B,/RESET).</span><br><span class="line">         - Text must be enclosed in double quotes (&#34;x&#34;).</span><br><span class="line">         - Hexadecimal must be preceded by an ampersand (&amp;1B).</span><br><span class="line">         - Epson commands, listed below, must be preceded by a forward</span><br><span class="line">            slash (/RESET).</span><br><span class="line"></span><br><span class="line">         Epson commands: (slash commands are specific to the Epson)</span><br><span class="line"></span><br><span class="line">           Job Control:</span><br><span class="line"></span><br><span class="line">           /RESET or /INIT   Reset or initialize the printer</span><br><span class="line">           /BELL  or /BEEP   Cause the printer&#39;s speaker to beep (not HS)</span><br><span class="line">           /CAN              Clear print buffers (not MX)</span><br><span class="line">           /SLOW             Set low speed mode (not CR, HS, MX)</span><br><span class="line">           /FAST             Cancel low speed mode (not CR, HS, MX)</span><br><span class="line">           /ONE              Select Unidirectional mode</span><br><span class="line">           /TWO              Select Directional mode</span><br><span class="line">           /ON               Activate printer</span><br><span class="line">           /OFF              Turn off printer</span><br><span class="line"></span><br><span class="line">           /FF or /EJECT     Form Feed</span><br><span class="line"></span><br><span class="line">           Page Control:</span><br><span class="line"></span><br><span class="line">           /1/6              Set 6 lines per inch</span><br><span class="line">           /1/8              Set 8 lines per inch</span><br><span class="line">           /SKIP             Set Skip perforation ON</span><br><span class="line">           /SKIPOFF          Set Skip perforation OFF</span><br><span class="line"></span><br><span class="line">           Font Selection and Manipulation:</span><br><span class="line"></span><br><span class="line">           /ITALIC           Select italic char. set  (only FX86, EX, LX,</span><br><span class="line">                                                           no LQ-1500, SX)</span><br><span class="line">           /GRAPHIC          Select graphic char. set (only FX86, EX, LX,</span><br><span class="line">                                                           no LQ-1500, SX)</span><br><span class="line">           /ROMAN            Choose Roman font</span><br><span class="line">           /SANS             Choose Sans Serif font</span><br><span class="line">           /DRAFT            Choose draft</span><br><span class="line">           /NLQ              Choose near letter quality</span><br><span class="line">           /PICA             Choose 10 chars per inch</span><br><span class="line">           /ELITE            Choose 12 chars per inch</span><br><span class="line">           /COND or /SI      Choose 15 chars per inch</span><br><span class="line">           /EMPH             Turn emphasize on</span><br><span class="line">           /EMPHOFF          Turn emphasize off</span><br><span class="line">           /SPANISH          Select spanish international char set</span><br><span class="line">           /USA              Select USA international char set</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">       cSetUp := &#39;27,116,1&#39;</span><br><span class="line">       Set Print ON</span><br><span class="line">       ? FT_PCHR( cSetUp )      -&gt;  (CHR(27)+CHR(116)+CHR(1))</span><br><span class="line">                                            &lt;select Epson char. graphics&gt;</span><br><span class="line"></span><br><span class="line">       ? FT_PCHR( &#39;27,&#34;x&#34;,0&#39; )  -&gt;  (CHR(27)+CHR(120)+CHR(0))</span><br><span class="line">                                         &lt;Epson draft mode&gt;</span><br><span class="line"></span><br><span class="line">       ? FT_PCHR( &#39;&amp;1B,&#34;E&#34;&#39;  )  -&gt;  (CHR(27)+CHR(69))   &lt;HP reset&gt;</span><br><span class="line"></span><br><span class="line">       ? FT_PCHR( &#39;/ELITE,/NLQ&#39; ) -&gt;(CHR(27)+CHR(77)+CHR(27)+CHR(120)+CHR(1))</span><br><span class="line">                                &lt;Epson elite &amp; near letter quality&gt;</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> PCHR.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Jim Gale</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

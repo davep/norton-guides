@@ -1,0 +1,114 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Low memory</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-17895.html">
+    <link rel="next" href="bios-20196.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-17895.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-14162.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-20196.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">0040h:0010h           Equipment List</span></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length: 2 bytes</span></span><br><span class="line"></span><br><span class="line">    Contains a list of the hardware installed on the system.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Equipment List</span></span><br><span class="line"></span><br><span class="line">    FEDCBA98  76543210</span><br><span class="line">    xx......  ........  Number of printers installed</span><br><span class="line">    ..x.....  ........  Internal modem installed</span><br><span class="line">    ...x....  ........  Game adapter installed (always 1 on PCJr)</span><br><span class="line">    ....xxx.  ........  Number of RS-232 ports</span><br><span class="line">    .......x  ........  Reserved</span><br><span class="line">    ........  xx......  Number of diskettes - 1 (0=1 diskette)</span><br><span class="line">    ........  ..xx....  Initial video mode</span><br><span class="line">                        00   Reserved</span><br><span class="line">                        01   40 x 25 Color</span><br><span class="line">                        10   80 x 25 Color</span><br><span class="line">                        11   80 x 25 Monochrome</span><br><span class="line">    ........  ....xx..  Reserved</span><br><span class="line">    ........  ......x.  Math coprocessor installed</span><br><span class="line">    ........  .......x  1=diskettes present, 0=no diskettes</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    Use Int 11h to access the equipment information via the ROM BIOS</span><br><span class="line">    interface.</span><br><span class="line"></span><br><span class="line">    The equipment list is initialized during the power- up test</span><br><span class="line">    (POST).</span><br><span class="line"></span><br><span class="line">    For the IBM PC, XT, and PCjr, bits 2 and 3 lists the amount of RAM</span><br><span class="line">    installed on the system board in increments of 16K. For example,</span><br><span class="line">    00 means 16K, while 11 means 64K.</span><br><span class="line"></span><br><span class="line">    Bit 2 on the XT-286 reports whether or not a pointing device is</span><br><span class="line">    installed.</span><br><span class="line"></span><br><span class="line">    Bit 0 indicates only whether the system has one or more diskette</span><br><span class="line">    drives. Refer to bits 6 and 7 to find out how many diskettes are</span><br><span class="line">    actually present. To determine the number of hard disks installed,</span><br><span class="line">    use Int 13h, Function 8.</span><br><span class="line"></span><br><span class="line">    If the DIP switches for PCs and XTs are not set correctly</span><br><span class="line">    reflecting the presence of a math coprocessor, then bit 1 (math</span><br><span class="line">    coprocessor present) may be incorrect. A better test for the math</span><br><span class="line">    coprocessor would be to test it directly by executing a math</span><br><span class="line">    coprocessor instruction and then checking to see if the</span><br><span class="line">    instruction was executed.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-4643.html">Int 11h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

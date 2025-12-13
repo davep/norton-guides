@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2107847.html">
+    <link rel="next" href="rbint-2109355.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2107847.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2109355.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 23  - Dos 1+ - Get File Size For Fcb                           </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 23h</span><br><span class="line">   DS:DX -&gt; unopened FCB (see #1034), wildcards not allowed</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status</span><br><span class="line">       00h successful (matching file found)</span><br><span class="line">       FCB random record field filled with size in records, rounded up</span><br><span class="line">       to next full record</span><br><span class="line">       FFh failed (no matching file found)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> not supported by MS Windows 3.0 DOSX.EXE DOS extender</span><br><span class="line">   MS-DOS returns nonsense if the FCB record number field is set to a very</span><br><span class="line">     large positive number, and status FFh if negative; DR DOS returns the</span><br><span class="line">     correct file size in both cases</span><br><span class="line">BUG:   APPEND for DOS 3.3+ corrupts DX if the file is not found</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=42h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2248027.html">
+    <link rel="next" href="rbint-2251685.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2248027.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2251685.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 3F  - Trusted Access - Nb.sys - Get State                      </span>  [<span class="ngb">y</span>]</span><br><span class="line"></span><br><span class="line">   AH = 3Fh</span><br><span class="line">   BX = file handle for device &#34;$$NB$$NB&#34;</span><br><span class="line">   CX = 0002h (size of state)</span><br><span class="line">   DS:DX -&gt; buffer for state record (see #1101)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AX = number of bytes actually read (0 if at EOF before call)</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (05h,06h) (see #1366 at AH=59h/BX=0000h)</span><br><span class="line">Program: Trusted Access is a security and access-control package by Lassen</span><br><span class="line">     Software, Inc.; NB.SYS is a device driver to prevent the user from</span><br><span class="line">     terminating CONFIG.SYS or AUTOEXEC.BAT with Ctrl-Break</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=40h&#34;NB.SYS&#34;,AX=4101h</span><br><span class="line"></span><br><span class="line">Format of Trusted Access state record:</span><br><span class="line">Offset Size    Description (Table 1101)</span><br><span class="line"> 00h   BYTE    00h off, 01h on</span><br><span class="line"> 01h   BYTE    keys being disabled</span><br><span class="line">       bit 0: Ctrl-Break</span><br><span class="line">       bit 1: SysReq</span><br><span class="line">       bit 2: Ctrl and Alt</span><br><span class="line">       bit 3: Ctrl-Alt-Del</span><br><span class="line">       bit 7: all keys (overrides other bits)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

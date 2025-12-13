@@ -1,0 +1,154 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Device Driver Fnx</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-202486.html">
+    <link rel="next" href="dos5-206006.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-202486.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-182062.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-206006.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Device driver function 08h      Write                   B   C</span></span><br><span class="line"></span><br><span class="line">    Write and Write with Verify transfer data from the specified</span><br><span class="line">    buffer to a device.</span><br><span class="line">    Write with Verify also reads the data back from the device, if</span><br><span class="line">    possible, to verify that the data has been transferred correctly</span><br><span class="line"></span><br><span class="line">    This function is required for both block and character device</span><br><span class="line">    drivers.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The driver must translate the logical-sector number supplied in</span><br><span class="line">    the rwrStartSec or rwrHugeStartSec field to the appropriate head,</span><br><span class="line">    track, and sector numbers.</span><br><span class="line"></span><br><span class="line">    The rwrHugeStartSec field is used only if bit 1 is set in the</span><br><span class="line">    dhAttributes field in the block device driver&#39;s DeviceHeader</span><br><span class="line">    structure.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">rwrUnit</span></span><br><span class="line">    Specifies the device to which data is to be written. This field is</span><br><span class="line">    used for block device drivers only.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">rwrStatus</span></span><br><span class="line">    Specifies the status of the completed function. If the function</span><br><span class="line">    was successful, the driver must set the done bit (bit 8).</span><br><span class="line">    Otherwise, the driver must set both the error and done bits (bits</span><br><span class="line">    15 and 8) and copy an error value to the low-order byte.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">rwrMediaID</span></span><br><span class="line">    Specifies the media descriptor for the medium DOS assumes is in</span><br><span class="line">    the drive. This field is used for block device drivers only.</span><br><span class="line">    - See Media</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">rwrBuffer</span></span><br><span class="line">    Contains the 32-bit address of the buffer containing the data to</span><br><span class="line">    write to the device.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">rwrBytesSec</span></span><br><span class="line">    Contains the number of bytes or sectors to write and receives the</span><br><span class="line">    number of bytes or sectors written.</span><br><span class="line"></span><br><span class="line">        input   Specifies the number of bytes to write to a character</span><br><span class="line">                device, or the number of sectors to write to a block</span><br><span class="line">                device.</span><br><span class="line"></span><br><span class="line">        output  Specifies the number of bytes written to a character</span><br><span class="line">                device, or the number of sectors written to a block</span><br><span class="line">                device. The driver must set this field; if there is an</span><br><span class="line">                error, the driver should return the number of bytes or</span><br><span class="line">                sectors written before the error occurred.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">rwrStartSec</span></span><br><span class="line">    Specifies the first logical sector to write. If the first sector</span><br><span class="line">    is larger than 65,535 bytes, this field contains 0FFFFh and the</span><br><span class="line">    rwrHugeStartSec field specifies the first sector. This field is</span><br><span class="line">    used for block device drivers only.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">rwrVolumeID</span></span><br><span class="line">    Contains the 32-bit address of a zero-terminated ASCII string</span><br><span class="line">    specifying the volume identifier for the disk most recently</span><br><span class="line">    accessed. If the driver returns error value 0Fh (invalid disk</span><br><span class="line">    change), DOS uses the volume identifier to prompt the user to</span><br><span class="line">    insert the appropriate disk. This field is used for block device</span><br><span class="line">    drivers only.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">rwrHugeStartSec</span></span><br><span class="line">    Specifies the first logical sector to write. This field is used</span><br><span class="line">    only if the rwrStartSec field contains 0FFFFh. This field is used</span><br><span class="line">    for block device drivers only.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-257135.html">ReadWriteRequest</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-191925.html">Dev01h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-197590.html">Dev04h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-39456.html">40h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-251263.html">Media</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-227497.html">DeviceHeader</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-182799.html">Dev*</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5397946.html">
+    <link rel="next" href="rbint-5399780.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5397946.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5395349.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5399780.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 64  - Extended Batch Language V3.14+                                 </span>  [<span class="ngb">r</span>]</span><br><span class="line"></span><br><span class="line">   AH = function</span><br><span class="line">       00h to 5Fh chained to previous handler</span><br><span class="line">       60h to 6Ch reserved, return immediately</span><br><span class="line">       80h to FFh chained to previous handler</span><br><span class="line">       6Dh (v4.01+) insert tone in queue</span><br><span class="line">       AL = ???</span><br><span class="line">       CX = frequency in Hertz</span><br><span class="line">       DL = duration in clock ticks</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AL = 00h if note stored</span><br><span class="line">              = 01h if no room to store</span><br><span class="line">       6Eh clear ??? counter/flag</span><br><span class="line">       6Fh return counter/flag that AH=6Eh clears</span><br><span class="line">       70h ???</span><br><span class="line">       AL = ???</span><br><span class="line">       71h ???</span><br><span class="line">       AL = ???</span><br><span class="line">       72h ???</span><br><span class="line">       73h insert byte at end of keyboard buffer</span><br><span class="line">       AL = byte to insert</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AL = 00h if byte inserted</span><br><span class="line">              = 01h if no room to store</span><br><span class="line">       74h insert byte at front of keyboard buffer</span><br><span class="line">       AL = byte to insert</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AL = 00h if byte inserted</span><br><span class="line">              = 01h if no room to store</span><br><span class="line">       75h ???</span><br><span class="line">       76h get keyboard &#34;stack&#34; status</span><br><span class="line">       AL = &#39;K&#39; if kbd read will read physical keyboard</span><br><span class="line">            &#39;S&#39; if it will read EBL internal keyboard buffer</span><br><span class="line">       AH = ???</span><br><span class="line">       77h clear internal keyboard buffer</span><br><span class="line">       78h ???</span><br><span class="line">       AL = ???</span><br><span class="line">       79h ???</span><br><span class="line">       7Ah ???</span><br><span class="line">       AL = ???</span><br><span class="line">       7Bh ???</span><br><span class="line">       AL = ???</span><br><span class="line">       7Ch ???</span><br><span class="line">       AL = ???</span><br><span class="line">       7Dh ???</span><br><span class="line">       AL = ???</span><br><span class="line">       7Eh clear buffer for ???</span><br><span class="line">       7Fh installation check</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CX = version in BCD</span><br><span class="line">           DI = segment of ???</span><br><span class="line">           BX = segment of next program&#39;s PSP???</span><br><span class="line">Program: Extended Batch Language is a batch-file enhancer by Seaware</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the chaining does not check whether the interrupt had been hooked</span><br><span class="line">     before, so if you try to chain when the previous vector was</span><br><span class="line">     0000h:0000h, you&#39;ll be in trouble</span><br><span class="line">   functions 72h and 7Ah-7Dh appear to be interfaces to the optional</span><br><span class="line">     floating-point and extended function packages</span><br><span class="line">Index: installation check;EBL|installation check;Extended Batch Language</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Languages</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-137455.html">
+    <link rel="next" href="perl-141310.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-137455.html">Previous</a></li>
+
+
+          
+
+<li><a href="perl-90961.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-141310.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>PERL</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="perl-90961.html">Languages</a></li>
+                  <li><a href="perl-159711.html">Command line options</a></li>
+                  <li><a href="perl-170094.html">Regular Expressions</a></li>
+                  <li><a href="perl-171332.html">Special Variables</a></li>
+                  <li><a href="perl-188582.html">Operators</a></li>
+                  <li><a href="perl-197905.html">Debugging</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tables</li>
+              <li>
+                <ul>
+                  <li><a href="perl-204383.html">ASCII Chart</a></li>
+                  <li><a href="perl-207014.html">Literals</a></li>
+                  <li><a href="perl-207867.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">     Packages</span><br><span class="line"></span><br><span class="line">     Perl provides a mechanism for alternate namespaces  to  pro-</span><br><span class="line">     tect  packages  from  stomping on each others variables.  By</span><br><span class="line">     default, a perl script starts  compiling  into  the  package</span><br><span class="line">     known as &#34;main&#34;.  By use of the package declaration, you can</span><br><span class="line">     switch namespaces.  The scope of the package declaration  is</span><br><span class="line">     from  the  declaration  itself  to  the end of the enclosing</span><br><span class="line">     block (the same scope as the local()  operator).   Typically</span><br><span class="line">     it  would  be the first declaration in a file to be included</span><br><span class="line">     by the &#34;require&#34; operator.  You can switch into a package in</span><br><span class="line">     more than one place; it merely influences which symbol table</span><br><span class="line">     is used by the compiler for the rest of that block.  You can</span><br><span class="line">     refer to variables and filehandles in other packages by pre-</span><br><span class="line">     fixing the identifier with the package  name  and  a  single</span><br><span class="line">     quote.   If  the package name is null, the &#34;main&#34; package as</span><br><span class="line">     assumed.</span><br><span class="line"></span><br><span class="line">     Only identifiers starting with letters  are  stored  in  the</span><br><span class="line">     packages  symbol table.  All other symbols are kept in pack-</span><br><span class="line">     age &#34;main&#34;.  In addition,  the  identifiers  STDIN,  STDOUT,</span><br><span class="line">     STDERR,  ARGV, ARGVOUT, ENV, INC and SIG are forced to be in</span><br><span class="line">     package &#34;main&#34;, even when used for other purposes than their</span><br><span class="line">     built-in  one.  Note also that, if you have a package called</span><br><span class="line">     &#34;m&#34;, &#34;s&#34; or &#34;y&#34;, the you can&#39;t use the qualified form of  an</span><br><span class="line">     identifier since it will be interpreted instead as a pattern</span><br><span class="line">     match, a substitution or a translation.</span><br><span class="line"></span><br><span class="line">     Eval&#39;ed strings are compiled in the  package  in  which  the</span><br><span class="line">     eval  was  compiled  in.   (Assignments  to $SIG{}, however,</span><br><span class="line">     assume the signal handler specified is in the main  package.</span><br><span class="line">     Qualify the signal handler name if you wish to have a signal</span><br><span class="line">     handler in a package.)  For an example, examine perldb.pl in</span><br><span class="line">     the  perl  library.  It initially switches to the DB package</span><br><span class="line">     so that the debugger doesn&#39;t interfere with variables in the</span><br><span class="line">     script you are trying to debug.  At various points, however,</span><br><span class="line">     it temporarily switches back to the main package to evaluate</span><br><span class="line">     various expressions in the context of the main package.</span><br><span class="line"></span><br><span class="line">     The symbol table for a package happens to be stored  in  the</span><br><span class="line">     associative array of that name prepended with an underscore.</span><br><span class="line">     The value in each entry of the associative array is what you</span><br><span class="line">     are  referring to when you use the *name notation.  In fact,</span><br><span class="line">     the following have the same effect (in  package  main,  any-</span><br><span class="line">     way), though the first is more efficient because it does the</span><br><span class="line">     symbol table lookups at compile time:</span><br><span class="line"></span><br><span class="line">          local(*foo) = *bar;</span><br><span class="line">          local($_main{&#39;foo&#39;}) = $_main{&#39;bar&#39;};</span><br><span class="line"></span><br><span class="line">     You can use this to print out all the variables in  a  pack-</span><br><span class="line">     age,  for  instance.   Here  is  dumpvar.pl  from  the  perl</span><br><span class="line">     library:</span><br><span class="line"></span><br><span class="line">          package dumpvar;</span><br><span class="line"></span><br><span class="line">          sub main&#39;dumpvar {</span><br><span class="line">              ($package) = @_;</span><br><span class="line">              local(*stab) = eval(&#34;*_$package&#34;);</span><br><span class="line">              while (($key,$val) = each(%stab)) {</span><br><span class="line">                  {</span><br><span class="line">                      local(*entry) = $val;</span><br><span class="line">                      if (defined $entry) {</span><br><span class="line">                          print &#34;\$$key = &#39;$entry&#39;\n&#34;;</span><br><span class="line">                      }</span><br><span class="line">                      if (defined @entry) {</span><br><span class="line">                          print &#34;\@$key = (\n&#34;;</span><br><span class="line">                          foreach $num ($[ .. $#entry) {</span><br><span class="line">                              print &#34;  $num\t&#39;&#34;,$entry[$num],&#34;&#39;\n&#34;;</span><br><span class="line">                          }</span><br><span class="line">                          print &#34;)\n&#34;;</span><br><span class="line">                      }</span><br><span class="line">                      if ($key ne &#34;_$package&#34; &amp;&amp; defined %entry) {</span><br><span class="line">                          print &#34;\%$key = (\n&#34;;</span><br><span class="line">                          foreach $key (sort keys(%entry)) {</span><br><span class="line">                              print &#34;  $key\t&#39;&#34;,$entry{$key},&#34;&#39;\n&#34;;</span><br><span class="line">                          }</span><br><span class="line">                          print &#34;)\n&#34;;</span><br><span class="line">                      }</span><br><span class="line">                  }</span><br><span class="line">              }</span><br><span class="line">          }</span><br><span class="line"></span><br><span class="line">     Note that, even though the subroutine is compiled in package</span><br><span class="line">     dumpvar, the name of the subroutine is qualified so that its</span><br><span class="line">     name is inserted into package &#34;main&#34;.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:49</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

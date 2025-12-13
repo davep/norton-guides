@@ -1,0 +1,136 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Structures</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-240782.html">
+    <link rel="next" href="dos5-242819.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-240782.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-221655.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-242819.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        ; File attributes</span><br><span class="line">        attr_normal    = 00h    ; File can be read from or written to</span><br><span class="line">        attr_readonly  = 01h    ; File can be read from, not written to</span><br><span class="line">        attr_hidden    = 02h    ; File or directory is hidden</span><br><span class="line">        attr_system    = 04h    ; System file or directory</span><br><span class="line">        attr_volume    = 08h    ; Filename is the volume label</span><br><span class="line">        attr_directory = 10h    ; Filename identifies a directory</span><br><span class="line">        attr_archive   = 20h    ; File modified since last backup</span><br><span class="line">        ATTR_ANY       = 3fh    ; All of the above (OR&#39;ed together)</span><br><span class="line"></span><br><span class="line">        ; bits  7654 3210</span><br><span class="line">        ;       ..ad vshr       Bits 7 and 6 are reserved (set to 0).</span><br><span class="line">        ;</span><br><span class="line">        ; attr_readonly Write attempts to the file will cause an error.</span><br><span class="line">        ; attr_hidden   System commands (such as DIR) do not list the</span><br><span class="line">        ;               file. Functions such as FindFirst/FindNext do</span><br><span class="line">        ;               not return information about the file, unless</span><br><span class="line">        ;               this attribute is specified.</span><br><span class="line">        ; attr_system   Reserved (by convention) for system files such</span><br><span class="line">        ;               as IBMBIO.COM or IO.SYS. This has the same</span><br><span class="line">        ;               effect as attr_hidden and, when applied to</span><br><span class="line">        ;               program files, prevents COMMAND.COM from</span><br><span class="line">        ;               finding and running the files.</span><br><span class="line">        ; attr_archive  DOS automatically sets this attribute when the</span><br><span class="line">        ;               file is created or written to. The attribute</span><br><span class="line">        ;               does not affect access to the file but gives</span><br><span class="line">        ;               (backup) programs a quick way to check for</span><br><span class="line">        ;               potential changes to the file contents.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-43945.html">4300h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-45096.html">4301h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-95653.html">4eh</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-32144.html">3ch</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

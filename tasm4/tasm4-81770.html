@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-79890.html">
+    <link rel="next" href="tasm4-83038.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-79890.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-83038.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">PROCDESC         Define procedure prototype                         Directive</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">PROCDESC</span> procname [procedure_description] ; Ideal mode</span><br><span class="line">  procname <span class="ngb">PROCDESC</span> [procedure_description] ; MASM mode</span><br><span class="line"></span><br><span class="line">    Declares a procedure <span class="ngb">prototype</span>, which lets Turbo Assembler check the</span><br><span class="line">    types and number of parameters to procedure calls and declarations, and</span><br><span class="line">    specifies language and distance. Also serves to PUBLIC or EXTRN the</span><br><span class="line">    procedure.</span><br><span class="line"></span><br><span class="line">    Be sure that PROCDESC appears before the PROC declaration and any use</span><br><span class="line">    of the procedure name.</span><br><span class="line"></span><br><span class="line">    Example:    PROCDESC ptest pascal FAR :word, :dword, :word</span><br><span class="line">                ; ...</span><br><span class="line">                call ptest pascal, ax, ds bx, cx    ; OK</span><br><span class="line">                call ptest, ax, ds bx, cx           ; OK (language default)</span><br><span class="line">                call ptest C, ax, ds bx, cx         ; Wrong language</span><br><span class="line">                call ptest pascal, eax, ebx, cl     ; Wrong parameter type</span><br><span class="line">                call ptest pascal, ax, ds bx        ; Too few parameters</span><br><span class="line"></span><br><span class="line">                Note: The PROCDESC declaration generates the following</span><br><span class="line">                      statements:</span><br><span class="line">                      PROCTYPE @Type_PTEST PASCAL FAR:WORD,:DWORD,:BYTE</span><br><span class="line">                      GLOBAL PTEST:@Type_PTEST</span><br><span class="line"></span><br><span class="line">                Note: Overriding the language specifier in a CALL to an</span><br><span class="line">                      external procedure has no effect, but will generate</span><br><span class="line">                      a warning only if the module is assembled with the</span><br><span class="line">                      /l or /la switch (!?).</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-199535.html">Syntax</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-19677.html">CALL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-83038.html">PROCTYPE</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-83858.html">PUBLIC</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-45041.html">EXTRN</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-49611.html">GLOBAL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-171992.html">/la</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,114 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-58607.html">
+    <link rel="next" href="dpmi-60274.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-58607.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-60274.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">OverView</a></li>
+                  <li><a href="dpmi-38393.html">DPMI API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Set Real Mode Interrupt Vector</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                 This function sets the value of the current task&#39;s real</span><br><span class="line">                 mode interrupt vector for the specified interrupt.</span><br><span class="line"></span><br><span class="line">            To Call</span><br><span class="line"></span><br><span class="line">                 AX = 0201h</span><br><span class="line">                 BL = Interrupt number</span><br><span class="line">                 CX:DX = Segment:Offset of real mode interrupt handler</span><br><span class="line"></span><br><span class="line">            Returns</span><br><span class="line"></span><br><span class="line">                 If function was successful:</span><br><span class="line">                 Carry flag is clear.</span><br><span class="line"></span><br><span class="line">                 If function was not successful:</span><br><span class="line">                 Carry flag is set.</span><br><span class="line"></span><br><span class="line">            Programmer&#39;s Notes</span><br><span class="line"></span><br><span class="line">                 o    The address  passed in  CX must  be  a  real  mode</span><br><span class="line">                      segment, not a selector.</span><br><span class="line">                 o    If  the  interrupt  being  hooked  is  a  hardware</span><br><span class="line">                      interrupt then  you must lock the segment that the</span><br><span class="line">                      interrupt handler  runs in  as well  as any memory</span><br><span class="line">                      the handler may touch at interrupt time.</span><br><span class="line">                 o    The address contained in CX:DX must be a real mode</span><br><span class="line">                      segment:offset, not a selector:offset.  This means</span><br><span class="line">                      that the  code  for  the  interrupt  handler  must</span><br><span class="line">                      either reside  in DOS  addressable memory  or  you</span><br><span class="line">                      must use  a real mode call-back address.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dpmi-58407.html">^bINTERRUPT SERVICES^b</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

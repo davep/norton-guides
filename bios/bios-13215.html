@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-12389.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-12389.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 70h                 Real-Time Clock               XT-286, AT, Convertible</span></span><br><span class="line"></span><br><span class="line">    Handles the alarm and periodic interrupts for the real-time clock.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This is a hardware interrupt (IRQ 8) activated by the CMOS timer</span><br><span class="line">    1024 times per second.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    This interrupt is available only on the AT and XT-286. The</span><br><span class="line">    real-time clock on the PC Convertible generates an Int 02h</span><br><span class="line">    (Non-Maskable Interrupt) to handle the periodic and alarm</span><br><span class="line">    functions.</span><br><span class="line"></span><br><span class="line">    This interrupt provides two services. The first is the periodic</span><br><span class="line">    interrupt that is generated when a time delay is specified. See</span><br><span class="line">    Int 15h, Service 83h (Event Wait), and Service 86h (Wait), for</span><br><span class="line">    more information. The second service is the Alarm Interrupt. When</span><br><span class="line">    the CMOS alarm time matches the current CMOS time, then Int 4Ah</span><br><span class="line">    (User Alarm) is executed.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-153737.html">Int 15h, 83h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-156519.html">Int 15h, 86h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-12389.html">Int 4Ah</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-194189.html">Int 1Ah, 06h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-75336.html">
+    <link rel="next" href="tr-79085.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-75336.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-79085.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> PASSWORD(&lt;expC&gt;)</span><br><span class="line"> Stores a password so that it cannot be read.</span><br><span class="line"> Returns &lt;expN&gt; in the range from eight to ten digits.</span><br><span class="line"></span><br><span class="line"> &lt;expC&gt; may contain spaces and non-alpha characters.</span><br><span class="line"> Distinguishes between uppercase and lowercase.</span><br><span class="line"></span><br><span class="line"> Returns zero if &lt;expC&gt; is less than 3 characters.</span><br><span class="line"></span><br><span class="line"> Useful in applications that require one or more levels</span><br><span class="line"> of password protection.</span><br><span class="line"></span><br><span class="line"> &lt;expN&gt; cannot be decoded to reveal the &lt;expC&gt; that created it.</span><br><span class="line"></span><br><span class="line"> * User enters password</span><br><span class="line"> pass_word = SPACE(20)</span><br><span class="line"> SET COLOR TO w, x    &amp;&amp; invisible</span><br><span class="line"> @...SAY &#34;Enter your password&#34; GET pass_word</span><br><span class="line"> READ</span><br><span class="line"> SET COLOR TO w, i    &amp;&amp; normal</span><br><span class="line"> pass_word = PASSWORD( pass_word )</span><br><span class="line"></span><br><span class="line"> * Store a user&#39;s first time entry in a</span><br><span class="line"> * file with one field: pw_code, N, 10, 0</span><br><span class="line"> USE Passfile</span><br><span class="line"> APPEND BLANK</span><br><span class="line"> REPLACE pw_code WITH pass_word</span><br><span class="line"> USE  &amp;&amp; close files when no longer needed</span><br><span class="line"></span><br><span class="line"> * Validate a user&#39;s subsequent password entry</span><br><span class="line"> USE Passfile</span><br><span class="line"> LOCATE FOR pw_code = pass_word</span><br><span class="line"> is_found = FOUND()</span><br><span class="line"> USE  &amp;&amp; close files when no longer needed</span><br><span class="line"> IF .NOT. is_found</span><br><span class="line">    ? &#34;Error -- invalid password&#34;</span><br><span class="line">    RETURN</span><br><span class="line"> ELSE</span><br><span class="line">    DO &lt;system entry procedure&gt;</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-28892.html">DECRYPT()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-37532.html">ENCRYPT()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

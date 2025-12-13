@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1288662.html">
+    <link rel="next" href="rbint-1290786.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1288662.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1227085.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1290786.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 53B0  - Intel System Management Bus - Installation Check       </span>  [<span class="ngb">X</span>]</span><br><span class="line"></span><br><span class="line">   AX = 53B0h</span><br><span class="line">   BH = 01h</span><br><span class="line">   BL = 72h (&#39;r&#39;)</span><br><span class="line">   CX = 6164h (&#39;ad&#39;)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if installed</span><br><span class="line">       AH = SMBus BIOS Interface Specification major version (01h)</span><br><span class="line">       AL = SMBus BIOS Interface Specification minor version (00h)</span><br><span class="line">       BL = number of SMBus devices present</span><br><span class="line">       CX = 6941h (&#39;iA&#39;)</span><br><span class="line">       DX = vendor-specified SMBus hardware code</span><br><span class="line">       0000h means undefined hardware type</span><br><span class="line">   CF set if error</span><br><span class="line">       AH = Error code 0Ah, 86h (see #0410)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this function is only supported in INT 15h mode</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=53B0h/BH=02h,AX=53B0h/BH=03h,AX=53B0h/BH=04h,AX=53B0h/BH=06h</span><br><span class="line"></span><br><span class="line">(Table 0410)</span><br><span class="line">Values for Intel System Management Bus error codes:</span><br><span class="line"> 00h   SMBus OK</span><br><span class="line"> 01h   SMBus connect failed</span><br><span class="line"> 02h   SMBus already connected (see also #0411)</span><br><span class="line"> 03h   SMBus disconnect failed</span><br><span class="line"> 04h   SMBus not connected</span><br><span class="line"> 05h   SMBus INT 15 interface disabled</span><br><span class="line"> 06h   SMBus device address request out of range</span><br><span class="line"> 07h   SMBus unknown failure</span><br><span class="line"> 08h   SMBus message list empty</span><br><span class="line"> 09h   SMBus message list overflow</span><br><span class="line"> 0Ah   SMBus invalid signature</span><br><span class="line"> 10h   SMBus device address not acknowledged</span><br><span class="line"> 11h   SMBus device error detected</span><br><span class="line"> 12h   SMBus device command access denied</span><br><span class="line"> 13h   SMBus unknown error</span><br><span class="line"> 14h   SMBus transaction pending</span><br><span class="line"> 15h   SMBus no transaction pending</span><br><span class="line"> 16h   SMBus request does not match pending transaction</span><br><span class="line"> 17h   SMBus device access denied</span><br><span class="line"> 18h   SMBus timeout</span><br><span class="line"> 19h   SMBus protocol not supported</span><br><span class="line"> 1Ah   SMBus busy</span><br><span class="line"> 1Bh   SMBus SMI detected</span><br><span class="line"> 80h   SMBus OK (previously unreported SMI occurred)</span><br><span class="line"> 86h   SMBus not supported</span><br><span class="line"></span><br><span class="line">(Table 0411)</span><br><span class="line">Values for Intel System Management Bus Already Connected sub-error codes:</span><br><span class="line"> 01h   real mode connect already established</span><br><span class="line"> 02h   16-bit PMode connect already established</span><br><span class="line"> 03h   32-bit PMode connect already established</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0410</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

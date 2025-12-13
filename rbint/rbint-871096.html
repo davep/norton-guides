@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-870939.html">
+    <link rel="next" href="rbint-872683.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-870939.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-872683.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 13 Fn 80  - Fast! V4.02+ - Api                                       </span>  [<span class="ngb">c</span>]</span><br><span class="line"></span><br><span class="line">   AH = 80h</span><br><span class="line">   CX = 6572h</span><br><span class="line">   DX = 1970h</span><br><span class="line">   ES:BX -&gt; request packet (see #0219)</span><br><span class="line">   AL = function number (see #0218)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AH = status (except function 06h)</span><br><span class="line">       00h if successful</span><br><span class="line">       01h invalid function</span><br><span class="line">       05h not supported by the installed variant</span><br><span class="line">   CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">   AL may be destroyed</span><br><span class="line">Program: FAST! is a disk cache by Future Computing Systems and marketed by</span><br><span class="line">     BLOC Publishing Corp.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=8001h,AX=8006h,AX=8007h</span><br><span class="line">Index: hotkeys;FAST!</span><br><span class="line"></span><br><span class="line">(Table 0218)</span><br><span class="line">Values for FAST! function:</span><br><span class="line"> 01h   get cache information (see AX=8001h)</span><br><span class="line"> 04h   disable cache</span><br><span class="line"> 05h   enable cache and reset statistics</span><br><span class="line"> 06h   installation check (see AX=8006h)</span><br><span class="line"> 07h   unhook interrupts (see AX=8007h)</span><br><span class="line"> 09h   flush cache</span><br><span class="line"> 0Ah   (v4.02+) enable staged writes</span><br><span class="line"> 0Bh   (v4.02+) disable staged writes</span><br><span class="line"> 0Ch   (v4.02+) enable beep on flush</span><br><span class="line"> 0Dh   (v4.02+) disable beep on flush</span><br><span class="line"> 0Eh   ???</span><br><span class="line"> 0Fh   ???</span><br><span class="line"> 10h   (v4.12+) enable hotkeys</span><br><span class="line"> 11h   (v4.12+) disable hotkeys</span><br><span class="line"> 12h   (v4.13+) set idle delay</span><br><span class="line"> 13h   (v4.13+) set flush dirty percentage</span><br><span class="line"> 14h   (v5.00+) enable mouse checks</span><br><span class="line"> 15h   (v5.00+) disable mouse checks</span><br><span class="line"> 16h   (v5.00d+) reduce cache size to minimum</span><br><span class="line"> 17h   (v5.00d+) increase cache size to maximum</span><br><span class="line"></span><br><span class="line">Format of FAST! request packet:</span><br><span class="line">Offset Size    Description (Table 0219)</span><br><span class="line"> 00h   DWORD   pointer to 19-byte signature string (see #0220)</span><br><span class="line"> 04h   DWORD   pointer to buffer for data (if needed by function)</span><br><span class="line"></span><br><span class="line">(Table 0220)</span><br><span class="line">Values for FAST! v4.04-v5.03 signature string:</span><br><span class="line"> 13h 07h 06h 08h 11h 18h 0Fh 0Eh 02h 18h 13h 08h 0Bh 08h 01h 00h 04h 08h 15h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

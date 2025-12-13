@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4820052.html">
+    <link rel="next" href="rbint-4821830.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4820052.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4810987.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4821830.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 4B Fn 8105  - Virtual Dma Specification - Scatter/gather Lock Region </span>  [<span class="ngb">d</span>]</span><br><span class="line"></span><br><span class="line">   AX = 8105h</span><br><span class="line">   DX = flags (see #2895)</span><br><span class="line">   ES:DI -&gt; Extended DMA descriptor structure (see #2893,#2894)</span><br><span class="line">         region size, linear segment, linear offset, and number avail</span><br><span class="line">         fields set</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       EDDS number used field set</span><br><span class="line">       if DX bit 6 set, lower 12 bits of BX = offset in first page</span><br><span class="line">   CF set on error</span><br><span class="line">       AL = error code (see #2889)</span><br><span class="line">       EDDS region size field filled with max length in bytes that can be</span><br><span class="line">         locked and described in the EDDS table</span><br><span class="line">BUG:   Windows 3.0 in enhanced mode may return zero instead of the physical</span><br><span class="line">     page address for pages which were originally not present</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=8103h,AX=8106h</span><br><span class="line"></span><br><span class="line">Bitfields for VDS flags:</span><br><span class="line">Bit(s) Description (Table 2895)</span><br><span class="line"> 0-5   reserved (zero)</span><br><span class="line"> 6 EDDS should be returned with page table entries</span><br><span class="line"> 7 only present pages should be locked (not-present pages receive entry</span><br><span class="line">     of 0000h)</span><br><span class="line"> 8-15  reserved (zero)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Utilities</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-577551.html">
+    <link rel="next" href="mrdebug-580967.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-577551.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-565186.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-580967.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">ClearWin() - clear an area of current window using attributes</span></span><br><span class="line"> Clears an area</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">ClearWin([&lt;nTop&gt;], [&lt;nLeft&gt;], [&lt;nBottom&gt;], [&lt;nRightl&gt;],</span></span><br><span class="line">         <span class="ngb">[&lt;cAttr | nAttr&gt;],  [&lt;cChar | nChar&gt;]) --&gt; cNull</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nTop&gt;</span> is the top line where clearing is to begin. The default value is</span><br><span class="line">     taken from the current cursor position.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nLeft&gt;</span> is the left column from which clearing is to begin. The default</span><br><span class="line">     value is taken from the current cursor position.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nBottom&gt;</span> is the bottom line to clear. The default value is taken</span><br><span class="line">     from the bottom row coordinate from the current window or the</span><br><span class="line">     application window if no other windows are open.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nRight&gt;</span> is the right column to clear. The default is take from</span><br><span class="line">     either from the right column coordinate from the current window or the</span><br><span class="line">     application window if no other windows are open.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cAttr | nAttr&gt;</span> is attribute used to clear. The default is CLEARA</span><br><span class="line">     character.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cChar | nChar&gt;</span> is the character used to clear. The default is the</span><br><span class="line">     CLEARB character.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     ClearWin() always returns a null string, or &#34;&#34;.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     ClearWin() clears a specified area of the current window or the</span><br><span class="line">     application window if no other windows are open, as specified by the</span><br><span class="line">     coordinates nTop, nLeft, nBottom, nRight.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Notes</span></span><br><span class="line"></span><br><span class="line">     ■  This function does not alter the cursor position.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     ■  Clear from the cursor position to the end of the line with the</span><br><span class="line">        default clear character and default clear attribute:</span><br><span class="line"></span><br><span class="line">        ClearWin()</span><br><span class="line"></span><br><span class="line">     ■  Do the same for the bottom row of the current window:</span><br><span class="line"></span><br><span class="line">        ClearWin( MaxRow() )</span><br><span class="line"></span><br><span class="line">     ■  Clear an area between line 23, column 15 and line 24, column</span><br><span class="line">        70 on the application window:</span><br><span class="line"></span><br><span class="line">        wSelect( 0 )                /// Select the Application window</span><br><span class="line">        ClearWin(23, 15, 24, 70)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Files:</span>  Library is MRWINDOW.LIB.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

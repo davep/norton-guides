@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5ie4-style.css">
+    <title>Clipper 5.00a » Internal Errors  V1.04 » Show » Internal Errors</title>
+    <meta name="description" content="Clipper 5.00a » Internal Errors  V1.04">
+    <link rel="prev" href="cl5ie4-17684.html">
+    <link rel="next" href="cl5ie4-20451.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5ie4-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5ie4-17684.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5ie4-20451.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Show</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Internal Errors</a></li>
+                  <li><a href="cl5ie4-27006.html">Accuracy ...</a></li>
+                  <li><a href="cl5ie4-28420.html">Credits ...</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  <span class="ngb">Internal Error #1256, __DBSETIND(0)</span></span><br><span class="line"></span><br><span class="line">  (#112199) There were indications that:</span><br><span class="line"></span><br><span class="line">  USE GLOBAL</span><br><span class="line">  i1 = &#34;globuser&#34;</span><br><span class="line">  SET INDEX TO &amp;i1</span><br><span class="line"></span><br><span class="line">  causes this error, when both database and index exist.  I was unable to</span><br><span class="line">  confirm this.</span><br><span class="line"></span><br><span class="line">  (Mail: Del Texley [71117,3551])  Del found that this error may be related</span><br><span class="line">  in some way to the size of the database.  He says that the workaround is</span><br><span class="line">  to test the number of records before opening the index file, and recreate</span><br><span class="line">  it if less than 5 records exist.</span><br><span class="line"></span><br><span class="line">  SELECT( SEL_POST )</span><br><span class="line">  USE PRPOST INDEX PRPOST   // Crash here with internal error # 1256 if</span><br><span class="line">                            // prpost is empty!</span><br><span class="line"></span><br><span class="line">   ** This Fixes if substituted for above line</span><br><span class="line">   USE PRPOST</span><br><span class="line">   IF RECCOUNT() &lt; 5</span><br><span class="line">      INDEX ON PRPOST-&gt;Emp_num + DTOS( PRPOST-&gt;Pdate )  TO PRPOST</span><br><span class="line">   ELSE</span><br><span class="line">      SET INDEX TO PRPOST</span><br><span class="line">   ENDIF</span><br><span class="line">   ** Weird enough for you?</span><br><span class="line"></span><br><span class="line">  (#112378) This message reports that 1256 occurs during a SET INDEX.  The</span><br><span class="line">  user says that he was using an index expression that contained a UDF for</span><br><span class="line">  displaying percent done during the index.  <span class="ngu">Clipper 5.0 stores index exp-</span></span><br><span class="line">  <span class="ngu">ressions as it receives them: &#34;INDEX ON A     + B&#34; will keep the strange</span></span><br><span class="line">  <span class="ngu">spacing.</span>  His problem was that he had a function that was messing with</span><br><span class="line">  the NTX header, and not taking this  into account.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

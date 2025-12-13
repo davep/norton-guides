@@ -1,0 +1,124 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-68530.html">
+    <link rel="next" href="dos5-70153.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-68530.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-70153.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 440Dh /42h     Format Track on Logical Drive                DOS 3.2+</span></span><br><span class="line"></span><br><span class="line">    Formats and verifies a track on the specified device.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX    = 440Dh</span><br><span class="line">                BX    = Drive number (0 = default, 1 = A, etc.)</span><br><span class="line">                CH    = 08h (device category, must be 8)</span><br><span class="line">                CL    = 42h</span><br><span class="line">                DS:DX = Pointer to an FVBlock structure</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AX = Error code, if CF is set</span><br><span class="line">                     | 01h Invalid function</span><br><span class="line">                     | 02h File not found</span><br><span class="line">                     | 05h Access denied</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The FVBlock structure specifies the head and cylinder to format.</span><br><span class="line">                                                     </span><br><span class="line">    This function returns an error value of 2 (file not found) if the</span><br><span class="line">    specified drive number is invalid.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-72811.html">440Dh /62h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-246630.html">FVBlock</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

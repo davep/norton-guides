@@ -1,0 +1,157 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-33587.html">
+    <link rel="next" href="x86-37561.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-33587.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-37561.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">CMPXCHG         Compare and Exchange                 Flags: O D I T S Z A P C</span></span><br><span class="line">                                                            * - - - * * * * *</span><br><span class="line"><span class="ngb">CMPXCHG</span> destination,source                           CPU: 486+ (*)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   CMP destination,accumulator</span><br><span class="line">                if ZF = 1</span><br><span class="line">                   destination ← source</span><br><span class="line">                else</span><br><span class="line">                   accumulator ← destination</span><br><span class="line">                endif</span><br><span class="line"></span><br><span class="line">    CMPXCHG compares the accumulator (AL, AX, or EAX) with a</span><br><span class="line">    destination operand. If they are equal, the source operand is</span><br><span class="line">    loaded into destination; otherwise, the destination operand is</span><br><span class="line">    loaded into the accumulator.</span><br><span class="line"></span><br><span class="line">    This instruction is used to support semaphores.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngu">Note</span></span><br><span class="line">    On the A-step of the 486, CMPXCHG was microcoded using the opcodes</span><br><span class="line">    for the, discarded, A- to B0-step 386 instructions XBTS (A6) and</span><br><span class="line">    IBTS (A7). Because of software conflicts with software written for</span><br><span class="line">    the early 386 DX, the opcodes for the 486 were changed to those</span><br><span class="line">    shown below starting with the B step.</span><br><span class="line">    Note that some 386 software won&#39;t run on older 386s and some 486</span><br><span class="line">    software will not run on early 486s when using this instruction.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    0F A6 /r    CMPXCHG r/m8,r8         <span class="ngu">; i486 pre-B step only</span></span><br><span class="line">    0F A7 /r    CMPXCHG r/m16,r16       <span class="ngu">; i486 pre-B step only</span></span><br><span class="line">    0F A7 /r    CMPXCHG r/m32,r32       <span class="ngu">; i486 pre-B step only</span></span><br><span class="line">    0F B0 /r    CMPXCHG r/m8,r8</span><br><span class="line">    0F B1 /r    CMPXCHG r/m16,r16</span><br><span class="line">    0F B1 /r    CMPXCHG r/m32,r32</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    reg, reg      3                                      6       5   NP</span><br><span class="line">    mem, reg    3+d(0-2)                                7-10     6   NP</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-32436.html">CMP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-169147.html">XCHG</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-84253.html">LOCK</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-37561.html">CMPXCHG8B</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-179453.html">Flags</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

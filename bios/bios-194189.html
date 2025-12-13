@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-192806.html">
+    <link rel="next" href="bios-196371.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-192806.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-185076.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-196371.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 1Ah, 06h            Set Real-Time Clock Alarm                        many</span></span><br><span class="line"></span><br><span class="line">    Sets the time at which the computer will issue an alarm by calling</span><br><span class="line">    Int 4Ah.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 06h</span><br><span class="line">                CH = Hours (BCD)</span><br><span class="line">                CL = Minutes (BCD)</span><br><span class="line">                DH = Seconds (BCD)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  CF   Set if clock not operating or alarm already set;</span><br><span class="line">                     else cleared</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    All dates are in Binary Coded Decimal (BCD). For example, June 1,</span><br><span class="line">    1985 will be set as CX = 1985; DX = 0601.</span><br><span class="line"></span><br><span class="line">    The real-time clock is the clock that runs even when the computer</span><br><span class="line">    is turned off. A CMOS battery is used so that, even while the</span><br><span class="line">    computer is off, the date, time, and alarm time are maintained.</span><br><span class="line"></span><br><span class="line">    This service is available only for ATs, XT-286s, and PC</span><br><span class="line">    Convertibles. Previous machines will report unpredictable results</span><br><span class="line">    (including the state of the Carry Flag).</span><br><span class="line"></span><br><span class="line">    After this service is executed, an Int 4Ah will be generated as</span><br><span class="line">    soon as the hour, minute, and second specified match the time on</span><br><span class="line">    the real-time clock date. It is up to the programmer to install an</span><br><span class="line">    interrupt handler for Int 4Ah before calling this service</span><br><span class="line"></span><br><span class="line">    The alarm interrupt (Int 4Ah) will continue to occur every 24</span><br><span class="line">    hours at the specified time until it is reset via Service 07h</span><br><span class="line">    (Reset Real-Time Clock Alarm). Only one alarm time can be active</span><br><span class="line">    at a time.</span><br><span class="line"></span><br><span class="line">    Because the real-time clock is updated even if the computer is</span><br><span class="line">    turned off, the alarm time set via this service will remain active</span><br><span class="line">    even after the computer is turned off (of course, the alarm won&#39;t</span><br><span class="line">    be generated while the computer is off).</span><br><span class="line"></span><br><span class="line">    Setting the real-time clock date will not affect the system date.</span><br><span class="line">    This is because the real-time clock is read once upon system</span><br><span class="line">    startup, updating the system timer. All other references to date</span><br><span class="line">    use the system timer. If either the real-time clock date is</span><br><span class="line">    changed (via Service 05h) or the system timer is changed (via</span><br><span class="line">    Service 01h), the other date is not changed accordingly.</span><br><span class="line"></span><br><span class="line">    Even though the system is using the system timer for date</span><br><span class="line">    information, both the real-time clock and the system timer are</span><br><span class="line">    updated continuously.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-196371.html">Int 1Ah, 07h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-197204.html">Int 1Ah, 08h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-198703.html">Int 1Ah, 09h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

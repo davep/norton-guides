@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-34716.html">
+    <link rel="next" href="click-37780.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-34716.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-37780.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Getting Started</a></li>
+                  <li><a href="click-10263.html">Features</a></li>
+                  <li><a href="click-15048.html">Click .INI file</a></li>
+                  
+                </ul>
+              </li>
+              <li>Support</li>
+              <li>
+                <ul>
+                  <li><a href="click-32383.html">Support</a></li>
+                  <li><a href="click-34012.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Click! did not know how to deal with something like...</span><br><span class="line"></span><br><span class="line">@:bar()</span><br><span class="line"></span><br><span class="line">...and incorrectly formatted it as...</span><br><span class="line"></span><br><span class="line">@ :bar()</span><br><span class="line"></span><br><span class="line">This is fixed.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Renamed MY_TABLE_OPENING_FUNCTION to MY_TABLE_FUNCTION in CLICK.INI.</span><br><span class="line"></span><br><span class="line">--</span><br><span class="line"></span><br><span class="line">Added a new Click! entry similar to MY_TABLE_FUNCTION, except for index</span><br><span class="line">functions.</span><br><span class="line"></span><br><span class="line">The new entry is named MY_INDEX_FUNCTION, and can contain several</span><br><span class="line">functions delimited by |, just like the table group.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Previously, Click! compared MY_TABLE_FUNCTION, the customizable table</span><br><span class="line">function list to the first word on each line. Now, Click! compares the</span><br><span class="line">customizable list to every word on the line.</span><br><span class="line"></span><br><span class="line">Using delimited settings like these... (use | to add more functions)</span><br><span class="line"></span><br><span class="line">MY_TABLE_FUNCTION=D_OPEN|D_CLOSE|D_ZAP</span><br><span class="line">MY_INDEX_FUNCTION=D_INDEX|D_ORDER</span><br><span class="line"></span><br><span class="line">...and code like this...</span><br><span class="line"></span><br><span class="line">if d_close( &#39;myarea&#39; )</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">if dbusearea( &#39;another&#39; )</span><br><span class="line">   index on ( temp ) to stuff tag more</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">d_zap( &#39;myfile&#39; )</span><br><span class="line"></span><br><span class="line">do while d_open( cSomeFile )</span><br><span class="line">enddo</span><br><span class="line"></span><br><span class="line">if dbcreateind()</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">if d_order( csomealias ) == 12</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">if d_index( cSomeFile )</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">...Click! will detect correctly, and add to the Files or Indexes list...</span><br><span class="line"></span><br><span class="line">*+       Tables: if d_close( &#39;myarea&#39; )</span><br><span class="line">*+               if dbusearea( &#39;another&#39; )</span><br><span class="line">*+               d_zap( &#39;myfile&#39; )</span><br><span class="line">*+               do while d_open( cSomeFile )</span><br><span class="line">*+</span><br><span class="line">*+      Indexes: index on ( temp ) to stuff tag more</span><br><span class="line">*+               if dbcreateind()</span><br><span class="line">*+               if d_order( csomealias ) == 12</span><br><span class="line">*+               if d_index( cSomeFile )</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Previously, if you set INDENT_FUNCTION=YES, Click! would leave the final</span><br><span class="line">return dangling indented, instead of deindented.</span><br><span class="line"></span><br><span class="line">This is fixed. The last return is identified by a read ahead scheme. If</span><br><span class="line">you use this feature, and find a &#39;last return&#39; which is dangling, I need</span><br><span class="line">to see the code following that return.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Added a new CLICK.INI directive, INDENT_LOCALS=NO, which overrides</span><br><span class="line">indenting of any line starting with LOCA PRIV MEMV STAT PUBL FIEL if</span><br><span class="line">INDENT_FUNCTION=YES.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">if() reported as an &lt;unresolved function&gt; in the function table.</span><br><span class="line"></span><br><span class="line">Fixed.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">a[ 1 ][ 1 ][ 1 ]</span><br><span class="line"></span><br><span class="line">used to come out as:</span><br><span class="line"></span><br><span class="line">a[ 1 ] [ 1 ] [ 1 ]</span><br><span class="line"></span><br><span class="line">Fixed. Spaces are no longer inserted.</span><br><span class="line"></span><br><span class="line">A new option is added in CLICK.INI to convert it to the other style:</span><br><span class="line"></span><br><span class="line">CONVERT_][_TO_,=YES</span><br><span class="line"></span><br><span class="line">Converts:</span><br><span class="line"></span><br><span class="line">a[ 1 ][ 1 ][ 1 ]</span><br><span class="line"></span><br><span class="line">to</span><br><span class="line"></span><br><span class="line">a[ 1, 1, 1 ]</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">CREATE CLASS was not recognized as CLASS.</span><br><span class="line"></span><br><span class="line">Fixed.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">END CLASS was not always found, but ENDCLASS always worked.</span><br><span class="line"></span><br><span class="line">Fixed.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

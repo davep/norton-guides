@@ -1,0 +1,136 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="vista-style.css">
+    <title>db_VISTA III » Functions » Functions descriptions</title>
+    <meta name="description" content="db_VISTA III">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="vista-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Functions</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions descriptions</a></li>
+                  
+                </ul>
+              </li>
+              <li>Codes</li>
+              <li>
+                <ul>
+                  <li><a href="vista-6446.html">Function status codes</a></li>
+                  <li><a href="vista-7989.html">System errors codes</a></li>
+                  <li><a href="vista-14319.html">User errors codes</a></li>
+                  <li><a href="vista-21058.html">Code&#39;s listing</a></li>
+                  
+                </ul>
+              </li>
+              <li>Credits</li>
+              <li>
+                <ul>
+                  <li><a href="vista-22437.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">   D_RBLCLR</span><br><span class="line"></span><br><span class="line">SUMMARY</span><br><span class="line">   d_rblclr([dbn])</span><br><span class="line">   int dbn;</span><br><span class="line"></span><br><span class="line">ARGUMENTS</span><br><span class="line">   dbn         (optional)The number of the database containing the record</span><br><span class="line"></span><br><span class="line">DESCRIPTION</span><br><span class="line">   Function d_rlbclr is called to clear the record lock bit of the current</span><br><span class="line">   record. After a record occurrene is locked, the record will remain locked</span><br><span class="line">   until function d_rblcr is called to clear the lock bit.If d_rldclr is</span><br><span class="line">   called from within a transaction ,the data file which contains the current</span><br><span class="line">   record must be write-locked.User error S_NOTLOCKED is returned if the</span><br><span class="line">   function is called within atransaction and the datafile of a current record</span><br><span class="line">   is not write-locked.The clearing of record lock bit cannot be applied until</span><br><span class="line">   the transaction ends because other modifications to be to the record are</span><br><span class="line">   unusually involved in the transaction.If d_trabort is called after d_rlbclr,</span><br><span class="line">   the clear is aborted and the record remains lockod.The lock bit is clear</span><br><span class="line">   througth the cache rather than directly to the file when d_rldclr is called</span><br><span class="line">   within a transaction.If d_rlbclr is called outside of a transaction, the</span><br><span class="line">   file does not need to be locked and the operation will directly clear the</span><br><span class="line">   lock bit on the file.This is used to clear the lock bit on the file.This is</span><br><span class="line">   used to clear alock after it has been determined that the record no</span><br><span class="line">   longer needs to update.</span><br><span class="line"></span><br><span class="line">   The db_VISTA runtime does not provide any automatic protection against</span><br><span class="line">   charged to records that have the lock bit set.Itis the responsibility of</span><br><span class="line">   the application program to ensure that the record lock bit is first</span><br><span class="line">   checked before updating a record.</span><br><span class="line"></span><br><span class="line">   No records have which have been locked by the program should remain</span><br><span class="line">   locked after the database is closed.The Database Consistency utility,</span><br><span class="line">   dbcheck, cande used to report all record occurrences which have the</span><br><span class="line">   lock bit set.</span><br><span class="line"></span><br><span class="line">   This function is present in the single user version of db_VISTA, but</span><br><span class="line">   performs no action.This allows multi-user applications to link with the</span><br><span class="line">   single user version for operation on stand-alone computer.</span><br><span class="line"></span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">CURRENCY CHANGES</span><br><span class="line">   None.</span><br><span class="line"></span><br><span class="line">RETURN CODES</span><br><span class="line"></span><br><span class="line">    -7      S_NOCR       The cuurent record is null.</span><br><span class="line"></span><br><span class="line">    -24     S_NOTLOCKED  Current record&#39;s file is not write-locked.</span><br><span class="line"></span><br><span class="line">EXAMPLE</span><br><span class="line">    /*fetch record to be modified*/</span><br><span class="line">    ...</span><br><span class="line">    if(d_rblset()!=S_OKEY)</span><br><span class="line">    /* unable to access record*/</span><br><span class="line">     ...</span><br><span class="line">    else{</span><br><span class="line">     /*display record and allow user to edit it*/</span><br><span class="line">     ...</span><br><span class="line">     d_trbegin(&#34;mod&#34;);</span><br><span class="line">     while(d_reclock(REC,&#34;w&#34;)==S_UNAVAIL)</span><br><span class="line">        ;/*wait for file&#39;s become available */</span><br><span class="line">     d_recwrite(&amp;rec); /*update record*/</span><br><span class="line">     d_rlbclr();       /*unlock record*/</span><br><span class="line">     d_trend();        /*end transaction*/</span><br><span class="line">    }</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="vista-137549.html">d_rlbset</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="vista-140313.html">d_rlbtst</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

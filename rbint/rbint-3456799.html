@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    
+    <link rel="next" href="rbint-3458091.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="rbint-3456635.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3458091.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 23  - Dos 1+ - Control-c/control-break Handler                       </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">---DOS 1.x---</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AH = 00h abort program</span><br><span class="line">   if all registers preserved, restart DOS call</span><br><span class="line">---DOS 2+---</span><br><span class="line">   CF clear</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> all registers preserved</span><br><span class="line">   return via RETF with CF set or (MS-DOS 1,DR DOS) RETF 2 with CF set</span><br><span class="line">       DOS will abort program with errorlevel 0</span><br><span class="line">   else (RETF/RETF 2 with CF clear or IRET with CF ignored)</span><br><span class="line">       interrupted DOS call is restarted</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this interrupt is invoked whenever DOS detects a ^C or <span class="ngb">reak; it</span></span><br><span class="line">     should never be called directly</span><br><span class="line">   MS-DOS 1.25 also invokes INT 23 on a divide overflow (INT 00)</span><br><span class="line">   MS-DOS remembers the stack pointer before calling INT 23, and if it is</span><br><span class="line">     not the same on return, pops and discards the top word; this is what</span><br><span class="line">     permits a return with RETF as well as IRET or RETF 2</span><br><span class="line">   MS-DOS 2.1+ ignores the returned CF if SP is the same on return as it</span><br><span class="line">     was when DOS called INT 23, so RETF 2 will not terminate the program</span><br><span class="line">   Novell DOS 7 always pops a word if CF is set on return, so one should</span><br><span class="line">     not return with RETF 2 and CF set or IRET with the stored flags&#39; CF</span><br><span class="line">     set</span><br><span class="line">   any DOS call may safely be made within the INT 23 handler, although</span><br><span class="line">     the handler must check for a recursive invocation if it does</span><br><span class="line">     call DOS</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 1B</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

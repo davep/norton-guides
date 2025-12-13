@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » OverView » Questions and Answers</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-283643.html">
+    <link rel="next" href="mrdebug-287944.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-283643.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-241082.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-287944.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Will a graphical app work?</span></span><br><span class="line"> Hints on using a graphical interface.</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> MrDebug has the ability to work within a graphical interface. Should you be</span><br><span class="line"> using any third party libraries that offer a graphical interface the</span><br><span class="line"> following guidelines may help you to enable MrDebug to work within a</span><br><span class="line"> graphical interface.</span><br><span class="line"></span><br><span class="line"> Turn off the following:</span><br><span class="line"></span><br><span class="line">        Retain Video Mode</span><br><span class="line">        Force Application into 80x25</span><br><span class="line"></span><br><span class="line"> If at some point, the graphical interface of MrDebug becomes garbled and you</span><br><span class="line"> find that &lt;Shift&gt;&lt;Alt&gt;&lt;R&gt; does not redraw the screen correctly, then you may</span><br><span class="line"> find that the using &lt;TAB&gt; key to cycle through the window may help to</span><br><span class="line"> refresh the screen.</span><br><span class="line"></span><br><span class="line"> We have done our best to get MrDebug working with graphical interfaces, but</span><br><span class="line"> the direct screen writes can cause some refresh problems with MrDebug - they</span><br><span class="line"> are beyond our control.</span><br><span class="line"></span><br><span class="line"> The following has helped us to Debug programs that we have written that use</span><br><span class="line"> DGE. So of you might find the ideas useful for your graphical applications</span><br><span class="line"> that you wish to debug.</span><br><span class="line"></span><br><span class="line"> Create the following three functions within one of your .PRGs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Function RestGraf()      // used by &#39;Before Step&#39;</span><br><span class="line">           If nVideoMode == 18</span><br><span class="line">              SetHiRes(0)</span><br><span class="line">           EndIf</span><br><span class="line">        Return(NIL)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Function SaveGraph()     // used by &#39;After Step&#39;</span><br><span class="line">           nVideoMode := GetVideo(1)</span><br><span class="line">           If nVideoMode == 18</span><br><span class="line">              PicWrite(0,0,1350,1000,1,&#34;F:\temp.pic&#34;)</span><br><span class="line">           EndIf</span><br><span class="line">           SetText()</span><br><span class="line">        Return(NIL)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Function DispGraph()     // used by &#39;Step Restore&#39;</span><br><span class="line">           If nVideoMode == 18 .AND. File(&#34;F:\temp.pic&#34;)</span><br><span class="line">              PicRead(0,0, 1, &#34;F:\temp.pic&#34;)</span><br><span class="line">           EndIf</span><br><span class="line">        Return (NIL)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> Create a Static or Public variable called nVideoMode and assign it the value</span><br><span class="line"> of the IBM BIOS video mode that you use as text mode. Normally this will be</span><br><span class="line"> 3 as we would recommend that you run all graphical applications in an 80x25</span><br><span class="line"> mode. Make sure that the variable will be in scope to the three functions</span><br><span class="line"> when they are called.</span><br><span class="line"></span><br><span class="line"> Under the Display sub-menu of the Options menu enter the function names that</span><br><span class="line"> MrDebug should call when your stop or start the application. For example in</span><br><span class="line"> the case of our three functions, above,:</span><br><span class="line"></span><br><span class="line">      Before Step &#39;RestGraf()&#39;</span><br><span class="line">      After Step &#39;SaveGraph()&#39;</span><br><span class="line">      Step Restore &#39;DispGraph()&#39;</span><br><span class="line"></span><br><span class="line"> When you run your application, and MrDebug is invoked, the function held in</span><br><span class="line"> After Step is  called - in this case, the screen is saved to a graphics file</span><br><span class="line"> (a RAM disk comes in handy here!) and the mode is set to text.</span><br><span class="line"></span><br><span class="line"> When you next Step, run etc the program, the Before Step function is called</span><br><span class="line"> and the video mode gets set. The Step Restore function is then called and</span><br><span class="line"> the graphics image gets restored.</span><br><span class="line"></span><br><span class="line"> And that is the basics of the Step Before, After and Restore slots!</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

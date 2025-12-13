@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl52an00-style.css">
+    <title>Clipper 5.2c » Anomalies &amp; IE&#39;s v0.99 » Display » Internal Errors</title>
+    <meta name="description" content="Clipper 5.2c » Anomalies &amp; IE&#39;s v0.99">
+    <link rel="prev" href="cl52an00-38047.html">
+    <link rel="next" href="cl52an00-40599.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl52an00-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl52an00-38047.html">Previous</a></li>
+
+
+          
+
+<li><a href="cl52an00-4386.html">Up</a></li>
+
+
+          
+
+<li><a href="cl52an00-40599.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Display</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies &amp; Bugs</a></li>
+                  <li><a href="cl52an00-4386.html">Internal Errors</a></li>
+                  
+                </ul>
+              </li>
+              <li>Commercials</li>
+              <li>
+                <ul>
+                  <li><a href="cl52an00-45386.html">Packages</a></li>
+                  <li><a href="cl52an00-47050.html">Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>View</li>
+              <li>
+                <ul>
+                  <li><a href="cl52an00-48446.html">Credits</a></li>
+                  <li><a href="cl52an00-49457.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Internal Error # 5312</span></span><br><span class="line"> VM Swap File Overallocated</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> This is an &#34;out of memory&#34; message that indicates that the Clipper</span><br><span class="line"> application no longer has sufficient virtual memory available to</span><br><span class="line"> continue.</span><br><span class="line"></span><br><span class="line"> Specifically, this error occurs when the virtual memory system needs</span><br><span class="line"> to swap a virtual memory segment out of conventional memory, and it</span><br><span class="line"> has used all expanded memory and disk space that has been made</span><br><span class="line"> available to it.</span><br><span class="line"></span><br><span class="line"> Action:  Make more virtual memory available to the application.  This</span><br><span class="line"> can be done by making more expanded memory available by increasing the</span><br><span class="line"> E setting of the CLIPPER environment variable, or by making more disk</span><br><span class="line"> space available by increasing the SWAPK setting of the CLIPPER</span><br><span class="line"> environment variable.</span><br><span class="line"></span><br><span class="line"> This problem can also be resolved by reducing the size and/or number</span><br><span class="line"> of strings and arrays that are active at any one time.  Probably, the</span><br><span class="line"> most common cause of this error is the declaration of extremely large</span><br><span class="line"> arrays (e.g., LOCAL aArray[4096][4096]).  Note that every array</span><br><span class="line"> element requires memory to store (even if its value is NIL) and that</span><br><span class="line"> the number of array elements in an array is determined by multiplying</span><br><span class="line"> the number of elements in every dimension and adding the sum of all</span><br><span class="line"> dimensions except for the last.  For example, a 4096 by 4096 array</span><br><span class="line"> has (4096x4096)+4096 or 16,781,312 elements.</span><br><span class="line"></span><br><span class="line"> Because every array element in Clipper requires 14 bytes, this</span><br><span class="line"> amounts to 16,781,312x14, or 234,938,368 bytes -- well in excess of</span><br><span class="line"> the theoretical capacity of the virtual memory system.</span><br><span class="line"></span><br><span class="line"> Note:  There is no benefit gained by reusing arrays.  Clipper is much</span><br><span class="line"> more efficient when strings and arrays are thrown away and rebuilt</span><br><span class="line"> often rather than kept around unnecessarily for long durations.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngu">(CA Internal Error Listing 03OCT93)</span></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,127 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="pkzip2-style.css">
+    <title>PKZIP 2.0 Reference Guide » Reference » PKZIP</title>
+    <meta name="description" content="PKZIP 2.0 Reference Guide">
+    <link rel="prev" href="pkzip2-6543.html">
+    <link rel="next" href="pkzip2-9336.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="pkzip2-about.html">About</a></li>
+
+
+          
+
+<li><a href="pkzip2-6543.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="pkzip2-9336.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">PKZIP</a></li>
+                  <li><a href="pkzip2-35456.html">PKUNZIP</a></li>
+                  <li><a href="pkzip2-49977.html">PKSFX/ZIP2EXE</a></li>
+                  <li><a href="pkzip2-58620.html">PK SAFE ANSI</a></li>
+                  <li><a href="pkzip2-60701.html">Introduction</a></li>
+                  <li><a href="pkzip2-69366.html">Configuration Files</a></li>
+                  <li><a href="pkzip2-76242.html">Addendum</a></li>
+                  
+                </ul>
+              </li>
+              <li>Guides</li>
+              <li>
+                <ul>
+                  <li><a href="pkzip2-82634.html">Backup Guide</a></li>
+                  <li><a href="pkzip2-88893.html">Archive Attribute</a></li>
+                  <li><a href="pkzip2-90931.html">Data Encryption</a></li>
+                  <li><a href="pkzip2-103374.html">Using List Files</a></li>
+                  <li><a href="pkzip2-112353.html">F.A.Q. (part I)</a></li>
+                  <li><a href="pkzip2-121188.html">F.A.Q. (part II)</a></li>
+                  <li><a href="pkzip2-130028.html">Error Levels</a></li>
+                  <li><a href="pkzip2-132429.html">Errors &amp; Warnings</a></li>
+                  
+                </ul>
+              </li>
+              <li>Credits</li>
+              <li>
+                <ul>
+                  <li><a href="pkzip2-153649.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">  <span class="ngb">-e[x|n|f|s]   Specify compression method</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">-ex</span>   Maximum compression (most compression, most time)</span><br><span class="line">  <span class="ngb">-en</span>   Normal compression (default)</span><br><span class="line">  <span class="ngb">-ef</span>   Fast compression</span><br><span class="line">  <span class="ngb">-es</span>   Super Fast compression (least compression, least time)</span><br><span class="line">  <span class="ngb">-e0</span>   Zero compression (storing)</span><br><span class="line"></span><br><span class="line">  PKZIP 2 provides four different methods of compression, allowing you to</span><br><span class="line">  choose the compression that best suits your need.  You can choose speed,</span><br><span class="line">  high compression or a balance.  The default method will provide good</span><br><span class="line">  compression at a reasonable speed.</span><br><span class="line"></span><br><span class="line">  The switches for this option are intended to be mnemonic in nature:</span><br><span class="line"></span><br><span class="line">  <span class="ngb">-ex</span>   eXtra or maXimum</span><br><span class="line">  <span class="ngb">-en</span>   Normal</span><br><span class="line">  <span class="ngb">-ef</span>   Fast</span><br><span class="line">  <span class="ngb">-es</span>   Speed/Super Fast</span><br><span class="line">  <span class="ngb">-e0</span>   Zero compression</span><br><span class="line"></span><br><span class="line">  The only two that may be difficult to remember are the order of Fast and</span><br><span class="line">  Super Fast, you might want to think &#34;Extra Speed&#34;.</span><br><span class="line"></span><br><span class="line">  If you need to complete the compression in the minimum amount of time</span><br><span class="line">  possible, then choose the fast compression method.  To force PKZIP to use</span><br><span class="line">  its fastest compression method, use the option -es (Super Fast).</span><br><span class="line"></span><br><span class="line">  To achieve the smallest files possible, specify the maximum compression</span><br><span class="line">  method using the option -ex (Maximum).</span><br><span class="line"></span><br><span class="line">     pkzip -ex test.zip d:\wp51\*.wp</span><br><span class="line"></span><br><span class="line">  Using no compression with the zero option is useful when archiving files</span><br><span class="line">  which will either not compress or compress very little.  This would</span><br><span class="line">  generally be true when archiving .ZIP files.  By specifying no compression</span><br><span class="line">  PKZIP will store the files directly rather than first attempting to</span><br><span class="line">  compress them.</span><br><span class="line"></span><br><span class="line">  The compression method to use by default can be specified in the</span><br><span class="line">  configuration file.  If you have specified the super fast, fast or maximum</span><br><span class="line">  compression method in your configuration you may override this and use the</span><br><span class="line">  normal method by using the option <span class="ngb">-en</span>.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

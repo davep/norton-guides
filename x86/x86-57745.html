@@ -1,0 +1,169 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-57138.html">
+    <link rel="next" href="x86-59870.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-57138.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-59870.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INS             Input String From Port               Flags: Not altered</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">INS</span> destination,DX                                   CPU: 186+ <span class="ngb">IOpm</span></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   [ES:eDI] ← [port]</span><br><span class="line">                if DF = 0</span><br><span class="line">                   eDI ← eDI + n        ; n = 1 for byte, 2 for word,</span><br><span class="line">                else                    ;     4 for dword (386+)</span><br><span class="line">                   eDI ← eDI - n</span><br><span class="line">                endif</span><br><span class="line"></span><br><span class="line">    The INS instruction reads a value from a port (specified in the DX</span><br><span class="line">    register) and transfers it to memory (at ES:eDI). After the</span><br><span class="line">    transfer, eDI is updated to point to the next string location. The</span><br><span class="line">    port is always addressed through DX.  If the address-size</span><br><span class="line">    attribute is 16 bits, DI is used as destination-index register; if</span><br><span class="line">    32 bits, EDI is used.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Protected mode</span></span><br><span class="line">    An exception occurs if the current task has insufficient privilege</span><br><span class="line">    for the I/O. INS is not IOPL-sensitive in V86 mode.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span>:       This instruction is always translated by the</span><br><span class="line">                assembler into INSB, Input String Byte, INSW, Input</span><br><span class="line">                String Word, or INSD, Input String Dword, depending</span><br><span class="line">                upon whether destination refers to a string of bytes,</span><br><span class="line">                words or doublewords. In either case, you must</span><br><span class="line">                explicitly load the ES and eDI registers with the</span><br><span class="line">                location of the destination.</span><br><span class="line"></span><br><span class="line">                INSB, INSW, and INSD are synonyms for the byte, word,</span><br><span class="line">                and doubleword INS instructions that do not require an</span><br><span class="line">                operand. They are simpler to use but provide no type</span><br><span class="line">                or segment checking.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    These instructions normally use a REP prefix to indicate a block</span><br><span class="line">    read of the number of bytes as specified in eCX.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Example</span>:</span><br><span class="line">        les     di,[pSec]               ; Point ES:DI to storage</span><br><span class="line">        mov     dx,PORT_NUM             ; DX = port number</span><br><span class="line">        mov     cx,512                  ; No. of bytes to read</span><br><span class="line">        cld                             ; String ops forward</span><br><span class="line">        rep     insb                    ; Read the port</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    6C          INS  m8,DX              ; = INSB (186+)</span><br><span class="line">    6D          INS  m16,DX             ; = INSW (186+)</span><br><span class="line">    6D          INS  m32,DX             ; = INSD (386+)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Variations  Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    insb         1       -      14       5      15      17      9    NP</span><br><span class="line">    insw         1       -      14       5      15      17      9    NP</span><br><span class="line">    insd         1       -       -       -      15      17      9    NP</span><br><span class="line"></span><br><span class="line">                             Protected Mode</span><br><span class="line"></span><br><span class="line">                Bytes                           386     486     Pentium</span><br><span class="line">                 1                           9/29/29 10/32/30 6/24/22 NP</span><br><span class="line"></span><br><span class="line">                   Cycles for: CPL &lt;= IOPL / CPL &gt; IOPL / V86</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-125491.html">REP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-55994.html">IN</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-103734.html">OUT</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-105098.html">OUTS</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-26242.html">CLD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-154030.html">STD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-194054.html">IOPL</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

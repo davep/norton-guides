@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl52an00-style.css">
+    <title>Clipper 5.2c » Anomalies &amp; IE&#39;s v0.99 » Display » Internal Errors</title>
+    <meta name="description" content="Clipper 5.2c » Anomalies &amp; IE&#39;s v0.99">
+    <link rel="prev" href="cl52an00-34145.html">
+    <link rel="next" href="cl52an00-36241.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl52an00-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl52an00-34145.html">Previous</a></li>
+
+
+          
+
+<li><a href="cl52an00-4386.html">Up</a></li>
+
+
+          
+
+<li><a href="cl52an00-36241.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Display</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies &amp; Bugs</a></li>
+                  <li><a href="cl52an00-4386.html">Internal Errors</a></li>
+                  
+                </ul>
+              </li>
+              <li>Commercials</li>
+              <li>
+                <ul>
+                  <li><a href="cl52an00-45386.html">Packages</a></li>
+                  <li><a href="cl52an00-47050.html">Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>View</li>
+              <li>
+                <ul>
+                  <li><a href="cl52an00-48446.html">Credits</a></li>
+                  <li><a href="cl52an00-49457.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Internal Error # 5302</span></span><br><span class="line"> Conventional memory exhausted</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> This is an &#34;out of memory&#34; message that indicates that the Clipper</span><br><span class="line"> application no longer has sufficient conventional memory available to</span><br><span class="line"> continue.</span><br><span class="line"></span><br><span class="line"> Specifically, this error occurs when the virtual memory system</span><br><span class="line"> attempts and fails to bring a VM segment into conventional memory</span><br><span class="line"> that had been swapped out to disk or expanded memory.</span><br><span class="line"></span><br><span class="line"> Action:  Make more conventional memory available to the VM system.</span><br><span class="line"> This can be done in several ways:</span><br><span class="line"></span><br><span class="line">     Increase the amount of conventional memory available before</span><br><span class="line">     running the application -- remove TSRs, make use of 386 memory</span><br><span class="line">     manager, etc.</span><br><span class="line"></span><br><span class="line">     Use a third-party linker that can dynamically overlay C and</span><br><span class="line">     assembly-language code.  C and ASM are not automatically</span><br><span class="line">     overlaid by RTlink and therefore sit in conventional memory</span><br><span class="line">     throughout the execution of the application.</span><br><span class="line"></span><br><span class="line">     Ensure that any C or ASM code in use is making use of the</span><br><span class="line">     virtual memory system if it is doing dynamic memory allocation.</span><br><span class="line">     Any memory allocated using the Fixed Memory Allocator functions</span><br><span class="line">     _xalloc() and _xgrab() reduces the amount of conventional memory</span><br><span class="line">     available if it is not immediately freed.</span><br><span class="line"></span><br><span class="line"> <span class="ngu">(CA Internal Error Listing 03OCT93)</span></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

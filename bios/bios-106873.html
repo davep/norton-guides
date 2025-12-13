@@ -1,0 +1,114 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-103297.html">
+    <link rel="next" href="bios-109424.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-103297.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-94319.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-109424.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 13h, 04h            Verify Sectors                                    all</span></span><br><span class="line"></span><br><span class="line">    Verifies one or more fixed disk or diskette sectors.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 04h</span><br><span class="line">                AL = Number of sectors to verify</span><br><span class="line">                CH = Cylinder number (10-bit value; upper 2 bits in CL)</span><br><span class="line">                CL = Starting sector number</span><br><span class="line">                DH = Head number</span><br><span class="line">                DL = Drive number</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AH = Status of operation (See Service 01h)</span><br><span class="line">                AL = Number of sectors verified</span><br><span class="line">                CF = Set if error, cleared otherwise</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    Verifies the specified number of sectors starting at the specified</span><br><span class="line">    location (head, cylinder, and track) on the disk. The verification</span><br><span class="line">    process consists of checking that the sectors can be found and</span><br><span class="line">    read (checking address fields) and that the Cyclic Redundancy</span><br><span class="line">    Check (CRC) is correct. No memory area is needed for this</span><br><span class="line">    operation.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    Values in DL less than 80h specify floppy disks; values greater</span><br><span class="line">    than 80h specify fixed disks. For example, 0 means the first</span><br><span class="line">    floppy diskette, while 80h means the first fixed disk.</span><br><span class="line"></span><br><span class="line">    The cylinder number is a ten-bit quantity (0 through 1023). Its</span><br><span class="line">    most significant two bits are in bits 7 and 6 of CL; the remaining</span><br><span class="line">    eight bits are in CH. The starting sector number fits in the</span><br><span class="line">    low-order portion (lower 6 bits) of CL.</span><br><span class="line"></span><br><span class="line">    The value returned in AL (number of sectors verified) may not give</span><br><span class="line">    the correct number of sectors, even though no error occurred while</span><br><span class="line">    verifying. Use the results of the Carry flag and AH (status flag)</span><br><span class="line">    to determine the status of the operation.</span><br><span class="line"></span><br><span class="line">    The sectors verified must all be on the same cylinder and same</span><br><span class="line">    side for diskettes, while a hard disk can verify up to 255 sectors</span><br><span class="line">    at one time.</span><br><span class="line"></span><br><span class="line">    If an error is encountered verifying a sector, use Service 0h to</span><br><span class="line">    reset the drive and retry the operation. It is recommended that at</span><br><span class="line">    least 3 retries be attempted before an error is signalled, since</span><br><span class="line">    the error may have resulted from the diskette motor not being up</span><br><span class="line">    to speed.</span><br><span class="line"></span><br><span class="line">    For the AT, XT-286, and PC Convertible, the BIOS executes Int 15h,</span><br><span class="line">    Service 90h (Device Busy), for the diskette (Type = 01h) and the</span><br><span class="line">    fixed disk (Type = 00h) prior to waiting for the interrupt. Int</span><br><span class="line">    15h, Service 91h (Interrupt Complete), is executed upon</span><br><span class="line">    completion. Also diskette operations that require the diskette</span><br><span class="line">    motor to be on will call Int 15h, Service 90 (Device Busy), with</span><br><span class="line">    the type equal to &#34;Diskette Drive Motor Start&#34; (Type = FDh). This</span><br><span class="line">    allows the system to perform another task while the drive motor is</span><br><span class="line">    waiting to get up to speed.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-97437.html">Int 13h, 01h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

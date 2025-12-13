@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-90936.html">
+    <link rel="next" href="tasm4-96007.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-90936.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-96007.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">SEGMENT          Initiate segment definition                        Directive</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">SEGMENT</span> name [attributes]             ; Ideal mode</span><br><span class="line">  name <span class="ngb">SEGMENT</span> [attributes]             ; MASM mode</span><br><span class="line"></span><br><span class="line">    Most applications can use segments created using the standard memory</span><br><span class="line">    models (defined with the MODEL directive). To get full control over</span><br><span class="line">    all aspects of segment generation, the SEGMENT directive is required.</span><br><span class="line"></span><br><span class="line">    The SEGMENT directive opens a segment. All code or data following it</span><br><span class="line">    will be included in the segment, until a corresponding ENDS directive</span><br><span class="line">    closes the segment. If you have already defined a segment with the</span><br><span class="line">    same name, this segment is treated as a continuation of the previous</span><br><span class="line">    one. You need only specify the segment attributes the first time you</span><br><span class="line">    open the segment.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Segment <span class="ngb">attributes</span> are (TASM processes attribute values from left to</span><br><span class="line">    right):</span><br><span class="line"></span><br><span class="line">       - alignment attribute            tells the linker to ensure that</span><br><span class="line">                                        a segment begins at a specified</span><br><span class="line">                                        boundary</span><br><span class="line">       - combination attribute          tells the linker how to combine</span><br><span class="line">                                        segments from different modules</span><br><span class="line">       - class attribute                helps the linker determine the</span><br><span class="line">                                        order in which segments are to</span><br><span class="line">                                        be ordered in the program file</span><br><span class="line">                                        (e.g. separate code and data)</span><br><span class="line">       - size attribute                 (≥80386) tells linker if segment</span><br><span class="line">                                        is 16 or 32 bit</span><br><span class="line">       - access attribute               tells linker to apply specific</span><br><span class="line">                                        access restrictions to a segment</span><br><span class="line">                                        (currently only supported by the</span><br><span class="line">                                        Phar Lap linker)</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">align</span> specifies the type of memory boundary where the segment must</span><br><span class="line">    start: BYTE, WORD, DWORD, PARA (<span class="ngb">default</span>, 16 bytes), PAGE (256 bytes),</span><br><span class="line">    or MEMPAGE (4 KB).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">combine</span> specifies how segments from different modules but with the same</span><br><span class="line">    name will be combined at link time:</span><br><span class="line"></span><br><span class="line">      AT expr       locates segment at absolute paragraph address expr</span><br><span class="line">                    (typically used as a template, e.g for the BIOS data</span><br><span class="line">                    area: SEGMENT bios_data AT 0040h); the linker emits no</span><br><span class="line">                    code or data for AT segments</span><br><span class="line">      COMMON        locates this segment and all other segments with the</span><br><span class="line">                    same name at the same address (overlapping)</span><br><span class="line">      MEMORY        (same as PUBLIC)</span><br><span class="line">      PRIVATE       does not combine this segment with any other segments;</span><br><span class="line">                    this is the <span class="ngb">default</span></span><br><span class="line">      PUBLIC        concatenates all segments with the same name to form</span><br><span class="line">                    a single contiguous segment</span><br><span class="line">      STACK         concatenates all segments with the same name to form</span><br><span class="line">                    a single contiguous segment, then initializes SS to the</span><br><span class="line">                    beginning of the segment and SP to the length of the</span><br><span class="line">                    segment</span><br><span class="line">      VIRTUAL       defines a special kind of segment that will be treated</span><br><span class="line">                    as a common area and attached to another segment at</span><br><span class="line">                    link time (permits sharing of static data that comes</span><br><span class="line">                    into many modules from included files)</span><br><span class="line">      UNINIT        will cause TASM to warn if any data is written to the</span><br><span class="line">                    segment (use with uninitialized data segments)</span><br><span class="line">                    (e.g. SEGMENT udata2 PARA PUBLIC UNINIT &#34;BSS&#34;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">class</span> controls the ordering of segments at link time: segments with the</span><br><span class="line">    same class name are loaded into memory together, regardless of the order</span><br><span class="line">    in which they appear in the source file.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">size</span> specifies the default word size for the segment if 80386 code</span><br><span class="line">    generation is enabled, and can be either USE16 or USE32.</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    <span class="ngb">access</span></span><br><span class="line"></span><br><span class="line">       EXECONLY    segment is executable only</span><br><span class="line">       EXECREAD    segment is readable and executable</span><br><span class="line">       READONLY    segment is readable only</span><br><span class="line">       READWRITE   segment is readable and writable</span><br><span class="line"></span><br><span class="line">    The Phar Lap linker assumes that the segment is meant to run in</span><br><span class="line">    protected mode if you select any of these attributes, or if you select</span><br><span class="line">    the USE32 attribute. TASM assumes the READONLY attribute if you</span><br><span class="line">    selected the USE32 attribute but did not specify any of these four</span><br><span class="line">    attributes.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    Example showing mixed simplified and generic segmentation:</span><br><span class="line"></span><br><span class="line">        ; File: i.inc</span><br><span class="line">        ideal</span><br><span class="line">        model   nearstack compact, nolanguage</span><br><span class="line">        p186</span><br><span class="line">        segment bmp_image para public uninit &#34;FAR_BSS&#34;</span><br><span class="line">        ends</span><br><span class="line">        segment vga_graphics at 0A000h</span><br><span class="line">        ends</span><br><span class="line"></span><br><span class="line">        ; File: imain.asm</span><br><span class="line">        ideal</span><br><span class="line">        include &#34;i.inc&#34;</span><br><span class="line">        STACK   200h</span><br><span class="line">        DATASEG</span><br><span class="line">        fname   db &#34;d:\bmp\352x200.bmp&#34;,0</span><br><span class="line">        UFARDATA bmp_image                      ; Public segment</span><br><span class="line">                buf_size = 0fff0h</span><br><span class="line">        bmp_buffer db buf_size dup (?)</span><br><span class="line">        UFARDATA pcx_image                      ; Private segment</span><br><span class="line">        pcx_buffer db buf_size dup (?)</span><br><span class="line">        CODESEG</span><br><span class="line">        procdesc load_n_draw Pascal :dword, :word</span><br><span class="line">        StartupCode</span><br><span class="line">        call    load_n_draw Pascal, ds offset fname, buf_size</span><br><span class="line">        ExitCode 0</span><br><span class="line">        ;...</span><br><span class="line">        END     @Startup</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-65434.html">MODEL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-37443.html">ENDS</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-52048.html">GROUP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-176310.html">/op</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-178161.html">/s</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-165775.html">/a</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-59485.html">LARGESTACK</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3730666.html">
+    <link rel="next" href="rbint-3732626.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3730666.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3732626.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 160B  - Ms Windows 3.1 - Identify Tsrs                         </span>  [<span class="ngb">W</span>]</span><br><span class="line"></span><br><span class="line">   AX = 160Bh</span><br><span class="line">   ES:DI = 0000h:0000h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> ES:DI -&gt; TSR information structure (see #2325)</span><br><span class="line"><span class="ngb">Desc:</span>  this call allows Windows-aware TSRs to make themselves known to</span><br><span class="line">     Windows.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the TSR should first chain to the previous INT 2F handler, then</span><br><span class="line">     allocate a communication structure, place the returned ES:DI</span><br><span class="line">     pointer in the first field, and return a pointer to the new</span><br><span class="line">     structure</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=1605h,AX=160Ch,AX=4B01h,AX=4B05h</span><br><span class="line"></span><br><span class="line">Format of TSR-to-Windows information structure:</span><br><span class="line">Offset Size    Description (Table 2325)</span><br><span class="line"> 00h   DWORD   pointer to next structure</span><br><span class="line"> 04h   WORD    PSP segment</span><br><span class="line"> 06h   WORD    API version ID (0100h)</span><br><span class="line"> 08h   WORD    EXEC flags (how to load command specified by &#34;exec_cmd&#34;)</span><br><span class="line">       bit 0: &#34;WINEXEC&#34;</span><br><span class="line">       bit 1: &#34;LOADLIBRARY&#34;</span><br><span class="line">       bit 2: &#34;OPENDRIVER&#34;</span><br><span class="line"> 0Ah   WORD    &#34;exec_cmd_show&#34; (see #2326)</span><br><span class="line"> 0Ch   DWORD   &#34;exec_cmd&#34; pointer to command line to be executed</span><br><span class="line"> 10h  4 BYTEs  reserved (0)</span><br><span class="line"> 14h   DWORD   pointer to TSR ID block (see #2327)</span><br><span class="line"> 18h   DWORD   pointer to TSR data block or 0000h:0000h</span><br><span class="line"></span><br><span class="line">(Table 2326)</span><br><span class="line">Values for TSR information structure &#34;exec_cmd_show&#34;:</span><br><span class="line"> 00h   HIDE</span><br><span class="line"> 01h   SHOWNORMAL</span><br><span class="line"> 02h   SHOWMINIMIZED</span><br><span class="line"> 03h   SHOWMAXIMIZED</span><br><span class="line"> 04h   SHOWNOACTIVE</span><br><span class="line"> 05h   SHOW</span><br><span class="line"> 06h   MINIMIZE</span><br><span class="line"> 07h   SHOWMINNOACTIVE</span><br><span class="line"> 08h   SHOWNA</span><br><span class="line"> 09h   RESTORE</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this value is passed as the second parameter to the WinExec(),</span><br><span class="line">     LoadLibrary(), or OpenDriver() call used to execute a requested</span><br><span class="line">     command line</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2325</span><br><span class="line"></span><br><span class="line">Format of Norton Utilities 6.0 TSR ID block:</span><br><span class="line">Offset Size    Description (Table 2327)</span><br><span class="line"> 00h   WORD    length of name string</span><br><span class="line"> 02h  N BYTEs  name of TSR&#39;s executable</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2325</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

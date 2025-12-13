@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-57390.html">
+    <link rel="next" href="click-63475.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-57390.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-63475.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Getting Started</a></li>
+                  <li><a href="click-10263.html">Features</a></li>
+                  <li><a href="click-15048.html">Click .INI file</a></li>
+                  
+                </ul>
+              </li>
+              <li>Support</li>
+              <li>
+                <ul>
+                  <li><a href="click-32383.html">Support</a></li>
+                  <li><a href="click-34012.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Click! can now accept .LNK files as file lists. Each line starting with</span><br><span class="line">the letters FI will be parsed and if the file(s) referred to on that</span><br><span class="line">line exist in the current directory, they are included in the processing</span><br><span class="line">list. This is handy when you keep the source for more than one</span><br><span class="line">executable in a single directory, and don&#39;t want to process them all at</span><br><span class="line">once.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">In the output directory, Click! now creates two files named SRC_CROS.TXT</span><br><span class="line">and FNC_CROS.TXT.</span><br><span class="line"></span><br><span class="line">(from CLICK.INI...)</span><br><span class="line"></span><br><span class="line">SOURCE_XREF_FILE=SRC_CROS.TXT</span><br><span class="line"></span><br><span class="line">FUNCTION_XREF_FILE=FNC_CROS.TXT</span><br><span class="line"></span><br><span class="line">// options are YES, NO</span><br><span class="line">// please note that you must set ADD_CLICK_HEADER=YES</span><br><span class="line">FUNCTION_REF_INTO_SOURCE=YES</span><br><span class="line"></span><br><span class="line">// options are YES, NO</span><br><span class="line">// please note that you must set ADD_FUNCTION_HEADERS=YES</span><br><span class="line">FUNCTION_XREF_INTO_SOURCE=YES</span><br><span class="line"></span><br><span class="line">SRC_CROS.TXT contains a module to function reference for all modules</span><br><span class="line">included in the processing pass. If you set FUNCTION_REF_INTO_SOURCE to</span><br><span class="line">YES, then a final pass is made which incorporates the function</span><br><span class="line">information into the source file header.</span><br><span class="line"></span><br><span class="line">FNC_CROS.TXT contains a function called by function reference for the</span><br><span class="line">functions in all modules included in the processing pass. If you set</span><br><span class="line">FUNCTION_XREF_INTO_SOURCE to YES, then then a final pass is made which</span><br><span class="line">incorporates the function information into the source file function</span><br><span class="line">headers.</span><br><span class="line"></span><br><span class="line">This can be used as a complete function cross reference when all .PRG</span><br><span class="line">source files in a system are included in the processing pass.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">In addition to the above internal function tracking ability, Click! also</span><br><span class="line">scans the LIB= environment variable, gathers a list of all available</span><br><span class="line">libraries, and extracts the function names out of every library</span><br><span class="line">available via the environment settings.</span><br><span class="line"></span><br><span class="line">The function names gathered in this process are placed into an indexed</span><br><span class="line">master function table, which is used to identify unresolved functions</span><br><span class="line">including which library they might belong to.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Files are now processed in alpha order.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Rewrite of PROFILE.PRG to be a buffered system for faster program</span><br><span class="line">startup.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">If the output directory did not exist when the run was started, the</span><br><span class="line">initialization of the log file left off the starting time. Click! now</span><br><span class="line">checks for the output directory first.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">In .997, I added the ability to convert STORE commands to assignments.</span><br><span class="line"></span><br><span class="line">Continued lines were messed up in the process, so Click! now skips</span><br><span class="line">conversion on lines which continue, and a message is logged to the error</span><br><span class="line">file as to the module and line number. Hand corrected code can then be</span><br><span class="line">converted safely.</span><br><span class="line"></span><br><span class="line">ie:</span><br><span class="line"></span><br><span class="line">Current File =&gt; E:\CLICK\TEST.PRG</span><br><span class="line">No Conversion of STORE due to ; at end of line 1</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">In .998, I made any word followed by a ( into a function, however, it</span><br><span class="line">caused control structures to fail when followed by a parenthesis. So,</span><br><span class="line">these work OK now.</span><br><span class="line"></span><br><span class="line">do while ( x := somefunc() )</span><br><span class="line"></span><br><span class="line">enddo ( oGet:ExitState == GE_NOEXIT )</span><br><span class="line"></span><br><span class="line">This more robust way of handling things is controlled by the CLICK.INI</span><br><span class="line">file [CMD_LIST] section.</span><br><span class="line"></span><br><span class="line">(from CLICK.INI...)</span><br><span class="line"></span><br><span class="line">// Commands beginning with * never make sense when used as a function, so</span><br><span class="line">// when they are followed by a (, they are NOT considered to be functions.</span><br><span class="line">// THIS ALLOWS YOU TO DEFINE WHICH COMMANDS WILL NOT BE CONSIDERED TO BE</span><br><span class="line">// FUNCTIONS. If you prefer for Click! to treat all commands as if they</span><br><span class="line">// cannot be functions, then place a * before each command.</span><br><span class="line">// Good programming practices never allow key words to be used as</span><br><span class="line">// functions.</span><br><span class="line"></span><br><span class="line">ACCEPT</span><br><span class="line">ADDITIVE</span><br><span class="line">*ALL</span><br><span class="line">*APPEND BLANK</span><br><span class="line">*APPEND FROM</span><br><span class="line">etc...</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Added many more functions and commands to the CLICK.INI file</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

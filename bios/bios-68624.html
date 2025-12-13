@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-68256.html">
+    <link rel="next" href="bios-69934.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-68256.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-54487.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-69934.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 10h, 1000h          Set Palette Register                         EGA, VGA</span></span><br><span class="line"></span><br><span class="line">    Sets one of the 16 palette registers (&#34;EGA registers&#34;).</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX = 1000h</span><br><span class="line">                BL = Palette register (00h..0Fh)</span><br><span class="line">                BH = Color value</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  Nothing</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    Each of the 16 palette registers can take on 1 of 64 values. the</span><br><span class="line">    value in BH is formatted as follows:</span><br><span class="line"></span><br><span class="line">          Bit 7 - Reserved</span><br><span class="line">          Bit 6 - Reserved</span><br><span class="line">          Bit 5 - Secondary Red</span><br><span class="line">          Bit 4 - Secondary Green</span><br><span class="line">          Bit 3 - Secondary Blue</span><br><span class="line">          Bit 2 - Red</span><br><span class="line">          Bit 1 - Green</span><br><span class="line">          Bit 0 - Blue</span><br><span class="line"></span><br><span class="line">    The secondary colors have an intensity of 1/3, while the normal</span><br><span class="line">    colors have an intensity of 2/3. For example, BH = 02h will</span><br><span class="line">    produce green, BH = 10h will produce a dim green, and BH = 12h</span><br><span class="line">    will produce a bright green.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The default values for the palette registers are defined below:</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Palette</span></span><br><span class="line">        <span class="ngb">Register        Color value         Color</span></span><br><span class="line">          00h               00h             Black</span><br><span class="line">          01h               01h             Blue</span><br><span class="line">          02h               02h             Green</span><br><span class="line">          03h               03h             Cyan</span><br><span class="line">          04h               04h             Red</span><br><span class="line">          05h               05h             Magenta</span><br><span class="line">          06h               14h             Brown</span><br><span class="line">          07h               07h             White</span><br><span class="line">          08h               38h             Dark Gray</span><br><span class="line">          09h               39h             Light Blue</span><br><span class="line">          0Ah               3Ah             Light Green</span><br><span class="line">          0Bh               3Bh             LIght Cyan</span><br><span class="line">          0Ch               3Ch             Light Red</span><br><span class="line">          0Dh               3Dh             Light Magenta</span><br><span class="line">          0Eh               3Eh             Yellow</span><br><span class="line">          0Fh               3Fh             Bright White</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

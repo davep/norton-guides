@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-37906.html">
+    <link rel="next" href="dpmiv1-39625.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-37906.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-39625.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Get Extended Processor Exception Handler Vector</span><br><span class="line">(Real Mode)</span><br><span class="line"></span><br><span class="line">Returns the address of the client&#39;s protected mode handler</span><br><span class="line">for the specified real mode exception.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 0211H</span><br><span class="line">   BL     = exception number (00H-1FH)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   if function successful</span><br><span class="line">   Carry flag= clear</span><br><span class="line">   CX:(E)DX= selector</span><br><span class="line">   :offset of exception handler</span><br><span class="line"></span><br><span class="line">   if function unsuccessful</span><br><span class="line">   Carry flag= set</span><br><span class="line">   AX     = error code</span><br><span class="line">           8021H   invalid value (BL not in range 00H-1FH)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  CX:(E)DX does not specify a real-mode segment:offset.</span><br><span class="line">   The reason is that this function allows a client to get</span><br><span class="line">   the address of the exception handler which will receive</span><br><span class="line">   control in protected mode when the specified exception</span><br><span class="line">   occurs in real mode (i.e. the host will provide an</span><br><span class="line">   implied mode switch for the purposes of servicing the</span><br><span class="line">   exception, then return to real mode after  the handler</span><br><span class="line">   exits)..</span><br><span class="line">o  Real mode exceptions are sent to the primary client of</span><br><span class="line">   the virtual machine.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

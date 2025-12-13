@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » OverView » Questions and Answers</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-277630.html">
+    <link rel="next" href="mrdebug-281988.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-277630.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-241082.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-281988.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">How do I link with CA-Clipper Tools?</span></span><br><span class="line"> Linking MrDebug, MrWindow and CA-Clipper Tools</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> The basic problems lie within the extended driver, CTUS or CTUSP. With</span><br><span class="line"> MrDebug (and most 3rd party libraries), this module cripples Clipper and</span><br><span class="line"> breaks some Internals.</span><br><span class="line"></span><br><span class="line"> MrWindow.LIB resolves these problems and allows MrDebug to be used with</span><br><span class="line"> CA-Clipper Tools.</span><br><span class="line"></span><br><span class="line"> In order to use MrDebug with CA-Clipper Tools you must create a link script</span><br><span class="line"> similar to the following example. Please note that the order of libraries is</span><br><span class="line"> very important. If you link in a different order, you will get one of many</span><br><span class="line"> different problems, warnings or messages:</span><br><span class="line"></span><br><span class="line">      FILE Test</span><br><span class="line">      FILE...other files</span><br><span class="line">      FILE _MrdErSy</span><br><span class="line">      FILE...other files</span><br><span class="line">      FILE MrDebug.Lib</span><br><span class="line"></span><br><span class="line">      LIB MrWindow             &lt;- MrWindow replaces the CTUS.OBJ or CTUSP.OBJ</span><br><span class="line">      LIB....other libraries</span><br><span class="line">      LIb BlxRatex</span><br><span class="line">      LIB....other libraries</span><br><span class="line"></span><br><span class="line">      BLINKER EXECUTABLE EXTENDED</span><br><span class="line">      SEARCH BlxClp52</span><br><span class="line"></span><br><span class="line">      LIB Clipper              &lt;- Must be a CLIPPER.LIB</span><br><span class="line">      LIB ctp                  &lt;- Clipper Tools library</span><br><span class="line">      FILE ctintp              &lt;- CTINTP (if used)</span><br><span class="line">      NOBELL</span><br><span class="line"></span><br><span class="line">      MAP a, s</span><br><span class="line"></span><br><span class="line"> Notes:</span><br><span class="line"></span><br><span class="line"> ■ If you link in CTUSP you may get one of may different problems. Depending</span><br><span class="line">   upon where you put CTUSP you may get an incorrect GPF report in _DBGABORT</span><br><span class="line">   - which should really be &#39;SCREEN_DRIVER_TEXT&#39;.</span><br><span class="line"></span><br><span class="line"> ■ Linking the above link script with Exospace will give 1 million and 1</span><br><span class="line">   duplicate definitions and finally a fixup overflow.</span><br><span class="line"></span><br><span class="line"> ■ Moving MrWindow after the CTP library will result in Unresolved externals:</span><br><span class="line"></span><br><span class="line">      BLINKER : 1115 : CTP.LIB(_OBJ2) : &#39;_WMODE&#39; : unresolved external</span><br><span class="line">      BLINKER : 1115 : CTP.LIB(_OBJ4) : &#39;_WPOINT&#39; : unresolved external</span><br><span class="line">      BLINKER : 1115 : CTP.LIB(_OBJ5) : &#39;_WFPOINT&#39; : unresolved external</span><br><span class="line"></span><br><span class="line">   so make sure MrWindow comes before CTP</span><br><span class="line"></span><br><span class="line"> ■ If CLIPPER.LIB is taken out or it is moved after the CT stuff in an</span><br><span class="line">   EXOSPACE link script the you get the following errors:</span><br><span class="line"></span><br><span class="line">   ERROR(#4029):  File(D:\CC\TERM\GT.C) Multiple definition of</span><br><span class="line">       &#34;DISPCOUNT&#34; from file &#34;GTSTUB.ASM&#34;.</span><br><span class="line">   ERROR(#4029):  File(D:\CC\TERM\GT.C) Multiple definition of</span><br><span class="line">       &#34;__gtDispBegin&#34; from file &#34;GTSTUB.ASM&#34;.</span><br><span class="line">   ERROR(#4029):  File(D:\CC\TERM\GT.C) Multiple definition of</span><br><span class="line">       &#34;__gtDispEnd&#34; from file &#34;GTSTUB.ASM&#34;.</span><br><span class="line"></span><br><span class="line">   followed by an</span><br><span class="line"></span><br><span class="line">   ERROR(#4020):  File(D:\CC\TERM\GT.C) Attempt to fixup reference</span><br><span class="line">        to &#34;__GTDISPEND&#34; in segment &#34;GT_TEXT&#34; relative to segment &#34;GT_TEXT&#34;.</span><br><span class="line">   ERROR(#4056):  Abort error level exceeded.</span><br><span class="line"></span><br><span class="line">   so leave Clipper.Lib where it is.</span><br><span class="line"></span><br><span class="line"> ■ If CLIPPER.LIB is taken out or it is moved after the CT stuff in a</span><br><span class="line">   CAUSEWAY link script the you get the following errors:</span><br><span class="line"></span><br><span class="line">     Symbol defined more than once: DISPCOUNT</span><br><span class="line">     Defined in E:\CT3\LIB\CTP.LIB, duplicated in E:\C52D\LIB\CLIPPER.LIB</span><br><span class="line"></span><br><span class="line">     Symbol defined more than once: __GTDISPBEGIN</span><br><span class="line">     Defined in E:\CT3\LIB\CTP.LIB, duplicated in E:\C52D\LIB\CLIPPER.LIB</span><br><span class="line"></span><br><span class="line">     Symbol defined more than once: __GTDISPEND</span><br><span class="line">     Defined in E:\CT3\LIB\CTP.LIB, duplicated in E:\C52D\LIB\CLIPPER.LIB</span><br><span class="line"></span><br><span class="line">   When you run the application and you will get a GPF in GT_TEXT segment if</span><br><span class="line">   you use DISPBEGIN or DISPEND</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

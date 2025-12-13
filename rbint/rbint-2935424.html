@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2934271.html">
+    <link rel="next" href="rbint-2936936.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2934271.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2936936.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - Connection Services - Get Connection Inf</span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = E3h subfn 16h</span><br><span class="line">   DS:SI -&gt; request buffer (see #1605)</span><br><span class="line">   ES:DI -&gt; reply buffer (see #1606)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status</span><br><span class="line">       00h successful</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=D7h,AH=DCh&#34;NetWare&#34;,AH=E3h/SF=14h</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Get Connection Information&#34; request buffer:</span><br><span class="line">Offset Size    Description (Table 1605)</span><br><span class="line"> 00h   WORD    0002h (length of following data)</span><br><span class="line"> 02h   BYTE    16h (subfunction &#34;Get Connection Information&#34;)</span><br><span class="line"> 03h   BYTE    logical connection number (01h-64h)</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Get Connection Information&#34; reply buffer:</span><br><span class="line">Offset Size    Description (Table 1606)</span><br><span class="line"> 00h   WORD    (call) 003Eh (length of following results buffer)</span><br><span class="line"> 02h   DWORD   (big-endian) object ID for object logged in on the connection</span><br><span class="line">       00000000h if no object logged in</span><br><span class="line"> 06h   WORD    (big-endian) type of object</span><br><span class="line"> 08h 48 BYTEs  name of object</span><br><span class="line"> 38h  7 BYTEs  login time (see #1607)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  much of the Novell documentation incorrectly states the reply buffer</span><br><span class="line">     length as 3Fh instead of 40h, which corresponds to a results length</span><br><span class="line">     of 3Dh (61) bytes instead of the correct 3Eh (62) bytes</span><br><span class="line"></span><br><span class="line">Format of NetWare login time:</span><br><span class="line">Offset Size    Description (Table 1607)</span><br><span class="line"> 00h   BYTE    year (80-99 = 1980-1999, 00-79 = 2000-2079)</span><br><span class="line"> 01h   BYTE    month (1-12)</span><br><span class="line"> 02h   BYTE    day (1-31)</span><br><span class="line"> 03h   BYTE    hour (0-23)</span><br><span class="line"> 04h   BYTE    minute (0-59)</span><br><span class="line"> 05h   BYTE    second (0-59)</span><br><span class="line"> 06h   BYTE    day of week (0 = Sunday)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

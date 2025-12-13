@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4952680.html">
+    <link rel="next" href="rbint-4955129.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4952680.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4908825.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4955129.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 60  u - Hp 95lx System Manager - &#34;edit_init&#34;                         </span>  [<span class="ngb">b</span>]</span><br><span class="line"></span><br><span class="line">   DI = 0400h</span><br><span class="line">   STACK:  2 WORDs unused dummies (for calls from high level languages)</span><br><span class="line">       DWORD   pointer to edit record (see #2956)</span><br><span class="line">       DWORD   pointer to string to be edited</span><br><span class="line">       WORD    initial length of string being edited</span><br><span class="line">       WORD    maximum length of edited string</span><br><span class="line">       WORD    row of edit field</span><br><span class="line">       WORD    leftmost column of edit field</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> ???</span><br><span class="line">   STACK unchanged</span><br><span class="line"></span><br><span class="line">Format of HP 95LX edit record:</span><br><span class="line">Offset Size    Description (Table 2956)</span><br><span class="line"> 00h   WORD    current length of edit buffer</span><br><span class="line"> 02h   BYTE    flag for special processing on first character</span><br><span class="line"> 03h   BYTE    flags</span><br><span class="line">       bit 0: tab handling</span><br><span class="line"> 04h   WORD    editing in prompt window?</span><br><span class="line"> 06h   DWORD   pointer to top line of prompt window message</span><br><span class="line"> 0Ah   WORD    length of top line of prompt</span><br><span class="line"> 0Ch   DWORD   pointer to second line of prompt window message</span><br><span class="line"> 10h   WORD    length of second line of prompt</span><br><span class="line"> 12h 80 BYTEs  workspace for editing</span><br><span class="line"> 62h  2 WORDs  line array needed for multi-line editing</span><br><span class="line"> 66h 36 BYTEs  multi-line edit record (see #2957)</span><br><span class="line"> 8Ah   WORD    displayable columns</span><br><span class="line"></span><br><span class="line">Format of HP 95LX multi-line edit record:</span><br><span class="line">Offset Size    Description (Table 2957)</span><br><span class="line"> 00h   DWORD   pointer to user-supplied edit buffer</span><br><span class="line"> 04h   WORD    length of edit buffer</span><br><span class="line"> 06h   WORD    current cursor position</span><br><span class="line"> 08h   WORD    starting row of edit area (-3 is topmost, 0 is first user line)</span><br><span class="line"> 0Ah   WORD    starting column of edit area</span><br><span class="line"> 0Ch   WORD    height of edit area</span><br><span class="line"> 0Eh   WORD    width of edit area</span><br><span class="line"> 10h   WORD    current top row (-3 is topmost, 0 is first user line)</span><br><span class="line"> 12h   WORD    number of rows displayable</span><br><span class="line"> 14h   BYTE    cursor column</span><br><span class="line"> 15h   BYTE    01h if buffer has been modified</span><br><span class="line"> 16h   BYTE    first displayable column (ticker fields only)</span><br><span class="line"> 17h   BYTE    01h if wordwrap enabled, FFh if ticker field</span><br><span class="line"> 18h   DWORD   pointer to array of line starts (at least one bigger than edit</span><br><span class="line">         area is high)</span><br><span class="line"> 1Ch   BYTE    currently marking?</span><br><span class="line"> 1Dh   BYTE    flag</span><br><span class="line"> 1Eh   WORD    offset of mark start</span><br><span class="line"> 20h   WORD    offset of mark end (inclusive)</span><br><span class="line"> 22h   WORD    displayable columns</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

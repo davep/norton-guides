@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » OverView » Questions and Answers</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-248387.html">
+    <link rel="next" href="mrdebug-250613.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-248387.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-241082.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-250613.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">My mouse scrambles the screen in 132x50 text mode?</span></span><br><span class="line"> Problem with mouse driver</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> Most mouse drivers assume that any text mode over 80 columns by 25 rows is a</span><br><span class="line"> graphics mode and so attempts to use a graphics cursor. Unfortunately this</span><br><span class="line"> is not the case.</span><br><span class="line"></span><br><span class="line"> The following steps may help you to resolve the problem:</span><br><span class="line"></span><br><span class="line"> 1. Refer to your video card hardware documentation for a text video mode for</span><br><span class="line">    a large text screen number in hexadecimal, for example, the Cirrus Logic</span><br><span class="line">    CL542X has support for 132 text columns by 43 text rows, which is mode 54</span><br><span class="line">    in hexadecimal.</span><br><span class="line"></span><br><span class="line"> 2. Create a text file that contains the following text:</span><br><span class="line"></span><br><span class="line">        <span class="fg14 bg3">n test.com      </span></span><br><span class="line">        <span class="fg14 bg3">a 100           </span></span><br><span class="line">        <span class="fg14 bg3">MOV ax, 00&lt;n&gt;   </span></span><br><span class="line">        <span class="fg14 bg3">INT 10          </span></span><br><span class="line">        <span class="fg14 bg3">MOV ax, 40      </span></span><br><span class="line">        <span class="fg14 bg3">MOV es, ax      </span></span><br><span class="line">        <span class="fg14 bg3">MOV di, 0049    </span></span><br><span class="line">        <span class="fg14 bg3">MOV al, 3       </span></span><br><span class="line">        <span class="fg14 bg3">STOSB           </span></span><br><span class="line">        <span class="fg14 bg3">INT 20          </span></span><br><span class="line">        <span class="fg14 bg3">                </span></span><br><span class="line">        <span class="fg14 bg3">rcx             </span></span><br><span class="line">        <span class="fg14 bg3">12              </span></span><br><span class="line">        <span class="fg14 bg3">w               </span></span><br><span class="line">        <span class="fg14 bg3">q               </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    where &lt;n&gt; on the third line is the video mode that you wish to use, in</span><br><span class="line">    the case of the Cirrus Logic 542X is 54 ie. <span class="fg14 bg3">MOV ax, 0054    </span></span><br><span class="line"></span><br><span class="line"> Please note that although the above is not case sensitive, the placement of</span><br><span class="line"> the blank line is very important - so don&#39;t remove it.</span><br><span class="line"></span><br><span class="line"> 3. Save the file as HELPMRD.DEB</span><br><span class="line"></span><br><span class="line"> 4. At a DOS Prompt type:</span><br><span class="line"></span><br><span class="line">        DEBUG &lt; HELPMRD.DEB</span><br><span class="line"></span><br><span class="line"> This will create a small TEST.COM program that you may run before MrDebug to</span><br><span class="line"> set the video mode and mouse up for use with MrDebug. In most cases this</span><br><span class="line"> will cure the problem of garbage on the screen - if only we could do this</span><br><span class="line"> for our code!</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

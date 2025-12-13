@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-423288.html">
+    <link rel="next" href="rbint-434043.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-423288.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-434043.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 10 Fn 00  - Video - Set Video Mode                                   </span>  [<span class="ngb">V</span>]</span><br><span class="line"></span><br><span class="line">   AH = 00h</span><br><span class="line">   AL = desired video mode (see #0009)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = video mode flag (Phoenix, AMI BIOS)</span><br><span class="line">       20h mode &gt; 7</span><br><span class="line">       30h modes 0-5 and 7</span><br><span class="line">       3Fh mode 6</span><br><span class="line">   AL = CRT controller mode byte (Phoenix 386 BIOS v1.10)</span><br><span class="line"><span class="ngb">Desc:</span>  specify the display mode for the currently active display adapter</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> IBM standard modes do not clear the screen if the high bit of AL is set</span><br><span class="line">     (EGA or higher only)</span><br><span class="line">   the Tseng ET4000 chipset is used by the Orchid Prodesigner II, Diamond</span><br><span class="line">     SpeedSTAR VGA, Groundhog Graphics Shadow VGA, Boca Super X VGA,</span><br><span class="line">     Everex EV-673, etc.</span><br><span class="line">   the installation check for Ahead adapters is the signature &#34;AHEAD&#34; at</span><br><span class="line">     C000h:0025h</span><br><span class="line">   the installation check for Paradise adapters is the signature &#34;VGA=&#34; at</span><br><span class="line">     C000h:007Dh</span><br><span class="line">   the installation check for Oak Tech OTI-037/057/067/077 chipsets is the</span><br><span class="line">     signature &#34;OAK VGA&#34; at C000h:0008h</span><br><span class="line">   the installation check for ATI adapters is the signature &#34;761295520&#34; at</span><br><span class="line">     C000h:0031h; the byte at C000h:0043h indicates the chipset revision:</span><br><span class="line">       31h for 18800</span><br><span class="line">       32h for 18800-1</span><br><span class="line">       33h for 18800-2</span><br><span class="line">       34h for 18800-4</span><br><span class="line">       35h for 18800-5</span><br><span class="line">       62h for 68800AX (Mach32) (see also #0656)</span><br><span class="line">     the two bytes at C000h:0040h indicate the adapter type</span><br><span class="line">       &#34;22&#34; EGA Wonder</span><br><span class="line">       &#34;31&#34; VGA Wonder</span><br><span class="line">       &#34;32&#34; EGA Wonder800+</span><br><span class="line">     the byte at C000h:0042h contains feature flags</span><br><span class="line">       bit 1: mouse port present</span><br><span class="line">       bit 4: programmable video clock</span><br><span class="line">     the byte at C000h:0044h contains additional feature flags if chipset</span><br><span class="line">       byte &gt; 30h (see #0008)</span><br><span class="line">   the installation check for Genoa video adapters is the signature</span><br><span class="line">     77h XXh 99h 66h at C000h:NNNNh, where NNNNh is stored at C000h:0037h</span><br><span class="line">     and XXh is</span><br><span class="line">       00h for Genoa 6200/6300</span><br><span class="line">       11h for Genoa 6400/6600</span><br><span class="line">       22h for Genoa 6100</span><br><span class="line">       33h for Genoa 5100/5200</span><br><span class="line">       55h for Genoa 5300/5400</span><br><span class="line">     for SuperEGA BIOS v2.41+, C000h:0057h contains the product level</span><br><span class="line">     for SuperEGA BIOS v3.0+, C000h:0070h contains the signature</span><br><span class="line">       &#34;EXTMODE&#34;, indicating support for extended modes</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0070h,AX=007Eh,AX=10E0h,AX=10F0h,AH=40h,AX=6F05h,AH=FFh&#34;GO32&#34;</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 33/AX=0028h,INT 5F/AH=00h,INT 62/AX=0001h,MEM 0040h:0049h</span><br><span class="line">Index: installation check;Tseng ET4000|installation check;Ahead video cards</span><br><span class="line">Index: installation check;Oak Technologies|installation check;ATI video cards</span><br><span class="line">Index: installation check;Paradise video|installation check;Genoa video cards</span><br><span class="line"></span><br><span class="line">Bitfields for ATI additional feature flags:</span><br><span class="line">Bit(s) Description (Table 0008)</span><br><span class="line"> 0 70 Hz non-interlaced display</span><br><span class="line"> 1 Korean (double-byte) characters</span><br><span class="line"> 2 45 MHz memory clock rather than 40 MHz</span><br><span class="line"> 3 zero wait states</span><br><span class="line"> 4 paged ROMs</span><br><span class="line"> 6 no 8514/A monitor support</span><br><span class="line"> 7 HiColor DAC</span><br><span class="line"></span><br><span class="line">(Table 0009)</span><br><span class="line">Values for video mode:</span><br><span class="line">     text/ text pixel  pixel   colors disply scrn  system</span><br><span class="line">     grph resol     box  resolution       pages  addr</span><br><span class="line"> 00h = T  40x25     8x8   320x200  16gray    8   B800 CGA,PCjr,Tandy</span><br><span class="line">     = T  40x25     8x14  320x350  16gray    8   B800 EGA</span><br><span class="line">     = T  40x25     8x16  320x400   16   8   B800 MCGA</span><br><span class="line">     = T  40x25     9x16  360x400   16   8   B800 VGA</span><br><span class="line"> 01h = T  40x25     8x8   320x200   16   8   B800 CGA,PCjr,Tandy</span><br><span class="line">     = T  40x25     8x14  320x350   16   8   B800 EGA</span><br><span class="line">     = T  40x25     8x16  320x400   16   8   B800 MCGA</span><br><span class="line">     = T  40x25     9x16  360x400   16   8   B800 VGA</span><br><span class="line"> 02h = T  80x25     8x8   640x200  16gray    4   B800 CGA,PCjr,Tandy</span><br><span class="line">     = T  80x25     8x14  640x350  16gray    8   B800 EGA</span><br><span class="line">     = T  80x25     8x16  640x400   16   8   B800 MCGA</span><br><span class="line">     = T  80x25     9x16  720x400   16   8   B800 VGA</span><br><span class="line"> 03h = T  80x25     8x8   640x200   16   4   B800 CGA,PCjr,Tandy</span><br><span class="line">     = T  80x25     8x14  640x350   16/64    8   B800 EGA</span><br><span class="line">     = T  80x25     8x16  640x400   16   8   B800 MCGA</span><br><span class="line">     = T  80x25     9x16  720x400   16   8   B800 VGA</span><br><span class="line">     = T  80x43     8x8   640x350   16   4   B800 EGA,VGA [17]</span><br><span class="line">     = T  80x50     8x8   640x400   16   4   B800 VGA [17]</span><br><span class="line"> 04h = G  40x25     8x8   320x200    4   .   B800 CGA,PCjr,EGA,MCGA,VGA</span><br><span class="line"> 05h = G  40x25     8x8   320x200   4gray    .   B800 CGA,PCjr,EGA</span><br><span class="line">     = G  40x25     8x8   320x200    4   .   B800 MCGA,VGA</span><br><span class="line"> 06h = G  80x25     8x8   640x200    2   .   B800 CGA,PCjr,EGA,MCGA,VGA</span><br><span class="line">     = G  80x25      .   . mono      .   B000 HERCULES.COM on HGC [14]</span><br><span class="line"> 07h = T  80x25     9x14  720x350  mono     var  B000 MDA,Hercules,EGA</span><br><span class="line">     = T  80x25     9x16  720x400  mono      .   B000 VGA</span><br><span class="line"> 08h = T 132x25     8x8  1056x200   16   .   B800 ATI EGA/VGA Wonder [2]</span><br><span class="line">     = T 132x25     8x8  1056x200  mono      .   B000 ATI EGA/VGA Wonder [2]</span><br><span class="line">     = G  20x25     8x8   160x200   16   . .  PCjr, Tandy 1000</span><br><span class="line">     = G  80x25     8x16  640x400  color     . .  Tandy 2000</span><br><span class="line">     = G  90x43     8x8   720x348  mono      .   B000 Hercules + MSHERC.COM</span><br><span class="line">     = G  90x45     8x8   720x360  mono      .   B000 Hercules + HERKULES [11]</span><br><span class="line">     = G  90x29     8x12  720x348  mono      . .  Hercules + HERCBIOS [15]</span><br><span class="line"> 09h = G  40x25     8x8   320x200   16   . .  PCjr, Tandy 1000</span><br><span class="line">     = G  80x25     8x16  640x400  mono      . .  Tandy 2000</span><br><span class="line">     = G  90x43     8x8   720x348  mono      . .  Hercules + HERCBIOS [15]</span><br><span class="line"> 0Ah = G  80x25     8x8   640x200    4   . .  PCjr, Tandy 1000</span><br><span class="line"> 0Bh =  reserved                  (EGA BIOS internal use)</span><br><span class="line">     = G  80x25     8x8   640x200   16   . .  Tandy 1000 SL/TL [13]</span><br><span class="line"> 0Ch =  reserved                  (EGA BIOS internal use)</span><br><span class="line"> 0Dh = G  40x25     8x8   320x200   16   8   A000 EGA,VGA</span><br><span class="line"> 0Eh = G  80x25     8x8   640x200   16   4   A000 EGA,VGA</span><br><span class="line"> 0Fh = G  80x25     8x14  640x350  mono      2   A000 EGA,VGA</span><br><span class="line"> 10h = G  80x25     8x14  640x350    4   2   A000 64k EGA</span><br><span class="line">     = G    .    .    640x350   16   .   A000 256k EGA,VGA</span><br><span class="line"> 11h = G  80x30     8x16  640x480  mono      .   A000 VGA,MCGA,ATI EGA,ATI VIP</span><br><span class="line"> 12h = G  80x30     8x16  640x480   16/256K  .   A000 VGA,ATI VIP</span><br><span class="line">     = G  80x30     8x16  640x480   16/64    .   A000 ATI EGA Wonder</span><br><span class="line">     = G    .    .    640x480   16   . .  UltraVision+256K EGA</span><br><span class="line"> 13h = G  40x25     8x8   320x200  256/256K  .   A000 VGA,MCGA,ATI VIP</span><br><span class="line"> 14h = T 132x25     Nx16     .  16   .   B800 XGA, IBM Enhanced VGA [3]</span><br><span class="line">     = T 132x25     8x16 1056x400   16/256K  . .  Cirrus CL-GD5420/5422/5426</span><br><span class="line">     = G  80x25     8x8   640x200    .   . .  Lava Chrome II EGA</span><br><span class="line">     = G    .    .    640x400   16   . .  Tecmar VGA/AD</span><br><span class="line"> 15h = G  80x25     8x14  640x350    .   . .  Lava Chrome II EGA</span><br><span class="line"> 16h = G  80x25     8x14  640x350    .   . .  Lava Chrome II EGA</span><br><span class="line">     = G    .    .    800x600   16   . .  Tecmar VGA/AD</span><br><span class="line"> 17h = T 132x25      .   .   .   . .  Tecmar VGA/AD</span><br><span class="line">     = T  80x43     8x8   640x348   16   4   B800 Tseng ET4000 BIOS [10]</span><br><span class="line">     = G  80x34     8x14  640x480    .   . .  Lava Chrome II EGA</span><br><span class="line"> 18h = T  80x30     9x16  720x480   16   1   A000 Realtek RTVGA [12]</span><br><span class="line">     = T 132x25      .   . mono      .   B000 Cirrus 5320 chipset</span><br><span class="line">     = T 132x44     8x8  1056x352  mono      .   B000 Tseng Labs EVA</span><br><span class="line">     = T 132x44     9x8  1188x352   4gray    2   B000 Tseng ET3000 chipset</span><br><span class="line">     = T 132x44     8x8  1056x352   16/256   2   B000 Tseng ET4000 chipset</span><br><span class="line">     = G  80x34     8x14  640x480    .   . .  Lava Chrome II EGA</span><br><span class="line">     = G         1024x768   16   . .  Tecmar VGA/AD</span><br><span class="line"> 19h = T  80x43     9x11  720x473   16   1   A000 Realtek RTVGA [12]</span><br><span class="line">     = T 132x25     8x14 1056x350  mono      .   B000 Tseng Labs EVA</span><br><span class="line">     = T 132x25     9x14 1188x350   4gray    4   B000 Tseng ET3000 chipset</span><br><span class="line">     = T 132x25     8x14 1056x350   16/256   4   B000 Tseng ET4000 chipset</span><br><span class="line">     = T 132x34      .   . mono      .   B000 Cirrus 5320 chipset</span><br><span class="line"> 1Ah = T  80x60     9x8   720x480   16   1   A000 Realtek RTVGA [12]</span><br><span class="line">     = T 132x28     8x13 1056x364  mono      .   B000 Tseng Labs EVA</span><br><span class="line">     = T 132x28     9x13 1188x364   4gray    4   B000 Tseng ET3000 chipset</span><br><span class="line">     = T 132x28     8x13 1056x364   16/256   4   B000 Tseng ET4000 chipset</span><br><span class="line">     = T 132x44      .   . mono      .   B000 Cirrus 5320 chipset</span><br><span class="line">     = G    .    .    640x350  256   . .  Tecmar VGA/AD</span><br><span class="line"> 1Bh = T 132x25     9x14 1188x350   16   1   A000 Realtek RTVGA [12]</span><br><span class="line">     = G    .    .    640x400  256   . .  Tecmar VGA/AD</span><br><span class="line"> 1Ch = T 132x25      .   .   .   . .  Cirrus 5320 chipset</span><br><span class="line">     = T 132x30     9x16 1188x480   16   1   A000 Realtek RTVGA [12]</span><br><span class="line">     = G    .    .    640x480  256   . .  Tecmar VGA/AD</span><br><span class="line"> 1Dh = T 132x43      .   .   .   . .  Cirrus 5320 chipset</span><br><span class="line">     = T 132x43     9x11 1188x473   16   1   A000 Realtek RTVGA [12]</span><br><span class="line">     = G    .    .    800x600  256   . .  Tecmar VGA/AD</span><br><span class="line"> 1Eh = T 132x44      .   .   .   . .  Cirrus 5320 chipset</span><br><span class="line">     = T 132x60     9x8  1188x480   16   1   A000 Realtek RTVGA [12]</span><br><span class="line"> 1Fh = G 100x75     8x8   800x600   16   1   A000 Realtek RTVGA</span><br><span class="line"> 20h = T 132x25      .   .  16   . .  Avance Logic AL2101</span><br><span class="line">     = G  40x16      .    240x128  mono      .   B000 HP 95LX/100LX/200LX</span><br><span class="line">     = G 120x45     8x16  960x720   16   1   A000 Realtek RTVGA</span><br><span class="line"> 21h = T  80x25      .   . mono      .   B000 HP 200LX</span><br><span class="line">     = T 132x30      .   .  16   . .  Avance Logic AL2101</span><br><span class="line">     = T 132x44     9x9  1188x396   16/256K  .   B800 WD90C</span><br><span class="line">     = T 132x44     9x9  1188x396   16   .   B800 Diamond Speedstar 24X</span><br><span class="line">     = T 132x60      .   .  16   2   B800 Tseng ET4000 chipset [10]</span><br><span class="line">     = G  80x43     8x8   720x348  mono      .   B000 DESQview 2.x+Hercules [4]</span><br><span class="line">     = G 128x48     8x16 1024x768   16   1   A000 Realtek RTVGA [12]</span><br><span class="line"> 22h = T 132x43      .   .   .   . .  Allstar Peacock (VGA)</span><br><span class="line">     = T 132x43      .   .  16   . .  Avance Logic AL2101</span><br><span class="line">     = T 132x44     8x8  1056x352    .   .   B800 Tseng Labs EVA</span><br><span class="line">     = T 132x44     9x8  1188x352   16/256K  2   B800 Tseng ET3000 chipset</span><br><span class="line">     = T 132x44     8x8  1056x352   16/256K  2   B800 Tseng ET4000 chipset</span><br><span class="line">     = T 132x44     8x8  1056x352    .   . .  Ahead Systems EGA2001</span><br><span class="line">     = T 132x44     8x8  1056x352   16   2   B800 Ahead B</span><br><span class="line">     = T 132x44     8x9  1056x398   16   . .  STB Lightspeed ET4000/W32P</span><br><span class="line">     = T 132x44      .   .  16   . .  Orchid Prodesigner VGA</span><br><span class="line">     = G  80x43     8x8   720x348  mono      .   B800 DESQview 2.x+Hercules [4]</span><br><span class="line">     = G  96x64     8x16  768x1024  16   1   A000 Realtek RTVGA</span><br><span class="line"> 23h = T 132x25     6x14  792x350    .   .   B800 Tseng Labs EVA</span><br><span class="line">     = T 132x25     9x14 1188x350   16/256K  4   B800 Tseng ET3000 chipset</span><br><span class="line">     = T 132x25     8x14 1056x350   16/256   4   B800 Tseng ET4000 chipset</span><br><span class="line">     = T 132x25     8x14 1056x350    .   . .  Ahead Systems EGA2001</span><br><span class="line">     = T 132x25     8x14 1056x350   16   4   B800 Ahead B</span><br><span class="line">     = T 132x25     8x8  1056x200   16   .   B800 ATI EGA Wonder,ATI VIP</span><br><span class="line">     = T 132x25      .   .   .   . .  Cirrus 5320 chipset</span><br><span class="line">     = T 132x28      .   .   .   . .  Allstar Peacock (VGA)</span><br><span class="line">     = T 132x28      .   .  16   . .  Orchid Prodesigner VGA</span><br><span class="line">     = T 132x60      .   .  16   . .  Avance Logic AL2101</span><br><span class="line">     = G 128x48     8x16 1024x768    4   1   A000 Realtek RTVGA</span><br><span class="line"> 24h = T  80x30      .   .  16   . .  Avance Logic AL2101</span><br><span class="line">     = T 132x25      .   .   .   . .  Allstar Peacock (VGA)</span><br><span class="line">     = T 132x25      .   .  16   . .  Orchid Prodesigner VGA</span><br><span class="line">     = T 132x28     6x13  792x364    .   .   B800 Tseng Labs EVA</span><br><span class="line">     = T 132x28     9x13 1188x364   16/256K  4   B800 Tseng ET3000 chipset</span><br><span class="line">     = T 132x28     8x12 1056x336   16   1   B800 Ahead B</span><br><span class="line">     = T 132x28     8x13 1056x364   16/256K  4   B800 Tseng ET4000 chipset</span><br><span class="line">     = T 132x28     8x14 1056x392   16   . .  STB Lightspeed ET4000/W32P</span><br><span class="line">     = T 132x28      .   .   .   . .  Cirrus 5320 chipset</span><br><span class="line">     = G  64x32     8x16  512x512  256   1   A000 Realtek RTVGA</span><br><span class="line"> 25h = T  80x43      .   .  16   . .  Avance Logic AL2101</span><br><span class="line">     = G  80x60     8x8   640x480    .   .   A000 Tseng Labs EVA</span><br><span class="line">     = G  80x60     8x8   640x480   16/256K  1   A000 Tseng ET3000/4000 chipset</span><br><span class="line">     = G    .    .    640x480   16   . .  VEGA VGA</span><br><span class="line">     = G  80x60     8x8   640x480   16   .   A000 Orchid Prodesigner VGA</span><br><span class="line">     = G  80x60     8x8   640x480   16   1   A000 Ahead B (same as 26h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">.NG limit reached, continued in next section...</span></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

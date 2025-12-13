@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-81986.html">
+    <link rel="next" href="tr-84635.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-81986.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-84635.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> CALL PRTSC</span><br><span class="line"> Sends the current screen image to the printer.</span><br><span class="line"></span><br><span class="line"> Useful in making hard-copy printouts of program screens</span><br><span class="line"> for documentation, and in menu-driven applications to keep</span><br><span class="line"> a consistent user-interface with other menu options.</span><br><span class="line"></span><br><span class="line"> Same as simultaneously pressing the Shift-PrtSc keys.</span><br><span class="line"></span><br><span class="line"> * Documenting screens</span><br><span class="line"> @...SAY...GET...</span><br><span class="line"> @...SAY...GET...</span><br><span class="line"> @...SAY...GET...</span><br><span class="line"> * CALL PRTSC   &amp;&amp; comment out during program execution</span><br><span class="line"> READ</span><br><span class="line"></span><br><span class="line"> @...SAY...GET...</span><br><span class="line"> @...SAY...GET...</span><br><span class="line"> @...SAY...GET...</span><br><span class="line"> CALL PRTSC     &amp;&amp; remove comment to print documentation</span><br><span class="line"> READ</span><br><span class="line"></span><br><span class="line"> * Menu option</span><br><span class="line"> PROMPT &#34;.....&#34; MESSAGE &#34;...&#34;</span><br><span class="line"> PROMPT &#34;PrtSc&#34; MESSAGE &#34;Print current screen image&#34;</span><br><span class="line"> PROMPT &#34;.....&#34; MESSAGE &#34;...&#34;</span><br><span class="line"> MENU TO choice</span><br><span class="line"> DO CASE</span><br><span class="line">    CASE choice = 1</span><br><span class="line">       &lt;appropriate code&gt;</span><br><span class="line">    CASE choice = 2</span><br><span class="line">       IF ISPRINTER()</span><br><span class="line">          CALL PRTSC</span><br><span class="line">       ELSE</span><br><span class="line">          @...SAY &#34;Error -- printer not ready&#34;</span><br><span class="line">       ENDIF</span><br><span class="line">    CASE choice = 3</span><br><span class="line">       &lt;appropriate code&gt;</span><br><span class="line"> ENDCASE</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-59553.html">ISPRINTER()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-81986.html">PRNSTATUS()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-19495.html">
+    <link rel="next" href="progref-21483.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-19495.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-21483.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 1Ch (28)             User Timer Tick</span></span><br><span class="line">    Called at every timer tick (18.2 times per second, or every 55 ms) by</span><br><span class="line">    INT 08h (System Timer).</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    By default, the interrupt handler for this interrupt IRETs back to the</span><br><span class="line">    caller. The user can supply his own handler so he can attain control</span><br><span class="line">    at every timer tick.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Notes:</span>         Note that this interrupt is called by the hardware</span><br><span class="line">                      timer interrupt (INT 08h), which has not signaled</span><br><span class="line">                      the end of the interrupt back to the interrupt</span><br><span class="line">                      controller. Therefore, this routine is limited in</span><br><span class="line">                      the actions it can take, since all interrupts will</span><br><span class="line">                      be disabled. A better approach to this problem is to</span><br><span class="line">                      intercept INT 08h. The new INT 08h handler will</span><br><span class="line">                      first call the standard INT 08h, which will handle</span><br><span class="line">                      the interrupt controller completion signals</span><br><span class="line">                      mentioned above. Then after the standard INT 08h is</span><br><span class="line">                      completed, the new handler can do whatever it has to</span><br><span class="line">                      do at every timer tick.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-8271.html">INT 08h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

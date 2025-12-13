@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1423071.html">
+    <link rel="next" href="rbint-1424254.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1423071.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1340639.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1424254.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn DA14  U - Ami Pci Bios - Get/set ???                           </span>  [<span class="ngb">-</span>]</span><br><span class="line"></span><br><span class="line">   AX = DA14h</span><br><span class="line">   CL = subfunction</span><br><span class="line">       00h read</span><br><span class="line">       01h write</span><br><span class="line">       DH = new value for ??? (00h-02h)</span><br><span class="line">   DL = index of ??? (00h-03h, but not range-checked)</span><br><span class="line">   ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       DH = current value of ??? if reading</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = error code (86h unsupported subfunction)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the values for indexes 00h and 01h are stored in CMOS RAM location 19h,</span><br><span class="line">     and the values for 02h and 03h are stored in location 36h</span><br><span class="line">BUG:   the v1.00.05.AX1 BIOS range-checks DH on subfunction 00h instead of</span><br><span class="line">     subfunction 01h, even though DH is never used by subfunction 00h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

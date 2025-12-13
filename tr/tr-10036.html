@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-9306.html">
+    <link rel="next" href="tr-11210.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-9306.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-11210.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> ATYPE(&lt;C array name&gt;[[&lt;N element number&gt;]])</span><br><span class="line"> Distinguishes arrays from memvars, and determines type of an array element.</span><br><span class="line"> Returns &lt;expC&gt; uppercase letter indicating data type.</span><br><span class="line"></span><br><span class="line"> Type              Returns</span><br><span class="line"> ═════════════     ═══════════════════════════════════════════</span><br><span class="line"> Array             A</span><br><span class="line"> Block             B (5.0 and later)</span><br><span class="line"> Character         C</span><br><span class="line"> Date              D</span><br><span class="line"> Logical           L</span><br><span class="line"> Numeric           N</span><br><span class="line"> Object            O (5.0 and later)</span><br><span class="line"> Uninitialized     U (NIL, local, and static in 5.0 and later)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> * Assume an existing array with 100 mixed data elements</span><br><span class="line"> elements = 100</span><br><span class="line"></span><br><span class="line"> * Declare new arrays to hold two individual data types</span><br><span class="line"> DECLARE char_array[ elements ], num_array[ elements ]</span><br><span class="line"></span><br><span class="line"> STORE 1 TO char_index, num_index</span><br><span class="line"> FOR old_index = 1 to elements</span><br><span class="line">    DO CASE</span><br><span class="line">       CASE ATYPE( old_array[old_index] ) = &#34;C&#34;</span><br><span class="line">          char_array[char_index] = old_array[old_index]</span><br><span class="line">          char_index = char_index + 1</span><br><span class="line">       CASE ATYPE( old_array[old_index] ) = &#34;N&#34;</span><br><span class="line">          num_array[num_index] = old_array[old_index]</span><br><span class="line">          num_index = num_index + 1</span><br><span class="line">    ENDCASE</span><br><span class="line"> NEXT</span><br><span class="line"></span><br><span class="line"> * Evaluate how many array elements were initialized</span><br><span class="line"> char_index = 1</span><br><span class="line"> DO WHILE ATYPE( char_array[char_index] ) # &#34;U&#34;</span><br><span class="line">    char_index = char_index + 1</span><br><span class="line"> ENDDO</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

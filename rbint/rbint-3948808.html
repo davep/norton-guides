@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3937466.html">
+    <link rel="next" href="rbint-3951312.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3937466.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3870311.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3951312.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 4310  - Cloaking - Real-mode Api                               </span>  [<span class="ngb">m</span>]</span><br><span class="line"></span><br><span class="line">   AX = 4310h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> ES:BX -&gt; driver entry point (see #2436,#2465,#2466,#2467,#2468)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=4310h&#34;XMS&#34;</span><br><span class="line"></span><br><span class="line">(Table 2465)</span><br><span class="line">Call the Cloaking v1.01 &#34;Client Registration&#34; function with:</span><br><span class="line">   AH = 7Eh</span><br><span class="line">   BX = subfunction</span><br><span class="line">       0000h get client registration count</span><br><span class="line">       0001h get client registration structures</span><br><span class="line">       ES:DI -&gt; buffer for registration structures</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h failed</span><br><span class="line">       0001h successful</span><br><span class="line">       ---subfunction 00h---</span><br><span class="line">       BX = size of client structure in bytes</span><br><span class="line">       CX = number of clients installed</span><br><span class="line">       ---subfunction 01h---</span><br><span class="line">       ES:DI buffer filled</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2466,#2468,INT 2C/AX=0033h</span><br><span class="line"></span><br><span class="line">(Table 2466)</span><br><span class="line">Call the Cloaking v1.01 &#34;Verify Cloaking Host&#34; function with:</span><br><span class="line">   AH = 7Fh</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h failed</span><br><span class="line">       0001h (successful) if installed</span><br><span class="line">       BX = version (0101h for v1.01)</span><br><span class="line">       CX = flags</span><br><span class="line">           bit 0: host is VCPI-based</span><br><span class="line">       DS:DX -&gt; ASCIZ Cloaking host signature</span><br><span class="line">           &#34;CLOAKING.EXE&#34;0, followed by a far-call entry point to</span><br><span class="line">             uninstall host (see #2467) in Helix&#39;s CLOAKING.EXE</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2465,#2468</span><br><span class="line">Index: installation check;Cloaking host|installation check;CLOAKING.EXE</span><br><span class="line"></span><br><span class="line">(Table 2467)</span><br><span class="line">Call the CLOAKING.EXE &#34;Uninstall Host&#34; function with:</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = 4F4Bh (&#39;OK&#39;) if successfully uninstalled protected-mode code</span><br><span class="line"></span><br><span class="line">(Table 2468)</span><br><span class="line">Call the Cloaking &#34;Start Protected-Mode Client&#34; function with:</span><br><span class="line">   AH = 82h</span><br><span class="line">   DX = XMS handle of locked block containing protected-mode code</span><br><span class="line">   CL = code size (00h 16-bit, else 32-bit)</span><br><span class="line">   ESI, EDI = parameters to pass to protected-mode code</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       nonzero success</span><br><span class="line">       0000h failed</span><br><span class="line">       BL = error code (A2h,B0h) (see #2462)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this function calls a user initialization function at offset 0 in</span><br><span class="line">     the XMS memory block (see #2469)</span><br><span class="line">   supported by Helix&#39;s RM386 v6.00 and Helix&#39;s CLOAKING.EXE</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2465,#2466</span><br><span class="line"></span><br><span class="line">(Table 2469)</span><br><span class="line">Values user initialization function is called with:</span><br><span class="line">   EBX = physical address of block&#39;s start</span><br><span class="line">   ESI = user data from function 82h call</span><br><span class="line">   EDI = user data from function 82h call</span><br><span class="line">   CS = code selector for XMS block at EBX (16-bit or 32-bit)</span><br><span class="line">   DS = data selector for XMS block, starting at EBX</span><br><span class="line">   ES = selector for V86 memory access to full real-mode 1088K</span><br><span class="line">   GS = selector for full 4G flat address space</span><br><span class="line">   SS:ESP -&gt; stack provided by host</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> via 32-bit FAR return</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the initialization function may call any protected-mode Cloaking</span><br><span class="line">     service; it should store the values of DS, ES, and GS for future</span><br><span class="line">     reference</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

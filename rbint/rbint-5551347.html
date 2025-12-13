@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5550499.html">
+    <link rel="next" href="rbint-5555980.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5550499.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5545384.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5555980.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 68 Fn 01  - Appc/pc - Network Device Control - Attach Logical Unit   </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = 01h subfn 2100h</span><br><span class="line">   DS:DX -&gt; control block (see #3341)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> control block updated</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3344,#3345,#3347,AH=01h/SF=2000h,AH=01h/SF=2200h,AH=01h/SF=2B00h</span><br><span class="line"></span><br><span class="line">Format of APPC/PC &#34;Attach Logical Unit&#34; control block:</span><br><span class="line">Offset Size    Description (Table 3341)</span><br><span class="line"> 00h 12 BYTEs  reserved</span><br><span class="line"> 0Ch   WORD    2100h (verb &#34;Attach Logical Unit&#34;)</span><br><span class="line"> 0Eh  6 BYTEs  00h</span><br><span class="line"> 14h   DWORD   (big-endian) return code (see #3339)</span><br><span class="line"> 18h   WORD    70  offset to partner logical unit record</span><br><span class="line"> 1Ah  8 BYTEs  (big-endian) logical unit name</span><br><span class="line"> 22h  8 BYTEs  (big-endian) logical unit ID</span><br><span class="line"> 2Ah   BYTE    logical unit local address</span><br><span class="line"> 2Bh   BYTE    logical unit session limit</span><br><span class="line"> 2Ch   DWORD   pointer to CREATE_TP_EXIT routine,</span><br><span class="line">       FFFFFFFFh = reject incoming ALLOCATEs</span><br><span class="line">       00000000h = queue ALLOCATEs</span><br><span class="line"> 30h   DWORD   00h</span><br><span class="line"> 34h   DWORD   pointer to SYSTEM_LOG_EXIT routine, FFFFFFFFh=don&#39;t log errors</span><br><span class="line"> 38h   DWORD   00h</span><br><span class="line"> 3Ch   BYTE    maximum TPs</span><br><span class="line"> 3Dh   BYTE    queue depth</span><br><span class="line"> 3Eh   DWORD   pointer to LU_LU_PASSWORD_EXIT routine, FFFFFFFFh=no pswd exit</span><br><span class="line"> 42h   DWORD   00h</span><br><span class="line"> 46h   WORD    total length of partner records</span><br><span class="line"> 48h   var array of partner logical unit records (see #3342)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3344,#3345,#3347</span><br><span class="line"></span><br><span class="line">Format of APPC/PC partner logical unit record:</span><br><span class="line">Offset Size    Description (Table 3342)</span><br><span class="line"> 00h   WORD    length of this partner logical unit record</span><br><span class="line"> 02h   WORD    42  offset to mode records</span><br><span class="line"> 04h  8 BYTEs  (big-endian) partner logical unit name</span><br><span class="line"> 0Ch   BYTE    partner logical unit security capabilities</span><br><span class="line">       bit 7: already verified</span><br><span class="line">       bit 6: conversation level security</span><br><span class="line">       bit 5: session level security</span><br><span class="line"> 0Dh   BYTE    partner logical unit session limit</span><br><span class="line"> 0Eh   WORD    partner logical unit maximum MC_SEND_LL</span><br><span class="line"> 10h  8 BYTEs  (big-endian) partner logical unit DLC name</span><br><span class="line"> 18h   BYTE    partner logical unit adapter number</span><br><span class="line"> 19h 17 BYTEs  (counted string) partner logical unit adapter address</span><br><span class="line"> 2Ah   WORD    total length of mode records</span><br><span class="line"> 2Ch 16N BYTEs array of mode records (see #3343)</span><br><span class="line"></span><br><span class="line">Format of mode record:</span><br><span class="line">Offset Size    Description (Table 3343)</span><br><span class="line"> 00h   WORD    16  length of this mode record</span><br><span class="line"> 02h  8 BYTEs  (big-endian) mode name</span><br><span class="line"> 0Ah   WORD    RU_SIZE high bound</span><br><span class="line"> 0Ch   WORD    RU_SIZE low bound</span><br><span class="line"> 0Eh   BYTE    mode maximum negotiable session limit</span><br><span class="line"> 0Fh   BYTE    pacing size for receive</span><br><span class="line"></span><br><span class="line">Routines defined by LU_LU_PASSWORD_EXIT, CREATE_TP_EXIT, and SYSTEM_LOG_EXIT</span><br><span class="line">pointers are called by pushing the DWORD pointer to the verb on the stack and</span><br><span class="line">then performing a FAR call.</span><br><span class="line"></span><br><span class="line">Format of ACCESS_LU_LU_PW verb:</span><br><span class="line">Offset Size    Description (Table 3344)</span><br><span class="line"> 00h 12 BYTEs  reserved</span><br><span class="line"> 0Ch   WORD    1900h (verb &#34;ACCESS_LU_LU_PW&#34;)</span><br><span class="line"> 0Eh  8 BYTEs  (big-endian) logical unit ID</span><br><span class="line"> 16h  8 BYTEs  (big-endian) logical unit name</span><br><span class="line"> 1Eh  8 BYTEs  (big-endian) partner logical unit name</span><br><span class="line"> 26h 17 BYTEs  (counted string) partner fully qualified logical unit name</span><br><span class="line"> 37h   BYTE    password available (0=no, 1=yes)</span><br><span class="line"> 38h  8 BYTEs  password</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3341,#3345,#3347</span><br><span class="line"></span><br><span class="line">Format of CREATE_TP verb:</span><br><span class="line">Offset Size    Description (Table 3345)</span><br><span class="line"> 00h 12 BYTEs  reserved</span><br><span class="line"> 0Ch   WORD    2300h (verb &#34;CREATE_TP&#34;)</span><br><span class="line"> 0Eh  6 BYTEs  00h</span><br><span class="line"> 14h   DWORD   (big-endian) sense code (see #3346)</span><br><span class="line"> 18h  8 BYTEs  (big-endian) TP ID</span><br><span class="line"> 20h  8 BYTEs  (big-endian) logical unit ID</span><br><span class="line"> 28h   DWORD   (big-endian) conversation ID</span><br><span class="line"> 2Ch   BYTE    0 basic conversation, 1 mapped conversation</span><br><span class="line"> 2Dh   BYTE    0 no sync level, 1 confirm</span><br><span class="line"> 2Eh   BYTE    reserved</span><br><span class="line"> 2Fh 65 BYTEs  (counted string) transaction program name</span><br><span class="line"> 70h  6 BYTEs  00h</span><br><span class="line"> 76h   WORD    length of ERROR_LOG_DATA to return</span><br><span class="line"> 78h   DWORD   pointer to ERROR_LOG_DATA buffer</span><br><span class="line"> 7Ch  8 BYTEs  (big-endian) partner logical unit name</span><br><span class="line"> 84h 18 BYTEs  (counted string) partner fully qualified logical unit name</span><br><span class="line"> 96h  8 BYTEs  (big-endian) mode name</span><br><span class="line"> 9Eh 12 BYTEs  00h</span><br><span class="line"> AAh 11 BYTEs  (counted string) password</span><br><span class="line"> B5h 11 BYTEs  (counted string) user ID</span><br><span class="line"> C0h   BYTE    0 verification should be performed</span><br><span class="line">       1 already verified</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3344,#3347</span><br><span class="line"></span><br><span class="line">(Table 3346)</span><br><span class="line">Values for APPC/PC sense code:</span><br><span class="line"> 00000000h Ok</span><br><span class="line"> 080F6051h SECURITY_NOT_VALID</span><br><span class="line"> 084B6031h TP_NOT_AVAIL_RETRY</span><br><span class="line"> 084C0000h TP_NOT_AVAIL_NO_RETRY</span><br><span class="line"> 10086021h TP_NAME_NOT_RECOGNIZED</span><br><span class="line"> 10086034h CONVERSATION_TYPE_MISMATCH</span><br><span class="line"> 10086041h SYNC_LEVEL_NOT_SUPPORTED</span><br><span class="line"></span><br><span class="line">Format of SYSLOG verb:</span><br><span class="line">Offset Size    Description (Table 3347)</span><br><span class="line"> 00h 12 BYTEs  reserved</span><br><span class="line"> 0Ch   WORD    2600h (verb &#34;SYSLOG&#34;)</span><br><span class="line"> 0Eh 10 BYTEs  00h</span><br><span class="line"> 18h   WORD    (big-endian) type</span><br><span class="line"> 1Ah   DWORD   (big-endian) subtype</span><br><span class="line"> 1Eh   DWORD   pointer to ADDITIONAL_INFO</span><br><span class="line"> 22h   DWORD   (big-endian) conversation ID</span><br><span class="line"> 26h  8 BYTEs  (big-endian) TP ID</span><br><span class="line"> 2Eh  8 BYTEs  (big-endian) physical unit or logical unit name</span><br><span class="line"> 36h   WORD    length of data</span><br><span class="line"> 38h   DWORD   pointer to data</span><br><span class="line"> 3Ch   BYTE    00h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3344,#3345</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

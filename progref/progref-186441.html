@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » DOS » Functions</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-185144.html">
+    <link rel="next" href="progref-189594.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-185144.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-75576.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-189594.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 59h (89)        Get Extended Error Information             ≥ DOS 3.0</span></span><br><span class="line"></span><br><span class="line">    Returns diagnostic information following an unsuccessful DOS function</span><br><span class="line">    call or Interrupt 24h.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">On entry:</span>      AH         59h</span><br><span class="line">                      BX         0000h for DOS 3.0 and above</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Returns:</span>       AX         Extended error code</span><br><span class="line">                      BH         Error class</span><br><span class="line">                      BL         Suggested action</span><br><span class="line">                      CH         Locus (Source of error)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Destroys:</span>      CL, DX, SI, DI, ES, and DS are all changed</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This function returns detailed diagnostic information about an error</span><br><span class="line">    condition. It can be used from inside a critical-error (Interrupt 24h)</span><br><span class="line">    handler; after a DOS function call that reports an error by setting</span><br><span class="line">    the Carry Flag; and after an FCB file operation that reports a return</span><br><span class="line">    code of FFh.</span><br><span class="line"></span><br><span class="line"><span class="ngb">    Values returned in AX (extended error code):</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">        AX    Extended error code              AX    Extended error code</span></span><br><span class="line">        01h   Invalid function number          14h   Unknown unit</span><br><span class="line">        02h   File not found                   15h   Drive not ready</span><br><span class="line">        03h   Path not found                   16h   Unknown command</span><br><span class="line">        04h   Too many open files              17h   Data error (CRC)</span><br><span class="line">        05h   Access denied                    18h   Bad request structure</span><br><span class="line">        06h   Invalid handle                         length</span><br><span class="line">        07h   Memory control blocks            19h   Seek error</span><br><span class="line">              destroyed                        1Ah   Unknown medium type</span><br><span class="line">        08h   Insufficient memory              1Bh   Sector not found</span><br><span class="line">        09h   Invalid memory block address     1Ch   Printer out of paper</span><br><span class="line">        0Ah   Invalid environment              1Dh   Write fault</span><br><span class="line">        0Bh   Invalid format                   1Eh   Read fault</span><br><span class="line">        0Ch   Invalid access code              1Fh   General failure</span><br><span class="line">        0Dh   Invalid data                     20h   Sharing violation</span><br><span class="line">        0Fh   Invalid disk drive               21h   Lock violation</span><br><span class="line">        10h   Attempt to remove current        22h   Invalid disk change</span><br><span class="line">              directory                        23h   FCB unavailable</span><br><span class="line">        11h   Not the same device              50h   File already exists</span><br><span class="line">        12h   No more files                    52h   Cannot make directory</span><br><span class="line">        13h   Disk is write-protected          53h   Critical error</span><br><span class="line"></span><br><span class="line"><span class="ngb">    Values returned in BH (error class):</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">           BX    Error class</span></span><br><span class="line">           01h   Out of resource</span><br><span class="line">           02h   Temporary problem that can be expected to go away</span><br><span class="line">           03h   Authorization (permission) problem</span><br><span class="line">           04h   Internal error (i.e., a system software bug)</span><br><span class="line">           05h   Hardware problem (not the fault of your program)</span><br><span class="line">           06h   System software failure (e.g. bad or missing CONFIG.SYS)</span><br><span class="line">           07h   Application program error</span><br><span class="line">           08h   File or other item not found</span><br><span class="line">           09h   File or other item of invalid or unsuitable format or type</span><br><span class="line">           0Ah   File or other item interlocked</span><br><span class="line">           0Bh   Media problem (e.g. CRC error, wrong disk in drive)</span><br><span class="line">           0Ch   Collision with existing item</span><br><span class="line">           0Dh   Other (unclassified)</span><br><span class="line"></span><br><span class="line"><span class="ngb">    Values returned in BL (suggested action):</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">           BL    Suggested action</span></span><br><span class="line">           01h   Retry a few times</span><br><span class="line">           02h   Pause, then retry</span><br><span class="line">           03h   Ask user to resupply input</span><br><span class="line">           04h   Abort with cleanup (orderly shutdown)</span><br><span class="line">           05h   Immediate abort (do not pass GO)</span><br><span class="line">           06h   Ignore</span><br><span class="line">           07h   Ask user for remedial action (e.g. insertion of</span><br><span class="line">                 diskette), then retry</span><br><span class="line"></span><br><span class="line"><span class="ngb">    Values returned in CH (source of error):</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">           CH    Source of error</span></span><br><span class="line">           01h   Unknown</span><br><span class="line">           02h   Block device (disk)</span><br><span class="line">           03h   Network</span><br><span class="line">           04h   Serial device</span><br><span class="line">           05h   Memory</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Notes:</span>         Since new error codes may be added from time to</span><br><span class="line">                      time, your program should be able to gracefully</span><br><span class="line">                      handle unrecognized error codes.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-205471.html">INT 24h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

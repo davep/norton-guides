@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4051300.html">
+    <link rel="next" href="rbint-4052726.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4051300.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4031282.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4052726.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 5481  U - Power.exe - Get Statistics                           </span>  [<span class="ngb">p</span>]</span><br><span class="line"></span><br><span class="line">   AX = 5481h</span><br><span class="line">   BX = which statistics</span><br><span class="line">       0000h idle detection</span><br><span class="line">       0001h APM statistics</span><br><span class="line">   CX = length of buffer in bytes</span><br><span class="line">   DS:SI -&gt; buffer for statistics (see #2529,#2530)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h successful</span><br><span class="line">       0071h &#34;ERROR_PM_BUFFER_TOO_SMALL&#34;</span><br><span class="line">       0087h &#34;ERROR_PM_INVALID_PARAMETER&#34;</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=53h,AX=5400h,AX=5480h,AX=5402h,AX=5482h</span><br><span class="line"></span><br><span class="line">Format of POWER.EXE idle detection statistics:</span><br><span class="line">Offset Size    Description (Table 2529)</span><br><span class="line"> 00h   DWORD   &#34;CPU_ON_TIME&#34; total time CPU is active with POWER.EXE idle</span><br><span class="line">         detection enabled, in timer ticks</span><br><span class="line"> 04h   DWORD   &#34;CPU_IDLE_TIME&#34; timer ticks during which CPU was idle</span><br><span class="line">       (divide by previous to get idle rate)</span><br><span class="line"> 08h   DWORD   total idle calls</span><br><span class="line"> 0Ch   DWORD   &#34;TOTAL_APP_IDLE&#34; total INT 2Fh idle calls</span><br><span class="line"> 10h   DWORD   &#34;TOTAL_DOS_YIELD&#34; total INT 28h idle calls</span><br><span class="line"> 14h   DWORD   &#34;TOTAL_KEY_IDLE&#34; total INT 16h idle calls</span><br><span class="line"> 18h   DWORD   &#34;TOTAL_DOS_IDLE&#34; total INT 2Ah idle calls</span><br><span class="line"></span><br><span class="line">Format of APM statistics:</span><br><span class="line">Offset Size    Description (Table 2530)</span><br><span class="line"> 00h   DWORD   &#34;RESUME_COUNT&#34; total number of resumes since last APM_ENABLE</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

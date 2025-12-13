@@ -1,0 +1,168 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » DOS » Functions</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-197731.html">
+    <link rel="next" href="progref-200982.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-197731.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-75576.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-200982.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 5F03h (95-3)    Redirect Device                            ≥ DOS 3.1</span></span><br><span class="line"></span><br><span class="line">    Redirects I/O from a local printer or disk drive to a device on the</span><br><span class="line">    network.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">On entry:</span>      AH         5Fh</span><br><span class="line">                      AL         03h</span><br><span class="line">                      BL         Device type (3=printer, 4=disk drive)</span><br><span class="line">                      CX         Saved parameter (all values but 0 are</span><br><span class="line">                                 reserved)</span><br><span class="line">                      DS:SI      Pointer to an ASCIIZ string containing local</span><br><span class="line">                                 device name</span><br><span class="line">                      ES:DI      Pointer to an ASCIIZ string containing</span><br><span class="line">                                 network path followed by an ASCIIZ string</span><br><span class="line">                                 containing a password</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Returns:</span>       AX         Error code, if CF is set</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Error codes:</span>   1          Network not loaded</span><br><span class="line">                      3          Path not found</span><br><span class="line">                      5          Access denied</span><br><span class="line">                      8          Insufficient memory</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This function allows you to redirect I/O from a local printer or disk</span><br><span class="line">    drive to a network device.  You can also control access to the network</span><br><span class="line">    device by means of a password.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Notes:</span>         Call this function with a device type code in BL (3</span><br><span class="line">                      for a printer or 4 for a disk drive), and a 0 in CX.</span><br><span class="line">                      DS:SI should point to the name of the device you</span><br><span class="line">                      wish to redirect, and ES:DI should point to an</span><br><span class="line">                      ASCIIZ string giving the name of the destination</span><br><span class="line">                      network. The network name must be followed by a</span><br><span class="line">                      second ASCIIZ string specifying a password. The</span><br><span class="line">                      password may be 0 to 8 characters in length; to</span><br><span class="line">                      specify no password, provide a null ASCIIZ string (a</span><br><span class="line">                      0 byte).</span><br><span class="line"></span><br><span class="line">                      If the redirected device is a printer, acceptable</span><br><span class="line">                      names are PRN, LPT1, LPT2, and LPT3. If the</span><br><span class="line">                      redirected device is a disk drive, the source ASCIIZ</span><br><span class="line">                      string should consist of a drive letter followed by</span><br><span class="line">                      a colon.</span><br><span class="line"></span><br><span class="line">                      The source ASCIIZ string may also be null; in this</span><br><span class="line">                      case, DOS attempts to provide access to the network</span><br><span class="line">                      name with the specified password.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-197731.html">5F02h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-200982.html">5F04h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-186441.html">59h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

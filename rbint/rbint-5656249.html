@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5655963.html">
+    <link rel="next" href="rbint-5657736.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5655963.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5624141.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5657736.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 6F Fn 02  - 10net - Status Of Node                                   </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = 02h</span><br><span class="line">   DS:DX -&gt; 512-byte status record (see #3424)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (see #3411)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 21/AX=5E01h&#34;10NET&#34;</span><br><span class="line"></span><br><span class="line">(Table 3423)</span><br><span class="line">Values for 10NET station type:</span><br><span class="line"> 00h   workstation</span><br><span class="line"> 01h   superstation</span><br><span class="line"> 02h   gateway station</span><br><span class="line"> 03h   gateway active</span><br><span class="line"> 04h   logged into multiple superstations</span><br><span class="line"> 05h   reserved</span><br><span class="line"></span><br><span class="line">Format of 10NET node status record:</span><br><span class="line">Offset Size    Description (Table 3424)</span><br><span class="line"> 00h  8 BYTEs  user name (0 if none)</span><br><span class="line"> 08h   BYTE    station type (see #3423)</span><br><span class="line"> 09h 24 BYTEs  list of superstations logged into more than one superstation</span><br><span class="line"> 21h 12 BYTEs  node ID</span><br><span class="line"> 2Dh   WORD    message count for this station (send for user node, receive for</span><br><span class="line">         superstations)</span><br><span class="line">---for superstations only---</span><br><span class="line"> 2Fh   WORD    drives allocated (bit 0=A:, bit 1=B:,...)</span><br><span class="line"> 31h   BYTE    user service flags (see #3425)</span><br><span class="line"> 32h   BYTE    printers allocated (bit 0=LPT1,...)</span><br><span class="line"> 33h   BYTE    number of unprinted spool files</span><br><span class="line"> 34h   BYTE    number of opened files</span><br><span class="line"> 35h   BYTE    number of logged on nodes</span><br><span class="line"> 36h   BYTE    primary drive (1=A:)</span><br><span class="line"> 37h   BYTE    reserved</span><br><span class="line"> 38h  N BYTEs  list of logged on node IDs (each 12 bytes, max 37 IDs)</span><br><span class="line">1F4h  3 BYTEs  time: sec/min/hrs</span><br><span class="line">1F7h  3 BYTEs  date: day/mon/year-1980</span><br><span class="line"></span><br><span class="line">Bitfields for 10NET user service flags:</span><br><span class="line">Bit(s) Description (Table 3425)</span><br><span class="line"> 7 gate</span><br><span class="line"> 6 print permit on</span><br><span class="line"> 4 SUBMIT is on</span><br><span class="line"> 3 mail waiting for node</span><br><span class="line"> 2 calendar waiting for you</span><br><span class="line"> 1 news waiting for you</span><br><span class="line"> 0 mail waiting for you</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

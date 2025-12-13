@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2351266.html">
+    <link rel="next" href="rbint-2353159.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2351266.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2353159.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 4402  U - Microsoft Emm386.exe V4.45 - Get Memory Manager Infor</span>  [<span class="ngb">m</span>]</span><br><span class="line"></span><br><span class="line">   AX = 4402h</span><br><span class="line">   BX = file handle for device &#34;EMMXXXX0&#34;</span><br><span class="line">   CX = size of buffer in bytes (varies, see #1208)</span><br><span class="line">   DS:DX -&gt; buffer for returned data (see #1208)</span><br><span class="line">       first byte must be set on entry to indicate desired data</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       buffer filled</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (01h,05h,06h,0Dh) (see #1366 at AH=59h/BX=0000h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> an error is returned if the number of bytes to be read does not match</span><br><span class="line">     the number of bytes returned for the specified data item</span><br><span class="line">   this function is part of the interface which allows MS Windows to</span><br><span class="line">     cooperate with memory managers</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=4402h/SF=00h,AX=4402h/SF=01h,AX=4402h/SF=02h,INT 67/AX=FFA5h</span><br><span class="line"></span><br><span class="line">Format of EMM386.EXE data buffer:</span><br><span class="line">Offset Size    Description (Table 1208)</span><br><span class="line"> 00h   BYTE    (call) function</span><br><span class="line">       03h get ???</span><br><span class="line">       04h get ???</span><br><span class="line">---function 03h---</span><br><span class="line"> 00h   WORD    ???</span><br><span class="line"> 02h   WORD    ???</span><br><span class="line">---function 04h---</span><br><span class="line"> 00h   WORD    segment of UMB containing EMM386 code/data</span><br><span class="line"> 02h   WORD    number of paragraphs of EMM386 code/data in UMB</span><br><span class="line"> 04h   WORD    ???</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

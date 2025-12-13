@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-60274.html">
+    <link rel="next" href="dpmi-64327.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-60274.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-64327.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">OverView</a></li>
+                  <li><a href="dpmi-38393.html">DPMI API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Set Processor Exception Handler Vector</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                 This function  allows protected  mode  applications  to</span><br><span class="line">                 intercept processor  exceptions that are not handled by</span><br><span class="line">                 the DPMI  environment.   Programs may  wish  to  handle</span><br><span class="line">                 exceptions such  as not  present segment  faults  which</span><br><span class="line">                 would otherwise generate a fatal error.</span><br><span class="line"></span><br><span class="line">                 Every exception is first examined by the protected mode</span><br><span class="line">                 operating system.   If  it can not handle the exception</span><br><span class="line">                 it  then   reflects  it   through  the  protected  mode</span><br><span class="line">                 exception handler  chain.   The final  handler  in  the</span><br><span class="line">                 chain may  either reflect the exception as an interrupt</span><br><span class="line">                 (as would  happen in real mode) or it may terminate the</span><br><span class="line">                 current program.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            To Call</span><br><span class="line"></span><br><span class="line">                 AX = 0203h</span><br><span class="line">                 BL = Exception/fault number (00h-1Fh)</span><br><span class="line">                 CX:(E)DX = Selector:Offset of exception handler</span><br><span class="line"></span><br><span class="line">            Returns</span><br><span class="line"></span><br><span class="line">                 If function was successful:</span><br><span class="line">                 Carry flag is clear.</span><br><span class="line"></span><br><span class="line">                 If function was not successful:</span><br><span class="line">                 Carry flag is set.</span><br><span class="line">                 The value passed in BL was invalid.</span><br><span class="line"></span><br><span class="line">            Programmer&#39;s Notes</span><br><span class="line"></span><br><span class="line">                 o    The value  passed in  CX must be a valid protected</span><br><span class="line">                      mode code selector, not a real mode segment.</span><br><span class="line">                 o    32-bit mode  programs must  supply a 32-bit offset</span><br><span class="line">                      in the  EDX register.   If  your handler chains to</span><br><span class="line">                      the next  exception handler  it must do so using a</span><br><span class="line">                      32-bit interrupt stack frame.</span><br><span class="line">                 o    The handler  should  return  using  a  far  return</span><br><span class="line">                      instruction.   The original SS:(E)SP, CS:(E)IP and</span><br><span class="line">                      flags on  the stack, including the interrupt flag,</span><br><span class="line">                      will be restored.</span><br><span class="line">                 o    All  fault   stack  frames  have  an  error  code.</span><br><span class="line">                      However,  the   error  code   is  only  valid  for</span><br><span class="line">                      exceptions 08h, 0Ah, 0Bh, 0Ch, 0Dh, and 0Eh.</span><br><span class="line">                 o    The  handler   must  preserve   and  restore   all</span><br><span class="line">                      registers.</span><br><span class="line">                 o    The exception  handler will  be called on a locked</span><br><span class="line">                      stack with  interrupts disabled.  The original SS,</span><br><span class="line">                      (E)SP,  CS,  and  (E)IP  will  be  pushed  on  the</span><br><span class="line">                      exception handler stack frame.</span><br><span class="line">                 o    The handler  must either  return from  the call by</span><br><span class="line">                      executing a far return or jump to the next handler</span><br><span class="line">                      in the  chain (which  will execute a far return or</span><br><span class="line">                      chain to the next handler).</span><br><span class="line">                 o    The procedure  can modify any of the values on the</span><br><span class="line">                      stack   pertaining   to   the   exception   before</span><br><span class="line">                      returning.  This can be used, for example, to jump</span><br><span class="line">                      to a  procedure by  modifying  the  CS:IP  on  the</span><br><span class="line">                      stack.   Note that  the procedure  must not modify</span><br><span class="line">                      the far  return address  on the  stack --  it must</span><br><span class="line">                      return to  the original  caller.   The caller will</span><br><span class="line">                      then restore the flags, CS:(E)IP and SS:(E)SP from</span><br><span class="line">                      the stack frame.</span><br><span class="line">                 o    If the  DPMI client  does not handle an exception,</span><br><span class="line">                      or jumps  to the  default exception  handler,  the</span><br><span class="line">                      host will  reflect the  exception as  an interrupt</span><br><span class="line">                      for  exceptions   0,  1,   2,  3,  4,  5,  and  7.</span><br><span class="line">                      Exceptions 6,  and 8-1Fh  will be treated as fatal</span><br><span class="line">                      errors and the client will be terminated.</span><br><span class="line">                 o    Exception  handlers   will  only   be  called  for</span><br><span class="line">                      exceptions that occur in protected mode.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            Call-Back Stack Frames</span><br><span class="line"></span><br><span class="line">                 Stack frame for 16-bit programs:</span><br><span class="line"></span><br><span class="line">                      15       0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                          SS</span><br><span class="line"></span><br><span class="line">                          SP</span><br><span class="line"></span><br><span class="line">                        Flags</span><br><span class="line"></span><br><span class="line">                          CS</span><br><span class="line"></span><br><span class="line">                          IP</span><br><span class="line"></span><br><span class="line">                       Err Code</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                        Return</span><br><span class="line">                          CS</span><br><span class="line"></span><br><span class="line">                        Return</span><br><span class="line">                          IP</span><br><span class="line"></span><br><span class="line">                                 &lt;-- SS:SP</span><br><span class="line"></span><br><span class="line">                 Stack frame for 32-bit programs:</span><br><span class="line"></span><br><span class="line">                 31            0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                           SS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                       ESP</span><br><span class="line"></span><br><span class="line">                     EFlags</span><br><span class="line"></span><br><span class="line">                           CS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                       EIP</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                   Error Code</span><br><span class="line"></span><br><span class="line">                         Ret CS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                   Return EIP</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                 &lt;-- SS:ESP</span><br><span class="line"></span><br><span class="line">                 Shaded fields should not be modified.  Other fields can</span><br><span class="line">                 be  modified   before  returning   from  the  exception</span><br><span class="line">                 handler.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

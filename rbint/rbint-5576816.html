@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5575970.html">
+    <link rel="next" href="rbint-5578559.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5575970.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5545384.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5578559.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 68 Fn 06  - Appc/pc - Change Number Of Sessions                      </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = 06h</span><br><span class="line">   DS:DX -&gt; control block (see #3376)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> control block updated</span><br><span class="line"></span><br><span class="line">Format of APPC/PC &#34;Change Number of Sessions&#34; control block:</span><br><span class="line">Offset Size    Description (Table 3376)</span><br><span class="line"> 00h 12 BYTEs  reserved</span><br><span class="line"> 0Ch   WORD    1500h (verb &#34;Change Number of Sessions&#34;)</span><br><span class="line"> 0Eh  6 BYTEs  00h</span><br><span class="line"> 14h   WORD    (big-endian) primary return code (see #3352)</span><br><span class="line"> 16h   DWORD   (big-endian) secondary return code (see #3339,#3377)</span><br><span class="line"> 1Ah  8 BYTEs  (big-endian) logical unit ID</span><br><span class="line"> 22h  8 BYTEs  blanks</span><br><span class="line"> 2Ah  8 BYTEs  (big-endian) partner logical unit name</span><br><span class="line"> 32h  8 BYTEs  (big-endian) mode name</span><br><span class="line"> 3Ah   BYTE    bit 7: use MODE_NAME_SELECT_ALL rather than MODE_NAME</span><br><span class="line">       bit 6: set negotiable values</span><br><span class="line"> 3Bh   BYTE    partner logical unit mode session limit</span><br><span class="line"> 3Ch   BYTE    minimum CONWINNERS_SOURCE</span><br><span class="line"> 3Dh   BYTE    maximum CONWINNERS_TARGET</span><br><span class="line"> 3Eh   BYTE    automatic activation</span><br><span class="line"> 3Fh   BYTE    00h</span><br><span class="line"> 40h   BYTE    flags</span><br><span class="line">       bit 7: drain target</span><br><span class="line">       bit 6: drain source</span><br><span class="line">       bit 5: target responsible, not source</span><br><span class="line"></span><br><span class="line">(Table 3377)</span><br><span class="line">Values for secondary return code (see also AH=01h/SF=1B00h):</span><br><span class="line"> 0000h accepted</span><br><span class="line"> 0001h negotiated</span><br><span class="line"> 0003h bad logical unit ID</span><br><span class="line"> 0004h allocation failure, no retry</span><br><span class="line"> 0005h allocation failure, retry</span><br><span class="line"> 0151h can&#39;t raise limits</span><br><span class="line"> 0153h all modes must reset</span><br><span class="line"> 0154h bad SNASVCMG limits</span><br><span class="line"> 0155h minimum greater than total</span><br><span class="line"> 0156h mode closed (primary return code = 1)</span><br><span class="line">   CNOS mode closed (primary return code = 18h)</span><br><span class="line"> 0157h bad mode name (primary return code = 1)</span><br><span class="line">   CNOS bad mode name (primary return code = 18h)</span><br><span class="line"> 0159h reset SNA drains</span><br><span class="line"> 015Ah single not SRC response</span><br><span class="line"> 015Bh bad partner logical unit</span><br><span class="line"> 015Ch exceeds maximum allowed</span><br><span class="line"> 015Dh change SRC drains</span><br><span class="line"> 015Eh logical unit detached</span><br><span class="line"> 015Fh CNOS command race reject</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

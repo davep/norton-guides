@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .QWK  (Mailreaders)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-97195.html">
+    <link rel="next" href="modform-101774.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-97195.html">Previous</a></li>
+
+
+          
+
+<li><a href="modform-90842.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-101774.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">.MOD  (Sound)</a></li>
+                  <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+                  <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+                  <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+                  <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+                  <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">.NDX files</span></span><br><span class="line"></span><br><span class="line"> Index files are named XXX.NDX (where XXX is the conference number padded</span><br><span class="line"> with leading zeros to make it three characters long.  There is one *.NDX</span><br><span class="line"> file for each conference chosen that contains messages in the MESSAGES.DAT</span><br><span class="line"> file.</span><br><span class="line"></span><br><span class="line"> The *.NDX file contain records five characters long that point to each</span><br><span class="line"> message in that conference.</span><br><span class="line"></span><br><span class="line">   <span class="ngu">NdxRecord = Record       </span></span><br><span class="line">   <span class="ngu">  MsgPointer : BasicReal;</span></span><br><span class="line">   <span class="ngu">  Conference : Byte;     </span></span><br><span class="line">   <span class="ngu">End;                     </span></span><br><span class="line"></span><br><span class="line">  The BasicReal is a four byte number in BASIC MKS$ format.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  The following is a sample procedure for Turbo Pascal that converts</span><br><span class="line">  between BasicReal format and LongInt format.</span><br><span class="line"></span><br><span class="line"> <span class="ngu">Function BasicReal2Long(InValue: LongInt): LongInt;</span></span><br><span class="line">  Var</span><br><span class="line">     Temp : LongInt;</span><br><span class="line">    Expon : Integer;</span><br><span class="line">  Begin</span><br><span class="line">    Expon := ((InValue shr 24) and $ff) - 152;</span><br><span class="line">    Temp := (InValue and $007FFFFF) or $00800000;</span><br><span class="line">    If Expon &lt; 0 Then Temp := Temp shr Abs(Expon)</span><br><span class="line">      Else Temp := Temp shl Expon;</span><br><span class="line">    If (InValue and $00800000) &lt;&gt; 0 Then BasicReal2Long := -Temp</span><br><span class="line">      Else BasicReal2Long := Temp;</span><br><span class="line">    If Expon = 0 Then BasicReal2Long := 0;</span><br><span class="line">  End;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngu">Function Long2BasicReal(InValue: LongInt): LongInt;</span></span><br><span class="line">  Var</span><br><span class="line">    Negative : Boolean;</span><br><span class="line">       Expon : LongInt;</span><br><span class="line">  Begin</span><br><span class="line">    If InValue = 0 Then Long2BasicReal := 0</span><br><span class="line">      Else</span><br><span class="line">        Begin</span><br><span class="line">          If InValue &lt; 0 Then</span><br><span class="line">            Begin</span><br><span class="line">              Negative := True;</span><br><span class="line">              InValue := Abs(InValue);</span><br><span class="line">            End</span><br><span class="line">          Else Negative := False;</span><br><span class="line">        Expon := 152;</span><br><span class="line">        If InValue &lt; $007FFFFF Then</span><br><span class="line">          While ((InValue and $00800000) = 0) Do</span><br><span class="line">            Begin</span><br><span class="line">              InValue := InValue shl 1;</span><br><span class="line">              Dec(Expon);</span><br><span class="line">            End</span><br><span class="line">           Else</span><br><span class="line">             While ((InValue And $FF000000) &lt;&gt; 0) Do</span><br><span class="line">               Begin</span><br><span class="line">                 InValue := InValue shr 1;</span><br><span class="line">                 Inc(Expon);</span><br><span class="line">               End;</span><br><span class="line">             InValue := InValue And $007FFFFF;</span><br><span class="line">             If Negative Then InValue := InValue Or $00800000;</span><br><span class="line">           Long2BasicReal := InValue + (Expon shl 24);</span><br><span class="line">        End;</span><br><span class="line">  End;</span><br><span class="line"></span><br><span class="line"> A quick and dirty conversion (handles positive numbers only) is possible</span><br><span class="line"> with the following expression:</span><br><span class="line"></span><br><span class="line"> <span class="ngu">MKSToNum := ((x AND NOT $ff000000) OR $00800000)</span></span><br><span class="line">              <span class="ngu">SHR (24 - ((x SHR 24) AND $7f));</span></span><br><span class="line"></span><br><span class="line">─────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> The number contained in the MsgPointer is the record number (128 byte</span><br><span class="line"> records - starting numbering from record 1 not 0) of the message header.</span><br><span class="line"> Note that since the 1st record contains packet header, the lowest</span><br><span class="line"> MsgPointer that can exist is 2.</span><br><span class="line"></span><br><span class="line"> Some message readers will reformat the *.NDX files so that the MsgPointer</span><br><span class="line"> becomes a LongInt fileseek position (using a record size of 1).  To</span><br><span class="line"> determine which type of index you are reading you should look at the size</span><br><span class="line"> of the number.  Any BasicReal will appear as a huge number that would</span><br><span class="line"> unlikely ever be a byte seek positon.</span><br><span class="line"></span><br><span class="line"> An additional file PERSONAL.NDX is also optionally added to the QWK</span><br><span class="line"> archive.  This file has the same record format as the other *.NDX files.</span><br><span class="line"> It contains index records pointing to messages to the caller from all</span><br><span class="line"> conferences (ie it is used by the mail reader to do a quick search for</span><br><span class="line"> personal mail in all areas).</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

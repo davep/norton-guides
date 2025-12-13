@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-14901.html">
+    <link rel="next" href="dpmiv1-17273.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-14901.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-17273.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Set Segment Limit</span><br><span class="line"></span><br><span class="line">Sets the limit field in the LDT descriptor for the specified</span><br><span class="line">segment.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 0008H</span><br><span class="line">   BX     = selector</span><br><span class="line">   CX:DX  = 32-bit segment limit</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   if function successful</span><br><span class="line">   Carry flag= clear</span><br><span class="line"></span><br><span class="line">   if function unsuccessful</span><br><span class="line">   Carry flag= set</span><br><span class="line">   AX     = error code</span><br><span class="line">           8021H   invalid value (CX &lt;&gt; 0 on a 16-bit DPMI</span><br><span class="line">                   host; or the limit is greater than 1 MB,</span><br><span class="line">                   but the low twelve bits are not set)</span><br><span class="line">           8022H   invalid selector</span><br><span class="line">           8025H   invalid linear address (changing the</span><br><span class="line">                   limit would cause the descriptor to</span><br><span class="line">                   reference a linear address range outside</span><br><span class="line">                   that allowed for DPMI clients.)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  The value supplied to the function in CX:DX is the byte</span><br><span class="line">   length of the segment-1 (i.e., the value returned by the</span><br><span class="line">   LSL instruction).</span><br><span class="line">o  Segment limits greater than or equal to 1 MB must be</span><br><span class="line">   page-aligned.  That is, limits greater than 1 MB must</span><br><span class="line">   have the low 12 bits set.</span><br><span class="line">o  This function has an implicit effect on  the &#34;G&#34;</span><br><span class="line">   (granularity) bit in an 80386 descriptor&#39;s extended</span><br><span class="line">   access rights/type byte; i.e., it is the host&#39;s</span><br><span class="line">   responsibility to set the &#34;G&#34; bit correctly.</span><br><span class="line">o  Client programs must use the LSL instruction to query the</span><br><span class="line">   limit for a descriptor.  Note that on 80386 machines, the</span><br><span class="line">   client must use the 32-bit form of LSL if the segment</span><br><span class="line">   size is greater than 64 KB.</span><br><span class="line">o  A DPMI 1.0 host will reload any segment registers which</span><br><span class="line">   contain the selector specified in register BX.  It is</span><br><span class="line">   suggested that DPMI 0.9 hosts also implement this.</span><br><span class="line">o  Refer to the rules for descriptor usage in Appendix D.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

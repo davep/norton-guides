@@ -1,0 +1,168 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-351477.html">
+    <link rel="next" href="progref-355285.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-351477.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-350222.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-355285.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 13h,  01h (1)        Get Disk System Status                           all</span></span><br><span class="line"></span><br><span class="line">    Returns status information about the most recent fixed or floppy disk</span><br><span class="line">    operation.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">On entry:</span>      AH         01h</span><br><span class="line">                      DL         Drive number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Returns:</span>       AH         Status of operation (see below)</span><br><span class="line">                      CF         Set if error, otherwise cleared</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"><span class="ngb">                          Status of Operation (AH)</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">       AH             Meaning</span></span><br><span class="line">       FFh            Sense operation failed             (fixed)</span><br><span class="line">       E0h            Status error                       (fixed)</span><br><span class="line">       CCh            Write fault                        (fixed)</span><br><span class="line">       BBh            Undefined error                    (fixed)</span><br><span class="line">       80h            Drive not ready</span><br><span class="line">       40h            Seek failure</span><br><span class="line">       20h            Controller failure</span><br><span class="line">       11h            ECC corrected data error           (fixed)</span><br><span class="line">       10h            CRC or ECC data error</span><br><span class="line">       0Fh            DMA arbitration level out of range (fixed)</span><br><span class="line">       0Eh            Control data address mark detected (fixed)</span><br><span class="line">       0Dh            Invalid number sectors on format   (fixed)</span><br><span class="line">       0Ch            Media type not found               (floppy)</span><br><span class="line">       0Bh            Bad cylinder found                 (fixed)</span><br><span class="line">       0Ah            Bad sector flag detected           (fixed)</span><br><span class="line">       09h            Attempt to DMA across a 64K boundary</span><br><span class="line">       08h            DMA overrun</span><br><span class="line">       07h            Drive parameter activity failed    (fixed)</span><br><span class="line">       06h            Diskette change line active         (floppy)</span><br><span class="line">       05h            Reset failed                       (fixed)</span><br><span class="line">       04h            Sector not found</span><br><span class="line">       03h            Attempt to write on write-protected disk</span><br><span class="line">       02h            Address mark not found</span><br><span class="line">       01h            Invalid command</span><br><span class="line">       00h            No error</span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Notes:</span>         The most recent diskette operation status is found</span><br><span class="line">                      at 0:441h. The most recent fixed disk operation</span><br><span class="line">                      status is at 0:474h.</span><br><span class="line"></span><br><span class="line">                      For the AT, XT-286, and PC Convertible, the BIOS</span><br><span class="line">                      executes INT 15h, Service 90h (Device Busy), for the</span><br><span class="line">                      diskette (Type = 01h) and the fixed disk (Type =</span><br><span class="line">                      00h) prior to waiting for the interrupt. INT 15h,</span><br><span class="line">                      Service 91h (Interrupt Complete), is executed upon</span><br><span class="line">                      completion. Also diskette operations that require</span><br><span class="line">                      the diskette motor to be on will call INT 15h,</span><br><span class="line">                      Service 90 (Device Busy), with the type equal to</span><br><span class="line">                      &#34;Diskette Drive Motor Start&#34; (Type = FDh). This</span><br><span class="line">                      allows the system to perform another task while the</span><br><span class="line">                      drive motor is waiting to get up to speed.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-351477.html">INT 13h,  00h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-39766.html">0:441h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-48297.html">0:474h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

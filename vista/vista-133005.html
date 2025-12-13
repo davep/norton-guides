@@ -1,0 +1,142 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="vista-style.css">
+    <title>db_VISTA III » Functions » Functions descriptions</title>
+    <meta name="description" content="db_VISTA III">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="vista-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Functions</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions descriptions</a></li>
+                  
+                </ul>
+              </li>
+              <li>Codes</li>
+              <li>
+                <ul>
+                  <li><a href="vista-6446.html">Function status codes</a></li>
+                  <li><a href="vista-7989.html">System errors codes</a></li>
+                  <li><a href="vista-14319.html">User errors codes</a></li>
+                  <li><a href="vista-21058.html">Code&#39;s listing</a></li>
+                  
+                </ul>
+              </li>
+              <li>Credits</li>
+              <li>
+                <ul>
+                  <li><a href="vista-22437.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">   D_RENFILE</span><br><span class="line"></span><br><span class="line">SUMMARY</span><br><span class="line">   d_renfile(dbname,FILEID,filenm)</span><br><span class="line">   char *dbname;</span><br><span class="line">   int FILEID;</span><br><span class="line">   char *filenm;</span><br><span class="line"></span><br><span class="line">ARGUMENTS</span><br><span class="line">   dbname      The name of the database for which the file is to be renameb</span><br><span class="line"></span><br><span class="line">   FILEID      The DDL file id for the file to be renamed.</span><br><span class="line"></span><br><span class="line">   filenm      The new file name.</span><br><span class="line"></span><br><span class="line">DESCRIPTION</span><br><span class="line">   This function will inform db_VISTYA of a change in the name of file FILEID</span><br><span class="line">   in database dbname. FILEID is the file identifier constant defined in the</span><br><span class="line">   database dictionary file dbname.dbd and generated dy ddlp when the</span><br><span class="line">   &#34;fileid = filename&#34; clause occurs in a data or key file statement in the</span><br><span class="line">   DDL. Function d_renfile must be called prior to a call to d_open. When the</span><br><span class="line">   database is opened, the new file name, filenm, will replace the name</span><br><span class="line">   specified in the DDL in the file table dictionary entry so that all</span><br><span class="line">   database I/O to that file is performed against the new file.</span><br><span class="line"></span><br><span class="line">   The name of the batabase needs to be specified in the d_renfile call in</span><br><span class="line">   order to distinguist between files contained in different database in case</span><br><span class="line">   more than one is opened.</span><br><span class="line"></span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line">NOTE</span><br><span class="line">   The file specification provided in the d_rebfile call overrides the use of</span><br><span class="line">   either enviroment variables or a pach prefix the database name on d_open in</span><br><span class="line">   the locating of database files (the dictionary and control file specifica-</span><br><span class="line">   tions, however, are unaffected ).</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">CURRENCY CHANGES</span><br><span class="line">   None.</span><br><span class="line"></span><br><span class="line">RETURN CODES</span><br><span class="line"></span><br><span class="line">    -1      S_DBOPEN       Database is open. Function called after d_open.</span><br><span class="line"></span><br><span class="line">EXAMPLE</span><br><span class="line"></span><br><span class="line">   DDL:</span><br><span class="line">    database tims {</span><br><span class="line">           data file timsdat = &#34;tims.dat&#34; contains ...;</span><br><span class="line">           key  file timskey = &#34;tims.key&#34; contains ...;</span><br><span class="line">           ...</span><br><span class="line"></span><br><span class="line">   CCODE:</span><br><span class="line">     d_renfile(&#34;tims&#34;,TIMSDAT,&#34;raima.dat&#34;);</span><br><span class="line">     d_renfile(&#34;tims&#34;,TIMSKEY,&#34;raima.key&#34;);</span><br><span class="line">     d_open(&#34;tims&#34;,&#34;x&#34;);</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="vista-54673.html">d_dbdpath</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="vista-55572.html">d_dbfpath</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="vista-111829.html">d_open</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

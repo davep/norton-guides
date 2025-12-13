@@ -1,0 +1,124 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-128410.html">
+    <link rel="next" href="dos5-130225.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-128410.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-130225.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 67h            Set Maximum Handle Count                     DOS 3.3+</span></span><br><span class="line"></span><br><span class="line">    Sets the maximum number of handles a program can use at any one</span><br><span class="line">    time.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 67h</span><br><span class="line">                BX = Maximum number of open handles</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AX = Error code, if CF is set</span><br><span class="line">                     | ??</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This function sets the maximum number of handles for the program</span><br><span class="line">    but does not change the number of handles available in the system.</span><br><span class="line">    The total number of system handles is set by the FILES command in</span><br><span class="line">    the CONFIG.SYS file.</span><br><span class="line"></span><br><span class="line">    The maximum handle count specified in BX is a property of the</span><br><span class="line">    given program and is not inherited by child programs. This count</span><br><span class="line">    must be in the range 20 to 65,535. If a number less than 20 is</span><br><span class="line">    specified, the function uses 20 by default.</span><br><span class="line"></span><br><span class="line">    If this function is used to reduce the number of allowed handles,</span><br><span class="line">    the new limit does not take effect until any handles above the new</span><br><span class="line">    limit are closed.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    If a program requests an increase in the number of file handles,</span><br><span class="line">    there must be enough free memory for DOS to process this function.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-81044.html">46h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-85968.html">4ah</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3507301.html">
+    <link rel="next" href="rbint-3508919.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3507301.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3496496.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3508919.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2C Fn 000F  P - Cloaking V1.01 - &#34;simulate_shell_event&#34;              </span>  [<span class="ngb">m</span>]</span><br><span class="line"></span><br><span class="line">   AX = 000Fh</span><br><span class="line">   ECX = event code (see #2248)</span><br><span class="line">   DX = subfunction for event</span><br><span class="line">   EDX high word = boost value (see #2249)</span><br><span class="line">   SI:EDI -&gt; completion procedure</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful (event scheduled)</span><br><span class="line">   CF set on error</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this function is only available while MS Windows is running</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0011h,AX=0012h,INT 2F/AX=1605h,INT 2F/AX=4310h&#34;Cloaking&#34;</span><br><span class="line"></span><br><span class="line">(Table 2248)</span><br><span class="line">Values for Cloaking shell event code:</span><br><span class="line"> 0414h Hot key event</span><br><span class="line">   subevent 0000h: Alt-Space</span><br><span class="line">   subevent 0001h: Alt-Enter</span><br><span class="line">   subevent 0002h: Dir-VM</span><br><span class="line"> 0415h Switch context</span><br><span class="line">   subevent 0000h for DOS VM context, nonzero for System VM context</span><br><span class="line"> 0416h Clipboard event</span><br><span class="line"> 0417h Termination event</span><br><span class="line">   subevent 0000h for normal termination, nonzero for error</span><br><span class="line"> 0418h Display message</span><br><span class="line">   subevent 0000h for normal message, nonzero for system model ASAP</span><br><span class="line"> 0419h Crash</span><br><span class="line"> 041Ah Paste complete</span><br><span class="line">   subevent 0000h: normal</span><br><span class="line">   subevent 0001h: cancelled by user</span><br><span class="line">   subevent 0002h: cancelled</span><br><span class="line"> 041Bh Contention event</span><br><span class="line"> 041Ch Screen switch</span><br><span class="line">   subevent 0000h: forward</span><br><span class="line">   subevent 0001h: back</span><br><span class="line"> 041Dh Filesystem change</span><br><span class="line"> 041Eh Check Focus</span><br><span class="line"> 041Fh Panic</span><br><span class="line"></span><br><span class="line">Bitfields for boost value:</span><br><span class="line">Bit(s) Description (Table 2249)</span><br><span class="line"> 0 boost system VM until focus changes</span><br><span class="line"> 1 boost system VM on Switcher screen</span><br><span class="line"> 2 boost system VM until response</span><br><span class="line"> 3 boost system VM during clipboard activity</span><br><span class="line"> 4 boost system VM during print screen</span><br><span class="line"> 5 boost system VM during update</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

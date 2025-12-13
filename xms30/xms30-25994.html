@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="xms30-style.css">
+    <title>XMS Specification  (version 3.0) » XMS » XMS API</title>
+    <meta name="description" content="XMS Specification  (version 3.0)">
+    <link rel="prev" href="xms30-25456.html">
+    <link rel="next" href="xms30-27007.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="xms30-about.html">About</a></li>
+
+
+          
+
+<li><a href="xms30-25456.html">Previous</a></li>
+
+
+          
+
+<li><a href="xms30-18951.html">Up</a></li>
+
+
+          
+
+<li><a href="xms30-27007.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>XMS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Overview</a></li>
+                  <li><a href="xms30-18951.html">XMS API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Allocate Extended Memory Block (Function 09h)</span></span><br><span class="line"></span><br><span class="line">        ARGS:   AH = 09h</span><br><span class="line">                DX = Amount of extended memory being requested in K-bytes</span><br><span class="line"></span><br><span class="line">        RETS:   AX = 0001h if the block is allocated, 0000h otherwise</span><br><span class="line">                DX = 16-bit handle to the allocated block</span><br><span class="line"></span><br><span class="line">        ERRS:   BL = 80h if the function is not implemented</span><br><span class="line">                BL = 81h if a VDISK device is detected</span><br><span class="line">                BL = A0h if all available extended memory is allocated</span><br><span class="line">                BL = A1h if all available extended memory handles are in use</span><br><span class="line"></span><br><span class="line">This function attempts to allocate a block of the given size out of the</span><br><span class="line">pool of free extended memory. If a block is available, it is reserved</span><br><span class="line">for the caller and a 16-bit handle to that block is returned.  The</span><br><span class="line">handle should be used in all subsequent extended memory calls. If no</span><br><span class="line">memory was allocated, the returned handle is null.</span><br><span class="line"></span><br><span class="line">NOTE: Extended memory handles are scarce resources. Programs should try</span><br><span class="line">to allocate as few as possible at any one time. When all of a driver&#39;s</span><br><span class="line">handles are in use, any free extended memory is unavailable.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:15</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

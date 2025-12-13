@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5064834.html">
+    <link rel="next" href="rbint-5066938.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5064834.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5066938.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 61 Fn 0001  - Banyan Vines - Internal Vines Socket Api (near Data)   </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0001h</span><br><span class="line">   DS = 0001h (to distinguish from alternate AX=0001h socket interface)</span><br><span class="line">   CX:BX -&gt; internal communications control block (see #2995)</span><br><span class="line">   DX = caller&#39;s data segment</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h successful</span><br><span class="line">       0099h invalid operation</span><br><span class="line">       00A5h resource not available</span><br><span class="line"><span class="ngb">Desc:</span>  StreetTalk access with session handles</span><br><span class="line">Range: INT 60 to INT 66</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> This service is handled by the adapter driver</span><br><span class="line">   The request dispatch table contains dummy entries for subfunctions</span><br><span class="line">     06h, 0Dh, 0Eh, 0Fh, 10h, and 11h, which always return error 0099h</span><br><span class="line">     (invalid operation) in the request block&#39;s result buffer</span><br><span class="line">   in recent VINES releases, this interface is superseded by the AX=000Fh</span><br><span class="line">     interface, which allows FAR parameter block pointers (refer to that</span><br><span class="line">     function&#39;s entries for more details on individual subfunctions)</span><br><span class="line">   some adapter drivers (e.g. the NDIS2 token ring driver NDTOKBAN for</span><br><span class="line">     VINES 5.53) ignore the value in CX and use the value from DX instead</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=000Fh</span><br><span class="line"></span><br><span class="line">Format of internal communications control block:</span><br><span class="line">Offset Size    Description (Table 2995)</span><br><span class="line"> 00h   WORD    subfunction number</span><br><span class="line"> 02h   WORD    magic number (FEFEh)</span><br><span class="line"> 04h   WORD    (ret) result, should be set to 0 before calling</span><br><span class="line"> 06h   WORD    reserved (will be set to client DS)</span><br><span class="line"> 08h   WORD    caller&#39;s code segment if function 000Bh, 0 else</span><br><span class="line"> 0Ah   WORD    pointer to parameter block</span><br><span class="line"> 0Ch   WORD    reserved (segment of parameter block; will be set to client DS)</span><br><span class="line"> 0Eh   WORD    StreetTalk handle</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2994,#3115 at INT 61/AX=000Fh</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

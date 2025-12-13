@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Command line options</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-162517.html">
+    <link rel="next" href="perl-164236.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-162517.html">Previous</a></li>
+
+
+          
+
+<li><a href="perl-159711.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-164236.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>PERL</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="perl-90961.html">Languages</a></li>
+                  <li><a href="perl-159711.html">Command line options</a></li>
+                  <li><a href="perl-170094.html">Regular Expressions</a></li>
+                  <li><a href="perl-171332.html">Special Variables</a></li>
+                  <li><a href="perl-188582.html">Operators</a></li>
+                  <li><a href="perl-197905.html">Debugging</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tables</li>
+              <li>
+                <ul>
+                  <li><a href="perl-204383.html">ASCII Chart</a></li>
+                  <li><a href="perl-207014.html">Literals</a></li>
+                  <li><a href="perl-207867.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">     -iextension</span><br><span class="line">          specifies that files processed by the &lt;&gt; construct  are</span><br><span class="line">          to  be  edited  in-place.  It does this by renaming the</span><br><span class="line">          input file, opening the output file by the  same  name,</span><br><span class="line">          and selecting that output file as the default for print</span><br><span class="line">          statements.  The extension, if supplied,  is  added  to</span><br><span class="line">          the  name of the old file to make a backup copy.  If no</span><br><span class="line">          extension is supplied, no backup is made.  Saying &#34;perl</span><br><span class="line">          -p  -i.bak  -e &#34;s/foo/bar/;&#34; ... &#34; is the same as using</span><br><span class="line">          the script:</span><br><span class="line"></span><br><span class="line">               #!/usr/bin/perl -pi.bak</span><br><span class="line">               s/foo/bar/;</span><br><span class="line"></span><br><span class="line">          which is equivalent to</span><br><span class="line"></span><br><span class="line">               #!/usr/bin/perl</span><br><span class="line">               while (&lt;&gt;) {</span><br><span class="line">                    if ($ARGV ne $oldargv) {</span><br><span class="line">                         rename($ARGV, $ARGV . &#39;.bak&#39;);</span><br><span class="line">                         open(ARGVOUT, &#34;&gt;$ARGV&#34;);</span><br><span class="line">                         select(ARGVOUT);</span><br><span class="line">                         $oldargv = $ARGV;</span><br><span class="line">                    }</span><br><span class="line">                    s/foo/bar/;</span><br><span class="line">               }</span><br><span class="line">               continue {</span><br><span class="line">                   print;     # this prints to original filename</span><br><span class="line">               }</span><br><span class="line">               select(STDOUT);</span><br><span class="line"></span><br><span class="line">          except that the -i form doesn&#39;t need to  compare  $ARGV</span><br><span class="line">          to  $oldargv to know when the filename has changed.  It</span><br><span class="line">          does, however, use ARGVOUT for the selected filehandle.</span><br><span class="line">          Note  that  STDOUT  is  restored  as the default output</span><br><span class="line">          filehandle after the loop.</span><br><span class="line"></span><br><span class="line">          You can use eof to locate the end of each  input  file,</span><br><span class="line">          in  case you want to append to each file, or reset line</span><br><span class="line">          numbering (see example under eof).</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:49</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

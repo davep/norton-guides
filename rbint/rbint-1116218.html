@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1104945.html">
+    <link rel="next" href="rbint-1121000.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1104945.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1061380.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1121000.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 1016  - Topview - &#34;isobj&#34; - Verify Object Handle  <span class="ngb">(Cont.)</span></span></span><br><span class="line"></span><br><span class="line"> 33h   WORD    Offset in common memory of main task with this context</span><br><span class="line"> 35h 7 BYTEs   ???</span><br><span class="line"> 3Ch   BYTE    internal mapping context number</span><br><span class="line"> 3Dh 14 BYTEs  ???</span><br><span class="line"> 4Bh   WORD    first DOS memory segment (first MCB segment+1)</span><br><span class="line"> 4Dh   BYTE    ??? (flag???)</span><br><span class="line"> ---v2.53 (2.5x???)</span><br><span class="line"> 4Eh 12 BYTEs  ???</span><br><span class="line"> ---v2.60</span><br><span class="line"> 4Eh   WORD    segment of script buffer (see #0347)</span><br><span class="line"> 50h  6 BYTEs  ???</span><br><span class="line"></span><br><span class="line">Format of DESQview Internal Window Record (v2.31-2.60):</span><br><span class="line">Offset Size    Description (Table 0343)</span><br><span class="line"> 00h   BYTE    internal window number???</span><br><span class="line"> 01h   BYTE    display page???</span><br><span class="line"> 02h   BYTE    video mode</span><br><span class="line"> 03h  3 BYTEs  ???</span><br><span class="line"> 06h   BYTE    logical window height</span><br><span class="line"> 07h   BYTE    logical window width</span><br><span class="line"> 08h   DWORD   pointer to text video buffer</span><br><span class="line"> 0Ch 116 BYTEs ???</span><br><span class="line"></span><br><span class="line">Format of DESQview process record (v2.31):</span><br><span class="line">Offset Size    Description (Table 0344)</span><br><span class="line">-470h 13 BYTEs filename of ??? Script</span><br><span class="line">-463h 1117 BYTEs ??? (script buffer???)</span><br><span class="line"> -6h  6 BYTEs  ???</span><br><span class="line"> 00h   WORD    segment of parent PSP in process</span><br><span class="line"> 02h  5 BYTEs  ???</span><br><span class="line"> 07h   WORD    segment of current PSP in process</span><br><span class="line"> 09h   WORD    segment of first MCB in process</span><br><span class="line"> 0Bh 13 BYTEs  ???</span><br><span class="line"> 18h 1024 BYTEs process&#39;s interrupt vector table</span><br><span class="line">418h 376 BYTEs ???</span><br><span class="line">590h       first MCB in process</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0345</span><br><span class="line"></span><br><span class="line">Format of DESQview process record (v2.52-v2.60) (probably also 2.5x):</span><br><span class="line">Offset Size    Description (Table 0345)</span><br><span class="line"> 00h 28 BYTEs  EXE header of last EXE, ??? if last program run was COM</span><br><span class="line"> 1Ch ??? BYTEs overwritten with ASCIZ filename of last program run (EXE/COM)</span><br><span class="line">11Ch   WORD    segment of parent PSP in process</span><br><span class="line">11Eh  4 BYTEs  ???</span><br><span class="line">122h   WORD    segment of current PSP</span><br><span class="line">124h   WORD    segment of current PSP</span><br><span class="line">126h   WORD    segment of first MCB in process</span><br><span class="line">128h  4 BYTEs  ???</span><br><span class="line">12Ch   DWORD   pointer to first process instance data record in system memory</span><br><span class="line">130h   DWORD   pointer to last process instance data record in system memory</span><br><span class="line">       (from INT 15/AX=DE27h) (see #0346)</span><br><span class="line">134h  8 BYTEs  ???</span><br><span class="line">13Ch   WORD    size of current environment</span><br><span class="line">13Eh   WORD    segment of current environment</span><br><span class="line">140h   WORD    segment of current PSP</span><br><span class="line">142h   DWORD   entry point of current program</span><br><span class="line">146h 10 BYTEs  ???</span><br><span class="line">---v2.52 (v2.5x???)</span><br><span class="line">150h   BYTE    ???</span><br><span class="line">151h   WORD    segment of parent PSP in process</span><br><span class="line">153h   WORD    ???</span><br><span class="line">155h   WORD    ???</span><br><span class="line">157h   WORD    ???</span><br><span class="line">159h  4 BYTEs  ???</span><br><span class="line">15Dh   WORD    segment of current environment</span><br><span class="line">15Fh   WORD    segment of current PSP</span><br><span class="line">161h   WORD    segment of ???</span><br><span class="line">162h   WORD    ???</span><br><span class="line">164h  3 BYTEs  ???</span><br><span class="line">168h 1024 BYTEs process&#39;s interrupt vector table</span><br><span class="line">568h 120 BYTEs ???</span><br><span class="line">5E0h       first MCB in process</span><br><span class="line">---v2.60</span><br><span class="line">150h   WORD    segment of parent PSP in process</span><br><span class="line">152h   WORD    ???</span><br><span class="line">154h   WORD    ???</span><br><span class="line">156h   WORD    ???</span><br><span class="line">158h  4 BYTEs  ???</span><br><span class="line">15Ch   WORD    segment of current environment</span><br><span class="line">15Eh   WORD    segment of current PSP</span><br><span class="line">160h   WORD    segment of ???</span><br><span class="line">162h   WORD    ???</span><br><span class="line">164h 1024 BYTEs process&#39;s interrupt vector table</span><br><span class="line">564h 108 BYTEs ???</span><br><span class="line">5D0h       first MCB in process</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0344</span><br><span class="line"></span><br><span class="line">Format of DESQview task or process instance data record (v2.5x???, v2.60):</span><br><span class="line">Offset Size    Description (Table 0346)</span><br><span class="line"> 00h   DWORD   pointer to next record of same type or 00000000</span><br><span class="line"> 04h   DWORD   pointer to previous record of same type or 00000000</span><br><span class="line"> 08h   DWORD   pointer to source area of memory during restore state</span><br><span class="line"> 0Ch   WORD    number of bytes to save/restore</span><br><span class="line"> 0Eh   DWORD   pointer to destination area of memory during restore state</span><br><span class="line"> 12h   WORD    ??? (0)</span><br><span class="line"> 14h  N BYTEs  source memory buffer during restore state</span><br><span class="line"></span><br><span class="line">Format of DESQview script buffer (v2.60):</span><br><span class="line">Offset Size    Description (Table 0347)</span><br><span class="line"> 00h 13 BYTEs  ASCIZ Script filename</span><br><span class="line"> 0Dh 80 BYTEs  ???</span><br><span class="line"> 5Eh  N BYTEs  script records (see #0348)</span><br><span class="line"></span><br><span class="line">Format of one DESQview script record (v2.60):</span><br><span class="line">Offset Size    Description (Table 0348)</span><br><span class="line"> 00h   BYTE    signature 12h</span><br><span class="line"> 01h 18 BYTEs  blank-padded script name</span><br><span class="line"> 13h   BYTE    ASCII code of key attached to script or 0 if non-ASCII key</span><br><span class="line"> 14h   BYTE    scan code of key attached to script if non-ASCII, else 0</span><br><span class="line"> 15h   BYTE    ???</span><br><span class="line"> 16h   WORD    size of script in bytes</span><br><span class="line"> 18h  N    BYTEs   script (ASCII code of each keystroke; if 0, next byte is</span><br><span class="line">         scan code of non-ASCII key)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0347</span><br><span class="line"></span><br><span class="line">Format of DESQview Common Memory Header (v2.31-2.60):</span><br><span class="line">Offset Size    Description (Table 0349)</span><br><span class="line"> 00h   WORD    offset of lowest used block</span><br><span class="line"> 02h   WORD    bytes of commom memory, including header</span><br><span class="line"> 04h   WORD    offset of first free block</span><br><span class="line"> 06h  N BYTEs  size depends of DV version, ??? (DVP buffer???)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the above is located at the beginning of the commom memory segment</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0350,#0351,#0359</span><br><span class="line"></span><br><span class="line">Format of DESQview Free block header:</span><br><span class="line">Offset Size    Description (Table 0350)</span><br><span class="line"> 00h   WORD    size of block in bytes including header</span><br><span class="line"> 02h   WORD    offset of next free block</span><br><span class="line"> 04h  N BYTEs  free block</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0349,#0351</span><br><span class="line"></span><br><span class="line">Format of DESQview Used block header:</span><br><span class="line">Offset Size    Description (Table 0351)</span><br><span class="line"> 00h   WORD    size of block in bytes including header</span><br><span class="line"> 02h  N BYTEs  used block</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0349,#0350</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

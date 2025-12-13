@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5017684.html">
+    <link rel="next" href="rbint-5023437.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5017684.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5006316.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5023437.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 60 Fn 01FF  - Ftp Packet Driver - Basic Func - Get Driver Info       </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 01FFh</span><br><span class="line">   BX = handle returned by function 02h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error</span><br><span class="line">       DH = error code (see #2976)</span><br><span class="line">   CF clear if successful</span><br><span class="line">       BX = version</span><br><span class="line">       CH = network interface class (see #2977)</span><br><span class="line">       DX = interface type (see #2977)</span><br><span class="line">       CL = number</span><br><span class="line">       DS:SI -&gt; name</span><br><span class="line">       AL = driver functions supported</span><br><span class="line">       01h basic</span><br><span class="line">       02h basic and extended</span><br><span class="line">       05h basic and high-performance</span><br><span class="line">       06h basic, high-performance, and extended</span><br><span class="line">       FFh not installed</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the handle in BX is optional for drivers written to v1.07 or later of</span><br><span class="line">     the packet driver specification</span><br><span class="line"></span><br><span class="line">(Table 2976)</span><br><span class="line">Values for Packet Driver error code:</span><br><span class="line"> 01h &#34;BAD_HANDLE&#34;  invalid handle number</span><br><span class="line"> 02h &#34;NO_CLASS&#34;        no interfaces of the specified class found</span><br><span class="line"> 03h &#34;NO_TYPE&#34;     no interfaces of the specified type found</span><br><span class="line"> 04h &#34;NO_NUMBER&#34;   no interfaces of the specified number found</span><br><span class="line"> 05h &#34;BAD_TYPE&#34;        bad packet type</span><br><span class="line"> 06h &#34;NO_MULTICAST&#34;    interface does not support multicast messages</span><br><span class="line"> 07h &#34;CANT_TERMINATE&#34;  this packet driver cannot terminate</span><br><span class="line"> 08h &#34;BAD_MODE&#34;        invalid receiver mode</span><br><span class="line"> 09h &#34;NO_SPACE&#34;        insufficient space</span><br><span class="line"> 0Ah &#34;TYPE_INUSE&#34;  type accessed but never released</span><br><span class="line"> 0Bh &#34;BAD_COMMAND&#34; bad command</span><br><span class="line"> 0Ch &#34;CANT_SEND&#34;   packet could not be sent</span><br><span class="line"> 0Dh &#34;CANT_SET&#34;        hardware address could not be changed</span><br><span class="line"> 0Eh &#34;BAD_ADDRESS&#34; hardware address has a bad length or format</span><br><span class="line"> 0Fh &#34;CANT_RESET&#34;  could not reset interface</span><br><span class="line"></span><br><span class="line">(Table 2977)</span><br><span class="line">Values for Packet Driver network interface classes/types:</span><br><span class="line">    Class 01h  Ethernet/IEEE 802.3</span><br><span class="line">   01h 3COM 3C500/3C501</span><br><span class="line">   02h 3COM 3C505</span><br><span class="line">   03h MICOM-Interlan NI5010</span><br><span class="line">   04h BICC Data Networks 4110</span><br><span class="line">   05h BICC Data Networks 4117</span><br><span class="line">   06h MICOM-Interlan NP600</span><br><span class="line">   08h Ungermann-Bass PC-NIC</span><br><span class="line">   09h Univation NC-516</span><br><span class="line">   0Ah TRW PC-2000</span><br><span class="line">   0Bh MICOM-Interlan NI5210</span><br><span class="line">   0Ch 3COM 3C503</span><br><span class="line">   0Dh 3COM 3C523</span><br><span class="line">   0Eh Western Digital WD8003</span><br><span class="line">   0Fh Spider Systems S4</span><br><span class="line">   10h Torus Frame Level</span><br><span class="line">   11h 10Net Communications</span><br><span class="line">   12h Gateway PC-bus</span><br><span class="line">   13h Gateway AT-bus</span><br><span class="line">   14h Gateway MCA-bus</span><br><span class="line">   15h IMC PCnic</span><br><span class="line">   16h IMC PCnic II</span><br><span class="line">   17h IMC PCnic 8-bit</span><br><span class="line">   18h Tigan Communications</span><br><span class="line">   19h Micromatic Research</span><br><span class="line">   1Ah Clarkson &#34;Multiplexor&#34;</span><br><span class="line">   1Bh D-Link 8-bit</span><br><span class="line">   1Ch D-Link 16-bit</span><br><span class="line">   1Dh D-Link PS/2</span><br><span class="line">   1Eh Research Machines 8</span><br><span class="line">   1Fh Research Machines 16</span><br><span class="line">   20h Research Machines MCA</span><br><span class="line">   21h Radix Microsystems EXM1 16-bit</span><br><span class="line">   22h Interlan Ni9210</span><br><span class="line">   23h Interlan Ni6510</span><br><span class="line">   24h Vestra LANMASTER 16-bit</span><br><span class="line">   25h Vestra LANMASTER 8-bit</span><br><span class="line">   26h Allied Telesis PC/XT/AT</span><br><span class="line">   27h Allied Telesis NEC PC-98</span><br><span class="line">   28h Allied Telesis Fujitsu FMR</span><br><span class="line">   29h Ungermann-Bass NIC/PS2</span><br><span class="line">   2Ah Tiara LANCard/E AT</span><br><span class="line">   2Bh Tiara LANCard/E MC</span><br><span class="line">   2Ch Tiara LANCard/E TP</span><br><span class="line">   2Dh Spider Communications SpiderComm 8</span><br><span class="line">   2Eh Spider Communications SpiderComm 16</span><br><span class="line">   2Fh AT&amp;T Starlan NAU</span><br><span class="line">   30h AT&amp;T Starlan-10 NAU</span><br><span class="line">   31h AT&amp;T Ethernet NAU</span><br><span class="line">   32h Intel smart card</span><br><span class="line">   33h Xircom Packet Adapter</span><br><span class="line">   34h Aquila Ethernet</span><br><span class="line">   35h Novell NE1000</span><br><span class="line">   36h Novell NE2000</span><br><span class="line">   37h SMC PC-510</span><br><span class="line">   38h AT&amp;T Fiber NAU</span><br><span class="line">   39h NDIS to Packet Driver adapter</span><br><span class="line">   3Ah Racal-InterLan ES3210</span><br><span class="line">   3Bh General Systems ISDN simulated Ethernet</span><br><span class="line">   3Ch Hewlett-Packard</span><br><span class="line">   3Dh IMC EtherNic-8</span><br><span class="line">   3Eh IMC EtherNic-16</span><br><span class="line">   3Fh IMC EtherNic-MCA</span><br><span class="line">   40h NetWorth EtherNext</span><br><span class="line">   41h Dataco Scanet</span><br><span class="line">   42h DEC DEPCA</span><br><span class="line">   43h C-Net</span><br><span class="line">   44h Gandalf LANLine</span><br><span class="line">   45h Apricot built-in</span><br><span class="line">   46h David Systems Ether-T</span><br><span class="line">   47h ODI to Packet Driver adapter (see also INT 2F/AX=5100h)</span><br><span class="line">   48h AMD Am21110-16</span><br><span class="line">   49h Intel ICD Network controller family</span><br><span class="line">   4Ah Intel ICD PCL2</span><br><span class="line">   4Bh Intel ICD PCL2A</span><br><span class="line">   4Ch AT&amp;T LANPacer</span><br><span class="line">   4Dh AT&amp;T LANPacer+</span><br><span class="line">   4Eh AT&amp;T EVB</span><br><span class="line">   4Fh AT&amp;T StarStation</span><br><span class="line">   50h SLIP simulated ethernet</span><br><span class="line">   51h Racal-Interlan NIA310</span><br><span class="line">   52h Racal-Interlan NISE</span><br><span class="line">   53h Racal-Interlan NISE30</span><br><span class="line">   54h Racal-Interlan NI6610</span><br><span class="line">   55h Ethernet over IP/UDP</span><br><span class="line">   56h ICL EtherTeam 16</span><br><span class="line">   57h David Systems</span><br><span class="line">   58h NCR WaveLAN</span><br><span class="line">   59h Thomas Contrad TC5045</span><br><span class="line">   5Ah Russ Nelson&#39;s Parallel Port driver</span><br><span class="line">   5Bh Intell EtherExpress 16</span><br><span class="line">   5Ch IBMTOKEN</span><br><span class="line">   5Dh Zenith Z-Note</span><br><span class="line">   5Eh 3Com 3C509</span><br><span class="line">   5Fh Mylex LNE390</span><br><span class="line">   60h Madge Smart Ringnode</span><br><span class="line">   61h Novell NE2100</span><br><span class="line">   62h Allied Telesis 1500</span><br><span class="line">   63h Allied Telesis 1700</span><br><span class="line">   64h Fujitsu EtherCoupler</span><br><span class="line">    Class 02h  ProNET-10</span><br><span class="line">   01h Proteon p1300</span><br><span class="line">   02h Proteon p1800</span><br><span class="line">    Class 03h  IEEE 802.5/ProNet-4 (without expanded RIFs)</span><br><span class="line">   01h IBM Token-Ring Adapter</span><br><span class="line">   02h Proteon p1340</span><br><span class="line">   03h Proteon p1344</span><br><span class="line">   04h Gateway PC-bus</span><br><span class="line">   05h Gateway AT-bus</span><br><span class="line">   06h Gateway MCA-bus</span><br><span class="line">   07h Madge board</span><br><span class="line">   39h NDIS to Packet Driver adapter</span><br><span class="line">   47h ODI to Packet Driver adapter</span><br><span class="line">    Class 04h  Omninet</span><br><span class="line">    Class 05h  Appletalk</span><br><span class="line">   01h ATALK.SYS adapter</span><br><span class="line">    Class 06h  Serial Line</span><br><span class="line">   01h Clarkson 8250-SLIP</span><br><span class="line">   02h Clarkson &#34;Multiplexor&#34;</span><br><span class="line">   03h Eicon Technologies</span><br><span class="line">    Class 07h  StarLAN (subsumed by Ethernet class)</span><br><span class="line">    Class 08h  ARCnet</span><br><span class="line">   01h Datapoint RIM</span><br><span class="line">    Class 09h  AX.25</span><br><span class="line">   01h Ottawa PI card</span><br><span class="line">   02h Eicon Technologies</span><br><span class="line">    Class 0Ah  KISS</span><br><span class="line">    Class 0Bh  IEEE 802.3 with 802.2 headers</span><br><span class="line">   types same as for class 01h</span><br><span class="line">    Class 0Ch  FDDI with 802.2 headers</span><br><span class="line">   01h Western Digital</span><br><span class="line">   02h Frontier Technology</span><br><span class="line">    Class 0Dh  Internet X.25</span><br><span class="line">   01h Western Digital</span><br><span class="line">   02h Frontier Technology</span><br><span class="line">   03h Emerging Technologies</span><br><span class="line">   04h The Software Forge</span><br><span class="line">   05h Link Data Intelligent X.25</span><br><span class="line">   06h Eicon Technologies</span><br><span class="line">    Class 0Eh  N.T. LANSTAR (encapsulating DIX Ethernet)</span><br><span class="line">   01h NT LANSTAR/8</span><br><span class="line">   02h NT LANSTAR/MC</span><br><span class="line">    Class 0Fh  SLFP (MIT serial specification)</span><br><span class="line">   01h MERIT</span><br><span class="line">    Class 10h  PPP (Point-to-Point Protocol)</span><br><span class="line">   01h 8250/16550 UART</span><br><span class="line">   02h Niwot Networks synch</span><br><span class="line">   03h Eicon Technologies</span><br><span class="line">    Class 11h  802.5 with expanded RIFs</span><br><span class="line">   types same as for class 3</span><br><span class="line">    Class 12h  reserved for LCP/NCPs</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span> class and type numbers are cleared through FTP Software</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

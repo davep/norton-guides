@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » OverView » Questions and Answers</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-282660.html">
+    <link rel="next" href="mrdebug-285243.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-282660.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-241082.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-285243.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Using the SiX Driver with MrDebug.</span></span><br><span class="line"> MrDebug can take advantage of the SiX Driver</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> The F6 - Workarea screen can take advantage of several SiX driver functions</span><br><span class="line"> if they are linked in to your program. These functions are:</span><br><span class="line"></span><br><span class="line">  Sx_AutoOpen()     Sx_AutoShare()    Sx_DBFdecrypt()  Sx_DBFencrypt()</span><br><span class="line">  Sx_FileOrder()    Sx_I_IndexName()  Sx_I_TagName()   Sx_IDtype()</span><br><span class="line">  Sx_IndexType()    Sx_IsDBT()        Sx_IsFLocked()   Sx_IsLocked()</span><br><span class="line">  Sx_IsRoxLock()    Sx_IsMyRox()      Sx_IsShared()    Sx_KeyCount()</span><br><span class="line">  Sx_KeysIncluded() Sx_LockRetry()    Sx_MemoExt()     Sx_SetDirty()</span><br><span class="line">  Sx_SetScope()     Sx_SetTrigger()   Sx_SortOption()  Sx_Step()</span><br><span class="line">  Sx_TableType()    Sx_TagCount()     Sx_TagNo()       Sx_TagUnique()</span><br><span class="line">  sx_version()      Sx_Decrypt()      Sx_DirtyArea()   Sx_IndexCount()</span><br><span class="line">  Sx_IndexName()    Sx_IsReadOnly()   Sx_IsReIndex()   Sx_KeyData()</span><br><span class="line">  Sx_KeyNo()        Sx_SetMemoBlock() Sx_SetScope(0)   Sx_StrxCheck()</span><br><span class="line">  Sx_TableName()</span><br><span class="line"></span><br><span class="line"> If these functions have been linked in to your program either through your</span><br><span class="line"> program or via the EXTERNAL or REQUEST command then the F6 - WorkArea screen</span><br><span class="line"> information view can show you some of these settings. (Use the Alt-I key</span><br><span class="line"> from within the Workarea Screen).</span><br><span class="line"></span><br><span class="line"> If you are using the MachSix library then the following functions will be</span><br><span class="line"> used if linked in:</span><br><span class="line"></span><br><span class="line">  m6_IsFilter()     m6_RecCount()    m6_SetTemp()      m6_Version()</span><br><span class="line"></span><br><span class="line"> These will be shown on the Alt-I (Information) box held in the Workarea</span><br><span class="line"> screen.</span><br><span class="line"></span><br><span class="line"> Sx_TagInfo is used in the Index browser to show the status of the Unique</span><br><span class="line"> status and the Descending Status of the Index.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4044868.html">
+    <link rel="next" href="rbint-4051300.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4044868.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4031282.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4051300.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 5453  - Tesseract Ram-resident Program Interface               </span>  [<span class="ngb">t</span>]</span><br><span class="line"></span><br><span class="line">   AX = 5453h</span><br><span class="line">   BX = subfunction</span><br><span class="line">       00h installation check</span><br><span class="line">       CX = 0000h</span><br><span class="line">       DS:SI -&gt; 8-char blank-padded name (see #2526)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = FFFFh installed</span><br><span class="line">               CX = ID number of already-installed copy</span><br><span class="line">           AX = anything else, not installed</span><br><span class="line">               CX = ID number for TSR when installed</span><br><span class="line">       01h get user parameters</span><br><span class="line">       CX = TSR ID number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status</span><br><span class="line">               0000h successful</span><br><span class="line">               ES:BX -&gt; user parameter block (see #2527)</span><br><span class="line">               nonzero failed</span><br><span class="line">       02h check if hotkey in use</span><br><span class="line">       CL = scan code of hot key (see #0005)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = FFFFh hot key conflicts with another TSR</span><br><span class="line">                otherwise safe to use the hotkey</span><br><span class="line">       03h replace default critical error handler</span><br><span class="line">       CX = TSR ID number</span><br><span class="line">       DS:SI -&gt; new routine for INT 24h</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = nonzero, unable to install new handler</span><br><span class="line">       04h get internal data area</span><br><span class="line">       CX = TSR ID number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status</span><br><span class="line">               0000h successful</span><br><span class="line">               ES:BX -&gt; TSR&#39;s internal data area (see #2528)</span><br><span class="line">               nonzero, TSR not found</span><br><span class="line">       05h set multiple hot keys</span><br><span class="line">       CX = TSR ID number</span><br><span class="line">       DL = number of additional hot keys to allocate</span><br><span class="line">       DS:SI -&gt; table of hot keys</span><br><span class="line">           BYTE  hotkey scan code (see #0005)</span><br><span class="line">           BYTE  hotkey shift state</span><br><span class="line">           BYTE  flag value to pass to TSR (nonzero)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = nonzero, unable to install hot keys</span><br><span class="line">       06h - 0Fh reserved</span><br><span class="line">       10h enable TSR</span><br><span class="line">       CX = TSR ID number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = nonzero, unable to enable</span><br><span class="line">       11h disable TSR</span><br><span class="line">       CX = TSR ID number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = nonzero, unable to disable</span><br><span class="line">       12h unload TSR</span><br><span class="line">       CX = TSR ID number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = nonzero, invalid TSR number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span> if any interrupts used by TSR have been grabbed by</span><br><span class="line">           another TSR, the TesSeRact routines will wait until</span><br><span class="line">           it is safe to remove the indicated TSR from memory</span><br><span class="line">       13h restart TSR</span><br><span class="line">       CX = TSR ID number of TSR which was unloaded but is still in</span><br><span class="line">            memory</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = nonzero, unable to restart TSR</span><br><span class="line">       14h get status word</span><br><span class="line">       CX = TSR ID number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = FFFFh invalid ID number</span><br><span class="line">              = other, successful</span><br><span class="line">               BX = bit flags</span><br><span class="line">       15h set status word</span><br><span class="line">       CX = TSR ID number</span><br><span class="line">       DX = new bit flags</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = nonzero, unable to set status word</span><br><span class="line">       16h get INDOS state at popup</span><br><span class="line">       CX = TSR ID number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = 0000h successful</span><br><span class="line">               BX = value of INDOS flag</span><br><span class="line">       17h - 1Fh reserved</span><br><span class="line">       20h call user procedure</span><br><span class="line">       CX = TSR ID number</span><br><span class="line">       ES:DI -&gt; user-defined data</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = 0000h successful</span><br><span class="line">       21h stuff keystrokes into keyboard buffer</span><br><span class="line">       CX = TSR ID number</span><br><span class="line">       DL = speed</span><br><span class="line">           00h stuff keystrokes only when buffer is empty</span><br><span class="line">           01h stuff up to four keystrokes per clock tick</span><br><span class="line">           02h stuff up to 15 keystrokes per clock tick</span><br><span class="line">       DH = scan code flag</span><br><span class="line">           if zero, buffer contains alternating ASCII and scan codes</span><br><span class="line">           if nonzero, buffer contains only ASCII codes</span><br><span class="line">       SI = number of keystrokes</span><br><span class="line">       ES:DI -&gt; buffer to stuff</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = 0000h success</span><br><span class="line">                F0F0h user aborted with ^C or <span class="ngb">reak</span></span><br><span class="line">                other unable to stuff keystrokes</span><br><span class="line">       22h (v1.10) trigger popup</span><br><span class="line">       CX = TSR ID number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = 0000h success, TSR will either pop up or beep to</span><br><span class="line">                  indicate that it is unable to pop up</span><br><span class="line">                nonzero invalid ID number</span><br><span class="line">       23h (v1.10) invoke TSR&#39;s background function</span><br><span class="line">       CX = TSR ID number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = 0000h success</span><br><span class="line">                FFFFh not safe to call background function</span><br><span class="line">                nonzero invalid ID number</span><br><span class="line">       24h - 2Fh reserved</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> Borland&#39;s THELP.COM popup help system for Turbo Pascal and Turbo C</span><br><span class="line">     (versions 1.x and 2.x only) fully supports the TesSeRact API, as</span><br><span class="line">     do the SWAP?? programs by Innovative Data Concepts.</span><br><span class="line">   AVATAR.SYS supports functions 00h and 01h (only the first three fields</span><br><span class="line">     of the user parameter block) using the name &#34;AVATAR  &#34;</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=CAFEh,INT 16/AX=55FFh,INT 2D&#34;AMIS&#34;</span><br><span class="line">Index: installation check;TesSeRact TSR interface|uninstall;TesSeRact</span><br><span class="line"></span><br><span class="line">(Table 2526)</span><br><span class="line">Values for TesSeRact names:</span><br><span class="line"> &#34;AVATAR  &#34;    AVATAR.SYS</span><br><span class="line"> &#34;QeditTSR&#34;    TSR version of SemWare&#39;s Qedit editor</span><br><span class="line"> &#34;SCRNBLNK&#34;    Trusted Access screen blanker</span><br><span class="line"></span><br><span class="line">Format of TesSeRact User Parameter Block:</span><br><span class="line">Offset Size    Description (Table 2527)</span><br><span class="line"> 00h  8 BYTEs  blank-padded TSR name</span><br><span class="line"> 08h   WORD    TSR ID number</span><br><span class="line"> 0Ah   DWORD   bitmap of supported functions</span><br><span class="line"> 0Eh   BYTE    scan code of primary hotkey (see #0005)</span><br><span class="line">       00h = pop up when shift states match</span><br><span class="line">       FFh = no popup (if shift state also FFh)</span><br><span class="line"> 0Fh   BYTE    shift state of primary hotkey</span><br><span class="line">       FFh = no popup (if scan code also FFh)</span><br><span class="line"> 10h   BYTE    number of secondary hotkeys</span><br><span class="line"> 11h   DWORD   pointer to extra hotkeys set by func 05h</span><br><span class="line"> 15h   WORD    current TSR status flags</span><br><span class="line"> 17h   WORD    PSP segment of TSR</span><br><span class="line"> 19h   DWORD   DTA for TSR</span><br><span class="line"> 1Dh   WORD    default DS for TSR</span><br><span class="line"> 1Fh   DWORD   stack at popup</span><br><span class="line"> 23h   DWORD   stack at background invocation</span><br><span class="line">Index: hotkeys;TesSeRact TSR interface</span><br><span class="line"></span><br><span class="line">Format of TSR internal data area:</span><br><span class="line">Offset Size    Description (Table 2528)</span><br><span class="line"> 00h   BYTE    revision level of TesSeRact library</span><br><span class="line"> 01h   BYTE    type of popup in effect</span><br><span class="line"> 02h   BYTE    INT 08 occurred since last invocation</span><br><span class="line"> 03h   BYTE    INT 13 occurred since last invocation</span><br><span class="line"> 04h   BYTE    active interrupts</span><br><span class="line"> 05h   BYTE    active soft interrupts</span><br><span class="line"> 06h   BYTE    DOS major version</span><br><span class="line"> 07h   BYTE    how long to wait before popping up</span><br><span class="line"> 08h   DWORD   pointer to INDOS flag</span><br><span class="line"> 0CH   DWORD   pointer to DOS critical error flag</span><br><span class="line"> 10h   WORD    PSP segment of interrupted program</span><br><span class="line"> 12h   WORD    PSP segment of prog interrupted by INT 28</span><br><span class="line"> 14h   DWORD   DTA of interrupted program</span><br><span class="line"> 18h   DWORD   DTA of program interrupted by INT 28</span><br><span class="line"> 1Ch   WORD    SS of interrupted program</span><br><span class="line"> 1Eh   WORD    SP of interrupted program</span><br><span class="line"> 20h   WORD    SS of program interrupted by INT 28</span><br><span class="line"> 22h   WORD    SP of program interrupted by INT 28</span><br><span class="line"> 24h   DWORD   INT 24 of interrupted program</span><br><span class="line"> 28h  3 WORDs  DOS 3.0+ extended error info</span><br><span class="line"> 2Eh   BYTE    old BREAK setting</span><br><span class="line"> 2Fh   BYTE    old VERIFY setting</span><br><span class="line"> 30h   BYTE    were running MS WORD 4.0 before popup</span><br><span class="line"> 31h   BYTE    MS WORD 4.0 special popup flag</span><br><span class="line"> 32h   BYTE    enhanced keyboard call in use</span><br><span class="line"> 33h   BYTE    delay for MS WORD 4.0</span><br><span class="line">11 times (for INTs 08h,09h,13h,16h,1Ch,21h,28h,2Fh,1Bh,23h, and 24h):</span><br><span class="line">   DWORD   old interrupt vector</span><br><span class="line">   BYTE    interrupt number</span><br><span class="line">   WORD    offset in TesSeRact code segment of new interrupt handler</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

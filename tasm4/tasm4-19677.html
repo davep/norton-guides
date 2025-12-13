@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-19401.html">
+    <link rel="next" href="tasm4-21565.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-19401.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-21565.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">CALL             Extended CALL                                      Extension</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">CALL</span> expression [language] [,arg_list]</span><br><span class="line"></span><br><span class="line">    Calls high-level procedure. Always list arguments in arg_list in the</span><br><span class="line">    same order they were listed in the procedure header.</span><br><span class="line"></span><br><span class="line">    Example:    CALL atest PASCAL,ax,es OFFSET buffer,[blen]</span><br><span class="line">                ; assembles to:</span><br><span class="line">                push ax</span><br><span class="line">                push es offset buffer   ; push es; push offset buffer</span><br><span class="line">                push [word ptr blen]</span><br><span class="line">                CALL atest              ; Procedure cleans up stack</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Example:    CALL btest C,ax,es OFFSET buffer,[blen]</span><br><span class="line">                ; assembles to:</span><br><span class="line">                push [word ptr blen]</span><br><span class="line">                push es offset buffer</span><br><span class="line">                push ax</span><br><span class="line">                CALL btest</span><br><span class="line">                add  sp,8</span><br><span class="line"></span><br><span class="line">    Procedures that define some of their arguments with the RETURNS</span><br><span class="line">    keyword (see ARG) must be considered specially. These arguments are</span><br><span class="line">    used to return values to the caller; therefore, the caller always</span><br><span class="line">    pops them. There is no special extension to the CALL instruction in</span><br><span class="line">    Turbo Assembler to help pass those arguments; if you make a call -</span><br><span class="line">    from an assembler program - to a procedure declaring arguments with</span><br><span class="line">    RETURNS, you must explicitly PUSH these arguments before the CALL,</span><br><span class="line">    and POP them afterward.</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    If the interfacing convention for the call is NOLANGUAGE, Turbo</span><br><span class="line">    Assembler reports an error if any arguments are present. Although you</span><br><span class="line">    can define arguments to a NOLANGUAGE procedure with the ARG directive,</span><br><span class="line">    you must explicitly push the arguments when you make a call to a</span><br><span class="line">    NOLANGUAGE procedure (or use a language override).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note:</span></span><br><span class="line">    In Ideal mode, when calling a procedure that has been PROCDESCed or</span><br><span class="line">    PROCTYPEd, you must use a procedure override (proc appears as struc</span><br><span class="line">    data type in the symbol listing !?), e.g.</span><br><span class="line"></span><br><span class="line">       call PROC PTR protob_proc, arg1, arg2</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="ngb">CALL</span> instance_ptr METHOD [object_name:] method_name</span><br><span class="line">       [USES [segreg:]offsreg] [language_and_args]</span><br><span class="line"></span><br><span class="line">    Calls a method procedure.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-199535.html">Syntax</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-57953.html">JMP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-157301.html">@Interface</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-13568.html">ARG</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-89841.html">RET</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-83038.html">PROCTYPE</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-81770.html">PROCDESC</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

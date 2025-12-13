@@ -1,0 +1,118 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .GIF  (Graphics)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-51294.html">
+    <link rel="next" href="modform-56136.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-51294.html">Previous</a></li>
+
+
+          
+
+<li><a href="modform-45998.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-56136.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">.MOD  (Sound)</a></li>
+                  <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+                  <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+                  <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+                  <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+                  <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Image Descriptor</span></span><br><span class="line"></span><br><span class="line"> The Image Descriptor defines the actual placement  and  extents  of the</span><br><span class="line"> following  image within the space defined in the Screen Descriptor. Also</span><br><span class="line"> defined are flags to indicate the presence of a local colour  lookup map,</span><br><span class="line"> and to define the pixel display sequence.  Each Image Descriptor is</span><br><span class="line"> introduced by an image separator  character.   The  role  of  the  Image</span><br><span class="line"> Separator  is simply to provide a synchronization character to introduce</span><br><span class="line"> an Image Descriptor.  This is desirable if a GIF file happens to contain</span><br><span class="line"> more  than  one  image.   This  character  is defined as 0x2C hex or &#39;,&#39;</span><br><span class="line"> (comma).  When this character is encountered between images,  the  Image</span><br><span class="line"> Descriptor will follow immediately.</span><br><span class="line"></span><br><span class="line"> Any characters encountered between the end of a previous image  and the</span><br><span class="line"> image separator character are to be ignored.  This allows future GIF</span><br><span class="line"> enhancements to be present in newer image formats and yet ignored safely</span><br><span class="line"> by older software decoders.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">              bits</span><br><span class="line">         7 6 5 4 3 2 1 0  Byte #</span><br><span class="line">        ┌───────────────┐</span><br><span class="line">        │0 0 1 0 1 1 0 0│  1    &#39;,&#39; - Image separator character</span><br><span class="line">        ├───────────────┤</span><br><span class="line">        │               │  2    Start of image in pixels from the</span><br><span class="line">        ├   Image Left  ┤       left side of the screen (LSB first)</span><br><span class="line">        │               │  3</span><br><span class="line">        ├───────────────┤</span><br><span class="line">        │               │  4</span><br><span class="line">        ├   Image Top   ┤       Start of image in pixels from the</span><br><span class="line">        │               │  5    top of the screen (LSB first)</span><br><span class="line">        ├───────────────┤</span><br><span class="line">        │               │  6</span><br><span class="line">        ├  Image Width  ┤       Width of the image in pixels (LSB first)</span><br><span class="line">        │               │  7</span><br><span class="line">        ├───────────────┤</span><br><span class="line">        │               │  8</span><br><span class="line">        ├  Image Height ┤       Height of the image in pixels (LSB first)</span><br><span class="line">        │               │  9</span><br><span class="line">        ├─┬─┬─┬─┬─┬─────┤       M=0 - Use global colour map, ignore &#39;pixel&#39;</span><br><span class="line">        │M│I│0│0│0│pixel│ 10    M=1 - Local colour map follows, use &#39;pixel&#39;</span><br><span class="line">        └─┴─┴─┴─┴───────┛       I=0 - Image formatted in Sequential order</span><br><span class="line">                                I=1 - Image formatted in Interlaced order</span><br><span class="line">                                pixel+1 - # bits per pixel for this image</span><br><span class="line"></span><br><span class="line"> The specifications for the image position and size must be confined to</span><br><span class="line"> the  dimensions defined by the Screen Descriptor.  On the other hand it is</span><br><span class="line"> not necessary that the image fill the entire screen defined.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="modform-71900.html">Multiple Image Processing</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

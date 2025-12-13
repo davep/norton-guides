@@ -1,0 +1,175 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-140141.html">
+    <link rel="next" href="x86-144694.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-140141.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-144694.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngu">SETcc<span class="ngb">           Set Byte on Condition                Flags: Not altered</span></span></span><br><span class="line"></span><br><span class="line"><span class="ngu">SETcc</span> destination                                    CPU: 386+</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   if condition</span><br><span class="line">                   destination ← 1</span><br><span class="line">                else</span><br><span class="line">                   destination ← 0</span><br><span class="line">                endif</span><br><span class="line"></span><br><span class="line">    The SET instructions set the 8-bit destination to 1 if the</span><br><span class="line">    specified condition is true, otherwise destination is set to 0.</span><br><span class="line"></span><br><span class="line">    The conditions for each instruction are given below. The terms</span><br><span class="line">    &#34;above&#34; and &#34;below&#34; are used for un-signed integers, &#34;less&#34; and</span><br><span class="line">    &#34;greater&#34; for signed integers.</span><br><span class="line">    Note that several mnemonics have the same meaning.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngu">Instruction        SET to 1 if ... else to 0            Flags</span></span><br><span class="line">    SETA, SETNBE       Above, Not Below or Equal            CF=0 AND ZF=0</span><br><span class="line">    SETAE,SETNB,SETNC  Above or Equal, Not Below, No Carry  CF=0</span><br><span class="line">    SETBE, SETNA       Below or Equal, Not Above            CF=1 OR ZF=1</span><br><span class="line">    SETB, SETC,SETNAE  Below, Carry, Not Above or Equal     CF=1</span><br><span class="line">    SETE, SETZ         Equal, Zero                          ZF=1</span><br><span class="line">    SETNE, SETNZ       Not Equal, Not Zero                  ZF=0</span><br><span class="line">    SETP, SETPE        Parity, Parity Even                  PF=1</span><br><span class="line">    SETNP, SETPO       No Parity, Parity Odd                PF=0</span><br><span class="line"></span><br><span class="line">    SETG, SETNLE       Greater, Not Less or Equal           SF=OF AND ZF=0</span><br><span class="line">    SETGE, SETNL       Greater or Equal, Not Less           SF=OF</span><br><span class="line">    SETLE, SETNG       Less or Equal, Not Greater           SF&lt;&gt;OF OR ZF=1</span><br><span class="line">    SETL, SETNGE       Less, Not Greater or Equal           SF&lt;&gt;OF</span><br><span class="line">    SETO               Overflow                             OF=1</span><br><span class="line">    SETNO              No Overflow                          OF=0</span><br><span class="line">    SETS               Sign (negative)                      SF=1</span><br><span class="line">    SETNS              No Sign (positive)                   SF=0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode       Format</span>     ; All 386+</span><br><span class="line">    0F 90 cb     SETO  r/m8</span><br><span class="line">    0F 91 cb     SETNO r/m8</span><br><span class="line">    0F 92 cb     SETB  r/m8</span><br><span class="line">    0F 93 cb     SETAE r/m8</span><br><span class="line">    0F 94 cb     SETE  r/m8</span><br><span class="line">    0F 95 cb     SETNE r/m8</span><br><span class="line">    0F 96 cb     SETBE r/m8</span><br><span class="line">    0F 97 cb     SETA  r/m8</span><br><span class="line">    0F 98 cb     SETS  r/m8</span><br><span class="line">    0F 99 cb     SETNS r/m8</span><br><span class="line">    0F 9A cb     SETP  r/m8</span><br><span class="line">    0F 9B cb     SETNP r/m8</span><br><span class="line">    0F 9C cb     SETL  r/m8</span><br><span class="line">    0F 9D cb     SETGE r/m8</span><br><span class="line">    0F 9E cb     SETLE r/m8</span><br><span class="line">    0F 9F cb     SETG  r/m8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    r8            3                              4      4/3     1/2  NP</span><br><span class="line">    mem8        3+d(0-2)                         5      3/4     1/2  NP</span><br><span class="line"></span><br><span class="line">                        Cycles are for:  true/false</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-159707.html">TEST</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-18442.html">BT</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-66690.html">Jcc</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-72399.html">LAHF</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-135900.html">SAHF</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-114130.html">PUSHF</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-29293.html">CMOVcc</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-179453.html">Flags</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

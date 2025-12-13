@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Ports, EMS » I/O ports</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-185299.html">
+    <link rel="next" href="int-188220.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-185299.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-155180.html">Up</a></li>
+
+
+          
+
+<li><a href="int-188220.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">Port 3DA-R  -  Color/VGA Input Status register 1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Read-only</span><br><span class="line"></span><br><span class="line">                xxxx 1xxx  1=Vertical retrace in progress</span><br><span class="line">                             When set to 1, This bit indicates a vertical</span><br><span class="line">                             retrace interval.</span><br><span class="line">                             VGA only: This bit can be programmed,</span><br><span class="line">                             through the Vertical Retrace End register,</span><br><span class="line">                             to generate an interrupt at the start of the</span><br><span class="line">                             vertical retrace.</span><br><span class="line">                xxxx x1xx  1=Light pen switched on (not VGA)</span><br><span class="line">                xxxx xx1x  1=Light pen trigger set (not VGA)</span><br><span class="line">                xxxx xxx1  0=Video enabled</span><br><span class="line">                             This bit indicates that a horizontal retrace</span><br><span class="line">                             is taking place right now. D</span><br><span class="line"></span><br><span class="line">        On the Color/Graphics Adapter (NOT on the VGA or Monochrome</span><br><span class="line">        adapter), the hardware don&#39;t like when itself and the CPU (8088</span><br><span class="line">        or 80x86) is using the display RAM at the same time (it will cause</span><br><span class="line">        &#34;snow&#34; on the screen). To prevent snow, all accesses must be done</span><br><span class="line">        in one of the retrace periods.</span><br><span class="line"></span><br><span class="line">                   The Cathode Ray</span><br><span class="line">                ╔═══════════════════════════════════════════╗</span><br><span class="line">                ║  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─║─ ─   V</span><br><span class="line">                ║                                           ║   │  E</span><br><span class="line">                ║  └─────────────────────────────────────┐  ║      R</span><br><span class="line">                ║  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┛  ║   │  T</span><br><span class="line">                ║  └─────────────────────────────────────┐  ║      I</span><br><span class="line">                ║  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┛  ║   │  C</span><br><span class="line">                ║  └─────────────────────────────────────┐  ║      A</span><br><span class="line">                ║  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┛  ║   │  L R</span><br><span class="line">                ║  └─────────────────────────────────────┐  ║        E</span><br><span class="line">                ║  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┛  ║   │    T</span><br><span class="line">                ║  └─────────────────────────────────────┐  ║        R</span><br><span class="line">                ║  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┛  ║   │    A</span><br><span class="line">                ║           ↑HORIZONTAL RETRACE↑            ║        C</span><br><span class="line">                ║  └───────────────────────────────────── ─ ║ ─ ┛    E</span><br><span class="line">                ╚═══════════════════════════════════════════╝</span><br><span class="line">                   ═════ Screen border</span><br><span class="line">                   ───── Cathode Ray when it is &#34;painting&#34; on the</span><br><span class="line">                         screen</span><br><span class="line">                   ─ ─ ─ Cathode Ray when it isn&#39;t &#34;painting&#34; on</span><br><span class="line">                         the screen</span><br><span class="line"></span><br><span class="line">        When a program has to access display RAM, it is best to wait for</span><br><span class="line">        Horizontal Retrace, since it occurs 100 times as often as Vertical</span><br><span class="line">        Retrace. However, the Horizontal Retrace interval is short and</span><br><span class="line">        therefore timing is critical. The following program will do the</span><br><span class="line">        job:</span><br><span class="line"></span><br><span class="line">                ; Assume character+attribute is in AX and</span><br><span class="line">                ; DS:DI holds address in display RAM.</span><br><span class="line"></span><br><span class="line">                mov     bx,ax        ; Store character for later use</span><br><span class="line">                mov     dx,03DAh     ; Load 6845 status reg. addr.</span><br><span class="line">             w1:</span><br><span class="line">                in      al,dx        ; Get status!</span><br><span class="line">                test    al,00000001b ; Is horizontal retrace in process?</span><br><span class="line">                jnz     w1           ; Yes - wait until it isn&#39;t</span><br><span class="line">                cli                  ; Don&#39;t want to be disturbed,</span><br><span class="line">                                     ; because timing is critical</span><br><span class="line">             w2:</span><br><span class="line">                in      al,dx        ; Get status!</span><br><span class="line">                test    al,00000001b ; Is horizontal retrace in process?</span><br><span class="line">                jnz     w1           ; No - wait until it is.</span><br><span class="line"></span><br><span class="line">                mov     ds:[di],bx   ; Store character in display RAM</span><br><span class="line">                sti                  ; That&#39;s it!</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="int-178778.html">3BA-R</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

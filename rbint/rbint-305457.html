@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-305363.html">
+    <link rel="next" href="rbint-308454.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-305363.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-308454.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Function:</span></span><br><span class="line"></span><br><span class="line">MOV Moves data in and out of (special) registers and memory.</span><br><span class="line"></span><br><span class="line">Some _very early_ 88 and 86 processors do not disable interrupts following</span><br><span class="line">a MOV sreg,reg. This causes them to crash when an interrupt uses the stack</span><br><span class="line">between MOV SS,reg and MOV SP,op. These versions carry a copyright message</span><br><span class="line">for 1978 on the package. Later, corrected revisions, carry both 1978 and</span><br><span class="line">1981 as the copyright year.</span><br><span class="line">Normally interrupts would be disabled between the move to SS and execution</span><br><span class="line">of the instruction following it on 88 and 86es. A workaround is to manually</span><br><span class="line">disable the interrupts when reloading SS. The 286 and higher processors only</span><br><span class="line">disable interrupts after a MOV SS, in contrast to earlier CPUs, including</span><br><span class="line">the NECs, who do this with all MOV sreg,op instructions.</span><br><span class="line"></span><br><span class="line">An unsolvable problem occurs when an unmaskable interrupt or exception</span><br><span class="line">takes place while executing the instruction pair on an old 88 or 86.</span><br><span class="line">There are conflicting messages though about this type of interrupts having</span><br><span class="line">no effect on the bug.</span><br><span class="line"></span><br><span class="line">On the 86 and 88, but not on the C-MOS versions 80C86 and 80C88, the</span><br><span class="line">instruction MOV CS,op is valid and causes an unconditional jump.</span><br><span class="line">The C-MOS versions, as well as the NEC V20 and V30 ignore this coding.</span><br><span class="line">This may also be the case on the 186 but has not been tested.</span><br><span class="line">The 286+ CPUs consider CS an invalid operand for this instruction and</span><br><span class="line">generate exception 6 (Invalid opcode).</span><br><span class="line">The opcode for the MOV CS,op is: 8e [mod:001:r/m] See also &lt;POP CS&gt;.</span><br><span class="line"></span><br><span class="line">On some 386es, random breakpoint breaks occur from the debug registers</span><br><span class="line">D0-D3 when a MOV from CR3, TR6 or TR7 is executed. This will continue until</span><br><span class="line">after a jump instruction is executed. The actual contexts of D0-D3 is not</span><br><span class="line">affected. Workaround is to disable breakpoints before the MOV from CR3,TR6</span><br><span class="line">or TR7, execute a jmp right after the move and enabling breakpoints again.</span><br><span class="line">See also &lt;debugging&gt;</span><br><span class="line"></span><br><span class="line">On some 386es a MOV to SS may cause a code or data breakpoint set to the</span><br><span class="line">instruction following the MOV to be missed if the instruction takes more</span><br><span class="line">than two clocks. (see &lt;debugging&gt;)</span><br><span class="line"></span><br><span class="line">On all 386es a MOV to or from CRx, TRx or DRx executes correctly regardless</span><br><span class="line">of the mod field (the first two bits in the third byte of the opcode).</span><br><span class="line">The mod should be 11b. Intel documentation for the 386 stated it was</span><br><span class="line">undefined.</span><br><span class="line">Some 386 assemblers and compilers may generate values other than 11b for</span><br><span class="line">mod and fail on early 486es, causing an Invalid Opcode Exception, since they</span><br><span class="line">do require the mod field to be correct. More recent 486es recognize the</span><br><span class="line">aliased instructions as valid and execute them accordingly.</span><br><span class="line"></span><br><span class="line">On all 386es, moves to or from DR4 and DR5 are aliased to DR6 and DR7.</span><br><span class="line">On the early 486es these encodings are not recognized and generate an</span><br><span class="line">Invalid Opcode Exception. More recent 486es do recognize these aliases and</span><br><span class="line">execute them correctly.</span><br><span class="line"></span><br><span class="line">On the A to C0 steps of the 486, loading TR5 with a reg32 operand may hang</span><br><span class="line">the CPU if bits 0 and 1 (control bits) activate cache read, cache write or</span><br><span class="line">flush. A workaround is:</span><br><span class="line"></span><br><span class="line">JMP fetcher</span><br><span class="line"></span><br><span class="line">ALIGN 16</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

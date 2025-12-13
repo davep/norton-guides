@@ -1,0 +1,147 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » String</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-240111.html">
+    <link rel="next" href="nanfor-243135.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-240111.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-237863.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-243135.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_BITSET()</span></span><br><span class="line"> Set selected bit in a byte</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_BITSET( &lt;cByte&gt;, &lt;nBitPos&gt; ) -&gt; cByte</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cByte&gt;</span> is a character from CHR(0) to CHR(255).</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nBitPos&gt;</span> is a number from 0 to 7 conforming to standard right-to-left</span><br><span class="line">     bit numbering convention and representing the position of the bit</span><br><span class="line">     within the byte.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     Returns new byte, with designated bit set.  If parameters are faulty,</span><br><span class="line">     returns NIL.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     In effect, ORs argument byte with a byte that has only the target bit</span><br><span class="line">     set.  If bit is already set, it remains set.</span><br><span class="line">     Note: Calls FT_ISBIT() which is also in this Library.</span><br><span class="line"></span><br><span class="line">     This function is presented to illustrate that bit-wise operations</span><br><span class="line">     are possible with Clipper code.  For greater speed, write .C or</span><br><span class="line">     .ASM versions and use the Clipper Extend system.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     This code would set bit 4 in a byte represented by CHR(107):</span><br><span class="line"></span><br><span class="line">          cNewbyte := FT_BITSET( CHR(107), 4 )</span><br><span class="line">          ? ASC( cNewbyte )             // result: 123</span><br><span class="line">          ? cNewbyte                    // result: &#39;{&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     This code would set bit 5 in the byte represented by the letter &#39;A&#39;.</span><br><span class="line"></span><br><span class="line">          ? FT_BITSET( &#39;A&#39;, 5 )         // result: &#39;a&#39;</span><br><span class="line">                                        // bit 5 set</span><br><span class="line"></span><br><span class="line">     For a demonstration of Clipper bit manipulations, compile and</span><br><span class="line">     link the program BITTEST.PRG in the Nanforum Toolkit source code.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> BITSET.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Forest Belt, Computer Diagnostic Services, Inc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor-240111.html">FT_BITCLR()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-251799.html">FT_ISBIT()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

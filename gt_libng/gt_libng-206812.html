@@ -1,0 +1,164 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="gt_libng-style.css">
+    <title>GT_LIB v1.0 Reference Guide Release 2.0 » S-W » Windows</title>
+    <meta name="description" content="GT_LIB v1.0 Reference Guide Release 2.0">
+    <link rel="prev" href="gt_libng-205469.html">
+    <link rel="next" href="gt_libng-208673.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="gt_libng-about.html">About</a></li>
+
+
+          
+
+<li><a href="gt_libng-205469.html">Previous</a></li>
+
+
+          
+
+<li><a href="gt_libng-205251.html">Up</a></li>
+
+
+          
+
+<li><a href="gt_libng-208673.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="gt_libng-5540.html">Audit</a></li>
+                  <li><a href="gt_libng-6547.html">Compression</a></li>
+                  <li><a href="gt_libng-13032.html">Date</a></li>
+                  <li><a href="gt_libng-23409.html">Disk Drive</a></li>
+                  <li><a href="gt_libng-37327.html">Error System</a></li>
+                  <li><a href="gt_libng-40165.html">Environment</a></li>
+                  <li><a href="gt_libng-49799.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-P</li>
+              <li>
+                <ul>
+                  <li><a href="gt_libng-66199.html">General</a></li>
+                  <li><a href="gt_libng-98996.html">Get Reader</a></li>
+                  <li><a href="gt_libng-106381.html">Keyboard</a></li>
+                  <li><a href="gt_libng-114805.html">Maths</a></li>
+                  <li><a href="gt_libng-124424.html">Memory</a></li>
+                  <li><a href="gt_libng-127716.html">Network</a></li>
+                  <li><a href="gt_libng-133468.html">Printer</a></li>
+                  
+                </ul>
+              </li>
+              <li>S-W</li>
+              <li>
+                <ul>
+                  <li><a href="gt_libng-136117.html">Screen Saver</a></li>
+                  <li><a href="gt_libng-140433.html">Security</a></li>
+                  <li><a href="gt_libng-141574.html">String</a></li>
+                  <li><a href="gt_libng-170364.html">System</a></li>
+                  <li><a href="gt_libng-174810.html">Video</a></li>
+                  <li><a href="gt_libng-205251.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="gt_libng-209432.html">About</a></li>
+                  <li><a href="gt_libng-209917.html">Background</a></li>
+                  <li><a href="gt_libng-212755.html">BBS List</a></li>
+                  <li><a href="gt_libng-213177.html">Contributors</a></li>
+                  <li><a href="gt_libng-213853.html">Submitting Code</a></li>
+                  <li><a href="gt_libng-215955.html">Sample Clipper/C Header</a></li>
+                  <li><a href="gt_libng-218225.html">Sample ASM Header</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Place text into the MS Windows clipboard.</span></span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">       <span class="fg15 bg1"> GT_CBPaste(&lt;cText&gt;) --&gt; lPasted</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments:</span></span><br><span class="line"></span><br><span class="line">      <span class="ngb">&lt;cText&gt;</span> is the text to place into the Windows clipboard.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">      A logical value, .T. if the text was pasted, .F. if not.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description:</span></span><br><span class="line"></span><br><span class="line">      GT_CBPaste() can be used to place text into the Windows clipboard</span><br><span class="line">      when your application is running in a DOS window.</span><br><span class="line"></span><br><span class="line">      If the text is pasted into the clipboard the function will return</span><br><span class="line">      true (.T.), if not, it will return false (.F.). For the function</span><br><span class="line">      to fail to paste one of the following has to happen:</span><br><span class="line"></span><br><span class="line">              a) The application is not running under MS Windows.</span><br><span class="line">              b) The DOS paste service is not available.</span><br><span class="line">              c) The clipboard could not be opened.</span><br><span class="line"></span><br><span class="line">      The information used to write this function was taken from ``Hands</span><br><span class="line">      On - Low Level&#39;&#39; in Personal Computer World - December 1992, Page</span><br><span class="line">      451. This article states that there is a problem using the</span><br><span class="line">      described method with Windows 3.1. I have tested this function with</span><br><span class="line">      Windows 3.1 and WFWG versions 3.1 and 3.11 and it appears to work</span><br><span class="line">      fine.</span><br><span class="line"></span><br><span class="line">      You may also wish to note that changes will need to be made to this</span><br><span class="line">      function before it will work in protected mode.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      // Function to take a customers address details and paste them</span><br><span class="line">      // Into the Windows clipboard.</span><br><span class="line"></span><br><span class="line">      #define CR_LF   chr(13)+chr(10)</span><br><span class="line"></span><br><span class="line">      function AddresToClip()</span><br><span class="line">      if GT_CBPaste(alltrim(Customer-&gt;Address1)+CR_LF+;</span><br><span class="line">                    alltrim(Customer-&gt;Address2)+CR_LF+;</span><br><span class="line">                    alltrim(Customer-&gt;Address3)+CR_LF+;</span><br><span class="line">                    alltrim(Customer-&gt;Address4)+CR_LF+;</span><br><span class="line">                    alltrim(Customer-&gt;Address5)+CR_LF)</span><br><span class="line"></span><br><span class="line">         // Tell the user that it worked.</span><br><span class="line"></span><br><span class="line">      else</span><br><span class="line"></span><br><span class="line">        // Tell the user that it didn&#39;t work.</span><br><span class="line"></span><br><span class="line">      endif</span><br><span class="line">      return(NIL)</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> WINCLIPB.C</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author: </span> Dave Pearson</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              GT_CBCOPY()
+            
+          </li>
+        
+          <li>
+            
+              GT_ISWIN()
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:41</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

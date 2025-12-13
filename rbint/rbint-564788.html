@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-564462.html">
+    <link rel="next" href="rbint-566412.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-564462.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-566412.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 10 Fn 1F01  - Video - Xga - Read Dmqs Data                           </span>  [<span class="ngb">V</span>]</span><br><span class="line"></span><br><span class="line">   AX = 1F01h</span><br><span class="line">   ES:DI -&gt; user buffer for return data (call AX=1F00h for size)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = 1Fh if function supported</span><br><span class="line">   user buffer filled with DMQS data (see #0058)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  not supported on the original IBM XGA, only on XGA-NI (non-interlaced)</span><br><span class="line">     and later models.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=1Bh,AX=1F00h,AX=3000h</span><br><span class="line"></span><br><span class="line">Format of XGA DMQS buffer:</span><br><span class="line">Offset Size    Description (Table 0058)</span><br><span class="line"> 00h   WORD    offset (in bytes) to DMQS data for next XGA instance</span><br><span class="line"> 02h   BYTE    slot number</span><br><span class="line"> 03h   BYTE    XGA implementation function level identifier</span><br><span class="line"> 04h   BYTE    XGA implementation resolution level identifier</span><br><span class="line"> 05h   WORD    vendor identifier - identifies card vendor</span><br><span class="line"> 07h   WORD    vendor defined field</span><br><span class="line"> 09h   WORD    XGA adapter I/O register base address</span><br><span class="line"> 0Bh   WORD    XGA coprocessor register base address</span><br><span class="line">       (paragraph--multiply by 10h to get physical address)</span><br><span class="line"> 0Dh   WORD    1 Megabyte system video memory aperture</span><br><span class="line">       0000h if not allocated</span><br><span class="line">       (Multiply by 100000h to get physical address)</span><br><span class="line"> 0Fh   WORD    4 Megabyte system video memory aperture</span><br><span class="line">       0000h if not allocated</span><br><span class="line">       (multiply by 100000h to get physical address)</span><br><span class="line"> 11h   WORD    video memory base address</span><br><span class="line">       (multiply by 100000h to get physical address)</span><br><span class="line"> 13h   WORD    composite ID of the attached display</span><br><span class="line"> 15h   BYTE    amount of video memory available, in multiples of 256K bytes</span><br><span class="line"> 16h   DWORD   alternate XGA coprocessor register base address.  0 = none.</span><br><span class="line"> 1Ah   var DMQS Data for further XGA Instances (as above)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  &#34;Instances&#34; refers to the capability of having up to 8 XGA</span><br><span class="line">     adapters in one computer.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0059</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

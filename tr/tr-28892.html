@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-28222.html">
+    <link rel="next" href="tr-29965.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-28222.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-29965.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> DECRYPT(&lt;expC&gt;, &lt;C password&gt;)</span><br><span class="line"> Unprotects data that was protected with ENCRYPT().</span><br><span class="line"> Returns &lt;expC&gt; of &lt;string&gt; decoded according to &lt;password&gt;.</span><br><span class="line"></span><br><span class="line"> &lt;expC&gt; is the data to decrypt</span><br><span class="line"> &lt;password&gt; sets up the decryption algorithm.  Is case sensitive,</span><br><span class="line">    and may contain spaces and non-alpha characters.</span><br><span class="line"></span><br><span class="line"> Returns unchanged &lt;expC&gt; if &lt;password&gt; is less than 3 characters.</span><br><span class="line"></span><br><span class="line"> Decrypted return string is the same length as &lt;expC&gt; parameter.</span><br><span class="line"></span><br><span class="line"> * Protect file for first time</span><br><span class="line"> REPLACE ALL Field WITH ENCRYPT( Field, &#34;My Password&#34; )</span><br><span class="line"></span><br><span class="line"> * Display protected data</span><br><span class="line"> @...SAY DECRYPT( Field, &#34;My Password&#34; )</span><br><span class="line"></span><br><span class="line"> * Edit data in protected file</span><br><span class="line"> m_password = &#34;My Password&#34;</span><br><span class="line"> memvar = DECRYPT( Field, m_password )</span><br><span class="line"> &lt;edit memvar&gt;</span><br><span class="line"> REPLACE Field WITH ENCRYPT( memvar, m_password )</span><br><span class="line"></span><br><span class="line"> * Change encryption scheme in existing file</span><br><span class="line"> REPLACE ALL Field WITH ENCRYPT(;</span><br><span class="line">                        DECRYPT(Field,&lt;old password&gt;),;</span><br><span class="line">                                      &lt;new password&gt; )</span><br><span class="line"></span><br><span class="line"> * Unprotect entire file</span><br><span class="line"> REPLACE ALL Field WITH DECRYPT( Field, &#34;My Password&#34; )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-37532.html">ENCRYPT()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-77912.html">PASSWORD()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

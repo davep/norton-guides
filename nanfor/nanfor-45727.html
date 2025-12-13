@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » DOS/BIOS</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-39668.html">
+    <link rel="next" href="nanfor-48094.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-39668.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-30306.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-48094.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_ISPRINT()</span></span><br><span class="line"> Check printer status</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">    <span class="fg15 bg1"> FT_ISPRINT( [ &lt;cDevice&gt; ] ) -&gt; lResult</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">    <span class="ngb">&lt;cDevice&gt;</span> is optional and is the device to test (LPT2, COM1, etc.).</span><br><span class="line">    If omitted, the function will default to the PRN device.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">    .T.  if device is ready for output.</span><br><span class="line">    .F.  if one of the following conditions occurs:</span><br><span class="line">         1)  The device is not ready.</span><br><span class="line">         2)  The device does not exist.</span><br><span class="line">         3)  DOS couldn&#39;t open the device for some reason</span><br><span class="line">             (such as no file handles available).</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">    The Clipper IsPrinter() function is somewhat limited because it only</span><br><span class="line">    works with LPT1.  Furthermore, it talks directly to the hardware, so</span><br><span class="line">    if you have redirected LPT1 via the DOS MODE command, the IsPrinter()</span><br><span class="line">    function will return erroneous results.</span><br><span class="line"></span><br><span class="line">    This function offers a better alternative.  Instead of talking to the</span><br><span class="line">    hardware, it issues a DOS call that checks to see if the device is</span><br><span class="line">    ready or not.  That gives DOS an opportunity to deal with any</span><br><span class="line">    redirections, and since you pass the device name as a parameter, you</span><br><span class="line">    can test any device, not just LPT1 (note that the function defaults</span><br><span class="line">    to PRN if you fail to pass a valid parameter).</span><br><span class="line"></span><br><span class="line">    The function also temporarily traps the DOS critical error handler so</span><br><span class="line">    you don&#39;t get any nasty error messages if the device isn&#39;t ready.  It</span><br><span class="line">    restores the old critical error handler before exiting.</span><br><span class="line"></span><br><span class="line">    Note that although this function is mainly designed for testing</span><br><span class="line">    printers, you can also check to see if a drive is ready.  Since DOS</span><br><span class="line">    thinks the NUL device exists on every drive, you can pass a drive</span><br><span class="line">    letter followed by NUL as a parameter.  If DOS is able to open the</span><br><span class="line">    NUL device, then the drive is ready, otherwise the door is open or</span><br><span class="line">    something else is wrong.</span><br><span class="line"></span><br><span class="line">    The source code is written to adhere to Turbo Assembler&#39;s IDEAL mode.</span><br><span class="line">    To use another assembler, you will need to rearrange the PROC and</span><br><span class="line">    SEGMENT directives, and also the ENDP and ENDS directives (a very</span><br><span class="line">    minor task).</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">    IF ! FT_ISPRINT()</span><br><span class="line">       Qout( &#34;PRN is not ready!&#34; )</span><br><span class="line">    ENDIF</span><br><span class="line"></span><br><span class="line">    IF ! FT_ISPRINT( &#34;COM2&#34; )</span><br><span class="line">       Qout( &#34;Check the device on COM2.  Something is wrong.&#34; )</span><br><span class="line">    ENDIF</span><br><span class="line"></span><br><span class="line">    IF ! FT_ISPRINT( &#34;A:\NUL&#34; )</span><br><span class="line">       Qout( &#34;Oops, better check drive A!&#34; )</span><br><span class="line">    ENDIF</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> ISPRINT.ASM</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Ted Means</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5104-style.css">
+    <title>Clipper 5.01 vs 1.29 Anomalies (#04) » Menu » Anomalies</title>
+    <meta name="description" content="Clipper 5.01 vs 1.29 Anomalies (#04)">
+    <link rel="prev" href="cl5104-33965.html">
+    <link rel="next" href="cl5104-35710.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5104-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5104-33965.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5104-35710.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Menu</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies</a></li>
+                  <li><a href="cl5104-45500.html">Credits</a></li>
+                  <li><a href="cl5104-45901.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  REPORT FORM       Anomalies with Report forms.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Clipper Version</span>  1.29 dtd 04/15/91.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Problem Statement</span></span><br><span class="line"></span><br><span class="line">  1) Multi-line reports cannot be printed using the string +&#34;;&#34;+ string</span><br><span class="line">     method.</span><br><span class="line"></span><br><span class="line">  2) REPORT ... HEADING &#34;..&#34; cannot be printed using the +&#34;;&#34;+ method.</span><br><span class="line"></span><br><span class="line">  3) The Group Eject option is not implemented.</span><br><span class="line"></span><br><span class="line">  4) Command line parameters NOEJECT and SUMMARY incorrectly implemented.</span><br><span class="line"></span><br><span class="line">  5) SubSubTotal problem.</span><br><span class="line"></span><br><span class="line">  6) First page line counting error.</span><br><span class="line"></span><br><span class="line">  7) Wasted header spacing.</span><br><span class="line"></span><br><span class="line">  8) SET PATH problem in FRMBACK.PRG.</span><br><span class="line"></span><br><span class="line">  9) Potential run-time error due to ListAsArray() in FRMBACK.PRG.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Cause</span></span><br><span class="line"></span><br><span class="line">  Errors and Ommissions</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Work Around(s)</span></span><br><span class="line"></span><br><span class="line">  8) Edit Line 154 in FRMBACK.PRG as follows:</span><br><span class="line"></span><br><span class="line">     Change:    paths := ListAsArray( s )</span><br><span class="line"></span><br><span class="line">     To read:  paths := ListAsArray( s, &#34;;&#34;)</span><br><span class="line"></span><br><span class="line">  9) Edit ListAsArray() to check for nWidth &gt; 0. The following works</span><br><span class="line">     for me:</span><br><span class="line"></span><br><span class="line">     FUNCTION ListasArray(cList, cDelim, nWide)</span><br><span class="line">       LOCAL aList := {}, lNum</span><br><span class="line">       cDelim := IF(VALTYPE(cDelim) == &#39;C&#39;, cDelim, &#34;;&#34;)</span><br><span class="line">       cList  := TRIM( STRTRAN(cList, cdelim, chr(13)+chr(10)) )</span><br><span class="line">       nWide  := IF( (lNum := (VALTYPE(nWide) == &#39;N&#39; .and. nWide &gt; 0 )), ;</span><br><span class="line">                              nWide, LEN(cList) )</span><br><span class="line">       aList := ARRAY(MLCOUNT(cList,nWide,1,.T.))</span><br><span class="line">       AEVAL(aList, {|a,e| ;</span><br><span class="line">             aList[e] := IF(lNum, MEMOLINE(cList,nWide,e,1,.T.),;</span><br><span class="line">                              TRIM(MEMOLINE(cList,nWide,e,1,.T.)))})</span><br><span class="line">     RETURN aList</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Notes</span></span><br><span class="line"></span><br><span class="line">  C5REP6.ZIP, on NANFORUM, contains a FrmRun.prg which fixes 1 - 7, above.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

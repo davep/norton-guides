@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-24140.html">
+    <link rel="next" href="tr-26186.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-24140.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-26186.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> CURDIR([&lt;C drive letter&gt;])</span><br><span class="line"> Gets name of current disk directory.</span><br><span class="line"> Returns &lt;expC&gt; current directory of specified or default drive.</span><br><span class="line"></span><br><span class="line"> m_dir  = CURDIR()</span><br><span class="line"> m_file = SPACE(12)</span><br><span class="line"> @ 12,10 SAY &#34;Enter name of file: &#34; GET m_file</span><br><span class="line"> READ</span><br><span class="line"> IF .NOT. FILE( m_file )</span><br><span class="line">    ? &#34;File &#34; + m_file + &#34; not found in directory &#34; + m_dir</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> * Check validity of specified drive before using CURDIR.</span><br><span class="line"> m_drive = SPACE(1)</span><br><span class="line"> @ 12,10 SAY &#34;Enter drive letter: &#34;;</span><br><span class="line">         GET m_drive VALID ISDRIVE( m_drive )</span><br><span class="line"> READ</span><br><span class="line"> directory = CURDIR( m_drive )</span><br><span class="line"></span><br><span class="line"> Hazard</span><br><span class="line">    Assumes that you have checked to make sure the optionally</span><br><span class="line">    specified disk drive is valid.  If the optional drive letter</span><br><span class="line">    is included, the code should check ISDRIVE() first.</span><br><span class="line">    Specifying an invalid drive, such as &#34;B&#34; on a single-floppy</span><br><span class="line">    system, can cause serious errors, including</span><br><span class="line">    computer lock-up and data destruction.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-26186.html">CURDRIVE()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-32993.html">DIRMAKE()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-56045.html">ISDRIVE()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

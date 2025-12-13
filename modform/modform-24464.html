@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .MOD  (Sound)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-23655.html">
+    <link rel="next" href="modform-26015.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-23655.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-26015.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">.MOD  (Sound)</a></li>
+                  <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+                  <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+                  <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+                  <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+                  <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Version differences</span></span><br><span class="line"></span><br><span class="line"> The interface for MODRES has changed slightly between versions. The main</span><br><span class="line"> thing to remember, when writing programs that use MODRES, is to check the</span><br><span class="line"> version of the MODRES in memory, and only use the newer options if they are</span><br><span class="line"> available. I&#39;ve only looked at v2.01 for the new functions, but I think</span><br><span class="line"> they were available as far back as v1.52 - possibly even v1.4.</span><br><span class="line"></span><br><span class="line"> The first problem to worry about is the device number. In old versions,</span><br><span class="line"> specific values were assumed to apply to specific devices. In the new</span><br><span class="line"> versions, the available devices are determined from a table that is</span><br><span class="line"> returned by residency test (function 21).</span><br><span class="line"></span><br><span class="line"> The next difference is in the ability to handle samples greater than 64K</span><br><span class="line"> in length and to specify the quality of the output. Two bytes were added</span><br><span class="line"> to the table used in the &#34;Play a module&#34; function (20) to do this.</span><br><span class="line"></span><br><span class="line"> There were also bytes added to the table used in playing a sample (function</span><br><span class="line"> 23). These allow the user to change the volume of the sample, the quality</span><br><span class="line"> of the output, and permit samples to loop. A change was also made to the</span><br><span class="line"> format of the length field to allow samples with lengths greater than 64K</span><br><span class="line"> to be played.</span><br><span class="line"></span><br><span class="line"> Other than these changes to the existing structure, the new versions also</span><br><span class="line"> provide two additional functions (24 and 27) which are used to load a MOD</span><br><span class="line"> from disk and play it.</span><br><span class="line"></span><br><span class="line"> Please note that this &#34;new&#34; information is entirely theoretical - none of</span><br><span class="line"> these features have been tested.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="modform-29011.html">Subfunction 21</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="modform-26015.html">Subfunction 20</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="modform-31159.html">Subfunction 23</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-330198.html">
+    <link rel="next" href="rbint-331782.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-330198.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-331782.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Function:</span></span><br><span class="line"></span><br><span class="line">VERR verifies that the segment selector in memory, pointed to by op, is</span><br><span class="line">readable and accessible with the current privilege level (CPL).</span><br><span class="line">If so, the Zero Flag is set to 1, if not, the Zero Flag is cleared.</span><br><span class="line"></span><br><span class="line">VERW verifies that the segment selector in memory, pointed to by op, is</span><br><span class="line">writable and accessible with the current privilege level (CPL).</span><br><span class="line">If so, the Zero Flag is set to 1, if not, the Zero Flag is cleared.</span><br><span class="line"></span><br><span class="line">On some 386 both instructions allow a NULL selector to be specified,</span><br><span class="line">accessing selector zero in the GDT, instead of failing unconditionally with</span><br><span class="line">ZF=0, which would be the normal procedure. Workaround is to fill descriptor</span><br><span class="line">zero in the GDT with all zeroes. Accessing it will then always fail and</span><br><span class="line">produce the desired effect.</span><br><span class="line"></span><br><span class="line">On some 386 both VERR and VERW can hang the CPU until an INTR, NMI or RESET</span><br><span class="line">occurs. This bug occurs when there is no memory operand, JMP or CALL</span><br><span class="line">instruction in the &lt;prefetch queue&gt; along with the VERR or VERW.</span><br><span class="line">Workaround is to code a JMP or Jcondition instruction right after the VERR</span><br><span class="line">or VERW, with the added condition that _the last byte_ of the VERR / VERW</span><br><span class="line">and the _complete_ JMP instruction must fit in the same aligned doubleword.</span><br><span class="line"></span><br><span class="line">A data breakpoint set to the mem16 operand of either VERR or VERR can be</span><br><span class="line">missed on some 386es if the segment with the selector at mem16 is not</span><br><span class="line">accessible. (see also &lt;debugging&gt;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">WBINVD Write back &amp; invalidate both internal &amp; external caches</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos-dk-style.css">
+    <title>DOS kommando database. » DOS » DOS kommandoer</title>
+    <meta name="description" content="DOS kommando database.">
+    <link rel="prev" href="dos-dk-10437.html">
+    <link rel="next" href="dos-dk-13375.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos-dk-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos-dk-10437.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos-dk-13375.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">DOS kommandoer</a></li>
+                  <li><a href="dos-dk-26653.html">BATCH kommandoer</a></li>
+                  <li><a href="dos-dk-28063.html">EDLIN kommandoer</a></li>
+                  <li><a href="dos-dk-30445.html">ANSI sekvenser</a></li>
+                  <li><a href="dos-dk-34858.html">Maskin konfigurering</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tabeller</li>
+              <li>
+                <ul>
+                  <li><a href="dos-dk-40068.html">ASCII tabel</a></li>
+                  
+                </ul>
+              </li>
+              <li>Andet</li>
+              <li>
+                <ul>
+                  <li><a href="dos-dk-45464.html">Program beskrivelser</a></li>
+                  <li><a href="dos-dk-50058.html">Litt. liste</a></li>
+                  <li><a href="dos-dk-54238.html">Ord forklaring</a></li>
+                  
+                </ul>
+              </li>
+              <li>LBT SOFT</li>
+              <li>
+                <ul>
+                  <li><a href="dos-dk-61465.html">LBT SOFT</a></li>
+                  <li><a href="dos-dk-61868.html">Andre programmer</a></li>
+                  <li><a href="dos-dk-67653.html">Copyright</a></li>
+                  <li><a href="dos-dk-68334.html">Tak til...</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">FORMAT (.COM)   Extern kommando.</span><br><span class="line"></span><br><span class="line">Syntax:  &gt;FORMAT [&lt;d:&gt;] [/S] [/I] [/8] [/9] [/Q] [/B]</span><br><span class="line"></span><br><span class="line">Kommentar: Denne kommando benyttes til at initialisere (klarg¢re) disketter.</span><br><span class="line">         Udover fysisk at lave sporene, klarg¢rer FORMAT også de forskellige</span><br><span class="line">         katalogindgange (directories) og FAT&#39;en (File allocation Table).</span><br><span class="line">         Hvis intet drev specifiseres formateres default drevet. Hvis /S</span><br><span class="line">         parametren gives, vil DOS blive kopieret til den nyformaterede</span><br><span class="line">         diskette, så der kan bootes fra den.   Denne parameter kan benyttes</span><br><span class="line">         på både floppydisketter, og harddiske. Systemfilerne vil blive</span><br><span class="line">         kopieret i flg. orden:</span><br><span class="line"></span><br><span class="line">                        IO.SYS</span><br><span class="line">                        MSDOS.SYS</span><br><span class="line">                        COMMAND.COM</span><br><span class="line"></span><br><span class="line">         /1 parametren specifiserer enkelt sidet format.   Normalt</span><br><span class="line">         formateres alle disketter dobbelt sidet.</span><br><span class="line"></span><br><span class="line">         /8 parametren formaterer med 8 sektorer pr. spor istedet for det</span><br><span class="line">         mere normale 9.   Denne parameter er medtaget for kompatibilitet</span><br><span class="line">         med IBM PC DOS 1.0 eller 1.1 og MS-DOS 1.25.</span><br><span class="line"></span><br><span class="line">         /9 parametren gover formatering med 9 sektorer pr. spor.   Denne</span><br><span class="line">         parameter er kun n¢dvendig når der skal formateres 180kB eller</span><br><span class="line">         360kB disketter i et 1.2MB drev.   /4 kan bruges som synonym for</span><br><span class="line">         /9.</span><br><span class="line"></span><br><span class="line">         /Q giver formatering af 80 spor istedet for 40.   Denne parameter</span><br><span class="line">         er IKKE n¢dvendig for at formatere 1.2MB disketter, men bruges</span><br><span class="line">         udelukkende til at formatere 720kB 80 spors disketter.</span><br><span class="line"></span><br><span class="line">         /B reserverer plads til systemfilerne, men kopierer dem ikke.</span><br><span class="line">         Dette tillader senere overf¢ring af system filerne med DOS&#39;s SYS</span><br><span class="line">         kommando.</span><br><span class="line"></span><br><span class="line">Parameter oversigt:</span><br><span class="line"></span><br><span class="line">         Flg. tabel viser de parametre der skal gives for at formatere de</span><br><span class="line">         forskellige formater i forskellige drevtyper.</span><br><span class="line"></span><br><span class="line">         Drev                   Disk    N¢dvendig       OK men ikke n¢dv.</span><br><span class="line">         ----------------------------------------------------------------</span><br><span class="line">         1-side,  40 spor       160kB   /8              /1</span><br><span class="line">                                180kB                   /1/9</span><br><span class="line">         1-side,  80 spor       360kB   /Q              /1/9</span><br><span class="line">         2-sider, 40 spor       160kB   /8/1</span><br><span class="line">                                180kB   /1              /9</span><br><span class="line">                                320kB   /8</span><br><span class="line">                                360kB                   /9</span><br><span class="line">         2-sider, 80 spor       360kB   /1/Q            /9</span><br><span class="line">                                720kB   /Q              /9</span><br><span class="line">         1.2MB                  160kB   /8/1</span><br><span class="line">                                180kB   /1              /9</span><br><span class="line">                                320kB   /8</span><br><span class="line">         (2-sider,40 spor)      360kB   /9</span><br><span class="line">         (1-side, 80 spor)      360kB   /1/Q            /9</span><br><span class="line">                                720kB   /Q              /9</span><br><span class="line">                                1.2MB</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos-dk-58166.html">formater</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

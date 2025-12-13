@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » FAQ » FAQ</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-39240.html">
+    <link rel="next" href="clipncpp-41119.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-39240.html">Previous</a></li>
+
+
+          
+
+<li><a href="clipncpp-29045.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-41119.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">What is &#34;Internal Error 1210&#34; and what can I do about it?</span></span><br><span class="line"></span><br><span class="line"> X-Contributor: Norman Mongeau &lt;75470.1052@compuserve.com&gt;</span><br><span class="line"></span><br><span class="line"> Internal Error 1210 occurs when the database driver discovers an</span><br><span class="line"> index file inconsistency with which it cannot cope.  There are a</span><br><span class="line"> few things you can check in your code to eliminate this error:</span><br><span class="line"></span><br><span class="line">    1. Be sure that all indexes relating to a given .DBF file are open</span><br><span class="line">       whenever key values are updated.  (In other words, don&#39;t let</span><br><span class="line">       your index files get out of synch with the data files.)</span><br><span class="line"></span><br><span class="line">    2. Be sure that all your index key expressions resolve to the same</span><br><span class="line">       length regardless of the key value.  For example, you should</span><br><span class="line">       avoid using TRIM() on the whole key expression because it would</span><br><span class="line">       cause different records to have different key lengths.</span><br><span class="line"></span><br><span class="line">    3. Avoid having many duplicate keys in the same index.  One simple</span><br><span class="line">       way to create unique keys throughout is to add something like</span><br><span class="line">       (STR(RECNO()) to the key expression.</span><br><span class="line"></span><br><span class="line">    4. Consider using a database driver other than DBFNTX.  The</span><br><span class="line">       conditions that cause IE 1210 do not occur in the other</span><br><span class="line">       drivers.</span><br><span class="line"></span><br><span class="line">    5. If you use DBCREATEINDEX() to create index files, make sure that</span><br><span class="line">       the key expression character parameter is consistent with the</span><br><span class="line">       key code block parameter.  It&#39;s okay if these expressions are</span><br><span class="line">       not exactly the same, but they must evaluate to the same</span><br><span class="line">       result.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

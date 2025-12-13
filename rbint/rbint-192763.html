@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » CMOS</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-182612.html">
+    <link rel="next" href="rbint-202476.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-182612.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-180090.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-202476.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Accessing the CMOS  <span class="ngb">(Cont.)</span></span></span><br><span class="line"></span><br><span class="line">Bitfields for AMI advanced setup options:</span><br><span class="line">Bit(s) Description (Table C010)</span><br><span class="line"> 7 mouse enabled</span><br><span class="line"> 6 test memory above 1 megabyte</span><br><span class="line"> 5 generate clicks during memory test</span><br><span class="line"> 4 enable memory parity check</span><br><span class="line"> 3 display key for Setup while booting</span><br><span class="line"> 2 store user-defined disk data at top of memory instead of 0030h:0000h</span><br><span class="line"> 1 request F1 keypress on boot error</span><br><span class="line">----------R11--------------------------------</span><br><span class="line">CMOS 11h - AMI WinBIOS - BOOT OPTIONS</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 13h&#34;AMI&#34;</span><br><span class="line"></span><br><span class="line">Bitfields for AMI WinBIOS boot options:</span><br><span class="line">Bit(s) Description (Table C011)</span><br><span class="line"> 7 systems boots with high CPU speed</span><br><span class="line"> 6 memory test above 1MB enabled</span><br><span class="line"> 5 memory test tick sound enabled</span><br><span class="line"> 4 floppy drive seek at boot enabled</span><br><span class="line"> 3 &#34;Hit &lt;Del&gt;&#34; message enabled</span><br><span class="line"> 2 BIOS extended RAM area takes 1K at top of memory instead of 30h:0000h</span><br><span class="line"> 1 wait for F1 key on error</span><br><span class="line"> 0 NumLock enabled at boot</span><br><span class="line">----------R11--------------------------------</span><br><span class="line">CMOS 11h - AWARD - CONFIGURATION BITS</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 5Eh&#34;AWARD&#34;</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD configuration bits:</span><br><span class="line">Bit(s) Description (Table C012)</span><br><span class="line"> 7 NumLock ON at reboot</span><br><span class="line"> 6 IDE Block Mode enabled</span><br><span class="line"> 5 ???</span><br><span class="line"> 4 Shadow ROM BIOS at CC00-CFFF</span><br><span class="line"> 3 Shadow ROM BIOS at C800-CBFF</span><br><span class="line"> 2 ???</span><br><span class="line"> 1 BIOS Password Enabled (supervisor)</span><br><span class="line"> 0 0 = Password controls BIOS Setup Only</span><br><span class="line">   1 = Password required to enter System</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #C081</span><br><span class="line">----------R11--------------------------------</span><br><span class="line">CMOS 11h - Quadtel HT12 BIOS 03.05.03 - CONFIGURATION BITS</span><br><span class="line"></span><br><span class="line">Bitfields for Quadtel HT12 configuration bits:</span><br><span class="line">Bit(s) Description (Table C013)</span><br><span class="line"> 7 640K RAM present</span><br><span class="line"> 6 extension type (=CPU&#39;s Machine Status Word)</span><br><span class="line"> 3-2   NumLock state at boot time</span><br><span class="line">   00 Auto</span><br><span class="line">   01 NumLock on</span><br><span class="line">   10 Numlock off</span><br><span class="line"> 0 384K RAM relocated to top of memory</span><br><span class="line">----------R12--------------------------------</span><br><span class="line">CMOS 12h - IBM - HARD DISK DATA</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> A PC with a single type 2 (20 Mb ST-225) hard disk will have 20h in</span><br><span class="line">     byte 12h</span><br><span class="line">   some PCs utilizing external disk controller ROMs will use type 0 to</span><br><span class="line">     disable ROM BIOS (e.g. Zenith 248 with Plus HardCard).</span><br><span class="line"></span><br><span class="line">Bitfields for IBM hard disk data:</span><br><span class="line">Bit(s) Description (Table C014)</span><br><span class="line"> 7-4   First Hard Disk Drive</span><br><span class="line">   00  No drive</span><br><span class="line">   01-0Eh  Hard drive Type 1-14</span><br><span class="line">   0Fh Hard Disk Type 16-255</span><br><span class="line">       (actual Hard Drive Type is in CMOS RAM 19h)</span><br><span class="line"> 3-0   Second Hard Disk Drive Type</span><br><span class="line">   (same as first except extrnded type will be found in 1Ah).</span><br><span class="line">----------R12--------------------------------</span><br><span class="line">CMOS 12h - IBM PS/2 - SECOND FIXED DISK DRIVE TYPE (00-FFh)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 11h&#34;IBM PS/2&#34;</span><br><span class="line">----------R13--------------------------------</span><br><span class="line">CMOS 13h - AMI Hi-Flex BIOS - ADVANCED SETUP OPTIONS</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 11h&#34;WinBIOS&#34;</span><br><span class="line"></span><br><span class="line">Bitfields for AMI Hi-Flex BIOS advanced setup options:</span><br><span class="line">Bit(s) Description (Table C015)</span><br><span class="line"> 7 Mouse Enabled (1 = On)</span><br><span class="line"> 6 Test Memory above 1 MB (1 = On)</span><br><span class="line"> 5 Memory Test Tick Sound (1 = On)</span><br><span class="line"> 4 Memory Parity Error Check (1 = On)</span><br><span class="line"> 3 Press &lt;Esc&gt; to Disable Memory Test (1 = On)</span><br><span class="line"> 2 User-Defined Hard Disk (1 = Type 47 data area at address 0:300h)</span><br><span class="line"> 1 Wait for &lt;F1&gt; Message if Error (1 = On)</span><br><span class="line"> 0 Turn Num Lock On at boot (1 = On)</span><br><span class="line">----------R13--------------------------------</span><br><span class="line">CMOS 13h - AMI WinBIOS - PERIPHERAL OPTIONS</span><br><span class="line"></span><br><span class="line">Bitfields for AMI WinBIOS peripheral options:</span><br><span class="line">Bit(s) Description (Table C016)</span><br><span class="line"> 7-5   typematic rate</span><br><span class="line">   000-111 = 6,8,10,12,15,20,24,30 cps</span><br><span class="line"> 4 numeric processor test enabled</span><br><span class="line">----------R13--------------------------------</span><br><span class="line">CMOS 13h - PS/2 MCA - INTERNAL POST OPERATIONS</span><br><span class="line"></span><br><span class="line">Bitfields for PS/2 MCA internal POST operations:</span><br><span class="line">Bit(s) Description (Table C017)</span><br><span class="line"> 7 POST sets VGA pel information</span><br><span class="line"> 6 RTC battery OK</span><br><span class="line"> 5 invoke ROM BASIC from POST</span><br><span class="line"> 4 POST sets typematic to 30cps/250ms delay instead of 10.9cps/500ms</span><br><span class="line"> 3-2   unused or unknown</span><br><span class="line"> 1 network password installed</span><br><span class="line"> 0 power-on password installed</span><br><span class="line">----------R13--------------------------------</span><br><span class="line">CMOS 13h - AWARD - Configuration Bits</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD configuration bits:</span><br><span class="line">Bit(s) Description (Table C018)</span><br><span class="line"> 7 set keyboard typematic rate</span><br><span class="line"> 4-6   keyboard repeat rate</span><br><span class="line">   000 =  6 cps</span><br><span class="line">   001 =  8 cps</span><br><span class="line">   010 = 10 cps</span><br><span class="line">   011 = 12 cps</span><br><span class="line">   100 = 15 cps</span><br><span class="line">   101 = 20 cps</span><br><span class="line">   110 = 24 cps</span><br><span class="line">   111 = 30 cps</span><br><span class="line"> 2-3   keyboard typematic delay</span><br><span class="line">   00 =  250 Msec</span><br><span class="line">   01 =  500 Msec</span><br><span class="line">   10 =  750 Msec</span><br><span class="line">   11 = 1000 Msec</span><br><span class="line"> 1 ???</span><br><span class="line"> 0 boot up floppy seek</span><br><span class="line">----------R14--------------------------------</span><br><span class="line">CMOS 14h - IBM - EQUIPMENT BYTE</span><br><span class="line"></span><br><span class="line">Bitfields for IBM equipment byte:</span><br><span class="line">Bit(s) Description (Table C019)</span><br><span class="line"> 7-6   number of floppy drives (system must have at least one)</span><br><span class="line">   00b   1 Drive</span><br><span class="line">   01b   2 Drives</span><br><span class="line">   10b ??? 3 Drives</span><br><span class="line">   11b ??? 4 Drives</span><br><span class="line"> 5-4   monitor type</span><br><span class="line">   00b Not CGA or MDA (observed for EGA &amp; VGA)</span><br><span class="line">   01b 40x25 CGA</span><br><span class="line">   10b 80x25 CGA</span><br><span class="line">   11b MDA (Monochrome)</span><br><span class="line"> 3 display enabled (turned off to enable boot of rackmount)</span><br><span class="line"> 2 keyboard enabled (turn off to enable boot of rackmount)</span><br><span class="line"> 1 math coprocessor installed</span><br><span class="line"> 0 floppy drive installed (turned off for rackmount boot)</span><br><span class="line">----------R14--------------------------------</span><br><span class="line">CMOS 14h - AMSTRAD - BYTE user RAM checksum</span><br><span class="line"><span class="ngb">Desc:</span>  LSB of sum of all user bytes should be AAh</span><br><span class="line">----------R15--------------------------------</span><br><span class="line">CMOS 15h - IBM - BASE MEMORY IN KB (low byte)</span><br><span class="line">----------R1516------------------------------</span><br><span class="line">CMOS 15h-16h - AMSTRAD - Enter key scancode/ASCII code</span><br><span class="line">Size:  WORD</span><br><span class="line"><span class="ngb">Desc:</span>  specify the BIOS keycode for keyboard scancode 74h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  default: 1C0Dh  - emulates Return key</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 09,CMOS 17h&#34;AMSTRAD&#34;</span><br><span class="line">----------R16--------------------------------</span><br><span class="line">CMOS 16h - IBM - BASE MEMORY IN KB (high byte)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  The value in 15h-16h should be the same as in 0:413h and that</span><br><span class="line">     returned by INT 12h. A PC having 640k (280h) of conventional</span><br><span class="line">     memory will return 80h in byte 15h and 02h in byte 16h.</span><br><span class="line">----------R17--------------------------------</span><br><span class="line">CMOS 17h - IBM - EXTENDED MEMORY IN KB (low byte)</span><br><span class="line">----------R1718------------------------------</span><br><span class="line">CMOS 17h-18h - AMSTRAD - Forward delete key scancode/ASCII code</span><br><span class="line">Size:  WORD</span><br><span class="line"><span class="ngb">Desc:</span>  specify the BIOS keycode for keyboard scancode 70h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  default: 2207h  - emulates G (bell/beep)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 09,CMOS 15h&#34;AMSTRAD&#34;,CMOS 19h&#34;AMSTRAD&#34;</span><br><span class="line">----------R18--------------------------------</span><br><span class="line">CMOS 18h - IBM - EXTENDED MEMORY IN KB (high byte)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> some systems will only accommodate 15 MB extended (16 MB total)</span><br><span class="line">   Format is the same as in 15h-16h</span><br><span class="line">----------R19--------------------------------</span><br><span class="line">CMOS 19h - IBM - FIRST EXTENDED HARD DISK DRIVE TYPE</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  not in original AT specification but now nearly universally used</span><br><span class="line">     except for PS/2.</span><br><span class="line"></span><br><span class="line">(Table C020)</span><br><span class="line">Values for extended hard disk drive type:</span><br><span class="line"></span><br><span class="line">  00-0Fh unused (would not require extension. <span class="ngb">Note:</span> this has the effect of</span><br><span class="line">     making type 0Fh (15d) unavailable.</span><br><span class="line">  10h-FFh First Extended Hard Drive Type 16d-255d</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span> For most manufacturers the last drive type (typically either 47d or 49d)</span><br><span class="line">   is &#34;user defined&#34; and parameters are stored elsewhere in the CMOS.</span><br><span class="line">----------R19--------------------------------</span><br><span class="line">CMOS 19h - MCA - SLOT 0 ADAPTER CARD ID</span><br><span class="line">----------R19--------------------------------</span><br><span class="line">CMOS 19h - AMI - ???</span><br><span class="line"></span><br><span class="line">Bitfields for AMI location 19h:</span><br><span class="line">Bit(s) Description (Table C021)</span><br><span class="line"> 3-0   ???</span><br><span class="line"> 7-4   ???</span><br><span class="line">----------R191A------------------------------</span><br><span class="line">CMOS 19h-1Ah - AMSTRAD - Joystick fire button 1 scancode/ASCII code</span><br><span class="line">Size:  WORD</span><br><span class="line"><span class="ngb">Desc:</span>  specify the BIOS keycode for keyboard scancode 77h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  default: FFFFh  - (no translation)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 09,CMOS 17h&#34;AMSTRAD&#34;,CMOS 1Bh&#34;AMSTRAD&#34;</span><br><span class="line">----------R1A--------------------------------</span><br><span class="line">CMOS 1Ah - SECOND EXTENDED HARD DISK DRIVE TYPE</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 19h&#34;IBM&#34;,#C020</span><br><span class="line">----------R1A--------------------------------</span><br><span class="line">CMOS 1Ah - MCA - SLOT 0 ADAPTER CARD ID</span><br><span class="line">----------R1B--------------------------------</span><br><span class="line">CMOS 1Bh - MCA - SLOT 1 ADAPTER CARD ID</span><br><span class="line">----------R1B--------------------------------</span><br><span class="line">CMOS 1Bh - AMI - First Hard Disk (type 47) user defined: # of Cylinders, LSB</span><br><span class="line">----------R1B1C------------------------------</span><br><span class="line">CMOS 1Bh-1Ch - AMSTRAD - Joystick fire button 2 scancode/ASCII code</span><br><span class="line">Size:  WORD</span><br><span class="line"><span class="ngb">Desc:</span>  specify the BIOS keycode for keyboard scancode 78h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  default: FFFFh  - (no translation)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 09,CMOS 19h&#34;AMSTRAD&#34;,CMOS 1Dh&#34;AMSTRAD&#34;</span><br><span class="line">----------R1B--------------------------------</span><br><span class="line">CMOS 1Bh - PHOENIX - LSB of Word to 82335 RC1 roll compare register</span><br><span class="line">----------R1B--------------------------------</span><br><span class="line">CMOS 1Bh - AWARD - CONFIGURATION BITS</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD shadow RAM configuration bits:</span><br><span class="line">Bit(s) Description (Table C022)</span><br><span class="line"> 7-4   ???</span><br><span class="line"> 3 Shadow ROM BIOS at DC00-DFFF</span><br><span class="line"> 2 shadow      &#34;    &#34;   &#34; D800-DBFF</span><br><span class="line"> 1 shadow      &#34;    &#34;   &#34; D400-D7FF</span><br><span class="line"> 0 shadow      &#34;    &#34;   &#34; D000-D3FF</span><br><span class="line">----------R1C--------------------------------</span><br><span class="line">CMOS 1Ch - MCA - SLOT 1 ADAPTER CARD ID</span><br><span class="line">----------R1C--------------------------------</span><br><span class="line">CMOS 1Ch - AMI - First Hard Disk user defined: # of Cylinders, High Byte</span><br><span class="line">----------R1C--------------------------------</span><br><span class="line">CMOS 1Ch - PHOENIX - MSB of Word to 82335 RC1 roll compare register</span><br><span class="line">----------R1C--------------------------------</span><br><span class="line">CMOS 1Ch,1Dh - AWARD - Password</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  Stored as a checksum using the following algorithm:</span><br><span class="line">       initialize 16-bit checksum to zero</span><br><span class="line">       for each ASCII character between 32 (space) and 127 (DEL) in the</span><br><span class="line">         password, add character to checksum, then rotate left two bits</span><br><span class="line">       store low byte of result in 1Ch and high byte in 1Dh (for user</span><br><span class="line">         password, use locations 4Dh and 4Eh instead)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 4Dh&#34;AWARD&#34;</span><br><span class="line">----------R1D--------------------------------</span><br><span class="line">CMOS 1Dh - MCA - SLOT 2 ADAPTER CARD ID</span><br><span class="line">----------R1D--------------------------------</span><br><span class="line">CMOS 1Dh - AMI - First Hard Disk user defined: Number of Heads</span><br><span class="line">----------R1D--------------------------------</span><br><span class="line">CMOS 1Dh - AMSTRAD - mouse button 1 scancode/ASCII code</span><br><span class="line">Size:  WORD</span><br><span class="line"><span class="ngb">Desc:</span>  specify the BIOS keycode for keyboard scancode 7Dh</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  default: FFFFh  - (no translation)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 09,CMOS 1Bh&#34;AMSTRAD&#34;,CMOS 1Fh&#34;AMSTRAD&#34;</span><br><span class="line">----------R1D--------------------------------</span><br><span class="line">CMOS 1Dh - Zenith Z-200 monitor - BOOT DRIVE SELECTION</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

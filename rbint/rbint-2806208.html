@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2805999.html">
+    <link rel="next" href="rbint-2807336.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2805999.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2807336.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn B6  - Novell Netware - File Services - Extended File Attributes</span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = B6h</span><br><span class="line">   AL = subfunction</span><br><span class="line">       00h get extended file attributes</span><br><span class="line">       01h set extended file attributes</span><br><span class="line">       CL = extended file attributes (see #1492)</span><br><span class="line">   DS:DX -&gt; ASCIZ pathname (max 255 bytes)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error</span><br><span class="line">       AL = error code</span><br><span class="line">       8Ch caller lacks privileges</span><br><span class="line">       FEh not permitted to search directory</span><br><span class="line">       FFh file not found</span><br><span class="line">   CF clear if successful</span><br><span class="line">       AL = 00h (success)</span><br><span class="line">       CL = current extended file attributes (see #1492)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this function is supported by Advanced NetWare 2.1+</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=4300h,AH=E3h/SF=0Fh</span><br><span class="line"></span><br><span class="line">Bitfields for NetWare extended file attributes:</span><br><span class="line">Bit(s) Description (Table 1492)</span><br><span class="line"> 2-0   search mode (executables only)</span><br><span class="line">   000 none (use shell&#39;s default search)</span><br><span class="line">   001 search on all opens without path</span><br><span class="line">   010 do not search</span><br><span class="line">   011 search on read-only opens without path</span><br><span class="line">   100 reserved</span><br><span class="line">   101 search on all opens</span><br><span class="line">   110 reserved</span><br><span class="line">   111 search on all read-only opens</span><br><span class="line"> 3 reserved</span><br><span class="line"> 4 transactions on file tracked</span><br><span class="line"> 5 file&#39;s FAT indexed</span><br><span class="line"> 6 read audit (to be implemented)</span><br><span class="line"> 7 write audit (to be implemented)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

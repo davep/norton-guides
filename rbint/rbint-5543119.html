@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5542722.html">
+    <link rel="next" href="rbint-5544644.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5542722.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5448544.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5544644.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 67 Fn FFA5  - Microsoft Emm386.exe V4.20+ - Installation Check       </span>  [<span class="ngb">m</span>]</span><br><span class="line"></span><br><span class="line">   AX = FFA5h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = 845Ah/84A5h if loaded</span><br><span class="line">       BX:CX -&gt; API entry point (see #3337)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this call is available even if EMM386 is not providing EMS</span><br><span class="line">   the returned AX is 845Ah inside of MSWindows, 84A5h under bare DOS</span><br><span class="line">   if no other program has hooked INT 67, an alternate installation</span><br><span class="line">     check is to test for the string</span><br><span class="line">     &#34;MICROSOFT EXPANDED MEMORY MANAGER 386&#34; at offset 14h in the INT 67</span><br><span class="line">     handler&#39;s segment; the word immediately preceding this string</span><br><span class="line">     contains the offset of the API entry point</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=3Fh,AX=FFA5h/BX=4345h,INT 21/AX=4402h&#34;EMM386.EXE&#34;</span><br><span class="line"></span><br><span class="line">(Table 3337)</span><br><span class="line">Call EMM386.EXE API entry point with:</span><br><span class="line">   AH = 00h get memory manager&#39;s status</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AH = status</span><br><span class="line">           bit 0: not active (OFF)</span><br><span class="line">           bit 1: in &#34;Auto&#34; mode</span><br><span class="line">   AH = 01h set memory manager&#39;s state</span><br><span class="line">       AL = new state (00h ON, 01h OFF, 02h AUTO)</span><br><span class="line">   AH = 02h Weitek coprocessor support</span><br><span class="line">       AL = subfunction</span><br><span class="line">       00h get Weitek support state</span><br><span class="line"></span><br><span class="line">           <span class="ngb">Return:</span> AL = status</span><br><span class="line">               bit 0: Weitek coprocessor is present</span><br><span class="line">               bit 1: Weitek support is enabled</span><br><span class="line">       01h turn on Weitek support</span><br><span class="line">       02h turn off Weitek support</span><br><span class="line">     --- v4.20-4.41 only ---</span><br><span class="line">   AH = 03h Windows support???</span><br><span class="line">       AL = subfunction (00h, 01h)</span><br><span class="line">   AH = 04h print copyright notice to standard output</span><br><span class="line">        (using INT 21/AH=09h)</span><br><span class="line">   AH = 05h print available report</span><br><span class="line">        (the one shown when running EMM386 from the DOS prompt)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1200 at INT 21/AX=4402h/SF=02h,#2304 at INT 2F/AX=12FFh/BX=0106h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

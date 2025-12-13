@@ -1,0 +1,155 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Tutorial » Accessing your Database</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-349531.html">
+    <link rel="next" href="mrdebug-352627.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-349531.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-348923.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-352627.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">The workarea screen</span></span><br><span class="line"> An in-depth view of the database and all the tables.</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> The workarea screen provides a high amount of detail about each of the</span><br><span class="line"> workareas. You can access the workarea screen by pressing the &lt;F6&gt; key as</span><br><span class="line"> long as there is at least one workarea open.</span><br><span class="line"></span><br><span class="line"> <span class="fg15 bg3">╔══ Area ══╗┌ Status ─────────────────────────────────────────────┐┌─Locks─┐</span>   The</span><br><span class="line"> <span class="fg15 bg3">║<span class="fg15 bg0">MASTER    <span class="fg15 bg3">║│Alias : SIXNSX    [4]   (SIXNSX)    SHARED           ││<span class="fg15 bg0">    333<span class="fg15 bg3">│</span></span></span></span></span></span><br><span class="line"> <span class="fg15 bg3">║CHILD     ║│Record: 7 of 1000                     Found   : F    ││    982│</span></span><br><span class="line"> <span class="fg15 bg3">║SIXTEST   ║│BOF: F  EOF: F    NetErr: F           Deleted : F    ││    997│</span>   You</span><br><span class="line"> <span class="fg15 bg3">║SIXNSX    ║│Last Updated : 04/17/94           Record Size : 200  ││   1083│</span>   and</span><br><span class="line"> <span class="fg15 bg3">║HELPCMX   ║│ Field Count : 11                 Header Size : 385  ││    996│</span>   it&#39;</span><br><span class="line"> <span class="fg15 bg3">║CREDITOR  ║│  Filter Exp :                                       ││       │</span></span><br><span class="line"> <span class="fg15 bg3">║HALIFAX   ║│Relation Exp :                                       ││       │</span>   Pre</span><br><span class="line"> <span class="fg15 bg3">║DEMO      ║└─────────────────────────────────────────────────────┛└───────┛</span></span><br><span class="line"> <span class="fg15 bg3">║PCSPREV   ║┌─ View ───────────────────────────────────────────────────────┐</span></span><br><span class="line"> <span class="fg15 bg3">║<span class="fg11 bg3">VTHELP    <span class="fg15 bg3">║│*            FIRST                LAST                        │</span></span></span></span><br><span class="line"> <span class="fg15 bg3">║          ║│             <span class="fg15 bg0">Pauloli             <span class="fg15 bg3"> Valley                      │</span></span></span></span><br><span class="line"> <span class="fg15 bg3">║          ║│             Marigold             Screwball                   │</span></span><br><span class="line"> <span class="fg15 bg3">║          ║│             Patsy                Tormentous                  │</span></span><br><span class="line"> <span class="fg15 bg3">║          ║│*            Enya                 Wishengarden                │</span></span><br><span class="line"> <span class="fg15 bg3">║          ║│             Kirkenham            Lafayette                   │</span></span><br><span class="line"> <span class="fg15 bg3">║          ║│             Larry                Borgengorgengorgen          │</span></span><br><span class="line"> <span class="fg15 bg3">║          ║│             Dr. Edwin            Taylor                      │</span></span><br><span class="line"> <span class="fg15 bg3">╚══════════╝└──────────────────────────────────────────────────────────────┛</span></span><br><span class="line"> <span class="fg15 bg3">┌─ Index ─────────────────────────────────── [Valley                   ] ──┐</span></span><br><span class="line"> <span class="fg15 bg3">│Index Name               Tag Name   Key Expression                        │</span></span><br><span class="line"> <span class="fg15 bg3">│<span class="fg11 bg0">LAST.NTX   <span class="fg11 bg3">              LAST       LAST                                  │</span></span></span></span><br><span class="line"> <span class="fg15 bg3">│STREET.NTX               STREET     STREET+VILLAGE+COUNTY+POSTCODE        │</span></span><br><span class="line"> <span class="fg15 bg3">│HIREDATE.NTX             HIREDATE   HIREDATE                              │</span></span><br><span class="line"> <span class="fg15 bg3">└──────────────────────────────────────────────────────────────────────────┛</span></span><br><span class="line"></span><br><span class="line"> Once in this screen you may press &lt;F1&gt; for help.</span><br><span class="line"></span><br><span class="line"> The only thing that you need to know about, apart from the &lt;F1&gt; key is that</span><br><span class="line"> when you leave this screen, it does not remember the current workarea and</span><br><span class="line"> return you to this workarea by default the next time that you press &lt;F6&gt;.</span><br><span class="line"></span><br><span class="line"> You may change this so that MrDebug does remember the workarea that you last</span><br><span class="line"> moved the cursor to before you came out of this screen. Under the options</span><br><span class="line"> menu is an item called &#34;Save .DBF List Area&#34;, you may toggle this item on to</span><br><span class="line"> remember the workarea.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-407749.html">Workareas</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="mrdebug-14658.html">F6</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="mrdebug-475499.html">Save .DBF List Area</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

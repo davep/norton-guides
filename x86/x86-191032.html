@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Protection, privilege</title>
+    <meta name="description" content="iAPx86">
+    
+    <link rel="next" href="x86-193225.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="x86-190707.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-193225.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngb">Privilege and protection</span> (protected mode operation)</span><br><span class="line"></span><br><span class="line">    Privilege and protection are a means of controlling access to</span><br><span class="line">    code and to data. The security of the system is maintained, as is</span><br><span class="line">    the integrity of the information. Privilege and protection became</span><br><span class="line">    a necessity of programming life when the concept of multiple users</span><br><span class="line">    or multiple uses became a reality.</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="ngb">Privilege</span></span><br><span class="line">    The concept of privilege is central to several facets of</span><br><span class="line">    protection. Applied to procedures, privilege is the degree to</span><br><span class="line">    which the procedure <span class="ngu">can be trusted</span> not to make a mistake that</span><br><span class="line">    might affect other procedures or data. Applied to data, privilege</span><br><span class="line">    is the <span class="ngu">degree of protection</span> that a data structure should have from</span><br><span class="line">    less trusted procedures.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Privilege levels and rules</span></span><br><span class="line">    The 80286+ uses 4 levels of protection to optimize support of</span><br><span class="line">    multitasking. Privilege is implemented by assigning a value from 0</span><br><span class="line">    to 3 to key objects which are recognized by the processor. This</span><br><span class="line">    value is called the <span class="ngu">privilege level</span> (level 0 is the most</span><br><span class="line">    privileged, level 3 is the least privileged). The key items that</span><br><span class="line">    the processor recognizes are as follows:</span><br><span class="line"></span><br><span class="line">        <span class="ngb">DPL     Descriptor Privilege Level</span></span><br><span class="line">                Descriptors contain a field called the DPL. This is</span><br><span class="line">                the least privilege that a task must have to access</span><br><span class="line">                the descriptor.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">RPL     Requester Privilege Level</span></span><br><span class="line">                The RPL represents the privilege level requested by</span><br><span class="line">                the procedure that originates a selector.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">CPL     Current Privilege Level</span></span><br><span class="line">                Generally, the CPL is equal to the segment DPL of the</span><br><span class="line">                code segment that the processor is currently executing.</span><br><span class="line">                CPL changes when control transfers to segments with</span><br><span class="line">                differing DPLs.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Privilege   Typical use</span></span><br><span class="line">      <span class="ngb">level</span></span><br><span class="line">        0       Kernel, operating system             (most privileged)</span><br><span class="line">        1       System services</span><br><span class="line">        2       Custom extensions (OEM software)</span><br><span class="line">        3       Applications                         (least privileged)</span><br><span class="line"></span><br><span class="line">    The 80286+ automatically verifies a procedure&#39;s right to access</span><br><span class="line">    another segment by comparing the procedure&#39;s CPL to one or more</span><br><span class="line">    other privilege levels. This verification occurs at the time a</span><br><span class="line">    descriptor selector is loaded into a segment register.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-211438.html">Multitasking</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-197219.html">Descriptors</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-195957.html">Selectors</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

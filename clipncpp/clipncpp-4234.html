@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » C/C++ » Using C</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-1505.html">
+    <link rel="next" href="clipncpp-7236.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-1505.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-7236.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Math Library (Floating Point) Routine compatibility</span></span><br><span class="line"></span><br><span class="line"> The Summer &#39;87 and Clipper 5 versions of Clipper both use the MSC</span><br><span class="line">         Alternate Math routines for Floating Point Routines.  These</span><br><span class="line"> routines were chosen because they were faster than the Emulator</span><br><span class="line"> routines in the MSC 5.x products.   This is the reason you must</span><br><span class="line"> compile all C modules with the /FPa (Floating Point alternate)</span><br><span class="line"> switch.  If your code calls any run-time library routines you must</span><br><span class="line"> link in the MSC library LLIBCA.  This library supports the large</span><br><span class="line"> memory model and includes the alternate floating point support</span><br><span class="line"> routines.</span><br><span class="line"></span><br><span class="line"> Because of the differences in the design and implementation of the</span><br><span class="line"> alternate floating point routines between vendors, only Microsoft C</span><br><span class="line"> supports the use C floating point routines with Clipper.</span><br><span class="line"> This causes incompatibilities to arise between the floating point</span><br><span class="line"> routines intrinsic in Clipper and those that would be brought in by</span><br><span class="line"> any non-Microsoft library.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Library routines that access the Math Library</span></span><br><span class="line"></span><br><span class="line"> The library routines that automatically call floating point</span><br><span class="line"> routines are as follows.</span><br><span class="line"></span><br><span class="line">    Math routines</span><br><span class="line"></span><br><span class="line">      Obviously the math library routines use the floating point</span><br><span class="line">      math support routines. Also,   any use of the float or</span><br><span class="line">      double variable types will cause the inclusion of the</span><br><span class="line">      floating point routines.  Less obvious are the functions</span><br><span class="line">      that can accept these variable types as   parameters (such</span><br><span class="line">      as printf which could be passed a float or a double.) They</span><br><span class="line">      can also   cause the math routines to be included.</span><br><span class="line"></span><br><span class="line">    Graphics Library routines</span><br><span class="line"></span><br><span class="line">      Most of the graphics drawing routines use floating point</span><br><span class="line">      routines to determine the   position of the pixels along a</span><br><span class="line">      line or arc.  The basic routines for getting or setting the</span><br><span class="line">      video mode, changing video pages, or changing cursor</span><br><span class="line">      positions do not use floating   point.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Library Routines in General</span></span><br><span class="line"></span><br><span class="line"> The best way to ensure your C code will be compatible with Clipper is</span><br><span class="line"> to avoid the use of the run-time library routines all together.  Many</span><br><span class="line"> times the use of a library routine could be avoided all together, if</span><br><span class="line"> it was thought to be important.  Many of these routines (low level</span><br><span class="line"> file I/O for example) can be easily implemented using DOS or BIOS</span><br><span class="line"> interrupt calls.  The best situation is one where you do not have to</span><br><span class="line"> link in the C run-time library at all.    While this is not always</span><br><span class="line"> possible, it is worth being aware of.</span><br><span class="line"></span><br><span class="line"> If you are linking with a C library, be sure to list the Clipper</span><br><span class="line"> libraries on the link line first.  This is important because the</span><br><span class="line"> automatic search request that RTLink performs to find the Clipper</span><br><span class="line"> libraries is performed AFTER libraries on the link line are searched.</span><br><span class="line"> This means you may accidently replace some of Clipper&#39;s low level</span><br><span class="line"> functions with versions from the C library - which may not be</span><br><span class="line"> compatible.  The linker command line RTLINK FI Foo LIB LLIBCA the</span><br><span class="line"> linker will search LLIBCA.LIB  before CLIPPER.LIB,  but the line</span><br><span class="line"> RTLINK FI Foo LIB CLIPPER, EXTEND, TERMINAL, DBFNTX, LLIBCA  will</span><br><span class="line"> not.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

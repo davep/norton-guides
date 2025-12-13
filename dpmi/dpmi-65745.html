@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-64955.html">
+    <link rel="next" href="dpmi-69206.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-64955.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-69206.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">OverView</a></li>
+                  <li><a href="dpmi-38393.html">DPMI API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">TRANSLATION SERVICES</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            These services  are provided so that protected mode programs</span><br><span class="line">            can call  real mode  software that  DPMI  does  not  support</span><br><span class="line">            directly.   The  protected  mode  program  sets  up  a  data</span><br><span class="line">            structure that  contains the values for every register.  The</span><br><span class="line">            data structure is defined as:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                              Offset      Register</span><br><span class="line"></span><br><span class="line">                                00h         EDI</span><br><span class="line"></span><br><span class="line">                                04h         ESI</span><br><span class="line"></span><br><span class="line">                                08h         EBP</span><br><span class="line"></span><br><span class="line">                                0Ch  Reserved by system</span><br><span class="line"></span><br><span class="line">                                10h         EBX</span><br><span class="line"></span><br><span class="line">                                14h         EDX</span><br><span class="line"></span><br><span class="line">                                18h         ECX</span><br><span class="line"></span><br><span class="line">                                1Ch         EAX</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                20h    Flags</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                22h      ES</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                24h      DS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                26h      FS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                28h      GS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                2Ah      IP</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                2Ch      CS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                2Eh      SP</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                30h      SS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            You will notice that all of the fields are dwords so that 32</span><br><span class="line">            bit registers  can be  passed to  real mode.  Most real mode</span><br><span class="line">            software  will   ignore  the   high  word  of  the  extended</span><br><span class="line">            registers.   However, you  can write  a real  mode procedure</span><br><span class="line">            that uses  32-bit registers if you desire.  Note that 16-bit</span><br><span class="line">            DPMI implementations  may not  pass the  high word of 32-bit</span><br><span class="line">            registers or  the FS  and GS  segment registers to real mode</span><br><span class="line">            even when running on an 80386 machine.</span><br><span class="line"></span><br><span class="line">            Any interrupt  handler or  procedure called must return with</span><br><span class="line">            the stack  in the  same state  as when  it was called.  This</span><br><span class="line">            means that  the real mode code may switch stacks while it is</span><br><span class="line">            running but  it must  return on  the same  stack that it was</span><br><span class="line">            called on  and it  must pop  off the  entire far return/iret</span><br><span class="line">            structure.</span><br><span class="line"></span><br><span class="line">            After the  call or  interrupt is  complete,  all  real  mode</span><br><span class="line">            registers and flags except SS, SP, CS, and IP will be copied</span><br><span class="line">            back to  the real mode call structure so that the caller can</span><br><span class="line">            examine the real mode return values.</span><br><span class="line"></span><br><span class="line">            Remember that  the values in the segment registers should be</span><br><span class="line">            real mode segments, not protected mode selectors.</span><br><span class="line"></span><br><span class="line">            The translation  services will  provide a real mode stack if</span><br><span class="line">            the SS:SP  fields are  zero.  However, the stack provided is</span><br><span class="line">            relatively small.   If  the  real  mode  procedure/interrupt</span><br><span class="line">            routine uses  more than  30 words  of stack  space then  you</span><br><span class="line">            should provide your own real mode stack.</span><br><span class="line"></span><br><span class="line">            It is  possible to  pass parameters to real mode software on</span><br><span class="line">            the stack.   The  following  code  will  call  a  real  mode</span><br><span class="line">            procedure with 3 word parameters:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                 Protected_Mode_Code:</span><br><span class="line">                         push    Param1</span><br><span class="line">                         push    Param2</span><br><span class="line">                         push    Param3</span><br><span class="line">                         (Set ES:DI to point to call structure)</span><br><span class="line">                         mov     cx, 3           ; Copy 3 words</span><br><span class="line">                         mov     ax, 0301h       ; Call real mode proc</span><br><span class="line">                         int     31h             ; Call the procedure</span><br><span class="line">                         add     sp, 6           ; Clean up stack</span><br><span class="line"></span><br><span class="line">            The real  mode procedure  would be called with the following</span><br><span class="line">            data on the real mode stack:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                       Param1</span><br><span class="line"></span><br><span class="line">                                       Param2</span><br><span class="line"></span><br><span class="line">                                       Param3</span><br><span class="line"></span><br><span class="line">                                       Return</span><br><span class="line">                                         CS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                       Return</span><br><span class="line">                                         IP</span><br><span class="line"></span><br><span class="line">                                                 &lt;-- Real mode SS:SP</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            If your program needs to perform a series of calls to a real</span><br><span class="line">            mode  API  it  is  sometimes  more  convenient  to  use  the</span><br><span class="line">            translation services  to call  a real mode procedure in your</span><br><span class="line">            own program.  That procedure can then issue the API calls in</span><br><span class="line">            real mode  and then  return to  protected mode.   This  also</span><br><span class="line">            avoids the overhead of a mode switch for each API call.</span><br><span class="line"></span><br><span class="line">            There is  also a  mechanism for  protected mode  software to</span><br><span class="line">            gain control  from real  mode  via  a  real  mode  call-back</span><br><span class="line">            address.  Real mode call-backs can be used to hook real mode</span><br><span class="line">            interrupts or  to be called in protected mode by a real mode</span><br><span class="line">            driver.   For  example,  many  mouse  drivers  will  call  a</span><br><span class="line">            specified address whenever the mouse is moved.  This service</span><br><span class="line">            allows the  call-back to  be handled  by software running in</span><br><span class="line">            protected mode.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

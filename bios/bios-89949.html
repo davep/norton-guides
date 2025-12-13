@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-89406.html">
+    <link rel="next" href="bios-92228.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-89406.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-54487.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-92228.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 10h, 1Bh            Return Functionality Information            MCGA, VGA</span></span><br><span class="line"></span><br><span class="line">    This service returns information about the video equipment and</span><br><span class="line">    state.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH    = 1Bh</span><br><span class="line">                BX    = 0</span><br><span class="line">                ES:DI = Address of 64-byte buffer</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AL = 1Bh   If function supported</span><br><span class="line">                Buffer filled</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Format of receive buffer:</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Offset     Description</span></span><br><span class="line">        0          Offset of functionality information</span><br><span class="line">        2          Segment of functionality information</span><br><span class="line">        4          Video mode</span><br><span class="line">        5          Columns on screen</span><br><span class="line">        7          Length of regenerator buffer in bytes</span><br><span class="line">        9          Starting address of regenerator buffer</span><br><span class="line">        0Bh        Cursor position for eight display pages</span><br><span class="line">        1Bh        Cursor type setting</span><br><span class="line">        1Dh        Active display page</span><br><span class="line">        1Eh        CRT controller address</span><br><span class="line">        20h        Current setting of 03x8h register</span><br><span class="line">        21h        Current setting of 03x9h register</span><br><span class="line">        22h        Rows on screen</span><br><span class="line">        23h        Character height in scan lines</span><br><span class="line">        25h        Display Code</span><br><span class="line">        26h        Display Code (alternate)</span><br><span class="line">        27h        Colors supported in current mode</span><br><span class="line">        29h        Display pages supported</span><br><span class="line">        2Ah        Scan lines in current mode</span><br><span class="line">                           0 : 200 scan lines</span><br><span class="line">                           1 : 350 scan lines</span><br><span class="line">                           2 : 400 scan lines</span><br><span class="line">                           3 : 480 scan lines</span><br><span class="line">                           (4 - 255 reserved)</span><br><span class="line">        2Bh        Primary character block</span><br><span class="line">                           0 → block 0</span><br><span class="line">                           1 → block 1</span><br><span class="line">                                :</span><br><span class="line">                           255 → block 255</span><br><span class="line">        2Ch        Secondary character block</span><br><span class="line">                           0 → block 0</span><br><span class="line">                           1 → block 1</span><br><span class="line">                                :</span><br><span class="line">                           255 → block 255</span><br><span class="line">        2Dh        State information</span><br><span class="line">                           Bits 7, 6 reserved</span><br><span class="line">                           Bit  5 = 0 → background intensity</span><br><span class="line">                                    1 → blinking</span><br><span class="line">                           Bit  4 = 1 → cursor emulation active</span><br><span class="line">                           Bit  3 = 1 → default palette loading diabled</span><br><span class="line">                           Bit  2 = 1 → monochrome display attached</span><br><span class="line">                           Bit  1 = 1 → summing active</span><br><span class="line">                           Bit  0 = 1 → all modes on all displays active</span><br><span class="line">        2Eh        Reserved</span><br><span class="line">        31h        Video memory available</span><br><span class="line">                           0 → 64K</span><br><span class="line">                           1 → 128K</span><br><span class="line">                           2 → 192K</span><br><span class="line">                           3 → 256K</span><br><span class="line">        32h        Save pointer state information</span><br><span class="line">                           Bits 7, 6 reserved</span><br><span class="line">                           Bit  5 = 1 → DCC extension active</span><br><span class="line">                           Bit  4 = 1 → palette override active</span><br><span class="line">                           Bit  3 = 1 → graphics font override active</span><br><span class="line">                           Bit  2 = 1 → alpha font override active</span><br><span class="line">                           Bit  1 = 1 → dynamic save area active</span><br><span class="line">                           Bit  0 = 1 → 512 character set active</span><br><span class="line">        33h        Reserved</span><br><span class="line">        3Fh        End</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This Service returns information about the current video state,</span><br><span class="line">    including most of the settings now active. The information</span><br><span class="line">    returned by this service is lengthy.</span><br><span class="line"></span><br><span class="line">    Service 1Bh is normally used by operating system software.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

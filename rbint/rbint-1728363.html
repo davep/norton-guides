@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1728075.html">
+    <link rel="next" href="rbint-1729046.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1728075.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1712194.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1729046.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 1A Fn 06  - Time - Set Alarm (at,xt286,ps)                           </span>  [<span class="ngb">B</span>]</span><br><span class="line"></span><br><span class="line">   AH = 06h</span><br><span class="line">   CH = hour (BCD)</span><br><span class="line">   CL = minutes (BCD)</span><br><span class="line">   DH = seconds (BCD)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error (alarm already set or clock stopped for update)</span><br><span class="line">   CF clear if successful</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the alarm occurs every 24 hours until turned off, invoking INT 4A each</span><br><span class="line">     time</span><br><span class="line">   the BIOS does not check for invalid values for the time, so the CMOS</span><br><span class="line">     clock chip&#39;s &#34;don&#39;t care&#34; setting (any values between C0h and FFh)</span><br><span class="line">     may be used for any or all three parts.  For example, to create an</span><br><span class="line">     alarm once a minute, every minute, call with CH=FFh, CL=FFh, and</span><br><span class="line">     DH=00h.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=07h,AH=0Ch,INT 4A&#34;SYSTEM&#34;</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

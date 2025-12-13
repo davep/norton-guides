@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Reference » Click .INI file</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-27872.html">
+    <link rel="next" href="click-29040.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-27872.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-15048.html">Up</a></li>
+
+
+          
+
+<li><a href="click-29040.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Getting Started</a></li>
+                  <li><a href="click-10263.html">Features</a></li>
+                  <li><a href="click-15048.html">Click .INI file</a></li>
+                  
+                </ul>
+              </li>
+              <li>Support</li>
+              <li>
+                <ul>
+                  <li><a href="click-32383.html">Support</a></li>
+                  <li><a href="click-34012.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        PREPROCESS_WITH_DECLARATION_BUSTER</span><br><span class="line"></span><br><span class="line">    Default: YES</span><br><span class="line"></span><br><span class="line">    Options: YES, NO</span><br><span class="line"></span><br><span class="line">    Set to YES, then declarations that start like this:</span><br><span class="line"></span><br><span class="line">    LOCAL var1, var2, var3</span><br><span class="line"></span><br><span class="line">    Will end up like this:</span><br><span class="line"></span><br><span class="line">    LOCAL var1</span><br><span class="line">    LOCAL var2</span><br><span class="line">    LOCAL var3</span><br><span class="line"></span><br><span class="line">    This works on the following declarations.</span><br><span class="line"></span><br><span class="line">    LOCAL</span><br><span class="line">    PRIVATE</span><br><span class="line">    MEMVAR</span><br><span class="line">    STATIC</span><br><span class="line">    PUBLIC</span><br><span class="line">    FIELD</span><br><span class="line"></span><br><span class="line">    It does cost a little time, since it is a separate process done with</span><br><span class="line">    it&#39;s own pass on the file.</span><br><span class="line"></span><br><span class="line">    Declaration Buster now also busts up multiparameter REPLACE</span><br><span class="line">    statements.</span><br><span class="line"></span><br><span class="line">    So, if you have the Declaration Buster turned on, this:</span><br><span class="line"></span><br><span class="line">    REPLACE foo with x, bar with y, baz with z</span><br><span class="line"></span><br><span class="line">    becomes:</span><br><span class="line"></span><br><span class="line">    REPLACE foo with x</span><br><span class="line">    REPLACE bar with y</span><br><span class="line">    REPLACE baz with z</span><br><span class="line"></span><br><span class="line">    which in a later pass may become:</span><br><span class="line"></span><br><span class="line">    foo := x</span><br><span class="line">    bar := y</span><br><span class="line">    baz := z</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

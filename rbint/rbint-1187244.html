@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1186121.html">
+    <link rel="next" href="rbint-1188361.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1186121.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1061380.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1188361.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 12  - Topview - Send Message - &#34;erase&#34; - Erase Object          </span>  [<span class="ngb">Q</span>]</span><br><span class="line"></span><br><span class="line">   AH = 12h</span><br><span class="line">   BH = 0Eh</span><br><span class="line">   BL = object</span><br><span class="line">       00h handle is DWORD on top of stack</span><br><span class="line">       window:   clear from scroll origin to end of window</span><br><span class="line">       keyboard: discard input</span><br><span class="line">       timer:    cancel current interval</span><br><span class="line">       pointer:  discard all pending messages</span><br><span class="line">       mailbox:  discard all pending messages</span><br><span class="line">       01h clear task&#39;s default window from scroll origin to end</span><br><span class="line">       02h discard all queued messages in mailbox (handle on top of stack)</span><br><span class="line">       03h discard all queued messages in current task&#39;s default mailbox</span><br><span class="line">       04h discard all input queued to KEYBOARD (handle on top of stack)</span><br><span class="line">       05h discard all input queued to task&#39;s default KEYBOARD</span><br><span class="line">       06h remove all objects from OBJECTQ (task&#39;s handle on top of stack)</span><br><span class="line">       07h remove all objects from current task&#39;s OBJECTQ</span><br><span class="line">       0Ch (DV 2.26+) clear window of task owning handle on top of stack</span><br><span class="line">       0Dh (DV 2.26+) clear default window of parent of current task</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> STACK popped if handle passed on stack</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  when an OBJECTQ is erased, each object in the OBJECTQ is also erased</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=12h/BH=02h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

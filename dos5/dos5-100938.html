@@ -1,0 +1,118 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-99882.html">
+    <link rel="next" href="dos5-101649.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-99882.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-101649.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 5700h          Get File Date and Time</span></span><br><span class="line"></span><br><span class="line">    Returns the time and date a file was last modified (the last time</span><br><span class="line">    its directory entry was updated).</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX = 5700h</span><br><span class="line">                BX = File handle</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  CX = Time</span><br><span class="line">                DX = Date</span><br><span class="line">                or</span><br><span class="line">                AX = Error code, if CF is set</span><br><span class="line">                     | 06h Invalid handle</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The values in CX and DX have the following format:</span><br><span class="line"></span><br><span class="line">                <span class="ngb">Bits    Contents</span></span><br><span class="line">        CX      0-4     Seconds divided by 2</span><br><span class="line">                5-10    Minutes (0-59)</span><br><span class="line">                11-15   Hours (0-23 on a 24-hour clock)</span><br><span class="line"></span><br><span class="line">        DX      0-4     Day of month (1-31)</span><br><span class="line">                5-8     Month (1 = January, 2 = February, etc.)</span><br><span class="line">                9-15    Year offset from 1980</span><br><span class="line">                        (add 1980 to get actual year)</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-101649.html">5701h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

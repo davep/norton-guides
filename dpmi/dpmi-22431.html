@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » OverView</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-19534.html">
+    <link rel="next" href="dpmi-23448.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-19534.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-23448.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">OverView</a></li>
+                  <li><a href="dpmi-38393.html">DPMI API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Default Interrupt Reflection</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            DPMI hosts  provide interrupt  vectors  for  all  100h  (256</span><br><span class="line">            decimal) interrupts  for protected  mode clients.   When the</span><br><span class="line">            DPMI client initializes, all interrupt vectors will point to</span><br><span class="line">            code that  will automatically  reflect the interrupt to real</span><br><span class="line">            mode (except  for Int  31h and  Int 21h,  AH=4Ch).   When  a</span><br><span class="line">            default interrupt  reflection handler  is executed  it  will</span><br><span class="line">            switch to real mode, preserving the EAX, EBX, ECX, EDX, ESI,</span><br><span class="line">            EDI, and  EBP registers and flags, and reflect the interrupt</span><br><span class="line">            in real  mode.   When the  real mode  interrupt returns, the</span><br><span class="line">            default  interrupt  reflection  code  will  switch  back  to</span><br><span class="line">            protected mode  and return  with the modified values of EAX,</span><br><span class="line">            EBX, ECX,  EDX, ESI, EDI, EBP, and flags.  Segment registers</span><br><span class="line">            and the  stack pointer  will not  be passed  between  modes.</span><br><span class="line">            Therefore, any  API that  passes pointers  or information in</span><br><span class="line">            segment registers  will need  to  be  translated  by  a  DOS</span><br><span class="line">            extender.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

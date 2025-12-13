@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1077063.html">
+    <link rel="next" href="rbint-1079672.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1077063.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1061380.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1079672.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 01  - Amstrad Pc1512 - Write Data To Non-volatile Ram          </span>  [<span class="ngb">b</span>]</span><br><span class="line"></span><br><span class="line">   AH = 01h</span><br><span class="line">   AL = NVRAM location (00h to 3Fh) (see #0331)</span><br><span class="line">   BL = NVRAM data value</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AH = return code</span><br><span class="line">       00h OK</span><br><span class="line">       01h address bad</span><br><span class="line">       02h write error</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=02h&#34;Amstrad&#34;</span><br><span class="line"></span><br><span class="line">Format of Amstrad NVRAM:</span><br><span class="line">Offset Size    Description (Table 0331)</span><br><span class="line"> 00h   BYTE    time of day: seconds</span><br><span class="line"> 01h   BYTE    alarm time: seconds</span><br><span class="line"> 02h   BYTE    time of day: minutes</span><br><span class="line"> 03h   BYTE    alarm time: minutes</span><br><span class="line"> 04h   BYTE    time of day: hours</span><br><span class="line"> 05h   BYTE    alarm time: hours</span><br><span class="line"> 06h   BYTE    day of week, 1 = Sunday</span><br><span class="line"> 07h   BYTE    day of month</span><br><span class="line"> 08h   BYTE    month</span><br><span class="line"> 09h   BYTE    year mod 100</span><br><span class="line"> 0Ah   BYTE    RTC status register A (see #0332)</span><br><span class="line"> 0Bh   BYTE    RTC status register B (see #0333)</span><br><span class="line"> 0Ch   BYTE    RTC status register C (read-only) (see #0334)</span><br><span class="line"> 0Dh   BYTE    RTC status register D</span><br><span class="line">       bit 7: battery good</span><br><span class="line"> 0Eh  6 BYTEs  time and date machine last used</span><br><span class="line"> 14h   BYTE    user RAM checksum</span><br><span class="line"> 15h   WORD    Enter key scancode/ASCII code</span><br><span class="line"> 17h   WORD    Forward delete key scancode/ASCII code</span><br><span class="line"> 19h   WORD    Joystick fire button 1 scancode/ASCII code</span><br><span class="line"> 1Bh   WORD    Joystick fire button 2 scancode/ASCII code</span><br><span class="line"> 1Dh   WORD    mouse button 1 scancode/ASCII code</span><br><span class="line"> 1Fh   WORD    mouse button 2 scancode/ASCII code</span><br><span class="line"> 21h   BYTE    mouse X scaling factor</span><br><span class="line"> 22h   BYTE    mouse Y scaling factor</span><br><span class="line"> 23h   BYTE    initial VDU mode and drive count</span><br><span class="line"> 24h   BYTE    initial VDU character attribute</span><br><span class="line"> 25h   BYTE    size of RAM disk in 2K blocks</span><br><span class="line"> 26h   BYTE    initial system UART setup byte</span><br><span class="line"> 27h   BYTE    initial external UART setup byte</span><br><span class="line"> 28h 24 BYTEs  available for user application</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  bytes 00h-0Dh are the same on the IBM AT as they are used/updated by</span><br><span class="line">     the clock chip</span><br><span class="line"></span><br><span class="line">Bitfields for RTC status register A:</span><br><span class="line">Bit(s) Description (Table 0332)</span><br><span class="line"> 7 set if date/time being updated</span><br><span class="line"> 6-4   time base speed, default 010 = 32768 Hz</span><br><span class="line"> 3-0   interrupt rate selection, default 0110 = 1024 Hz</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0331</span><br><span class="line"></span><br><span class="line">Bitfields for RTC status register B:</span><br><span class="line">Bit(s) Description (Table 0333)</span><br><span class="line"> 7 clear if normal update, set if abort update</span><br><span class="line"> 6 periodic interrupt enable</span><br><span class="line"> 5 alarm interrupt enable</span><br><span class="line"> 4 update end interrupt enable</span><br><span class="line"> 3 square wave enable</span><br><span class="line"> 2 date mode (clear = BCD, set = binary)</span><br><span class="line"> 1 24-hour format</span><br><span class="line"> 0 daylight saving time enable</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0331</span><br><span class="line"></span><br><span class="line">Bitfields for RTC status register C:</span><br><span class="line">Bit(s) Description (Table 0334)</span><br><span class="line"> 7 IRQF flag</span><br><span class="line"> 6 PF flag</span><br><span class="line"> 5 AF flag</span><br><span class="line"> 4 UF flag</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0331</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

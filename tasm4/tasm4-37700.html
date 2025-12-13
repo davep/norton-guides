@@ -1,0 +1,150 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-37443.html">
+    <link rel="next" href="tasm4-39352.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-37443.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-39352.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">ENUM             Define enumerated type                             Directive</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">ENUM</span> name [enum_var [,enum_var...]]   ; Ideal mode</span><br><span class="line">  name <span class="ngb">ENUM</span> [enum_var [,enum_var...]]   ; MASM mode</span><br><span class="line"></span><br><span class="line">    Declares an enumerated data type. The syntax of each enum_var is:</span><br><span class="line"></span><br><span class="line">       var_name [=value]</span><br><span class="line"></span><br><span class="line">    An enumerated data type represents a collection of values that can be</span><br><span class="line">    stored in a certain number of bits. The maximum value stored</span><br><span class="line">    determines the actual number of bits required.</span><br><span class="line"></span><br><span class="line">    Turbo Assembler will assign a value equal to that of the last variable</span><br><span class="line">    in the list <span class="ngb">plus one</span> if =value isn&#39;t present when you assign the</span><br><span class="line">    specified value to the variable var_name. Values can&#39;t be relative or</span><br><span class="line">    forward-referenced.</span><br><span class="line"></span><br><span class="line">    Enumerated data types are redefinable. Variables created with ENUM are</span><br><span class="line">    redefinable numeric variables of <span class="ngb">global</span> scope.</span><br><span class="line"></span><br><span class="line">    Example:    ENUM corners    north, east, south, west</span><br><span class="line">                ENUM fkeys      f1 = 3bh, f2, {</span><br><span class="line">                                f3, f4</span><br><span class="line">                                f8 = 42h, f9</span><br><span class="line">                                f10, f11, f12 }</span><br><span class="line"></span><br><span class="line">    Turbo Assembler provides special support for record fields that</span><br><span class="line">    represent flags and enumerated data types (see GETFIELD, SETFIELD,</span><br><span class="line">    MASKFLAG, SETFLAG, TESTFLAG, FLIPFLAG).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Creating an instance of an enum</span></span><br><span class="line"></span><br><span class="line">    You can create an instance of an enumerated data type by using the</span><br><span class="line">    name of the enumerated data type as a data allocation directive.</span><br><span class="line"></span><br><span class="line">    Enumerated data type instances are always either a byte, a word, or a</span><br><span class="line">    doubleword, depending on the maximum value present in the definition.</span><br><span class="line"></span><br><span class="line">    Examples:   direcs corners  south           ; Initialized to south</span><br><span class="line">                direc2 corners  315             ; Value outside fits OK</span><br><span class="line">                direc3 corners  ?               ; Uninitialized</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-129495.html">{</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-87522.html">RECORD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-48702.html">GETFIELD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-110000.html">TESTFLAG</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-140780.html">MASK</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-150815.html">WIDTH</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

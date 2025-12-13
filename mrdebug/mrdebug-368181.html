@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Tutorial » Assertion Checking</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-364801.html">
+    <link rel="next" href="mrdebug-370508.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-364801.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-360448.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-370508.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Placing checks inside the code</span></span><br><span class="line"> A Diagnostic Message Generator!</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> Another powerful command that you can use is the ASSERT command.  The ASSERT</span><br><span class="line"> command will enable you to test for an expression. If the expression fails,</span><br><span class="line"> then the ASSERT command sends a diagnostic message to the Assert/Trace</span><br><span class="line"> Window and halts the execution of the program and hands control over to</span><br><span class="line"> MrDebug.</span><br><span class="line"></span><br><span class="line"> As long as the expression evaluates to a true (.T.) then no action is taken</span><br><span class="line"> and the program continues happily on it&#39;s way, unaware that any low-level</span><br><span class="line"> checking routines have taken place.</span><br><span class="line"></span><br><span class="line"> ASSERT may be used to cure a multitude of sins. Perhaps an obvious usage for</span><br><span class="line"> it can be ensure that something in your code is as it should be.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">ASSERT nTax == 0.175</span></span><br><span class="line"></span><br><span class="line"> With this line of code before an important set of calculations, you could</span><br><span class="line"> rely on the fact that the tax rate multiplier will be .175 when the</span><br><span class="line"> calculations start because if they are not, then this ASSERT line will flag</span><br><span class="line"> the problem, and signal MrDebug that the assertion failed.</span><br><span class="line"></span><br><span class="line"> Please note that if you use an expression that does not equate to a logical,</span><br><span class="line"> such as:</span><br><span class="line"></span><br><span class="line">    <span class="ngb">ASSERT lAddTax</span></span><br><span class="line"></span><br><span class="line"> where, in this case, lAddTax has not been initialized then you will get a</span><br><span class="line"> run-time error when this is executed - because the code is gibberish.</span><br><span class="line"></span><br><span class="line"> If however, you had already initialized lAddTax to .T. then this would sail</span><br><span class="line"> through perfectly well - evaluating lAddTax would return .T..</span><br><span class="line"></span><br><span class="line"> You could take this one step further by first making sure that the variable</span><br><span class="line"> was a logical value with:</span><br><span class="line"></span><br><span class="line">    <span class="ngb">ASSERT lAddTax AS LOGICAL</span></span><br><span class="line"></span><br><span class="line"> followed by:</span><br><span class="line"></span><br><span class="line">    <span class="ngb">ASSERT lAddTax</span></span><br><span class="line"></span><br><span class="line"> which would make sure that lAddTax was .T. at this point.</span><br><span class="line"></span><br><span class="line"> However please note that sometimes you may want lAddTax to be .F., so you</span><br><span class="line"> may not want to place an Assertion here unless you wanted to know when</span><br><span class="line"> lAddTax was .F. - this could come in handy as a debugging tool to work out</span><br><span class="line"> why a variable was not a particular value.</span><br><span class="line"></span><br><span class="line"> The following example demonstrates how to check that a calculation is</span><br><span class="line"> correct:</span><br><span class="line"></span><br><span class="line">   <span class="ngb">nGross := (nTax * nNett)</span></span><br><span class="line">   <span class="ngb">nTaxAmount := nGross - nNett</span></span><br><span class="line"></span><br><span class="line">   <span class="ngb">ASSERT nTaxAmount + nNett == nGross</span></span><br><span class="line"></span><br><span class="line"> The above line can be seen to be a double check to ensure that the</span><br><span class="line"> calculation is correct.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-652081.html">ASSERT</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

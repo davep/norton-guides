@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="xms30-style.css">
+    <title>XMS Specification  (version 3.0) » XMS » XMS API</title>
+    <meta name="description" content="XMS Specification  (version 3.0)">
+    <link rel="prev" href="xms30-31295.html">
+    <link rel="next" href="xms30-32706.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="xms30-about.html">About</a></li>
+
+
+          
+
+<li><a href="xms30-31295.html">Previous</a></li>
+
+
+          
+
+<li><a href="xms30-18951.html">Up</a></li>
+
+
+          
+
+<li><a href="xms30-32706.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>XMS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Overview</a></li>
+                  <li><a href="xms30-18951.html">XMS API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Reallocate Extended Memory Block (Function 0Fh)</span></span><br><span class="line"></span><br><span class="line">        ARGS:   AH = 0Fh</span><br><span class="line">                BX = New size for the extended memory block in K-bytes</span><br><span class="line">                DX = Unlocked extended memory block handle to reallocate</span><br><span class="line"></span><br><span class="line">        RETS:   AX = 0001h if the block is reallocated, 0000h otherwise</span><br><span class="line"></span><br><span class="line">        ERRS:   BL = 80h if the function is not implemented</span><br><span class="line">                BL = 81h if a VDISK device is detected</span><br><span class="line">                BL = A0h if all available extended memory is allocated</span><br><span class="line">                BL = A1h if all available extended memory handles are in use</span><br><span class="line">                BL = A2h if the handle is invalid</span><br><span class="line">                BL = ABh if the block is locked</span><br><span class="line"></span><br><span class="line">This function attempts to reallocate an unlocked extended memory block</span><br><span class="line">so that it becomes the newly specified size.  If the new size is smaller</span><br><span class="line">than the old block&#39;s size, all data at the upper end of the old block is</span><br><span class="line">lost.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:15</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

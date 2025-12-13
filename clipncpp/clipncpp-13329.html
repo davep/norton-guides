@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » C/C++ » Using C</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-11828.html">
+    <link rel="next" href="clipncpp-14768.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-11828.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-14768.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Calling Clipper functions from C</span></span><br><span class="line"></span><br><span class="line"> One of the more common calls we receive in Technical Support is the</span><br><span class="line"> question about calling a Clipper UDF from C.   It is commonly thought</span><br><span class="line"> that if C can be called from Clipper, then Clipper  functions and C</span><br><span class="line"> functions must be operate identically.  This is not the case.</span><br><span class="line"> Anyone familiar with the way C calls a function knows that C pushes</span><br><span class="line"> strongly-typed arguments on the processor stack and then does a jump</span><br><span class="line"> to the function that is being called.  Clipper does not use the</span><br><span class="line"> processor stack for the passing of arguments to functions.  Clipper</span><br><span class="line"> functions operate within an &#34;activation context&#34; that must be</span><br><span class="line"> established before the Clipper function is called.  This allows</span><br><span class="line"> Clipper to support loosely-typed arguments, variable number of</span><br><span class="line"> arguments, as well as functions such as PROCNAME().   This means that</span><br><span class="line"> even if you succeeded in calling a Clipper function, you would be</span><br><span class="line"> unable to pass it parameters, and it would be operating &#34;out of</span><br><span class="line"> context.&#34;</span><br><span class="line"></span><br><span class="line"> The extend system also assumes that it has complete control over</span><br><span class="line"> virtual memory while you are executing a C or assembler function.  If</span><br><span class="line"> you call a Clipper function, this assumption is no longer valid and</span><br><span class="line"> may cause the system to crash.  Certain Clipper operations are also</span><br><span class="line"> inherently problematic:  what happens if the Clipper function BREAKs</span><br><span class="line"> (or calls the error handler and it BREAKs)?  There is no equivalent C</span><br><span class="line"> ability.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

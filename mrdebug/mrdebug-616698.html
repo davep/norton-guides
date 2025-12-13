@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Utilities</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-615377.html">
+    <link rel="next" href="mrdebug-619138.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-615377.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-565186.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-619138.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">UnTextWin() - Replace characters within an area</span></span><br><span class="line"> Replaces an area of characters from a region of the screen</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">UnTextWin( &lt;nTop&gt;, &lt;nLeft&gt;, &lt;nBottom&gt;, &lt;nRight&gt;,</span></span><br><span class="line">        <span class="ngb">&lt;cReplacementChar | nReplacementChar&gt;,</span></span><br><span class="line">        <span class="ngb">[&lt;cInitialChar | nInitialChar&gt;],</span></span><br><span class="line">        <span class="ngb">[&lt;cEndChar | nEndChar&gt;]) --&gt; cNull</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nTop&gt;</span> is the top row coordinate of the area.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nLeft&gt;</span> is the left column coordinate of the area.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nBottom&gt;</span> is the bottom row coordinate of the area.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nRight&gt;</span> is the right column coordinate of the area.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cReplacementChar | nReplacementChar&gt;</span> is the character that is used to</span><br><span class="line">     replace existing characters with.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cInitialChar | nInitialChar&gt;</span> is the lower boundary for characters</span><br><span class="line">     that should not be cleared from the screen. This charcacter can be in</span><br><span class="line">     the range 0 to 255. The default is CHR(176) or ░.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cEndChar | nEndChar&gt;</span> is the upper boundary for charcters to be</span><br><span class="line">     excluded from the replacement. This character can be in the range 0 -</span><br><span class="line">     255 with the default being CHR(223) or ▀.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     UnTextWin() always returns null string, or &#34;&#34;.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     UnTextWin() may be used to selectively clear parts of the currently</span><br><span class="line">     active window. You can set lower and higher boundaries for charcters to</span><br><span class="line">     be kept on the scrren using the &lt;cInitialChar | nInitialChar&gt; and</span><br><span class="line">     &lt;cEndChar | nEndChar&gt; parameters.</span><br><span class="line"></span><br><span class="line">     Any characters falling outisde of these characters ranges will be</span><br><span class="line">     replaced with &lt;cReplacementChar | nReplacementChar&gt;.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Notes</span></span><br><span class="line"></span><br><span class="line">     ■  This function does not alter the cursor position.</span><br><span class="line"></span><br><span class="line">     ■  If you declare a lower bundary of 225 and a higher boundary of 20,</span><br><span class="line">        then all characters between 225-255 and 0-20 will be kept.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     ■  Clear the screen, with the exception of the boxes.  Since no</span><br><span class="line">        range is specified, 176 to 223 are bracketed out:</span><br><span class="line"></span><br><span class="line">        UnTextWin(0, 0, MaxRow(), MaxCol(), &#34; &#34;)</span><br><span class="line"></span><br><span class="line">     ■  Clear all characters within the currently active window, with the</span><br><span class="line">        exception of uppercase letters (65-90).  A numeric BLANK may be used as</span><br><span class="line">        a clear character:</span><br><span class="line"></span><br><span class="line">        UnTextWin(0, 0, MaxRow(), MaxCol(), 32, 65, 90)</span><br><span class="line"></span><br><span class="line">     ■  Double back on an area.  All characters with the exception of</span><br><span class="line">        uppercase letters are deleted from the currently active window:</span><br><span class="line"></span><br><span class="line">        UnTextWin(0, 0, MaxRow(), MaxCol(), 255, 91, 64)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Files:</span>  Library is MRWINDOW.LIB.</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

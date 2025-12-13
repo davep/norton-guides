@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1092106.html">
+    <link rel="next" href="rbint-1093545.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1092106.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1061380.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1093545.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 08  - Ibm Surepath Bios - Wait Requested Time Period           </span>  [<span class="ngb">B</span>]</span><br><span class="line"></span><br><span class="line">   AH = 08h</span><br><span class="line">   AL = function</span><br><span class="line">       00h wait in increments of 15.025 microseconds</span><br><span class="line">       CX = number of time increments to wait (0000h = maximum)</span><br><span class="line">       80h wait in increments of 840 ns</span><br><span class="line">       ECX = number of time increments to wait</span><br><span class="line">       81h I/O event wait</span><br><span class="line">       BH = bitmask of bits to check</span><br><span class="line">       BL = expected pattern</span><br><span class="line">       DX = I/O port address</span><br><span class="line">       ECX = number of 840 ns microticks to wait</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> ECX = 00000000h if expected pattern did not occur</span><br><span class="line">       82h memory event wait</span><br><span class="line">       BH = bitmask of bits to check</span><br><span class="line">       BL = expected pattern</span><br><span class="line">       ES:SI -&gt; BYTE to check</span><br><span class="line">       ECX = number of 840 ns microticks to wait</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> ECX = 00000000h if expected pattern did not occur</span><br><span class="line">       other reserved</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">   AH = status</span><br><span class="line">       00h successful</span><br><span class="line">       01h used 15.025 microsecond interval, time rounded up</span><br><span class="line">       08h reserved subfunction</span><br><span class="line">       86h function not supported</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> IBM classifies this function as optional</span><br><span class="line">   if the POST determines that the timer is nonfunctional, this function</span><br><span class="line">     uses the 15.025 microsecond refresh timer instead of the</span><br><span class="line">     full-resolution timer</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=07h&#34;IBM&#34;,AH=09h&#34;IBM&#34;,AH=86h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

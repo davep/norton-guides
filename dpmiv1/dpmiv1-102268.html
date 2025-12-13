@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-101608.html">
+    <link rel="next" href="dpmiv1-103057.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-101608.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-103057.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Get and Disable Virtual Interrupt State</span><br><span class="line"></span><br><span class="line">Disables the virtual interrupt flag and returns the previous</span><br><span class="line">state of the virtual interrupt flag.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 0900H</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   Virtual interrupts disabled</span><br><span class="line">   Carry flag= clear (this function always succeeds)</span><br><span class="line">   AL     = 0 if virtual interrupts were previously disabled</span><br><span class="line">          = 1 if virtual interrupts were previously enabled</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  AH is not changed by this function.  Therefore, the</span><br><span class="line">   previous state can be restored by simply executing</span><br><span class="line">   another Int 31H.  See Int 31H Fn 0901H.</span><br><span class="line"></span><br><span class="line">o  A client that does not need to know the prior interrupt</span><br><span class="line">   state can execute the CLI instruction rather than calling</span><br><span class="line">   this function.  The instruction may be trapped by the</span><br><span class="line">   host and should be assumed to  be very slow.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

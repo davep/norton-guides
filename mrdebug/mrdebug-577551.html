@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Utilities</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-575298.html">
+    <link rel="next" href="mrdebug-579030.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-575298.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-565186.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-579030.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">ClearSlow()  clears a screen area with delay from the outside in</span></span><br><span class="line"> Special FX for screens</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">ClearSlow( &lt;nDelay&gt;, [&lt;nTop&gt;], [&lt;nLeft&gt;], [&lt;nBottom&gt;], [&lt;nRight&gt;],</span></span><br><span class="line">        <span class="ngb">[&lt;cChar | nChar&gt;] ) --&gt; cNull</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     &lt;nDelay&gt; is the delay used for each step in the clear procedure.</span><br><span class="line"></span><br><span class="line">     &lt;nTop&gt; is the coordinate for the top screen row. Default is the top line</span><br><span class="line">     of the current window.</span><br><span class="line"></span><br><span class="line">     &lt;nLeft&gt; is the coordinate for the left column. Default is left column of</span><br><span class="line">     current window.</span><br><span class="line"></span><br><span class="line">     &lt;nBottom&gt; is the coordinate of the bottom row. Default is the bottom row</span><br><span class="line">     of the current window.</span><br><span class="line"></span><br><span class="line">     &lt;nRight&gt; is the coordinate of the right column. Default is the right</span><br><span class="line">     column of the current window.</span><br><span class="line"></span><br><span class="line">     &lt;cChar | nChar&gt; is the charcater to use to clear the area of screen</span><br><span class="line">     with. The default character is CLEARB.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     ClearSlow() always returns a null string, or &#34;&#34;.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     ClearSlow() may be used by you to give your screen clear routines some</span><br><span class="line">     special fx when they clear.</span><br><span class="line"></span><br><span class="line">     This function will clear an area of the screen from the outside of the</span><br><span class="line">     area inwards using a delay bewteen each step of the delay.</span><br><span class="line"></span><br><span class="line"> Examples</span><br><span class="line"></span><br><span class="line">     ■  Use CLEARB to clear the current window with a 80-millisecond delay:</span><br><span class="line"></span><br><span class="line">        ClearSlow(80)</span><br><span class="line"></span><br><span class="line">     ■  Clear an area with spaces and use a 20-millisecond delay:</span><br><span class="line"></span><br><span class="line">        ClearSlow(20, 2, 2, MaxRow()-2, MaxCol()-2, 32)</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-611030.html">SetClearB()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-73863.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-73863.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Getting Started</a></li>
+                  <li><a href="click-10263.html">Features</a></li>
+                  <li><a href="click-15048.html">Click .INI file</a></li>
+                  
+                </ul>
+              </li>
+              <li>Support</li>
+              <li>
+                <ul>
+                  <li><a href="click-32383.html">Support</a></li>
+                  <li><a href="click-34012.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">I changed the characters I use to create headers and function dividers</span><br><span class="line">to *+ instead of *■, since many of you use a windows editor which was</span><br><span class="line">messed up by the earlier one.</span><br><span class="line"></span><br><span class="line">When the *■ are encountered in your programs, those lines are removed</span><br><span class="line">unconditionally.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">#defines that continue onto more than one line are kept intact</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">do ;</span><br><span class="line">   while</span><br><span class="line"></span><br><span class="line">do ;</span><br><span class="line">   case</span><br><span class="line"></span><br><span class="line">Both are reassembled onto one line</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">CLICK.INI has new parameters. Documented in CLICKINI.DOC</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Function Main(); Return( NIL )</span><br><span class="line"></span><br><span class="line">Fixed remaining output when remainder is last line of program.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">// Reworked inline comments. These work now.</span><br><span class="line"></span><br><span class="line">  Function Main()</span><br><span class="line">  Local n</span><br><span class="line"></span><br><span class="line">     For n := /* A number the romans didn&#39;t have */ 0 To /* The Answer */ 42</span><br><span class="line">        ? n</span><br><span class="line">     Next n</span><br><span class="line"></span><br><span class="line">  Return( NIL )</span><br><span class="line"></span><br><span class="line">  Function Main()</span><br><span class="line">  Local n</span><br><span class="line"></span><br><span class="line">     For n := 1 To 42</span><br><span class="line">        ? n</span><br><span class="line">     /* Hello, World */ Next</span><br><span class="line"></span><br><span class="line">  Return( NIL )</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">If you turn on function indenting, and your function does not end with a</span><br><span class="line">return, Click! starts the next function correctly and without an error</span><br><span class="line">message.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">      @2,17 get LASTNAME color GETCLR WHEN activeBox(1);</span><br><span class="line">           picture&#34;@!&#34; valid filled(LASTNAME,&#34;Last Name&#34;)</span><br><span class="line"></span><br><span class="line">got indented stupidly. Added SMART_ALIGN_MAX_ELEMENTS to fix this.</span><br><span class="line"></span><br><span class="line">Without limitation, it aligned like:</span><br><span class="line"></span><br><span class="line">      @  2, 17 get LASTNAME color GETCLR WHEN activeBox( 1 );</span><br><span class="line">                                                         picture&#34;@!&#34; valid filled(LASTNAME,&#34;Last Name&#34;)</span><br><span class="line"></span><br><span class="line">because it tried to align to the second element after the ( which was</span><br><span class="line">the 21st element of the line. I have defaulted SMART_ALIGN_MAX_ELEMENTS</span><br><span class="line">to 11 but you might like it even lower.</span><br><span class="line"></span><br><span class="line">now it aligns like:</span><br><span class="line"></span><br><span class="line">      @  2, 17 get LASTNAME color GETCLR WHEN activeBox( 1 ) ;</span><br><span class="line">              picture &#34;@!&#34; valid filled( LASTNAME, &#34;Last Name&#34; )</span><br><span class="line"></span><br><span class="line">( DEFAULT_INDENT=8 )</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

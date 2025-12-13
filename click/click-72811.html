@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-71891.html">
+    <link rel="next" href="click-73863.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-71891.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-73863.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Getting Started</a></li>
+                  <li><a href="click-10263.html">Features</a></li>
+                  <li><a href="click-15048.html">Click .INI file</a></li>
+                  
+                </ul>
+              </li>
+              <li>Support</li>
+              <li>
+                <ul>
+                  <li><a href="click-32383.html">Support</a></li>
+                  <li><a href="click-34012.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">There is a new CLICK.INI parameter named:</span><br><span class="line"></span><br><span class="line">POSTPROCESS_WITH_THE_ALIGNER=YES</span><br><span class="line"></span><br><span class="line">Which, when set to YES, will align @ SAY GET&#39;s (valids, etc.)</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">This compiles correctly in Clipper, even though it&#39;s nasty form to use a</span><br><span class="line">key word as a variable.</span><br><span class="line"></span><br><span class="line">Click! accepts this and does not count a key word which has been used as</span><br><span class="line">a variable as a part of the structural code in a program.</span><br><span class="line"></span><br><span class="line">( Even against my better judgement )</span><br><span class="line"></span><br><span class="line">if x</span><br><span class="line"></span><br><span class="line">   end := 9</span><br><span class="line"></span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">for i=1 to 2</span><br><span class="line">     nMezo:=if(nHonap=0,;</span><br><span class="line">               if(i=1,_FFNYTART,_FFNYKOV),;                // Nyito adatok</span><br><span class="line">               if(i=1,nHonap*2+_FF1T-2,nHonap*2+_FF1K-2))  // Havi  adatok</span><br><span class="line">next</span><br><span class="line"></span><br><span class="line">There are some tab characters after the ; and before the // which were</span><br><span class="line">messing up the end of the line continue flag detection.</span><br><span class="line"></span><br><span class="line">Tabs are now converted to spaces everywhere except inside strings.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Function Main()</span><br><span class="line"></span><br><span class="line">   ? if( seconds() &lt; 5000, Wibble(), Wobble() )</span><br><span class="line">   ? iif( seconds() &lt; 5000, Wibble(), Wobble() )</span><br><span class="line"></span><br><span class="line">Return( NIL )</span><br><span class="line"></span><br><span class="line">Is fixed.</span><br><span class="line"></span><br><span class="line">Any IF that does not start the line is a function, and the space after</span><br><span class="line">the IF is removed.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Video</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-283641.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-283641.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-260934.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_WRTCHR()</span></span><br><span class="line"> Display character on screen</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_WRTCHR( &lt;nRow&gt;, &lt;nCol&gt;, &lt;cChar&gt;, &lt;nColor&gt; ) -&gt; NIL</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nRow&gt;</span> and <span class="ngb">&lt;nCol&gt;</span> are the screen coordinates.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cChar&gt;</span> is the single character to print on the screen.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nColor&gt;</span> is an integer representing the color attribute.</span><br><span class="line">     The formula is:</span><br><span class="line"></span><br><span class="line">        nFore + ( nBack * 16 )</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     NIL</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     This is a high speed function to display a single ASCII character</span><br><span class="line">     on screen in a specified color attribute.  This function is useful</span><br><span class="line">     for constructing screens with a lot of text or repetitive screen prints</span><br><span class="line">     where speed is important.  It is faster and requires less memory than</span><br><span class="line">     FT_VIDSTR().  A working example is contained in ClrTable.Prg.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">      FOR nX = 1 to MaxRow()</span><br><span class="line">         FOR nY = 1 to MaxCol()</span><br><span class="line">            FT_PRNTCHR( nX, nY, &#34;∙&#34;, (nX - 1)+(nY * 16) )</span><br><span class="line">         NEXT</span><br><span class="line">      NEXT</span><br><span class="line"></span><br><span class="line">      This example will write the ASCII character 249 to every location</span><br><span class="line">      on screen in every possible color combination.  It will recognize</span><br><span class="line">      the status of SetBlink().  It uses direct video writes for speed.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> VIDEO1.C</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Robert A. DiFalco</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

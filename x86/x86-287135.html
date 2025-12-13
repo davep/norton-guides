@@ -1,0 +1,139 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-286692.html">
+    <link rel="next" href="x86-288219.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-286692.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-288219.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FSIN            Sine                                 Exceptions: P U D I S</span></span><br><span class="line"><span class="ngb">FSINCOS         Sine and cosine</span>                      C3 C2 C1 C0: ? * * ?</span><br><span class="line">                                                     FPU: 387+</span><br><span class="line"><span class="ngb">FSIN</span></span><br><span class="line"><span class="ngb">FSINCOS</span></span><br><span class="line"></span><br><span class="line">                ; FSIN                  ; FSINCOS</span><br><span class="line">        <span class="ngb">Logic</span>   ST ← sin(ST)            temp ← ST</span><br><span class="line">                                        ST ← sin(temp)</span><br><span class="line">                                        push (cos(temp))</span><br><span class="line"></span><br><span class="line">    FSIN replaces the contents of ST with sin(ST).</span><br><span class="line"></span><br><span class="line">    FSINCOS computes both sin(ST) and cos(ST). It replaces ST with the</span><br><span class="line">    sine and then pushes the cosine onto the FPU stack (leaving the sine</span><br><span class="line">    in ST(1) and the cosine in ST).</span><br><span class="line"></span><br><span class="line">    ST, expressed in radians, must be an absolute number that is less</span><br><span class="line">    than 2**63. If the operand is outside the acceptable range, FSIN/</span><br><span class="line">    FSINCOS set C2 to 1 and no calculation is performed.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    The 80486 checks for interrupts while executing these instructions.</span><br><span class="line">    It will abort FSIN/FSINCOS to service an interrupt.</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    D9 FE       FSIN</span><br><span class="line">    D9 FB       FSINCOS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Timing</span></span><br><span class="line">    Variations    8087         287        387      486     Pentium</span><br><span class="line">    fsin           -            -       122-771  257-354   16-126  NP</span><br><span class="line">    fsincos        -            -       194-809  292-365   17-137  NP</span><br><span class="line">     Additional cycles required if operand &gt; pi/4 (~3.141/4 = ~.785)</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-258452.html">FCOS</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-315779.html">CC</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

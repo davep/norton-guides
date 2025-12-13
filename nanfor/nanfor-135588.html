@@ -1,0 +1,159 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » File I/O</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-133656.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-133656.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-113206.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_FWRITELN()</span></span><br><span class="line"> Write a line to the currently selected text file</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line"><span class="fg15 bg1"></span></span><br><span class="line">     <span class="fg15 bg1"> FT_FWRITELN( &lt; cData &gt;, [ &lt; lInsert &gt; ] ) -&gt; lSuccess</span></span><br><span class="line"><span class="fg15 bg1"></span></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cData&gt;</span> is a string of data to write to the file at the current</span><br><span class="line">      record position.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;lInsert&gt;</span> is a logical indicating whether the contents</span><br><span class="line">     of the current record are to be preserved, that is, if lInsert</span><br><span class="line">     evaluates to .T., the a new record is inserted at the current</span><br><span class="line">     position.  The current record then is pushed down to FT_FRECNO()+1.</span><br><span class="line"></span><br><span class="line">     If lInsert is .F. or omitted, the current record is replaced by</span><br><span class="line">     cData.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     TRUE if successful, otherwise check ft_fError() for error code.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     This function writes a line of text to the file in the currently</span><br><span class="line">     selected text file workarea.  Text lines are delimited with a</span><br><span class="line">     CRLF pair.  The record pointer is not moved.</span><br><span class="line"></span><br><span class="line">     The contents of the current record are updated to reflect the new</span><br><span class="line">     new line written, unless the Insert option is selected.</span><br><span class="line"></span><br><span class="line">     Writing a null string has the effect of clearing the current line</span><br><span class="line">     if in overstrike mode, else inserting a new line (same as</span><br><span class="line">     FT_FINSERT()).</span><br><span class="line"></span><br><span class="line">     A text file &#34;record&#34; is a line of text terminated by a CRLF pair.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     // write a line of text to a file</span><br><span class="line"></span><br><span class="line">     FT_FUSE( &#34;config.sys&#34; )</span><br><span class="line"></span><br><span class="line">     DO WHILE UPPER( FT_FREADLN() ) != &#34;FILES=&#34; .AND. !F_FEOF()</span><br><span class="line"></span><br><span class="line">        FT_FSKIP()</span><br><span class="line"></span><br><span class="line">     ENDDO</span><br><span class="line"></span><br><span class="line">     FT_FWRITELN( &#34;FILES=30&#34;, FT_FEOF() )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> FTTEXT.C</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Brice de Ganahl and Steve Larsen</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor-128841.html">FT_FREADLN()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-130121.html">FT_FRECNO()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-126927.html">FT_FINSERT()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-121299.html">FT_FDELETE()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

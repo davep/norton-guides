@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-47319.html">
+    <link rel="next" href="dpmi-50708.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-47319.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-50708.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">OverView</a></li>
+                  <li><a href="dpmi-38393.html">DPMI API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Set Descriptor Access Rights</span></span><br><span class="line"></span><br><span class="line">                 This function allows a protected mode program to modify</span><br><span class="line">                 the access rights and type fields of a descriptor.</span><br><span class="line"></span><br><span class="line">            To Call</span><br><span class="line"></span><br><span class="line">                 AX = 0009h</span><br><span class="line">                 BX = Selector</span><br><span class="line">                 CL = Access rights/type byte</span><br><span class="line">                 CH =  80386 extended  access rights/type  byte  (32-bit</span><br><span class="line">                      DPMI implementations only)</span><br><span class="line"></span><br><span class="line">            Returns</span><br><span class="line"></span><br><span class="line">                 If function was successful:</span><br><span class="line">                 Carry flag is clear.</span><br><span class="line"></span><br><span class="line">                 If function was not successful:</span><br><span class="line">                 Carry flag is set.</span><br><span class="line"></span><br><span class="line">            Programmer&#39;s Notes</span><br><span class="line"></span><br><span class="line">                 o    This function  will fail if the selector specified</span><br><span class="line">                      in BX is invalid.</span><br><span class="line">                 o    Your program  should only  modify descriptors that</span><br><span class="line">                      were   allocated    through   the   Allocate   LDT</span><br><span class="line">                      Descriptors function.</span><br><span class="line">                 o    To examine  the access  rights of a descriptor you</span><br><span class="line">                      should  use   the  instruction  lar  (load  access</span><br><span class="line">                      rights) which  is supported  on  80286  and  80386</span><br><span class="line">                      machines.</span><br><span class="line">                 o    The access  rights/type byte  passed in CL has the</span><br><span class="line">                      following format:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                      +-------------------------------+</span><br><span class="line">                      | P |  DPL  | 1 |C/D|E/C|W/R| A |</span><br><span class="line">                      +-------+-----------------------+</span><br><span class="line">                        |     |     |   |   |   |   +- 0=&gt;Not Accessed</span><br><span class="line">                        |     |     |   |   |   |            1=&gt;Accessed</span><br><span class="line">                         |       |        |   |   |   +-- Data: 0=&gt;Read,</span><br><span class="line">                      1=&gt;R/W</span><br><span class="line">                         |      |     |   |   |               Code: Must</span><br><span class="line">                      be 1 (readable)</span><br><span class="line">                        |     |     |   |   +-- Data: 0=&gt;Exp-up, 1=&gt;Exp-</span><br><span class="line">                      dn</span><br><span class="line">                         |      |     |   |              Code: Must be 0</span><br><span class="line">                      (non-conform)</span><br><span class="line">                        |     |     |   +-- 0=&gt;Data, 1=&gt;Code</span><br><span class="line">                        |     |     |</span><br><span class="line">                        |     |     +-- Must be 1</span><br><span class="line">                        |     |</span><br><span class="line">                        |     +-- Must equal caller&#39;s CPL</span><br><span class="line">                        |</span><br><span class="line">                        +- 0=&gt;Absent, 1=&gt;Present</span><br><span class="line"></span><br><span class="line">                      A  parameter   which  does   not  meet  the  above</span><br><span class="line">                      requirements is  invalid, and  causes the function</span><br><span class="line">                      to return with the carry flag set.</span><br><span class="line"></span><br><span class="line">                 o    16-bit  DPMI   implementations  will   ignore  the</span><br><span class="line">                      extended access rights/type byte passed in CH even</span><br><span class="line">                      if it  is running on an 80386 system.  32-bit DPMI</span><br><span class="line">                      implementations  interpret  the  CH  parameter  as</span><br><span class="line">                      follows:</span><br><span class="line"></span><br><span class="line">                      +-------------------------------+</span><br><span class="line">                      | G |B/D| 0 |Avl|    Reserved   |</span><br><span class="line">                      +-----------------------+-------+</span><br><span class="line">                        |   |   |   |         +-- Ignored</span><br><span class="line">                        |   |   |   +-- Can be 0 or 1</span><br><span class="line">                        |   |   +-- Must be 0</span><br><span class="line">                        |   +-- 0=&gt;Default 16-bit, 1=&gt;Default 32-bit</span><br><span class="line">                        +- 0=&gt;Byte Granular, 1=&gt;Page Granular</span><br><span class="line"></span><br><span class="line">                      A  parameter   which  does   not  meet  the  above</span><br><span class="line">                      requirements is  invalid, and  causes the function</span><br><span class="line">                      to return with the carry flag set.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

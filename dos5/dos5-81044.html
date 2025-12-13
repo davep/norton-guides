@@ -1,0 +1,142 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-79610.html">
+    <link rel="next" href="dos5-82600.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-79610.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-82600.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 46h            Force Duplicate File Handle</span></span><br><span class="line"></span><br><span class="line">    Forces one handle to refer to the same file or device as another</span><br><span class="line">    handle.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 46h</span><br><span class="line">                BX = Handle of file or device</span><br><span class="line">                CX = New handle for same file or device</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  Nothing (CF clear)</span><br><span class="line">                or</span><br><span class="line">                AX = Error code, if CF is set</span><br><span class="line">                     | 04h No handles available</span><br><span class="line">                     | 06h Invalid handle</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    After a program uses this function, both handles can be used to</span><br><span class="line">    read from or write to the file or device specified by CX. Moving</span><br><span class="line">    the file pointer with either handle moves the file pointer for the</span><br><span class="line">    other handle.</span><br><span class="line"></span><br><span class="line">    If the second handle refers to an open file, that file is closed</span><br><span class="line">    before the handle is set equal to the first handle.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Example</span></span><br><span class="line"></span><br><span class="line">        ; Redirect output to StdOut to a file,</span><br><span class="line">        ; e.g. for a child program</span><br><span class="line">        mov     bx,STDOUT</span><br><span class="line">        mov     ah,45h                  ; Duplicate Handle</span><br><span class="line">        int     21h</span><br><span class="line">        jc      @@error</span><br><span class="line">        mov     [stdout_dup],ax         ; Store dup. handle</span><br><span class="line">        mov     bx,[file_handle]        ; Handle of an open file</span><br><span class="line">        mov     cx,STDOUT               ; Handle to be redirected</span><br><span class="line">        mov     ah,46h                  ; Force Duplicate Handle</span><br><span class="line">        int     21h</span><br><span class="line">        jc      @@error</span><br><span class="line">        ; Output to standard output now redirected</span><br><span class="line">        ; ...</span><br><span class="line">        ; Cancel the redirection</span><br><span class="line">        mov     bx,[stdout_dup]         ; Previous STDOUT dup.</span><br><span class="line">        mov     cx,STDOUT               ; Handle to be redirected</span><br><span class="line">        mov     ah,46h                  ; Force Duplicate Handle</span><br><span class="line">        int     21h</span><br><span class="line">        jc      @@error</span><br><span class="line">        mov     ah,3eh                  ; Close stdout_dup</span><br><span class="line">        int     21h</span><br><span class="line">        ;...</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-79610.html">45h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-129093.html">67h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-105927.html">59h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-46090.html">4400h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-258925.html">StdDevices</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

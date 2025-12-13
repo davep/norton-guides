@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="xms30-style.css">
+    <title>XMS Specification  (version 3.0) » XMS » XMS API</title>
+    <meta name="description" content="XMS Specification  (version 3.0)">
+    <link rel="prev" href="xms30-36947.html">
+    <link rel="next" href="xms30-38868.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="xms30-about.html">About</a></li>
+
+
+          
+
+<li><a href="xms30-36947.html">Previous</a></li>
+
+
+          
+
+<li><a href="xms30-18951.html">Up</a></li>
+
+
+          
+
+<li><a href="xms30-38868.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>XMS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Overview</a></li>
+                  <li><a href="xms30-18951.html">XMS API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Get Extended EMB Handle Information (Function 8Eh)</span></span><br><span class="line"></span><br><span class="line">        ARGS:   AH = 8Eh</span><br><span class="line">                DX = Extended memory block handle.</span><br><span class="line"></span><br><span class="line">        RETS:   AX = 1 if the block&#39;s information is found, 0 if not</span><br><span class="line">                BH = Block lock count</span><br><span class="line">                CX = Number of free EMB handles in the system</span><br><span class="line">                EDX = Block&#39;s length in Kb.</span><br><span class="line"></span><br><span class="line">        ERRS:   BL = 80h if the function is not implemented.</span><br><span class="line">                BL = 81h if a VDISK device is detected.</span><br><span class="line">                BL = A2h if the handle is invalid.</span><br><span class="line"></span><br><span class="line">This function is similar to the Get EMB Handle Information function.</span><br><span class="line">Since it uses a 32-bit register to report the block size, it can be used</span><br><span class="line">to get information on blocks larger than 64 Mb.  It also uses a 16-bit</span><br><span class="line">instead of 8-bit register to report the number of free handles, allowing</span><br><span class="line">the handle pool to be extended beyond 256 entries.</span><br><span class="line"></span><br><span class="line">Because of its reliance on a 32-bit register, this function is available</span><br><span class="line">on 80386 and higher processors.  XMS drivers on 80286 machines should</span><br><span class="line">return error code 80h if this function is called.</span><br><span class="line"></span><br><span class="line"><span class="ngr">Note: This function is new to version 3.0</span></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:15</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

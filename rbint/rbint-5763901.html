@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5763253.html">
+    <link rel="next" href="rbint-5765300.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5763253.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5757296.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5765300.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 7A  - Novell Netware - Ipx Driver - Open Socket                      </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   BX = 0000h</span><br><span class="line">   AL = socket longevity</span><br><span class="line">       00h open until close or terminate</span><br><span class="line">       FFh open until close</span><br><span class="line">   DX = socket number (high byte in DL)</span><br><span class="line">       0000h dynamic allocation</span><br><span class="line">       else  socket to open (see #3480)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = return code</span><br><span class="line">       00h success</span><br><span class="line">       DX = socket number</span><br><span class="line">       FEh socket table full</span><br><span class="line">       FFh socket already open</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> TSRs which need to use sockets should set AL to FFh, non-resident</span><br><span class="line">     programs should normally use AL=00h</span><br><span class="line">   IPX can be configured to support up to 150 open sockets on a</span><br><span class="line">     workstation, and defaults to 20</span><br><span class="line">   this function is supported by Advanced NetWare 1.02+</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 7A/BX=0001h,INT 7A/BX=0004h,INT 7A/BX=0023h</span><br><span class="line"></span><br><span class="line">(Table 3480)</span><br><span class="line">Values for IPX socket number:</span><br><span class="line"> 0451h File Service (NetWare Core Protocol)</span><br><span class="line"> 0452h Service Advertising Protocol (see #3488)</span><br><span class="line"> 0453h Routing Information Packet (see #3491)</span><br><span class="line"> 0455h NetBIOS Packet</span><br><span class="line"> 0456h diagnostics</span><br><span class="line"> 0457h server serial numbers (labeled &#34;Copy Protection&#34; by Lanalyzer)</span><br><span class="line"> 2222h NetWare Core Protocol</span><br><span class="line"> 4000h-7FFFh used for dynamic allocation</span><br><span class="line"> 4444h Brightwork Development&#39;s SiteLock server</span><br><span class="line"> 5555h Brightwork Development&#39;s SiteLock client (workstation)</span><br><span class="line"> 8000h-FFFFh assigned by Novell</span><br><span class="line"> 869Ch ID Software&#39;s DOOM</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  SiteLock is an application metering product using IPX to communicate</span><br><span class="line">     between the application and the license server</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

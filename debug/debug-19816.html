@@ -1,0 +1,162 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » / » Commands</title>
+    <meta name="description" content="DEBUG">
+    <link rel="prev" href="debug-18790.html">
+    <link rel="next" href="debug-21462.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><a href="debug-18790.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="debug-21462.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>/</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="debug-36268.html">Parameters</a></li>
+                  <li><a href="debug-41899.html">Messages</a></li>
+                  <li><a href="debug-45534.html">Common</a></li>
+                  <li><a href="debug-46838.html">Starting DEBUG</a></li>
+                  <li><a href="debug-49445.html">Introduction</a></li>
+                  
+                </ul>
+              </li>
+              <li>*</li>
+              <li>
+                <ul>
+                  <li><a href="debug-50016.html">Flags register</a></li>
+                  <li><a href="debug-51925.html">PSP structure</a></li>
+                  <li><a href="debug-54321.html">EXE header</a></li>
+                  <li><a href="debug-55255.html">BPB structure</a></li>
+                  <li><a href="debug-56377.html">FCB structure</a></li>
+                  <li><a href="debug-57564.html">ASCII table</a></li>
+                  
+                </ul>
+              </li>
+              <li>-</li>
+              <li>
+                <ul>
+                  <li><a href="debug-62697.html">Comments</a></li>
+                  <li><a href="debug-63334.html">Scripts</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">    <span class="ngb">Name command</span></span><br><span class="line"></span><br><span class="line">    Purpose:  The Name command has two functions:</span><br><span class="line"></span><br><span class="line">              ■   Formats file control blocks for the first two file-</span><br><span class="line">                  specs, at CS:5Ch and CS:6Ch. (Starting DEBUG with a</span><br><span class="line">                  filespec also formats a file control block at CS:5Ch.)</span><br><span class="line"></span><br><span class="line">                  The file control blocks are set up for the use of the</span><br><span class="line">                  Load and Write commands, and to supply required file-</span><br><span class="line">                  names for the program being debugged.</span><br><span class="line"></span><br><span class="line">              ■   All specified filespecs and other parameters are placed</span><br><span class="line">                  exactly as entered, including delimiters, in a parameter</span><br><span class="line">                  save area at CS:81h, with CS:80h containing the number of</span><br><span class="line">                  characters entered. Register AX is set to indicate the</span><br><span class="line">                  validity of the drive specifiers entered with the first</span><br><span class="line">                  two filespecs.</span><br><span class="line"></span><br><span class="line">    Format:   N [d:][path]filename[.ext]</span><br><span class="line"></span><br><span class="line">    Remarks:  If you start the DEBUG program without a filespec, you must</span><br><span class="line">              use the Name command before a file can be loaded with the L</span><br><span class="line">              command.</span><br><span class="line"></span><br><span class="line">    Example:  <span class="ngb">DEBUG</span></span><br><span class="line">              <span class="ngb">-N myprog</span></span><br><span class="line">              <span class="ngb">-L</span></span><br><span class="line">              <span class="ngb">-</span></span><br><span class="line"></span><br><span class="line">              To define filespecs or other parameters required by the pro-</span><br><span class="line">              gram being debugged, enter:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">DEBUG myprog</span></span><br><span class="line">              <span class="ngb">-N file1 file2</span></span><br><span class="line">              <span class="ngb">-</span></span><br><span class="line"></span><br><span class="line">              In this example, DEBUG loads the file myprog at CS:100h, and</span><br><span class="line">              leaves the file control block at CS:5Ch formatted with the</span><br><span class="line">              same filespec. Then, the Name command formats the file control</span><br><span class="line">              blocks for file1 and file2 at CS:5Ch and CS:6Ch, respectively.</span><br><span class="line">              The file control block for <span class="ngb">myprog</span> is overwritten. The parame-</span><br><span class="line">              ter area at CS:81h contains all characters entered after the</span><br><span class="line">              N, including all delimiters, and CS:80h contains the count of</span><br><span class="line">              those characters (0Ch).</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="debug-16229.html">Load</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-32522.html">Write</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-46838.html">Starting</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-37743.html">filespec</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-51925.html">PSP</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:38</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

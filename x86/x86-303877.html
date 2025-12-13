@@ -1,0 +1,139 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-302767.html">
+    <link rel="next" href="x86-305396.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-302767.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-305396.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FYL2X           Compute Y * log2(x)                  Exceptions: P</span></span><br><span class="line">                                                     (operands not checked)</span><br><span class="line"><span class="ngb">FYL2X</span>                                                C3 C2 C1 C0: ? ? * ?</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   ST(1) ← ST(1) * Log2(ST)</span><br><span class="line">                pop ST</span><br><span class="line"></span><br><span class="line">    FYL2X computes the base-2 logarithm of ST, multiplies the logarithm</span><br><span class="line">    by ST(1), and puts the result in ST(1). Then it pops the stack. The</span><br><span class="line">    operand in ST cannot be negative.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    If the operand in ST is negative, the invalid-operation exception is</span><br><span class="line">    raised. The 80486+ checks for interrupts while executing this</span><br><span class="line">    instruction. It will abort FYL2X to service interrupts.</span><br><span class="line"></span><br><span class="line">    If the operand is very close to 1, use FYL2XP1 instead of FYL2XP.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Example</span></span><br><span class="line">    Many math applications require natural logarithms (log base e) or</span><br><span class="line">    common logarithms (log base 10). These are easy to calculate by</span><br><span class="line">    using the following equation to change the base of a logarithm to a</span><br><span class="line">    new base n:</span><br><span class="line">                log(n)X = log(n)2 * log(2)X</span><br><span class="line"></span><br><span class="line">    In this case, n is e or 10. The following programs assume that X is</span><br><span class="line">    on the top of the stack; they replace X with its natural logarithm.</span><br><span class="line">    The program that produces natural logs is:</span><br><span class="line"></span><br><span class="line">                fldln2  ; push log base e of 2</span><br><span class="line">                fxch    ; swap ST and ST(1)</span><br><span class="line">                fyl2x   ; pop ST, replace it with natual log</span><br><span class="line"></span><br><span class="line">    The program that produces common logs is:</span><br><span class="line"></span><br><span class="line">                fldlg2  ; push log base e of 10</span><br><span class="line">                fxch    ; swap ST and ST(1)</span><br><span class="line">                fyl2x   ; pop ST, replace it with common log</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    D9 F1       FYL2X</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Timing</span></span><br><span class="line">    Variations    8087         287        387      486     Pentium</span><br><span class="line">    fyl2x       900-1100     900-1100   120-538  196-329   22-111  NP</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-305396.html">FYL2XP1</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-315779.html">CC</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

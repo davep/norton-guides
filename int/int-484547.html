@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-484140.html">
+    <link rel="next" href="int-487110.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-484140.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-411523.html">Up</a></li>
+
+
+          
+
+<li><a href="int-487110.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Communicating Applications Spec - Get hardware status</span></span><br><span class="line"></span><br><span class="line">        Entry:</span><br><span class="line">          AX = CB12h</span><br><span class="line">          DS:DX -&gt; 128-byte status buffer</span><br><span class="line">        Return:</span><br><span class="line">          AX = 0000h successful</span><br><span class="line">               buffer filled with hardware-dependent status information</span><br><span class="line">             &lt; 0   error code (see AX=CB01h)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Format of status buffer for Intel Connection CoProcessor:</span></span><br><span class="line"></span><br><span class="line">        Offset  Size    Description</span><br><span class="line">         00h    BYTE    bit flags</span><br><span class="line">                        bit 7: hardware busy sending or receiving</span><br><span class="line">                        bit 6: last page of data</span><br><span class="line">                        bit 5: no data on current page</span><br><span class="line">                        bit 4: retransmit request for current page being</span><br><span class="line">                               transmitted</span><br><span class="line">                        bit 3: NSF mode active</span><br><span class="line">                        bits 2-0: reserved</span><br><span class="line">         01h    BYTE    number of kilobytes of free buffer space</span><br><span class="line">         02h    BYTE    page buffer status</span><br><span class="line">                        bit 7: Connection CoProcessor has documents to send</span><br><span class="line">                        bits 6-0: number of pages in buffer</span><br><span class="line">         03h    BYTE    number of retries left for dialing number</span><br><span class="line">         04h    BYTE    page number to retransmit</span><br><span class="line">         05h    BYTE    communications status</span><br><span class="line">                        bit 7: originating call</span><br><span class="line">                        bit 6: FAX message to be sent</span><br><span class="line">                        bit 5: on line</span><br><span class="line">                        bit 4: ring detected and receive enabled</span><br><span class="line">                        bit 3: buffer dumped on receive</span><br><span class="line">                        bits 2-0: hardware sequence state</span><br><span class="line">                                000 idle</span><br><span class="line">                                001 dial</span><br><span class="line">                                010 answer</span><br><span class="line">                                011 transmit</span><br><span class="line">                                100 receive</span><br><span class="line">                                101 pre-message</span><br><span class="line">                                110 post-message</span><br><span class="line">                                111 disconnect</span><br><span class="line">         06h    BYTE    baud rate</span><br><span class="line">                        bit 7: reserved</span><br><span class="line">                        bits 6-4: baud rate</span><br><span class="line">                                000 = 300 baud (SDLC mode)</span><br><span class="line">                                100 = 2400 baud</span><br><span class="line">                                101 = 4800 baud</span><br><span class="line">                                110 = 7200 baud</span><br><span class="line">                                111 = 9600 baud</span><br><span class="line">                        bits 3-0: reserved, should be 0110</span><br><span class="line">         07h  3 BYTEs   reserved</span><br><span class="line">         0Ah    BYTE    hardware status</span><br><span class="line">                        bit 7: modem option installed</span><br><span class="line">                        bit 6: Connection CoProcessor has control of DAA (not latched)</span><br><span class="line">                        bit 5: on line (not latched)</span><br><span class="line">                        bit 4: ring detected (not latched)</span><br><span class="line">                        bit 3: data in command buffer (not latched)</span><br><span class="line">                        bit 2: set if using DMA channel 1, clear if using DMA channel 3</span><br><span class="line">                        bit 1: line length compensation bit 1 set (not latched)</span><br><span class="line">                        bit 0: line length compensation bit 0 set (not latched)</span><br><span class="line">         0Bh    BYTE    switch states</span><br><span class="line">                        bit 7: reserved</span><br><span class="line">                        bit 6: unused</span><br><span class="line">                        bit 5: spare switch open</span><br><span class="line">                        bit 4: FAX ADR1 switch open</span><br><span class="line">                        bit 3: FAX ADR0 switch open</span><br><span class="line">                        bit 2: alternate interrupt switch open</span><br><span class="line">                        bit 1: COM SEL 1 switch open</span><br><span class="line">                        bit 0: COM SEL 0 switch open</span><br><span class="line">         0Ch    BYTE    bit flags</span><br><span class="line">                        bit 7: reserved</span><br><span class="line">                        bit 6: auxiliary relay forced ON</span><br><span class="line">                        bit 5: modem select relay forced ON</span><br><span class="line">                        bit 4: offhook relay forced ON</span><br><span class="line">                        bit 3: 9600 bps enabled</span><br><span class="line">                        bit 2: 7200 bps enabled</span><br><span class="line">                        bit 1: 4800 bps enabled</span><br><span class="line">                        bit 0: 2400 bps enabled</span><br><span class="line">         0Dh    BYTE    reserved</span><br><span class="line">         0Eh    WORD    error count</span><br><span class="line">         10h    DWORD   size of nonstandard format (NSF) file in bytes</span><br><span class="line">         14h 10 BYTEs   reserved</span><br><span class="line">         1Eh 21 BYTEs   ASCIZ CCITT identification</span><br><span class="line">         33h 77 BYTEs   reserved</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

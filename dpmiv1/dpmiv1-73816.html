@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-71002.html">
+    <link rel="next" href="dpmiv1-76327.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-71002.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-76327.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Get Page Attributes</span><br><span class="line"></span><br><span class="line">Returns the attributes of one or more pages within a linear</span><br><span class="line">memory block previously allocated with Int 31H Function</span><br><span class="line">0504H.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 0506H</span><br><span class="line">   ESI    = memory block handle</span><br><span class="line">   EBX    = base offset in memory block of page (or of first</span><br><span class="line">           page, if requesting attributes for multiple</span><br><span class="line">           pages)</span><br><span class="line">   ECX    = number of pages</span><br><span class="line">   ES:EDX = selector:offset of a buffer to receive page</span><br><span class="line">           attributes, 1 word (16-bits) per page (see Note)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   if function successful</span><br><span class="line">   Carry flag= clear</span><br><span class="line"></span><br><span class="line">   and buffer at ES:EDX filled in with page attributes (see</span><br><span class="line">   Note)</span><br><span class="line"></span><br><span class="line">   if function unsuccessful</span><br><span class="line">   Carry flag= set</span><br><span class="line">   AX     = error code</span><br><span class="line">           8001H   unsupported function (16-bit host)</span><br><span class="line">           8023H   invalid handle (in ESI)</span><br><span class="line">           8025H   invalid linear address (Specified range</span><br><span class="line">                   is not within specified block)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  A DPMI 1.0 host that is 16-bit only will not support this</span><br><span class="line">   function.</span><br><span class="line">o  A 16-bit client of a 32-bit DPMI 1.0 host can use this</span><br><span class="line">   function.</span><br><span class="line">o  If EBX is not aligned, it will be rounded down to the</span><br><span class="line">   next lower page boundary.</span><br><span class="line">o  The specified buffer is filled in by the DPMI host with</span><br><span class="line">   the attributes of the requested pages, 1 word (16-bits)</span><br><span class="line">   per page, in the following format:</span><br><span class="line"></span><br><span class="line">   Bits      Significance</span><br><span class="line">   0-2       page type (0-7)</span><br><span class="line">             Value  Meaning</span><br><span class="line">             0      uncommitted page</span><br><span class="line">             1      committed page</span><br><span class="line">             2      mapped page</span><br><span class="line">             3-7    currently unused</span><br><span class="line">   3         0 = page is read-only</span><br><span class="line">             1 = page is read/write</span><br><span class="line">   4         0 = accessed/dirty bits not available for this</span><br><span class="line">   page</span><br><span class="line">             1 = accessed/dirty bits are supplied for this</span><br><span class="line">   page in bits 5-6</span><br><span class="line">   5         0 = page has not been accessed (if bit 4=1)</span><br><span class="line">             1 = page has been accessed (if bit 4=1)</span><br><span class="line">   6         0 = page has not been modified (if bit 4=1)</span><br><span class="line">             1 = page has been modified (if bit 4=1)</span><br><span class="line">   7-15      reserved, currently zero</span><br><span class="line"></span><br><span class="line">o  Mapped pages can only occur in memory blocks under DPMI</span><br><span class="line">   hosts that support the Device Mapping capability or the</span><br><span class="line">   Conventional Memory Mapping capability.  See Int 31H</span><br><span class="line">   Functions 0401H, 0508H, and 0509H.</span><br><span class="line">o  The dirty and accessed bits are only supplied if the DPMI</span><br><span class="line">   host supports the Page Accessed/Dirty capability.  DPMI</span><br><span class="line">   hosts that support this capability are required to return</span><br><span class="line">   dirty and accessed bits for all committed pages and for</span><br><span class="line">   mapped pages created with the Map Conventional Memory</span><br><span class="line">   call (Int 31H Fn 0509H).  However, dirty and</span><br><span class="line">   accessed bits may not be returned for individual mapped</span><br><span class="line">   pages created with the Map Device call (Int 31H Function</span><br><span class="line">   0508H) if the host is using page table entries (PTEs) to</span><br><span class="line">   virtualize the device.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

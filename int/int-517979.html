@@ -1,0 +1,151 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-516848.html">
+    <link rel="next" href="int-519290.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-516848.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-509559.html">Up</a></li>
+
+
+          
+
+<li><a href="int-519290.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">Receive Any Command (Net Bios, 16h)</span></span><br><span class="line"></span><br><span class="line">        This command receives data from any session. The NUM field</span><br><span class="line">        specifies the name number of allowable sessions, or 0FFh to</span><br><span class="line">        receive for any session under any name. The BUFADR and BUFLEN</span><br><span class="line">        fields are set to the size and maximum length of the receive data</span><br><span class="line">        buffer. The remote session must issue a SEND or CHAIN SEND</span><br><span class="line">        command. There is no time-out on this command. The local</span><br><span class="line">        session number of a completed receive is returned in LSN.</span><br><span class="line"></span><br><span class="line">        RECEIVE ANY commands are completed in the order in which they are</span><br><span class="line">        issued. If received data could be used to complete either a</span><br><span class="line">        RECEIVE or RECEIVE ANY, the RECEIVE is given priority and</span><br><span class="line">        completed.</span><br><span class="line"></span><br><span class="line">        The actual size of the received data is returned in BUFLEN. If</span><br><span class="line">        the maximum buffer length was smaller than the length of the</span><br><span class="line">        data, then the buffer is filled to the maximum and RETCODE = 06h</span><br><span class="line">        is returned. The next RECEIVE ANY (or RECEIVE) will be completed</span><br><span class="line">        with the remainder of the data.</span><br><span class="line"></span><br><span class="line">        Typically, RECEIVE ANY is used by a process that services</span><br><span class="line">        multiple users. Session termination by the local or remote</span><br><span class="line">        process will cause the next pending RECEIVE ANY to complete with</span><br><span class="line">        RETCODE = 0Ah (session terminated) or 18h (session terminated</span><br><span class="line">        abnormally).</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="int-516244.html">Net Bios, 14h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-516848.html">Net Bios, 15h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

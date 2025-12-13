@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2262305.html">
+    <link rel="next" href="rbint-2263726.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2262305.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2263726.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 42  - Dos 2+ - &#34;lseek&#34; - Set Current File Position             </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 42h</span><br><span class="line">   AL = origin of move</span><br><span class="line">       00h start of file</span><br><span class="line">       01h current file position</span><br><span class="line">       02h end of file</span><br><span class="line">   BX = file handle</span><br><span class="line">   CX:DX = (signed) offset from origin of new file position</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       DX:AX = new file position in bytes from start of file</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (01h,06h) (see #1366 at AH=59h/BX=0000h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> for origins 01h and 02h, the pointer may be positioned before the</span><br><span class="line">     start of the file; no error is returned in that case, but subsequent</span><br><span class="line">     attempts at I/O will produce errors</span><br><span class="line">   if the new position is beyond the current end of file, the file will</span><br><span class="line">     be extended by the next write (see AH=40h); for FAT32 drives, the</span><br><span class="line">     file must have been opened with AX=6C00h with the &#34;extended size&#34;</span><br><span class="line">     flag in order to expand the file beyond 2GB</span><br><span class="line">BUG:   using this method to grow a file from zero bytes to a very large size</span><br><span class="line">     can corrupt the FAT in some versions of DOS; the file should first</span><br><span class="line">     be grown from zero to one byte and then to the desired large size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=24h,INT 2F/AX=1228h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

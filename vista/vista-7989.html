@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="vista-style.css">
+    <title>db_VISTA III » Codes » System errors codes</title>
+    <meta name="description" content="db_VISTA III">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="vista-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Functions</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions descriptions</a></li>
+                  
+                </ul>
+              </li>
+              <li>Codes</li>
+              <li>
+                <ul>
+                  <li><a href="vista-6446.html">Function status codes</a></li>
+                  <li><a href="vista-7989.html">System errors codes</a></li>
+                  <li><a href="vista-14319.html">User errors codes</a></li>
+                  <li><a href="vista-21058.html">Code&#39;s listing</a></li>
+                  
+                </ul>
+              </li>
+              <li>Credits</li>
+              <li>
+                <ul>
+                  <li><a href="vista-22437.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">-900    S_NOSPACE</span><br><span class="line">        No more space on file.See the note in the Referece Manual</span><br><span class="line">        description for function d_trend about a tecnique for dealing with this</span><br><span class="line">        error under normal operations. However, this error often occurs when</span><br><span class="line">        an aplication program bug has corrupted the db_VISTA runtime memory.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-901    S_SYSERR</span><br><span class="line">        System error.This error generally occurs when the db_VISTA runtime</span><br><span class="line">        memory has been corrupted.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-902    S_FAULT</span><br><span class="line">        Virtual memory page fault.This error generally occurs when the</span><br><span class="line">        db_VISTA runtime memory has been corrupted.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-903    S_NOWORK</span><br><span class="line">        NO working key file. This error generally occurs when the db_VISTA</span><br><span class="line">        runtime memory has been corrupted.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-904    S_NOMEMORY</span><br><span class="line">        Unable to allocate sufficient memory. There is not enough available</span><br><span class="line">        memory for all of the required db_VISTA runtime tables. Try calling</span><br><span class="line">        d_setpages with fewer pages before calling d_open.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-905    S_NOFILE</span><br><span class="line">        Unable to open file.Anerror occurred when the runtime tried to open a</span><br><span class="line">        data file,key file,or log file.Usually it&#39;s because the file doesn&#39;t</span><br><span class="line">        exist.It could ,however,be some other error.You can check C&#39;s errno flag</span><br><span class="line">        for particular error code. Also ,check your files limit in config.sys</span><br><span class="line">        and confirm that all files in DDL are on disk.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-906    S_DBLACCESS</span><br><span class="line">        Unable to lock the transaction activity file. If you are running on</span><br><span class="line">        MS_DOS, be sure you&#39;ve installed SHARE. This error should never</span><br><span class="line">        occur since it is highly unlikely that the TAF could remain locked for</span><br><span class="line">        the amount of time required for this error to be genarated. If it does</span><br><span class="line">        occur ,retry your d_trend. Confirm your dbtaf path, and be sure the</span><br><span class="line">        TAF file is flagged for read, write, and shareable. If tje error persists,</span><br><span class="line">        it may be that TAF has somehow been deleted.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-907       S_DBLERR</span><br><span class="line">           Error opennig or reading transaction activity file. You can check C&#39;s</span><br><span class="line">           errno flag for the particular error code. Often, this error can be</span><br><span class="line">           corrected by making the TAF and/or LOG file directories and files</span><br><span class="line">           readable and writeable by multiple users. On a NOVELL network, for</span><br><span class="line">           example, the files should be created before an aplication uses them,</span><br><span class="line">           and their attributes must be set to read,write and shareable.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-908       S_BADLOCKS</span><br><span class="line">           Inconsistent database locks. Detected by d_recfree or d_setfree. This</span><br><span class="line">           error generally occurs when the db_VISTA runtime memory has been</span><br><span class="line">           corrupted.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-909       S_RECLIMIT</span><br><span class="line">           Maximum records per file limit reached. You may be the first to have</span><br><span class="line">           actualy reached this milestone. Congratulations are probably not in</span><br><span class="line">           order, however, since you&#39;re not sure what to do now. The first step is</span><br><span class="line">           to determine if old data can be purged or off-loaded. If so,you&#39;ll</span><br><span class="line">           need to write a program to do it. If  not,you&#39;ll need to reorganize</span><br><span class="line">           your databse somewhat. If there are multiple record types in the</span><br><span class="line">           file,you can split them into separate files (using db_REVISE or dbexp</span><br><span class="line">           and dbimp). You might explore spliting the offending record type into</span><br><span class="line">           several and dividing the record occurences based on the content of</span><br><span class="line">           a principal key field (e.g. all names begining with A-M in record 1</span><br><span class="line">           and those with N-Z in record 2).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-910       S_KEYERR</span><br><span class="line">           Key file inconsistency detected. This error generally occurs when the</span><br><span class="line">           db_VISTA runtime memory has been corrupted. Run keybuild if</span><br><span class="line">           dbcheck reveals a corrupted key file.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-911       S_USERLIMIT</span><br><span class="line">           Limit of concurrent db_VISTA users reached.This limit is detected</span><br><span class="line">           by the lock manager and can be set by a lock manager command line</span><br><span class="line">           option when it is installed. Run lokmgr with the -u option. For</span><br><span class="line">           more information, see page 156 of the User&#39;s Guide.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-912       S_FSEEK</span><br><span class="line">           Seek error on database file.You can check C&#39;s errno flag for the</span><br><span class="line">           particular error code.If it occurs during normal operation, the</span><br><span class="line">           error occured on the log file,and could indicate a lack of available</span><br><span class="line">           disk space.If it occurs during a recovery, it most likely means</span><br><span class="line">           that the log file has been corrupted. If no errors are reported,</span><br><span class="line">           decide whether or not you want to continue. (db_VISTA will run</span><br><span class="line">           fine but dbcheck only detects system-dependent inconsistencies, not</span><br><span class="line">           application-dependent inconsistencies).If error are reported, you&#39;ll</span><br><span class="line">           need restore from the most recent backup of the databse.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-913       S_INVFILE</span><br><span class="line">           Invalid file specified. No more infomation.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-914       S_READ</span><br><span class="line">           Read error on database file.See S_FSEEK discusion above.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-915       S_NETSYNC</span><br><span class="line">           Network syncronization error. Aninvalid message packet received</span><br><span class="line">           from the lock manager.It could be a transmission error.If only one</span><br><span class="line">           process has received this error,take it down and bring it back up.</span><br><span class="line">           If this fails to resolve the problem or if other processes are</span><br><span class="line">           getting the error, take the entire system down,including the lock</span><br><span class="line">           manager,and restart.If the error persists,most likely there is an</span><br><span class="line">           error in your network.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-916       S_DEBUG</span><br><span class="line">           Debugging check interrupt.Canonly be issued from a user call to</span><br><span class="line">           dberr, (e.g. dberr(S_DEBUG)).It is used to access dberr&#39;s debuging</span><br><span class="line">           capablities (whem enabled).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-917       S_NETERR</span><br><span class="line">           A network error occured. Function neterr has already been called</span><br><span class="line">           with the network error code. Recovery from this error will depend</span><br><span class="line">           upon your network. A retry of the operation may be all that is</span><br><span class="line">           necessary,however. If possible,increase the number of NetBIOS</span><br><span class="line">           sesions.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-918       S_RECOVERY</span><br><span class="line">           This code is returned from a lock request function or d_open</span><br><span class="line">           whenever an automatic recovery operation occurs. Function</span><br><span class="line">           dbautorec (defined in dberr.c) called dberr with this error</span><br><span class="line">           code.It is instead to inform the user that a recovery</span><br><span class="line">           operaion occured.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-919       S_WRITE</span><br><span class="line">           Write error on database file.See S_FSEEK discusion above.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-920       S_NOLOCKMGR</span><br><span class="line">           Unable to open manager session.The lock manager has not been</span><br><span class="line">           installed.Install it and restart the application program.</span><br><span class="line"></span><br><span class="line">-921       S_DUPUSERID</span><br><span class="line">           The userid for this process is already being used by another</span><br><span class="line">           process on the system. If you are using a DBUSERID that has been</span><br><span class="line">           used on another workstation,it may be necessary to run cleardb on</span><br><span class="line">           the previous workstation to remove the DBUSERID from the NetBIOS</span><br><span class="line">           name table.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-922       S_LMBUSY</span><br><span class="line">           The lock manager is busy. Retry the request.Try increasing the</span><br><span class="line">           number of users (via the -u option) when running the lock manager.</span><br><span class="line">           Also, if this is followed by a -917 error ,your local NetBIOS</span><br><span class="line">           session table may be full. See section 7.8.3 in the User&#39;s Guide.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

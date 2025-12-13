@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-776774.html">
+    <link rel="next" href="int-786140.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-776774.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-764057.html">Up</a></li>
+
+
+          
+
+<li><a href="int-786140.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">MODE 10h &#34;MANAGER STREAM&#34; (valid only for opcodes listed here)</span></span><br><span class="line"></span><br><span class="line">        00h allow window to be moved horizontally</span><br><span class="line">        01h allow window to be moved vertically</span><br><span class="line">        02h allow window to change width</span><br><span class="line">        03h allow window to change height</span><br><span class="line">        04h allow window to be scrolled horizontally</span><br><span class="line">        05h allow window to be scrolled vertically</span><br><span class="line">        06h allow &#34;Close Window&#34; menu selection</span><br><span class="line">        07h allow window to be hidden</span><br><span class="line">        08h allow &#34;Mark&#34; menu</span><br><span class="line">        0Eh allow &#34;Scissors&#34; menu</span><br><span class="line">        10h allow DESQview main menu to be popped up</span><br><span class="line">        11h allow &#34;Switch Windows&#34; menu</span><br><span class="line">        12h allow &#34;Open Window&#34; menu</span><br><span class="line">        13h allow &#34;Quit&#34; menu selection</span><br><span class="line">        20h-33h opposite of 00h-13h, disallow specified action</span><br><span class="line">        40h notify if horizontal position of window changes</span><br><span class="line">        41h notify if vertical position of window changes</span><br><span class="line">        42h notify if width of window changes</span><br><span class="line">        43h notify if height of window changes</span><br><span class="line">        44h notify if window scrolled horizontally</span><br><span class="line">        45h notify if window scrolled vertically</span><br><span class="line">        46h notify if window is closed--program has to clean up and exit itself</span><br><span class="line">        47h notify if window is hidden</span><br><span class="line">        48h notify if &#34;?&#34; on main menu selected</span><br><span class="line">        49h notify if pointer message sent to window</span><br><span class="line">        4Ah notify if window is made active</span><br><span class="line">        4Bh notify if window is switched away from</span><br><span class="line">        4Ch notify if video mode changes</span><br><span class="line">        4Dh notify if &#34;Scissors&#34; menu &#34;Cut&#34; option selected</span><br><span class="line">        4Eh notify if &#34;Scissors&#34; menu &#34;Copy&#34; option selected</span><br><span class="line">        4Fh notify if &#34;Scissors&#34; menu &#34;Paste&#34; option selected</span><br><span class="line">        50h notify if DESQview main menu popped up</span><br><span class="line">        51h notify if DESQview main menu popped down</span><br><span class="line">        60h-71h  opposite of 40h-51h: don&#39;t notify on specified event</span><br><span class="line">        84h attach window to parent task&#39;s window (both move together)</span><br><span class="line">        85h detach window from parent task&#39;s window (may move independently)</span><br><span class="line">        86h disable background operation</span><br><span class="line">        87h enable running in background</span><br><span class="line">        88h set minimum size of physical window</span><br><span class="line">            BYTE rows</span><br><span class="line">            BYTE columns</span><br><span class="line">        89h set maximum size of physical window</span><br><span class="line">            BYTE rows</span><br><span class="line">            BYTE cols</span><br><span class="line">        8Ah set primary asynchronous notification routine</span><br><span class="line">            DWORD address of routine, 0000h:0000h means none</span><br><span class="line">                  on entry ES:DI = handle of window, DS:SI is 32-bit value set</span><br><span class="line">                  by 8Bh opcode</span><br><span class="line">                           mailbox contains message indicating event</span><br><span class="line">                              Opcode</span><br><span class="line">                               40h  horizontal movement</span><br><span class="line">                                   DWORD object handle of window</span><br><span class="line">                                   BYTE  new row</span><br><span class="line">                                   BYTE  new col</span><br><span class="line">                               41h  vertical movement</span><br><span class="line">                                   DWORD object handle of window</span><br><span class="line">                                   BYTE  new row</span><br><span class="line">                                   BYTE  new col</span><br><span class="line">                               42h  horizontal size change</span><br><span class="line">                                   DWORD object handle of window</span><br><span class="line">                                   BYTE  new rows</span><br><span class="line">                                   BYTE  new cols</span><br><span class="line">                               43h  vertical size change</span><br><span class="line">                                   DWORD object handle of window</span><br><span class="line">                                   BYTE  new rows</span><br><span class="line">                                   BYTE  new cols</span><br><span class="line">                               44h  scrolled horizontally</span><br><span class="line">                                   DWORD object handle of window</span><br><span class="line">                                   BYTE  mouse row within window</span><br><span class="line">                                   BYTE  mouse column within window</span><br><span class="line">                                   BYTE  field mouse is on, 0 if none</span><br><span class="line">                                   BYTE  amount moved: &gt;0 right, &lt;0 left, 0 done</span><br><span class="line">                               45h  scrolled vertically</span><br><span class="line">                                   DWORD object hande of window</span><br><span class="line">                                   BYTE  mouse row within window</span><br><span class="line">                                   BYTE  mouse column within window</span><br><span class="line">                                   BYTE  field mouse is on, 0 if none</span><br><span class="line">                                   BYTE  amount moved: &gt;0 down, &lt;0 up, 0 done</span><br><span class="line">                               46h  window closed</span><br><span class="line">                                   DWORD object handle of window</span><br><span class="line">                                   BYTE  mouse pointer row</span><br><span class="line">                                   BYTE  mouse pointer column</span><br><span class="line">                                   BYTE  field mouse is on, 0 if none</span><br><span class="line">                               47h  window hidden</span><br><span class="line">                               48h  Help for Program selected</span><br><span class="line">                                   DWORD object handle of window</span><br><span class="line">                                   BYTE  mouse pointer row</span><br><span class="line">                                   BYTE  mouse pointer column</span><br><span class="line">                                   BYTE  field mouse is on, 0 if none</span><br><span class="line">                               49h  pointer message sent to window</span><br><span class="line">                               4Ah  switched to window from another (&#34;raise&#34;)</span><br><span class="line">                               4Bh  switched away from the window (&#34;lower&#34;)</span><br><span class="line">                               4Ch  video mode changed</span><br><span class="line">                                   BYTE new video mode</span><br><span class="line">                               4Dh  Scissors/cUt selected</span><br><span class="line">                                   DWORD object handle of window</span><br><span class="line">                                   BYTE  row of upper left corner</span><br><span class="line">                                   BYTE  column of upper left corner</span><br><span class="line">                                   BYTE  field number ul corner is in, 0=none</span><br><span class="line">                                   DWORD handle of orphaned window created to</span><br><span class="line">                                         hold data</span><br><span class="line">                                   BYTE  height of region</span><br><span class="line">                                   BYTE  width of region</span><br><span class="line">                               4Eh  Scissors/Copy selected</span><br><span class="line">                                   DWORD object handle of window</span><br><span class="line">                                   BYTE  row of upper left corner</span><br><span class="line">                                   BYTE  column of upper left corner</span><br><span class="line">                                   BYTE  field number ul corner is in, 0=none</span><br><span class="line">                                   DWORD handle of orphaned window created to</span><br><span class="line">                                         hold data</span><br><span class="line">                                   BYTE  height of region</span><br><span class="line">                                   BYTE  width of region</span><br><span class="line">                               4Fh  Scissors/Paste selected</span><br><span class="line">                                   DWORD object handle of window</span><br><span class="line">                                   BYTE  row of upper left corner</span><br><span class="line">                                   BYTE  column of upper left corner</span><br><span class="line">                                   BYTE  field number ul corner is in, 0=none</span><br><span class="line">                                   DWORD handle of orphaned window with data</span><br><span class="line">                                   BYTE  height of region</span><br><span class="line">                                   BYTE  width of region</span><br><span class="line">                               50h  main menu popped up</span><br><span class="line">                               51h  main menu popped down</span><br><span class="line">                  routine should restore all registers before returning</span><br><span class="line">        8Bh set async notification parameter</span><br><span class="line">            DWORD 32-bit value passed to async routine in DS:SI</span><br><span class="line">        ACh (DV2.2) perform regular select field attribute processing</span><br><span class="line">        ADh (DV2.2) protect attributes in selected field from being lost</span><br><span class="line">        AEh make window default notify window for owning app (API level 2.00+)</span><br><span class="line">        AFh set selected field marker character</span><br><span class="line">            BYTE character to display at left edge of selected fields</span><br><span class="line">        BCh set standard field processing mode</span><br><span class="line">        BDh set alternate field processing mode (enables cursor pad for menus)</span><br><span class="line">        BEh enables changing reverse logical attributes with ECh opcode</span><br><span class="line">        BFh disables changing reverse logical attributes with ECh opcode</span><br><span class="line">        C0h make current window topmost in system</span><br><span class="line">        C1h force current process into foreground</span><br><span class="line">        C2h make current window topmost in process</span><br><span class="line">        C3h position mouse pointer relative to origin of current field</span><br><span class="line">            BYTE rows below upper left corner of field</span><br><span class="line">            BYTE columns to right of upper left corner of field</span><br><span class="line">        C4h position mouse pointer relative to origin of given field</span><br><span class="line">            BYTE field number</span><br><span class="line">            BYTE rows below upper left corner of field</span><br><span class="line">            BYTE columns to right of upper left corner of field</span><br><span class="line">        C5h hide current window</span><br><span class="line">        C6h show windows for this process</span><br><span class="line">        C7h hide all windows for this process</span><br><span class="line">        C8h suspend process and hide all its windows</span><br><span class="line">        C9h force current process into background</span><br><span class="line">        CAh make current window bottom-most in process</span><br><span class="line">        CBh cancel current window manager operation, remove DV menu, give</span><br><span class="line">            control to topmost application</span><br><span class="line">        CCh close window</span><br><span class="line">        CEh reorder windows</span><br><span class="line">            DWORD pointer to null-terminated list of words</span><br><span class="line">                  each word is segment of object handle for a window</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

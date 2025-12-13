@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5104-style.css">
+    <title>Clipper 5.01 vs 1.29 Anomalies (#04) » Menu » Anomalies</title>
+    <meta name="description" content="Clipper 5.01 vs 1.29 Anomalies (#04)">
+    <link rel="prev" href="cl5104-38434.html">
+    <link rel="next" href="cl5104-40131.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5104-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5104-38434.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5104-40131.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Menu</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies</a></li>
+                  <li><a href="cl5104-45500.html">Credits</a></li>
+                  <li><a href="cl5104-45901.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  SCREEN            Misc. SETMODE(), SETBLINK(), SETCOLOR()</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Clipper Version</span>  1.29 dtd 04/15/91.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Problem Statement</span></span><br><span class="line"></span><br><span class="line">  1) Cursor anomalies. Try using SET CLIPPER=CGACURS if you are</span><br><span class="line">     experiencing cursor anomalies. Reference: NG Environment.</span><br><span class="line"></span><br><span class="line">  2) A &#39;splash of color&#39; may remain at 0, 65 after using SETCOLOR()</span><br><span class="line">     and GET. This can be eliminated by SET SCOREBOARD OFF.</span><br><span class="line"></span><br><span class="line">  3) SETBLINK(), SETMODE() (NG Function Descriptions)</span><br><span class="line">     These are environmental or screen attributes; hence, they will</span><br><span class="line">     change the full screen when invoked. You may want to save the</span><br><span class="line">     screen before invoking either of these functions.</span><br><span class="line"></span><br><span class="line">     SETMODE() should be followed by a CLS or CLEAR SCREEN.</span><br><span class="line">     The following routine will put the display in 50 row mode and</span><br><span class="line">     turn off the cursor - on an IBM PS/2 Model 80.</span><br><span class="line"></span><br><span class="line">        SetMode(50,80)</span><br><span class="line">        Cls</span><br><span class="line">        SetCursor(1)</span><br><span class="line">        FOR nI := 1.0 to 250; NEXT    // Adjust delay as required.</span><br><span class="line">        SetCursor(0)</span><br><span class="line"></span><br><span class="line">     Similar programming is required when returning to 25 row mode.</span><br><span class="line"></span><br><span class="line">     SETBLINK() is a tricky little devil. Despite the fact that its</span><br><span class="line">     alleged default is .T., it may be necessary to issue SetBlink(.T.)</span><br><span class="line">     before any blinking will occur. Further, it may be necessary to</span><br><span class="line">     re-issue a SetColor(cVar) after the SetBlink(lVar) call. Takes</span><br><span class="line">     a little experimentation &lt;g&gt;. Note that a string saved by</span><br><span class="line">     Set(_SET_COLOR), containing an * will end up with a + in its</span><br><span class="line">     place.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

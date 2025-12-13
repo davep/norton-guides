@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-73226.html">
+    <link rel="next" href="tr-75336.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-73226.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-75336.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> NTXSIZE(&lt;N key size&gt;, &lt;N number of records&gt;)</span><br><span class="line"> Evaluates the potential maximum size of a Clipper index file.</span><br><span class="line"> Returns &lt;expN&gt; maximum bytes in index file from any creation method.</span><br><span class="line"></span><br><span class="line"> &lt;key size&gt; is 8 if the key is &lt;expD&gt; or &lt;expN&gt;.</span><br><span class="line"> &lt;key size&gt; is LEN( &lt;key&gt; ) if the key is &lt;expC&gt;.</span><br><span class="line"> &lt;number of records&gt; is total records in database file.</span><br><span class="line"></span><br><span class="line"> Useful in learning whether there is enough available disk</span><br><span class="line"> space to hold an index file before actually creating it</span><br><span class="line"></span><br><span class="line"> Index files on the same database and key can differ in size</span><br><span class="line"> depending upon how they are created.  INDEX ON produces a</span><br><span class="line"> smaller index than APPEND with an open index.</span><br><span class="line"></span><br><span class="line"> NTXSIZE() reports the maximum potential size under any</span><br><span class="line"> circumstances, and NDXSIZE() reports the maximum potential</span><br><span class="line"> size under INDEX ON.  If you are using NTXSIZE() to compute</span><br><span class="line"> INDEX ON results, subtract 25% from the total.  Likewise, if</span><br><span class="line"> you are using NDXSIZE() to compute results from APPEND with an</span><br><span class="line"> open index, add 50% to the total.</span><br><span class="line"></span><br><span class="line"> * Assumes open database file keyed on Last_name</span><br><span class="line"> IF NTXSIZE( LEN(Last_name), LASTREC() ) &lt; DISKSPACE()</span><br><span class="line">    INDEX ON Last_name TO Lname</span><br><span class="line"> ELSE</span><br><span class="line">    ? &#34;Error -- not enough disk space to create index.&#34;</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-71183.html">NDXSIZE()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

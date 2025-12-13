@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5961970.html">
+    <link rel="next" href="rbint-5964647.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5961970.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5958977.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5964647.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 80  U - Ami Bios V1.00.12.ax1t - Internal - Bios Subsystem Selection </span>  [<span class="ngb">b</span>]</span><br><span class="line"></span><br><span class="line">   AH = function</span><br><span class="line">       00h install and initialize BIOS subsystem</span><br><span class="line">       AL = ??? (00h,01h,03h)</span><br><span class="line">       CX:BX = subsystem ID (see #3642)</span><br><span class="line">       ESI = address from which to load, or 00000000h for default for</span><br><span class="line">           subsystem</span><br><span class="line">       EDI = physical address at which to install, or 0 for default</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   if CX=0000h on entry, this call is applied to all</span><br><span class="line">             subsystems whose ID has low word BX</span><br><span class="line">       01h get BIOS subsystem information</span><br><span class="line">       CX:BX = subsystem ID (see #3642)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AL = ???</span><br><span class="line">           AH = ???</span><br><span class="line">           EDX = uncompressed size of subsystem in bytes</span><br><span class="line">           SI = offset within subsystem of initialization</span><br><span class="line">               routine, or FFFFh if none</span><br><span class="line">           EDI = physical address of default location or 0</span><br><span class="line">       02h get matching subsystem identifier</span><br><span class="line">       AL = index into subsystem list (return ALth occurrence</span><br><span class="line">             matching BX)</span><br><span class="line">       BX = low word of subsystem identifier</span><br><span class="line">           (0001h,0002h,0004h,0005h,000Bh,FFFFh)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">               CX = high word of ALth matching subsystem</span><br><span class="line">           CF set on error</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   the system is halted if AL=00h on entry</span><br><span class="line">       03h set up &#34;big real&#34; mode (4G segment limits)</span><br><span class="line">       04h turn off &#34;big real&#34; mode (restore 64K segment limits)</span><br><span class="line">       05h remove BIOS subsystem</span><br><span class="line">       CX:BX = subsystem ID to leave out</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   the system is halted if an invalid (not installed)</span><br><span class="line">             subsystem ID is specified</span><br><span class="line">       06h get installed subsystem info</span><br><span class="line">       CX:BX = subsystem ID (see #3642)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF clear</span><br><span class="line">           EDX = length of ???</span><br><span class="line">           EDI = linear address of start of ???</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   the system is halted if an invalid (not installed)</span><br><span class="line">             subsystem ID is specified</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on non-fatal error</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this interrupt vector is cleared to 0000h:0000h near the end of the</span><br><span class="line">     BIOS startup sequence</span><br><span class="line"></span><br><span class="line">(Table 3642)</span><br><span class="line">Values for AMI BIOS subsystem ID:</span><br><span class="line"> 00010001h ROM BIOS @F000-FFFF</span><br><span class="line"> 00010002h setup??? (loaded @6000-68FF)</span><br><span class="line"> 00010005h APM code</span><br><span class="line"> 0001000Bh language-specific error message set (English)</span><br><span class="line"> 00020002h PnP/PCI ACFG code (loaded @F000-F1FF)</span><br><span class="line"> 0001FFFFh</span><br><span class="line"> 0002FFFFh recovery code</span><br><span class="line"> 00030004h</span><br><span class="line"> 0003FFFFh BIOS decompression code</span><br><span class="line"> 0004000Bh</span><br><span class="line"> 00060004h</span><br><span class="line"> 0100FFFFh ACFG data</span><br><span class="line"> 10000000h ROM @C000 (64K)</span><br><span class="line"> 10000001h HMA (48K)</span><br><span class="line"> 10000002h RAM @7A00 (24K)</span><br><span class="line"> 10000003h RAM @8000-BFFF</span><br><span class="line"> 10000004h</span><br><span class="line"> 10000005h real-mode address space (0-1M)</span><br><span class="line"> 1000000Bh installed language-specific message set???</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,124 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .MOD  (Sound)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-30817.html">
+    <link rel="next" href="modform-34018.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-30817.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-34018.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">.MOD  (Sound)</a></li>
+                  <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+                  <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+                  <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+                  <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+                  <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Subfunction 23 : Play a sample</span></span><br><span class="line"></span><br><span class="line"> AH    = 82</span><br><span class="line"> AL    = 23</span><br><span class="line"> DX:CX = Buffer with the folowing data</span><br><span class="line"> If the function is successful, AX will hold 5722h on return.</span><br><span class="line"></span><br><span class="line"> ┌────────┬────────┬────────────────────────────────────────────────────────┐</span><br><span class="line"> │ Offset │ Length │ Description                                            │</span><br><span class="line"> ├────────┼────────┼────────────────────────────────────────────────────────┤</span><br><span class="line"> │   00   │  Byte  │ This byte must be set to &#39;S&#39;.                          │</span><br><span class="line"> │   01   │  Byte  │ This byte must be set to &#39;P&#39;.                          │</span><br><span class="line"> │   02   │  Word  │ This word holds the segment of the sample to be        │</span><br><span class="line"> │        │        │ played. The sample data must therefore be paragraph    │</span><br><span class="line"> │        │        │ aligned. The sample data, is the data described in     │</span><br><span class="line"> │        │        │ section 6 of the MOD file structure above.             │</span><br><span class="line"> │   04   │  Word  │ The length of the sample. In old versions of MODRES,   │</span><br><span class="line"> │        │        │ this length was in bytes (limiting the length of       │</span><br><span class="line"> │        │        │ samples to 64K). In new versions, this length is in    │</span><br><span class="line"> │        │        │ words. For both cases the length must be in 8086       │</span><br><span class="line"> │        │        │ format as opposed to the Amiga format in which it is   │</span><br><span class="line"> │        │        │ stored in the MOD file.                                │</span><br><span class="line"> │   06   │  Byte  │ Output device number - see description at offset 02 of │</span><br><span class="line"> │        │        │ subfunction 20h.                                       │</span><br><span class="line"> │   07   │  Word  │ This word holds a value corresponding to the frequency │</span><br><span class="line"> │        │        │ of the note to be played. See section 5 of the MOD     │</span><br><span class="line"> │        │        │ file docs for a description of how the frequency is    │</span><br><span class="line"> │        │        │ represented.                                           │</span><br><span class="line"> ├────────┼────────┼────────────────────────────────────────────────────────┤</span><br><span class="line"> │   09   │  Byte  │ This byte is used to specify the volume at which the   │</span><br><span class="line"> │        │        │ sample is to be played. If the value is not zero, it   │</span><br><span class="line"> │        │        │ is decremented and then used as a multiplier (in six-  │</span><br><span class="line"> │        │        │ teenths). A value of 2, for example, will multiply the │</span><br><span class="line"> │        │        │ volume by 1/16; 3 will multiply by 2/16, etc. Zero and │</span><br><span class="line"> │        │        │ one produce the same effect - no volume at all.        │</span><br><span class="line"> │   10   │  Word  │ This is the loop start (if the loop length is greater  │</span><br><span class="line"> │        │        │ than or equal to 4). This value is an offset in words  │</span><br><span class="line"> │        │        │ ans is in 8086 format.                                 │</span><br><span class="line"> │   12   │  Word  │ If this value is less than 4 then the sample does not  │</span><br><span class="line"> │        │        │ loop, otherwise this is the loop length. This value is │</span><br><span class="line"> │        │        │ measured in words and is in 8086 format.               │</span><br><span class="line"> │   14   │  Byte  │ This byte is used to specify the quality of sound      │</span><br><span class="line"> │        │        │ output required. It can have a value in the range 0 to │</span><br><span class="line"> │        │        │ 6 - the lower the value, the better the quality. Note, │</span><br><span class="line"> │        │        │ however, that you will need a fast machinve to use the │</span><br><span class="line"> │        │        │ low values without crashing. A value of 1 is assumed   │</span><br><span class="line"> │        │        │ if an out of range value is specified.                 │</span><br><span class="line"> └────────┴────────┴────────────────────────────────────────────────────────┛</span><br><span class="line"></span><br><span class="line"> Note that bytes 9 to 14 were not available in the old versions of MODRES.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="modform-22078.html">Sampled Sound Data</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="modform-26015.html">Subfunction 20</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

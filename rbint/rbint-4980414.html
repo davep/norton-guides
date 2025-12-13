@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4979839.html">
+    <link rel="next" href="rbint-4983103.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4979839.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4908825.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4983103.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 60  u - Hp 95lx System Manager - Clock/calendar Service &#34;m_get_settin</span>  [<span class="ngb">b</span>]</span><br><span class="line"></span><br><span class="line">   DI = 0B09h</span><br><span class="line">   STACK:  2 WORDs unused dummies (for calls from high level languages)</span><br><span class="line">       DWORD   pointer to ??? (see #2965)</span><br><span class="line">       DWORD   pointer to ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> ???</span><br><span class="line">   STACK unchanged</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 60/DI=0B0Ah,INT 60/DI=0B0Fh</span><br><span class="line"></span><br><span class="line">Format of HP 95LX system settings:</span><br><span class="line">Offset Size    Description (Table 2965)</span><br><span class="line"> 00h   WORD    country code</span><br><span class="line"> 02h   WORD    speaker volume (00h-03h or FFh for off)</span><br><span class="line"> 04h   WORD    contrast level (00h-0Fh)</span><br><span class="line"> 06h   WORD    week start (00h Sunday, 01h Monday)</span><br><span class="line"> 08h   WORD    punctuation format (see #2966)</span><br><span class="line"> 0Ah   WORD    two-character language code (only 5355h = &#34;US&#34; byte-swapped)</span><br><span class="line"> 0Ch   WORD    current date format (see #2967)</span><br><span class="line"> 0Eh   WORD    current time format (see #2968)</span><br><span class="line"> 10h   WORD    collating sequence</span><br><span class="line">       00h numbers first, 01h letters first, 02h ASCII</span><br><span class="line"> 12h 80 BYTEs  name of picture file</span><br><span class="line"> 62h 30 BYTEs  name</span><br><span class="line"> 80h 30 BYTEs  title</span><br><span class="line"> 9Eh 28 BYTEs  company name</span><br><span class="line"> BAh   WORD    number of languages</span><br><span class="line"> BCh  6 BYTEs  available languages</span><br><span class="line"> C2h 66 BYTEs  language menu</span><br><span class="line">104h  2 BYTEs  ASCIZ date separator</span><br><span class="line">106h  2 BYTEs  ASCIZ time separator</span><br><span class="line">108h   BYTE    date order</span><br><span class="line">109h   BYTE    use 24 hour time?</span><br><span class="line">10Ah 16 BYTEs  currency string</span><br><span class="line">11Ah   WORD    currency string position (00h prefix, 01h suffix)</span><br><span class="line">11Ch   WORD    keyboard (see #2969)</span><br><span class="line">11Eh   WORD    printer baud rate</span><br><span class="line">       00h 300, 01h 1200, 02h 2400, 03h 4800, 04h 9600, 05h 19200</span><br><span class="line">120h   WORD    printer driver code</span><br><span class="line">       00h Epson FX80, 01h HP Laserjet, 02h IBM ProPrinter</span><br><span class="line">122h   WORD    printer interface (00h COM1, 01h COM2, 02h IR, 03h LPT1)</span><br><span class="line">124h   WORD    system manager interrupt (60h by default)</span><br><span class="line">126h   WORD    code page (01h CP850, 02h CP437)</span><br><span class="line">128h   WORD    active exit key</span><br><span class="line">12Ah   WORD    active menu key</span><br><span class="line">12Ch   WORD    active CHAR key toggle</span><br><span class="line">12Eh  6 BYTEs  alarm</span><br><span class="line"></span><br><span class="line">(Table 2966)</span><br><span class="line">Values for HP 95LX punctuation format:</span><br><span class="line"> code  decimal arg thousands</span><br><span class="line"> 00h   .   ,   ,</span><br><span class="line"> 01h   ,   .   .</span><br><span class="line"> 02h   .   ;   ;</span><br><span class="line"> 03h   ,   ;   .</span><br><span class="line"> 04h   .   ,   &#34; &#34;</span><br><span class="line"> 05h   ,   .   &#34; &#34;</span><br><span class="line"> 06h   .   ;   &#34; &#34;</span><br><span class="line"> 07h   ,   ;   &#34; &#34;</span><br><span class="line"></span><br><span class="line">(Table 2967)</span><br><span class="line">Values for HP 95LX current date format:</span><br><span class="line"> 00h   dd-mmm-yy</span><br><span class="line"> 01h   dd-mmm</span><br><span class="line"> 02h   mmm-yy</span><br><span class="line"> 03h   mm/dd/yy</span><br><span class="line"> 04h   dd/mm/yy</span><br><span class="line"> 05h   dd.mm.yy</span><br><span class="line"> 06h   yy-mm-dd</span><br><span class="line"> 07h   mm/dd</span><br><span class="line"> 08h   dd/mm</span><br><span class="line"> 09h   dd.mm</span><br><span class="line"> 0Ah   mm-dd</span><br><span class="line"></span><br><span class="line">(Table 2968)</span><br><span class="line">Values for HP 95LX current time format:</span><br><span class="line"> 00h   HH:MM:SS am/pm</span><br><span class="line"> 01h   HH:MM am/pm</span><br><span class="line"> 02h   HH:MM:SS</span><br><span class="line"> 03h   HH.MM.SS</span><br><span class="line"> 04h   HH,MM,SS</span><br><span class="line"> 05h   HHhMMmSSs</span><br><span class="line"> 06h   HH:MM</span><br><span class="line"> 07h   HH.MM</span><br><span class="line"> 08h   HH,MM</span><br><span class="line"> 09h   HHhMMm</span><br><span class="line"></span><br><span class="line">(Table 2969)</span><br><span class="line">Values for HP 95LX keyboard layout:</span><br><span class="line"> 0001h Belgium</span><br><span class="line"> 0002h French Canadian</span><br><span class="line"> 0004h Denmark</span><br><span class="line"> 0008h Finland</span><br><span class="line"> 0010h French</span><br><span class="line"> 0020h Finland</span><br><span class="line"> 0040h Italy</span><br><span class="line"> 0080h Netherlands</span><br><span class="line"> 0100h Norway</span><br><span class="line"> 0200h Portugal</span><br><span class="line"> 0400h Spain</span><br><span class="line"> 0800h Sweden</span><br><span class="line"> 1000h Swiss French</span><br><span class="line"> 2000h Swiss German</span><br><span class="line"> 4000h United Kingdom</span><br><span class="line"> 8000h USA</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

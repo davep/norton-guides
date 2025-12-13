@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » OverView » Questions and Answers</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-272978.html">
+    <link rel="next" href="mrdebug-275842.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-272978.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-241082.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-275842.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Linking in Real mode</span></span><br><span class="line"> Steps to follow if you are short of memory.</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> Due to the nature and size of MrDebug you may find that linking in MrDebug</span><br><span class="line"> increases the load size and memory requirements of your program. In order to</span><br><span class="line"> overcome this and still be able to use MrDebug, it is recommended that you</span><br><span class="line"> overlay MrDebug.</span><br><span class="line"></span><br><span class="line"> MrDebug is supplied with various link scripts to help you link MrDebug in</span><br><span class="line"> real mode. If you are using .RTLink that came with your copy of CA-Clipper</span><br><span class="line"> you should refer to MRDRTL.LNK - this should help you overlay the Clipper</span><br><span class="line"> libraries and MrDebug.</span><br><span class="line"></span><br><span class="line"> If you are using Blinker then we recommend that you take a look at the</span><br><span class="line"> following link files:</span><br><span class="line"></span><br><span class="line">        MRDMIN.LNK</span><br><span class="line">        MRDMID.LNK</span><br><span class="line">        MRDMAX.LNK</span><br><span class="line"></span><br><span class="line"> These files would have been copied to the same directory that MRDEBUG.LIB</span><br><span class="line"> was installed in.</span><br><span class="line"></span><br><span class="line"> MRDMIN.LNK - overlays a minimum amount of MrDebug - but enough not to impact</span><br><span class="line">              too much on performance.</span><br><span class="line"> MRDMAX.LNK - overlays nearly everything - can cause performance degradation.</span><br><span class="line"> MRDMID.LNK - a halfway house between MRDMIN.LNK and MRDMID.LNK</span><br><span class="line"></span><br><span class="line"> Including one of the above link scripts into your link script (preceded</span><br><span class="line"> with an @) should help to overcome most memory problems.</span><br><span class="line"></span><br><span class="line"> You may find that the following Blinker link script command will help to</span><br><span class="line"> increase system performance:</span><br><span class="line"></span><br><span class="line">        BLINKER OVERLAY PAGEFRAME ON</span><br><span class="line">        BLINKER OVERLAY UMB ON</span><br><span class="line">        BLINKER CACHE XMS 75%,25%</span><br><span class="line"></span><br><span class="line"> Please refer to your blinker documentation before using these command so</span><br><span class="line"> that you fully understand how these commands will help you.</span><br><span class="line"></span><br><span class="line"> You should also check that you have overlayed the EXTEND.LIB library. If you</span><br><span class="line"> are using Blinker, then make sure that you are using one of the blinker</span><br><span class="line"> scripts that overlays the Clipper libraries - this can save you a great deal</span><br><span class="line"> of memory - especially load size.</span><br><span class="line"></span><br><span class="line"> There are three link scripts supplied with Blinker that you will find of</span><br><span class="line"> interest:</span><br><span class="line"></span><br><span class="line">    CL520MIN.LNK</span><br><span class="line">    CL520MID.LNK</span><br><span class="line">    CL520MAX.LNK</span><br><span class="line"></span><br><span class="line"> The above link scripts should help to reduce the amount of memory that</span><br><span class="line"> Clipper needs before it can run.</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

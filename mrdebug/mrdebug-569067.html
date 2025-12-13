@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Utilities</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    
+    <link rel="next" href="mrdebug-572821.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="mrdebug-565186.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-572821.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">About MrWindow CA-Tools Interface</span></span><br><span class="line"> What is MrWindow for CA-Tools</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> MrWindow is a set of replacement routines that will allow users of CA-Tools</span><br><span class="line"> to use MrDebug without modifying any of their existing code.</span><br><span class="line"></span><br><span class="line"> MrWindow is MrDebug friendly, which means that there is no direct writing to</span><br><span class="line"> video modes or crucifying of CA-Clipper internals so you&#39;ll be able to use</span><br><span class="line"> your CA-Tools code with MrDebug without any problem such as bleed through or</span><br><span class="line"> windows appearing at inopportune moments.</span><br><span class="line"></span><br><span class="line"> When running MrDebug in a screen mode where the application window does not</span><br><span class="line"> use all of the screen, a window may not be moved or re-positioned outside of</span><br><span class="line"> the application window. Any call made to move a window outside of the</span><br><span class="line"> application window will result in the window being moved as close the</span><br><span class="line"> original destination, but not outside of the application window.</span><br><span class="line"></span><br><span class="line"> Should you wish to move windows outside of the application window then you</span><br><span class="line"> will have to run MrDebug with Force Application into 80x25 toggled off.</span><br><span class="line"></span><br><span class="line"> Throughout this section of the guides we may make reference to the</span><br><span class="line"> Application Window or window 0. This is used in places where the CA-Clipper</span><br><span class="line"> Tools documentation would make reference to the Screen.</span><br><span class="line"></span><br><span class="line"> MrDebug allows you to run your applications in their own 80x25 window all</span><br><span class="line"> CA-Clipper Tools Cloned function are based on the application window and</span><br><span class="line"> hence reflect values according to those of the application window.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Linking MrWindow &amp; CA-Tools</span></span><br><span class="line"></span><br><span class="line"> The number of the beast may be 666, but the name of the beast is CA-Tools.</span><br><span class="line"> The beast is the enemy and the torture that the beast does to CA-Clipper is</span><br><span class="line"> intolerable.</span><br><span class="line"></span><br><span class="line"> Because of the nature of the beast, our first mistake was assuming that</span><br><span class="line"> Tools would behave itself and follow the guidelines laid down in the</span><br><span class="line"> CA-Clipper API&#39;s - BIG MISTAKE!!! CA-Tools breaks more rules than we can</span><br><span class="line"> imagine. So if they replace parts of Clipper.LIB ad lib - we have to put</span><br><span class="line"> those parts back!</span><br><span class="line"></span><br><span class="line"> To link your application with MrDebug and CA-Tools, so that you can use the</span><br><span class="line"> windowing system you will need to follow one of the link scripts listed</span><br><span class="line"> below. The first things you should know, is NOT to link in CTUS.OBJ or</span><br><span class="line"> CTUSP.OBJ - the extended driver file is no longer needed when used with</span><br><span class="line"> MrDebug and MrWindow.</span><br><span class="line"></span><br><span class="line"> DO NOT LINK IN CTUSP.OBJ OR CTUS.OBJ</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Linking with ExoSpace.</span></span><br><span class="line"></span><br><span class="line"> For those poor unfortunate souls who use ExoDogslownotcompatibleSpace you</span><br><span class="line"> will have to arrange your link script in a manner similar to the following :</span><br><span class="line"></span><br><span class="line">     File MrDebug</span><br><span class="line">     LIB  MrWindow</span><br><span class="line">     LIB  Clipper</span><br><span class="line">     File CTINTP</span><br><span class="line">     LIB  CTP</span><br><span class="line"></span><br><span class="line"> Do not link in the CTUSP extended driver. This will break Clipper!</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Linking with Blinker.</span></span><br><span class="line"></span><br><span class="line"> Please link the files in the following order:</span><br><span class="line"></span><br><span class="line">     SEA BLXCLP52</span><br><span class="line">     LIB Clipper</span><br><span class="line">     File CTINTP</span><br><span class="line">     LIB  CTP</span><br><span class="line"></span><br><span class="line"> Do not link in the CTUSP extended driver. This will break Clipper!</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Linking with Causeway.</span></span><br><span class="line"></span><br><span class="line"> You should link the files in the following order:</span><br><span class="line"></span><br><span class="line">     LIB Clipper</span><br><span class="line">     File CTINTP</span><br><span class="line">     LIB  CTP</span><br><span class="line"></span><br><span class="line"> Do not link in the CTUSP extended driver. This will break Clipper!</span><br><span class="line"></span><br><span class="line"> What must you not do?</span><br><span class="line"></span><br><span class="line"> You must NOT LINK in CTUSP.OBJ or CTUS.OBJ.</span><br><span class="line"></span><br><span class="line"> So, do not link in CTUSP.OBJ or CTUS.OBJ.</span><br><span class="line"></span><br><span class="line"> Where you can, use the MrDebug equivalents instead.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Linking with CA-Clipper 5.3</span></span><br><span class="line"></span><br><span class="line"> Extra caution has to be taken when linking with CA-Clipper 5.3 as the order</span><br><span class="line"> of fileplacement is important.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       BEGINAREA</span><br><span class="line">          FILE Test      // Program files etc.</span><br><span class="line">       ENDAREA</span><br><span class="line"></span><br><span class="line">       FILE MrDbg53.Lib  // MrDebug enhancements for 5.3</span><br><span class="line"></span><br><span class="line">       LIB MrDebug</span><br><span class="line"></span><br><span class="line">       BEGINAREA</span><br><span class="line">          LIB MrWindow</span><br><span class="line">       ENDAREA</span><br><span class="line"></span><br><span class="line">       MODULE MrCommon FROM MrWindow</span><br><span class="line"></span><br><span class="line"> Note that MrWindow *MUST* come AFTER both MrDebug files, and before any</span><br><span class="line"> references to CLIPPER.LIB or any tools libraries.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

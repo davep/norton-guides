@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .QWK  (Mailreaders)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-91417.html">
+    <link rel="next" href="modform-97195.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-91417.html">Previous</a></li>
+
+
+          
+
+<li><a href="modform-90842.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-97195.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">.MOD  (Sound)</a></li>
+                  <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+                  <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+                  <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+                  <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+                  <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">MESSAGES.DAT</span></span><br><span class="line"></span><br><span class="line"> This file contains records with a length of 128 bytes.  There are 3 types</span><br><span class="line"> of these records: (1) Packet Header, (2) Message Header, and (3) Message</span><br><span class="line"> Text.  All unused fields in the records are normally filled with spaces,</span><br><span class="line"> although you will sometimes find the final Message text record will be</span><br><span class="line"> filled with nulls (#0) after the last text.</span><br><span class="line"></span><br><span class="line"> <span class="ngu">Packet Header</span></span><br><span class="line">   Packet Header - is always the first record in the file and only occurs</span><br><span class="line">   once.  It contains only normal ascii text (limitted to at most 128</span><br><span class="line">   characters) and should always start with &#34;Produced by &#34;.  The remaining</span><br><span class="line">   text normally includes a product name and copyright message.</span><br><span class="line"></span><br><span class="line"> <span class="ngu">Message Header</span></span><br><span class="line">   A message header immediately preceeds zero or more message text records.</span><br><span class="line">   Each Message header has the following format:</span><br><span class="line"></span><br><span class="line">─────────┬────────┬─────────────────────────────────────────────────────────</span><br><span class="line">   Start │ Length │ Description</span><br><span class="line">─────────┼────────┼─────────────────────────────────────────────────────────</span><br><span class="line">      1  │    1   │ <span class="ngu">Message status flag</span></span><br><span class="line">         │        │  (see below)</span><br><span class="line">      2  │    7   │ <span class="ngu">Message number</span></span><br><span class="line">         │        │  (ascii left justified)</span><br><span class="line">      9  │    8   │ <span class="ngu">Date (MM-DD-YY)</span></span><br><span class="line">     17  │    5   │ <span class="ngu">Time (HH:MM)</span></span><br><span class="line">     22  │   25   │ <span class="ngu">To</span></span><br><span class="line">         │        │  (left justified space filled - uppercase) (Be sure to</span><br><span class="line">         │        │  check the to field to spot configuration type messages)</span><br><span class="line">     47  │   25   │ <span class="ngu">From</span></span><br><span class="line">         │        │  (left justified space filled - uppercase)</span><br><span class="line">     72  │   25   │ <span class="ngu">Subject</span></span><br><span class="line">         │        │  (left justified space filled - uppercase) (a subject</span><br><span class="line">         │        │  starting &#34;NE:&#34; should not be echoed into a network)</span><br><span class="line">     97  │   12   │ <span class="ngu">Password</span></span><br><span class="line">         │        │  (not really used, leave blank)</span><br><span class="line">    109  │    8   │ <span class="ngu">Message reference number</span></span><br><span class="line">         │        │  (ascii left justified)</span><br><span class="line">    117  │    6   │ <span class="ngu">Number of blocks</span></span><br><span class="line">         │        │  (ascii left justified - number of 128 byte blocks</span><br><span class="line">         │        │  including 1 for the message header)</span><br><span class="line">    123  │    1   │ <span class="ngu">Message active                                                                                              U</span></span><br><span class="line">         │        │  (ß or #225 = Active, Γ or #226 = Inactive)</span><br><span class="line">    124  │    2   │ <span class="ngu">Conference number</span></span><br><span class="line">         │        │  (Binary Word) (Lo in 124, Hi in 125).</span><br><span class="line">         │        │  Note that some older programs only supported</span><br><span class="line">         │        │  conferences 0 thru 255 and left byte 125 as a &#34;blank&#34;</span><br><span class="line">         │        │  unused field.  I recommend checking the word value and</span><br><span class="line">         │        │  if it is over 8191 to only use the lower (0 thru 255)</span><br><span class="line">         │        │  part of it. I&#39;ve also seen notes that this field is</span><br><span class="line">         │        │  really a 4 byte LongInt field, although with the above</span><br><span class="line">         │        │  limitation (and 8000 conference seeming sufficient for</span><br><span class="line">         │        │  a while), I documented it this way.</span><br><span class="line">    128  │    1   │ Indicates whether the message has a Network</span><br><span class="line">         │        │  tagline or not.  A value of &#34;*&#34; indicates that</span><br><span class="line">         │        │  a network tagline is present, a value of &#34; &#34;</span><br><span class="line">         │        │  indicates there isn&#39;t.  Messages sent to readers</span><br><span class="line">         │        │  (non-net-status) generally leave this as always</span><br><span class="line">         │        │  blank since only net utils need this info.</span><br><span class="line">─────────┴────────┴─────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">  <span class="ngu">Message Status Flag</span> has the following possibilities:</span><br><span class="line"></span><br><span class="line">   <span class="ngr"> ` </span>  Comment to sysop, read</span><br><span class="line">   <span class="ngr"> ~ </span>  Comment to sysop, unread</span><br><span class="line">   <span class="ngr"> - </span>  Public, read</span><br><span class="line">   <span class="ngr">   </span>  Public, unread</span><br><span class="line">   <span class="ngr"> * </span>  Private, read</span><br><span class="line">   <span class="ngr"> + </span>  Private, unread</span><br><span class="line">   <span class="ngr"> ^ </span>  Password protected, read</span><br><span class="line">   <span class="ngr"> % </span>  Password protected, unread</span><br><span class="line">   <span class="ngr"> # </span>  Group password, read</span><br><span class="line">   <span class="ngr"> ! </span>  Group password, unread</span><br><span class="line">   <span class="ngr"> $ </span>  Group password to all</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngu">Message Text Records</span></span><br><span class="line"></span><br><span class="line">   The message text records immediately follow the the message header.</span><br><span class="line">   They contain straight ascii text (lines are normally limitted to 72</span><br><span class="line">   chars/line although you may see longer lines).  Each line is followed by</span><br><span class="line">   a &#34;π&#34; or #227 character to mark the end of the line (in place of the</span><br><span class="line">   normal CR/LF that would exist in a straight text file).  The text</span><br><span class="line">   continues consecutavly and text lines do continue across block</span><br><span class="line">   boundaries.  Some systems or readers may have problems with messages</span><br><span class="line">   longer than 99 lines or 199 lines, although more recently this no longer</span><br><span class="line">   seems to be a limit.  The last block should be padded with blanks to</span><br><span class="line">   fill the block, although on input you may find it padded with nulls</span><br><span class="line">   (#0).</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

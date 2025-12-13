@@ -1,0 +1,169 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-115209.html">
+    <link rel="next" href="x86-119088.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-115209.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-119088.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">RCR             Rotate through Carry Right           Flags: O D I T S Z A P C</span></span><br><span class="line">                                                            * - - - - - - - *</span><br><span class="line"><span class="ngb">RCR</span> destination,count</span><br><span class="line"></span><br><span class="line">                     ┌─────────────────────◄───┐</span><br><span class="line">                     │  ┌───────────────┐   ┌──┴─┐</span><br><span class="line">                     └─►│  destination  │──►│ CF │</span><br><span class="line">                        └───────────────┛   └────┛</span><br><span class="line"></span><br><span class="line">    RCR shifts the bits of the destination operand to the right by the</span><br><span class="line">    number of bit positions specified in the count operand. A bit</span><br><span class="line">    shifted out of the right (low-order) end of the destination enters</span><br><span class="line">    the carry flag (CF), and the displaced carry flag rotates around</span><br><span class="line">    to enter the vacated left-most bit position of the destination.</span><br><span class="line">    Another way of looking at this is to consider the carry flag as</span><br><span class="line">    the lowest order bit of the word being rotated.</span><br><span class="line"></span><br><span class="line">    The shift is repeated the number of times indicated by the second</span><br><span class="line">    operand, which is either an immediate 8-bit value (<span class="ngb">max</span>. 1 on the</span><br><span class="line">    8086 processor) or the contents of the CL register. To reduce the</span><br><span class="line">    maximum execution time, the 80186+ uses only the lower 5 bits of</span><br><span class="line">    the count, limiting the count value to 31; the 8086 uses all 8</span><br><span class="line">    bits of count.</span><br><span class="line"></span><br><span class="line">    If the count operand is not an immediate 1, the overflow flag (OF)</span><br><span class="line">    is undefined; otherwise RCR sets OF to 0 if destination&#39;s sign bit</span><br><span class="line">    was not changed by the operation, to 1 if the sign bit was changed.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    C0 /3 ib    RCR  r/m8,imm8</span><br><span class="line">    C1 /3 ib    RCR  r/m16,imm8</span><br><span class="line">    C1 /3 ib    RCR  r/m32,imm8</span><br><span class="line">    D0 /3       RCR  r/m8,1</span><br><span class="line">    D1 /3       RCR  r/m16,1</span><br><span class="line">    D1 /3       RCR  r/m32,1</span><br><span class="line">    D2 /3       RCR  r/m8,CL</span><br><span class="line">    D3 /3       RCR  r/m16,CL</span><br><span class="line">    D3 /3       RCR  r/m32,CL</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    reg, 1       2       2       2       2       9       3       1   PU</span><br><span class="line">    mem, 1    2+d(0,2)  23+EA   15       7      10       4       3   PU</span><br><span class="line">    reg, cl      2       8+4n    5+n    5+n      9      8-30    7-24 NP</span><br><span class="line">    mem, cl   2+d(0,2) 28+EA+4n 17+n    8+n     10      9-31    9-26 NP</span><br><span class="line">    reg, imm     3       -       5+n    5+n      9      8-30    8-25 NP</span><br><span class="line">    mem, imm  3+d(0,2)   -      17+n    8+n     10      9-31   10-27 NP</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-132399.html">ROR</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-149277.html">SHR</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-150912.html">SHRD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-115209.html">RCL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-130554.html">ROL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-66690.html">Jcc</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-179453.html">Flags</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,153 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » File I/O</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-123972.html">
+    <link rel="next" href="nanfor-126149.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-123972.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-113206.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-126149.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_FGOTO()</span></span><br><span class="line"> Move record pointer to specific record in a text file</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line"><span class="fg15 bg1"></span></span><br><span class="line">     <span class="fg15 bg1"> FT_FGOTO( nLine ) -&gt; NIL</span></span><br><span class="line"><span class="fg15 bg1"></span></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nLine&gt;</span> is the record number to go to.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     NIL</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     This function moves the record pointer to a specific record</span><br><span class="line">     in the file in the currently selected text file workarea.  If</span><br><span class="line">     the record number requested is greater than the number of records</span><br><span class="line">     in the file, the record pointer will be positioned at the last</span><br><span class="line">     record.</span><br><span class="line"></span><br><span class="line">     Internally, the function operates differently depending on how</span><br><span class="line">     you invoke it.  Passing a value for <span class="ngb">&lt;nLine&gt;</span> results in what</span><br><span class="line">     is effectively a skip operation, which is fairly quick.  However</span><br><span class="line">     if you pass 0 for <span class="ngb">&lt;nLine&gt;</span>, e.g. ft_fGoTo( 0 ), the function</span><br><span class="line">     internally goes to the top of the file, then skips down the</span><br><span class="line">     required number of records.  Hence if your file is relatively</span><br><span class="line">     large and the current record is a high number, you may see some</span><br><span class="line">     delay as ft_fGoTo(0) skips through the file.</span><br><span class="line"></span><br><span class="line">     A text file &#34;record&#34; is a line of text terminated by a CRLF pair.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     // read 5th line of text from file</span><br><span class="line"></span><br><span class="line">     ft_fUse( &#34;FTTEXT.C&#34; )</span><br><span class="line"></span><br><span class="line">     ft_fGoTo(5)</span><br><span class="line"></span><br><span class="line">     cText := ft_fReadLN()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> FTTEXT.C</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Brice de Ganahl and Steve Larsen</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor-130121.html">FT_FRECNO()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-126149.html">FT_FGOTOP()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-128841.html">FT_FREADLN()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3080686.html">
+    <link rel="next" href="rbint-3091121.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3080686.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3002060.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3091121.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn Sect  u - Novell Netware V3.01+ Shell Interface - Multiplexor  </span>  [<span class="ngb">!</span>]</span><br><span class="line"></span><br><span class="line">   AH = F2h</span><br><span class="line">   AL = function (see #1783)</span><br><span class="line">       (subfunction stored in various places in the request packet,</span><br><span class="line">       depending on function number; see individual entries)</span><br><span class="line">   CX = length of request buffer</span><br><span class="line">   DX = length of reply buffer (0000h if no reply packet)</span><br><span class="line">   DS:SI -&gt; request buffer</span><br><span class="line">   ES:DI -&gt; reply buffer (ignored if DX=0000h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br><span class="line">   reply buffer filled as appropriate for function</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this is a multiplexor providing a &#34;raw&#34; interface to the underlying</span><br><span class="line">     NetWare Core Protocol.  Many functions which were accessed via a</span><br><span class="line">     separate AH function in older versions can also be accessed here,</span><br><span class="line">     but some NetWare 3.x calls appear to be available only here.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=F244h,AX=F268h/SF=3Dh,#2561</span><br><span class="line"></span><br><span class="line">(Table 1783)</span><br><span class="line">Values for NetWare Core Protocol functions:</span><br><span class="line">Fnc/Subfn  Description</span><br><span class="line">01h    File Set Lock</span><br><span class="line">02h    File Release Lock</span><br><span class="line">03h    Log File (old)                  (see AX=F203h)</span><br><span class="line">04h    Lock File Set (old)             (see AX=F204h)</span><br><span class="line">05h    Release File                (see AH=CCh,AH=ECh&#34;NetWare&#34;)</span><br><span class="line">06h    Release File Set                (see AH=CDh&#34;NetWare&#34;)</span><br><span class="line">07h    Clear File                  (see AH=CEh,AX=F207h)</span><br><span class="line">08h    Clear File Set                  (see AX=F208h)</span><br><span class="line">09h    Log Logical Record (old)            (see AH=D0h&#34;NetWare&#34;)</span><br><span class="line">0Ah    Lock Logical Record Set (old)           (see AX=F20Ah)</span><br><span class="line">0Bh    Clear Logical Record                (see AX=F20Bh)</span><br><span class="line">0Ch    Release Logical Record              (see AH=D2h&#34;NetWare&#34;)</span><br><span class="line">0Dh    Release Logical Record Set          (see AH=D3h&#34;NetWare&#34;)</span><br><span class="line">0Eh    Clear Logical Record Set            (see AX=F20Eh)</span><br><span class="line">0Fh    Allocate Resource               (see AH=D8h&#34;NetWare&#34;)</span><br><span class="line">10h    Deallocate Resource             (see AH=D9h&#34;NetWare&#34;)</span><br><span class="line">11h/xxh    print spooling                  (see AH=E0h&#34;NetWare&#34;)</span><br><span class="line">11h/06h Get Printer Status</span><br><span class="line">11h/0Ah    Get Printer Queue</span><br><span class="line">12h    Get Volume Info with Number         (see AH=DAh&#34;NetWare&#34;)</span><br><span class="line">13h    Get Station Number              (see AH=DCh&#34;NetWare&#34;)</span><br><span class="line">14h    Get File Server Date and Time (NW v2.2+)    (see AH=E7h&#34;NetWare&#34;)</span><br><span class="line">15h/01h Get Broadcast Message (old)            (see AX=F215h/SF=01h)</span><br><span class="line">15h/02h Disable Broadcasts             (see AX=F215h/SF=02h)</span><br><span class="line">15h/03h Enable Broadcasts              (see AX=F215h/SF=03h)</span><br><span class="line">15h/08h Check Pipe Status      (see AH=E1h/SF=08h,AX=F215h/SF=08h)</span><br><span class="line">15h/09h Broadcast to Console       (see AH=E1h/SF=09h,AX=F215h/SF=09h)</span><br><span class="line">15h/0Bh Get Broadcast Message              (see AX=F215h/SF=0Bh)</span><br><span class="line">16h/00h Set Directory Handle               (see AX=F216h/SF=00h)</span><br><span class="line">16h/01h Get Directory Path             (see AX=F216h/SF=01h)</span><br><span class="line">16h/02h Scan Directory Information         (see AX=F216h/SF=02h)</span><br><span class="line">16h/03h    Get Effective Directory Rights (old)        (see AX=F216h/SF=03h)</span><br><span class="line">16h/04h Modify Maximum Rights Mask         (see AX=F216h/SF=04h)</span><br><span class="line">16h/05h Get Volume Number              (see AX=F216h/SF=05h)</span><br><span class="line">16h/06h Get Volume Name                    (see AX=F216h/SF=06h)</span><br><span class="line">16h/0Ah Create Directory               (see AX=F216h/SF=0Ah)</span><br><span class="line">16h/0Bh Delete Directory               (see AX=F216h/SF=0Bh)</span><br><span class="line">16h/0Ch Scan Directory for Trustees            (see AX=F216h/SF=0Ch)</span><br><span class="line">16h/0Dh Add Trustee to Directory           (see AX=F216h/SF=0Dh)</span><br><span class="line">16h/0Eh Delete Trustee from Directory          (see AX=F216h/SF=0Eh)</span><br><span class="line">16h/0Fh    Rename Directory                (see AX=F216h/SF=0Fh)</span><br><span class="line">16h/10h Purge Erased Files (old)           (see AX=F216h/SF=10h)</span><br><span class="line">16h/11h Recover Erased File (old)          (see AX=F216h/SF=11h)</span><br><span class="line">16h/12h Alloc Permanent Directory Handle       (see AX=F216h/SF=12h)</span><br><span class="line">16h/13h Alloc Temporary Directory Handle       (see AX=F216h/SF=13h)</span><br><span class="line">16h/14h Deallocate Directory Handle            (see AX=F216h/SF=14h)</span><br><span class="line">16h/15h Get Volume Info with Handle            (see AX=F216h/SF=15h)</span><br><span class="line">16h/16h Alloc Special Temporary Directory Handle   (see AX=F216h/SF=16h)</span><br><span class="line">16h/19h Set Directory Information          (see AX=F216h/SF=19h)</span><br><span class="line">16h/1Ah Get Path Name of Volume-Directory Number Pair  (see AX=F216h/SF=1Ah)</span><br><span class="line">16h/1Bh    Scan Salvageable Files (old)            (see AX=F216h/SF=1Bh)</span><br><span class="line">16h/1Ch    Recover Salvageable File (old)          (see AX=F216h/SF=1Ch)</span><br><span class="line">16h/1Dh    Purge Salvageable File (old)            (see AX=F216h/SF=1Dh)</span><br><span class="line">16h/1Eh    Scan a Directory                (see AX=F216h/SF=1Eh)</span><br><span class="line">16h/1Fh    Get Directory Entry             (see AX=F216h/SF=1Fh)</span><br><span class="line">16h/20h    Scan Volume&#39;s User Disk Restrictions        (see AX=F216h/SF=20h)</span><br><span class="line">16h/21h    Add User Disk Space Restriction         (see AX=F216h/SF=21h)</span><br><span class="line">16h/22h    Remove User Disk Space Restrictions     (see AX=F216h/SF=22h)</span><br><span class="line">16h/23h    Scan Directory Space Restrictions       (see AX=F216h/SF=23h)</span><br><span class="line">16h/24h    Set Directory Disk Space Restriction        (see AX=F216h/SF=24h)</span><br><span class="line">16h/25h    Set Directory File Information          (see AX=F216h/SF=25h)</span><br><span class="line">16h/26h    Scan File or Directory For Extended Trustees    (see AX=F216h/SF=26h)</span><br><span class="line">16h/27h    Add Extended Trustee to Directory or File   (see AX=F216h/SF=27h)</span><br><span class="line">16h/28h    Scan Directory Disk Space           (see AX=F216h/SF=28h)</span><br><span class="line">16h/29h    Get Object Disk Usage and Restrictions      (see AX=F216h/SF=29h)</span><br><span class="line">16h/2Ah    Get Effective Rights                (see AX=F216h/SF=2Ah)</span><br><span class="line">16h/2Bh    Remove Extended Trustee from Dir or File    (see AX=F216h/SF=2Bh)</span><br><span class="line">16h/2Ch    Get Volume Usage                (see AX=F216h/SF=2Ch)</span><br><span class="line">16h/2Dh    Get Directory Information           (see AX=F216h/SF=2Dh)</span><br><span class="line">16h/2Eh    Rename or Move                  (see AX=F216h/SF=2Eh)</span><br><span class="line">16h/2Fh    Get Name Space Information          (see AX=F216h/SF=2Fh)</span><br><span class="line">16h/30h    Get Name Space Directory Entry          (see AX=F216h/SF=30h)</span><br><span class="line">16h/31h    Open Data Stream                (see AX=F216h/SF=31h)</span><br><span class="line">16h/32h    Get Object Effective Rights         (see AX=F216h/SF=32h)</span><br><span class="line">16h/33h    Get Extended Volume Info            (see AX=F216h/SF=33h)</span><br><span class="line">17h/01h Change User Password (old)         (see AX=F217h/SF=01h)</span><br><span class="line">17h/02h Get User Connection List (old)         (see AX=F217h/SF=02h)</span><br><span class="line">17h/0Ch Verify Serialization               (see AX=F217h/SF=0Ch)</span><br><span class="line">17h/0Eh Get Disk Utilization               (see AX=F217h/SF=0Eh)</span><br><span class="line">17h/0Fh Scan File Information              (see AX=F217h/SF=0Fh)</span><br><span class="line">17h/10h Set File Information               (see AX=F217h/SF=10h)</span><br><span class="line">17h/11h Get File Server Information            (see AX=F217h/SF=11h)</span><br><span class="line">17h/12h Get Network Serial Number          (see AX=F217h/SF=12h)</span><br><span class="line">17h/13h Get Internet Address (old)         (see AX=F217h/SF=13h)</span><br><span class="line">17h/14h Login Object                   (see AX=F217h/SF=14h)</span><br><span class="line">17h/15h Get Object Connection List (old)       (see AX=F217h/SF=15h)</span><br><span class="line">17h/16h    Get Connection Information (old)        (see AX=F217h/SF=1Ch)</span><br><span class="line">17h/17h    Get Encryption Key              (see AX=F217h/SF=17h)</span><br><span class="line">17h/18h    Login Object Encrypted              (see AX=F217h/SF=18h)</span><br><span class="line">17h/1Ah Get Internet Address               (see AX=F217h/SF=1Ah)</span><br><span class="line">17h/1Bh Get Object Connection List         (see AX=F217h/SF=1Bh)</span><br><span class="line">17h/1Ch    Get Connection Information          (see AX=F217h/SF=1Ch)</span><br><span class="line">17h/1Fh    Get Connection List from Object         (see AX=F217h/SF=1Fh)</span><br><span class="line">17h/32h Create Bindery Object              (see AX=F217h/SF=32h)</span><br><span class="line">17h/33h Delete Bindery Object              (see AX=F217h/SF=33h)</span><br><span class="line">17h/34h Rename Bindery Object              (see AX=F217h/SF=34h)</span><br><span class="line">17h/35h Get Bindery Object ID              (see AX=F217h/SF=35h)</span><br><span class="line">17h/36h Get Bindery Object Name                (see AX=F217h/SF=36h)</span><br><span class="line">17h/37h Scan Bindery Object                (see AX=F217h/SF=37h)</span><br><span class="line">17h/38h Change Bindery Object Security         (see AX=F217h/SF=38h)</span><br><span class="line">17h/39h Create Property                    (see AX=F217h/SF=39h)</span><br><span class="line">17h/3Ah Delete Property                    (see AX=F217h/SF=3Ah)</span><br><span class="line">17h/3Bh Change Property Security           (see AX=F217h/SF=3Bh)</span><br><span class="line">17h/3Ch Scan Property                  (see AX=F217h/SF=3Ch)</span><br><span class="line">17h/3Dh Read Property Value                (see AX=F217h/SF=3Dh)</span><br><span class="line">17h/3Eh Write Property Value               (see AX=F217h/SF=3Eh)</span><br><span class="line">17h/3Fh Verify Bindery Object Password         (see AX=F217h/SF=3Fh)</span><br><span class="line">17h/40h Change Bindery Object Password         (see AX=F217h/SF=40h)</span><br><span class="line">17h/41h Add Bindery Object to Set          (see AX=F217h/SF=41h)</span><br><span class="line">17h/42h Delete Bindery Object from Set         (see AX=F217h/SF=42h)</span><br><span class="line">17h/43h Is Bindery Object in Set           (see AX=F217h/SF=43h)</span><br><span class="line">17h/44h Close Bindery                  (see AX=F217h/SF=44h)</span><br><span class="line">17h/45h Open Bindery                   (see AX=F217h/SF=45h)</span><br><span class="line">17h/46h Get Bindery Access Level           (see AX=F217h/SF=46h)</span><br><span class="line">17h/47h Scan Bindery Object Trustee Paths      (see AX=F217h/SF=47h)</span><br><span class="line">17h/48h    Get Bindery Object Access Level         (see AX=F217h/SF=48h)</span><br><span class="line">17h/49h    Is Station a Manager?               (see AX=F217h/SF=49h)</span><br><span class="line">17h/4Ah    Keyed Verify Bindery Object Password        (see AX=F217h/SF=4Ah)</span><br><span class="line">17h/4Bh    Keyed Change Bindery Object Password        (see AX=F217h/SF=4Bh)</span><br><span class="line">17h/4Ch    List Relations of an Object         (see AX=F217h/SF=4Ch)</span><br><span class="line">17h/64h Create Queue                   (see AX=F217h/SF=64h)</span><br><span class="line">17h/65h Destroy Queue                  (see AX=F217h/SF=65h)</span><br><span class="line">17h/66h Read Queue Current Status (old)            (see AX=F217h/SF=66h)</span><br><span class="line">17h/67h Set Queue Current Status (old)         (see AX=F217h/SF=67h)</span><br><span class="line">17h/68h Create Queue Job and File (old)            (see AX=F217h/SF=68h)</span><br><span class="line">17h/69h Close File and Start Queue Job (old)       (see AX=F217h/SF=69h)</span><br><span class="line">17h/6Ah Remove Job From Queue (old)            (see AX=F217h/SF=6Ah)</span><br><span class="line">17h/6Bh Get Queue Job List (old)           (see AX=F217h/SF=6Bh)</span><br><span class="line">17h/6Ch Read Queue Job Entry (old)         (see AX=F217h/SF=6Ch)</span><br><span class="line">17h/6Dh Change Queue Job Entry (old)           (see AX=F217h/SF=6Dh)</span><br><span class="line">17h/6Eh Change Queue Job Position          (see AX=F217h/SF=6Eh)</span><br><span class="line">17h/6Fh Attach Queue Server to Queue           (see AX=F217h/SF=6Fh)</span><br><span class="line">17h/70h Detach Queue Server from Queue         (see AX=F217h/SF=70h)</span><br><span class="line">17h/72h Finish Servicing Queue Job (old)       (see AX=F217h/SF=72h)</span><br><span class="line">17h/74h Change to Client Rights (old)          (see AX=F217h/SF=74h)</span><br><span class="line">17h/75h Restore Queue Server Rights            (see AX=F217h/SF=75h)</span><br><span class="line">17h/76h Read Queue Server Current Status (old)     (see AX=F217h/SF=76h)</span><br><span class="line">17h/77h Set Queue Server Current Status            (see AX=F217h/SF=77h)</span><br><span class="line">17h/78h Get Queue Job File Size (old)          (see AX=F217h/SF=78h)</span><br><span class="line">17h/79h Create Queue Job and File          (see AX=F217h/SF=79h)</span><br><span class="line">17h/7Ah Read Queue Job Entry               (see AX=F217h/SF=7Ah)</span><br><span class="line">17h/7Bh Change Queue Job Entry             (see AX=F217h/SF=7Bh)</span><br><span class="line">17h/7Dh Read Queue Current Status          (see AX=F217h/SF=7Dh)</span><br><span class="line">17h/7Eh Set Queue Current Status           (see AX=F217h/SF=7Eh)</span><br><span class="line">17h/7Fh Close File and Start Queue Job         (see AX=F217h/SF=7Fh)</span><br><span class="line">17h/80h Remove Job From Queue              (see AX=F217h/SF=80h)</span><br><span class="line">17h/81h Get Queue Job List             (see AX=F217h/SF=81h)</span><br><span class="line">17h/82h Change Job Priority                (see AX=F217h/SF=82h)</span><br><span class="line">17h/83h Finish Servicing Queue Job         (see AX=F217h/SF=83h)</span><br><span class="line">17h/85h Change to Client Rights                (see AX=F217h/SF=85h)</span><br><span class="line">17h/86h Read Queue Server Current Status       (see AX=F217h/SF=86h)</span><br><span class="line">17h/87h Get Queue Job File Size                (see AX=F217h/SF=87h)</span><br><span class="line">17h/96h Get Account Status             (see AX=F217h/SF=96h)</span><br><span class="line">17h/97h Submit Account Charge              (see AX=F217h/SF=97h)</span><br><span class="line">17h/98h Submit Account Hold                (see AX=F217h/SF=98h)</span><br><span class="line">17h/99h Submit Account Note                (see AX=F217h/SF=99h)</span><br><span class="line">17h/C8h Check Console Privileges           (see AX=F217h/SF=C8h)</span><br><span class="line">17h/C9h Get File Server Description Strings        (see AX=F217h/SF=C9h)</span><br><span class="line">17h/CAh Set File Server Date and Time          (see AX=F217h/SF=CAh)</span><br><span class="line">17h/CBh Disable File Server Login          (see AX=F217h/SF=CBh)</span><br><span class="line">17h/CCh Enable File Server Login           (see AX=F217h/SF=CCh)</span><br><span class="line">17h/CDh Get File Server Login Status           (see AX=F217h/SF=CDh)</span><br><span class="line">17h/CEh Purge All Erased Files             (see AX=F217h/SF=CEh)</span><br><span class="line"></span><br><span class="line"><span class="ngb">.NG limit reached, continued in next section...</span></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

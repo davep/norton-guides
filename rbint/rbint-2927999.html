@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2926083.html">
+    <link rel="next" href="rbint-2929438.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2926083.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2929438.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - File Services - Set File Information    </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = E3h subfn 10h</span><br><span class="line">   DS:SI -&gt; request buffer (see #1593)</span><br><span class="line">   ES:DI -&gt; reply buffer (see #1594)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status</span><br><span class="line">       00h successful</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX</span><br><span class="line">   the caller must have modify privileges on the directory containing the</span><br><span class="line">     file</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=B6h,AH=E3h/SF=0Fh,AX=F217h/SF=10h</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Set File Information&#34; request buffer:</span><br><span class="line">Offset Size    Description (Table 1593)</span><br><span class="line"> 00h   WORD    length of following data (max 151h)</span><br><span class="line"> 02h   BYTE    10h (subfunction &#34;Set File Information&#34;)</span><br><span class="line"> 03h   BYTE    file attributes (see #1107 at AX=4301h)</span><br><span class="line"> 04h   BYTE    extended file attributes (see #1492 at AH=B6h)</span><br><span class="line"> 05h  4 BYTEs  reserved</span><br><span class="line"> 09h   WORD    (big-endian) file&#39;s creation date (see #1352 at AX=5700h)</span><br><span class="line"> 0Bh   WORD    (big-endian) date of last access (see #1351 at AX=5700h)</span><br><span class="line"> 0Dh   DWORD   (big-endian) date and time of last update (see #1534)</span><br><span class="line"> 11h   DWORD   (big-endian) object ID of owner</span><br><span class="line"> 15h   DWORD   (big-endian) date and time last archived (see #1534)</span><br><span class="line"> 19h 56 BYTEs  reserved</span><br><span class="line"> 51h   BYTE    directory handle or 00h</span><br><span class="line"> 52h   BYTE    search attributes (see #1107 at AX=4301h)</span><br><span class="line"> 53h   BYTE    length of filename</span><br><span class="line"> 54h  N BYTEs  filename</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1594</span><br><span class="line"></span><br><span class="line">Format of NetWare reply buffer:</span><br><span class="line">Offset Size    Description (Table 1594)</span><br><span class="line"> 00h   WORD    (call) 0000h (no results returned)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1593</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

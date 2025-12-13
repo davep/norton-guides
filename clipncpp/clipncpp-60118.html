@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » FAQ » FAQ</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-59276.html">
+    <link rel="next" href="clipncpp-62085.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-59276.html">Previous</a></li>
+
+
+          
+
+<li><a href="clipncpp-29045.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-62085.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">I want to call my C or assembler function with a reference</span></span><br><span class="line"> <span class="ngb">parameter in a string.  Why can&#39;t you just use the pointer returned</span></span><br><span class="line"> <span class="ngb">by _parc() to modify a string parameter?</span></span><br><span class="line"></span><br><span class="line"> Date: 23-Jul-91</span><br><span class="line"> From: Ted Means &lt;73067.3332@compuserve.com&gt;</span><br><span class="line"></span><br><span class="line"> Clipper 5.0 performed under-the-hood memory optimizations that</span><br><span class="line"> sometimes resulted in two strings being assigned the same pointer.</span><br><span class="line"></span><br><span class="line"> For example, if you did this:</span><br><span class="line"></span><br><span class="line">        X := &#34;Some string&#34;</span><br><span class="line">        Y := X</span><br><span class="line"></span><br><span class="line"> In all likelihood Clipper would simply make a copy of the pointer</span><br><span class="line"> rather than actually copying the string.  It sounds great in</span><br><span class="line"> theory, because it saves memory.  But problems arose when a C or</span><br><span class="line"> ASM routine attempted to modify X or Y by writing directly to the</span><br><span class="line"> assigned memory.  Since the same pointer was assigned to two</span><br><span class="line"> different memvars, they both got changed, even though that was</span><br><span class="line"> not the intended effect.</span><br><span class="line"></span><br><span class="line"> So with the release of Clipper 5.01, Nantucket graciously</span><br><span class="line"> provided a method for accessing strings that is more convenient.</span><br><span class="line"> If you call __StorCLen with a null pointer *before* calling</span><br><span class="line"> __ParC, it warns Clipper that you plan to directly modify a</span><br><span class="line"> __ParC pointer and Clipper will take whatever steps are necessary</span><br><span class="line"> to make it safe to do so.</span><br><span class="line"></span><br><span class="line"> This gives the best of both worlds, in that Clipper can still</span><br><span class="line"> perform its memory optimizations, but C and ASM programmers get</span><br><span class="line"> the benefit of being able to directly modify strings.  This is</span><br><span class="line"> all documented in the Release Notes, but briefly, if you need to</span><br><span class="line"> write directly to a string, use the following sequence:</span><br><span class="line"></span><br><span class="line">      1)  Call __ParCLen to get the string&#39;s length.</span><br><span class="line"></span><br><span class="line">      2)  Call __StorCLen with the length and a null pointer.</span><br><span class="line"></span><br><span class="line">      3)  Call __ParC to get a pointer to the string.  This</span><br><span class="line">          pointer will be safe to write to.</span><br><span class="line"></span><br><span class="line"> Writing directly to a __ParC pointer without using this method is</span><br><span class="line"> not sanctioned by Nantucket and is likely to cause problems.</span><br><span class="line"> Note, though, that if you don&#39;t need to write to the string you</span><br><span class="line"> can simply call __ParC by itself.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

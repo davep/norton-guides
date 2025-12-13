@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5145998.html">
+    <link rel="next" href="rbint-5147890.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5145998.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5147890.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 61 Fn 000F  - Banyan Vines - Get Process Handle                      </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 000Fh subfn 0008h</span><br><span class="line">   CX:BX -&gt; request block (see #3121)</span><br><span class="line">   DX = application&#39;s data segment (should be = CX)</span><br><span class="line">   ES = DS</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h successful</span><br><span class="line">       00A5h resource not available</span><br><span class="line"><span class="ngb">Desc:</span>  Returns a process handle to be used in other request blocks</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> This function is a prerequisite to all AX=000Fh subfunctions which</span><br><span class="line">     expect a process handle in the request block</span><br><span class="line">   Although subsequent calls from the same application return different</span><br><span class="line">     process handles, there seem to be no restrictions on how many times</span><br><span class="line">     an application may call this function (in fact, the code in the VINES</span><br><span class="line">     toolkit library always calls it before issueing other AX=000Fh calls)</span><br><span class="line"></span><br><span class="line">Format of request block:</span><br><span class="line">Offset Size    Description (Table 3121)</span><br><span class="line"> 00h   WORD    0008h</span><br><span class="line"> 02h   WORD    magic number (FEFEh)</span><br><span class="line"> 04h   WORD    buffer for return code (set to 0 before calling)</span><br><span class="line"> 06h   WORD    reserved</span><br><span class="line"> 08h   WORD    reserved (obviously not used; set to 0 before calling)</span><br><span class="line"> 0Ah   DWORD   process type (1 = transient, 2 = resident; destroyed on exit)</span><br><span class="line"> 0Eh   WORD    buffer for process handle</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,141 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><a class="line" href="progref-351477.html">INT 13h,  00h (00)       Reset Fixed Disk/Diskette System                 all</a><br><a class="line" href="progref-353185.html">INT 13h,  01h (1)        Get Disk System Status                           all</a><br><a class="line" href="progref-355285.html">INT 13h,  02h (2)        Read Sectors into Memory                         all</a><br><a class="line" href="progref-359101.html">INT 13h,  03h (3)        Write Sectors from Memory                        all</a><br><a class="line" href="progref-362725.html">INT 13h,  04h (4)        Verify Sectors                                   all</a><br><a class="line" href="progref-365299.html">INT 13h,  05h (5)        Format Cylinder                                  all</a><br><a class="line" href="progref-370149.html">INT 13h,  06h (6)        Format Track and Set Bad Sector Flags     fixed disk</a><br><a class="line" href="progref-371206.html">INT 13h,  07h (7)        Format Disk Starting at Cylinder          fixed disk</a><br><a class="line" href="progref-372159.html">INT 13h,  08h (8)        Get Current Drive Parameters                   fixed</a><br><a class="line" href="progref-375033.html">INT 13h,  09h (9)        Initialize Fixed Disk Tables              fixed disk</a><br><a class="line" href="progref-376658.html">INT 13h,  0Ah (10)       Read Long                                diagnostics</a><br><a class="line" href="progref-379551.html">INT 13h,  0Bh (11)       Write Long                               diagnostics</a><br><a class="line" href="progref-382181.html">INT 13h,  0Ch (12)       Seek to Cylinder                          fixed disk</a><br><a class="line" href="progref-383828.html">INT 13h,  0Dh (13)       Alternate Disk Reset                      fixed disk</a><br><a class="line" href="progref-385031.html">INT 13h,  10h (16)       Test for Drive Ready                      fixed disk</a><br><a class="line" href="progref-385841.html">INT 13h,  11h (17)       Recalibrate Drive                         fixed disk</a><br><a class="line" href="progref-387469.html">INT 13h,  15h (21)       Read DASD Type                                  many</a><br><a class="line" href="progref-389234.html">INT 13h,  16h (22)       Change Line Status                              many</a><br><a class="line" href="progref-390909.html">INT 13h,  17h (23)       Set DASD Type for Format                        many</a><br><a class="line" href="progref-392472.html">INT 13h,  18h (24)       Set Media Type for Format                       many</a><br><a class="line" href="progref-394312.html">INT 13h,  19h (25)       Park Disk Heads                                 some</a><br><a class="line" href="progref-394382.html">INT 13h,  1Ah (26)       Format Hard disk                                ESDI</a><br></pre>
+  
+  
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

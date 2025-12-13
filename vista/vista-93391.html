@@ -1,0 +1,148 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="vista-style.css">
+    <title>db_VISTA III » Functions » Functions descriptions</title>
+    <meta name="description" content="db_VISTA III">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="vista-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Functions</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions descriptions</a></li>
+                  
+                </ul>
+              </li>
+              <li>Codes</li>
+              <li>
+                <ul>
+                  <li><a href="vista-6446.html">Function status codes</a></li>
+                  <li><a href="vista-7989.html">System errors codes</a></li>
+                  <li><a href="vista-14319.html">User errors codes</a></li>
+                  <li><a href="vista-21058.html">Code&#39;s listing</a></li>
+                  
+                </ul>
+              </li>
+              <li>Credits</li>
+              <li>
+                <ul>
+                  <li><a href="vista-22437.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">   D_KEYLAST</span><br><span class="line"></span><br><span class="line">SUMMARY</span><br><span class="line">   d_keylast(FIELD[,dbn])</span><br><span class="line">   long FIELD;</span><br><span class="line">   int dbn;</span><br><span class="line"></span><br><span class="line">ARGUMENTS</span><br><span class="line">   FIELD       The field type of the key field for which the last key</span><br><span class="line">               will be found.</span><br><span class="line"></span><br><span class="line">   dbn         (optional) The number of the database containing the record.</span><br><span class="line"></span><br><span class="line">DESCRIPTION</span><br><span class="line">   Function d_keylast finds a record occurence associated with the last</span><br><span class="line">   occurrence of the key FIELD .</span><br><span class="line"></span><br><span class="line">CURRENCY CHANGES</span><br><span class="line">   curr_rec=record with last key;</span><br><span class="line"></span><br><span class="line">RETURN CODES</span><br><span class="line"></span><br><span class="line">   0    S_OKAY          Last key was found.</span><br><span class="line"></span><br><span class="line">   2    S_NOTFOUND      There are no keys on file for specified key field.</span><br><span class="line"></span><br><span class="line">  -5    S_INVFLD        Invalid field type.You either did not pass a</span><br><span class="line">                        field type or yuo passed field type which is</span><br><span class="line">                        not in the current record.</span><br><span class="line"></span><br><span class="line">  -17   S_NOTKEY        FIELD is not defined as a key.</span><br><span class="line"></span><br><span class="line">  -24   S_NOTLOCKED     Key file containing FIELD is not locked.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">EXAMPLE</span><br><span class="line">    /*display all info records in reverse id_code order*/</span><br><span class="line">    for(d_keylast(ID_CODE);db_status == S_OKAY;</span><br><span class="line">            d_keyprev(ID_CODE)){</span><br><span class="line">       d_recread(&amp;irec);</span><br><span class="line">       .. /*print info record contens*/</span><br><span class="line">    }</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="vista-89579.html">d_keyfind</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="vista-92351.html">d_keyfrst</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="vista-99502.html">d_keyprev</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="vista-98158.html">d_keynext</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

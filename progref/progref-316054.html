@@ -1,0 +1,168 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    
+    <link rel="next" href="progref-318191.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="progref-314851.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-318191.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 10h,  00h (0)        Set Video Mode</span></span><br><span class="line"></span><br><span class="line">    Sets the video mode.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">On entry:</span>      AH         00h</span><br><span class="line">                      AL         Video mode</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Returns:</span>       None</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Registers destroyed:</span>      AX, SP, BP, SI, DI</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line">                         <span class="ngb">Table of Video Modes</span></span><br><span class="line">                                                                    <span class="ngb">Buffer</span></span><br><span class="line"><span class="ngb">  Mode     Type        Resolution      Adapter(s)      Colors       Address</span></span><br><span class="line">  00h     Text          40 x 25      All but MDA       16 gray       B8000</span><br><span class="line">  01h     Text          40 x 25      All but MDA   16 fore/8 back    B8000</span><br><span class="line">  02h     Text          80 x 25      All but MDA       16 gray       B8000</span><br><span class="line">  03h     Text          80 x 25      All but MDA   16 fore/8 back    B8000</span><br><span class="line">  04h   Graphics       320 x 200     All but MDA         4           B8000</span><br><span class="line">  05h   Graphics       320 x 200     All but MDA       4 gray        B8000</span><br><span class="line">  06h   Graphics       640 x 200     All but MDA         2           B8000</span><br><span class="line">  07h     Text          80 x 25        MDA,EGA          b/w          B0000</span><br><span class="line">  08h   Graphics       160 x 200        PCjr            16           B0000</span><br><span class="line">  09h   Graphics       320 x 200        PCjr            16           B0000</span><br><span class="line">  0Ah   Graphics       640 x 200        PCjr             4           B0000</span><br><span class="line">  0Bh   Reserved    (internal to EGA)</span><br><span class="line">  0Ch   Reserved    (internal to EGA)</span><br><span class="line">  0Dh   Graphics       320 x 200        EGA             16           A0000</span><br><span class="line">  0Eh   Graphics       640 x 200        EGA             16           A0000</span><br><span class="line">  0Fh   Graphics       640 x 350        EGA             b/w          A0000</span><br><span class="line">  10h   Graphics       640 x 350        EGA             16           A0000</span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Notes:</span>         When the mode is changed, the screen is cleared.</span><br><span class="line">                      However, do not use this service as a &#34;clear-screen&#34;</span><br><span class="line">                      service, since this can take a little longer than</span><br><span class="line">                      the normal screen-clearing routines (Service 06h or</span><br><span class="line">                      07h).</span><br><span class="line"></span><br><span class="line">                      To avoid screen clearing (PCjr, EGA, and PC</span><br><span class="line">                      Convertible only), call with the high bit in AL set.</span><br><span class="line"></span><br><span class="line">                      The cursor is not displayed in graphics mode.</span><br><span class="line"></span><br><span class="line">                      Changing the video mode also changes the cursor</span><br><span class="line">                      size.</span><br><span class="line"></span><br><span class="line">                      For the PCjr, CGA, and EGA, modes 0, 2, and 5 are</span><br><span class="line">                      identical to modes 1, 3 and 4 except color burst is</span><br><span class="line">                      not enabled. (&#34;Color burst&#34; controls the display of</span><br><span class="line">                      color on composite monitors: When color burst is on,</span><br><span class="line">                      color is displayed; when it&#39;s off, color is not</span><br><span class="line">                      displayed. RGB displays are not affected by the</span><br><span class="line">                      color burst status.)</span><br><span class="line"></span><br><span class="line">                      Use INT 10h, Service 0Fh to get the current video</span><br><span class="line">                      mode.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-325158.html">INT 10h,  06h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-326192.html">INT 10h,  07h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-335631.html">INT 10h,  0Fh</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

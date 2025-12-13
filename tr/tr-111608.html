@@ -1,0 +1,119 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-110528.html">
+    <link rel="next" href="tr-112964.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-110528.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-112964.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> WRAP(&lt;expC&gt;, &lt;N maximum length&gt;)</span><br><span class="line"> Breaks a long string for output within a specified line length.</span><br><span class="line"> Returns &lt;expN&gt; position of last blank space before &lt;maximum length&gt;.</span><br><span class="line"></span><br><span class="line"> &lt;expC&gt; is the string to wrap during output.</span><br><span class="line"> &lt;max length&gt; is the maximum length of output line.</span><br><span class="line"></span><br><span class="line"> Returns LEN(&lt;expC&gt;) if &lt;expC&gt; is shorter than &lt;max len&gt;.</span><br><span class="line"></span><br><span class="line"> Returns &lt;max len&gt; if a single word with no place to break is</span><br><span class="line">         longer than &lt;max length&gt;.  This will break the word</span><br><span class="line">         and wrap it without hyphenation.</span><br><span class="line"></span><br><span class="line"> * Set up following examples</span><br><span class="line"> max_len = 25   &amp;&amp; specified line length</span><br><span class="line"> long_exp = &lt;long character expression to display&gt;</span><br><span class="line"> end = LEN( long_exp )</span><br><span class="line"> i = 1</span><br><span class="line"></span><br><span class="line"> * Display a long expression within 25 columns</span><br><span class="line"> DO WHILE i &lt; end</span><br><span class="line">    wrap_pos = WRAP(SUBSTR(long_exp,i,i+max_len), max_len)</span><br><span class="line">    ? SUBSTR( long_exp, i, wrap_pos )</span><br><span class="line">    i = i + wrap_pos + 1</span><br><span class="line"> ENDDO</span><br><span class="line"></span><br><span class="line"> * Page break routine with header and footer</span><br><span class="line"> SET DEVICE TO PRINT</span><br><span class="line"> body_len = &lt;number of lines in body per page&gt;</span><br><span class="line"> DO WHILE i &lt; end</span><br><span class="line">    &lt;print header&gt;</span><br><span class="line">    DO WHILE i &lt; end .AND. PROW() &lt; body_len  &amp;&amp; print body</span><br><span class="line">       wrap_pos = WRAP( SUBSTR(long_exp, i, max_len+i), max_len)</span><br><span class="line">       @ PROW()+1, &lt;column&gt; SAY SUBSTR( long_exp, i, wrap_pos )</span><br><span class="line">       i = i + wrap_pos + 1</span><br><span class="line">    ENDDO</span><br><span class="line">    &lt;print footer&gt;</span><br><span class="line"> ENDDO</span><br><span class="line"> SET DEVICE TO SCREEN</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-8773.html">ATLAST()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-9306.html">ATNEXT()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-44641.html">FILEREAD()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-63976.html">LINES()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,133 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Registers, data types</title>
+    <meta name="description" content="iAPx86">
+    
+    <link rel="next" href="x86-310852.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="x86-307843.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-310852.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">    The 80x87 FPU supports seven data types: 3 floating point types,</span><br><span class="line">    1 packed decimal type, and 3 integer types.</span><br><span class="line"></span><br><span class="line">    Type        <span class="ngb">Description</span></span><br><span class="line">    <span class="ngb">Single</span>      32-bit single-precision FP format</span><br><span class="line">                sign     bit  31</span><br><span class="line">                exponent bits 30..23   8-bit excess-127 format  (bias=07Fh)</span><br><span class="line">                signi-</span><br><span class="line">                 ficand  bits 22..0    24-bit one&#39;s complement format</span><br><span class="line">                                       (24th bit implied)</span><br><span class="line">                digits   7 to 8</span><br><span class="line">                range    approx. 1.18*(10**-38) to 3.40*(10**+38)</span><br><span class="line">                (this data type is sometimes called &#39;short real&#39;)</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Double</span>      64-bit double-precision FP format</span><br><span class="line">                sign     bit  63</span><br><span class="line">                exponent bits 62..52   11-bit excess-1023  (bias=3FFh)</span><br><span class="line">                signi-</span><br><span class="line">                 ficand  bits 51..0    53-bit one&#39;s complement format</span><br><span class="line">                                       (53rd bit implied)</span><br><span class="line">                digits   15 to 16</span><br><span class="line">                range    approx. 2.23*(10**-308) to 1.79*(10**+308)</span><br><span class="line">                (this data type is sometimes called &#39;long real&#39;)</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Extended</span>    80-bit extended-precision FP format</span><br><span class="line">                sign     bit  79</span><br><span class="line">                exponent bits 78..64   15-bit excess-16383  (bias=3FFFh)</span><br><span class="line">                signi-</span><br><span class="line">                 ficand  bits 63..0    64-bit one&#39;s complement format</span><br><span class="line">                                       (no implied bit)</span><br><span class="line">                digits   19 to 20</span><br><span class="line">                range    approx. 3.37*(10**-4932) to 1.18*(10**+4932)</span><br><span class="line">                (this data type is sometimes called &#39;temporary real&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Packed</span>      80-bit signed packed decimal integer</span><br><span class="line">    <span class="ngb">decimal</span>     sign           bit  79</span><br><span class="line">                ignored by FPU bits 78..72</span><br><span class="line">                18 BCD digits  bits 71..0</span><br><span class="line">                range          -999,999,999,999,999,999 to</span><br><span class="line">                               +999,999,999,999,999,999</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Word</span>        16-bit two&#39;s complement integer</span><br><span class="line">    <span class="ngb">integer</span>     range -32,768 to 32,767</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Short</span>       32-bit two&#39;s complement integer</span><br><span class="line">    <span class="ngb">integer</span>     range -2,147,483,648 to +2,147,483,647</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Long</span>        64-bit two&#39;s complement integer</span><br><span class="line">    <span class="ngb">integer</span>     range approx. -9.22*(10**18) to +9.22*(10**18)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Note</span></span><br><span class="line">        With the exception of the 80-bit extended-precision format, all</span><br><span class="line">        these data types exist in memory only. When they are loaded into</span><br><span class="line">        FPU data registers they are automatically converted to extended-</span><br><span class="line">        precision format and operated on in that format. When stored</span><br><span class="line">        from an FPU data register into memory they are automatically</span><br><span class="line">        converted to the format of the destination.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Note</span></span><br><span class="line">        For the single-real and double-real formats, only the fraction</span><br><span class="line">        part of the significand is encoded. The integer is assumed to be</span><br><span class="line">        one for all numbers except zero and denormalized finite numbers.</span><br><span class="line">        For the extended-real format, the integer is contained in bit</span><br><span class="line">        63, and the most-significant fraction bit is bit 62. Here, the</span><br><span class="line">        integer is explicitly set to one for normalized numbers,</span><br><span class="line">        infinities, and NaNs, and to zero for zero and denormalized</span><br><span class="line">        numbers.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Data type correspondence</span></span><br><span class="line">        FPU                     TASM    C++          Turbo Pascal   Bytes</span><br><span class="line">        single-precision FP     dword   float        single           4</span><br><span class="line">        double-precision FP     qword   double       double           8</span><br><span class="line">        extended-precision FP   tbyte   long double  extended        10</span><br><span class="line">        packed decimal          tbyte   N/A          N/A             10</span><br><span class="line">        word integer            word    int          integer          2</span><br><span class="line">        short integer           dword   long int     longint          4</span><br><span class="line">        long integer            qword   ?            comp             8</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-310852.html">FPU registers</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

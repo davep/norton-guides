@@ -1,0 +1,165 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » NetWare</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-233886.html">
+    <link rel="next" href="nanfor-236378.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-233886.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-223163.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-236378.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_NWSEMWAIT()</span></span><br><span class="line"> Wait on a NetWare semaphore (decrement)</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_NWSEMWAIT( &lt;nHandle&gt; [, nTimeout ] ) -&gt; nRc</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nHandle&gt;</span> is the semaphore handle, returned from a previous call</span><br><span class="line">     to FT_NWSEMOPEN().</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nTimeOut&gt;</span> is an optional parameter telling how long you wish to</span><br><span class="line">     wait on this semaphore.  This is a numeric indicating the number</span><br><span class="line">     of clock ticks (approx 1/18 sec ) to wait.  A zero (the default)</span><br><span class="line">     means &#34;don&#39;t wait.&#34;</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     nRc, a numeric, as follows:</span><br><span class="line"></span><br><span class="line">           0 - success</span><br><span class="line">         254 - timeout failure</span><br><span class="line">         255 - invalid semaphore handle</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     See the description for the FT_NWSEMOPEN() function.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">    FT_NWSEMOPEN( &#34;Semaphore Test&#34;, nInitVal, @nHandle, @nOpenCnt )</span><br><span class="line"></span><br><span class="line">    nRc := FT_NWSEMWAIT( nHandle )</span><br><span class="line">    IF nRc == 254</span><br><span class="line">       QOUT( &#34;All slots for this resource are currently in use&#34; )</span><br><span class="line">       QUIT</span><br><span class="line">    ENDIF</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> NWSEM.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Glenn Scott</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor-229530.html">FT_NWSEMOPEN()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-225570.html">FT_NWSEMEX()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-232960.html">FT_NWSEMSIG()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-224757.html">FT_NWSEMCLOSE()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-227073.html">FT_NWSEMLOCK()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

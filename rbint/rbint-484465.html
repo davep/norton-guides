@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-483768.html">
+    <link rel="next" href="rbint-486155.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-483768.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-486155.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 10 Fn 08  - Video - Read Character And Attribute At Cursor Position  </span>  [<span class="ngb">V</span>]</span><br><span class="line"></span><br><span class="line">   AH = 08h</span><br><span class="line">   BH = page number (00h to number of pages - 1) (see #0009)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AH = character&#39;s attribute (text mode only) (see #0013)</span><br><span class="line">   AH = character&#39;s color (Tandy 2000 graphics mode only)</span><br><span class="line">   AL = character</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> for monochrome displays, a foreground of 1 with background 0 is</span><br><span class="line">     underlined</span><br><span class="line">   the blink bit may be reprogrammed to enable intense background colors</span><br><span class="line">     using AX=1003h or by programming the CRT controller</span><br><span class="line">   the foreground intensity bit (3) can be programmed to switch between</span><br><span class="line">     character sets A and B on EGA and VGA cards, thus enabling 512</span><br><span class="line">     simultaneous characters on screen.  In this case the bit&#39;s usual</span><br><span class="line">     function (intensity) is regularly turned off.</span><br><span class="line">   in graphics modes, only characters drawn with white foreground pixels</span><br><span class="line">     are matched by the pattern-comparison routine</span><br><span class="line">   on the Tandy 2000, BH=FFh specifies that the current page should be</span><br><span class="line">     used</span><br><span class="line">BUG:   some IBM PC ROM BIOSes destroy BP when in graphics modes</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=09h,AX=1003h,AX=1103h,AH=12h/BL=37h,AX=5001h</span><br><span class="line"></span><br><span class="line">Bitfields for character&#39;s display attribute:</span><br><span class="line">Bit(s) Description (Table 0013)</span><br><span class="line"> 7 foreground blink or (alternate) background bright (see also AX=1003h)</span><br><span class="line"> 6-4   background color (see #0014)</span><br><span class="line"> 3 foreground bright or (alternate) alternate character set (see AX=1103h)</span><br><span class="line"> 2-0   foreground color (see #0014)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0025</span><br><span class="line"></span><br><span class="line">(Table 0014)</span><br><span class="line">Values for character color:</span><br><span class="line">   Normal      Bright</span><br><span class="line"> 000b  black       dark gray</span><br><span class="line"> 001b  blue        light blue</span><br><span class="line"> 010b  green       light green</span><br><span class="line"> 011b  cyan        light cyan</span><br><span class="line"> 100b  red     light red</span><br><span class="line"> 101b  magenta     light magenta</span><br><span class="line"> 110b  brown       yellow</span><br><span class="line"> 111b  light gray  white</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

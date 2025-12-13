@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4183323.html">
+    <link rel="next" href="rbint-4185977.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4183323.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4031282.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4185977.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 8221  - Modres - Installation Check                            </span>  [<span class="ngb">s</span>]</span><br><span class="line"></span><br><span class="line">   AX = 8221h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       5722h successful</span><br><span class="line">       other MODRES not installed</span><br><span class="line">   BX = BCD version number (BH = major, BL = minor)</span><br><span class="line">   DX:CX -&gt; Output Device structure (read-only) (see #2647)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=8220h,AX=8222h,AX=8225h,AX=8227h</span><br><span class="line"></span><br><span class="line">Format of Output Device structure [array]:</span><br><span class="line">Offset Size    Description (Table 2647)</span><br><span class="line"> 00h 20 BYTEs  ASCIZ name of the output device</span><br><span class="line">       (end of list if first char is FFh)</span><br><span class="line"> 14h   WORD    apparently always FFFFh</span><br><span class="line"> 16h   WORD    0000h if output device not available</span><br><span class="line">       else first I/O port for the output device</span><br><span class="line"> 18h   WORD    second I/O port for the output device (for example</span><br><span class="line">         if it is stereo)</span><br><span class="line">       000oh if only one port used or device is not available</span><br><span class="line"> 1Ah  7 BYTEs  ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2646,#2648</span><br><span class="line"></span><br><span class="line">(Table 2648)</span><br><span class="line">Values for MODRES v1.52 output device index:</span><br><span class="line"> 00h   PC speaker</span><br><span class="line"> 01h   D/A Converter on LPT1</span><br><span class="line"> 02h   D/A Converter on LPT2</span><br><span class="line"> 03h   D/A Converter on LPT3</span><br><span class="line"> 04h   D/A Converter on LPT4</span><br><span class="line"> 05h   D/A Converter on LPT1&amp;LPT2 (stereo)</span><br><span class="line"> 06h   D/A Converter on LPT1&amp;LPT2 (mono)</span><br><span class="line"> 07h   Sound Blaster (port 02x0h)</span><br><span class="line"> 08h   User Defined D/A (mono)</span><br><span class="line"> 09h   User Defined D/A (stereo)</span><br><span class="line"> 0Ah   Stereo-on-1</span><br><span class="line"> 0Bh   Disney SS su LPT1</span><br><span class="line"> 0Ch   Disney SS su LPT2</span><br><span class="line"> 0Dh   Disney SS su LPT3</span><br><span class="line"> 0Eh   Disney SS su LPT4</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this list may vary between versions of MODRES</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

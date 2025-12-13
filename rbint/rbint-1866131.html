@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1854575.html">
+    <link rel="next" href="rbint-1872488.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1854575.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1712194.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1872488.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 1A Fn B10A  - Pci Bios V2.0c+ - Read Configuration Dword  <span class="ngb">(Cont.)</span></span></span><br><span class="line"></span><br><span class="line"> 2 PLE enable processing of Periodic List in next frame</span><br><span class="line"> 1-0   CBSR    Control Bulk Service Ratio</span><br><span class="line">       00  1:1 Control EDs:Bulk EDs served</span><br><span class="line">       01  2:1</span><br><span class="line">       10  3:1</span><br><span class="line">       11  4:1</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0828,#0830</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcCommandStatus&#34; register:</span><br><span class="line">Bit(s) Description (Table 0830)</span><br><span class="line"> 31-18 reserved</span><br><span class="line"> 17-16 SOC scheduling-overrun count</span><br><span class="line"> 15-4  reserved</span><br><span class="line"> 3 OCR ownership change request is pending</span><br><span class="line"> 2 BLF bulk list contains TDs</span><br><span class="line"> 1 CLF control list contains TDs</span><br><span class="line"> 0 HCR host controller software reset</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  writing a 1 bit sets the corresponding bit, while a 0 bit leaves the</span><br><span class="line">     corresponding bit unchanged</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0828,#0831</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcInterruptStatus&#34; register:</span><br><span class="line">Bit(s) Description (Table 0831)</span><br><span class="line"> 31    reserved (0)</span><br><span class="line"> 30    OC  ownership change</span><br><span class="line"> 29-7  reserved</span><br><span class="line"> 6 RHSC    Root Hub status changed</span><br><span class="line"> 5 FNO frame number overflowed</span><br><span class="line"> 4 UE  unrecoverable error</span><br><span class="line"> 3 RD  resume detected</span><br><span class="line"> 2 SF  start of frame</span><br><span class="line"> 1 WDH writeback done</span><br><span class="line"> 0 SO  scheduling overrun</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  writing a 1 bit clears the corresponding bit of the register</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0828,#0830,#0832</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcInterruptEnable&#34; and &#34;HcInterruptDisable&#34; registers:</span><br><span class="line">Bit(s) Description (Table 0832)</span><br><span class="line"> 31    MIE master interrupt enable</span><br><span class="line"> 30    OC  ownership change</span><br><span class="line"> 29-7  reserved</span><br><span class="line"> 6 RHSC    Root Hub status change</span><br><span class="line"> 5 FNO frame number overflow</span><br><span class="line"> 4 UE  unrecoverable error</span><br><span class="line"> 3 RD  Resume Detect</span><br><span class="line"> 2 SF  start of frame</span><br><span class="line"> 1 WDH HcDoneHead writeback</span><br><span class="line"> 0 SO  scheduling overrun</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  writing a 1 bit to HcInterruptEnable enables the corresponding</span><br><span class="line">     interrupt, while writing a 1 bit to HcInterruptDisable disables it;</span><br><span class="line">     zero bits are ignored.  On reading, both registers return the</span><br><span class="line">     same value, which reflects the currently enabled interrupts</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcHCCA&#34; register:</span><br><span class="line">Bit(s) Description (Table 0833)</span><br><span class="line"> 31-8  physical address of Host Controller Communications Area (bits 31-8)</span><br><span class="line"> 7-0   reserved (0)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the required alignment for the HCCA may be determined by writing</span><br><span class="line">     FFFFFFFFh to this register and determining the number of low-order</span><br><span class="line">     zero bits</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0834,#0835</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcPeriodCurrentED&#34; register:</span><br><span class="line">Bit(s) Description (Table 0834)</span><br><span class="line"> 31-4  physical address of current Isochronous/Interrupt Endpoint Descriptor</span><br><span class="line">     (bits 31-4)</span><br><span class="line"> 3-0   reserved (0)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0833,#0835</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcControlHeadED&#34;/&#34;HcControlCurrentED&#34; register:</span><br><span class="line">Bit(s) Description (Table 0835)</span><br><span class="line"> 31-4  physical address of first/current Endpoint Descriptor (bits 31-4)</span><br><span class="line"> 3-0   reserved (0)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  HcControlCurrentED is set to 0000000h to indicate the end of the</span><br><span class="line">     Control list</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0833,#0834</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcBulkHeadED&#34;/&#34;HcBulkCurrentED&#34; register:</span><br><span class="line">Bit(s) Description (Table 0836)</span><br><span class="line"> 31-4  physical address of first/current Endpoint Descriptor in the Bulk</span><br><span class="line">     list (bits 31-4)</span><br><span class="line"> 3-0   reserved (0)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  HcBulkCurrentED is set to 0000000h to indicate the end of the Bulk</span><br><span class="line">     list</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0833,#0835</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcDoneHead&#34; register:</span><br><span class="line">Bit(s) Description (Table 0837)</span><br><span class="line"> 31-4  physical address of most-recently completed Transfer Descriptor added</span><br><span class="line">     to the Done queue (bits 31-4)</span><br><span class="line"> 3-0   reserved (0)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0834,#0836</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcFmInterval&#34; register:</span><br><span class="line">Bit(s) Description (Table 0838)</span><br><span class="line"> 31    &#34;FIT&#34;   toggled each time a new value is loaded into bits 13-0</span><br><span class="line"> 30-16 &#34;FSMPS&#34; largest data packet in bits</span><br><span class="line"> 15-14 reserved</span><br><span class="line"> 13-0  &#34;FI&#34;    Frame Interval (between to consecutive SOFs)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0839</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcFmRemaining&#34; register:</span><br><span class="line">Bit(s) Description (Table 0839)</span><br><span class="line"> 31    &#34;FRT&#34;   loaded from bit 31 of HcFmInterval whenever FR reaches 0</span><br><span class="line"> 30-14 reserved</span><br><span class="line"> 13-0  &#34;FR&#34;    FrameRemaining -- bits times left in current frame</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0838</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcRhDescriptorA&#34; register:</span><br><span class="line">Bit(s) Description (Table 0840)</span><br><span class="line"> 31-24 &#34;POTPGT&#34; power-on to power-good time in 2ms units</span><br><span class="line"> 23-13 reserved</span><br><span class="line"> 12    &#34;NOCP&#34;  no over-current protection supported</span><br><span class="line"> 11    &#34;OCPM&#34;  over-current status reported per-port</span><br><span class="line"> 10    &#34;DT&#34;    device type - is root hub compound device?</span><br><span class="line"> 9 &#34;NPS&#34;   NoPowerSwitching -- ports are always powered up</span><br><span class="line"> 8 &#34;PSM&#34;   power-switching mode -- if set, each port powered individually</span><br><span class="line"> 7-0   &#34;NDP&#34;   number of downstream ports</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0841,#0842</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcRhDescriptorB&#34; register:</span><br><span class="line">Bit(s) Description (Table 0841)</span><br><span class="line"> 31-16 &#34;PPCM&#34;  PortPowerControlMask -- bitmask of ports NOT affected by global</span><br><span class="line">         power control (bit 16 [port #0] is reserved)</span><br><span class="line"> 15-0  &#34;DR&#34;    DeviceRemovable -- bitmap of removable devices</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0840,#0842</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcRhStatus&#34; register:</span><br><span class="line">Bit(s) Description (Table 0842)</span><br><span class="line"> 31    &#34;CRWE&#34;  Clear Remote Wakeup Enable</span><br><span class="line">       write 1 to disable remote wakeup (writes of 0 ignored)</span><br><span class="line"> 30-18 reserved</span><br><span class="line"> 17    &#34;OCIC&#34;  OverCurrent Indicator Change</span><br><span class="line">       write 1 to clear</span><br><span class="line"> 16   R    &#34;LPSC&#34;  Local Power Status Change</span><br><span class="line">      W        Set Global Power mode (write 1; writes of 0 ignored)</span><br><span class="line"> 15    &#34;DRWE&#34;  Device Remote Wakeup Enable</span><br><span class="line">       write 1 to enable (writes of 0 ignored)</span><br><span class="line">       read to get current status</span><br><span class="line"> 14-2  reserved</span><br><span class="line"> 1 &#34;OCI&#34;   OverCurrent Indicator</span><br><span class="line"> 0    R &#34;LPS&#34;  LocalPowerStatus (always 0 for Root Hub)</span><br><span class="line">      W        write 1 to turn off power to all ports/ports with clear</span><br><span class="line">         PortPowerControlMask bits</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0840,#0841,#0843</span><br><span class="line"></span><br><span class="line">Bitfields for OpenHCI &#34;HcRhPortStatusN&#34; register:</span><br><span class="line">Bit(s) Description (Table 0843)</span><br><span class="line"> 31-21 reserved</span><br><span class="line"> 20    &#34;PRSC&#34;  Port Reset Status Change (write &#39;1&#39; to clear)</span><br><span class="line"> 19    &#34;OCIC&#34;  Port OverCurrent Indiactor Change (write &#39;1&#39; to clear)</span><br><span class="line"> 18    &#34;PSSC&#34;  Port Suspend Status Change (write &#39;1&#39; to clear)</span><br><span class="line"> 17    &#34;PESC&#34;  Port Enable Status Change (write &#39;1&#39; to clear)</span><br><span class="line"> 16    &#34;CSC&#34;   Connect Status Change (write &#39;1&#39; to clear)</span><br><span class="line"> 15-10 reserved</span><br><span class="line"> 9    R    &#34;LSDA&#34;  Low Speed Device Attached</span><br><span class="line">      W        clear port power by writing &#39;1&#39;</span><br><span class="line"> 8    R    &#34;PPS&#34;   Port Power Status</span><br><span class="line">      W        set port power by writing &#39;1&#39;</span><br><span class="line"> 7-5   reserved</span><br><span class="line"> 4    R    &#34;PRS&#34;   Port Reset Status</span><br><span class="line">      W        set port reset by writing &#39;1&#39;</span><br><span class="line"> 3    R    &#34;POCI&#34;  Port OverCurrent Indicator</span><br><span class="line">      W        clear suspend status by writing &#39;1&#39;</span><br><span class="line"> 2    R    &#34;PSS&#34;   Port Suspend Status</span><br><span class="line">      W        set port suspend by writing &#39;1&#39;</span><br><span class="line"> 1    R &#34;PES&#34;  Port Enable Status</span><br><span class="line">      W        set port enable by writing &#39;1&#39;</span><br><span class="line"> 0    R &#34;CCS&#34;  current connect status</span><br><span class="line">      W        clear port enable by writing &#39;1&#39;</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0827,#0840,#0841,#0842</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

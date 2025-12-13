@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5104-style.css">
+    <title>Clipper 5.01 vs 1.29 Anomalies (#04) » Menu » Anomalies</title>
+    <meta name="description" content="Clipper 5.01 vs 1.29 Anomalies (#04)">
+    <link rel="prev" href="cl5104-19566.html">
+    <link rel="next" href="cl5104-22134.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5104-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5104-19566.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5104-22134.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Menu</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies</a></li>
+                  <li><a href="cl5104-45500.html">Credits</a></li>
+                  <li><a href="cl5104-45901.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  MISC              Miscellaneous clarification/anomalies.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Clipper Version</span>  1.29 dtd 04/15/91.</span><br><span class="line"></span><br><span class="line">  1) NDX File Support ( Card contained with Clipper 5.0 )</span><br><span class="line">     You must request this feature from Nantucket(r). Not available</span><br><span class="line">     as of early June.</span><br><span class="line"></span><br><span class="line">  2) MEMVARBLOCK() (NG Function Description)</span><br><span class="line">     MEMVARBLOCK() cannot be used to create set-get blocks for LOCAL</span><br><span class="line">     or STATIC variables.</span><br><span class="line"></span><br><span class="line">  3) Code block parameter visibility - documentation anomaly.</span><br><span class="line">     Page 1-21 of the Clipper 5 Reference, last sentence, 2nd paragraph</span><br><span class="line">     reads: &#34;....a declaration that occurs within a code block (a block</span><br><span class="line">     parameter), applies to that code block and any code blocks nested</span><br><span class="line">     within it.&#34;. The block parameter IS NOT visible to nested code blocks,</span><br><span class="line">     unless you pass it.</span><br><span class="line"></span><br><span class="line">  4) Menu.prg example on page 1-2 of the Reference Manual has as its</span><br><span class="line">     first line &#39;#include &#34;Database.prg&#34; ...&#39;. This directive should</span><br><span class="line">     be placed at the end of the program (it includes generic database</span><br><span class="line">     functions).</span><br><span class="line"></span><br><span class="line">  5) STATIC arrays. Documentation anomaly, pg. 1-57. Contrary to the</span><br><span class="line">     documentation, STATIC arrays are also dynamic.</span><br><span class="line"></span><br><span class="line">  6) The following program results in a run-time error because x was not</span><br><span class="line">     initialized; however, the error message, &#34;Error BASE/1087  Argument</span><br><span class="line">     error: -- &#34; should reference ++ instead.</span><br><span class="line"></span><br><span class="line">              function main</span><br><span class="line">              local x</span><br><span class="line">              x++</span><br><span class="line">              return nil</span><br><span class="line"></span><br><span class="line">  7) The COPY FILE command doesn&#39;t throw an error to the error handler if</span><br><span class="line">     there is an &#34;out of drive space&#34; error.</span><br><span class="line"></span><br><span class="line">  8) An corrupted index error may refer to the prior index in a list.</span><br><span class="line"></span><br><span class="line">  9) There _is_ a, to be defined, limit to what TBrowse can handle in terms</span><br><span class="line">     of number of fields versus screen display rows.</span><br><span class="line"></span><br><span class="line"> 10) A memory overbooked error may be caused by too many #define statements.</span><br><span class="line"></span><br><span class="line"> 11) When using @ .. GET aArray[nCtr] VALID SomeFunc(oGet) in a FOR nCtr ..</span><br><span class="line">     loop, the nCtr can&#39;t be used in SomeFunc(oGet), (it will have a value</span><br><span class="line">     of n + 1). Use oGet:getVar() to retrieve the get value for validation.</span><br><span class="line"></span><br><span class="line"> 12) The following variations of InKey() all produce the same effect as</span><br><span class="line">     INKEY(0) :  Inkey(NIL), Inkey(&#34;&#34;), Inkey(cString).</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

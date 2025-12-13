@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-91235.html">
+    <link rel="next" href="tr-94121.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-91235.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-94121.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> SCROLLER(&lt;N top row&gt;, &lt;N left col&gt;, &lt;N bottom row&gt;, &lt;N right col&gt;, &lt;N lines&gt;, &lt;C &#34;up&#34; or &#34;down&#34;&gt;)</span><br><span class="line"> Scrolls within a specified area on the screen, or clears a window quickly.</span><br><span class="line"></span><br><span class="line"> &lt;lines&gt; is the number of lines to scroll (0 clears the entire window)</span><br><span class="line"> &#34;U&#34; or &#34;u&#34; = scroll up, &#34;D&#34; or &#34;d&#34; = scroll down.</span><br><span class="line"></span><br><span class="line"> Zero &lt;lines&gt; clears the entire specified area, and other values &#34;scroll&#34;</span><br><span class="line"> the screen to provide you with blank lines on which you may display the</span><br><span class="line"> appropriate &#34;next&#34; entry or entries.</span><br><span class="line"></span><br><span class="line"> The scrolling color attribute is determined by the current</span><br><span class="line"> cursor position when SCROLLER() is called.</span><br><span class="line"></span><br><span class="line"> * Example window displays eight records, and assumes there</span><br><span class="line"> * are always at least eight records in the database file.</span><br><span class="line"> * Scrolling is one record at a time.</span><br><span class="line"></span><br><span class="line"> * Set up parameters.</span><br><span class="line"> num_lines = 8       &amp;&amp; number of lines in window</span><br><span class="line"> t_row =  7          &amp;&amp; top row of window</span><br><span class="line"> b_row = 14          &amp;&amp; bottom row of window</span><br><span class="line"> l_col = 30          &amp;&amp; left column of window</span><br><span class="line"> r_col = 50          &amp;&amp; right column of window</span><br><span class="line"> direction = &#34;D&#34;     &amp;&amp; initial direction to scroll is down</span><br><span class="line"></span><br><span class="line"> * Open file.</span><br><span class="line"> USE Datafile        &amp;&amp; can be indexed or not</span><br><span class="line"></span><br><span class="line"> * Paint window full of records.</span><br><span class="line"> i = 1</span><br><span class="line"> DO WHILE i &lt;= num_lines .AND. .NOT. EOF()</span><br><span class="line">    @ (t_row-1)+i, l_col SAY Field</span><br><span class="line">    SKIP</span><br><span class="line">    i = i+1</span><br><span class="line"> ENDDO</span><br><span class="line"></span><br><span class="line"> * Position pointer at first record.</span><br><span class="line"> GO TOP</span><br><span class="line"></span><br><span class="line"> * Loop for window display according to user keypress.</span><br><span class="line"> DO WHILE .T.</span><br><span class="line">    key  = INKEY()</span><br><span class="line">    DO CASE</span><br><span class="line">       CASE key = 18 .AND. .NOT. BOF()   &amp;&amp; PgUp</span><br><span class="line">          IF direction = &#34;D&#34;</span><br><span class="line">             SKIP -1</span><br><span class="line">             IF BOF()</span><br><span class="line">                * Still at record one, no skip necessary.</span><br><span class="line">                LOOP</span><br><span class="line">             ENDIF</span><br><span class="line">          ELSE</span><br><span class="line">             SKIP -num_lines</span><br><span class="line">          ENDIF</span><br><span class="line">          direction = &#34;D&#34;</span><br><span class="line">          row = t_row</span><br><span class="line">       CASE key =  3 .AND. .NOT. EOF()   &amp;&amp; PgDn</span><br><span class="line">          IF direction = &#34;U&#34;</span><br><span class="line">             SKIP 1</span><br><span class="line">             IF EOF()</span><br><span class="line">                SKIP -1    &amp;&amp; recovery from EOF (not necessary with BOF)</span><br><span class="line">                LOOP</span><br><span class="line">             ENDIF</span><br><span class="line">          ELSE</span><br><span class="line">             SKIP num_lines</span><br><span class="line">          ENDIF</span><br><span class="line">          direction = &#34;U&#34;  &amp;&amp; move down = scroll up</span><br><span class="line">          row = b_row</span><br><span class="line">       CASE key = 27       &amp;&amp; Escape key to exit</span><br><span class="line">          USE              &amp;&amp; close files when done</span><br><span class="line">          RETURN</span><br><span class="line">       OTHERWISE</span><br><span class="line">          LOOP</span><br><span class="line">    ENDCASE</span><br><span class="line"></span><br><span class="line">    * Scroll and repaint.</span><br><span class="line">    SCROLLER( t_row, l_col, b_row, r_col, 1, direction )</span><br><span class="line">    @ row, l_col SAY Field</span><br><span class="line"> ENDDO</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

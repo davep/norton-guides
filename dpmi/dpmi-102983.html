@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-101391.html">
+    <link rel="next" href="dpmi-104427.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-101391.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-104427.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">OverView</a></li>
+                  <li><a href="dpmi-38393.html">DPMI API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">VIRTUAL INTERRUPT STATE FUNCTIONS</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            Under many  implementations of  DPMI, the  interrupt flag in</span><br><span class="line">            protected mode  will always  be  set  (interrupts  enabled).</span><br><span class="line">            This is  because the  program is  running under  a protected</span><br><span class="line">            operating system  that can  not allow  programs  to  disable</span><br><span class="line">            physical hardware interrupts.  However, the operating system</span><br><span class="line">            will maintain a &#34;virtual&#34; interrupt state for protected mode</span><br><span class="line">            programs.   When the program executes a cli instruction, the</span><br><span class="line">            program&#39;s virtual  interrupt state will be disabled, and the</span><br><span class="line">            program will  not receive  any hardware  interrupts until it</span><br><span class="line">            executes an  sti to  reenable interrupts  (or calls  service</span><br><span class="line">            0901h).</span><br><span class="line"></span><br><span class="line">            When a  protected mode program executes a pushf instruction,</span><br><span class="line">            the real  processor flags  will be  pushed onto  the  stack.</span><br><span class="line">            Thus, examining  the  flags  pushed  on  the  stack  is  not</span><br><span class="line">            sufficient to  determine the  state of the program&#39;s virtual</span><br><span class="line">            interrupt flag.   These  services enable programs to get and</span><br><span class="line">            modify the state of their virtual interrupt flag.</span><br><span class="line"></span><br><span class="line">            The following  sample  code  enters  an  interrupt  critical</span><br><span class="line">            section and  then restores  the virtual  interrupt state  to</span><br><span class="line">            it&#39;s previous state.</span><br><span class="line"></span><br><span class="line">                 ;</span><br><span class="line">                 ; Disable interrupts and get previous interrupt state</span><br><span class="line">                 ;</span><br><span class="line">                         mov     ax, 0900h</span><br><span class="line">                         int     31h</span><br><span class="line">                 ;</span><br><span class="line">                 ; At this point AX = 0900h or 0901h</span><br><span class="line">                 ;</span><br><span class="line">                         .</span><br><span class="line">                         .</span><br><span class="line">                         .</span><br><span class="line">                 ;</span><br><span class="line">                 ; Restore previous state (assumes AX unchanged)</span><br><span class="line">                 ;</span><br><span class="line">                         int     31h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-760558.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-760558.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-758262.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 12 Fn FFFE  - Back&amp;forth V1.62+ - Api                                </span>  [<span class="ngb">T</span>]</span><br><span class="line"></span><br><span class="line">   AX = FFFEh</span><br><span class="line">   CX = FFFEh</span><br><span class="line">   BX = function</span><br><span class="line">       00h installation check</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = 0001h installed</span><br><span class="line">                else  not loaded</span><br><span class="line">       01h (reserved)</span><br><span class="line">       02h build program ID list (shareware Back&amp;Forth)</span><br><span class="line">       ES:DI -&gt; buffer of at least 100 bytes, to be filled with words</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = number of programs defined</span><br><span class="line">           ES:DI buffer filled with AX words</span><br><span class="line">       02h get memory statistics (Back&amp;Forth Professional)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = available swap memory, KBytes</span><br><span class="line">           BX = maximum task size, KBytes</span><br><span class="line">           DX = fixed overhead per task, excluding video/macro</span><br><span class="line">                 storage</span><br><span class="line">       03h switch to specified task (task need not be open yet)</span><br><span class="line">       DX = two-letter program ID</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status</span><br><span class="line">               0000h if task undefined</span><br><span class="line">               0001h task switch will occur when safe</span><br><span class="line">       04h (reserved)</span><br><span class="line">       05h (reserved)</span><br><span class="line">       06h get version (documented only for Back&amp;Forth Professional)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = version * 100 (v1.71 = 00ABh)</span><br><span class="line">       07h spawn program (Back&amp;Forth Professional only???)</span><br><span class="line">       ES:DI -&gt; BF_SPAWN record (see #0164)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status</span><br><span class="line">               0000h if no task handles free</span><br><span class="line">               0001h spawn will occur when safe</span><br><span class="line">       08h get open tasks (documented only for Back&amp;Forth Professional)</span><br><span class="line">       ES:DI -&gt; task info buffer (see #0163,#0165)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = number of open tasks (max 20)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   the supplied buffer must be large enough to hold 21</span><br><span class="line">             task entries</span><br><span class="line">       09h (reserved)</span><br><span class="line">       ---Back&amp;Forth Professional---</span><br><span class="line">       0Ah get active clipboard filename</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> DX:AX -&gt; ASCIZ clipboard filename</span><br><span class="line">       0Bh get active task number</span><br><span class="line">       AX = active task number (00h-13h)</span><br><span class="line">       BX = number of tasks allocated</span><br><span class="line">       DX = maximum number of tasks</span><br><span class="line">       0Ch (reserved)</span><br><span class="line">       0Dh (reserved)</span><br><span class="line">       0Eh (reserved)</span><br><span class="line">       0Fh stuff string into keyboard buffer</span><br><span class="line">       ES:DI -&gt; ASCIZ string to be stuffed</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> nothing</span><br><span class="line">       10h check if in graphics mode</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = state</span><br><span class="line">               0000h color text mode</span><br><span class="line">               0004h mono text mode</span><br><span class="line">               FFFFh graphics mode</span><br><span class="line">       11h get Back&amp;Forth Professional user number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = user number (0000h-00FFh)</span><br><span class="line">       12h switch task by task number</span><br><span class="line">       DX = task number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status</span><br><span class="line">               0000h attempted to switch to active task</span><br><span class="line">               0001h task switch will occur when safe</span><br><span class="line">               FFFFh invalid task number</span><br><span class="line">       13h delete (kill) task</span><br><span class="line">       DX = task number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status</span><br><span class="line">               0000h attempted to delete the active task</span><br><span class="line">               0001h successfully deleted</span><br><span class="line">               FFFFh invalid task number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   the active task number will change if the deleted task</span><br><span class="line">             was lower in the task list than the active task</span><br><span class="line">       14h get next available task handle</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = next available task handle</span><br><span class="line">               FFFFh if task table is full</span><br><span class="line">Program: Back &amp; Forth is a task switcher by Progressive Solutions, Inc.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 11/AX=FFFEh</span><br><span class="line">Index: installation check;BACK&amp;FORTH</span><br><span class="line"></span><br><span class="line">Format of Back&amp;Forth task info buffer:</span><br><span class="line">Offset Size    Description (Table 0163)</span><br><span class="line"> 00h 21 BYTEs  ASCIZ task name</span><br><span class="line"> 15h   BYTE    hotkey shift state (as for INT 16/AH=02h)</span><br><span class="line"> 16h   WORD    hotkey scan code (see also #0005)</span><br><span class="line"> 18h   WORD    program ID</span><br><span class="line">Index: hotkeys;Back&amp;Forth</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0164,#0165</span><br><span class="line"></span><br><span class="line">Format of Back&amp;Forth Professional BF_SPAWN record:</span><br><span class="line">Offset Size    Description (Table 0164)</span><br><span class="line"> 00h 21 BYTEs  task description</span><br><span class="line"> 15h   BYTE    flag: disable hotkeys</span><br><span class="line"> 16h   WORD    environment size in bytes</span><br><span class="line"> 18h   BYTE    hotkey shift flags</span><br><span class="line"> 19h   WORD    hotkey scancode</span><br><span class="line"> 1Bh   WORD    maximum number of EMS pages</span><br><span class="line"> 1Dh   WORD    required memory in KBytes</span><br><span class="line"> 1Fh  3 BYTEs  DESQview-style two-letter program ID</span><br><span class="line"> 22h 13 BYTEs  base name of program to be run (no path or extension)</span><br><span class="line"> 2Fh 66 BYTEs  directory from which to start program</span><br><span class="line"> 71h 66 BYTEs  initial current directory for program</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0163,#0165</span><br><span class="line"></span><br><span class="line">Format of Back&amp;Forth Professional BF_TASK record:</span><br><span class="line">Offset Size    Description (Table 0165)</span><br><span class="line"> 00h   DWORD   Unix-style task start time (seconds since 1/1/1970)</span><br><span class="line"> 04h 21 BYTEs  task description</span><br><span class="line"> 19h   DWORD   elapsed time in task (seconds)</span><br><span class="line"> 1Dh   WORD    task ID</span><br><span class="line"> 1Fh   BYTE    task hotkey keyboard flags</span><br><span class="line"> 20h   WORD    task hotkey scan code (see also #0005)</span><br><span class="line"> 22h   DWORD   time task was suspended/exited</span><br><span class="line"> 26h   WORD    task handle</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0163,#0164</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

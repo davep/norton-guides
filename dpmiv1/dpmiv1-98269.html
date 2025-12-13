@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-97535.html">
+    <link rel="next" href="dpmiv1-101608.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-97535.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-101608.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Physical Address Mapping</span><br><span class="line"></span><br><span class="line">Converts a physical address into a linear address.</span><br><span class="line">  This function allows device drivers running under DPMI</span><br><span class="line">hosts which use paging to reach physical memory that is</span><br><span class="line">associated with their devices above the 1 MB boundary</span><br><span class="line">Examples of such devices are the Weitek numeric coprocessor</span><br><span class="line">(usually mapped at 3 GB), buffers that hold scanner bit</span><br><span class="line">maps, and high-end displays that can be configured to make</span><br><span class="line">display memory appear in extended memory.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 0800H</span><br><span class="line">   BX:CX  = physical address of memory</span><br><span class="line">   SI:DI  = size of region to map (bytes)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   if function successful</span><br><span class="line">   Carry flag= clear</span><br><span class="line">   BX:CX  = linear address that can be used to access the</span><br><span class="line">           physical memory</span><br><span class="line"></span><br><span class="line">   if function unsuccessful</span><br><span class="line">   Carry flag= set</span><br><span class="line">   AX     = error code</span><br><span class="line">           8003H   system integrity (DPMI host memory</span><br><span class="line">                   region)</span><br><span class="line">           8021H   invalid value (address is below 1 MB</span><br><span class="line">                   boundary)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  It is the caller&#39;s responsibility to allocate and</span><br><span class="line">   initialize a descriptor for access to the memory.</span><br><span class="line">o  This function should only be used by clients that</span><br><span class="line">   absolutely require direct access to a memory mapped</span><br><span class="line">   device at physical addresses above 1 MB.  Clients should</span><br><span class="line">   not use this function to access memory below the 1 MB</span><br><span class="line">   boundary (the real mode addressable region).  See also</span><br><span class="line">   Int 31H Functions 0002H, 0508H, and 0509H.</span><br><span class="line">o  When this function is called, the DPMI host either</span><br><span class="line">   creates page table entries that directly map the physical</span><br><span class="line">   addresses requested and returns the linear address of the</span><br><span class="line">   created page table entries, or else just returns the</span><br><span class="line">   linear address of the memory region that is already used</span><br><span class="line">   to map the requested device.  For example, if the client</span><br><span class="line">   attempts to map a Weitek coprocessor and the host already</span><br><span class="line">   has a linear region set up to map the Weitek chip and</span><br><span class="line">   virtualize it, it would simply return the linear address</span><br><span class="line">   of the existing region.  If the host does not virtualize</span><br><span class="line">   the Weitek chip, it would create 16 page table entries</span><br><span class="line">   that map the 64 KB Weitek address space and return a</span><br><span class="line">   linear address corresponding to the new page table</span><br><span class="line">   entries.</span><br><span class="line">o  If the host is not virtualizing the device, it must</span><br><span class="line">   disable any memory caching on the mapped pages;  in</span><br><span class="line">   particular, on the 80486 the host must set the PCD (page</span><br><span class="line">   cache disable) bit in the page table entries.</span><br><span class="line">o  The host is permitted to fail any memory mapping call.</span><br><span class="line">   However, the host should support this function whenever</span><br><span class="line">   possible, to achieve compatibility with application</span><br><span class="line">   programs that use memory-mapped devices of which the host</span><br><span class="line">   is not aware.  Useful guidelines are that the host should</span><br><span class="line">   fail any attempt to map addresses below 1 MB, or</span><br><span class="line">   addresses which the host considers to be general-purpose</span><br><span class="line">   RAM memory.  Attempts to map any other physical address</span><br><span class="line">   should succeed, since the host should either (a) already</span><br><span class="line">   know about the device and be able to return a linear</span><br><span class="line">   address used to access the device, or (b) assume the</span><br><span class="line">   program is attempting to map a legitimate device of which</span><br><span class="line">   the host has no knowledge.</span><br><span class="line"></span><br><span class="line">o  Programs and device drivers which need to perform DMA I/O</span><br><span class="line">   to physical addresses in a virtualized hardware</span><br><span class="line">   environment should use the Virtual DMA Services (see the</span><br><span class="line">   Glossary entry for the Virtual DMA Services</span><br><span class="line">   Specification).   Also see page 10 of the DPMI execution</span><br><span class="line">   environment section.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

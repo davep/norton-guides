@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1395880.html">
+    <link rel="next" href="rbint-1399166.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1395880.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1340639.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1399166.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn C9  - Newer Ps/2; Various Bioses - Get Cpu Type And Mask Revisi</span>  [<span class="ngb">B</span>]</span><br><span class="line"></span><br><span class="line">   AH = C9h</span><br><span class="line">   AL = 10h (may be required on some non-PS BIOSes)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AH = 00h</span><br><span class="line">       CH = CPU type (see #0452)</span><br><span class="line">       CL = mask revision (stepping level) (see #0453)</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = status (80h,86h = function not supported)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the BIOS must save DX at startup in order to be able to support this</span><br><span class="line">     call; PS/2 Models 56, 57, 90, and 95 are known to support it</span><br><span class="line">   the PS/2 BIOS merely reads CMOS locations 190h (type) and 191h (rev)</span><br><span class="line">   IBM classifies this function as optional</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=D100h,AX=DA92h,MEM 0040h:00BCh</span><br><span class="line"></span><br><span class="line">(Table 0452)</span><br><span class="line">Values for CPU type:</span><br><span class="line"> 03h   80386DX or clone</span><br><span class="line"> 04h   80486</span><br><span class="line"> 05h   Pentium</span><br><span class="line"> 23h   80386SX or clone</span><br><span class="line"> 33h   Intel i376</span><br><span class="line"> 43h   80386SL or clone</span><br><span class="line"> A3h   IBM 386SLC</span><br><span class="line"> A4h   IBM 486SLC</span><br><span class="line"></span><br><span class="line">(Table 0453)</span><br><span class="line">Values for stepping level:</span><br><span class="line">---i376 (type code 33h)---</span><br><span class="line"> 05h   A0</span><br><span class="line"> 08h   B</span><br><span class="line">---80386/80386DX (type code 03h)---</span><br><span class="line"> 03h   Intel B1 to B10, Am386DX/DXL step A</span><br><span class="line"> 05h   Intel D0</span><br><span class="line"> 08h   Intel D1/D2/E1, Am386DX/DXL step B</span><br><span class="line">---80386SL (type code 43h)---</span><br><span class="line"> 05h   A</span><br><span class="line"> 1xh   B</span><br><span class="line">---80386SX (type code 23h)---</span><br><span class="line"> 04h   Intel A0</span><br><span class="line"> 05h   Intel B, Am386SX/SXL step A1</span><br><span class="line"> 08h   Intel C/D1, Am386SX/SXL step B</span><br><span class="line"> 09h   Intel 386CX/386EX/386SXstatic step A</span><br><span class="line">---80486DX (type code 04h)---</span><br><span class="line"> 00h   Intel A0/A1</span><br><span class="line"> 01h   Intel B2 to B6</span><br><span class="line"> 02h   Intel C0</span><br><span class="line"> 03h   Intel C1</span><br><span class="line"> 04h   Intel D0</span><br><span class="line"> 10h   Intel cA2/cA3, Cx486SLC step A</span><br><span class="line"> 11h   Intel cB0/cB1</span><br><span class="line">---486DX2 (type code 04h)---</span><br><span class="line"> 02h   Am486DX2 (unknown stepping)</span><br><span class="line"> 32h   Intel DX2/Overdrive steps A0 to A2</span><br><span class="line"> 33h   Intel DX2/Overdrive step B1</span><br><span class="line">---486SX (type code 04h)---</span><br><span class="line"> 20h   Intel A0</span><br><span class="line"> 22h   Intel B0</span><br><span class="line"> 27h   Intel cA0</span><br><span class="line"> 28h   Intel cB0</span><br><span class="line">---486SL (type code 04h)---</span><br><span class="line"> 40h   Intel A</span><br><span class="line">---IntelSX2 (type code 04h)---</span><br><span class="line"> 5xh   Intel A</span><br><span class="line">---IntelDX4 (type code 04h)---</span><br><span class="line"> 8xh   Intel A</span><br><span class="line">---487SX (type code 04h)---</span><br><span class="line"> 20h   Intel A0</span><br><span class="line"> 21h   Intel B0</span><br><span class="line">---Pentium (type code 05h)---</span><br><span class="line"> 0xh   Intel P5 steps Ax (1993)</span><br><span class="line"> 1xh   Intel P5 steps Bx (1994)</span><br><span class="line"> 2xh   Intel P54C step A</span><br><span class="line">---RapidCAD (type code 03h)---</span><br><span class="line"> 40h   A</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

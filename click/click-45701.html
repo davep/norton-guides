@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-44107.html">
+    <link rel="next" href="click-48170.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-44107.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-48170.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Getting Started</a></li>
+                  <li><a href="click-10263.html">Features</a></li>
+                  <li><a href="click-15048.html">Click .INI file</a></li>
+                  
+                </ul>
+              </li>
+              <li>Support</li>
+              <li>
+                <ul>
+                  <li><a href="click-32383.html">Support</a></li>
+                  <li><a href="click-34012.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">There is a new option in The Aligner which will eliminate duplicate</span><br><span class="line">empty lines. This allows me to do nicer formatting around function and</span><br><span class="line">source headers and footers, and removes extra empty lines from your</span><br><span class="line">source.</span><br><span class="line"></span><br><span class="line">REMOVE_DUPLICATE_EMPTY_LINES=YES</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">The Aligner was previously only able to align := when it was the third</span><br><span class="line">element on a line. Now, it can handle more complex alignments, so ...</span><br><span class="line"></span><br><span class="line">y[ 2,MANIFEST ]=&#39;Hello&#39;</span><br><span class="line">x    := 11</span><br><span class="line">z[function(),variable]=&#39;somevalue&#39;</span><br><span class="line"></span><br><span class="line">...becomes...</span><br><span class="line"></span><br><span class="line">y[ 2, MANIFEST ]          := &#39;Hello&#39;</span><br><span class="line">x                         := 11</span><br><span class="line">z[ function(), variable ] := &#39;somevalue&#39;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">On the second line, the first = sign was being converted to :=, but that</span><br><span class="line">was improper, since it is a continued line. This is fixed.</span><br><span class="line"></span><br><span class="line">if CFIRSTCHAR = chr( 10 ) .or. CFIRSTCHAR = chr( 12 ) .or. ;</span><br><span class="line">           CFIRSTCHAR = chr( 13 ) .or. CFIRSTCHAR = chr( 26 )</span><br><span class="line">   CLINE := substr( CLINE, 2 )</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Someone was complaining that comments were lost on variable declarations.</span><br><span class="line"></span><br><span class="line">I can&#39;t find anything wrong. This...</span><br><span class="line"></span><br><span class="line">local x := 1 // this is a comment</span><br><span class="line">local y      // this is also a comment</span><br><span class="line">local z, w   // two variables on a single line</span><br><span class="line"></span><br><span class="line">... comes out looking like ...</span><br><span class="line"></span><br><span class="line">local x := 1        // this is a comment</span><br><span class="line">local y             // this is also a comment</span><br><span class="line">local z             // two variables on a single line</span><br><span class="line">local w             // two variables on a single line</span><br><span class="line"></span><br><span class="line">If anyone can provide a specific example which breaks, please do.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">The declaration buster was ltrim()ing all lines between the text and</span><br><span class="line">endtext commands.</span><br><span class="line"></span><br><span class="line">This is corrected.</span><br><span class="line"></span><br><span class="line">The declaration buster was making #include into # include</span><br><span class="line"></span><br><span class="line">This is corrected.</span><br><span class="line"></span><br><span class="line">(I don&#39;t think that either of these were a problem outside of creating 1.07)</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Because of the while on the continued line, this used to make a mess.</span><br><span class="line"></span><br><span class="line">if mfilter == TRUE</span><br><span class="line">   copy to ( cTempFile ) for eval( miofield2 ) .and. ;</span><br><span class="line">           eval( mfiltfield ) ;</span><br><span class="line">           while eval( use_dates )</span><br><span class="line">else</span><br><span class="line">   copy to ( cTempFile ) for eval( miofield2 ) ;</span><br><span class="line">           while eval( use_dates )</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">Now, control structure identifiers are ignored if they are on a</span><br><span class="line">continued line.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">The part of Click! which broke the .not. from comp_elem was broken.</span><br><span class="line"></span><br><span class="line">if line_disp = SUBSTR(linesrch[i],2,19) .and. .not.comp_elem</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">This parses correctly now. This was particularly bad, since it sent</span><br><span class="line">Click! to the error exit.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Click! now correctly removes the space between ! and = when it is the</span><br><span class="line">first element of a continued line.</span><br><span class="line"></span><br><span class="line">do while x == 1 .and. y ;</span><br><span class="line">         != 7</span><br><span class="line"></span><br><span class="line">no longer creates</span><br><span class="line"></span><br><span class="line">do while x == 1 .and. y ;</span><br><span class="line">         ! = 7</span><br><span class="line"></span><br><span class="line">which caused a compiler error.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

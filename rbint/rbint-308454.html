@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-305457.html">
+    <link rel="next" href="rbint-308799.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-305457.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-308799.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">fetcher:</span></span><br><span class="line"></span><br><span class="line">     NOP</span><br><span class="line">     IN AL,port   ; Note that this corrupts EAX...</span><br><span class="line">     MOV TR5,EBX  ; EBX contained the new TR5 value.</span><br><span class="line">     NOP</span><br><span class="line">     NOP</span><br><span class="line"></span><br><span class="line">On the A to C0 step of the 486 loading a value into CR0 which disables the</span><br><span class="line">cache may corrupt the cache. Forcing a prefetch will avoid this.</span><br><span class="line"></span><br><span class="line">     PUSHFD</span><br><span class="line">     CLI</span><br><span class="line">     MOV BL,CS:label</span><br><span class="line">     MOV CR0,EAX</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

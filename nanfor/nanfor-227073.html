@@ -1,0 +1,165 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » NetWare</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-225570.html">
+    <link rel="next" href="nanfor-229530.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-225570.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-223163.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-229530.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_NWSEMLOCK()</span></span><br><span class="line"> Perform a semaphore &#34;lock&#34;</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_NWSEMLOCK ( &lt;cSemaphore&gt;, &lt;@nHandle&gt; ) -&gt; lRet</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cSemaphore&gt;</span> is the name of a semaphore you want to &#34;lock.&#34;</span><br><span class="line">     <span class="ngb">&lt;nHandle&gt;</span> is the semaphore&#39;s handle, if you get the lock.</span><br><span class="line">     THIS MUST BE PASSED BY REFERENCE!</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     lRet == .t. if you get the lock, .f. if you don&#39;t.</span><br><span class="line">     If the lock succeeds, <span class="ngb">&lt;nHandle&gt;</span> will contain the semaphore</span><br><span class="line">     handle.  If it fails, the value of <span class="ngb">&lt;nHandle&gt;</span> is undefined.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     FT_NWSEMLOCK() uses the Nanforum Toolkit&#39;s NetWare Semaphore API</span><br><span class="line">     functions in order to provide a general purpose &#34;lock&#34; you can use in</span><br><span class="line">     a NetWare environment.</span><br><span class="line"></span><br><span class="line">     An interesting byproduct of NetWare&#39;s semaphore functions is</span><br><span class="line">     the &#34;open count&#34; which tells you how many connections have this</span><br><span class="line">     semaphore open.  This is different from the semaphore&#39;s _value_,</span><br><span class="line">     which is set when the semaphore is opened and changed with</span><br><span class="line">     signal() and wait().</span><br><span class="line"></span><br><span class="line">     The point of semaphores is that you don&#39;t care how many users</span><br><span class="line">     are using the resource; you merely wait on a semaphore until</span><br><span class="line">     the resource becomes available or you give up.  When you&#39;re done,</span><br><span class="line">     you signal it and off you go.</span><br><span class="line"></span><br><span class="line">     Back to the open count.  FT_NWSEMLOCK() opens the semaphore</span><br><span class="line">     as named in &lt;cSemaphore&gt;.  After it is opened, the open count</span><br><span class="line">     is checked.  If it is anything other than 1, that means someone</span><br><span class="line">     else has it (or you failed in your open) so the semaphore is</span><br><span class="line">     closed and the &#34;lock&#34; is refused.  If the value is 1, then your</span><br><span class="line">     app is that 1 station so the &#34;lock&#34; is granted.</span><br><span class="line"></span><br><span class="line">     You can use a semaphore lock to control access to anything</span><br><span class="line">     that Clipper&#39;s RLOCK() and FLOCK() can&#39;t help you with, such</span><br><span class="line">     as text files written with the low level file i/o functions,</span><br><span class="line">     etc.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     LOCAL nHandle := 0</span><br><span class="line">     IF FT_NWSEMLOCK( &#34;k:\apps\error.log&#34;, @nHandle )</span><br><span class="line">         // Note, you aren&#39;t actually LOCKING this file, you are</span><br><span class="line">         // just locking a semaphore by the same name.  As long as</span><br><span class="line">         // all apps that might be using this file are cooperating</span><br><span class="line">         // with the same kind of semaphore lock, you can effectively</span><br><span class="line">         // control access to the file.</span><br><span class="line">       ELSE</span><br><span class="line">         QOUT(&#34;Couldn&#39;t lock file.&#34;)</span><br><span class="line">       ENDIF</span><br><span class="line">       * Processing, then:</span><br><span class="line">       FT_NWSEMUNLOCK( nHandle )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> NWSEM.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Glenn Scott</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor-229530.html">FT_NWSEMOPEN()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-225570.html">FT_NWSEMEX()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-235274.html">FT_NWSEMWAIT()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-232960.html">FT_NWSEMSIG()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-233886.html">FT_NWSEMUNLOCK()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

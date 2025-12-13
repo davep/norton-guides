@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2744657.html">
+    <link rel="next" href="rbint-2748569.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2744657.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2748569.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 7070  - Pcw Weather Card Interface - Get Data Segment          </span>  [<span class="ngb">-</span>]</span><br><span class="line"></span><br><span class="line">   AX = 7070h</span><br><span class="line">   BX = 6060h</span><br><span class="line">   CX = 7070h</span><br><span class="line">   DX = 7070h</span><br><span class="line">   SI = 7070h</span><br><span class="line">   DI = 7070h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = segment of data structure (see #1465)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the data structure is at offset 516 from this segment</span><br><span class="line">   the update byte is at offset 514 from this segment.  Updates are</span><br><span class="line">     once per second while this byte is nonzero and it is decremented</span><br><span class="line">     once per second.  While this byte is 0 updates are once per minute.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=7070h/BX=7070h</span><br><span class="line"></span><br><span class="line">Format of PCW Weather Card data structure:</span><br><span class="line">Offset Type    Description (Table 1465)</span><br><span class="line"> 00h   WORD    hour</span><br><span class="line"> 02h   WORD    minute</span><br><span class="line"> 04h   WORD    second</span><br><span class="line"> 06h   WORD    day</span><br><span class="line"> 08h   WORD    month</span><br><span class="line"> 0Ah   WORD    year</span><br><span class="line"> 0Ch   WORD    ???</span><br><span class="line"> 0Eh   WORD    relative barometric pressure (in 1/100 inches)</span><br><span class="line"> 10h   WORD    ???</span><br><span class="line"> 12h   WORD    ???</span><br><span class="line"> 14h   WORD    temperature 1 (in 1/10 degrees F)</span><br><span class="line"> 16h   WORD    temperature 1 lowest (in 1/10 degrees F)</span><br><span class="line"> 18h   WORD    temperature 1 highest (in 1/10 degrees F)</span><br><span class="line"> 1Ah   WORD    temperature 2 (in 1/10 degrees F)</span><br><span class="line"> 1Ch   WORD    temperature 2 lowest (in 1/10 degrees F)</span><br><span class="line"> 1Eh   WORD    temperature 2 highest (in 1/10 degrees F)</span><br><span class="line"> 20h   WORD    wind speed (in MPH)</span><br><span class="line"> 22h   WORD    average of 60 wind speed samples (in MPH)</span><br><span class="line"> 24h   WORD    highest wind speed (in MPH)</span><br><span class="line"> 26h   WORD    wind chill factor  (in 1/10 degrees F)</span><br><span class="line"> 28h   WORD    lowest wind chill factor (in 1/10 degrees F)</span><br><span class="line"> 2Ah   WORD    ???</span><br><span class="line"> 2Ch   WORD    wind direction (in degrees)</span><br><span class="line"> 2Eh   WORD    accumulated daily rainfall (in 1/10 inches)</span><br><span class="line"> 30h   WORD    accumulated annual rainfall (in 1/10 inches)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

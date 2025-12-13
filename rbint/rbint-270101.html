@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-270019.html">
+    <link rel="next" href="rbint-271992.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-270019.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-271992.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Function:</span></span><br><span class="line"></span><br><span class="line">(8080 is written here as 8O8O to avoid visual confusion with the 8088).</span><br><span class="line">This is the basic instruction used to switch to 8O8O emulation mode.</span><br><span class="line">The BRKEM instruction is used in a similar way to an INT instruction,</span><br><span class="line">(referred to as BRK by NEC). The mode flag (MD) is set to zero, the Flags,</span><br><span class="line">CS &amp; IP are pushed onto the stack then CS &amp; IP are loaded from the</span><br><span class="line">specified interrupt vector.</span><br><span class="line"></span><br><span class="line">In 8O8O emulation mode the V30 registers and flags are mapped to 8O8O</span><br><span class="line">registers and flags.</span><br><span class="line"></span><br><span class="line">    General purpose register names:</span><br><span class="line">                    ┌───┬───┬───┬───┬───┬───┬───┬───┬───┐</span><br><span class="line">    8O8O name───────│ A │ B │ C │ D │ E │ H │ L │ SP│ PC│</span><br><span class="line">    Intel x86 name──│ AL│ CH│ CL│ DH│ DL│ BH│ BL│ BP│ IP│</span><br><span class="line">    V30 name────────│ AL│ CH│ CL│ DH│ DL│ BH│ BL│ BP│ PC│</span><br><span class="line">                    └───┴───┴───┴───┴───┴───┴───┴───┴───┛</span><br><span class="line"></span><br><span class="line">    Individual flag names:</span><br><span class="line">                    ┌───┬───┬───┬───┬───┐</span><br><span class="line">    8O8O name───────│ C │ Z │ S │ P │ AC│</span><br><span class="line">    Intel x86 name──│ CF│ ZF│ SF│ PF│ AF│</span><br><span class="line">    V30 name────────│ C │ Z │ S │ P │ AC│</span><br><span class="line">                    └───┴───┴───┴───┴───┛</span><br><span class="line"></span><br><span class="line">In 8O8O emulation mode the segment used for instructions is determined</span><br><span class="line">by the CS (PS) register. The DS (DS0) register determines the segment</span><br><span class="line">used for data.</span><br><span class="line"></span><br><span class="line">When an interrupt occurs during 8O8O emulation the CPU switches to native</span><br><span class="line">V30 mode to process the interrupt. When the interrupt handler is complete</span><br><span class="line">the IRET, (RETI in NEC nomenclature), will return to 8O8O emulation mode.</span><br><span class="line"></span><br><span class="line">From 8O8O emulation mode RETEM (Return from Emulation, opcode ED FD) returns</span><br><span class="line">to native mode, setting MD flag and restoring flags, CS &amp; IP from the native</span><br><span class="line">stack. Alternatively CALLN imm8 (Call Native, opcode ED ED imm) can be used</span><br><span class="line">to call native V30 interrupts, (just like a regular INT).</span><br><span class="line"></span><br><span class="line">Note that 0F is treated as &lt;POP CS&gt; on the 88/86 and prefixes newer</span><br><span class="line">instructions on 286+ CPUs.</span><br><span class="line"></span><br><span class="line">(Supplied by Anthony Naggs)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">BSF, Bit Scan Forward</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

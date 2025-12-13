@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4121168.html">
+    <link rel="next" href="rbint-4125733.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4121168.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4031282.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4125733.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 7A2F  - Novell Netware - Ipxodi V2.12 - Get Gnma Support       </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 7A2Fh</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = 0000h if supported and active</span><br><span class="line">       BX = support level (0001h)</span><br><span class="line">       ES:DI -&gt; GNMA entry point (see #2584)</span><br><span class="line">Program: GNMA is the Generic NetWare Management Agent</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  IPXODI v2.12 is distributed as part of the Personal NetWare system</span><br><span class="line">     bundled with Novell DOS 7</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 7A/BX=001Fh</span><br><span class="line"></span><br><span class="line">(Table 2584)</span><br><span class="line">Call IPXODI GNMA entry point with:</span><br><span class="line">   BX = function</span><br><span class="line">       0000h Register Responder</span><br><span class="line">       ES:SI -&gt; responder structure (see #2585)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">           CF set on error</span><br><span class="line">           AX = status</span><br><span class="line">               FFFFh if specified responder is already registered</span><br><span class="line">           interrupts enabled</span><br><span class="line">           all other registers except DS, CS:IP, SS:SP destroyed</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   the responder structure must not be deallocated until</span><br><span class="line">             the responder is deregistered</span><br><span class="line">       0001h Deregister Responder</span><br><span class="line">       AX = type of responder to deregister</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status</span><br><span class="line">               FFFFh if specified responder not registered</span><br><span class="line">           interrupts enabled</span><br><span class="line">           ES:SI buffer from original registration may now be</span><br><span class="line">                 freed</span><br><span class="line">           all other registers except DS, CS:IP, SS:SP destroyed</span><br><span class="line">       0002h Get Responders</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> ES:SI -&gt; head of responder structure list (read-only)</span><br><span class="line">           interrupts enabled</span><br><span class="line">           all other registers except DS, CS:IP, SS:SP destroyed</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   the returned list may change as tasks are swapped in</span><br><span class="line">             and out</span><br><span class="line">       0003h Send Acknowledgement</span><br><span class="line">       AL = completion code</span><br><span class="line">           00h successful</span><br><span class="line">           01h-FCh responder-specific</span><br><span class="line">           FDh invalid function</span><br><span class="line">       CX = length of return data (0000h if none)</span><br><span class="line">       DX:SI -&gt; return data</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> interrupts enabled</span><br><span class="line">           all other registers except DS, CS:IP, SS:SP destroyed</span><br><span class="line"></span><br><span class="line">Format of NetWare GNMA responder structure:</span><br><span class="line">Offset Size    Description (Table 2585)</span><br><span class="line"> 00h   DWORD   -&gt; next responder structure (used by GNMA)</span><br><span class="line"> 04h   DWORD   -&gt; responder&#39;s request handler (called by GNMA) (see #2586)</span><br><span class="line"> 08h   WORD    responder ID</span><br><span class="line"> 0Ah   WORD    number of functions supported by responder</span><br><span class="line"> 0Ch   DWORD   reserved for use by GNMA</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2584</span><br><span class="line"></span><br><span class="line">(Table 2586)</span><br><span class="line">Values GNMA responder&#39;s request handler is called with:</span><br><span class="line">   AL = function</span><br><span class="line">       00h responder request</span><br><span class="line">       CX = length of request data (not including header) (see #2587)</span><br><span class="line">       DS:DI -&gt; request data (see #2587)</span><br><span class="line">       DS:BX -&gt; 528-byte reply buffer</span><br><span class="line">       ES:SI -&gt; responder structure (see #2585) from registration</span><br><span class="line">       DF clear</span><br><span class="line">       interrupts disabled</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AH = acknowledement status</span><br><span class="line">               00h acknowledgment being returned synchronously</span><br><span class="line">               nonzero: acknowledgment will be sent via GNMA</span><br><span class="line">                 function 0003h (see #2584)</span><br><span class="line">               CX = length of acknowledement data</span><br><span class="line">               DX:BX -&gt; acknowledgment (may use provided</span><br><span class="line">                     buffer or another buffer)</span><br><span class="line">           AL = completion code</span><br><span class="line">               00h successful</span><br><span class="line">               01h-FCh responder-specific</span><br><span class="line">               FDh invalid request</span><br><span class="line">           DF clear</span><br><span class="line">           interrupts disabled</span><br><span class="line">           other registers may be destroyed</span><br><span class="line">       01h responder acknowledgement complete</span><br><span class="line">       ES:SI -&gt; responder structure (see #2585) from registration</span><br><span class="line">       DF clear</span><br><span class="line">       interrupts disabled</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> DF clear</span><br><span class="line">           interrupts disabled</span><br><span class="line">           all registers (except SS:SP) may be destroyed</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   this function is called if function 00h returned a</span><br><span class="line">             responder-provided data buffer; once this function</span><br><span class="line">             is called, the responder may deallocate the buffer</span><br><span class="line">       02h responder reset</span><br><span class="line">       ES:SI -&gt; responder structure (see #2585) from registration</span><br><span class="line">       DF clear</span><br><span class="line">       interrupts disabled</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> DF clear</span><br><span class="line">           interrupts disabled</span><br><span class="line">           all registers (except SS:SP) may be destroyed</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   called whenever a network managment application</span><br><span class="line">             terminates</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the responder handler should switch to a local stack if it enables</span><br><span class="line">     interrupts or uses more than a few words of stack space</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2585</span><br><span class="line"></span><br><span class="line">Format of GNMA responder request data:</span><br><span class="line">Offset Size    Description (Table 2587)</span><br><span class="line"> 00h   WORD    responder&#39;s assigned ID</span><br><span class="line"> 02h   WORD    function number (defined by responder)</span><br><span class="line"> 04h  N BYTEs  data for request (max 528 bytes; actual amount is determined</span><br><span class="line">         by CX)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2586</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

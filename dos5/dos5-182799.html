@@ -1,0 +1,124 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Device Driver Fnx</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    
+    <link rel="next" href="dos5-187882.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="dos5-182062.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-187882.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Device drivers</span></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Format</span></span><br><span class="line">    Every device driver, whether it supports a character or a block</span><br><span class="line">    device, consists of a device header (a <span class="ngb">DeviceHeader</span> structure), a</span><br><span class="line">    strategy routine, and an interrupt routine. Installable device</span><br><span class="line">    drivers are contained in binary image files (.SYS) or .EXE format</span><br><span class="line">    files. If more than one driver is contained in a file, there must</span><br><span class="line">    be a device header for each driver. The first DeviceHeader must be</span><br><span class="line">    at the beginning of the file&#39;s load image.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Operation</span></span><br><span class="line">    DOS makes a far call to the Strategy routine, passing the 32-bit</span><br><span class="line">    address (in ES:BX) of a request packet (a XxxxxRequest structure).</span><br><span class="line">    The driver saves this address and returns immediately. DOS then</span><br><span class="line">    calls the Interrupt routine (using a far call, not an interrupt).</span><br><span class="line">    The Interrupt routine must examine the function field in the</span><br><span class="line">    request packet, branch accordingly, and carry out the requested</span><br><span class="line">    function. When the processing is complete, the Interrupt routine</span><br><span class="line">    must set the <span class="ngb">status</span> value in the request packet and return to DOS.</span><br><span class="line"></span><br><span class="line">    Since a device driver must never have more than one pending</span><br><span class="line">    request at any given time, the interrupt routine must, for each</span><br><span class="line">    request, either carry out an action or indicate to DOS, that the</span><br><span class="line">    device is busy or in error. The strategy and interrupt routines</span><br><span class="line">    must preserve all registers and the driver must switch to its own</span><br><span class="line">    stack if the stack usage is more than 40-50 bytes.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    struc RequestHeader         ; Device-Driver request packet header</span><br><span class="line">     rhLength       db ?            ; Length of structure, in bytes</span><br><span class="line">     rhUnit         db ?            ; Unit number (block device only)</span><br><span class="line">     rhFunction     db ?            ; Device driver function number</span><br><span class="line">     rhStatus       dw ?            ; Status</span><br><span class="line">     rhReserved     db 8 dup (?)    ; Reserved</span><br><span class="line">    ends                            ; = 13d (0Dh) bytes</span><br><span class="line"></span><br><span class="line">    All XxxxxRequest structures define the 5 fields listed, several</span><br><span class="line">    define more fields. Values for Length, Unit, and Function are</span><br><span class="line">    provided by DOS, Status must be determined by the driver.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">rhUnit</span></span><br><span class="line">    Identifies the device (not the drive) the request is for, e.g. 0,</span><br><span class="line">    1, or 2 if the driver controls 3 devices.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">rhStatus</span></span><br><span class="line">    Must be zero (0) before DOS calls the interrupt routine which must</span><br><span class="line">    return a non-zero value in this field indicating the status of the</span><br><span class="line">    request:</span><br><span class="line"></span><br><span class="line">        ; Bit 15        1 = Error occurred; bits 0-7 = error code</span><br><span class="line">        ; Bit  9        1 = Device busy (functions 06h,0Ah,0Fh only)</span><br><span class="line">        ; Bit  8        1 = Operation completed (done)</span><br><span class="line">        ; Bits 7-0      Error code if bit 15 set</span><br><span class="line">        DeviceError = 8000h</span><br><span class="line">        DeviceBusy  = 0200h</span><br><span class="line">        DeviceDone  = 0100h</span><br><span class="line">        DeviceErrWriteProtect   = 00h</span><br><span class="line">        DeviceErrBadUnit        = 01h</span><br><span class="line">        DeviceErrNotReady       = 02h</span><br><span class="line">        DeviceErrBadCommand     = 03h</span><br><span class="line">        DeviceErrCRC            = 04h</span><br><span class="line">        DeviceErrBadLength      = 05h   ; (drive-request structure)</span><br><span class="line">        DeviceErrSeek           = 06h</span><br><span class="line">        DeviceErrUnknownMedia   = 07h</span><br><span class="line">        DeviceErrSectorNotFound = 08h</span><br><span class="line">        DeviceErrOutOfPaper     = 09h</span><br><span class="line">        DeviceErrWriteFault     = 0Ah</span><br><span class="line">        DeviceErrReadFault      = 0Bh</span><br><span class="line">        DeviceErrGenFailure     = 0Ch</span><br><span class="line">        DeviceErrWrongDisk      = 0Fh   ; 0Dh, 0Eh reserved</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Initialization</span></span><br><span class="line">    DOS loads and initializes installable device drivers in the order</span><br><span class="line">    their corresponding DEVICE or DEVICEHIGH commands appear in the</span><br><span class="line">    CONFIG.SYS file. When loading a device driver, DOS does not create</span><br><span class="line">    a program segment prefix (PSP) or an environment block. Instead,</span><br><span class="line">    it allocates enough memory to load the contents of the driver file</span><br><span class="line">    and copies its contents from disk, placing the DeviceHeader at the</span><br><span class="line">    beginning of the allocated memory. DOS then calls the strategy</span><br><span class="line">    routine and the interrupt routine with a request packet for</span><br><span class="line">    <span class="ngb">Init</span> (device driver function 00h).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    An installable device driver that has the same logical-device name</span><br><span class="line">    as an existing <span class="ngb">character</span>-device driver effectively replaces the</span><br><span class="line">    existing driver. The old driver remains in memory, however, and</span><br><span class="line">    its strategy and interrupt routines can be called by the new</span><br><span class="line">    driver to access the given device. The new driver can retrieve the</span><br><span class="line">    addresses of the old driver&#39;s strategy and interrupt routines by</span><br><span class="line">    searching the driver chain for device-driver headers that have the</span><br><span class="line">    same logical-device names. (The new driver is at the top of the</span><br><span class="line">    driver chain, and the dhLink field in its DeviceHeader contains</span><br><span class="line">    the address of the next driver in the chain. For the last driver</span><br><span class="line">    in the chain, the dhLink field contains 0FFFFh.) The old driver&#39;s</span><br><span class="line">    address can be retrieved only <span class="ngu">after</span> the new driver has completed</span><br><span class="line">    its initialization.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    The device driver functions required for <span class="ngu">b</span>lock device drivers</span><br><span class="line">    and <span class="ngu">c</span>haracter device drivers are marked by the symbols <span class="ngb">B</span> and <span class="ngb">C</span>;</span><br><span class="line">    the functions depending on the setting of the driver&#39;s attribute</span><br><span class="line">    word are marked <span class="ngb">b</span> and <span class="ngb">c</span>.</span><br><span class="line">    In the structure descriptions, fields are designated as INPUT</span><br><span class="line">    where information is filled in by DOS before it calls the device</span><br><span class="line">    driver and as OUTPUT where information must be supplied by the</span><br><span class="line">    driver.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-227497.html">DeviceHeader</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-187882.html">Dev00h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

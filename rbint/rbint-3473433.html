@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3471947.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3471947.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3471811.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 28 Fn 9999  u - Pcxdump V9.00+ - Installation Check                  </span>  [<span class="ngb">U</span>]</span><br><span class="line"></span><br><span class="line">   AX = 9999h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = AAAAh if installed</span><br><span class="line">       CX = version number * 100 (example: 03A2h = 930 = v9.30)</span><br><span class="line">       DL = interrupt used by the dump function (see #2241)</span><br><span class="line">       (00h if call not available)</span><br><span class="line">       BX = CS of PCXDUMP&#39;s INT 28 handler (undocumented)</span><br><span class="line">       ES = segment of PCXDUMP&#39;s memory block (v9.30, undocumented)</span><br><span class="line">Program: PCXDUMP is a shareware screen grabber saving in PCX format</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> if DL&lt;&gt;00h a dump can be requested by calling INT DL as shown</span><br><span class="line">     below (the user can choose the interrupt number at installation</span><br><span class="line">     time); if DL=00h the dump function can be called only by hotkeys</span><br><span class="line">     (this is the default)</span><br><span class="line"></span><br><span class="line">(Table 2241)</span><br><span class="line">Call PCXDUMP screen-dump function with:</span><br><span class="line">   INT xx</span><br><span class="line">   AX = 1234h</span><br><span class="line">   BX = dump type</span><br><span class="line">       0000h Color dump</span><br><span class="line">       0001h Immediate color dump</span><br><span class="line">       0002h Black/White dump</span><br><span class="line">       0003h Immediate B/W dump</span><br><span class="line">       0004h Inverted B/W dump</span><br><span class="line">       0005h Gray scaled dump</span><br><span class="line">       0006h Inverted gray scaled dump</span><br><span class="line">       0007h Text screen dump to text file</span><br><span class="line">       0008h Text screen dump to ansi file</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> nothing</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> if BX=0001h, 0003h, 0007h or 0008h the whole screen will be</span><br><span class="line">     dumped; the other valid values will draw a selection frame</span><br><span class="line">     on the screen except in text modes (text modes allow only</span><br><span class="line">     full screen dumps)</span><br><span class="line">   this function doesn&#39;t perform the dump, it only requests it;</span><br><span class="line">     the dump will be performed after a few milliseconds if it&#39;s</span><br><span class="line">     safe to do so, thus the author recommends putting a 60 ms delay</span><br><span class="line">     after this call</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-100510.html">
+    <link rel="next" href="tasm4-107284.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-100510.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-107284.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">STRUC            Define structure type                              Directive</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">STRUC</span> name                            ; Ideal mode</span><br><span class="line">     structure_members</span><br><span class="line">  ENDS [name]</span><br><span class="line"></span><br><span class="line">  name <span class="ngb">STRUC</span>                            ; MASM mode</span><br><span class="line">     structure_members</span><br><span class="line">  [name] ENDS</span><br><span class="line"></span><br><span class="line">    Defines a structure called name containing members.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Structures and unions</span></span><br><span class="line"></span><br><span class="line">    Structures and unions let you mix and match various types. A structure</span><br><span class="line">    in Turbo Assembler is a data type that contains one or more data</span><br><span class="line">    elements called <span class="ngb">members</span>. The size of a structure is the combined</span><br><span class="line">    size of all data elements within it.</span><br><span class="line"></span><br><span class="line">    Unions are similar to structures, except that all of the members in a</span><br><span class="line">    union occupy the same memory. The size of a union is the size of its</span><br><span class="line">    largest member. Unions are useful when a block of memory must</span><br><span class="line">    represent one of several distinct possibilities, each with different</span><br><span class="line">    data storage requirements.</span><br><span class="line"></span><br><span class="line">    Turbo Assembler lets you fully nest structures and unions within one</span><br><span class="line">    another, but this can become complicated. For example, you could have</span><br><span class="line">    a structure member that is really a union. A union could also have a</span><br><span class="line">    full structure as each member.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opening and closing a structure or union</span></span><br><span class="line"></span><br><span class="line">    TASM considers all data or code emitted between the time a structure</span><br><span class="line">    or union data type definition is opened (STRUC or UNION directive) and</span><br><span class="line">    the time a corresponding ENDS directive is encountered to be part of</span><br><span class="line">    that structure or union data type.</span><br><span class="line"></span><br><span class="line">    Turbo Assembler treats structure and union data type names as <span class="ngb">global</span></span><br><span class="line">    but <span class="ngb">redefinable</span>. You can define the same name as a structure or union</span><br><span class="line">    data type more than once in a module.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Specifying members</span></span><br><span class="line"></span><br><span class="line">    To create members in a structure or union definition, use the same</span><br><span class="line">    directives as those for allocating data and creating labels in an open</span><br><span class="line">    segment. Turbo Assembler allows all methods of allocating data with a</span><br><span class="line">    structure definition, including instances of other structures, unions,</span><br><span class="line">    records, enumerated data types, tables, and objects.</span><br><span class="line"></span><br><span class="line">    Members may be named or remain nameless. MASM and Ideal mode treat</span><br><span class="line">    structure member names differently. In MASM mode, structure member</span><br><span class="line">    names are global and cannot be redefined. In Ideal mode, structure</span><br><span class="line">    member names are considered local to a structure or union data type.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    The LABEL directive lets you create structure members without</span><br><span class="line">    allocating data. LABEL directives found inside structure definitions</span><br><span class="line">    define members of the structure.</span><br><span class="line"></span><br><span class="line">    You can use the ALIGN directive within structure definitions to align</span><br><span class="line">    structure members on appropriate boundaries.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Example:    STRUC testx</span><br><span class="line">                   mem1     db   ?</span><br><span class="line">                   mem2     dw   5</span><br><span class="line">                LABEL xrest WORD</span><br><span class="line">                ALIGN 4</span><br><span class="line">                   mem3     dd   ?</span><br><span class="line">                ENDS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Nesting structures and unions</span></span><br><span class="line"></span><br><span class="line">    TASM lets you nest the STRUC, UNION, and ENDS directives inside open</span><br><span class="line">    structure and union data type definitions to control the offsets</span><br><span class="line">    assigned to structure members.</span><br><span class="line"></span><br><span class="line">    In a structure, each data element begins where the previous one ended.</span><br><span class="line">    In a union, each data element begins at the same offset as the</span><br><span class="line">    previous one. Allowing a single data element to consist of an entire</span><br><span class="line">    union or structure provides a high degree of flexibility.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Incorporating one named structure within another</span></span><br><span class="line"></span><br><span class="line">    TASM provides a way of incorporating an entire existing structure or</span><br><span class="line">    union data type, including member names, into an open structure</span><br><span class="line">    definition to assist in the inheritance of objects. It treats the</span><br><span class="line">    incorporated structure or union as if it were nested inside the open</span><br><span class="line">    structure or union definition at that point. In this way,</span><br><span class="line">    incorporating a structure or union into another is intrinsically</span><br><span class="line">    different from including an instance of a structure or union in</span><br><span class="line">    another; an <span class="ngu">instance</span> includes only initialized or uninitialized</span><br><span class="line">    data, while <span class="ngu">incorporation</span> includes data, structure, and member</span><br><span class="line">    names.</span><br><span class="line"></span><br><span class="line">    Refer to the TASM documentation for details.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Creating an instance of a structure or union</span></span><br><span class="line"></span><br><span class="line">    To create an instance of a structure or union data type, use the</span><br><span class="line">    structure or union data name as a data allocation directive.</span><br><span class="line"></span><br><span class="line">    Examples:   stest1 mystruc ?                  ; uninitialized</span><br><span class="line">                stest2 mystruc &lt; &gt;                ; initialized to defaults</span><br><span class="line">                stest3 mystruc { }                ; initialized to defaults</span><br><span class="line">                stest4 mystruc {mem2=2, mem4=?}   ; initialize named members</span><br><span class="line">                stest5 mystruc &lt;,2,,?&gt;            ; initialize members</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line">  Extended STRUC directive:</span><br><span class="line"></span><br><span class="line">  <span class="ngb">STRUC</span> name [modifiers] [parent_name] [METHOD [method_list]]   ; Ideal mode</span><br><span class="line">     structure_members</span><br><span class="line">  ENDS [name]</span><br><span class="line"></span><br><span class="line">    Turbo Assembler 3.1+ objects are also defined as structures having</span><br><span class="line">    the extra optional items on the struc line.</span><br><span class="line"></span><br><span class="line">    name                is the name of the object</span><br><span class="line">    modifiers           can be one or more of: GLOBAL, NEAR, FAR</span><br><span class="line">    parent_name         is the name of the parent object&#39;s data structure</span><br><span class="line">                        (single inheritance supported)</span><br><span class="line">    method_list         is like that of TABLE</span><br><span class="line">    structure_members   are any (additional) data present in an instance</span><br><span class="line">                        of the object</span><br><span class="line"></span><br><span class="line">    The extended STRUC directive defines or uses several symbols which</span><br><span class="line">    reflect the object being defined:</span><br><span class="line"></span><br><span class="line">    @Object                  Text macro containing the name of the current</span><br><span class="line">                             object</span><br><span class="line">    @Table_&lt;objectname&gt;      Data type containing the object&#39;s method table</span><br><span class="line">    @Tableaddr_&lt;objectname&gt;  A label describing the address of the</span><br><span class="line">                             instance of the object&#39;s virtual method table</span><br><span class="line">                             (VMT).</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-37443.html">ENDS</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-112830.html">UNION</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-133335.html">.</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-59085.html">LABEL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-108266.html">TABLE</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-109744.html">TBLPTR</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-192722.html">Address subtypes</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,144 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » / » Commands</title>
+    <meta name="description" content="DEBUG">
+    <link rel="prev" href="debug-5529.html">
+    <link rel="next" href="debug-8767.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><a href="debug-5529.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="debug-8767.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>/</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="debug-36268.html">Parameters</a></li>
+                  <li><a href="debug-41899.html">Messages</a></li>
+                  <li><a href="debug-45534.html">Common</a></li>
+                  <li><a href="debug-46838.html">Starting DEBUG</a></li>
+                  <li><a href="debug-49445.html">Introduction</a></li>
+                  
+                </ul>
+              </li>
+              <li>*</li>
+              <li>
+                <ul>
+                  <li><a href="debug-50016.html">Flags register</a></li>
+                  <li><a href="debug-51925.html">PSP structure</a></li>
+                  <li><a href="debug-54321.html">EXE header</a></li>
+                  <li><a href="debug-55255.html">BPB structure</a></li>
+                  <li><a href="debug-56377.html">FCB structure</a></li>
+                  <li><a href="debug-57564.html">ASCII table</a></li>
+                  
+                </ul>
+              </li>
+              <li>-</li>
+              <li>
+                <ul>
+                  <li><a href="debug-62697.html">Comments</a></li>
+                  <li><a href="debug-63334.html">Scripts</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">    <span class="ngb">Dump command</span></span><br><span class="line"></span><br><span class="line">    Purpose:  Displays the contents of a portion of memory.</span><br><span class="line"></span><br><span class="line">    Format:   D [address]     or     D [range]</span><br><span class="line"></span><br><span class="line">    Remarks:  The dump is displayed in two parts:</span><br><span class="line"></span><br><span class="line">              1.  A hexadecimal portion. Each byte is displayed in hexa-</span><br><span class="line">                  decimal.</span><br><span class="line"></span><br><span class="line">              2.  An ASCII portion. The bytes are displayed as ASCII char-</span><br><span class="line">                  acters. Unprintable characters are indicated by a period</span><br><span class="line">                  (.).</span><br><span class="line"></span><br><span class="line">              With a 40-column system display format, each line begins on</span><br><span class="line">              an 8-byte boundary and shows 8 bytes. With an 80-column sys-</span><br><span class="line">              tem display format, each line begins on a 16-byte boundary</span><br><span class="line">              and shows 16 bytes. There is a hyphen between the 8th and</span><br><span class="line">              9th bytes.</span><br><span class="line"></span><br><span class="line">                  <span class="ngb">Note</span>:</span><br><span class="line">                  The first line may have fewer than 8 or 16 bytes if the</span><br><span class="line">                  starting address of the dump is not on a boundary. In</span><br><span class="line">                  this case, the second line of the dump begins on a boun-</span><br><span class="line">                  dary.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">              The Dump command has two format options:</span><br><span class="line"></span><br><span class="line">              <span class="ngr">Option 1                                                    </span></span><br><span class="line"></span><br><span class="line">              Use this option to display the contents of 40h bytes (40-</span><br><span class="line">              column mode) or 80h bytes (80-column mode). For example:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">D address</span></span><br><span class="line">                 or</span><br><span class="line">              <span class="ngb">D</span></span><br><span class="line"></span><br><span class="line">              The contents are dumped starting with the specified ad-</span><br><span class="line">              dress.</span><br><span class="line"></span><br><span class="line">              If you do not specify an address, the D command assumes the</span><br><span class="line">              starting address is the location following the last location</span><br><span class="line">              displayed by a previous D command. Thus, it is possible to</span><br><span class="line">              dump consecutive 40-byte or 80-byte areas by entering consec-</span><br><span class="line">              utive D commands without parameters.</span><br><span class="line"></span><br><span class="line">              If no previous D command was entered, the location is offset</span><br><span class="line">              100h into the segment originally initialized in the segment</span><br><span class="line">              registers by DEBUG.</span><br><span class="line"></span><br><span class="line">                  <span class="ngb">Note</span>:</span><br><span class="line">                  If you enter only an offset for the starting address,</span><br><span class="line">                  the D command assumes the segment contained in the DS</span><br><span class="line">                  register.</span><br><span class="line"></span><br><span class="line">              <span class="ngr">Option 2                                                    </span></span><br><span class="line"></span><br><span class="line">              Use this option to display the contents of the specified ad-</span><br><span class="line">              dress range. For example:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">D range</span></span><br><span class="line"></span><br><span class="line">                  <span class="ngb">Note</span>:</span><br><span class="line">                  If you enter only an offset for the starting address,</span><br><span class="line">                  the D command assumes the segment contained in the DS</span><br><span class="line">                  register. If you specify an ending address, enter it</span><br><span class="line">                  with only an offset value.</span><br><span class="line"></span><br><span class="line">              For example:</span><br><span class="line">              <span class="ngb">D cs:100 10C</span></span><br><span class="line"></span><br><span class="line">              A 40-column display format might look like this:</span><br><span class="line">              <span class="ngb">04BA:0100   42 45 52 54 41 20 54 00</span></span><br><span class="line">              <span class="ngb">                    BERTA T.</span></span><br><span class="line">              <span class="ngb">04BA:0108   20 42 4F 52 47</span></span><br><span class="line">              <span class="ngb">                       BORG</span></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="debug-36619.html">address</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-38569.html">range</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:38</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

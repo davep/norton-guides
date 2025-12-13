@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » OverView » Questions and Answers</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-259988.html">
+    <link rel="next" href="mrdebug-262623.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-259988.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-241082.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-262623.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">I can&#39;t single step through my IF ENDIF statements.</span></span><br><span class="line"> Correct. They don&#39;t allow for this.</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> The first thing you should know is that the IF..ELSEIF..ELSE..ENDIF</span><br><span class="line"> construct is NOT identical to the DO CASE..ENDCASE construct.</span><br><span class="line"></span><br><span class="line"> The IF..ELSEIF..ELSE..ENDIF is similar to the DO CASE construct in that you</span><br><span class="line"> both may execute one of several statements depending on the outcome of an</span><br><span class="line"> expression.</span><br><span class="line"></span><br><span class="line"> The main difference between the two is that when an IF..ELSEIF..ELSE..ENDIF</span><br><span class="line"> construct is compiled, the line numbers are not stored within the object</span><br><span class="line"> module so when you come to debug them, the debugger can only show the top</span><br><span class="line"> line  of the construct and then the program jumps straight to the statement</span><br><span class="line"> following the first .T.  evaluation.</span><br><span class="line"></span><br><span class="line"> The DO CASE..ENDCASE construct has line numbers stored with each CASE line</span><br><span class="line"> in the object module and therefore you are able to single step through a</span><br><span class="line"> DO..CASE..ENDCASE construct without any &#39;sudden jumps&#39;.</span><br><span class="line"></span><br><span class="line"> You may get around this problem by replacing your IF..ELSEIF..ELSE..ENDIF</span><br><span class="line"> constructs with DO CASE..CASE..OTHERWISE..ENDCASE statements.</span><br><span class="line"></span><br><span class="line"> Or, you may compile your application by including the MrDebug.Ch file - in</span><br><span class="line"> which IF..ELSEIF..ELSE..ENDIF constructs will be pre-processed into DO</span><br><span class="line"> CASE..CASE..OTHERWISE..ENDCASE statements</span><br><span class="line"></span><br><span class="line"> To summarize.... if you include MrDebug.Ch in a .prg then all</span><br><span class="line"> IF..ELSEIF..ELSE..ENDIF constructs will be replaced with</span><br><span class="line"> CASE..CASE..OTHERWISE..ENDCASE constructs.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,155 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Tutorial » Assertion Checking</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-370508.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-370508.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-360448.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Using Trace Messages</span></span><br><span class="line"> About Trace Messaging</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> The TRACE command allows you to send a message to the Assert/Trace window</span><br><span class="line"> without the need for execution of the program to halt.</span><br><span class="line"></span><br><span class="line"> This could come in handy when you were testing a piece of code and you</span><br><span class="line"> wanted to know just where your program currently was in it&#39;s run.</span><br><span class="line"></span><br><span class="line"> A simple line such as:</span><br><span class="line"></span><br><span class="line">   <span class="ngb">TRACE MESSAGE &#34;Hey Dad, I made it to the semaphore lock routine&#34;</span></span><br><span class="line"></span><br><span class="line"> would send a message to the Assert/Trace window, without the need for</span><br><span class="line"> interrupting the execution of the program.</span><br><span class="line"></span><br><span class="line"> In many ways, TRACE is very similar to ASSERT, the only difference being</span><br><span class="line"> that TRACE does not halt execution of the program.</span><br><span class="line"></span><br><span class="line"> A Trace command could be used by you in cases where something has failed</span><br><span class="line"> that would not be obvious. For example let us say that you are looking for a</span><br><span class="line"> record in a table and the seek fails, you could use a TRACE command to log</span><br><span class="line"> the fact that the trace failed.</span><br><span class="line"></span><br><span class="line"> The following example would log a message to the Assert/Trace window saying</span><br><span class="line"> that the record could not be found:</span><br><span class="line"></span><br><span class="line">   <span class="ngb">( cTableName )-&gt;( dbSeek( cExp ) )</span></span><br><span class="line"></span><br><span class="line">   <span class="ngb">TRACE (cTableName)-&gt;(FOUND())  ;</span></span><br><span class="line">   <span class="ngb">  MESSAGE &#34;Failed to find record using: &#34;, cExp,&#34; in: &#34;, cTableName</span></span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-666937.html">TRACE</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="mrdebug-652081.html">ASSERT</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="mrdebug-219764.html">MrDebug.CH</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,137 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-32993.html">
+    <link rel="next" href="tr-36249.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-32993.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-36249.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> CALL DOSFUNC WITH &lt;C registers&gt;, &lt;N flags&gt;</span><br><span class="line"> Provides access to INT 21H DOS function calls.</span><br><span class="line"> &lt;registers&gt; is altered to contain register contents after INT 21H call.</span><br><span class="line"></span><br><span class="line"> &lt;registers&gt; is a 32-byte character string containing the desired</span><br><span class="line">             contents of registers AX, BX, CX, DX, SI, DI, DS, ES</span><br><span class="line">             as hexadecimal strings.  It must contain something</span><br><span class="line">             for every register in the above order. If a register</span><br><span class="line">             is not needed, assign it &#34;0000&#34;.  If DS or ES are</span><br><span class="line">             given &#34;0000&#34;, it is ignored and their current contents</span><br><span class="line">             are preserved.</span><br><span class="line"> &lt;expN&gt; is a numeric memory variable used to return flags after</span><br><span class="line">        the INT 21H function call.</span><br><span class="line"></span><br><span class="line"> * Get time format (i.e., 12- or 24-hour clock) of the</span><br><span class="line"> * country specified in Config.sys</span><br><span class="line"></span><br><span class="line"> * See the MS-DOS Programmer&#39;s Reference or the</span><br><span class="line"> * DOS Technical Reference Manual for details.</span><br><span class="line"></span><br><span class="line"> m_buffer = ALLOCATE( 32 )</span><br><span class="line"> m_seg    = SUBSTR(m_buffer, 1, 4)</span><br><span class="line"> m_off    = SUBSTR(m_buffer, 5, 4)</span><br><span class="line"> IF &#34;&#34; = m_buffer</span><br><span class="line">    ? &#34;Memory allocation error&#34;</span><br><span class="line">    RETURN</span><br><span class="line"> ENDIF</span><br><span class="line"> m_country = COUNTRY()</span><br><span class="line"> IF m_country &lt;= 254</span><br><span class="line">    m_ax = &#34;38&#34; + SUBSTR(HEX(m_country), 3, 2)</span><br><span class="line">    m_bx = &#34;0000&#34;</span><br><span class="line"> ELSE</span><br><span class="line">    m_ax = &#34;38FF&#34;</span><br><span class="line">    m_bx = HEX(m_country)</span><br><span class="line"> ENDIF</span><br><span class="line"> m_cx = &#34;0000&#34;    &amp;&amp; Don&#39;t care</span><br><span class="line"> m_dx = m_off     &amp;&amp; Offset of allocated buffer</span><br><span class="line"> m_si = &#34;0000&#34;    &amp;&amp; Don&#39;t care</span><br><span class="line"> m_di = &#34;0000&#34;    &amp;&amp; Don&#39;t care</span><br><span class="line"> m_ds = m_seg     &amp;&amp; Segment of allocated buffer</span><br><span class="line"> m_es = &#34;0000&#34;    &amp;&amp; Don&#39;t care</span><br><span class="line"> m_regs = m_ax + m_bx + m_cx + m_dx + m_si + m_di + m_ds + m_es</span><br><span class="line"> m_flags = 0</span><br><span class="line"> CALL DOSFUNC WITH m_regs, m_flags</span><br><span class="line"></span><br><span class="line"> * Was carry flag set (m_flags % 2)?</span><br><span class="line"> IF m_flags % 2 = 1</span><br><span class="line">    ? &#34;Invalid country code&#34;</span><br><span class="line">    RETURN</span><br><span class="line"> ENDIF</span><br><span class="line"> m_timeform = PEEKBYTE(m_seg, m_off+17)</span><br><span class="line"> IF m_timeform % 2 = 0</span><br><span class="line">    ? &#34;Current country uses 12-hour clock&#34;</span><br><span class="line"> ELSE</span><br><span class="line">    ? &#34;Current country uses 24-hour clock&#34;</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> * Release memory</span><br><span class="line"> IF .NOT. DEALLOC(m_buffer, 32)</span><br><span class="line">    ? &#34;Error -- releasing memory.&#34;</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> Also see the Country.prg sample program.</span><br><span class="line"></span><br><span class="line"> Hazard</span><br><span class="line">    Invalid register contents can cause serious errors,</span><br><span class="line">    including computer lock-up and data destruction.</span><br><span class="line"></span><br><span class="line">    Be sure to consult a reliable source, such as IBM&#39;s or Microsoft&#39;s</span><br><span class="line">    DOS technical references, or The Peter Norton Programmer&#39;s Guide</span><br><span class="line">    to the IBM-PC.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-4711.html">ALLOCATE()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-27424.html">DEALLOC()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-50109.html">HEX()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-79085.html">PEEK...()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-80173.html">POKE...()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-85107.html">REG()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-87547.html">ROMBIOS</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

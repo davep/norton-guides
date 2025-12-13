@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Languages</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-121858.html">
+    <link rel="next" href="perl-128148.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-121858.html">Previous</a></li>
+
+
+          
+
+<li><a href="perl-90961.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-128148.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>PERL</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="perl-90961.html">Languages</a></li>
+                  <li><a href="perl-159711.html">Command line options</a></li>
+                  <li><a href="perl-170094.html">Regular Expressions</a></li>
+                  <li><a href="perl-171332.html">Special Variables</a></li>
+                  <li><a href="perl-188582.html">Operators</a></li>
+                  <li><a href="perl-197905.html">Debugging</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tables</li>
+              <li>
+                <ul>
+                  <li><a href="perl-204383.html">ASCII Chart</a></li>
+                  <li><a href="perl-207014.html">Literals</a></li>
+                  <li><a href="perl-207867.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">     Passing By Reference</span><br><span class="line"></span><br><span class="line">     Sometimes you don&#39;t want to pass the value of an array to  a</span><br><span class="line">     subroutine but rather the name of it, so that the subroutine</span><br><span class="line">     can modify the global copy of it rather than working with  a</span><br><span class="line">     local  copy.   In perl you can refer to all the objects of a</span><br><span class="line">     particular name by prefixing the name  with  a  star:  *foo.</span><br><span class="line">     When  evaluated,  it produces a scalar value that represents</span><br><span class="line">     all the objects of that name, including any filehandle, for-</span><br><span class="line">     mat or subroutine.  When assigned to within a local() opera-</span><br><span class="line">     tion, it causes the name mentioned to refer  to  whatever  *</span><br><span class="line">     value was assigned to it.  Example:</span><br><span class="line"></span><br><span class="line">          sub doubleary {</span><br><span class="line">              local(*someary) = @_;</span><br><span class="line">              foreach $elem (@someary) {</span><br><span class="line">               $elem *= 2;</span><br><span class="line">              }</span><br><span class="line">          }</span><br><span class="line">          do doubleary(*foo);</span><br><span class="line">          do doubleary(*bar);</span><br><span class="line"></span><br><span class="line">     Assignment to *name is currently recommended only  inside  a</span><br><span class="line">     local().  You can actually assign to *name anywhere, but the</span><br><span class="line">     previous referent of *name may be  stranded  forever.   This</span><br><span class="line">     may or may not bother you.</span><br><span class="line"></span><br><span class="line">     Note that scalars are already passed by  reference,  so  you</span><br><span class="line">     can  modify scalar arguments without using this mechanism by</span><br><span class="line">     referring explicitly to the $_[nnn] in  question.   You  can</span><br><span class="line">     modify  all the elements of an array by passing all the ele-</span><br><span class="line">     ments as scalars, but you have to use  the  *  mechanism  to</span><br><span class="line">     push,  pop  or change the size of an array.  The * mechanism</span><br><span class="line">     will probably be more efficient in any case.</span><br><span class="line"></span><br><span class="line">     Since a *name value contains unprintable binary data, if  it</span><br><span class="line">     is  used as an argument in a print, or as a %s argument in a</span><br><span class="line">     printf or sprintf, it then has the value &#39;*name&#39;, just so it</span><br><span class="line">     prints out pretty.</span><br><span class="line"></span><br><span class="line">     Even if you don&#39;t want to modify an array, this mechanism is</span><br><span class="line">     useful  for  passing multiple arrays in a single LIST, since</span><br><span class="line">     normally the LIST mechanism will merge all the array  values</span><br><span class="line">     so that you can&#39;t extract out the individual arrays.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:49</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

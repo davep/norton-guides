@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1095008.html">
+    <link rel="next" href="rbint-1097305.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1095008.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1061380.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1097305.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 0B  - Vmix - &#34;sys_sysreq&#34; - System Configuration Manager       </span>  [<span class="ngb">O</span>]</span><br><span class="line"></span><br><span class="line">   AH = 0Bh</span><br><span class="line">   STACK:  WORD    caller&#39;s UID</span><br><span class="line">       DWORD   pointer to ASCIZ name of requested method</span><br><span class="line">           &#34;abort&#34; abort current send/receive on comm port</span><br><span class="line">           &#34;block&#34; start/end critical section</span><br><span class="line">           &#34;close&#34; terminate interrupt-drive comm I/O</span><br><span class="line">           &#34;open&#34; prepare comm port for interrupt-driven I/O</span><br><span class="line">           &#34;delay&#34; set delay timer and wait</span><br><span class="line">           &#34;hibernate&#34; put process to sleep</span><br><span class="line">           &#34;ints&#34; enable/disable interrupt-driven INT 14h</span><br><span class="line">           &#34;length&#34; get current send/receive buffer offsets</span><br><span class="line">           &#34;kswitch&#34; switch stacks</span><br><span class="line">           &#34;numproc&#34; get number of active processes</span><br><span class="line">           &#34;protocol&#34; set protocol function for comm interrupts</span><br><span class="line">           &#34;relocate&#34; set/reset VMiX flag for relocating to himem</span><br><span class="line">           &#34;status&#34; get current open comm port status</span><br><span class="line">           &#34;wake&#34; awaken a process</span><br><span class="line">           &#34;xport&#34; get comm port polled for logins</span><br><span class="line">       ---if &#34;abort&#34;---</span><br><span class="line">        no additional arguments</span><br><span class="line">       ---if &#34;block&#34;---</span><br><span class="line">        WORD   0000h end, 0001h start</span><br><span class="line">       ---if &#34;close&#34;---</span><br><span class="line">        no additional arguments</span><br><span class="line">       ---if &#34;open&#34;---</span><br><span class="line">        WORD   comm port (00h-03h)</span><br><span class="line">        WORD   BIOS parameter byte (see #0226 at INT 14/AH=00h),</span><br><span class="line">           except bits 7-5: 000 = 19200, 001 = 38400, 011 = 115200</span><br><span class="line">       ---if &#34;delay&#34;---</span><br><span class="line">        WORD   time in seconds</span><br><span class="line">       ---if &#34;hibernate&#34;---</span><br><span class="line">        WORD   process ID</span><br><span class="line">       ---if &#34;ints&#34;---</span><br><span class="line">        WORD   0000h if no, 0001h if yes</span><br><span class="line">       ---if &#34;length&#34;,&#34;numproc&#34;,&#34;relocate&#34;,&#34;status&#34;,&#34;xport&#34;---</span><br><span class="line">        no additional arguments</span><br><span class="line">       ---if &#34;kswitch&#34;---</span><br><span class="line">        DWORD  pointer to new stack</span><br><span class="line">       ---if &#34;protocol&#34;---</span><br><span class="line">        DWORD  pointer to function (must be in low &#34;assign&#34;ed memory</span><br><span class="line">           when in 386 mode)</span><br><span class="line">       ---if &#34;wake&#34;---</span><br><span class="line">        WORD   process ID</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> DX:AX -&gt; result or 0000h:0000h</span><br><span class="line">       ---if &#34;length&#34;---</span><br><span class="line">        BYTE   receive offset</span><br><span class="line">        BYTE   send offset</span><br><span class="line">       ---if &#34;kswitch&#34;---</span><br><span class="line">        DWORD  old stack pointer</span><br><span class="line">       ---if &#34;numproc&#34;---</span><br><span class="line">        WORD   number of active processes</span><br><span class="line">       ---if &#34;status&#34;---</span><br><span class="line">        current open comm port status</span><br><span class="line">       ---if &#34;xport&#34;---</span><br><span class="line">        current comm port being polled for logins</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the &#34;delay&#34; command reportedly disables the keyboard until the delay</span><br><span class="line">     completes</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=05h&#34;VMiX&#34;,AH=0Eh&#34;VMiX&#34;</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

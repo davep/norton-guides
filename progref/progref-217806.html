@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » DOS » Error Codes</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Error Codes</span></span><br><span class="line"></span><br><span class="line">    All the FCB functions report an error by returning 0FFh in the AL</span><br><span class="line">    register.  Other functions report an error by setting the carry flag</span><br><span class="line">    and placing an error code in the AX register.  DOS 2.x functions</span><br><span class="line">    return the error codes 0 - 12h.  Under DOS 3.x, it is best to call</span><br><span class="line">    function 59h to obtain more detailed error information.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Code  Meaning</span>                           <span class="ngb">Code  Meaning</span></span><br><span class="line"> 00h  No error                           22h  Invalid disk change</span><br><span class="line"> 01h  Invalid function number            23h  FCB unavailable</span><br><span class="line"> 02h  File not found                     24h  Sharing buffer overflow</span><br><span class="line"> 03h  Path not found                     32h  Network request not supported</span><br><span class="line"> 04h  No handle available                33h  Remote computer not listening</span><br><span class="line"> 05h  Access denied                      34h  Duplicate name on network</span><br><span class="line"> 06h  Invalid handle                     35h  Network name not found</span><br><span class="line"> 07h  Memory control blocks destroyed    36h  Network busy</span><br><span class="line"> 08h  Insufficient memory                37h  Network device no longer exists</span><br><span class="line"> 09h  Invalid memory block address       38h  Net BIOS command limit exceeded</span><br><span class="line"> 0Ah  Invalid environment                39h  Network adapter hardware error</span><br><span class="line"> 0Bh  Invalid format                     3Ah  Incorrect response from network</span><br><span class="line"> 0Ch  Invalid access code                3Bh  Unexpected network error</span><br><span class="line"> 0Dh  Invalid data                       3Ch  Incompatible remote adapter</span><br><span class="line"> 0Eh  Reserved                           3Dh  Print queue full</span><br><span class="line"> 0Fh  Invalid drive specification        3Eh  Not enough space for print file</span><br><span class="line"> 10h  Attempt to remove the current      3Fh  Print file was deleted</span><br><span class="line">      directory                          40h  Network name was deleted</span><br><span class="line"> 11h  Not same device                    41h  Access denied</span><br><span class="line"> 12h  No more files                      42h  Network device type incorrect</span><br><span class="line"> 13h  Disk write-protected               43h  Network name not found</span><br><span class="line"> 14h  Unknown unit                       44h  Network name limit exceeded</span><br><span class="line"> 15h  Drive not ready                    45h  Net BIOS session limit exceeded</span><br><span class="line"> 16h  Unknown command                    46h  Temporarily paused</span><br><span class="line"> 17h  Disk data error (CRC)              47h  Network request not accepted</span><br><span class="line"> 18h  Bad request structure length       48h  Print or disk redirection paused</span><br><span class="line"> 19h  Seek error                         50h  File exists</span><br><span class="line"> 1Ah  Unknown media type                 51h  Reserved</span><br><span class="line"> 1Bh  Sector not found                   52h  Cannot make directory entry</span><br><span class="line"> 1Ch  Printer out of paper               53h  Critical-error interrupt failure</span><br><span class="line"> 1Dh  Write fault                        54h  Too many redirections</span><br><span class="line"> 1Eh  Read fault                         55h  Duplicate redirection</span><br><span class="line"> 1Fh  General failure                    56h  Invalid password</span><br><span class="line"> 20h  File sharing violation             57h  Invalid parameter</span><br><span class="line"> 21h  File locking violation             58h  Network device fault</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">  The following information is returned by the DOS function 59h:</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Error class:</span></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Code    Meaning</span></span><br><span class="line">     01h    Out of resource</span><br><span class="line">     02h    Temporary situation; try again later</span><br><span class="line">     03h    Authorization</span><br><span class="line">     04h    Internal error in system software</span><br><span class="line">     05h    Hardware failure</span><br><span class="line">     06h    System failure; serious failure of system software</span><br><span class="line">     07h    Application software error</span><br><span class="line">     08h    Item requested not found</span><br><span class="line">     09h    Bad format (e.g., unrecognizable disk)</span><br><span class="line">     0Ah    Item locked</span><br><span class="line">     0Bh    Media error (e.g., CRC error)</span><br><span class="line">     0Ch    Already exists</span><br><span class="line">     0Dh    Unknown</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Suggested action:</span></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Code    Meaning</span></span><br><span class="line">     01h    Try again now.</span><br><span class="line">     02h    Try again (a few times) after a pause, then prompt user to</span><br><span class="line">            continue or abort.</span><br><span class="line">     03h    Ask user to correct input, then retry.</span><br><span class="line">     04h    Orderly abort; close files, then shut down the application.</span><br><span class="line">     05h    Immediate abort; don&#39;t even try to close files.</span><br><span class="line">     06h    Ignore.</span><br><span class="line">     07h    Ask user to do something (like insert appropriate disk), then</span><br><span class="line">            retry.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Locus of error:</span></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Code    Meaning</span></span><br><span class="line">     01h    Unknown</span><br><span class="line">     02h    Block device (e.g., disk drive)</span><br><span class="line">     03h    Network</span><br><span class="line">     04h    Serial device</span><br><span class="line">     05h    Memory</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-186441.html">59h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

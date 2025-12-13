@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="gt_libng-style.css">
+    <title>GT_LIB v1.0 Reference Guide Release 2.0 » G-P » Keyboard</title>
+    <meta name="description" content="GT_LIB v1.0 Reference Guide Release 2.0">
+    <link rel="prev" href="gt_libng-112459.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="gt_libng-about.html">About</a></li>
+
+
+          
+
+<li><a href="gt_libng-112459.html">Previous</a></li>
+
+
+          
+
+<li><a href="gt_libng-106381.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="gt_libng-5540.html">Audit</a></li>
+                  <li><a href="gt_libng-6547.html">Compression</a></li>
+                  <li><a href="gt_libng-13032.html">Date</a></li>
+                  <li><a href="gt_libng-23409.html">Disk Drive</a></li>
+                  <li><a href="gt_libng-37327.html">Error System</a></li>
+                  <li><a href="gt_libng-40165.html">Environment</a></li>
+                  <li><a href="gt_libng-49799.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-P</li>
+              <li>
+                <ul>
+                  <li><a href="gt_libng-66199.html">General</a></li>
+                  <li><a href="gt_libng-98996.html">Get Reader</a></li>
+                  <li><a href="gt_libng-106381.html">Keyboard</a></li>
+                  <li><a href="gt_libng-114805.html">Maths</a></li>
+                  <li><a href="gt_libng-124424.html">Memory</a></li>
+                  <li><a href="gt_libng-127716.html">Network</a></li>
+                  <li><a href="gt_libng-133468.html">Printer</a></li>
+                  
+                </ul>
+              </li>
+              <li>S-W</li>
+              <li>
+                <ul>
+                  <li><a href="gt_libng-136117.html">Screen Saver</a></li>
+                  <li><a href="gt_libng-140433.html">Security</a></li>
+                  <li><a href="gt_libng-141574.html">String</a></li>
+                  <li><a href="gt_libng-170364.html">System</a></li>
+                  <li><a href="gt_libng-174810.html">Video</a></li>
+                  <li><a href="gt_libng-205251.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="gt_libng-209432.html">About</a></li>
+                  <li><a href="gt_libng-209917.html">Background</a></li>
+                  <li><a href="gt_libng-212755.html">BBS List</a></li>
+                  <li><a href="gt_libng-213177.html">Contributors</a></li>
+                  <li><a href="gt_libng-213853.html">Submitting Code</a></li>
+                  <li><a href="gt_libng-215955.html">Sample Clipper/C Header</a></li>
+                  <li><a href="gt_libng-218225.html">Sample ASM Header</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Stuff a key press into the keyboard buffer.</span></span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">       <span class="fg15 bg1"> GT_StuffKey(&lt;nInkeyCode&gt; | &lt;cChar&gt;) --&gt; lStuffed</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments:</span></span><br><span class="line"></span><br><span class="line">      <span class="ngb">&lt;nInkeyCode&gt;</span> is a key code as returned by the Clipper InKey()</span><br><span class="line">                   function.</span><br><span class="line">      <span class="ngb">&lt;cChar&gt;</span>      is a character string of which the first character is</span><br><span class="line">                   used.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">      A logical value, .T. if the key was stuffed, .F. if not.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description:</span></span><br><span class="line"></span><br><span class="line">      GT_StuffKey() can be used to stuff most of the standard InKey()</span><br><span class="line">      codes into the keyboard buffer. The use of this function differs</span><br><span class="line">      from using the Clipper KEYBOARD command in a number of ways.</span><br><span class="line">      First, it will only stuff one key at a time. Second, it will</span><br><span class="line">      accept either keyboard codes or an actual character. Third, it</span><br><span class="line">      will stuff many of the keys that the KEYBOARD command will not</span><br><span class="line">      cope with, function keys for example.</span><br><span class="line"></span><br><span class="line">      Note that not all keys have been included, F11 and F12 are examples</span><br><span class="line">      of this.</span><br><span class="line"></span><br><span class="line">      This function is based on FT_PutKey() as coded my Ted Means for the</span><br><span class="line">      NanFor Library. The main changes are support for the Alt &#34;-&#34; and</span><br><span class="line">      Alt &#34;+&#34; keys plus this function will work in Blinker protected</span><br><span class="line">      mode (and so may work with Exospace).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      // Stuff the character &#34;A&#34; into the keyboard buffer.</span><br><span class="line"></span><br><span class="line">      GT_StuffKey(65)         // Use the key code.</span><br><span class="line">      GT_StuffKey(&#34;A&#34;)        // Use the character.</span><br><span class="line">      GT_StuffKey(&#34;A Test&#34;)   // Only the first character is used.</span><br><span class="line"></span><br><span class="line">      // Stuff an F1 key press into the keyboard buffer.</span><br><span class="line"></span><br><span class="line">      GT_StuffKey(K_F1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> STUFFKEY.C</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author: </span> Dave Pearson</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:41</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

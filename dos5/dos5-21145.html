@@ -1,0 +1,118 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-20795.html">
+    <link rel="next" href="dos5-22239.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-20795.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-22239.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 30h            Get Version Number</span></span><br><span class="line"></span><br><span class="line">    Returns the DOS version number.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 30h</span><br><span class="line">                (DOS 5.0+: AL = 0   Return BH = OEM number</span><br><span class="line">                           AL = 1   Return BH = version flag)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AL    = Major version number</span><br><span class="line">                AH    = Minor version number</span><br><span class="line">                BL:CX = 24-bit user serial number</span><br><span class="line">                        (zero if unused)</span><br><span class="line">                BH    = OEM number</span><br><span class="line">                        <span class="ngb">or</span></span><br><span class="line">                        Version flag (DOS 5.0+):</span><br><span class="line">                        bit 3 = 0: DOS runs in RAM</span><br><span class="line">                        bit 3 = 1: DOS runs in ROM</span><br><span class="line">                        other bits reserved (0)</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    Used under DOS 3.30, this call would return AL = 03h and AH = 1Eh</span><br><span class="line">    (30 decimal).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Notes</span></span><br><span class="line">    The version returned under DOS 4.0x may be modified by entries in</span><br><span class="line">    the special program list.</span><br><span class="line"></span><br><span class="line">    The version returned under DOS 5+ may be modified by SETVER; this</span><br><span class="line">    version number can differ from the version number returned by</span><br><span class="line">    function 3306h.</span><br><span class="line"></span><br><span class="line">    The OS/2 v1.x Compatibility Box returns major version 0Ah (10).</span><br><span class="line">    The OS/2 v2.x Compatibility Box returns major version 14h (20).</span><br><span class="line">    The Windows/NT DOS box returns version 5.00, subject to SETVER.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-26029.html">3306h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-89949.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-89949.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-54487.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 10h, 1Ch            Save/Restore Video State                          VGA</span></span><br><span class="line"></span><br><span class="line">    Performs a complete save or restore of the VGA video state.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line">    Return size of buffer needed to save/restore video state</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX = 1C00h</span><br><span class="line">                CX = Requested states:</span><br><span class="line">                     Bit 2   1 = DAC state</span><br><span class="line">                     Bit 1   1 = BIOS data</span><br><span class="line">                     Bit 0   1 = Video hardware state</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AL = 1Ch   If function supported</span><br><span class="line">                BX = Save/restore buffer size block count</span><br><span class="line">                     (each block is 64 bytes)</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line">    Save video state</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX    = 1C01h</span><br><span class="line">                CX    = Save:</span><br><span class="line">                        Bit 2   1 = Save DAC state</span><br><span class="line">                        Bit 1   1 = Save BIOS data</span><br><span class="line">                        Bit 0   1 = Save video hardware state</span><br><span class="line">                ES:BX = Address of buffer</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AL = 1Ch   If function supported</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line">    Restore video state</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX    = 1C02h</span><br><span class="line">                CX    = Restore:</span><br><span class="line">                        Bit 2   1 = Restore DAC state</span><br><span class="line">                        Bit 1   1 = Restore BIOS data</span><br><span class="line">                        Bit 0   1 = Restore video hardware state</span><br><span class="line">                ES:BX = Address of buffer</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AL = 1Ch   If function supported</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This service lets you save or restore the video state. First, you</span><br><span class="line">    must determine the size of the memory buffer you need to store</span><br><span class="line">    video information.</span><br><span class="line"></span><br><span class="line">    To get that size, use <span class="ngb">subservice 0</span>. You need to specify how</span><br><span class="line">    much information you want to store by setting the bits of CX as</span><br><span class="line">    follows:</span><br><span class="line">                Bit 2   1 = Save/restore DAC state</span><br><span class="line">                Bit 1   1 = Save/restore BIOS data</span><br><span class="line">                Bit 0   1 = Save/restore video hardware state</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Subservice 1</span> saves the state. Pass it the address of the data</span><br><span class="line">    buffer you want to use in ES:BX and set the bits in CX to match</span><br><span class="line">    those parts of the video state you want to save. Note that many</span><br><span class="line">    BIOSes corrupt the video registers when saving the state, so a</span><br><span class="line">    program should restore the state, using subservice 2, immediately</span><br><span class="line">    after saving it (the saved data is uncorrupted).</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Subservice 2</span> restores the video state. The inputs are the same</span><br><span class="line">    as for subservice 1.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

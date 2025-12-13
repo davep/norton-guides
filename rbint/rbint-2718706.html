@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2718003.html">
+    <link rel="next" href="rbint-2719490.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2718003.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2719490.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 65  U - Dos 4.0+ Internal - Country-dependent Filename Capitali</span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 65h</span><br><span class="line">   AL = function</span><br><span class="line">       A0h capitalize filename character</span><br><span class="line">       DL = character to capitalize</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> DL = capitalized character</span><br><span class="line">       A1h capitalize counted filename string</span><br><span class="line">       DS:DX -&gt; filename string to capitalize</span><br><span class="line">       CX = length of string</span><br><span class="line">       A2h capitalize ASCIZ filename</span><br><span class="line">       DS:DX -&gt; ASCIZ filename to capitalize</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error</span><br><span class="line">       AX = error code (see #1366 at AH=59h/BX=0000h)</span><br><span class="line">   CF clear if successful</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  nonfunctional in MS-DOS 4.00 through 6.00 due to a bug (the code sets a</span><br><span class="line">     pointer depending on the high bit of AL, but doesn&#39;t clear the</span><br><span class="line">     bit before branching by function number).  Supported and</span><br><span class="line">     functional(!) in Novell DOS 7 (Update 15)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

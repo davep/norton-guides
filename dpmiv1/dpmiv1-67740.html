@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-66872.html">
+    <link rel="next" href="dpmiv1-69211.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-66872.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-69211.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Resize Memory Block</span><br><span class="line"></span><br><span class="line">Changes the size of a memory block that was previously</span><br><span class="line">allocated with either the Allocate Memory Block function</span><br><span class="line">(Int 31H Fn 0501H) or the Allocate Linear Memory Block</span><br><span class="line">function (Int 31H Fn 0504H).</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 0503H</span><br><span class="line">   BX:CX  = new size of block (bytes, must be nonzero)</span><br><span class="line">   SI:DI  = memory block handle</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   if function successful</span><br><span class="line">   Carry flag= clear</span><br><span class="line">   BX:CX  = new linear address of memory block</span><br><span class="line">   SI:DI  = new handle for memory block</span><br><span class="line"></span><br><span class="line">   if function unsuccessful</span><br><span class="line">   Carry flag= set</span><br><span class="line">   AX     = error code</span><br><span class="line">           8012H   linear memory unavailable</span><br><span class="line">           8013H   physical memory unavailable</span><br><span class="line">           8014H   backing store unavailable</span><br><span class="line">           8016H   handle unavailable</span><br><span class="line">           8021H   invalid value (BX:CX = 0)</span><br><span class="line">           8023H   invalid handle (in SI:DI)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  After this function returns, the previous handle for the</span><br><span class="line">   memory block is invalid and should not be used.</span><br><span class="line">o  When increasing the size of a block, this function always</span><br><span class="line">   creates committed pages.  When decreasing the block size,</span><br><span class="line">   this call will correctly free all possible page types</span><br><span class="line">   (committed pages, uncommitted pages, and mapped pages).</span><br><span class="line">   The linear address and handle of the memory block may</span><br><span class="line">   change  as a result of this call.</span><br><span class="line">o  It is the client&#39;s responsibility to update any</span><br><span class="line">   descriptors that map the memory block with the new linear</span><br><span class="line">   address after resizing the block.</span><br><span class="line">o  This function returns an error if the client attempts to</span><br><span class="line">   resize a memory block to zero bytes.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

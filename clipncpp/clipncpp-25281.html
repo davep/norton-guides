@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » C/C++ » Using C</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-22768.html">
+    <link rel="next" href="clipncpp-26773.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-22768.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-26773.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Example 3</span></span><br><span class="line"></span><br><span class="line"> This program is the same as Example 2 except is uses pseudo-functions</span><br><span class="line"> defined in Number.h to simplify the C source code.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /***</span><br><span class="line"> *   Number.c</span><br><span class="line"> *</span><br><span class="line"> *   By: Scott McIntosh, Nantucket Corp.</span><br><span class="line"> *</span><br><span class="line"> *   This function is identical to Number.c in Example2 except that it</span><br><span class="line"> *   uses the pseudo-functions ISFLOAT(), ISLONG(), and ISINT() which are</span><br><span class="line"> *   defined in Number.h</span><br><span class="line"> *</span><br><span class="line"> *   Compile: cl /AL /c /FPa /Gs /Oalt /Zl number.c</span><br><span class="line"> *      Link: RTLINK FI numtest, number LIB clipper, llibca /NOE</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"> #include &#34;extend.h&#34;</span><br><span class="line"> #include &#34;number.h&#34;</span><br><span class="line"></span><br><span class="line"> CLIPPER NUMBER( void )</span><br><span class="line"> {</span><br><span class="line">    double dNum;</span><br><span class="line">    long   lNum;</span><br><span class="line">    int    iNum;</span><br><span class="line"></span><br><span class="line">    dNum = _parnd(1);</span><br><span class="line">    lNum = _parnl(1);</span><br><span class="line">    iNum = _parni(1);</span><br><span class="line"></span><br><span class="line">    if( ISFLOAT(1) )</span><br><span class="line">    {</span><br><span class="line">       cprintf( &#34;\r\n\n  Double &#34; );</span><br><span class="line">       _retnd( dNum );</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    if( ISINT(1) )</span><br><span class="line">    {</span><br><span class="line">       cprintf( &#34;\r\n\n  Integer &#34; );</span><br><span class="line">       _retni( iNum );</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    if( ISLONG(1) )</span><br><span class="line">    {</span><br><span class="line">       cprintf( &#34;\r\n\n  Long &#34; );</span><br><span class="line">       _retnl( lNum );</span><br><span class="line">    }</span><br><span class="line">    return;</span><br><span class="line"> }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /* EOF: Example 3 */</span><br><span class="line"></span><br><span class="line"> /***</span><br><span class="line"> *   Declares extend.h style pseudo-functions (like ISCHAR() or ISNUM() )</span><br><span class="line"> *   to check the C data type for a number.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"> #include &lt;limits.h&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /* macro to determine if a number is within the range of an integer */</span><br><span class="line"> #define INTRANGE(n) ( ( n &gt;= INT_MIN ) &amp;&amp; ( n &lt;= INT_MAX ) )</span><br><span class="line"></span><br><span class="line"> /* macros to test for each C numeric data type */</span><br><span class="line"> #define ISFLOAT(n)  ( (_parnd(n) - (double) _parnl(n) ) != 0.0 )</span><br><span class="line"> #define ISINT(n)    ( !ISFLOAT(n) &amp;&amp; INTRANGE( _parnl(n) ) )</span><br><span class="line"> #define ISLONG(n)   ( !ISFLOAT(n) &amp;&amp; !ISINT(n) )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /* EOF: Number.h */</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,120 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    
+    <link rel="next" href="bios-187283.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="bios-185076.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-187283.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 1Ah, 00h            Read System-Timer Time Counter                    all</span></span><br><span class="line"></span><br><span class="line">    Reports the current time of day, and whether 24 hours has passed</span><br><span class="line">    since 1) the last power-on, 2) the last system reset, or 3) the</span><br><span class="line">    last system-timer time read or set.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 00h</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  CX = High-order part of clock count</span><br><span class="line">                DX = Low-order part of clock count</span><br><span class="line">                AL = 0 if 24 hours has not passed; else 1</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The following formulas convert the clock count to the time of day:</span><br><span class="line"></span><br><span class="line">                Hour      = Clock / 65543 (1007h)</span><br><span class="line">                Remainder = Clock MOD 65543</span><br><span class="line"></span><br><span class="line">                Minutes   = Remainder / 1092 (444h)</span><br><span class="line">                Remainder = Remainder MOD 1092</span><br><span class="line"></span><br><span class="line">                Second    = Remainder / 18.21</span><br><span class="line">                Remainder = Remainder MOD 18.21</span><br><span class="line"></span><br><span class="line">                Hundredths = CINT(Remainder * 100)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    The &#34;system timer&#34; (as distinguished from the real-time clock) is</span><br><span class="line">    the timer that&#39;s set when the system is started. This time is</span><br><span class="line">    temporary, lasting only as long as the system is turned on.</span><br><span class="line"></span><br><span class="line">    The clock count may also be read as a 4-byte integer at memory</span><br><span class="line">    location 0040h:006Ch. This 4-byte value is equal to the 4-byte</span><br><span class="line">    integer in CX:DX after Service 00h has been called.</span><br><span class="line"></span><br><span class="line">    After the call, the flag (at 0040h:0070h) stating whether 24 hours</span><br><span class="line">    has passed or not, is cleared.</span><br><span class="line"></span><br><span class="line">    When TIME is typed at the command line, DOS gets the time by means</span><br><span class="line">    of this service.</span><br><span class="line"></span><br><span class="line">    Counts occur at the rate of 18.2 per second.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-187283.html">Int 1Ah, 01h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-188430.html">Int 1Ah, 02h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

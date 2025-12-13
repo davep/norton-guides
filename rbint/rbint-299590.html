@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-299540.html">
+    <link rel="next" href="rbint-300342.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-299540.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-300342.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Function:</span></span><br><span class="line"></span><br><span class="line">LAR Loads the Access rights of a descriptor in the Global Descriptor Table,</span><br><span class="line">whose selector is reg/mem into reg1. When successful, ZF=1, otherwise ZF=0.</span><br><span class="line"></span><br><span class="line">Some 386es allow access to selector 0 in the GDT leaving ZF=1.</span><br><span class="line">Normally this should not be possible and produce the condition ZF=0.</span><br><span class="line"></span><br><span class="line">Workaround would be to create an entry 0 in the GDT that consists of only</span><br><span class="line">zeroes. This will cause access with a selector of 0 to fail and</span><br><span class="line">produce ZF=0.</span><br><span class="line"></span><br><span class="line">A data breakpoint set to the mem16 operand of LAR can be missed on some</span><br><span class="line">386es if the segment with the selector at mem16 is not accessible.</span><br><span class="line">(see also &lt;debugging&gt;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">286-LOADALL / 386-LOADALL</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

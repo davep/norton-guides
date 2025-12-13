@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » C/C++ » Using C</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-25281.html">
+    <link rel="next" href="clipncpp-28252.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-25281.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-28252.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Example 4</span></span><br><span class="line"></span><br><span class="line"> /***</span><br><span class="line"> *   Template.c</span><br><span class="line"> *</span><br><span class="line"> *   By: Scott McIntosh, Nantucket Corp.</span><br><span class="line"> *</span><br><span class="line"> *   This function contains an example of how to write C code that can be</span><br><span class="line"> *   interface to C or to Clipper.</span><br><span class="line"> *</span><br><span class="line"> *   Note: this is only an example with pseudo-code.  It will not actually</span><br><span class="line"> *   compile.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"> #include &lt;whatever.h&gt;</span><br><span class="line"></span><br><span class="line"> #define IS_CLIPPER  // comment out this directive for stand-alone EXE</span><br><span class="line"></span><br><span class="line"> #ifdef IS_CLIPPER</span><br><span class="line"></span><br><span class="line"> #include &#34;extend.h&#34;</span><br><span class="line"> #define GRAB_MEM(bytes) _xalloc(bytes)</span><br><span class="line"> #define FREE_MEM(ptr)   _xfree(ptr)</span><br><span class="line"></span><br><span class="line"> #else</span><br><span class="line"></span><br><span class="line"> #include &lt;malloc.h&gt;</span><br><span class="line"> #define GRAB_MEM(bytes) malloc(bytes)</span><br><span class="line"> #define FREE_MEM(ptr)   free(ptr)</span><br><span class="line"></span><br><span class="line"> #endif</span><br><span class="line"></span><br><span class="line"> char * SomeFunc( int parm1, double parm2 ) // note: standard C function</span><br><span class="line"></span><br><span class="line">    char * ret;</span><br><span class="line"></span><br><span class="line">     // generic memory allocation usage example</span><br><span class="line">    if ((ret = GRAB_MEM(100)) == NULL)</span><br><span class="line">       ; // sorry - no memory</span><br><span class="line"></span><br><span class="line">    else</span><br><span class="line">       ; // presumably we would do something with all the parameters and</span><br><span class="line">         // store something in the return variable</span><br><span class="line"></span><br><span class="line">    return (ret);</span><br><span class="line"></span><br><span class="line"> }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> #ifdef IS_CLIPPER</span><br><span class="line"></span><br><span class="line"> CLIPPER ClipFunc(void)</span><br><span class="line"> {</span><br><span class="line">    int arg1;</span><br><span class="line">    double arg2;</span><br><span class="line"></span><br><span class="line">    arg1 = _parni(1);</span><br><span class="line">    arg2 = _parnd(2);</span><br><span class="line"></span><br><span class="line">    // normally we would do some parameter checking here</span><br><span class="line"></span><br><span class="line">    _retc( SomeFunc( arg1, arg2 ) );</span><br><span class="line"></span><br><span class="line"> }</span><br><span class="line"></span><br><span class="line"> #else</span><br><span class="line"></span><br><span class="line"> #include &lt;stdio.h&gt;</span><br><span class="line"> #include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line"> void main( int argc, char * argv[] )</span><br><span class="line"> {</span><br><span class="line"></span><br><span class="line">    int arg1;</span><br><span class="line">    double arg2;</span><br><span class="line"></span><br><span class="line">    arg1 = atoi( argv[1] );   // get the command line parameters</span><br><span class="line">    arg2 = atof( argv[2] );</span><br><span class="line"></span><br><span class="line">    printf( &#34;The result is %s&#34;, SomeFunc( arg1, arg2 ) );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> }</span><br><span class="line"></span><br><span class="line"> /* EOF: Example 4 */</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

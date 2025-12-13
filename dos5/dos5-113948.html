@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-113285.html">
+    <link rel="next" href="dos5-114623.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-113285.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-114623.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 5E00h          Get Machine Name                             DOS 3.1+</span></span><br><span class="line"></span><br><span class="line">    Returns the network name of the local computer (machine).</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX    = 5E00h</span><br><span class="line">                DS:DX = Pointer to a 16-byte memory buffer</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  If CH &gt; 0</span><br><span class="line">                   CL = NetBIOS number</span><br><span class="line">                   Machine name copied to buffer (blank-padded ASCIIZ)</span><br><span class="line">                endif</span><br><span class="line">                or</span><br><span class="line">                AX = Error code, if CF is set</span><br><span class="line">                     | 01h Invalid function (Network not running)</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This function returns an error value of 01h (invalid function) if</span><br><span class="line">    the network is not running. If the network was never installed, a</span><br><span class="line">    zero is returned in the CH register.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-117136.html">5f03h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-105927.html">59h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-142150.html">1100h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-886490.html">
+    <link rel="next" href="rbint-887522.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-886490.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-887522.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 13 Fn EE  - Swbios - Set 1024-cylinder Flag                          </span>  [<span class="ngb">d</span>]</span><br><span class="line"></span><br><span class="line">   AH = EEh</span><br><span class="line">   DL = drive number (80h, 81h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear</span><br><span class="line">      AH = 00h</span><br><span class="line">Program: SWBIOS is a TSR by Ontrack Computer Systems</span><br><span class="line"><span class="ngb">Desc:</span>  the following INT 13 call will add 1024 to the specified cylinder</span><br><span class="line">     number to get the actual cylinder number desired</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the flag is cleared by all INT 13 calls except AH=EEh and AH=EFh</span><br><span class="line">   Disk Manager also supports these calls</span><br><span class="line">   this function is also supported by HyperDisk v4.01+ and PC-Cache v5.5+,</span><br><span class="line">     in order to allow caching of drives using SWBIOS to access more than</span><br><span class="line">     1024 cylinders</span><br><span class="line">   for software which supports that call, this function is equivalent to</span><br><span class="line">     calling AH=EFh with CX=0400h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=F9h,AH=FEh,INT 16/AX=FFA5h/CX=1111h,INT 2F/AX=DF00h</span><br><span class="line">Index: PC-Cache;huge disks|Disk Manager</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

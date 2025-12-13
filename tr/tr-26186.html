@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-25220.html">
+    <link rel="next" href="tr-26969.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-25220.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-26969.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> CURDRIVE()</span><br><span class="line"> Evaluates the currently active default drive.</span><br><span class="line"> Returns &lt;expC&gt; current drive as uppercase letter.</span><br><span class="line"></span><br><span class="line"> * Does current drive have enough space</span><br><span class="line"> * available to save file in current work area?</span><br><span class="line"> m_drive = CURDRIVE()</span><br><span class="line"></span><br><span class="line"> m_write = .T.</span><br><span class="line"> DO WHILE DISKSPACE(ASC(m_drive) - 64)) &lt; ;</span><br><span class="line">          ((RECSIZE() * LASTREC()) + HEADER())</span><br><span class="line">    m_write = .F.</span><br><span class="line">    ? &#34;Insufficient disk space to write file&#34;</span><br><span class="line">    ? &#34;Enter alternate drive to write file to: &#34;</span><br><span class="line">    m_drive = &#34; &#34;</span><br><span class="line">    @ ROW(), COL() GET m_drive PICTURE &#34;!&#34;</span><br><span class="line">    READ</span><br><span class="line"> ENDDO</span><br><span class="line"></span><br><span class="line"> IF m_write   &amp;&amp; not enough space available</span><br><span class="line">    USE       &amp;&amp; close files when no longer needed</span><br><span class="line"> ELSE</span><br><span class="line">    m_target = m_drive + &#34;:TEMPFILE&#34;</span><br><span class="line">    COPY TO &amp;m_target</span><br><span class="line">    ZAP</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-25220.html">CURDIR()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-56045.html">ISDRIVE()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-57818.html">ISFIXED()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

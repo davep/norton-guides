@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5104-style.css">
+    <title>Clipper 5.01 vs 1.29 Anomalies (#04) » Menu » Anomalies</title>
+    <meta name="description" content="Clipper 5.01 vs 1.29 Anomalies (#04)">
+    <link rel="prev" href="cl5104-28060.html">
+    <link rel="next" href="cl5104-28912.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5104-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5104-28060.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5104-28912.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Menu</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies</a></li>
+                  <li><a href="cl5104-45500.html">Credits</a></li>
+                  <li><a href="cl5104-45901.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  OPEN ERROR(0)     Potential Fix.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Clipper Version</span>  1.29 dtd 04/15/91.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Problem Statement</span></span><br><span class="line"></span><br><span class="line">  a) User was getting the subject error message repeatably.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Cause</span></span><br><span class="line"></span><br><span class="line">  Unknown.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Work Around</span>  Per user report:</span><br><span class="line"></span><br><span class="line">  The workaround is to insert a call to indexkey() on an already open dbf,</span><br><span class="line">  just before the attempt to open the new dbf.</span><br><span class="line"></span><br><span class="line">    ..</span><br><span class="line">    xx = mastinv-&gt;(indexkey(0))  &amp;&amp; mastinv.dbf is already open</span><br><span class="line">    sele 0</span><br><span class="line">    net_use(&#34;store_w&#34;,.F.,5)</span><br><span class="line">    set index to store_w         &amp;&amp; this was causing openerror(0)</span><br><span class="line">    ..</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

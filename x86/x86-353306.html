@@ -1,0 +1,120 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » MMX » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-352390.html">
+    <link rel="next" href="x86-354293.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-352390.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-318646.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-354293.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">PSRAW           Packed Shift Right Arithmetic, Word</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">PSRAW</span> destination, count                             CPU: MMX</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   mm(15..0)  &lt;- SignExtend (mm(15..0)  SAR count)</span><br><span class="line">                mm(31..16) &lt;- SignExtend (mm(31..16) SAR count)</span><br><span class="line">                mm(47..32) &lt;- SignExtend (mm(47..32) SAR count)</span><br><span class="line">                mm(63..48) &lt;- SignExtend (mm(63..48) SAR count)</span><br><span class="line"></span><br><span class="line">    PSRAW performs a shift-arithmetic-right (SAR) operation on each of</span><br><span class="line">    the four words in the destination operand. The count operand</span><br><span class="line">    determines the number of bits to right-shift. The new high-order</span><br><span class="line">    bits of each word are filled with the initial value of the sign bit</span><br><span class="line">    of the word.</span><br><span class="line">    If the value specified by count is greater than 15 (0Fh), each word</span><br><span class="line">    is filled with the initial value of its sign bit.</span><br><span class="line"></span><br><span class="line">    The destination operand is an MMX register. The count operand (source</span><br><span class="line">    operand) can be either an MMX register, a 64-bit memory operand, or</span><br><span class="line">    an immediate 8-bit operand. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    0F E1 /r    PSRAW mm, mm/m64</span><br><span class="line">    0F 71 /4 ib PSRAW mm, imm8</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

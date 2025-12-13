@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-20221.html">
+    <link rel="next" href="int-23698.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-20221.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="int-23698.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">DOS Absolute disk read (INT 25h)</span></span><br><span class="line"></span><br><span class="line">        Normal DOS (2.x or 3.x, may also be used in 4.x if partition is</span><br><span class="line">                    smaller than 32 MB):</span><br><span class="line">          Entry:</span><br><span class="line">            AL    =  Drive number (0=A, 1=B, etc)</span><br><span class="line">            DS:BX =  Disk Transfer Address (buffer)</span><br><span class="line">            CX    =  Number of sectors to read</span><br><span class="line">            DX    =  First relative sector to read</span><br><span class="line">          Return:</span><br><span class="line">            CF    = 1 if error</span><br><span class="line">            AL    = error code issued to INT 24h in low half of DI</span><br><span class="line">            AH    = 80h if attachment failed to respond</span><br><span class="line">                    40h if seek operation failed</span><br><span class="line">                    20h if controller failed</span><br><span class="line">                    10h if data error (bad CRC)</span><br><span class="line">                    08h if DMA failure</span><br><span class="line">                    04h if requested sector not found</span><br><span class="line">                    03h if write-protected disk</span><br><span class="line">                    02h if bad address mark</span><br><span class="line">                    01h if bad command</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">          Note: ORIGINAL FLAGS ON STACK!</span><br><span class="line">          <span class="ngb">Note: AX = 0207h if disk is DOS 4.0 disk, and partition &gt;32MB.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        PC DOS 4.0</span><br><span class="line"></span><br><span class="line">          Entry:</span><br><span class="line">            AL    =  Drive number (0=A, 1=B, etc)</span><br><span class="line">            DS:BX =  Pointer to request package</span><br><span class="line">            CX    =  Number of sectors to read</span><br><span class="line">            DX    =  First relative sector to read</span><br><span class="line">          Return:</span><br><span class="line">            CF    = 1 if error</span><br><span class="line">            AL    = error code issued to INT 24h in low half of DI</span><br><span class="line">            AH    = 80h if attachment failed to respond</span><br><span class="line">                    40h if seek operation failed</span><br><span class="line">                    20h if controller failed</span><br><span class="line">                    10h if data error (bad CRC)</span><br><span class="line">                    08h if DMA failure</span><br><span class="line">                    04h if requested sector not found</span><br><span class="line">                    03h if write-protected disk</span><br><span class="line">                    02h if bad address mark</span><br><span class="line">                    01h if bad command</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Request package:</span></span><br><span class="line">        <span class="ngu">Name    Size    ; Contens                                     </span></span><br><span class="line">        RBA     DD      ; First sector to read (0=first on disk)</span><br><span class="line">        Count   DW      ; Number of sectors to read</span><br><span class="line">        Buffer  DD      ; Pointer to databuffer, where data is placed.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="ngb">COMPAQ DOS 3.31 - &gt;32M hard-disk partition</span></span><br><span class="line"></span><br><span class="line">          Entry:</span><br><span class="line">            AL = Drive number (0=A, 1=B, etc)</span><br><span class="line">            CX = FFFFh</span><br><span class="line">            DS:BX = Packet address</span><br><span class="line">                    DWORD sector number</span><br><span class="line">                    WORD  number of sectors to read</span><br><span class="line">                    DWORD transfer address</span><br><span class="line">          Return:</span><br><span class="line">              Same as above???</span><br><span class="line"></span><br><span class="line">          Note: partition is potentially &gt;32M (and requires this form</span><br><span class="line">          of the call) if bit 1 of device attribute word in device driver</span><br><span class="line">          is set.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="int-23698.html">INT 26h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

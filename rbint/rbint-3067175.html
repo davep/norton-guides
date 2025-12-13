@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3066948.html">
+    <link rel="next" href="rbint-3067972.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3066948.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3002060.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3067972.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn EB  - Novell Netware - Synchronization Services - Log File     </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = EBh</span><br><span class="line">   DS:DX -&gt; ASCIZ filename</span><br><span class="line">   if function C6h lock mode 01h:</span><br><span class="line">       AL = flags</span><br><span class="line">       00h log file only</span><br><span class="line">       01h lock as well as log file</span><br><span class="line">           BP = lock timeout in timer ticks (1/18 second)</span><br><span class="line">           0000h = don&#39;t wait if file already locked</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status (see #1778)</span><br><span class="line"><span class="ngb">Desc:</span>  add the location and size of the specified file to the log table and</span><br><span class="line">     optionally lock the file</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this function is supported by NetWare 4.6+, Advanced NetWare 1.0+, and</span><br><span class="line">     Alloy NTNX</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=BCh&#34;NetWare&#34;,AH=CAh,AH=D0h,AH=ECh&#34;NetWare&#34;,AH=EDh&#34;NetWare&#34;</span><br><span class="line"></span><br><span class="line">(Table 1778)</span><br><span class="line">Values for NetWare status:</span><br><span class="line"> 00h   successful</span><br><span class="line"> 96h   no dynamic memory for file</span><br><span class="line"> FEh   timed out</span><br><span class="line"> FFh   failed</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1741</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-562616.html">
+    <link rel="next" href="rbint-564098.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-562616.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-564098.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 10 Fn 1E08  - Video - Flat-panel - Contrast Setting                  </span>  [<span class="ngb">V</span>]</span><br><span class="line"></span><br><span class="line">   AX = 1E08h</span><br><span class="line">   BH = function</span><br><span class="line">       bit 7: =1 set contrast control, =0 query contrast</span><br><span class="line">       bit 6: use standard contrast</span><br><span class="line">       bits 5-0: reserved (0)</span><br><span class="line">   ---if BH bits 7,6=10---</span><br><span class="line">   BL = contrast (00h = minimum, FFh = maximum)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = 1Eh if function supported</span><br><span class="line">       BH = results</span><br><span class="line">       bit 7: query/set (copied from input)</span><br><span class="line">       bit 6: standard/custom (copied from input)</span><br><span class="line">       bits 5-2: reserved (0)</span><br><span class="line">       bit 1: software contrast control is supported</span><br><span class="line">       bit 0: set operation was succesful (always clear on get)</span><br><span class="line">       BL = contrast (00h = minimum, FFh = maximum)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this function operates independently of AX=1E06h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=1E00h,AX=1E06h,AX=1E07h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

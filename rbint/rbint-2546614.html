@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2546416.html">
+    <link rel="next" href="rbint-2549166.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2546416.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2549166.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 53  - Dos 2+ Internal - Translate Bios Parameter Block To Drive</span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 53h</span><br><span class="line">   DS:SI -&gt; BIOS Parameter Block (see #1349)</span><br><span class="line">   ES:BP -&gt; buffer for Drive Parameter Block (see #1083 at AH=32h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> ES:BP buffer filled</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> for DOS 3.0+, the cluster at which to start searching is set to 0000h</span><br><span class="line">     and the number of free clusters is set to FFFFh (unknown)</span><br><span class="line">   if the number of sectors per cluster is set to zero, MS-DOS will hang</span><br><span class="line">     at startup because it computes the internally-used shift count by</span><br><span class="line">     shifting this value right until the carry flag is set; since this</span><br><span class="line">     will never happen when the field is zero, MS-DOS hangs</span><br><span class="line">   not supported by Windows NT 3.1</span><br><span class="line"></span><br><span class="line">Format of BIOS Parameter Block:</span><br><span class="line">Offset Size    Description (Table 1349)</span><br><span class="line"> 00h   WORD    number of bytes per sector</span><br><span class="line"> 02h   BYTE    number of sectors per cluster</span><br><span class="line"> 03h   WORD    number of reserved sectors at start of disk</span><br><span class="line"> 05h   BYTE    number of FATs</span><br><span class="line"> 06h   WORD    number of entries in root directory</span><br><span class="line"> 08h   WORD    total number of sectors</span><br><span class="line">       for DOS 4.0+, set to zero if partition &gt;32M, then set DWORD at</span><br><span class="line">         15h to actual number of sectors</span><br><span class="line"> 0Ah   BYTE    media ID byte (see #1044)</span><br><span class="line"> 0Bh   WORD    number of sectors per FAT</span><br><span class="line">---DOS 2.13---</span><br><span class="line"> 0Dh   WORD    number of sectors per track</span><br><span class="line"> 0Fh   WORD    number of heads</span><br><span class="line"> 11h   WORD    number of hidden sectors</span><br><span class="line">---DOS 3.0+ ---</span><br><span class="line"> 0Dh   WORD    number of sectors per track</span><br><span class="line"> 0Fh   WORD    number of heads</span><br><span class="line"> 11h   DWORD   number of hidden sectors</span><br><span class="line"> 15h 11 BYTEs  reserved</span><br><span class="line">---DOS 4.0+ ---</span><br><span class="line"> 15h   DWORD   total number of sectors if word at 08h contains zero</span><br><span class="line"> 19h  6 BYTEs  ???</span><br><span class="line"> 1Fh   WORD    number of cylinders</span><br><span class="line"> 21h   BYTE    device type</span><br><span class="line"> 22h   WORD    device attributes (removable or not, etc)</span><br><span class="line">---DR DOS 5+ ---</span><br><span class="line"> 15h   DWORD   total number of sectors if word at 08h contains zero</span><br><span class="line"> 19h  6 BYTEs  reserved</span><br><span class="line">---European MS-DOS 4.00---</span><br><span class="line"> 15h   DWORD   total number of sectors if word at 08h contains zero</span><br><span class="line">       (however, this DOS does not actually implement &gt;32M partitions)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1083,#1350</span><br><span class="line"></span><br><span class="line">Format of Extended BIOS Parameter Block:</span><br><span class="line">Offset Size    Description (Table 1350)</span><br><span class="line"> 00h 25 BYTEs  same as standard DOS 4-6 BPB (see #1349)</span><br><span class="line"> 19h   DWORD   sectors per FAT if WORD at 0Bh is 0000h</span><br><span class="line"> 1Dh   WORD    extended flags</span><br><span class="line">       bits 3-0: the 0-based FAT number of the active FAT</span><br><span class="line">       bits 6-4: reserved (0)</span><br><span class="line">       bit 7: do not mirror active FAT to inactive FATs</span><br><span class="line"> 1Fh   WORD    file system version (high byte=major, low byte=minor)</span><br><span class="line"> 21h   DWORD   starting cluster number of root directory</span><br><span class="line"> 25h   WORD    file system information sector number (see also #1476)</span><br><span class="line"> 29h  6 WORDs  reserved</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1247</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

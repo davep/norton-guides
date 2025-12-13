@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2584291.html">
+    <link rel="next" href="rbint-2585676.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2584291.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2585676.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 5D02  U - Dos 3.1+ Internal - Share.exe - Close File By Name   </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AX = 5D02h</span><br><span class="line">   DS:DX -&gt; DOS parameter list (see #1372), only fields DX, DS,</span><br><span class="line">         computer ID, and process ID used</span><br><span class="line">   DPL&#39;s DS:DX -&gt; ASCIZ name of file to close</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error</span><br><span class="line">       AX = error code (see #1366)</span><br><span class="line">   CF clear if successful</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> error unless SHARE is loaded (calls [SysFileTable-28h])</span><br><span class="line">     (see #1322 at AH=52h)</span><br><span class="line">   name must be canonical fully-qualified, such as returned by AH=60h</span><br><span class="line">   not supported by DR DOS 3.41 and 5.0; returns error code 01h</span><br><span class="line">   not supported by Novell DOS 7, although in Update 15 it is reported</span><br><span class="line">     to no longer return an error code</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=5D03h,AX=5D04h,AH=3Eh,AH=60h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

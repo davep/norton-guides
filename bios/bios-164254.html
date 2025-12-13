@@ -1,0 +1,120 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-162767.html">
+    <link rel="next" href="bios-165552.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-162767.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-146401.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-165552.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 15h, 91h            Interrupt Complete                               many</span></span><br><span class="line"></span><br><span class="line">    Signals the system that a device is ready to be serviced.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 91h</span><br><span class="line">                AL = Device type (See service 90h)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  CF  Set if error, else cleared</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This service is not available for the PC, PCjr, and XT dated</span><br><span class="line">    11/08/82.</span><br><span class="line"></span><br><span class="line">    When a device is needed by a process, but access to it is delayed,</span><br><span class="line">    the system can perform another task to achieve maximum performance</span><br><span class="line">    until the device is freed up for the process to use. In a</span><br><span class="line">    multi-tasking environment, that is the purpose for this service.</span><br><span class="line">    The operating system can keep track of which process is waiting</span><br><span class="line">    for which device, and perform another task while the device is</span><br><span class="line">    busy. After a device is ready to be serviced, then this function</span><br><span class="line">    is called to notify the system that a device is ready.</span><br><span class="line"></span><br><span class="line">    For example, Int 09h will call this service after a key has been</span><br><span class="line">    entered, to signal the operating system that a key has been</span><br><span class="line">    entered. Thus if the system was performing another task while a</span><br><span class="line">    previous process was waiting for a keyboard character, then the</span><br><span class="line">    previous process could regain control of the system and get the</span><br><span class="line">    keyboard character just entered.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-162767.html">Int 15h, 90h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-2150.html">Int 09h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

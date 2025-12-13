@@ -1,0 +1,150 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » / » Starting DEBUG</title>
+    <meta name="description" content="DEBUG">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>/</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="debug-36268.html">Parameters</a></li>
+                  <li><a href="debug-41899.html">Messages</a></li>
+                  <li><a href="debug-45534.html">Common</a></li>
+                  <li><a href="debug-46838.html">Starting DEBUG</a></li>
+                  <li><a href="debug-49445.html">Introduction</a></li>
+                  
+                </ul>
+              </li>
+              <li>*</li>
+              <li>
+                <ul>
+                  <li><a href="debug-50016.html">Flags register</a></li>
+                  <li><a href="debug-51925.html">PSP structure</a></li>
+                  <li><a href="debug-54321.html">EXE header</a></li>
+                  <li><a href="debug-55255.html">BPB structure</a></li>
+                  <li><a href="debug-56377.html">FCB structure</a></li>
+                  <li><a href="debug-57564.html">ASCII table</a></li>
+                  
+                </ul>
+              </li>
+              <li>-</li>
+              <li>
+                <ul>
+                  <li><a href="debug-62697.html">Comments</a></li>
+                  <li><a href="debug-63334.html">Scripts</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">    To start DEBUG, type:</span><br><span class="line"></span><br><span class="line">    <span class="ngb">DEBUG [d:][path][filename[.ext]][parm1][parm2]</span></span><br><span class="line"></span><br><span class="line">    If you enter filename, the DEBUG program loads the specified file</span><br><span class="line">    into memory. You may now type commands to alter, display, or execute</span><br><span class="line">    the contents of the specified file.</span><br><span class="line"></span><br><span class="line">    If you don&#39;t enter a filename, you must either work with the present</span><br><span class="line">    memory contents, or load the required file into memory by using the</span><br><span class="line">    Name and Load commands.</span><br><span class="line"></span><br><span class="line">    The optional parameters, parm1 and parm2, represent the optional for the</span><br><span class="line">    named filespec. For example,</span><br><span class="line"></span><br><span class="line">    <span class="ngb">DEBUG DISKCOMP.COM A: B:</span></span><br><span class="line"></span><br><span class="line">    In this command, the A: and B: are the parameters that DEBUG prepares</span><br><span class="line">    for the DISKCOMP program.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    When the DEBUG program starts, the registers and flags are set to the</span><br><span class="line">    following values for the program being debugged:</span><br><span class="line"></span><br><span class="line">    ■   The segment registers (CS, DS, ES, and SS) are set to the bottom</span><br><span class="line">        of free memory; that is, the first segment after the end of the</span><br><span class="line">        DEBUG program.</span><br><span class="line"></span><br><span class="line">    ■   The Instruction Pointer (IP) is set to 0100h.</span><br><span class="line"></span><br><span class="line">    ■   The Stack Pointer (SP) is set to the end of the segment, or the</span><br><span class="line">        bottom of the transient portion of the program loader, whichever</span><br><span class="line">        is lower. The segment size at offset 6 is reduced by 0100h to</span><br><span class="line">        allow for a stack that size.</span><br><span class="line"></span><br><span class="line">    ■   The remaining registers (AX, BX, CX, DX, BP, SI, and DI) are set</span><br><span class="line">        to zero. However, if you start the DEBUG program with a filespec,</span><br><span class="line">        the CX register contains the length of the file in bytes. If the</span><br><span class="line">        file is greater than 64K, the length is contained in registers BX</span><br><span class="line">        and CX (the high portion in BX).</span><br><span class="line"></span><br><span class="line">    ■   The initial state of the flags is:</span><br><span class="line"></span><br><span class="line">        NV  UP  EI  PL  NZ  NA  PO  NC</span><br><span class="line"></span><br><span class="line">    ■   The default disk transfer address (DTA) is set to 80h in the code</span><br><span class="line">        segment.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    All of available memory is allocated; therefore, any attempt by the</span><br><span class="line">    loaded program to allocate memory fails.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Notes</span>:</span><br><span class="line"></span><br><span class="line">    1.  If a file loaded by DEBUG has an extension of <span class="ngb">.EXE</span>, DEBUG does</span><br><span class="line">        the necessary relocation and sets the segment registers, stack</span><br><span class="line">        pointer, and instruction pointer to the values defined in the</span><br><span class="line">        file. The DS and ES registers, however, point to the Program</span><br><span class="line">        Segment Prefix (PSP) at the lowest available segment. The BX and</span><br><span class="line">        CX registers contain the size of the program (smaller than the</span><br><span class="line">        file size).</span><br><span class="line"></span><br><span class="line">        The program is loaded at the high end of memory if the appro-</span><br><span class="line">        priate parameter was specified when the linker created the file.</span><br><span class="line"></span><br><span class="line">    2.  If a file loaded by DEBUG has an extension of <span class="ngb">.HEX</span>, the file is</span><br><span class="line">        assumed to in INTEL hex format, and is converted to executable</span><br><span class="line">        form while being loaded.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="debug-50016.html">Flags register</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-51925.html">PSP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-54321.html">EXE header</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:38</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

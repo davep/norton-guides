@@ -1,0 +1,148 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Device Driver Fnx</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-219439.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-219439.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-182062.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Device driver function 19h      IOCTL Query             b   c</span></span><br><span class="line"></span><br><span class="line">    IOCTL Query determines whether a given generic IOCTL function</span><br><span class="line">    (minor code) is supported by the driver.</span><br><span class="line"></span><br><span class="line">    This function can be used both for block and character device</span><br><span class="line">    drivers.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    DOS calls this function only if bit 7 is set in the dhAttributes</span><br><span class="line">    field of the DeviceHeader structure for the driver.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">giUnit</span></span><br><span class="line">    Specifies the device the request is for. This field is used for</span><br><span class="line">    block device drivers only.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">giStatus</span></span><br><span class="line">    Receives the status of the query. If the driver does not support</span><br><span class="line">    the given generic IOCTL function, it must set the error and done</span><br><span class="line">    bits (bits 15 and 8) and set the low-order byte to error value 03h</span><br><span class="line">    (Unknown Function). Otherwise, it must set the done bit (bit 8).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">giCategory</span></span><br><span class="line">    Specifies the device category of the generic IOCTL function to be</span><br><span class="line">    checked.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">giMinorCode</span></span><br><span class="line">    Specifies the minor code of the generic IOCTL function to be</span><br><span class="line">    checked.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">giIOCTLData</span></span><br><span class="line">    This field is not used by this function and must not be changed.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-247477.html">IOCTLRequest</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-215262.html">Dev13h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-77674.html">4410h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-78547.html">4411h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-227497.html">DeviceHeader</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-182799.html">Dev*</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

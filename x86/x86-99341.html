@@ -1,0 +1,157 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-98713.html">
+    <link rel="next" href="x86-100364.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-98713.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-100364.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">MUL             Multiplication, Unsigned             Flags: O D I T S Z A P C</span></span><br><span class="line">                                                            * - - - ? ? ? ? *</span><br><span class="line"><span class="ngb">MUL</span> source</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   AX ← AL * source        ; Source is a byte</span><br><span class="line">             or</span><br><span class="line">                DX:AX ← AX * source     ; Source is a word</span><br><span class="line">             or</span><br><span class="line">                EDX:EAX ← EAX * source  ; Source is a dword (386+)</span><br><span class="line"></span><br><span class="line">    MUL performs unsigned multiplication.</span><br><span class="line"></span><br><span class="line">    The carry and overflow flags (CF and OF) are set to 1 if the</span><br><span class="line">    high-order of the result (AH,DX, or EDX, respectively) contains</span><br><span class="line">    any significant digits; otherwise, CF and OF are reset to 0.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    F6 /4       MUL  r/m8</span><br><span class="line">    F7 /4       MUL  r/m16</span><br><span class="line">    F7 /4       MUL  r/m32</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    r8           2     70-77    26-28   13      9-14   13-18    11   NP</span><br><span class="line">    r16          2    118-133   35-37   21      9-22   13-26    11   NP</span><br><span class="line">    r32          2       -        -      -      9-38   13-42    10   NP</span><br><span class="line">    mem8    2+d(0-2)  76-83+EA  32-34   16     12-17   13-18    11   NP</span><br><span class="line">    mem16   2+d(0-2) 124-139+EA 41-43   24     12-25   13-26    11   NP</span><br><span class="line">    mem32   2+d(0-2)     -        -      -     12-41   13-42    10   NP</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-52849.html">IMUL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-146103.html">SHL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-147826.html">SHLD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-7638.html">AAM</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-7032.html">AAD</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

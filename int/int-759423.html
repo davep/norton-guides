@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Hardware » Video</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="int-638292.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">         <span class="ngb">RAM Loadable Character Generator</span></span><br><span class="line"></span><br><span class="line">         The character generator is RAM loadable and can support</span><br><span class="line">         characters up to 32 scan lines high. Three character font are</span><br><span class="line">         stored in BIOS, and one is automatically loaded when an</span><br><span class="line">         alphanumeric mode is selected. The Character Map Select register</span><br><span class="line">         can be programmed to redefine the function of bit 3 of the</span><br><span class="line">         attribute byte to character-font switch. This allows the user to</span><br><span class="line">         select between any two character sets residing in map 2, and</span><br><span class="line">         effectively gives the user access to 512 characters instead of</span><br><span class="line">         256. Character fonts can be loaded offline, and up to eight</span><br><span class="line">         fonts can be loaded at any one time.</span><br><span class="line"></span><br><span class="line">         The structure of the character fonts is described in the</span><br><span class="line">         following figure. The character generator is in map 2 and must</span><br><span class="line">         be protected using the map mask function.</span><br><span class="line"></span><br><span class="line">                                     Map 2</span><br><span class="line">          +0Kb ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐</span><br><span class="line">               ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤   Font 0</span><br><span class="line">          +8Kb ├─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┤</span><br><span class="line">               ├─┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼─┤   Font 4</span><br><span class="line">               ├─┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴─┤</span><br><span class="line">          +16Kb├───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┤</span><br><span class="line">               ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤   Font 1</span><br><span class="line">               ├─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┤</span><br><span class="line">               ├─┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼─┤   Font 5</span><br><span class="line">               ├─┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴─┤</span><br><span class="line">          +32Kb├───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┤</span><br><span class="line">               ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤   Font 2</span><br><span class="line">               ├─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┤</span><br><span class="line">               ├─┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼─┤   Font 6</span><br><span class="line">               ├─┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴─┤</span><br><span class="line">          +48Kb├───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┤</span><br><span class="line">               ├───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┤   Font 3</span><br><span class="line">               ├─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┤</span><br><span class="line">               ├─┼───┼───┼───┼───┼───┼───┼───┼───┼───┼───┼─┤   Font 7</span><br><span class="line">          +64Kb└─┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴─┛</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">          The following figure illustrates the structure of each</span><br><span class="line">          character pattern. If the CRT controller is programmed to</span><br><span class="line">          generate 16 row scans, the 16 bytes must be filled in for</span><br><span class="line">          each character in the font. The example below assumes eight</span><br><span class="line">          row scans per character.</span><br><span class="line"></span><br><span class="line">          Address                  Byte Image                    Data</span><br><span class="line">          <span class="ngu">              80h 40h 20h 10h 08h 04h 02h 01h              </span></span><br><span class="line"></span><br><span class="line">          CC*32 + 0                 XXX XXX                       18h</span><br><span class="line">                  1             XXX XXX XXX XXX                   3Eh</span><br><span class="line">                  2         XXX XXX         XXX XXX               66h</span><br><span class="line">                  3         XXX XXX         XXX XXX               66h</span><br><span class="line">                  4         XXX XXX XXX XXX XXX XXX               7Eh</span><br><span class="line">                  5         XXX XXX         XXX XXX               66h</span><br><span class="line">                  6         XXX XXX         XXX XXX               66h</span><br><span class="line">                  7         XXX XXX         XXX XXX               66h</span><br><span class="line"></span><br><span class="line">          CC equals the value of the character of the character code.</span><br><span class="line">          For example 41h equals an ASCII &#34;A&#34;.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

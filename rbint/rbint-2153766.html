@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2152932.html">
+    <link rel="next" href="rbint-2159280.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2152932.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2159280.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 26  - Dos 1+ - Create New Program Segment Prefix               </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 26h</span><br><span class="line">   DX = segment at which to create PSP (see #1066)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL destroyed</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> new PSP is updated with memory size information; INTs 22h, 23h, 24h</span><br><span class="line">     taken from interrupt vector table; the parent PSP field is set to 0</span><br><span class="line">   (DOS 2+) DOS assumes that the caller&#39;s CS is the segment of the PSP to</span><br><span class="line">     copy</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=4Bh,AH=50h,AH=51h,AH=55h,AH=62h,AH=67h</span><br><span class="line"></span><br><span class="line">Format of Program Segment Prefix (PSP):</span><br><span class="line">Offset Size    Description (Table 1066)</span><br><span class="line"> 00h  2 BYTEs  INT 20 instruction for CP/M CALL 0 program termination</span><br><span class="line">       the CDh 20h here is often used as a signature for a valid PSP</span><br><span class="line"> 02h   WORD    segment of first byte beyond memory allocated to program</span><br><span class="line"> 04h   BYTE    (DOS) unused filler</span><br><span class="line">       (OS/2) count of fake DOS version returns</span><br><span class="line"> 05h   BYTE    CP/M CALL 5 service request (FAR CALL to absolute 000C0h)</span><br><span class="line">       BUG: (DOS 2+ DEBUG) PSPs created by DEBUG point at 000BEh</span><br><span class="line"> 06h   WORD    CP/M compatibility--size of first segment for .COM files</span><br><span class="line"> 08h  2 BYTEs  remainder of FAR JMP at 05h</span><br><span class="line"> 0Ah   DWORD   stored INT 22 termination address</span><br><span class="line"> 0Eh   DWORD   stored INT 23 control-Break handler address</span><br><span class="line"> 12h   DWORD   DOS 1.1+ stored INT 24 critical error handler address</span><br><span class="line"> 16h   WORD    segment of parent PSP</span><br><span class="line"> 18h 20 BYTEs  DOS 2+ Job File Table, one byte per file handle, FFh = closed</span><br><span class="line"> 2Ch   WORD    DOS 2+ segment of environment for process (see #1067)</span><br><span class="line"> 2Eh   DWORD   DOS 2+ process&#39;s SS:SP on entry to last INT 21 call</span><br><span class="line"> 32h   WORD    DOS 3+ number of entries in JFT (default 20)</span><br><span class="line"> 34h   DWORD   DOS 3+ pointer to JFT (default PSP:0018h)</span><br><span class="line"> 38h   DWORD   DOS 3+ pointer to previous PSP (default FFFFFFFFh in 3.x)</span><br><span class="line">       used by SHARE in DOS 3.3</span><br><span class="line"> 3Ch   BYTE    DOS 4+ (DBCS) interim console flag (see AX=6301h)</span><br><span class="line">       Novell DOS 7 DBCS interim flag as set with AX=6301h</span><br><span class="line">       (possibly also used by Far East MS-DOS 3.2-3.3)</span><br><span class="line"> 3Dh   BYTE    (APPEND) TrueName flag (see INT 2F/AX=B711h)</span><br><span class="line"> 3Eh   BYTE    (Novell NetWare) flag: next byte initialized if CEh</span><br><span class="line">       (OS/2) capabilities flag</span><br><span class="line"> 3Fh   BYTE    (Novell NetWare) Novell task number if previous byte is CEh</span><br><span class="line"> 40h  2 BYTEs  DOS 5+ version to return on INT 21/AH=30h</span><br><span class="line"> 42h   WORD    (MSWindows3) selector of next PSP (PDB) in linked list</span><br><span class="line">       Windows keeps a linked list of Windows programs only</span><br><span class="line"> 44h   WORD    (MSWindows3) &#34;PDB_Partition&#34;</span><br><span class="line"> 46h   WORD    (MSWindows3) &#34;PDB_NextPDB&#34;</span><br><span class="line"> 48h   BYTE    (MSWindows3) bit 0 set if non-Windows application (WINOLDAP)</span><br><span class="line"> 49h   BYTE    unused by DOS versions &lt;= 6.00</span><br><span class="line"> 4Ch   WORD    (MSWindows3) &#34;PDB_EntryStack&#34;</span><br><span class="line"> 4Eh  2 BYTEs  unused by DOS versions &lt;= 6.00</span><br><span class="line"> 50h  3 BYTEs  DOS 2+ service request (INT 21/RETF instructions)</span><br><span class="line"> 53h  2 BYTEs  unused in DOS versions &lt;= 6.00</span><br><span class="line"> 55h  7 BYTEs  unused in DOS versions &lt;= 6.00; can be used to make first FCB</span><br><span class="line">         into an extended FCB</span><br><span class="line"> 5Ch 16 BYTEs  first default FCB, filled in from first commandline argument</span><br><span class="line">       overwrites second FCB if opened</span><br><span class="line"> 6Ch 16 BYTEs  second default FCB, filled in from second commandline argument</span><br><span class="line">         overwrites beginning of commandline if opened</span><br><span class="line"> 7Ch  4 BYTEs  unused</span><br><span class="line"> 80h 128 BYTEs commandline / default DTA</span><br><span class="line">       command tail is BYTE for length of tail, N BYTEs for the tail,</span><br><span class="line">         followed by a BYTE containing 0Dh</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> in DOS v3+, the limit on simultaneously open files may be increased by</span><br><span class="line">     allocating memory for a new open file table, filling it with FFh,</span><br><span class="line">     copying the first 20 bytes from the default table, and adjusting the</span><br><span class="line">     pointer and count at 34h and 32h.  However, DOS will only copy the</span><br><span class="line">     first 20 file handles into a child PSP (including the one created on</span><br><span class="line">     EXEC).</span><br><span class="line">   in an OS/2 DOS box, values of D0h-FEh in the open file table indicate</span><br><span class="line">     device drivers</span><br><span class="line">   network redirectors based on the original MS-Net implementation use</span><br><span class="line">     values of 80h-FEh in the open file table to indicate remote files;</span><br><span class="line">     Novell NetWare also uses values from FEh down to 80h or one more than</span><br><span class="line">     FILES= (whichever is greater) to indicate remote files (except on</span><br><span class="line">     OS/2, where is uses CFh down to 80h)</span><br><span class="line">   MS-DOS 5.00 incorrectly fills the FCB fields when loading a program</span><br><span class="line">     high; the first FCB is empty and the second contains the first</span><br><span class="line">     parameter</span><br><span class="line">   some DOS extenders place protected-mode values in various PSP fields</span><br><span class="line">     such as the &#34;parent&#34; field, which can confuse PSP walkers.  Always</span><br><span class="line">     check either for the CDh 20h signature or that the suspected PSP is</span><br><span class="line">     at the beginning of a memory block which owns itself (the preceding</span><br><span class="line">     paragraph should be a valid MCB with &#34;owner&#34; the same as the</span><br><span class="line">     suspected PSP).</span><br><span class="line">   Novell NetWare updates the fields at offsets 3Eh and 3Fh without</span><br><span class="line">     checking that a legal PSP segment is current; see AH=50h for further</span><br><span class="line">     discussion</span><br><span class="line">   for 4DOS and Windows95, the command tail may be more than 126</span><br><span class="line">     characters; in that case, the length byte will be set to 7Fh (with</span><br><span class="line">     an 0Dh in the  127th position at offset FFh), and the first 126</span><br><span class="line">     characters will be stored in the PSP, with the entire command line</span><br><span class="line">     in the environment variable CMDLINE; under at least some versions</span><br><span class="line">     of 4DOS, the byte at offset FFh is *not* set to 0Dh, so there is no</span><br><span class="line">     terminating carriage return in the PSP&#39;s command tail.</span><br><span class="line"></span><br><span class="line">Format of environment block:</span><br><span class="line">Offset Size    Description (Table 1067)</span><br><span class="line"> 00h  N BYTEs  first environment variable, ASCIZ string of form &#34;var=value&#34;</span><br><span class="line">      N BYTEs  second environment variable, ASCIZ string</span><br><span class="line">   ...</span><br><span class="line">      N BYTEs  last environment variable, ASCIZ string of form &#34;var=value&#34;</span><br><span class="line">   BYTE    00h</span><br><span class="line">---DOS 3.0+ ---</span><br><span class="line">   WORD    number of strings following environment (normally 1)</span><br><span class="line">      N BYTEs  ASCIZ full pathname of program owning this environment</span><br><span class="line">       other strings may follow</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

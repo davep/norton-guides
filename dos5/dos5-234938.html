@@ -1,0 +1,118 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Structures</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-234488.html">
+    <link rel="next" href="dos5-237894.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-234488.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-221655.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-237894.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        ; Extended-error codes (DOS 2.x: 00h-12h)</span><br><span class="line">        00h   No error</span><br><span class="line">        01h   Function number invalid</span><br><span class="line">        02h   File not found</span><br><span class="line">        03h   Path not found</span><br><span class="line">        04h   Too many open files (no handles available)</span><br><span class="line">        05h   Access denied</span><br><span class="line">        06h   Invalid handle</span><br><span class="line">        07h   Memory control block destroyed</span><br><span class="line">        08h   Insufficient memory</span><br><span class="line">        09h   Memory block address invalid</span><br><span class="line">        0Ah   Environment invalid (usually &gt;32K in length)</span><br><span class="line">        0Bh   Format invalid</span><br><span class="line">        0Ch   Access code invalid</span><br><span class="line">        0Dh   Data invalid</span><br><span class="line">        0Eh   Reserved</span><br><span class="line">        0Fh   Invalid drive</span><br><span class="line">        10h   Attempted to remove current directory</span><br><span class="line">        11h   Not same device</span><br><span class="line">        12h   No more files</span><br><span class="line">        13h   Disk write-protected</span><br><span class="line">        14h   Unknown unit</span><br><span class="line">        15h   Drive not ready</span><br><span class="line">        16h   Unknown command</span><br><span class="line">        17h   Data error (CRC)</span><br><span class="line">        18h   Bad request structure length</span><br><span class="line">        19h   Seek error</span><br><span class="line">        1Ah   Unknown media type (non-DOS disk)</span><br><span class="line">        1Bh   Sector not found</span><br><span class="line">        1Ch   Printer out of paper</span><br><span class="line">        1Dh   Write fault</span><br><span class="line">        1Eh   Read fault</span><br><span class="line">        1Fh   General failure</span><br><span class="line">        20h   Sharing violation</span><br><span class="line">        21h   Lock violation</span><br><span class="line">        22h   Disk change invalid (ES:DI -&gt; MID structure)</span><br><span class="line">        23h   FCB unavailable</span><br><span class="line">        24h   Sharing buffer overflow</span><br><span class="line">        25h   Code page mismatch                            (DOS 4+)</span><br><span class="line">        26h   Cannot complete file operation (out of input) (DOS 4+)</span><br><span class="line">        27h   Insufficient disk space                       (DOS 4+)</span><br><span class="line">        28h-31h   Reserved</span><br><span class="line">        32h   Network request not supported</span><br><span class="line">        33h   Remote computer not listening</span><br><span class="line">        34h   Duplicate name on network</span><br><span class="line">        35h   Network name not found</span><br><span class="line">        36h   Network busy</span><br><span class="line">        37h   Network device no longer exists</span><br><span class="line">        38h   Network BIOS command limit exceeded</span><br><span class="line">        39h   Network adapter hardware error</span><br><span class="line">        3Ah   Incorrect response from network</span><br><span class="line">        3Bh   Unexpected network error</span><br><span class="line">        3Ch   Incompatible remote adapter</span><br><span class="line">        3Dh   Print queue full</span><br><span class="line">        3Eh   Queue not full</span><br><span class="line">        3Fh   Not enough space to print file</span><br><span class="line">        40h   Network name was deleted</span><br><span class="line">        41h   Network: Access denied</span><br><span class="line">        42h   Network device type incorrect</span><br><span class="line">        43h   Network name not found</span><br><span class="line">        44h   Network name limit exceeded</span><br><span class="line">        45h   Network BIOS session limit exceeded</span><br><span class="line">        46h   Temporarily paused</span><br><span class="line">        47h   Network request not accepted</span><br><span class="line">        48h   Network print/disk redirection paused</span><br><span class="line">        49h   Network software not installed</span><br><span class="line">              Invalid network version                       (LANtastic)</span><br><span class="line">        4Ah   Unexpected adapter close</span><br><span class="line">              Account expired                               (LANtastic)</span><br><span class="line">        4Bh   Password expired                              (LANtastic)</span><br><span class="line">        4Ch   Login attempt invalid at this time            (LANtastic)</span><br><span class="line">        4Dh   Disk limit exceeded on network node           (LANtastic)</span><br><span class="line">        4Eh   Not logged in to network node                 (LANtastic)</span><br><span class="line">        4Fh   Reserved</span><br><span class="line">        50h   File exists</span><br><span class="line">        51h   Reserved</span><br><span class="line">        52h   Cannot make directory</span><br><span class="line">        53h   Fail on INT 24h</span><br><span class="line">        54h   Too many redirections                         (DOS 3.3+)</span><br><span class="line">        55h   Duplicate redirection                         (DOS 3.3+)</span><br><span class="line">        56h   Invalid password                              (DOS 3.3+)</span><br><span class="line">        57h   Invalid parameter                             (DOS 3.3+)</span><br><span class="line">        58h   Network write fault                           (DOS 3.3+)</span><br><span class="line">        59h   Function not supported on network             (DOS 4+)</span><br><span class="line">        5Ah   Required system component not installed       (DOS 4+)</span><br><span class="line">        64h   Unknown error                                 (MSCDEX)</span><br><span class="line">        65h   Not ready                                     (MSCDEX)</span><br><span class="line">        66h   EMS memory no longer valid                    (MSCDEX)</span><br><span class="line">        67h   Not High Sierra or ISO-9660 format            (MSCDEX)</span><br><span class="line">        68h   Door open                                     (MSCDEX)</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-105927.html">59h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

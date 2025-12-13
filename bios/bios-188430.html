@@ -1,0 +1,120 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-187283.html">
+    <link rel="next" href="bios-189972.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-187283.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-185076.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-189972.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 1Ah, 02h            Read Real-Time Clock Time                        many</span></span><br><span class="line"></span><br><span class="line">    Reads the time from the computer&#39;s real-time clock.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 02h</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  CF   Set if clock not operating; else cleared</span><br><span class="line">                CH = Hours (BCD)</span><br><span class="line">                CL = Minutes (BCD)</span><br><span class="line">                DH = Seconds (BCD)</span><br><span class="line">                DL = 1 if daylight saving time option; else 0</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    All times are in Binary Coded Decimal (BCD). For example, 9:04.12</span><br><span class="line">    am will be reported as CX = 0904; DH = 12.</span><br><span class="line"></span><br><span class="line">    The real-time clock is the clock that runs even when the computer</span><br><span class="line">    is turned off. A CMOS battery is used so that, even while the</span><br><span class="line">    computer is off, the date, time, and alarm time are maintained.</span><br><span class="line"></span><br><span class="line">    This service is available only for ATs, XT-286s, and PC</span><br><span class="line">    Convertibles. Previous machines will report unpredictable results</span><br><span class="line">    (including the state of the Carry Flag).</span><br><span class="line"></span><br><span class="line">    The daylight saving time option is not reported on ATs with dates</span><br><span class="line">    prior to 6/10/85.</span><br><span class="line"></span><br><span class="line">    The information returned from this service could differ from the</span><br><span class="line">    system time. This is because the real-time clock is read once upon</span><br><span class="line">    system startup, updating the system timer. All other references to</span><br><span class="line">    time use the system timer. If either the real-time clock is</span><br><span class="line">    changed (via Service 03h) or the system timer is changed (via</span><br><span class="line">    Service 01h), the other clock is not changed accordingly.</span><br><span class="line"></span><br><span class="line">    Even though the system uses the system timer for timing</span><br><span class="line">    information, both the real-time clock and the system timer are</span><br><span class="line">    updated continuously.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-185841.html">Int 1Ah, 00h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-189972.html">Int 1Ah, 03h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

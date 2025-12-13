@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4875503.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4875503.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4874864.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 5A  - Ti Professional Pc - System Timer 100ms Hook                   </span>  [<span class="ngb">b</span>]</span><br><span class="line"></span><br><span class="line"><span class="ngb">Desc:</span>  called from the hardware timer tick interrupt, after executing the</span><br><span class="line">     first four BIOS timing events, updating the system clock, saving</span><br><span class="line">     registers, and switching to a temporary stack (the one reserved</span><br><span class="line">     for IRQ3), but before calling INT 58</span><br><span class="line">   no details available</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this interrupt is invoked on every fourth timer interrupt</span><br><span class="line">   the handler for this interrupt may destroy AX,BX,DI,ES but must</span><br><span class="line">     preserve all other registers; 8 WORDs of stack space are available,</span><br><span class="line">     of which at most 4 may be used if the handler enables interrupts</span><br><span class="line">   if the handler switches stacks (because more than 4/8 WORDs are</span><br><span class="line">     required), the original stack must be restored before chaining to</span><br><span class="line">     the previous handler</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 43&#34;TI Professional&#34;,INT 4C&#34;TI Professional&#34;</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 58&#34;TI Professional&#34;</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

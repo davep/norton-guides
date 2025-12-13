@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2289554.html">
+    <link rel="next" href="rbint-2292581.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2289554.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2292581.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 4402  - Highumm.sys V1.17+ - Ioctl - Get Api Address           </span>  [<span class="ngb">m</span>]</span><br><span class="line"></span><br><span class="line">   AX = 4402h</span><br><span class="line">   BX = handle for device &#34;KSP$UMM&#34;</span><br><span class="line">   CX = 0004h</span><br><span class="line">   DS:DX -&gt; DWORD to hold entry point (see #1133)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error</span><br><span class="line">       AX = error code (see #1366 at AH=59h/BX=0000h)</span><br><span class="line">   CF clear if successful</span><br><span class="line">       AX = number of bytes read</span><br><span class="line">Program: HIGHUMM.SYS is part of the shareware &#34;The Last Byte&#34; memory</span><br><span class="line">     management package by Key Software Products</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=4402h&#34;LASTBYTE&#34;</span><br><span class="line"></span><br><span class="line">(Table 1133)</span><br><span class="line">Call HIGHUMM.SYS entry point with:</span><br><span class="line">   AH = 00h allocate UMB (same as XMS function 10h) (see INT 2F/AX=4310h)</span><br><span class="line">       DX = size in paragraphs</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> BX = segment number (if successful)</span><br><span class="line">           DX = size of requested block/size of largest block</span><br><span class="line">   AH = 01h deallocate UMB (same as XMS func 11h) (see INT 2F/AX=4310h)</span><br><span class="line">       DX = segment number of UMB</span><br><span class="line">   AH = 02h request a bank-switched memory block</span><br><span class="line">       DX = size in paragraphs</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> BX = segment number (if successful)</span><br><span class="line">           DX = size of requested block/size of largest block</span><br><span class="line">   AH = 03h release a bank-switched memory block</span><br><span class="line">       DX = segment number</span><br><span class="line">   AH = 04h transfer data to/from high memory</span><br><span class="line">       DS:SI -&gt; source</span><br><span class="line">       ES:DI -&gt; destination</span><br><span class="line">       CX = length in bytes</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span> enables bank-switched memory, does the copy, then disables</span><br><span class="line">       bank-switched memory</span><br><span class="line">   AH = 05h get a word from bank-switched memory</span><br><span class="line">       ES:DI -&gt; word to read</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> DX = word</span><br><span class="line">   AH = 06h put a word to bank-switched memory</span><br><span class="line">       ES:DI -&gt; word to write</span><br><span class="line">       DX = word</span><br><span class="line">   AH = 07h put a byte to bank-switched memory</span><br><span class="line">       ES:DI -&gt; byte to write</span><br><span class="line">       DL = byte</span><br><span class="line">   AH = 08h enable bank-switched memory</span><br><span class="line">       DS:SI -&gt; 6-byte status save area</span><br><span class="line">   AH = 09h disable bank-switched memory</span><br><span class="line">       DS:SI -&gt; 6-byte save area from enable call (AH=08h)</span><br><span class="line">   AH = 0Ah assign name to UMB or high bank-switched block</span><br><span class="line">       DX = segment number</span><br><span class="line">       DS:SI -&gt; 8-byte blank-padded name</span><br><span class="line">   AH = 0Bh locate UMB block by name</span><br><span class="line">       DS:SI -&gt; 8-byte blank-padded name</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> BX = segment number (if successful)</span><br><span class="line">           DX = size of block</span><br><span class="line">   AH = 0Ch locate bank-switched block by name</span><br><span class="line">       DS:SI -&gt; 8-byte blank-padded name</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> BX = segment number (if successful)</span><br><span class="line">           DX = size of block</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status code</span><br><span class="line">       0001h successful</span><br><span class="line">       0000h failed</span><br><span class="line">       BL = error code</span><br><span class="line">           80h not implemented</span><br><span class="line">           B0h insufficient memory, smaller block available</span><br><span class="line">           B1h insufficient memory, no blocks available</span><br><span class="line">           B2h invalid segment number</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  only functions 00h and 01h are always available; the remaining</span><br><span class="line">     functions are only enabled if the proper commandline switch is given</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

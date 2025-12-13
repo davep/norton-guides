@@ -1,0 +1,136 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Device Driver Fnx</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-212211.html">
+    <link rel="next" href="dos5-215262.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-212211.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-182062.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-215262.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Device driver function 10h      Output Until Busy           c</span></span><br><span class="line"></span><br><span class="line">    Output Until Busy transfers data from the specified buffer to a</span><br><span class="line">    device until the device signals that it cannot accept more input.</span><br><span class="line"></span><br><span class="line">    This function is used for character device drivers only.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    DOS calls this function only if bit 13 is set in the dhAttributes</span><br><span class="line">    field of the DeviceHeader structure for the driver.</span><br><span class="line"></span><br><span class="line">    This function should write as much data to the device as possible</span><br><span class="line">    until the device signals that it cannot accept more data, at which</span><br><span class="line">    point the function should return immediately. The driver should</span><br><span class="line">    not wait under any circumstances. It is not an error for the</span><br><span class="line">    driver to transfer fewer bytes than DOS requested, but the driver</span><br><span class="line">    must return a value for the number of bytes transferred.</span><br><span class="line"></span><br><span class="line">    This function allows device drivers to take advantage of a</span><br><span class="line">    printer&#39;s internal RAM buffers. The driver can send data to the</span><br><span class="line">    printer until the printer&#39;s internal buffer is full and then</span><br><span class="line">    return to DOS immediately, rather than wait while data is printed.</span><br><span class="line">    DOS can then periodically check the printer&#39;s status and send more</span><br><span class="line">    data only when the printer is ready.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">orStatus</span></span><br><span class="line">    Specifies the status of the completed function. If the function</span><br><span class="line">    was successful, the driver must set the done bit (bit 8).</span><br><span class="line">    Otherwise, the driver must set both the error and done bits (bits</span><br><span class="line">    15 and 8) and copy an error value to the low-order byte.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">orBuffer</span></span><br><span class="line">    Contains the 32-bit address of the buffer containing data to write</span><br><span class="line">    to the device.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">orBytes</span></span><br><span class="line">    Contains the number of bytes to write and receives the number of</span><br><span class="line">    bytes written.</span><br><span class="line"></span><br><span class="line">        input   Specifies the number of bytes to write. This number</span><br><span class="line">                must not exceed the amount of data in the specified</span><br><span class="line">                buffer.</span><br><span class="line"></span><br><span class="line">        output  Specifies the number of bytes written. This number</span><br><span class="line">                cannot exceed the requested number of bytes.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-254037.html">OutputRequest</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-203107.html">Dev08h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-227497.html">DeviceHeader</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-182799.html">Dev*</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

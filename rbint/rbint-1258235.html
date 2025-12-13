@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1258076.html">
+    <link rel="next" href="rbint-1259268.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1258076.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1227085.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1259268.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 4F  C - Keyboard - Keyboard Intercept (at Model 3x9,xt2,xt286,c</span>  [<span class="ngb">B</span>]</span><br><span class="line"></span><br><span class="line">   AH = 4Fh</span><br><span class="line">   AL = hardware scan code (see #0005)</span><br><span class="line">   CF set</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set to continue processing scan code</span><br><span class="line">      AL = possibly-altered hardware scan code (see #0005)</span><br><span class="line">   CF clear</span><br><span class="line">      scan code should be ignored</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> called by INT 09 handler to translate scan codes; the INT 09 code does</span><br><span class="line">     not examine the scan code it reads from the keyboard until after</span><br><span class="line">     this function returns.  This permits software to rearrange the</span><br><span class="line">     keyboard; for example, swapping the CapsLock and Control keys, or</span><br><span class="line">     turning the right Shift key into Enter.</span><br><span class="line">   DOS 6 KEYB.COM will not pass through this function if Ctrl-Alt-Del is</span><br><span class="line">     pressed and a SmartDrive v4-compatible cache is installed which has</span><br><span class="line">     dirty cache buffers; some other disk caches such as HyperDisk</span><br><span class="line">     operate similarly in order to prevent loss of cached data which has</span><br><span class="line">     not yet been written to disk</span><br><span class="line">   IBM classifies this function as required</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 09,INT 15/AH=C0h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

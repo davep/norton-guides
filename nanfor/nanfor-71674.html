@@ -1,0 +1,141 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » Date/Time</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-70435.html">
+    <link rel="next" href="nanfor-73801.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-70435.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-59070.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-73801.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_CALENDAR()</span></span><br><span class="line"> Display date/time calendar, find a date, return calendar data.</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_CALENDAR ( [ &lt;nRow&gt; ], [ &lt;nCol&gt; ], [ &lt;cColor&gt; ], [ &lt;lShadow&gt; ] ,</span></span><br><span class="line">                   <span class="fg15 bg1"> [ &lt;lShowHelp&gt; ] ) -&gt; aRetVal</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nRow&gt;</span> is an optional screen row for calendar display,</span><br><span class="line">            default row 1.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nCol&gt;</span> is an optional screen col for calendar display,</span><br><span class="line">            default col 63.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cColor&gt;</span> is an optional color string for displayed messages,</span><br><span class="line">              default is bright white text over green background.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;lShadow&gt;</span> is an optional logical variable. If true (.T.),</span><br><span class="line">               it uses FT_SHADOW() to add a transparent shadow</span><br><span class="line">               to the display, default (.F.).</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;lShowHelp&gt;</span> is an optional logical variable. If true, uses</span><br><span class="line">                 FT_XBOX to display  a four line help message</span><br><span class="line">                 if the F1 key is pressed, default (.F.).</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     aRetVal  is an 8 element array containing date, month, day, year,</span><br><span class="line">              month (in character format), day of the week, julian day</span><br><span class="line">              and current time.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     FT_CALENDAR() simply displays today&#39;s date, time and julian</span><br><span class="line">     day in a two line display with an optional box shadow. Cursor keys may</span><br><span class="line">     be used to page through the calendar by day, week, month or year</span><br><span class="line">     increments. Returns an 8 element array of calendar data:</span><br><span class="line"></span><br><span class="line">     Element  Value</span><br><span class="line">     [1]      Date in current date format.</span><br><span class="line">     [2]      Numeric month number.</span><br><span class="line">     [3]      Numeric day number.</span><br><span class="line">     [4]      Numeric year number.</span><br><span class="line">     [5]      Month in character format.</span><br><span class="line">     [6]      Day of the week in character format.</span><br><span class="line">     [7]      Numeric Julian day.</span><br><span class="line">     [8]      Current time in time format.</span><br><span class="line"></span><br><span class="line">     WARNING: FT_CALENDAR uses FT_SHADOW and FT_XBOX</span><br><span class="line">              from the Nanforum Toolkit!</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   LOCAL aRetVal[8]</span><br><span class="line">   CLS</span><br><span class="line">   aRetVal := FT_CALENDAR (10,40,&#39;W+/RB&#39;,.T.,.T.)</span><br><span class="line">   ?aRetVal[1]      // Result: 04/20/91</span><br><span class="line">   ?aRetVal[2]      // Result:   4</span><br><span class="line">   ?aRetVal[3]      // Result:  20</span><br><span class="line">   ?aRetVal[4]      // Result:  1991</span><br><span class="line">   ?aRetVal[5]      // Result: April</span><br><span class="line">   ?aRetVal[6]      // Result: Saturday</span><br><span class="line">   ?aRetVal[7]      // Result:        110</span><br><span class="line">   ?aRetVal[8]      // Result: 12:45:20</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> CALENDAR.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Isa Asudeh</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor-77166.html">FT_DAYOFYR()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

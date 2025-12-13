@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-40750.html">
+    <link rel="next" href="dos5-43945.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-40750.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-43945.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 42h            Move File Pointer (LSEEK)</span></span><br><span class="line"></span><br><span class="line">    Moves the file pointer forward or backward in an open file.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH    = 42h</span><br><span class="line">                BX    = File handle</span><br><span class="line">                CX:DX = Offset, in bytes (32-bit integer)</span><br><span class="line">                AL    = Mode code:</span><br><span class="line">                         0   Move file pointer CX:DX bytes from</span><br><span class="line">                             beginning of file (offset = un-signed value)</span><br><span class="line">                         1   Move file pointer CX:DX bytes from</span><br><span class="line">                             current location (offset = signed value)</span><br><span class="line">                         2   Move file pointer CX:DX bytes from</span><br><span class="line">                             end of file (offset = signed value)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  DX:AX = New file position (unsigned 32-bit), from</span><br><span class="line">                        start of file</span><br><span class="line">                or</span><br><span class="line">                AX = Error code, if CF is set</span><br><span class="line">                     | 01h Invalid function (bad mode code)</span><br><span class="line">                     | 06h Invalid handle</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This function changes the logical read/write position in the</span><br><span class="line">    specified file, by incrementing or decrementing the value assigned</span><br><span class="line">    to the file pointer. The file pointer is maintained by the system</span><br><span class="line">    and is shared by all file handles that identify a given file.</span><br><span class="line"></span><br><span class="line">    With method 00h, the 32-bit value in CX:DX is always interpreted</span><br><span class="line">    as a positive value. With methods 01h and 02h, however, the 32-bit</span><br><span class="line">    offset is interpreted as a signed value; it is possible to move</span><br><span class="line">    the file pointer either forward or backward.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    A program should never attempt to move the file pointer to a</span><br><span class="line">    position before the start of the file. Although this action does</span><br><span class="line">    not generate an error during the move, it does generate an error</span><br><span class="line">    on a subsequent read or write operation.</span><br><span class="line"></span><br><span class="line">    A program can move the file pointer beyond the end of the file. On</span><br><span class="line">    a subsequent write operation, DOS writes data to the given</span><br><span class="line">    position in the file, filling the gap between the previous end of</span><br><span class="line">    the file and the given position with undefined data. This is a</span><br><span class="line">    common way to reserve file space without writing to the file, but</span><br><span class="line">    using this method to grow a file from zero bytes to a very large</span><br><span class="line">    size can corrupt the FAT in some versions of DOS; the file should</span><br><span class="line">    first be grown from zero to one byte and then to the desired large</span><br><span class="line">    size.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Use AL = 2 and CX:DX = 0 to move the file pointer to the end of</span><br><span class="line">    the file, or to find the <span class="ngb">length</span> of the file.</span><br><span class="line"></span><br><span class="line">    A file can be <span class="ngb">truncated</span> my moving the file pointer to the new end</span><br><span class="line">    of file and writing zero bytes using function 40h.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-39456.html">40h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-37686.html">3fh</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-105927.html">59h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

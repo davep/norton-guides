@@ -1,0 +1,124 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .GIF  (Graphics)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-58736.html">
+    <link rel="next" href="modform-60879.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-58736.html">Previous</a></li>
+
+
+          
+
+<li><a href="modform-45998.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-60879.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">.MOD  (Sound)</a></li>
+                  <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+                  <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+                  <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+                  <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+                  <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">GIF Extension Blocks</span></span><br><span class="line"></span><br><span class="line"> To provide for orderly extension of the GIF definition, a mechanism for</span><br><span class="line"> defining  the  packaging  of extensions within a GIF data stream is</span><br><span class="line"> necessary.  Specific GIF extensions are to be defined and documented  by</span><br><span class="line"> CompuServe in order to provide a controlled enhancement path.</span><br><span class="line"></span><br><span class="line"> GIF Extension Blocks are packaged in a manner similar to that  used by the</span><br><span class="line"> raster data though not compressed.  The basic structure is:</span><br><span class="line"></span><br><span class="line">         7 6 5 4 3 2 1 0  Byte #</span><br><span class="line">        ┌───────────────┐</span><br><span class="line">        │0 0 1 0 0 0 0 1│  1       &#39;!&#39; - GIF Extension Block Introducer</span><br><span class="line">        ├───────────────┤</span><br><span class="line">        │ function code │  2       Extension function code (0 to 255)</span><br><span class="line">        ├───────────────┤    ───┐</span><br><span class="line">        │  byte count   │       │</span><br><span class="line">        ├───────────────┤       │</span><br><span class="line">        │               │       ├── Repeated as many times as necessary</span><br><span class="line">        │func data bytes│       │</span><br><span class="line">        │               │       │</span><br><span class="line">        ├───────────────┤    ───┛</span><br><span class="line">        |               |</span><br><span class="line">        ├───────────────┤</span><br><span class="line">        │0 0 0 0 0 0 0 0│       zero byte count (terminates block)</span><br><span class="line">        └───────────────┛</span><br><span class="line"></span><br><span class="line"> A GIF Extension Block may immediately preceed any Image Descriptor or</span><br><span class="line"> occur before the GIF Terminator.</span><br><span class="line"></span><br><span class="line"> All GIF decoders must be able to recognize  the  existence  of  GIF</span><br><span class="line"> Extension  Blocks  and  read past them if unable to process the function</span><br><span class="line"> code.  This ensures that older decoders will be able to process extended</span><br><span class="line"> GIF   image   files   in  the  future,  though  without  the  additional</span><br><span class="line"> functionality.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="modform-54045.html">Image Descriptor</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="modform-58736.html">GIF Terminator</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

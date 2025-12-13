@@ -1,0 +1,125 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-87176.html">
+    <link rel="next" href="tr-89073.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-87176.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-89073.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> CALL ROMBIOS WITH WORD(&lt;N interrupt&gt;), &lt;C registers&gt;, &lt;N flags&gt;</span><br><span class="line"> Provides access to ROM BIOS function calls.</span><br><span class="line"> &lt;registers&gt; is altered to contain registers, &lt;flags&gt; to contain flags.</span><br><span class="line"></span><br><span class="line"> &lt;interrupt&gt; is the decimal number of desired interrupt.</span><br><span class="line"> &lt;registers&gt; is a 32-byte character string containing the desired</span><br><span class="line">             contents of registers AX, BX, CX, DX, SI, DI, DS, ES</span><br><span class="line">             as hexadecimal strings.</span><br><span class="line"> &lt;flags&gt; is a numeric memory variable that is altered to return flags.</span><br><span class="line"></span><br><span class="line"> &lt;registers&gt; must contain something for every register in the order:</span><br><span class="line">             AX, BX, CX, DX, SI, DI, DS, ES.  If a register is not</span><br><span class="line">             needed, assign it &#34;0000&#34;.  If DS and ES are given &#34;0000&#34;,</span><br><span class="line">             it is ignored and their current contents are preserved.</span><br><span class="line"></span><br><span class="line"> Does not execute any interrupts lower than INT 16 (10H).</span><br><span class="line"></span><br><span class="line"> * Change cursor to full-sized box</span><br><span class="line"> m_ax = &#34;0100&#34;</span><br><span class="line"> m_bx = &#34;0000&#34;</span><br><span class="line"> m_cx = &#34;0012&#34;  &amp;&amp; Cursor scan lines 0-18</span><br><span class="line"> m_dx = &#34;0000&#34;</span><br><span class="line"> m_si = &#34;0000&#34;</span><br><span class="line"> m_di = &#34;0000&#34;</span><br><span class="line"> m_ds = &#34;0000&#34;  &amp;&amp; Don&#39;t care</span><br><span class="line"> m_es = &#34;0000&#34;  &amp;&amp; Don&#39;t care</span><br><span class="line"> m_regs = m_ax + m_bx + m_cx + m_dx + m_si + m_di + m_ds + m_es</span><br><span class="line"> m_flags = 0</span><br><span class="line"> m_intrpt = 16</span><br><span class="line"> CALL ROMBIOS WITH WORD(m_intrpt), m_regs, m_flags</span><br><span class="line"></span><br><span class="line"> Hazard</span><br><span class="line">    Invalid register contents can cause serious errors,</span><br><span class="line">    including computer lock-up and data destruction.</span><br><span class="line">    Be sure to consult a reliable source, such as IBM&#39;s or</span><br><span class="line">    Microsoft&#39;s DOS technical references, or The Peter Norton</span><br><span class="line">    Programmer&#39;s Guide to the IBM-PC.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-33977.html">DOSFUNC</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-50109.html">HEX()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-79085.html">PEEK...()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-80173.html">POKE...()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-85107.html">REG()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

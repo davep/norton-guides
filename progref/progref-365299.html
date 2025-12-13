@@ -1,0 +1,168 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-362725.html">
+    <link rel="next" href="progref-370149.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-362725.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-350222.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-370149.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 13h,  05h (5)        Format Cylinder                                  all</span></span><br><span class="line"></span><br><span class="line">    Initializes each sector on a specified cylinder with sector address</span><br><span class="line">    and size information.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">On entry:</span>      AH         05h</span><br><span class="line">                      AL         Number of sectors to format (diskette) or</span><br><span class="line">                                 Interleave (XT)</span><br><span class="line">                      CH         Cylinder number (10-bit value; upper 2 bits</span><br><span class="line">                                 in CL)</span><br><span class="line">                      DH         Head number</span><br><span class="line">                      DL         Drive number</span><br><span class="line">                      ES:BX      Pointer to address field list (See below)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Returns:</span>       AH         Status of operation (See Service 01h)</span><br><span class="line">                      CF         Set if error, cleared otherwise</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Notes:</span>         Values in DL less than 80h specify floppy disks;</span><br><span class="line">                      values from 80h to 87h specify fixed disks.</span><br><span class="line"></span><br><span class="line">                      The cylinder number is a ten-bit quantity (0 through</span><br><span class="line">                      1023). Its most significant two bits are in bits 7</span><br><span class="line">                      and 6 of CL; the remaining eight bits are in CH. The</span><br><span class="line">                      starting sector number fits in the low-order portion</span><br><span class="line">                      (lower 6 bits) of CL.</span><br><span class="line"></span><br><span class="line">                      If an error is encountered, use Service 0h to reset</span><br><span class="line">                      the drive and retry the operation.</span><br><span class="line"></span><br><span class="line">                      For the AT, XT-286, and PC Convertible, the BIOS</span><br><span class="line">                      executes INT 15h, Service 90h (Device Busy), for the</span><br><span class="line">                      diskette (Type = 01h) and the fixed disk (Type =</span><br><span class="line">                      00h) prior to waiting for the interrupt. INT 15h,</span><br><span class="line">                      Service 91h (Interrupt Complete), is executed upon</span><br><span class="line">                      completion. Also diskette operations that require</span><br><span class="line">                      the diskette motor to be on will call INT 15h,</span><br><span class="line">                      Service 90 (Device Busy), with the type equal to</span><br><span class="line">                      &#34;Diskette Drive Motor Start&#34; (Type = FDh). This</span><br><span class="line">                      allows the system to perform another task while the</span><br><span class="line">                      drive motor is waiting to get up to speed.</span><br><span class="line"></span><br><span class="line"><span class="ngb">       Interleave:</span>    &#34;Interleaving&#34; is the process of putting logically</span><br><span class="line">                      contiguous sectors in physically noncontiguous</span><br><span class="line">                      locations, in order to to increase disk performance.</span><br><span class="line">                      Below is outlined the different ways of changing the</span><br><span class="line">                      interleave factor depending on the type of media</span><br><span class="line">                      (fixed disk or diskette) and the machine type.</span><br><span class="line"></span><br><span class="line">                      The pointer to the address field list (ES:BX) varies</span><br><span class="line">                      depending on what type of machine and type of disk</span><br><span class="line">                      (fixed or diskette) the formatting process will</span><br><span class="line">                      occur on. Also the interleave factor is specified</span><br><span class="line">                      differently for the different machines and disk</span><br><span class="line">                      types. Below are the formats for the different types</span><br><span class="line">                      of machines and disks.</span><br><span class="line"></span><br><span class="line"><span class="ngb">       Diskette:</span>      ES:BX points to a list of address marks for each</span><br><span class="line">                      sector on the track to be formatted. Each address</span><br><span class="line">                      mark consists of 4 bytes. Therefore, to format a 9-</span><br><span class="line">                      sector track, the list MUST consist of 36 bytes (4 *</span><br><span class="line">                      9). The 4 bytes making up the address mark are</span><br><span class="line">                      defined as follows:</span><br><span class="line"></span><br><span class="line">                          Byte 1 - Cylinder number (C)</span><br><span class="line">                          Byte 2 - Head number (H)</span><br><span class="line">                          Byte 3 - Sector number (R), or Record number</span><br><span class="line">                          Byte 4 - Sector Size (N)</span><br><span class="line">                                      0 - 128 bytes per sector</span><br><span class="line">                                      1 - 256 bytes per sector</span><br><span class="line">                                      2 - 512 bytes per sector</span><br><span class="line">                                      3 - 1024 bytes per sector</span><br><span class="line"></span><br><span class="line">                      Note that you can change the interleave factor by</span><br><span class="line">                      specifying byte 3 (sector number) in a non-</span><br><span class="line">                      sequential order.</span><br><span class="line"></span><br><span class="line">                      Standard MS-DOS diskettes are formatted with 512</span><br><span class="line">                      bytes per sector (N=2) and with no interleave. Thus,</span><br><span class="line">                      the address field list for a standard MS-DOS nine-</span><br><span class="line">                      sector track would look like this:</span><br><span class="line"></span><br><span class="line">                             C H R N    C H R N    C H R N ... C H R N</span><br><span class="line">                             0 1 1 2    0 1 2 2    0 1 3 2     0 1 9 2</span><br><span class="line"></span><br><span class="line">                      Before formatting a diskette, if there is more than</span><br><span class="line">                      one type of diskette supported by the drive, you</span><br><span class="line">                      will need to call Service 17h (Set DASD Type for</span><br><span class="line">                      Format) or Service 18h (Set Media Type for Format).</span><br><span class="line">                      If these services are not called, Service 05h will</span><br><span class="line">                      format the disk using the maximum disk type</span><br><span class="line">                      supported by the disk drive. Older machines that</span><br><span class="line">                      don&#39;t support Service 17h (Set DASD Type for Format)</span><br><span class="line">                      or Service 18h (Set Media Type for Format) may have</span><br><span class="line">                      to directly modify the Diskette Drive Parameter</span><br><span class="line">                      Table. This table is pointed to by INT 1Eh. If</span><br><span class="line">                      modifications are made to the Diskette Parameter</span><br><span class="line">                      Table, make sure the original values are restored.</span><br><span class="line"></span><br><span class="line">   <span class="ngb">    XT</span>             The XT uses the AL register to specify the</span><br><span class="line">                      interleave factor. The pointer ES:BX is not needed</span><br><span class="line">                      for the XT.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">AT and XT-286</span>  These machines use an address table (pointed to by</span><br><span class="line">                      ES:BX), similar to the one used in diskette mode but</span><br><span class="line">                      with a slight variation. The buffer must be 512</span><br><span class="line">                      bytes long. The first 2 * (sectors per track) bytes</span><br><span class="line">                      contain information for each sector on the track.</span><br><span class="line">                      For each sector, there are 2 bytes in the table.</span><br><span class="line">                      These 2 bytes are defined as follows:</span><br><span class="line"></span><br><span class="line">                            Byte 1 - Sector Format state (F)</span><br><span class="line">                                      00h - Good sector</span><br><span class="line">                                      80h - Bad sector</span><br><span class="line">                            Byte 2 - Sector number (N)</span><br><span class="line"></span><br><span class="line">                      For example, the following table is used to format a</span><br><span class="line">                      track for a fixed disk with 17 sectors per track and</span><br><span class="line">                      an interleave factor of 3.</span><br><span class="line"></span><br><span class="line">           db    00h, 01h, 00h, 07h, 00h, 0Dh, 00h, 02h, 00h, 08h, 00h, 0Eh</span><br><span class="line">           db    00h, 03h, 00h, 09h, 00h, 0Fh, 00h, 04h, 00h, 0Ah, 00h, 10h</span><br><span class="line">           db    00h, 05h, 00h, 0Bh, 00h, 11h, 00h, 06h, 00h, 0Ch</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-353185.html">INT 13h,  01h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-370149.html">INT 13h,  06h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-371206.html">INT 13h,  07h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5113218.html">
+    <link rel="next" href="rbint-5115286.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5113218.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5115286.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 61 Fn 0004  - Banyan Vines - Get Access Rights List (arl)            </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0004h subfn 000Eh</span><br><span class="line">   DS:DX -&gt; request block (see #3087)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status (see also #3071)</span><br><span class="line">       0000h request has been processed</span><br><span class="line"><span class="ngb">Desc:</span>  Returns the owner, group, and extended access rights for the specified</span><br><span class="line">     file or directory</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  A status of 0000h does not necessarily indicate a successful request;</span><br><span class="line">     check the status word at offset 000Eh of the request block too</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0004h/SF=000Fh</span><br><span class="line"></span><br><span class="line">Format of VINES Function 0004h/Subfunction 000Eh request block:</span><br><span class="line">Offset Size    Description (Table 3087)</span><br><span class="line"> 00h   WORD    000Eh (subfunction &#34;Get Access Rights List&#34;)</span><br><span class="line"> 02h   BYTE    drive number (0=default, 1=A, ...)</span><br><span class="line"> 03h   BYTE    reserved</span><br><span class="line"> 04h   DWORD   pointer to path specification (drive letter ignored)</span><br><span class="line"> 08h   DWORD   pointer to ARL control block (see #3088)</span><br><span class="line"> 0Ch   WORD    buffer for number of ARL entries (1..5)</span><br><span class="line"> 0Eh   WORD    buffer for status (see #3089)</span><br><span class="line"></span><br><span class="line">Format of ARL control block:</span><br><span class="line">Offset Size    Description (Table 3088)</span><br><span class="line"> 00h 64    BYTEs   1st StreetTalk name (user, list, or service)</span><br><span class="line"> 40h   WORD    1st ARL</span><br><span class="line"> 42h 64    BYTEs   2nd StreetTalk name (user, list, or service)</span><br><span class="line"> 82h   WORD    2nd ARL</span><br><span class="line"> 84h 64    BYTEs   3rd StreetTalk name (user, list, or service)</span><br><span class="line"> C4h   WORD    3rd ARL</span><br><span class="line"> C6h 64    BYTEs   4th StreetTalk name (user, list, or service)</span><br><span class="line">106h   WORD    4th ARL</span><br><span class="line">108h 64    BYTEs   5th StreetTalk name (user, list, or service)</span><br><span class="line">148h   WORD    5th ARL</span><br><span class="line"></span><br><span class="line">(Table 3089)</span><br><span class="line">Values for VINES Get/Set Access Rights List status:</span><br><span class="line"> 0000h successful</span><br><span class="line"> 0002h file not found</span><br><span class="line"> 0003h path not found</span><br><span class="line"> 003Ah invalid operation</span><br><span class="line"> 0057h invalid number of entries</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

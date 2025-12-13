@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-6305.html">
+    <link rel="next" href="tr-7886.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-6305.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-7886.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> ARRREST(&lt;C filename&gt;, [&lt;array name&gt;])</span><br><span class="line"> Restores a one-dimensional array from a disk file.</span><br><span class="line"> Returns &lt;expL&gt; true if restored properly, otherwise false.</span><br><span class="line"></span><br><span class="line"> Default file extension is .ARR</span><br><span class="line"></span><br><span class="line">    &lt;numeric | logical&gt; = ARRREST(&lt;C filname&gt;, [&lt;array name&gt;])</span><br><span class="line">    One parameter returns the number of elements in an array file.</span><br><span class="line">    Two parameters return the number of elements restored.</span><br><span class="line">    Any error returns -1.</span><br><span class="line"></span><br><span class="line"> Note that the filename is passed as a character expression and the</span><br><span class="line"> array name is passed as a literal.  For example:</span><br><span class="line"></span><br><span class="line">    * Saving.</span><br><span class="line">    DECLARE my_array[100]</span><br><span class="line">    .</span><br><span class="line">    . &lt;fill array&gt;</span><br><span class="line">    .</span><br><span class="line">    IF .NOT. ARRSAVE(&#34;arrays.arr&#34;, my_array)</span><br><span class="line">       ? &#34;Error saving array to file.&#34;</span><br><span class="line">    ENDIF</span><br><span class="line"></span><br><span class="line">    * Restoring.</span><br><span class="line">    elements = ARRREST(&#34;arrays.arr&#34;)</span><br><span class="line">    IF elements = -1</span><br><span class="line">       ? &#34;Error restoring from array file.&#34;</span><br><span class="line">    ELSE</span><br><span class="line">       DECLARE my_array[elements]</span><br><span class="line">       IF elements # ARRREST(&#34;arrays.arr&#34;, my_array)</span><br><span class="line">          ? &#34;Error in number of elements restored.&#34;</span><br><span class="line">       ENDIF</span><br><span class="line">    ENDIF</span><br><span class="line"></span><br><span class="line"> It is NOT an error to have less or more elements in the array being</span><br><span class="line"> restored.  If there are less elements in the array than in the file,</span><br><span class="line"> the file&#39;s excess are ignored.  If there are more elements in the</span><br><span class="line"> array than in the file, the excess elements are not changed.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-7886.html">ARRSAVE()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

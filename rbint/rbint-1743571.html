@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1742091.html">
+    <link rel="next" href="rbint-1745372.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1742091.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1712194.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1745372.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 1A Fn 81  - Pcmcia Socket Services V1.00 - Register Status Change Cal</span>  [<span class="ngb">X</span>]</span><br><span class="line"></span><br><span class="line">   AH = 81h</span><br><span class="line">   DS:DX -&gt; callback routine (see #0581) or 0000h:0000h to disable</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AH destroyed</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = error code (see #0580)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the callback will be invoked on any socket changes whose notification</span><br><span class="line">     has not been disabled with the status change enable mask; it may be</span><br><span class="line">     invoked either while processing a hardware interrupt from the adapter</span><br><span class="line">     or while processing the following Socket Services request</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=80h&#34;PCMCIA&#34;,AH=82h&#34;PCMCIA&#34;</span><br><span class="line"></span><br><span class="line">(Table 0581)</span><br><span class="line">Values PCMCIA callback routine is invoked with:</span><br><span class="line">   AL = adapter number</span><br><span class="line">   BH = status change interrupt enable mask (see #0582)</span><br><span class="line">   BL = socket number</span><br><span class="line">   DH = current socket status (see #0583)</span><br><span class="line">   DL = current card status (see #0584)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> all registers preserved</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the callback may be invoked during a hardware interrupt, and may not</span><br><span class="line">     call on Socket Services</span><br><span class="line">   the callback will be invoked once for each socket with a status change</span><br><span class="line"></span><br><span class="line">Bitfields for PCMCIA status change interrupt enable mask:</span><br><span class="line">Bit(s) Description (Table 0582)</span><br><span class="line"> 7 card detect change</span><br><span class="line"> 6 ready change</span><br><span class="line"> 5 battery warning change</span><br><span class="line"> 4 battery dead change</span><br><span class="line"> 3 insertion request</span><br><span class="line"> 2 ejection request</span><br><span class="line"> 1-0   reserved (0)</span><br><span class="line"></span><br><span class="line">Bitfields for PCMCIA current socket status:</span><br><span class="line">Bit(s) Description (Table 0583)</span><br><span class="line"> 7 card changed</span><br><span class="line"> 6 reserved (0)</span><br><span class="line"> 5 card insertion complete</span><br><span class="line"> 4 card ejection complete</span><br><span class="line"> 3 card insertion request pending</span><br><span class="line"> 2 card ejection request pending</span><br><span class="line"> 1 card locked</span><br><span class="line"> 0 reserved (0)</span><br><span class="line"></span><br><span class="line">Bitfields for PCMCIA current card status:</span><br><span class="line">Bit(s) Description (Table 0584)</span><br><span class="line"> 7 card detect</span><br><span class="line"> 6 ready</span><br><span class="line"> 5 battery voltage detect 2 (battery warning)</span><br><span class="line"> 4 battery voltage detect 1 (battery dead)</span><br><span class="line"> 3-1   reserved (0)</span><br><span class="line"> 0 write protected</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

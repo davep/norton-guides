@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » C/C++ » Using C</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-4234.html">
+    <link rel="next" href="clipncpp-10603.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-4234.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-10603.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Compatibility With Other C Compilers</span></span><br><span class="line"></span><br><span class="line"> As noted above MSC 5.x with the Large Memory Model, Alternate Math</span><br><span class="line"> Library is the most compatible C compiler for use with Clipper Summer</span><br><span class="line"> &#39;87 and 5.0x versions.  This does not mean that other vendor&#39;s C</span><br><span class="line"> compilers can not be used with Clipper.  But there are additional</span><br><span class="line"> limitations that must be observed when using these products.  When I</span><br><span class="line"> started this article I wanted to demonstrate that non-MSC products</span><br><span class="line"> could be used with Clipper very effectively.  Prior to working at</span><br><span class="line"> Nantucket, I had always used Turbo C, and was able to accomplish most</span><br><span class="line"> of what I wanted to do (using Summer &#39;87 at that time.)  By the time</span><br><span class="line"> I was done getting all the different products to compile and link -</span><br><span class="line"> resolving all the little problems - I began to really appreciate the</span><br><span class="line"> MSC  compiler.  If asked now, I think it is the only compiler I would</span><br><span class="line"> recommend for use with Clipper.</span><br><span class="line"></span><br><span class="line"> Table 1 shows the compatibility of some of the frequently asked about</span><br><span class="line"> C compilers, along with the compiler command line switches that</span><br><span class="line"> correspond to those recommended in the extend system documentation.</span><br><span class="line"> The two products below, however, defy this table&#39;s simple</span><br><span class="line"> categorization - so they are explained here in detail.</span><br><span class="line"></span><br><span class="line"> C++ Extensions</span><br><span class="line"></span><br><span class="line">  The way in which C++ implements method and operation overloading</span><br><span class="line">  is by using a mechanism  referred to as &#34;symbol table mangling&#34;.</span><br><span class="line">  This means that if you have three object classes that all  have</span><br><span class="line">  a display() method,  C++ changes the symbol for each version of</span><br><span class="line">  &#34;display&#34;,  into something  that tells it which of the three</span><br><span class="line">  &#34;display&#34; methods it is referring to.</span><br><span class="line"></span><br><span class="line">  It is possible to produce compatible C++ functions by defining</span><br><span class="line">  the function as:</span><br><span class="line"></span><br><span class="line">  extern &#34;C&#34; CLIPPER func ( void )</span><br><span class="line"></span><br><span class="line">  This is a C++ declaration that tells the compiler not to</span><br><span class="line">  &#34;mangle&#34; the name.  But since this turns  the function name into</span><br><span class="line">  a normal &#34;C&#34; symbol,  you can not have function overloading,</span><br><span class="line">  which limits  their usefulness as C++ functions.</span><br><span class="line"></span><br><span class="line"> Microsoft C 6.0</span><br><span class="line"></span><br><span class="line">  Microsoft, with the introduction of MSC 6.0, has renamed some of</span><br><span class="line">  the math and stack checking  functions calls so that the code</span><br><span class="line">  produced by the compiler is not backwardly compatible with MSC</span><br><span class="line">  5.x library code.   The solution is to compile with the /Gh</span><br><span class="line">  switch - which produces 5.x compatible  library calls - and then</span><br><span class="line">  link with the 5.x LLIBCA library (assuming you have a copy of</span><br><span class="line">  the MSC 5.x  LLIBCA).   If you do not have access to a 5.x</span><br><span class="line">  version of LLIBCA, you can contact Microsoft  Technical Support</span><br><span class="line">  and ask for the &#34;downgraded&#34; (5.x compatible) library.</span><br><span class="line"></span><br><span class="line">  Also new in MSC 6.0 is the inclusion of a new compiler</span><br><span class="line">  optimization that uses &#34;intrinsic&#34; routines.   These are</span><br><span class="line">  routines that the compiler resolves into in-line assembly code</span><br><span class="line">  instead of producing a  call to the library function.  Examples</span><br><span class="line">  of intrinsic functions are strcpy and strcmp.  A list of</span><br><span class="line">  functions that can be resolved to intrinsic forms is contained</span><br><span class="line">  in Figure 1.</span><br><span class="line"></span><br><span class="line">  There are two ways to cause a function to be resolved to an</span><br><span class="line">  intrinsic:  by using the compiler  directive #pragma intrinsic(</span><br><span class="line">  &lt;function&gt;, ... ) or by compiling with the /Oi (optimize with</span><br><span class="line">  intrinsic  forms) switch .  If your C function uses only</span><br><span class="line">  intrinsic functions you do not have to link in the C  library -</span><br><span class="line">  and would not suffer from the library incompatibility described</span><br><span class="line">  above.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

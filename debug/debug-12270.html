@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » / » Commands</title>
+    <meta name="description" content="DEBUG">
+    <link rel="prev" href="debug-11425.html">
+    <link rel="next" href="debug-15583.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><a href="debug-11425.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="debug-15583.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>/</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="debug-36268.html">Parameters</a></li>
+                  <li><a href="debug-41899.html">Messages</a></li>
+                  <li><a href="debug-45534.html">Common</a></li>
+                  <li><a href="debug-46838.html">Starting DEBUG</a></li>
+                  <li><a href="debug-49445.html">Introduction</a></li>
+                  
+                </ul>
+              </li>
+              <li>*</li>
+              <li>
+                <ul>
+                  <li><a href="debug-50016.html">Flags register</a></li>
+                  <li><a href="debug-51925.html">PSP structure</a></li>
+                  <li><a href="debug-54321.html">EXE header</a></li>
+                  <li><a href="debug-55255.html">BPB structure</a></li>
+                  <li><a href="debug-56377.html">FCB structure</a></li>
+                  <li><a href="debug-57564.html">ASCII table</a></li>
+                  
+                </ul>
+              </li>
+              <li>-</li>
+              <li>
+                <ul>
+                  <li><a href="debug-62697.html">Comments</a></li>
+                  <li><a href="debug-63334.html">Scripts</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">    <span class="ngb">Go command</span></span><br><span class="line"></span><br><span class="line">    Purpose:  Executes the program you are debugging.</span><br><span class="line"></span><br><span class="line">              Stops the execution when the instruction at a specified ad-</span><br><span class="line">              dress is reached (breakpoint), and displays the registers,</span><br><span class="line">              flags, and the next instruction to be executed.</span><br><span class="line"></span><br><span class="line">    Format:   G [=address][address [address...]]</span><br><span class="line"></span><br><span class="line">    Remarks:  Program execution begins with the current instruction, whose</span><br><span class="line">              address is determined by the contents of the CS and IP regi-</span><br><span class="line">              sters, unless overridden by the =address parameter (the =</span><br><span class="line">              must be entered). If =address is specified, program execu-</span><br><span class="line">              tion begins with CS:=address.</span><br><span class="line"></span><br><span class="line">              The Go command has two format options:</span><br><span class="line"></span><br><span class="line">              <span class="ngr">Option 1                                                    </span></span><br><span class="line"></span><br><span class="line">              Use this option to execute the program you are debugging</span><br><span class="line">              <span class="ngb">without breakpoints</span>. For example:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">G [=address]</span></span><br><span class="line"></span><br><span class="line">              This option is useful when testing program execution with</span><br><span class="line">              different parameters each time. (Refer to the Name com-</span><br><span class="line">              mand.) Be certain the CS:IP values are set properly before</span><br><span class="line">              issuing the G command, if not using = address.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">              <span class="ngr">Option 2                                                    </span></span><br><span class="line"></span><br><span class="line">              This option performs the same function as option 1 but, in</span><br><span class="line">              addition, <span class="ngb">allows breakpoints</span> to be set at the specified</span><br><span class="line">              address. For example:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">G [=address] address [address...]</span></span><br><span class="line"></span><br><span class="line">              This method causes execution to stop at a specified location</span><br><span class="line">              so the system/program environment can be examined.</span><br><span class="line"></span><br><span class="line">              You can specify up to <span class="ngb">ten</span> breakpoints in any order. You may</span><br><span class="line">              wish to take advantage of this if your program has many</span><br><span class="line">              paths, and you want to stop the execution no matter which</span><br><span class="line">              path the program takes.</span><br><span class="line"></span><br><span class="line">              The DEBUG program replaces the instruction codes at the</span><br><span class="line">              breakpoint addresses with an interrupt code (CCh). If <span class="ngb">any</span></span><br><span class="line">              <span class="ngb">one</span> breakpoint is reached during execution, the execution</span><br><span class="line">              is stopped, the registers and flags are displayed, and all</span><br><span class="line">              the breakpoint addresses are restored to their original in-</span><br><span class="line">              struction codes. If no breakpoint is reached, the instruc-</span><br><span class="line">              tions are <span class="ngb">not</span> restored.</span><br><span class="line"></span><br><span class="line">              <span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">              1.  Once a program has reached completion (DEBUG has dis-</span><br><span class="line">                  played the &#34;Program terminated normally&#34; message), it</span><br><span class="line">                  is necessary to <span class="ngr">reload</span> the program before it can be</span><br><span class="line">                  executed again.</span><br><span class="line"></span><br><span class="line">              2.  Make sure that the address parameters refer to locations</span><br><span class="line">                  that contain valid CPU instruction codes. If you specify</span><br><span class="line">                  an address that does not contain the first byte valid in-</span><br><span class="line">                  struction, unpredictable results occur.</span><br><span class="line"></span><br><span class="line">              3.  The <span class="ngb">stack pointer</span> must be valid and have 6 bytes avail-</span><br><span class="line">                  able for the Go command; otherwise, unpredictable results</span><br><span class="line">                  occur.</span><br><span class="line"></span><br><span class="line">              4.  If only an offset is entered for a breakpoint, the G</span><br><span class="line">                  command assumes the segment contained in the CS register.</span><br><span class="line"></span><br><span class="line">              5.  Do not set breakpoints at instructions in read-only mem-</span><br><span class="line">                  ory (ROM BIOS or ROM BASIC).</span><br><span class="line"></span><br><span class="line">              For example:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">G 102 1EF 208</span></span><br><span class="line"></span><br><span class="line">              Execution begins with the current instruction, whose address</span><br><span class="line">              is in the current values of CS:IP. The =address parameter</span><br><span class="line">              was not used.</span><br><span class="line"></span><br><span class="line">              Three breakpoints are specified; assume that the second is</span><br><span class="line">              reached. Execution stops before the instruction at location</span><br><span class="line">              CS:1EF is executed, the original instruction codes are re-</span><br><span class="line">              stored, all three breakpoints are removed, the display oc-</span><br><span class="line">              curs, and the Go command ends.</span><br><span class="line"></span><br><span class="line">              Refer to the Register command for a description of the dis-</span><br><span class="line">              play.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="debug-23056.html">Register</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-27589.html">Trace</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-21711.html">Proceed</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-36619.html">address</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:38</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

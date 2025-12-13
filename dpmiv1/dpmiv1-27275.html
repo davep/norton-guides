@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-25020.html">
+    <link rel="next" href="dpmiv1-29508.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-25020.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-29508.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Allocate DOS Memory Block</span><br><span class="line"></span><br><span class="line">Allocates a block of memory from the DOS memory pool, i.e.</span><br><span class="line">memory below the 1 MB boundary that is controlled by DOS.</span><br><span class="line">Such memory blocks are typically used to exchange data with</span><br><span class="line">real mode programs, TSRs, or device drivers.  The function</span><br><span class="line">returns both the real mode segment base address of the block</span><br><span class="line">and one or more descriptors that can be used by protected</span><br><span class="line">mode applications to access the block.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 0100H</span><br><span class="line">   BX     = number of (16-byte) paragraphs desired</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   if function successful</span><br><span class="line">   Carry flag= clear</span><br><span class="line">   AX     = real mode segment base address of allocated</span><br><span class="line">           block</span><br><span class="line">   DX     = selector for allocated block</span><br><span class="line"></span><br><span class="line">   if function unsuccessful</span><br><span class="line">   Carry flag= set</span><br><span class="line">   AX     = error code</span><br><span class="line">           0007H   memory control blocks damaged (also</span><br><span class="line">                   returned by DPMI 0.9 hosts)</span><br><span class="line">           0008H   insufficient memory (also returned by</span><br><span class="line">                   DPMI 0.9 hosts).</span><br><span class="line">           8011H   descriptor unavailable</span><br><span class="line">   BX     = size of largest available block in paragraphs</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  If the size of the block requested is greater than 64 KB</span><br><span class="line">   (BX &gt; 1000H) and the client is a 16-bit program,</span><br><span class="line">   contiguous descriptors are allocated and the base</span><br><span class="line">   selector is returned.  The consecutive selectors for the</span><br><span class="line">   memory block can be calculated using the value returned</span><br><span class="line">   by the Get Selector Increment Value function (Int 31H</span><br><span class="line">   Function 0003H).  Each descriptor has a limit of 64 KB,</span><br><span class="line">   except for the last which has a limit of blocksize MOD 64</span><br><span class="line">   KB.</span><br><span class="line">o  If the DPMI host is 32-bit, the client is 16-bit, and</span><br><span class="line">   more than one descriptor is allocated, the limit of the</span><br><span class="line">   first descriptor will be set to the size of the entire</span><br><span class="line">   block.  Subsequent descriptors have limits as described</span><br><span class="line">   in the previous Note. 16-bit DPMI hosts will always set</span><br><span class="line">   the limit of the first descriptor to 64 KB even when</span><br><span class="line">   running on an 80386 (or later) machine.</span><br><span class="line">o  When the client is 32-bit, this function always allocates</span><br><span class="line">   only one descriptor.</span><br><span class="line">o  Client programs should never modify or free any</span><br><span class="line">   descriptors allocated by this function.  The Free DOS</span><br><span class="line">   Memory Block function (Int 31H Fn 0101H) will</span><br><span class="line">   deallocate the descriptors automatically.</span><br><span class="line">o  The DOS allocation function (Int 21H Fn 48H) is</span><br><span class="line">   used.</span><br><span class="line">o  Refer to the rules for descriptor usage in Appendix D.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,118 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Structures</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-244270.html">
+    <link rel="next" href="dos5-246630.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-244270.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-221655.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-246630.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">struc FontFileHeader</span><br><span class="line"> ffhFileTag     db 8 dup (?)    ; Font-file identifier (0ffh,&#34;FONT   &#34;)</span><br><span class="line"> ffhReserved    db 8 dup (?)    ; Reserved (must be 0)</span><br><span class="line"> ffhPointers    dw ?            ; No. of information pointers (= 1)</span><br><span class="line"> ffhPointerType db ?            ; Type of pointer (= 1)</span><br><span class="line"> ffhOffset      dd ?            ; File offset of FontInfoHeader</span><br><span class="line">ends                            ; = 23d bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struc FontInfoHeader</span><br><span class="line"> fihCodePages   dw ?            ; No. of code-page entries</span><br><span class="line">ends                            ; = 2 bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struc CPEntryHeader</span><br><span class="line"> cpeLength      dw 28d          ; Size of this structure, in bytes (28)</span><br><span class="line"> cpeNext        dd ?            ; Offset to next CPEntryHeader (last=0)</span><br><span class="line"> cpeDevType     dw ?            ; Device type (1=screen, 2=printer)</span><br><span class="line"> cpeDevSubType  db 8 dup (?)    ; Name of device &amp; file (e.g. &#34;EGA     &#34;)</span><br><span class="line"> cpeCodePageID  dw ?            ; Code-page identifier</span><br><span class="line"> cpeReserved    db 6 dup (?)    ; Reserved (must be 0)</span><br><span class="line"> cpeOffset      dd ?            ; Offset to font data for this code-page</span><br><span class="line">ends                            ; = 28d bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struc FontDataHeader</span><br><span class="line"> fdhReserved    dw 1            ; Reserved (must be 1)</span><br><span class="line"> fdhFonts       dw ?            ; Number of fonts (max. 1 if printer)</span><br><span class="line"> fdhLength      dw ?            ; Byte size of font data</span><br><span class="line">ends                            ; = 6 bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struc ScreenFontHeader</span><br><span class="line"> sfhHeight      db ?            ; Character height</span><br><span class="line"> sfhWidth       db ?            ; Character width</span><br><span class="line"> sfhRelHeight   db ?            ; Currently unused; must be 0</span><br><span class="line"> sfhRelWidth    db ?            ; Currently unused; must be 0</span><br><span class="line"> sfhCharacters  dw ?            ; No. of characters defined in bitmap</span><br><span class="line">ends                            ; = 6 bytes</span><br><span class="line">        ; ScreenFontHeader followed immediately by character bitmaps.</span><br><span class="line">        ; Byte size of bitmaps = sfhCharacters * 8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">struc PrintFontHeader</span><br><span class="line"> pfhSelType     dw ?            ; Selection type for printer font</span><br><span class="line"> pfhSeqLength   dw ?            ; Byte size of control-sequence data</span><br><span class="line">ends                            ; = 4 bytes</span><br><span class="line">        ; PrinterFontHeader followed immediately by control sequence</span><br><span class="line">        ; data (&lt; 31 bytes) and possibly downloadable font data.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">; Structure of EGA.CPI  ; Code-Page Information file</span><br><span class="line">;       FontFileHeader</span><br><span class="line">;       FontInfoHeader</span><br><span class="line">;       NUM_CODEPAGES * CPEntryHeader</span><br><span class="line">;       NUM_CODEPAGES * (FontDataHeader</span><br><span class="line">;                       (ScreenFontHeader + bitmaps  ; VGA 8*16</span><br><span class="line">;                       (ScreenFontHeader + bitmaps  ; EGA 8*14</span><br><span class="line">;                       (ScreenFontHeader + bitmaps  ; CGA 8*8</span><br><span class="line">;       Copyright notice (1-150 bytes)</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-226037.html">CodePageIDs</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

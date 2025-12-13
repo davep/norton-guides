@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » C/C++ » Using C</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-18382.html">
+    <link rel="next" href="clipncpp-25281.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-18382.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-25281.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Example 2</span></span><br><span class="line"></span><br><span class="line"> This program demonstrates how to determine the C numeric data type</span><br><span class="line"> for Clipper numeric parameters for use within C.  This version does</span><br><span class="line"> all the data comparisons in the file for illustrative purposes.</span><br><span class="line"> Example 3 uses extend.h style pseudo-functions defined in Number.h to</span><br><span class="line"> hide the details of these comparisons.  This allows a much cleaner</span><br><span class="line"> source file.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /***</span><br><span class="line"> *   Testnum.prg</span><br><span class="line"> *</span><br><span class="line"> *   By: Scott McIntosh, Nantucket Corp.</span><br><span class="line"> *</span><br><span class="line"> *   Clipper program to test the C function Number()</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"> #include &#34;set.ch&#34;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> PROCEDURE Main</span><br><span class="line"></span><br><span class="line">    LOCAL nVar1 := 123.456        // a float</span><br><span class="line">    LOCAL nVar2 := 123456         // a long</span><br><span class="line">    LOCAL nVar3 := 12345          // an int</span><br><span class="line"></span><br><span class="line">    SET( _SET_DECIMALS, 5 )</span><br><span class="line">    SCROLL()</span><br><span class="line"></span><br><span class="line">    // the C function Number() displays the type, we then re-display</span><br><span class="line">    // the value returned from Number() value to confirm that Number()</span><br><span class="line">    // converted it to a C variable and back correctly.</span><br><span class="line">    //</span><br><span class="line">    ? nVar1, Number( nVar1 )      // should be a float, value = 123.456</span><br><span class="line">    ? nVar2, Number( nVar2 )      // should be a long,  value = 123456</span><br><span class="line">    ? nVar3, Number( nVar3 )      // should be an int,  value = 12345</span><br><span class="line"></span><br><span class="line"> QUIT</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /***</span><br><span class="line"> *   Number.c</span><br><span class="line"> *</span><br><span class="line"> *   By: Scott McIntosh, Nantucket Corp.</span><br><span class="line"> *</span><br><span class="line"> *   Demonstrates how to determine the type of a numeric parameter</span><br><span class="line"> *   received from Clipper.  Normally, once we stored the number</span><br><span class="line"> *   into the proper data type we would do something useful with</span><br><span class="line"> *   it.</span><br><span class="line"> *</span><br><span class="line"> *   This program just displays the parameters numeric type, and</span><br><span class="line"> *   then returns the value back to Clipper to show that we haven&#39;t</span><br><span class="line"> *   truncated or corrupted its value.</span><br><span class="line"> *</span><br><span class="line"> *   Compile: cl /AL /c /FPa /Gs /Oalt /Zl number.c</span><br><span class="line"> *      Link: RTLINK FI numtest, number LIB clipper, llibca /NOE</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"> #include &#34;extend.h&#34;</span><br><span class="line"> #include &lt;limits.h&gt;</span><br><span class="line"></span><br><span class="line"> CLIPPER Number( void )</span><br><span class="line"> {</span><br><span class="line">    double dNum;</span><br><span class="line">    long   lNum;</span><br><span class="line">    int    iNum;</span><br><span class="line"></span><br><span class="line">    dNum = _parnd(1);</span><br><span class="line">    lNum = _parnl(1);</span><br><span class="line"></span><br><span class="line">     // by subtracting the long value of the parameter from the double</span><br><span class="line">     // value of the same parameter, we can determine if it is a floating</span><br><span class="line">     // point number (i.e. if we have any decimal places)</span><br><span class="line">     //</span><br><span class="line">    if( ( dNum - (double) lNum ) != 0 )</span><br><span class="line">    {</span><br><span class="line">       cprintf( &#34;\r\n\n  Double &#34; );</span><br><span class="line">       _retnd( dNum );</span><br><span class="line">    }</span><br><span class="line">    else</span><br><span class="line">    {</span><br><span class="line">       if( (lNum &gt;= INT_MIN) &amp;&amp; (lNum &lt;= INT_MAX) )</span><br><span class="line">       {</span><br><span class="line">          // we&#39;re small enough to be an int, so we could safely</span><br><span class="line">          // use iNum and be sure its value is correct</span><br><span class="line">          iNum = _parni( 1 );</span><br><span class="line"></span><br><span class="line">          cprintf( &#34;\r\n\n  Integer &#34; );</span><br><span class="line">          _retni( iNum );</span><br><span class="line">       }</span><br><span class="line">       else</span><br><span class="line">       {</span><br><span class="line">          // we&#39;re too big to be an int, so we stay as a long</span><br><span class="line">          cprintf( &#34;\r\n\n  Long &#34; );</span><br><span class="line">          _retnl( lNum );</span><br><span class="line">       }</span><br><span class="line">    }</span><br><span class="line">    return;</span><br><span class="line"> }</span><br><span class="line"></span><br><span class="line"> /* EOF: Example 2 */</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

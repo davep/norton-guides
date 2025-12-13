@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-464329.html">
+    <link rel="next" href="rbint-471329.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-464329.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-408944.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-471329.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 10 Fn 0070  - Video - Everex Micro Enhancer Ega/viewpoint Vga - Exten</span>  [<span class="ngb">V</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0070h</span><br><span class="line">   BL = mode (see #0010)</span><br><span class="line"><span class="ngb">Desc:</span>  specify a proprietary display mode on the Everex Micro Enhancer or</span><br><span class="line">     Viewpoint video adapters</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=00h,AX=6F05h,AX=7000h/BX=0004h,AH=FFh&#34;GO32&#34;</span><br><span class="line"></span><br><span class="line">(Table 0010)</span><br><span class="line">Values for Everex video mode:</span><br><span class="line">     text/ text pixel  pixel   colors disply scrn monitor    adapter</span><br><span class="line">     grph resol     box  resolution       pages  addr</span><br><span class="line"> 00h = G    .    .    640x480   16   . .  multisync  EGA,VGA</span><br><span class="line"> 01h = G    .    .    752x410   16   . .  multisync  EGA,VGA</span><br><span class="line"> 02h = G    .    .    800x600   16   . .  multisync  EGA,VGA</span><br><span class="line"> 03h = T  80x34      .   .   .   . .  multisync  EGA,VGA</span><br><span class="line"> 04h = T  80x60      .   .   .   . .  multisync  EGA,VGA</span><br><span class="line"> 05h = T  94x29      .   .   .   . .  multisync  EGA only</span><br><span class="line"> 06h = T  94x51      .   .   .   . .  multisync  EGA only</span><br><span class="line"> 07h = T 100x43     8x14     .  16   . .  .          VGA only</span><br><span class="line"> 08h = T 100x75     8x8      .  16   . .  .          VGA only</span><br><span class="line"> 09h = T  80x44      .   .   .   . .  EGA        EGA only</span><br><span class="line"> 0Ah = T 132x25      .   .   .   . .  EGA        EGA,VGA</span><br><span class="line"> 0Bh = T 132x44      .   .   .   . .  EGA        EGA,VGA</span><br><span class="line"> 0Ch = T 132x25      .   .   .   . .  CGA        EGA only</span><br><span class="line"> 0Dh = T  80x44      .   .   .   . .  mono       EGA only</span><br><span class="line"> 0Eh = T 132x25      .   .   .   . .  mono</span><br><span class="line"> 0Fh = T 132x44      .   .   .   . .  mono</span><br><span class="line"> 10h = reserved</span><br><span class="line"> 11h = G    .    .   1280x350    4   . .  .          EGA only</span><br><span class="line"> 12h = G    .    .   1280x600    4   . .  .          EGA only</span><br><span class="line"> 13h = G    .    .    640x350  256   . .  .          EGA,EV673</span><br><span class="line"> 14h = G    .    .    640x400  256   . .  .</span><br><span class="line"> 15h = G    .    .    512x480  256   . .  .</span><br><span class="line"> 16h = T  80x30     8x16     . 256   . .  .          VGA only</span><br><span class="line"> 18h = T 100x27     8x16     .  16   . .  .          VGA only</span><br><span class="line"> 20h = G    .    .   1024x768   16   . .  .          Everex 629,678</span><br><span class="line">       .     .   .   .   . .  .          Everex EV-673</span><br><span class="line"> 21h = T 160x64     8x16 1280x1024  16   . .  .          1MB VGA only</span><br><span class="line"> 30h = G    .    .    640x480  256   . .  .          Everex 629,678</span><br><span class="line">       .     .   .   .   . .  .          Everex EV-673</span><br><span class="line"> 31h = G    .    .    800x600  256   . .  .          Everex 629,678</span><br><span class="line">       .     .   .   .   . .  .          Everex EV-673</span><br><span class="line"> 32h = G 128x48     8x16 1024x768  256   . .  .          1MB VGA only</span><br><span class="line"> 40h = T 132x30     8x16     .  16   . .  .          VGA only</span><br><span class="line"> 50h = T 132x32     8x16     . mono      . .  .          VGA only</span><br><span class="line"> 62h = G  40x25     8x8   320x200  32K   . .  .          Vwpt TC (EV629)</span><br><span class="line"> 70h = G  64x30     8x16  512x480  32K   . .  .          Viewpoint TC</span><br><span class="line"> 71h = G  80x30     8x16  640x480  32K   . .  .          Viewpoint TC</span><br><span class="line"> 76h = G  64x30     8x16  512x480  16M   . .  .          Viewpoint TC</span><br><span class="line"> 77h = G  80x30     8x16  640x480  16M   . .  .          Viewpoint TC</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0009,#0123</span><br><span class="line">Index: video modes;Everex</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

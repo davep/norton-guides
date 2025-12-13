@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1268553.html">
+    <link rel="next" href="rbint-1270754.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1268553.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1227085.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1270754.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 5307  - Advanced Power Management V1.0+ - Set Power State      </span>  [<span class="ngb">p</span>]</span><br><span class="line"></span><br><span class="line">   AX = 5307h</span><br><span class="line">   BX = device ID (see #0400)</span><br><span class="line">   CX = system state ID (see #0401)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = error code (01h,03h,09h,0Ah,0Bh,60h) (see #0399)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  should not be called from within a hardware interrupt handler to avoid</span><br><span class="line">     reentrance problems</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=530Ch</span><br><span class="line"></span><br><span class="line">(Table 0400)</span><br><span class="line">Values for APM device IDs:</span><br><span class="line"> 0000h system BIOS</span><br><span class="line"> 0001h all devices for which the system BIOS manages power</span><br><span class="line"> 01xxh display (01FFh for all attached display devices)</span><br><span class="line"> 02xxh secondary storage (02FFh for all attached secondary storage devices)</span><br><span class="line"> 03xxh parallel ports (03FFh for all attached parallel ports)</span><br><span class="line"> 04xxh serial ports (04FFh for all attached serial ports)</span><br><span class="line">---APM v1.1+ ---</span><br><span class="line"> 05xxh network adapters (05FFh for all attached network adapters)</span><br><span class="line"> 06xxh PCMCIA sockets (06FFh for all)</span><br><span class="line"> 0700h-7FFFh reserved</span><br><span class="line"> 80xxh system battery devices (APM v1.2)</span><br><span class="line"> 8100h-DFFFh reserved</span><br><span class="line"> Exxxh OEM-defined power device IDs</span><br><span class="line"> F000h-FFFFh reserved</span><br><span class="line"></span><br><span class="line">(Table 0401)</span><br><span class="line">Values for system state ID:</span><br><span class="line"> 0000h ready (not supported for device ID 0001h)</span><br><span class="line"> 0001h stand-by</span><br><span class="line"> 0002h suspend</span><br><span class="line"> 0003h off (not supported for device ID 0001h)</span><br><span class="line">---APM v1.1---</span><br><span class="line"> 0004h last request processing notification (only for device ID 0001h)</span><br><span class="line"> 0005h last request rejected (only for device ID 0001h)</span><br><span class="line"> 0006h-001Fh reserved system states</span><br><span class="line"> 0020h-003Fh OEM-defined system states</span><br><span class="line"> 0040h-007Fh OEM-defined device states</span><br><span class="line"> 0080h-FFFFh reserved device states</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

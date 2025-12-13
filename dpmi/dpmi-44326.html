@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-43605.html">
+    <link rel="next" href="dpmi-45478.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-43605.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-45478.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">OverView</a></li>
+                  <li><a href="dpmi-38393.html">DPMI API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Segment to Descriptor</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                 This function  is used  to convert  real mode  segments</span><br><span class="line">                 into descriptors that are addressable by protected mode</span><br><span class="line">                 programs.</span><br><span class="line"></span><br><span class="line">            To Call</span><br><span class="line"></span><br><span class="line">                 AX = 0002h</span><br><span class="line">                 BX = Real mode segment address</span><br><span class="line"></span><br><span class="line">            Returns</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                 If function was successful:</span><br><span class="line">                 Carry flag is clear.</span><br><span class="line">                 AX = Selector mapped to real mode segment</span><br><span class="line"></span><br><span class="line">                 If function was not successful:</span><br><span class="line">                 Carry flag is set.</span><br><span class="line"></span><br><span class="line">            Programmer&#39;s Notes</span><br><span class="line"></span><br><span class="line">                 o    Multiple calls  to this  function  with  the  same</span><br><span class="line">                      segment will return the same selector.</span><br><span class="line">                 o    Descriptors created  by this function should never</span><br><span class="line">                      be modified or freed.  For this reason, you should</span><br><span class="line">                      use this  function sparingly.    If  your  program</span><br><span class="line">                      needs to examine various real mode addresses using</span><br><span class="line">                      the same selector you should allocate a descriptor</span><br><span class="line">                      and change  the base  using the  Set Segment  Base</span><br><span class="line">                      Address function instead of using this function.</span><br><span class="line">                 o    The descriptor&#39;s limit will be set to 64K.</span><br><span class="line">                 o    The intent  of this  function is to allow programs</span><br><span class="line">                      easy access  to commonly  used real  mode segments</span><br><span class="line">                      such as 40h and A000h.  Do not use this service to</span><br><span class="line">                      obtain descriptors to private data areas.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

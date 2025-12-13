@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-12865.html">
+    <link rel="next" href="tr-14931.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-12865.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-14931.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> BIOSATTR()</span><br><span class="line"> Obtains the current screen attributes from the ROM BIOS.</span><br><span class="line"> Returns &lt;expN&gt; value of screen attribute at the cursor.</span><br><span class="line"></span><br><span class="line"> Uses interrupt 16 (hex 10), service 8.</span><br><span class="line"></span><br><span class="line"> Number returned is in the range zero to 255 with each color or</span><br><span class="line"> attribute represented by each of eight bits (in binary notation).</span><br><span class="line"></span><br><span class="line"> Bit   Color Attribute</span><br><span class="line"> ═══   ═══════════════════════════════════════</span><br><span class="line">  0    Blue component of foreground color</span><br><span class="line">  1    Green component of foreground color</span><br><span class="line">  2    Red component of foreground color</span><br><span class="line">  3    Intensity component of foreground color</span><br><span class="line">  4    Blue component of background color</span><br><span class="line">  5    Green component of background color</span><br><span class="line">  6    Red component of background color</span><br><span class="line">  7    Blinking component of foreground color</span><br><span class="line"></span><br><span class="line"> Bit zero is the rightmost (or least significant) bit,</span><br><span class="line"> and bit seven is the leftmost (or most significant) bit.</span><br><span class="line"></span><br><span class="line"> For more information about your ROM BIOS, see your</span><br><span class="line"> operating system or hardware technical reference manual</span><br><span class="line"> or The Peter Norton Programmer&#39;s Guide to the IBM-PC.</span><br><span class="line"></span><br><span class="line"> * Used by .prg function to store current set color values</span><br><span class="line"> * by taking a substring of color-setting letters which are</span><br><span class="line"> * positioned in a string array for this purpose.</span><br><span class="line"> FUNCTION SCRATTR</span><br><span class="line"> attribute = BIOSATTR()</span><br><span class="line"> RETURN TRIM( SUBSTR( &#34;N  B  G  BG R  BR GR W  &#34;+;</span><br><span class="line">                      &#34;N+ B+ G+ BG+R+ BR+GR+W+ &#34;,;</span><br><span class="line">                      (attribute % 16)*3+1, 3 ) ) + &#34;/&#34; +;</span><br><span class="line">              SUBSTR( &#34;N  B  G  BG R  BR GR W  &#34;+;</span><br><span class="line">                      &#34;N* B* G* BG*R* BR*GR*W* &#34;,;</span><br><span class="line">                      INT(attribute/16)*3+1, 3 )</span><br><span class="line"> .</span><br><span class="line"> . &lt;code that changes color&gt;</span><br><span class="line"> .</span><br><span class="line"> SET COLOR TO (set_color)  &amp;&amp; restore original color settings</span><br><span class="line"></span><br><span class="line"> Hazard  Shows only the screen attribute of the one byte</span><br><span class="line">             at the current cursor position.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-91235.html">SCRATTR()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

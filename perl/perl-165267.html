@@ -1,0 +1,134 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Command line options</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-164458.html">
+    <link rel="next" href="perl-165853.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-164458.html">Previous</a></li>
+
+
+          
+
+<li><a href="perl-159711.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-165853.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>PERL</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="perl-90961.html">Languages</a></li>
+                  <li><a href="perl-159711.html">Command line options</a></li>
+                  <li><a href="perl-170094.html">Regular Expressions</a></li>
+                  <li><a href="perl-171332.html">Special Variables</a></li>
+                  <li><a href="perl-188582.html">Operators</a></li>
+                  <li><a href="perl-197905.html">Debugging</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tables</li>
+              <li>
+                <ul>
+                  <li><a href="perl-204383.html">ASCII Chart</a></li>
+                  <li><a href="perl-207014.html">Literals</a></li>
+                  <li><a href="perl-207867.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">     -n   causes perl to assume the following  loop  around  your</span><br><span class="line">          script,  which makes it iterate over filename arguments</span><br><span class="line">          somewhat like &#34;sed -n&#34; or awk:</span><br><span class="line"></span><br><span class="line">               while (&lt;&gt;) {</span><br><span class="line">                    ...       # your script goes here</span><br><span class="line">               }</span><br><span class="line"></span><br><span class="line">          Note that the lines are not printed by default.  See -p</span><br><span class="line">          to  have  lines  printed.   Here is an efficient way to</span><br><span class="line">          delete all files older than a week:</span><br><span class="line"></span><br><span class="line">               find . -mtime +7 -print | perl -nle &#39;unlink;&#39;</span><br><span class="line"></span><br><span class="line">          This is faster than using  the  -exec  switch  of  find</span><br><span class="line">          because  you  don&#39;t  have  to  start a process on every</span><br><span class="line">          filename found.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="perl-161619.html">-a</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="perl-165853.html">-p</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:49</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

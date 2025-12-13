@@ -1,0 +1,140 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-13521.html">
+    <link rel="next" href="perl-14578.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-13521.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-14578.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>PERL</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="perl-90961.html">Languages</a></li>
+                  <li><a href="perl-159711.html">Command line options</a></li>
+                  <li><a href="perl-170094.html">Regular Expressions</a></li>
+                  <li><a href="perl-171332.html">Special Variables</a></li>
+                  <li><a href="perl-188582.html">Operators</a></li>
+                  <li><a href="perl-197905.html">Debugging</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tables</li>
+              <li>
+                <ul>
+                  <li><a href="perl-204383.html">ASCII Chart</a></li>
+                  <li><a href="perl-207014.html">Literals</a></li>
+                  <li><a href="perl-207867.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">     close(FILEHANDLE)</span><br><span class="line"></span><br><span class="line">     close FILEHANDLE</span><br><span class="line"></span><br><span class="line">             Closes the file or pipe  associated  with  the  file</span><br><span class="line">             handle.   You  don&#39;t have to close FILEHANDLE if you</span><br><span class="line">             are immediately going to  do  another  open  on  it,</span><br><span class="line">             since open will close it for you.  (See open.)  How-</span><br><span class="line">             ever, an explicit close on an input file resets  the</span><br><span class="line">             line  counter ($.), while the implicit close done by</span><br><span class="line">             open does not.  Also, closing a pipe will  wait  for</span><br><span class="line">             the  process  executing  on the pipe to complete, in</span><br><span class="line">             case you want to look at  the  output  of  the  pipe</span><br><span class="line">             afterwards.  Closing a pipe explicitly also puts the</span><br><span class="line">             status value of the command into $?.  Example:</span><br><span class="line"></span><br><span class="line">                  open(OUTPUT, &#39;|sort &gt;foo&#39;);   # pipe to sort</span><br><span class="line">                  ...  # print stuff to output</span><br><span class="line">                  close OUTPUT;       # wait for sort to finish</span><br><span class="line">                  open(INPUT, &#39;foo&#39;); # get sort&#39;s results</span><br><span class="line"></span><br><span class="line">             FILEHANDLE may be an expression  whose  value  gives</span><br><span class="line">             the real filehandle name.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="perl-44048.html">open</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="perl-15591.html">dbmopen</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="perl-15232.html">dbmclose</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:49</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

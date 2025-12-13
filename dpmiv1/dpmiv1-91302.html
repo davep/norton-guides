@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-89858.html">
+    <link rel="next" href="dpmiv1-94279.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-89858.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-94279.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Mark Real Mode Region as Pageable</span><br><span class="line"></span><br><span class="line">Advises the DPMI host that the specified memory below the 1</span><br><span class="line">MB boundary may be paged to disk.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 0602H</span><br><span class="line">   BX:CX  = starting linear address of memory to mark as</span><br><span class="line">           pageable</span><br><span class="line">   SI:DI  = size of region to be marked (bytes)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   if function successful</span><br><span class="line">   Carry flag= clear</span><br><span class="line"></span><br><span class="line">   if function unsuccessful</span><br><span class="line">   Carry flag= set</span><br><span class="line">   AX     = error code</span><br><span class="line">           8002H   invalid state (region already marked as</span><br><span class="line">                   pageable)</span><br><span class="line">           8025H   invalid linear address (region is above 1</span><br><span class="line">                   MB boundary)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  If the function returns an error, none of the memory has</span><br><span class="line">   been marked as pageable.</span><br><span class="line">o  If the specified region overlaps part of a page at the</span><br><span class="line">   beginning or end of the region, the page(s) will not be</span><br><span class="line">   marked as pageable.</span><br><span class="line">o  Pageability information for a real mode region is</span><br><span class="line">   maintained as a binary state, not a count.  Therefore,</span><br><span class="line">   multiple calls to this function for the same region have</span><br><span class="line">   no effect.</span><br><span class="line">o  For compatibility with DPMI version 0.9 hosts, a client</span><br><span class="line">   must call the Relock Real Mode Region function (Int 31H</span><br><span class="line">   Function 0603H) to relock the memory region before</span><br><span class="line">   terminating.  Memory that remains unlocked after the</span><br><span class="line">   client has terminated could result in fatal page faults</span><br><span class="line">   when another program is executed in the same address</span><br><span class="line">   space.  DPMI 1.0 hosts automatically relock real mode</span><br><span class="line">   memory at client termination.</span><br><span class="line">o  Under some DPMI hosts, all conventional memory may be</span><br><span class="line">   locked by default.  If a protected mode program is using</span><br><span class="line">   memory in the first megabyte of address space, it is</span><br><span class="line">   recommended that this function be used to turn off</span><br><span class="line">   automatic page locking for regions of memory that will</span><br><span class="line">   not be touched at interrupt time.</span><br><span class="line">o  The client must not mark memory as pageable in regions</span><br><span class="line">   that it does not own; i.e. it may only mark as pageable</span><br><span class="line">   memory that it has previously allocated with Int 31H</span><br><span class="line">   Function 0100H or by a direct call to DOS via the</span><br><span class="line">   translation functions.  For example, marking all free DOS</span><br><span class="line">   memory as pageable under some DPMI hosts could cause a</span><br><span class="line">   page fault to occur while inside of DOS, resulting in a</span><br><span class="line">   crash.  Also, a client should not mark the DPMI host data</span><br><span class="line">   area as pageable.</span><br><span class="line">o  Note that address space marked as pageable by this</span><br><span class="line">   function can still be locked using the Lock Linear Region</span><br><span class="line">    function (Int 31H Fn 0600H).  This function is</span><br><span class="line">   just an advisory service to allow memory that does not</span><br><span class="line">   need to be locked to be paged out; it disables any</span><br><span class="line">   automatic locking of real mode memory performed by the</span><br><span class="line">   DPMI host.</span><br><span class="line">o  This function is ignored by DPMI implementations that do</span><br><span class="line">   not support virtual memory; the function will return the</span><br><span class="line">   Carry flag clear to indicate success, but has no other</span><br><span class="line">   effect.  DPMI hosts which support virtual memory may also</span><br><span class="line">   choose to ignore this function, but such hosts must be</span><br><span class="line">   able to handle page faults transparently at arbitrary</span><br><span class="line">   points during a client&#39;s execution, including within</span><br><span class="line">   interrupt and exception handlers.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

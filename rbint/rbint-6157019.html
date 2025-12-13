@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-6156849.html">
+    <link rel="next" href="rbint-6161100.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-6156849.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-6101071.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-6161100.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int E0  - Real/32 - &#34;s_sysdat&#34; - Get System Data Area                    </span>  [<span class="ngb">O</span>]</span><br><span class="line"></span><br><span class="line">   CL = 9Ah</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> ES:AX -&gt; system data area (see #3780)</span><br><span class="line">   may destroy SI,DI</span><br><span class="line"></span><br><span class="line">Format of REAL/32 system data area:</span><br><span class="line">Offset Size    Description (Table 3780)</span><br><span class="line"> 00h   DWORD   address of supervisor entry point</span><br><span class="line"> 04h 36 BYTEs  reserved</span><br><span class="line"> 28h   DWORD   address of XIOS entry point</span><br><span class="line"> 2Ch   DWORD   address of XIOS initialization point</span><br><span class="line"> 30h  8 BYTEs  reserved</span><br><span class="line"> 38h   DWORD   address of IRET dispatcher entry point</span><br><span class="line"> 3Ch   DWORD   address of RETF dispatcher entry point</span><br><span class="line"> 40h   WORD    segment of operating system code</span><br><span class="line"> 42h   WORD    paragraph address of first Resident System Process (RSP)</span><br><span class="line"> 44h   WORD    paragraph after OS system area</span><br><span class="line"> 46h   BYTE    reserved</span><br><span class="line"> 47h   BYTE    number of system console devices</span><br><span class="line"> 48h   BYTE    number of system list (printer) devices</span><br><span class="line"> 49h   BYTE    number of Character Control blocks</span><br><span class="line"> 4Ah   BYTE    number of system flags</span><br><span class="line"> 4Bh   BYTE    current search disk</span><br><span class="line"> 4Ch   WORD    maximum memory per process</span><br><span class="line"> 4Eh   BYTE    reserved</span><br><span class="line"> 4Fh   BYTE    &#34;dayfile&#34; (flag, true if FFh)</span><br><span class="line"> 50h   BYTE    default disk for temporary files</span><br><span class="line"> 51h   BYTE    system ticks per second (typically 60)</span><br><span class="line"> 52h   WORD    offset of Locked Unused list</span><br><span class="line"> 54h   WORD    offset of CCB table</span><br><span class="line"> 56h   WORD    offset of system flag table</span><br><span class="line"> 58h   WORD    offset of root of Memory Descriptor Unused list</span><br><span class="line"> 5Ah   WORD    offset of Memory Free list</span><br><span class="line"> 5Ch   WORD    offset of Process Unused list</span><br><span class="line"> 5Eh   WORD    offset of Queue Unused list</span><br><span class="line"> 60h  4 WORDs  (no longer used) QMAU</span><br><span class="line"> 68h   WORD    offset of root of Ready List</span><br><span class="line"> 6Ah   WORD    offset of root of Delay List</span><br><span class="line"> 6Ch   WORD    offset of Dispatcher Ready list</span><br><span class="line"> 6Eh   WORD    offset of root of Poll List</span><br><span class="line"> 70h   WORD    reserved</span><br><span class="line"> 72h   WORD    offset of root of Thread List</span><br><span class="line"> 74h   WORD    offset of root of Queue List</span><br><span class="line"> 76h   WORD    offset of Memory Allocation list</span><br><span class="line"> 78h   WORD    segment of version string</span><br><span class="line"> 7Ah   WORD    BDOS version number</span><br><span class="line"> 7Ch   WORD    OS version number</span><br><span class="line"> 7Eh   WORD    number of days since 01jan1978</span><br><span class="line"> 80h   BYTE    current time: hour</span><br><span class="line"> 81h   BYTE    current time: minute</span><br><span class="line"> 82h   BYTE    current time: second</span><br><span class="line"> 83h   BYTE    number of XIOS consoles</span><br><span class="line"> 84h   BYTE    number of XIOS list (printer) devices</span><br><span class="line"> 85h   BYTE    total number of character devices</span><br><span class="line"> 86h   WORD    offset of LCB table</span><br><span class="line"> 88h   WORD    bitmap of open files</span><br><span class="line"> 8Ah   BYTE    maximum locked records per process</span><br><span class="line"> 8Bh   BYTE    maximum open files per process</span><br><span class="line"> 8Ch   WORD    offset of process descriptor for math coprocessor&#39;s owner</span><br><span class="line"> 8Eh   WORD    offset of Auxiliary Control Block</span><br><span class="line"> 90h  8 BYTEs  reserved</span><br><span class="line"> 98h   WORD    offset of root Memory Window Descriptor</span><br><span class="line"> 9Ah   WORD    reserved</span><br><span class="line"> 9Ch   BYTE    number of Auxiliary Control Blocks</span><br><span class="line"> 9Dh   BYTE    default search disk</span><br><span class="line"> 9Eh   BYTE    reserved</span><br><span class="line"> 9Fh   BYTE    number of physical consoles</span><br><span class="line"> A0h   DWORD   address of 8087 interrupt handler</span><br><span class="line"> A4h   DWORD   address of default 8087 exception handler</span><br><span class="line"> ...       reserved</span><br><span class="line">C00h 82 BYTEs  XIOS header structure (see #3781)</span><br><span class="line"></span><br><span class="line">Format of REAL/32 XIOS header structure:</span><br><span class="line">Offset Size    Description (Table 3781)</span><br><span class="line"> 00h  3 BYTEs  XIOS initialization entry point</span><br><span class="line"> 03h  3 BYTEs  XIOS service entry point</span><br><span class="line"> 06h   WORD    segment address of system data</span><br><span class="line"> 08h   DWORD   address of supervisor entry point</span><br><span class="line"> 0Ch   BYTE    set tick flag</span><br><span class="line"> 0Dh   BYTE    ticks per second</span><br><span class="line"> 0Eh   BYTE    global Door Open interrupt flag</span><br><span class="line"> 0Fh   BYTE    number of Auxiliary Control Blocks</span><br><span class="line"> 10h   BYTE    number of physical consoles</span><br><span class="line"> 11h   BYTE    number of virtual consoles</span><br><span class="line"> 12h   BYTE    number of logical consoles</span><br><span class="line"> 13h   BYTE    number of list control blocks</span><br><span class="line"> 14h   WORD    offset of CCB table</span><br><span class="line"> 16h   WORD    offset of LCB table</span><br><span class="line"> 18h 16 WORDs  offsets into DPH for drives A-P</span><br><span class="line"> 38h   WORD    buffer size in paragraphs</span><br><span class="line"> 3Ah   WORD    offset of ACB table</span><br><span class="line"> 3Ch   WORD    used by OEM</span><br><span class="line"> 3Eh   WORD    offset of CCB pointer array</span><br><span class="line"> 40h   WORD    offset of LCB pointer array</span><br><span class="line"> 42h   WORD    offset of ACB pointer array</span><br><span class="line"> 44h   BYTE    &#39;first&#39; flag</span><br><span class="line"> 45h   BYTE    unused</span><br><span class="line"> 46h   WORD    offset of print device support table</span><br><span class="line"> 48h   WORD    offset of aux device support table</span><br><span class="line"> 4Ah   WORD    XIOS extra segment</span><br><span class="line"> 4Ch   WORD    segment of save end address for debug</span><br><span class="line"> 4Eh   WORD    segment of save start address for debug</span><br><span class="line"> 50h   BYTE    number of main virtual console</span><br><span class="line"> 51h   WORD    segment of XIOS code</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3780</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » C/C++ » Using C</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-1067.html">
+    <link rel="next" href="clipncpp-4234.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-1067.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-4234.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Memory Allocation concerns</span></span><br><span class="line"></span><br><span class="line"> Memory allocation is probably the number one pitfall when writing</span><br><span class="line"> Clipper 5.0 user defined functions in C.  This is due to the fact</span><br><span class="line"> that with the introduction of Clipper 5.0, run-time memory allocation</span><br><span class="line"> is accomplished via the Clipper VMM (Virtual Memory Manager.)1    In</span><br><span class="line"> past versions of Clipper, when allocating memory from within C, the</span><br><span class="line"> use of the Clipper Extend System memory allocation functions was</span><br><span class="line"> recommended.  With the inclusion of VMM in Clipper 5.x memory</span><br><span class="line"> allocation via the Clipper extend system it is an absolute must.  It</span><br><span class="line"> is equally important to make absolutely sure that you free the memory</span><br><span class="line"> you have allocated.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Allocating memory with the Extend System</span></span><br><span class="line"></span><br><span class="line"> The Extend System functions for memory allocation are _xalloc</span><br><span class="line"> and _xgrab.  To allocate memory from C make a call to either</span><br><span class="line"> _xalloc and _xgrab which returns a pointer if  successful.</span><br><span class="line"> The difference between the two is the way they handle an</span><br><span class="line"> error:  _xalloc  returns a  Null pointer to the C routine and</span><br><span class="line"> _xgrab triggers a Clipper error.  Avoid C Library routines</span><br><span class="line"> that allocate memory.  Many C Library functions automatically</span><br><span class="line"> allocate  memory using the C library&#39;s memory allocation</span><br><span class="line"> routines.  This automatic memory allocation must  be avoided.</span><br><span class="line"> Care must be taken when using library routines from the</span><br><span class="line"> following categories.2</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Memory Allocation routines</span></span><br><span class="line"></span><br><span class="line"> Based on the statement that all memory must be allocated by</span><br><span class="line"> the Clipper extend system,  is should be no surprise that C</span><br><span class="line"> memory allocation routines can not be used.   This  includes</span><br><span class="line"> alloca, calloc, malloc, along with their companion memory</span><br><span class="line"> freeing functions.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">String manipulation routines</span></span><br><span class="line"></span><br><span class="line"> Most string manipulation functions are passed both the source</span><br><span class="line"> and target strings.   Because of this, string manipulation</span><br><span class="line"> functions are generally quite easy to adapt to clipper use.</span><br><span class="line"> Simply allocate the source and target buffers using an extend</span><br><span class="line"> function, and pass them to the  string function as normal.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Stream (buffered) I/O</span></span><br><span class="line"></span><br><span class="line"> By default, Stream I/O routines (i.e.: fopen(), fclose(),</span><br><span class="line"> fread(), fwrite(), ... ) automatically allocate  memory for a</span><br><span class="line"> stream buffer.  They should be avoided, and the Low Level</span><br><span class="line"> File I/O routines (i.e.:  open(), close(),  read(), write(),</span><br><span class="line"> ... ) should be used instead.  Also, printf() (and scanf() )</span><br><span class="line"> are  stream I/O routines and must be avoided.  Fortunately,</span><br><span class="line"> cprintf() and sprintf() (along with cscanf() and sscanf())</span><br><span class="line"> will work.  The following shows how to substitute these</span><br><span class="line"> functions for printf():</span><br><span class="line"></span><br><span class="line"> Instead of: printf( &#34;Hello, world.\n&#34;  )</span><br><span class="line">        use: cprintf( &#34;Hello, world.\r\n&#34; )</span><br><span class="line">             // uses raw mode - \n is CR only</span><br><span class="line">         or: sprintf( stdout, &#34;Hello, world.\n&#34; )</span><br><span class="line">             // stdout is defined in stdio.h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

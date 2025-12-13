@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » CMOS</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-233576.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-233576.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-180090.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Accessing the CMOS  <span class="ngb">(Cont.)</span></span></span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) sleep timeout:</span><br><span class="line">Bit(s) Description (Table C085)</span><br><span class="line"> 5-3   SLEEP timeout</span><br><span class="line">   000  disabled</span><br><span class="line">   001  1 minute</span><br><span class="line">   010  2 minutes</span><br><span class="line">   011  3 minutes</span><br><span class="line">   100  4 minutes</span><br><span class="line">   101  6 minutes</span><br><span class="line">   110  8 minutes</span><br><span class="line">   111  12 minutes</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #C083,#C087</span><br><span class="line">----------R6077------------------------------</span><br><span class="line">CMOS 60h-77h - AMI WinBIOS - PCI chipset-specific setup information</span><br><span class="line">----------R61--------------------------------</span><br><span class="line">CMOS 61h - AWARD - POWER MANAGEMENT</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD power management:</span><br><span class="line">Bit(s) Description (Table C086)</span><br><span class="line"> 7 PM Event on HDD Ports Activity (1=enable)</span><br><span class="line"> 6 PM Event on LPT Port Activity (1=enable)</span><br><span class="line"> 5 PM Event on COM Port Activity (1=enable)</span><br><span class="line"> 4 HDD Power Down on Suspend</span><br><span class="line"> 0-3   HDD Power Down Time</span><br><span class="line">   0   Disabled</span><br><span class="line">   1-15    Time in Minutes</span><br><span class="line">----------R62--------------------------------</span><br><span class="line">CMOS 62h - AMI 1990 Hyundai super-NB368S notebook - ???</span><br><span class="line">   FFh when values from bios defaults</span><br><span class="line">   FEh when values from power up defaults</span><br><span class="line">----------R62--------------------------------</span><br><span class="line">CMOS 62h - AMI (Neptune) - number of last PCI bus in system</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 1A/AX=B101h</span><br><span class="line">----------R62--------------------------------</span><br><span class="line">CMOS 62h - AMI (PicoPower) - HARD-DISK POWERDOWN</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) hard-disk powerdown timeout:</span><br><span class="line">Bit(s) Description (Table C087)</span><br><span class="line"> 3-0   hard-disk timeout in minutes (0000 = disabled)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #C085</span><br><span class="line">----------R62--------------------------------</span><br><span class="line">CMOS 62h - AWARD - POWER MANAGEMENT</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD power management:</span><br><span class="line">Bit(s) Description (Table C088)</span><br><span class="line"> 7-4   Standby Mode Setting (for User Defined)</span><br><span class="line">   0   Disabled</span><br><span class="line">   1   20 Seconds</span><br><span class="line">   2   1 Minute</span><br><span class="line">   3   5 Minutes</span><br><span class="line">   4   10 Minutes</span><br><span class="line">   5   15 Minutes</span><br><span class="line">   6   20 Minutes</span><br><span class="line">   7   30 Minutes</span><br><span class="line">   8   40 Minutes</span><br><span class="line"> 0-3   Doze Mode Setting (for User Defined)</span><br><span class="line">   (See Standby Mode above)</span><br><span class="line">----------R63--------------------------------</span><br><span class="line">CMOS 63h - AWARD - POWER MANAGEMENT</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD power management:</span><br><span class="line">Bit(s) Description (Table C089)</span><br><span class="line"> 7 Disable PM Event on IRQ3 Activity (COM2) (1=disable)</span><br><span class="line"> 6 PM Event on VGA Activity (1=enable)</span><br><span class="line"> 5 ??? (Defaults to 1)</span><br><span class="line"> 4 PM Event on PCI/ISA Master Activity (1=enable)</span><br><span class="line"> 0-3   Suspend Mode Setting (for User Defined)</span><br><span class="line">   (See Standby Mode above)</span><br><span class="line">----------R63--------------------------------</span><br><span class="line">CMOS 63h - AMI (PicoPower) - BATTERY-LOW ACTIONS</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) battery-low actions:</span><br><span class="line">Bit(s) Description (Table C090)</span><br><span class="line"> 5-3   battery-very-low action</span><br><span class="line">   000  MAX</span><br><span class="line">   001  MAX/2</span><br><span class="line">   010  MAX/4</span><br><span class="line">   011  MAX/8</span><br><span class="line">   100  MAX/16</span><br><span class="line">   101  MAX/32</span><br><span class="line">   110  MAX/64</span><br><span class="line">   111  suspend</span><br><span class="line"> 2-0   battery-low action (same as battery-very-low action)</span><br><span class="line">----------R64--------------------------------</span><br><span class="line">CMOS 64h - AMI 1990 Hyundai super-NB368S notebook - ???</span><br><span class="line">----------R64--------------------------------</span><br><span class="line">CMOS 64h - AMI (PicoPower) - BATTERY POWER</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) battery power:</span><br><span class="line">Bit(s) Description (Table C091)</span><br><span class="line"> 6 extended battery debounce enabled</span><br><span class="line"> 4-3   resume with modem ring</span><br><span class="line">   00 disabled</span><br><span class="line">   01 one ring</span><br><span class="line">   10 two rings</span><br><span class="line">   11 three rings</span><br><span class="line"> 2 365SL power on during suspend</span><br><span class="line"> 1-0   suspend-mode DRAM refresh cycle</span><br><span class="line">   00 15 usec</span><br><span class="line">   01 120 usec (1/8 normal)</span><br><span class="line">   10 self</span><br><span class="line">----------R64--------------------------------</span><br><span class="line">CMOS 64h - AWARD - POWER MANAGEMENT - IRQ activity events</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD power management IRQ activity events:</span><br><span class="line">Bit(s) Description (Table C092)</span><br><span class="line"> 7 Disable PM Event on IRQ11 Activity (1=disable)</span><br><span class="line"> 6 Disable PM Event on IRQ10 Activity (1=disable)</span><br><span class="line"> 5 Disable PM Event on IRQ9 Activity (IRQ2 Redir) (1=disable)</span><br><span class="line"> 4 Disable PM Event on IRQ8 Activity (RTC Alarm) (1=disable)</span><br><span class="line"> 3 Disable PM Event on IRQ7 Activity (LPT1) (1=disable)</span><br><span class="line"> 2 Disable PM Event on IRQ6 Activity (Floppy) (1=disable)</span><br><span class="line"> 1 Disable PM Event on IRQ5 Activity (LPT2) (1=disable)</span><br><span class="line"> 0 Disable PM Event on IRQ4 Activity (COM1) (1=disable)</span><br><span class="line">----------R65--------------------------------</span><br><span class="line">CMOS 65h - AWARD - POWER MANAGEMENT</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD power management:</span><br><span class="line">Bit(s) Description (Table C093)</span><br><span class="line"> 7-4   ??? may be unused.  Defaults to all 1&#39;s</span><br><span class="line"> 3 Disable PM Event on IRQ15 Activity (1=disable)</span><br><span class="line"> 2 Disable PM Event on IRQ14 Activity (Hard Disk) (1=disable)</span><br><span class="line"> 1 Disable PM Event on IRQ13 Activity (Coprocessor) (1=disable)</span><br><span class="line"> 0 Disable PM Event on IRQ12 Activity (PS/2 Mouse) (1=disable)</span><br><span class="line">----------R65--------------------------------</span><br><span class="line">CMOS 65h - AMI (PicoPower) - PC PIN STAGGER</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) PC pin stagger:</span><br><span class="line">Bit(s) Description (Table C094)</span><br><span class="line"> 7-6   PC pin stagger period</span><br><span class="line">   00  immediate</span><br><span class="line">   01  4 msec</span><br><span class="line">   10  16 msec</span><br><span class="line">   11  64 msec</span><br><span class="line">----------R66--------------------------------</span><br><span class="line">CMOS 66h - AMI 1990 Hyundai super-NB368S notebook - DOZE MODE TIMEOUT</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  doze mode timeout 00-0F, from table (0,12 -14 sec)</span><br><span class="line">----------R6679------------------------------</span><br><span class="line">CMOS 66h-79h - AWARD - ??? unused ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  Defaults to all FFh&#39;s.</span><br><span class="line">----------R67--------------------------------</span><br><span class="line">CMOS 67h - AMI 1990 Hyundai super-NB368S notebook - SLEEP MODE TIMEOUT</span><br><span class="line"><span class="ngb">Desc:</span>  sleep mode timeout 00-0F, units of 1 second</span><br><span class="line">----------R68--------------------------------</span><br><span class="line">CMOS 68h - AMI 1990 Hyundai super-NB368S notebook - SUSPEND MODE TIMEOUT</span><br><span class="line"><span class="ngb">Desc:</span>  suspend mode timeout 01-0F, units of 5 minutes</span><br><span class="line">----------R686F------------------------------</span><br><span class="line">CMOS 68h-6Fh - AWARD - IDE hard disk params for first drive on second IDE port</span><br><span class="line">----------R69--------------------------------</span><br><span class="line">CMOS 69h - AMI 1990 Hyundai super-NB368S notebook - LCD MODE TIMEOUT</span><br><span class="line"><span class="ngb">Desc:</span>  LCD mode timeout 01-0F, units of 1 minute</span><br><span class="line">----------R6A--------------------------------</span><br><span class="line">CMOS 6Ah - AMI 1990 Hyundai super-NB368S notebook - ???</span><br><span class="line">----------R7077------------------------------</span><br><span class="line">CMOS 70h-77h - AWARD - IDE hard disk params for second drive on second IDE port</span><br><span class="line">----------R787D------------------------------</span><br><span class="line">CMOS 78h-7Dh - AMI WinBIOS - used by BIOS as scratch RAM</span><br><span class="line">----------R7A--------------------------------</span><br><span class="line">CMOS 7Ah - AWARD - EXTENDED CMOS CHECKSUM (high byte)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  Award&#39;s extended checksum is the arithmetic sum of all the bytes</span><br><span class="line">     from 40h (64 decimal) through 79h (121 decimal). [42h-79h for v4.50G]</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 7Bh&#34;AWARD&#34;</span><br><span class="line">----------R7B--------------------------------</span><br><span class="line">CMOS 7Bh - AWARD - EXTENDED CMOS CHECKSUM (low byte)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  Award&#39;s extended checksum is the arithmetic sum of all the bytes</span><br><span class="line">     from 40h (64 decimal) through 79h (121 decimal). [42h-79h for v4.50G]</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 7Ah&#34;AWARD&#34;</span><br><span class="line">----------R7E7F------------------------------</span><br><span class="line">CMOS 7Eh-7Fh - AMI WinBIOS - used as scratch RAM by power management code</span><br><span class="line">---------------------------------------------</span><br><span class="line"></span><br><span class="line">From arhfond@online.ru Thu Sep 5 21:17:13 1996</span><br><span class="line">Date: Wed, 28 Aug 1996 22:35:17 +0400</span><br><span class="line">From: Agapov Vasiliy Pavlovich &lt;arhfond@online.ru&gt;</span><br><span class="line">To: ralf@telerama.lm.com</span><br><span class="line">Subject: Re: Ralf Brown&#39;s Interrupt List Release 42.</span><br><span class="line"></span><br><span class="line">The problem with CMOS checksum layout for the new motherboards (1995-1996)</span><br><span class="line">with AWARD, AMIBIOS (also AMIBIOS on Pentium motherboards produced beyond</span><br><span class="line">1992) and several others is the following: they have added the second checksum</span><br><span class="line">for the CMOS area from 40h to 7Ch. Any changes in the area concerned, always</span><br><span class="line">result in &#34;CMOS checksum failure. Defaults loaded...&#34;.</span><br><span class="line"></span><br><span class="line">The problem is that every model of BIOS has its own location of the second</span><br><span class="line">checksum and its own way of determining it. When you need to change some bytes</span><br><span class="line">in the area from 40h to 7Ch you ought to determine checksum location. Here&#39;s</span><br><span class="line">the Assembly code that finds out the location of the second CMOS checksum on</span><br><span class="line">ANY motherboard. I&#39;ve tested it on more than 10 different motherboards with</span><br><span class="line">AMIBIOS and AWARD BIOS and it never failed.</span><br><span class="line"></span><br><span class="line">   Before starting this code make sure to load the 128 bytes of CMOS</span><br><span class="line">data to the buffer at CMOS_DATA and assume DS as data area segment register.</span><br><span class="line"></span><br><span class="line">START: CALL    WHAT_CMOS</span><br><span class="line">   JC  NO_SECOND_CHS</span><br><span class="line"></span><br><span class="line">; Checksum location is in word at  CHECKS_ADDRESS</span><br><span class="line"></span><br><span class="line">NO_SECOND_CHS:</span><br><span class="line"></span><br><span class="line">; There&#39;s no second checksum in this CMOS</span><br><span class="line"></span><br><span class="line">END:</span><br><span class="line"></span><br><span class="line">;******************************* SUBS **********************************</span><br><span class="line"></span><br><span class="line">WHAT_CMOS: MOV SI,OFFSET CMOS_DATA+40H</span><br><span class="line">       MOV DI,OFFSET CMOS_DATA+7EH</span><br><span class="line">       CALL    FIND_CMOS_CHS</span><br><span class="line">       JNC END_WCMOS</span><br><span class="line">       MOV SI,OFFSET CMOS_DATA+41H</span><br><span class="line">       MOV DI,OFFSET CMOS_DATA+7EH</span><br><span class="line">       CALL    FIND_CMOS_CHS</span><br><span class="line">END_WCMOS: RET</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">FIND_CMOS_CHS: XOR DX,DX</span><br><span class="line">       MOV AX,DX</span><br><span class="line">FIND_CMOS_C1:  LODSB           ; GET BYTE</span><br><span class="line">       ADD DX,AX</span><br><span class="line">       CMP SI,OFFSET CMOS_DATA+7CH ; ADDRESS OF CHECKSUM ?</span><br><span class="line">       JB  FIND_CMOS_C1</span><br><span class="line">       XCHG    DH,DL</span><br><span class="line">       CMP DX,[SI]     ; CHECKSUM FOUND ?</span><br><span class="line">       JZ  END_FCMOS</span><br><span class="line">       XCHG    DH,DL</span><br><span class="line">       CMP SI,DI</span><br><span class="line">       JB  FIND_CMOS_C1</span><br><span class="line">       STC</span><br><span class="line">       RET</span><br><span class="line">END_FCMOS: MOV [CHECKS_ADDRESS],SI ; SAVE CHECKSUM POSITION</span><br><span class="line">       CLC</span><br><span class="line">       RET</span><br><span class="line"></span><br><span class="line">******************************** DATA *******************************</span><br><span class="line"></span><br><span class="line">CHECKS_ADDRESS DW  0</span><br><span class="line"></span><br><span class="line">CMOS_DATA  DB   128 DUP (?)</span><br><span class="line"></span><br><span class="line">     Regards,</span><br><span class="line">       Alexey Podrezov</span><br><span class="line">       28.08.1996</span><br><span class="line">--------!---Admin----------------------------</span><br><span class="line">Highest Table Number = C094</span><br><span class="line">--------!---History--------------------------</span><br><span class="line">Revision History</span><br><span class="line"></span><br><span class="line">v1.26  Sep,  1995  reformatted (Ralf)</span><br><span class="line">v1.25  June  1995  Added AMI WinBIOS info from Daniel Miller (Ralf)</span><br><span class="line">v1.24  Jan,  1995  Added Award info from Tim Farley (Ralf)</span><br><span class="line">v1.23  June, 1994  Added some MCA info from _The_Undocumented_PC_</span><br><span class="line">v1.22  Feb,  1994  Added NMI mask note</span><br><span class="line">v1.21  Jan,  1994  Added note for PS/2 checksum found</span><br><span class="line">v1.20  Sept, 1993  PHOENIX data from Wim Osterholt added</span><br><span class="line">           additional AMI data from Howie (hjh@gwd.dst.gov.au)</span><br><span class="line">v1.15  June, 1993  AMSTRAD data updated</span><br><span class="line">v1.1   June, 1993  AMSTRAD &amp; PS/2 data added</span><br><span class="line">v1.0   June, 1993  First release: Motorola MC 146818,  PC-AT &amp; AMI</span><br><span class="line">           &#34;Hi-Flex&#34; information baselined</span><br><span class="line">--------!---CONTACT_INFO---------------------</span><br><span class="line">Internet: ralf@pobox.com (currently forwards to ralf@telerama.lm.com)</span><br><span class="line">UUCP: {uunet,harvard}!pobox.com!ralf</span><br><span class="line">FIDO: Ralf Brown 1:129/26.1</span><br><span class="line">   or post a message to me in the DR_DEBUG echo (I probably won&#39;t see it</span><br><span class="line">   unless you address it to me)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

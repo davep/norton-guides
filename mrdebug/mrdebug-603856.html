@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Utilities</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-602422.html">
+    <link rel="next" href="mrdebug-606196.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-602422.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-565186.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-606196.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">ScreenFile() - Save a screen to disk</span></span><br><span class="line"> Writesthe screen to a file</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">ScreenFile( &lt;cFileName&gt;, [&lt;lAppend&gt;],</span></span><br><span class="line">        <span class="ngb">[&lt;nOffset&gt;]), [&lt;lTrim&gt;] --&gt; nBytesWritten</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cFileName&gt;</span> is the filename and path of the screen file.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;lAppend&gt;</span> controls whether you will append a screen to the file (.T.)</span><br><span class="line">     or overwite the existing file (.F.).  The default is overwrite (.F.).</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nOffset&gt;</span> is the file offset from which you append, when &lt;lAppend&gt; is</span><br><span class="line">     designated as .T. The default is the end of file.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;lTrim&gt;</span> is an optional parameter that specifies whether the file</span><br><span class="line">     should be truncated after the curetn screen or not.  The default is</span><br><span class="line">     (.F.) do not truncate file.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     ScreenFile() returns the number of bytes written to disk.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     ScreenFile() may be used to save either a screen or many screens to a</span><br><span class="line">     disk file. Whereas CA-Clipper&#39;s SAVE and RESTORE screen comnmand and</span><br><span class="line">     function will work only on the currently active window, ScreenFile()</span><br><span class="line">     works on the entire application window.</span><br><span class="line"></span><br><span class="line">     Specifying the &lt;lAppend&gt; parameter as .T. will allow you to store more</span><br><span class="line">     than one screen shot to a file.</span><br><span class="line"></span><br><span class="line">     You can only use the &lt;nOffset&gt; parameter when you specify a .T.</span><br><span class="line">     &lt;lAppend&gt;.  &lt;nOffset&gt; determines which position in the screen file the</span><br><span class="line">     new screen data is to be written from.  If the &lt;nOffset&gt; position lies</span><br><span class="line">     before the end of the file, the file is overwritten.  If it exceeds the</span><br><span class="line">     end of the file, the data is appended.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Notes</span></span><br><span class="line"></span><br><span class="line">     ■  Wildcards within the file name are not permitted here.</span><br><span class="line"></span><br><span class="line">     ■  This function does not alter the cursor position.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     ■  An existing file is overwritten:</span><br><span class="line"></span><br><span class="line">        ScreenFile(&#34;C:\Screens\Demo1.Sht&#34;)              // Result:  4000</span><br><span class="line"></span><br><span class="line">     ■   On a VGA card in 50-line mode:</span><br><span class="line"></span><br><span class="line">        ScreenFile(&#34;C:\Screens\Demo1.Sht&#34;)              // Result:  8000</span><br><span class="line"></span><br><span class="line">     ■  The file is appended:</span><br><span class="line"></span><br><span class="line">        ScreenFile(&#34;C:\Screens\Demo1.Sht&#34;, .T.)         // Result:  4000</span><br><span class="line"></span><br><span class="line">     ■  Insert a screen from an offset of 4000 ( i.e., after the first</span><br><span class="line">        screen):</span><br><span class="line"></span><br><span class="line">        ScreenFile(&#34;C:\Screens\Demo1.Sht&#34;, .T., 4000)   // Result:  4000</span><br><span class="line"></span><br><span class="line">     ■  Insert a screen after the third screen:</span><br><span class="line"></span><br><span class="line">        ScreenFile(&#34;C:\Screens\Demo1.Sht&#34;, .T., 12000)  // Result:  4000</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Files:</span>  Library is MRWINDOW.LIB.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-588228.html">FileScreen()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

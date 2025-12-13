@@ -1,0 +1,120 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Symbols &amp; expressions</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-192722.html">
+    <link rel="next" href="tasm4-199535.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-192722.html">Previous</a></li>
+
+
+          
+
+<li><a href="tasm4-189366.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-199535.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Expressions</span></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Expression precision</span></span><br><span class="line"></span><br><span class="line">    TASM always uses 32-bit arithmetic in Ideal mode. In MASM mode, TASM</span><br><span class="line">    uses either 16- or 32-bit arithmetic depending on whether you select</span><br><span class="line">    the 80386 processor. Therefore, some expressions might produce</span><br><span class="line">    different results depending on which processor you&#39;ve selected. For</span><br><span class="line">    example,</span><br><span class="line"></span><br><span class="line">            (1000h * 1000h) / 1000h</span><br><span class="line"></span><br><span class="line">    evaluates to 1000h if you select the ≥80386 processor, or to zero if</span><br><span class="line">    you select the 8086, 80186, or 80286 processors.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Symbols in expressions</span></span><br><span class="line"></span><br><span class="line">    <span class="ngu">Standard symbol values</span></span><br><span class="line"></span><br><span class="line">    The following symbols always represent specific values and don&#39;t have</span><br><span class="line">    to be defined for you to use them:</span><br><span class="line"></span><br><span class="line">    Symbol      Value</span><br><span class="line">    ──────      ─────</span><br><span class="line">    $           Current location counter</span><br><span class="line">    NOTHING      0</span><br><span class="line">    ?            0</span><br><span class="line">    UNKNOWN      0</span><br><span class="line">    BYTE         1</span><br><span class="line">    WORD         2</span><br><span class="line">    DWORD        4</span><br><span class="line">    FWORD        6</span><br><span class="line">    PWORD        6</span><br><span class="line">    QWORD        8</span><br><span class="line">    TBYTE       10</span><br><span class="line">    NEAR        0ffffh</span><br><span class="line">    FAR         0fffeh</span><br><span class="line">    PROC        Either 0ffffh or 0fffeh, depending on current MODEL</span><br><span class="line">    CODEPTR     Either 2 or 4, depending on current MODEL</span><br><span class="line">    DATAPTR     Either 2 or 4, depending on current MODEL</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngu">Simple symbol values</span></span><br><span class="line"></span><br><span class="line">    TASM returns the following values for symbols used by themselves:</span><br><span class="line"></span><br><span class="line">    Expression               Value</span><br><span class="line">    ──────────               ─────</span><br><span class="line">    address_name             Returns the address</span><br><span class="line">    numerical_expr_name      Returns the value of the numerical expression</span><br><span class="line">    table_name |             Returns the default value for the table member</span><br><span class="line">      table_member_name      specified in the definition of the table</span><br><span class="line">    struc/table_member_name  Returns the offset of the member within the</span><br><span class="line">                             structure or table (<span class="ngb">MASM mode only</span>)</span><br><span class="line">    record_name              Returns a mask where the bits reserved to</span><br><span class="line">                             represent bit fields in the record definition</span><br><span class="line">                             are 1, the rest are 0</span><br><span class="line">    record_name &lt;...&gt;        Returns the initial value a record instance</span><br><span class="line">                             would have if it were declared with the same</span><br><span class="line">                             text enclosed in angle brackets</span><br><span class="line">    record_name {...}        Similar to record_name &lt;...&gt;</span><br><span class="line">    record_field_name        Returns the number of bits the field is</span><br><span class="line">                             displaced from the low order bit of the</span><br><span class="line">                             record (also known as the shift value)</span><br><span class="line">    enum_name                Returns a mask where the bits required to</span><br><span class="line">                             represent the maximum value present in the</span><br><span class="line">                             enum definition are 1, the rest are 0</span><br><span class="line">    segment_name             Returns the segment value</span><br><span class="line">    group_name               Returns the group value</span><br><span class="line">    struc/union_name         Returns the size in bytes of the structure or</span><br><span class="line">                             union, but only if it is 1, 2, or 4; all</span><br><span class="line">                             other sizes return a value of 0</span><br><span class="line">    type_name                If the type is defined as a synonym for a</span><br><span class="line">                             structure or union, the value returned is the</span><br><span class="line">                             same as for a structure or union. Otherwise,</span><br><span class="line">                             the size of the type is returned (with 0ffffh</span><br><span class="line">                             for short and near labels, and 0fffeh for far</span><br><span class="line">                             labels)</span><br><span class="line">    proctype_name            Returns 0ffffh if the proctype describes a</span><br><span class="line">                             near procedure, or 0fffeh for a far procedure</span><br><span class="line"></span><br><span class="line">    All other symbols return the value zero (0).</span><br><span class="line"></span><br><span class="line">    Note that when you use a text macro name in an expression, Turbo</span><br><span class="line">    Assembler substitutes the string value of the text macro for the text</span><br><span class="line">    macro symbol. Similarly, when you use an alias name, TASM substitutes</span><br><span class="line">    the symbol value that the alias represents for the alias symbol.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-65434.html">MODEL</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,119 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="sbguide-style.css">
+    <title>AdLib and Sound Blaster reference guide. » Functions » CM/S Interface</title>
+    <meta name="description" content="AdLib and Sound Blaster reference guide.">
+    
+    <link rel="next" href="sbguide-2604.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="sbguide-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="sbguide-2604.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Functions</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">CM/S Interface</a></li>
+                  <li><a href="sbguide-12944.html">AdLib Interface</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="sbguide-13076.html">Hardware Data Sound Blaster</a></li>
+                  <li><a href="sbguide-14110.html">Hardware layout Sound Blaster</a></li>
+                  <li><a href="sbguide-14820.html">Hardware Data AdLib</a></li>
+                  <li><a href="sbguide-15215.html">Hardware layout AdLib</a></li>
+                  <li><a href="sbguide-15597.html">AdLib &amp; Sound Blaster</a></li>
+                  
+                </ul>
+              </li>
+              <li>Future</li>
+              <li>
+                <ul>
+                  <li><a href="sbguide-15992.html">Future Releases</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Introduction to C/MS Interface.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CT-VOICE.DRV is a program loadable driver that provides the</span><br><span class="line">basic voice interface functions for most of the high level</span><br><span class="line">languages under the DOS environments.</span><br><span class="line"></span><br><span class="line">To use these functions, the calling program has to load this driver</span><br><span class="line">at the offset zero of a segment. All functions are invoked by a call</span><br><span class="line">to the offset zero of the segment where the driver is loaded.</span><br><span class="line"></span><br><span class="line">To verify that the file loaded is a voice driver, the calling program</span><br><span class="line">must check at the offset 3 location to make sure that the driver</span><br><span class="line">ID - &#34;CT-VOICE&#34; is there.</span><br><span class="line"></span><br><span class="line">Parameters are passed through the various registers between the</span><br><span class="line">calling program and the driver. The use of registers is as follow:</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Register BX.</span></span><br><span class="line"></span><br><span class="line">  This register contains the function number to invoke. It</span><br><span class="line">  must be setup before the call.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Other registers.</span></span><br><span class="line"></span><br><span class="line">  These registers usually are used for general data of byte</span><br><span class="line">  or word type. AX is also used as return address for the</span><br><span class="line">  return value in byte or word. If return value is a long</span><br><span class="line">  data type (4 Bytes), it will be returned in DX:AX.</span><br><span class="line"></span><br><span class="line">  Except for the register AX and DX, all other registers are</span><br><span class="line">  preserved, including the flags registers.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

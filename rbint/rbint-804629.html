@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-804307.html">
+    <link rel="next" href="rbint-805549.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-804307.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-805549.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 13 Fn 13  - Syquest - Read Drive Paramaters (for Dos 5+)             </span>  [<span class="ngb">d</span>]</span><br><span class="line"></span><br><span class="line">   AH = 13h</span><br><span class="line">   DL = drive ID (bit 7 set for hard disks)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error</span><br><span class="line">       AH = status (07h) (see #0166 at AH=01h)</span><br><span class="line">   CF clear if successful</span><br><span class="line">       AH = 00h</span><br><span class="line">       BL = drive type (AT/PS2 floppies only) (see #0174)</span><br><span class="line">       CH = low eight bits of maximum cylinder number</span><br><span class="line">       CL = maximum sector number (bits 5-0)</span><br><span class="line">        high two bits of maximum cylinder number (bits 7-6)</span><br><span class="line">       DH = maximum head number</span><br><span class="line">       DL = number of drives</span><br><span class="line">       ES:DI -&gt; drive parameter table (floppies only)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the return values are identical to the standard INT 13/AH=08h, but the</span><br><span class="line">     number of drives is not limited to 2, so</span><br><span class="line">   scanning all possible drive numbers with the Read DASD Type call</span><br><span class="line">     (AH=15h) should generally be preferred to determine the number of</span><br><span class="line">     drives attached to the system.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=08h&#34;PC&#34;,AH=12h&#34;SyQuest&#34;,AH=15h,AH=59h&#34;SyQuest&#34;</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

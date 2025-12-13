@@ -1,0 +1,127 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="pkzip2-style.css">
+    <title>PKZIP 2.0 Reference Guide » Guides » Errors &amp; Warnings</title>
+    <meta name="description" content="PKZIP 2.0 Reference Guide">
+    <link rel="prev" href="pkzip2-132713.html">
+    <link rel="next" href="pkzip2-139039.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="pkzip2-about.html">About</a></li>
+
+
+          
+
+<li><a href="pkzip2-132713.html">Previous</a></li>
+
+
+          
+
+<li><a href="pkzip2-132429.html">Up</a></li>
+
+
+          
+
+<li><a href="pkzip2-139039.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">PKZIP</a></li>
+                  <li><a href="pkzip2-35456.html">PKUNZIP</a></li>
+                  <li><a href="pkzip2-49977.html">PKSFX/ZIP2EXE</a></li>
+                  <li><a href="pkzip2-58620.html">PK SAFE ANSI</a></li>
+                  <li><a href="pkzip2-60701.html">Introduction</a></li>
+                  <li><a href="pkzip2-69366.html">Configuration Files</a></li>
+                  <li><a href="pkzip2-76242.html">Addendum</a></li>
+                  
+                </ul>
+              </li>
+              <li>Guides</li>
+              <li>
+                <ul>
+                  <li><a href="pkzip2-82634.html">Backup Guide</a></li>
+                  <li><a href="pkzip2-88893.html">Archive Attribute</a></li>
+                  <li><a href="pkzip2-90931.html">Data Encryption</a></li>
+                  <li><a href="pkzip2-103374.html">Using List Files</a></li>
+                  <li><a href="pkzip2-112353.html">F.A.Q. (part I)</a></li>
+                  <li><a href="pkzip2-121188.html">F.A.Q. (part II)</a></li>
+                  <li><a href="pkzip2-130028.html">Error Levels</a></li>
+                  <li><a href="pkzip2-132429.html">Errors &amp; Warnings</a></li>
+                  
+                </ul>
+              </li>
+              <li>Credits</li>
+              <li>
+                <ul>
+                  <li><a href="pkzip2-153649.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP Error Messages</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E01) Can&#39;t create: XXXXX.</span></span><br><span class="line"></span><br><span class="line">  The named file could not be created.  Either the target directory is full</span><br><span class="line">  or the file already exists and is read-only or locked by another</span><br><span class="line">  application.  On a Network you may receive this message if you do not have</span><br><span class="line">  file creation rights in the directory.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E[2,3]) XXXXX.ZIP - error in ZIP, use PKZIPFIX.</span></span><br><span class="line"></span><br><span class="line">  The named .ZIP file has a corrupted file index.  Use PKZIPFIX to attempt</span><br><span class="line">  reconstruction of the .ZIP file.  In some cases the damage to the .ZIP</span><br><span class="line">  file may be very extensive.  If the file is too badly damaged PKZIPFIX</span><br><span class="line">  will not be able to recover the file.</span><br><span class="line"></span><br><span class="line">  NOTE: Many novice users receive this message because of improper command</span><br><span class="line">  line syntax.  If you specify a command line with only one file name</span><br><span class="line">  following PKZIP and it is NOT a .ZIP file you will receive this message.</span><br><span class="line">  PKZIP assumes that the file is a .ZIP file because you specified it as the</span><br><span class="line">  first file name on the command line, and it attempts to place all files</span><br><span class="line">  from the current directory into that file.  Upon examination of the file</span><br><span class="line">  it will not find any .ZIP file information (due to its not being a .ZIP</span><br><span class="line">  file) and will then report this message.  Please see the tutorial for</span><br><span class="line">  further information.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E[4-11]) Insufficient memory.</span></span><br><span class="line"></span><br><span class="line">  Insufficient memory is available to process the .ZIP file.  Try making</span><br><span class="line">  more memory available to PKZIP.  If this does not rectify the problem then</span><br><span class="line">  the .ZIP file might be corrupted and PKZIPFIX should be used to fix the</span><br><span class="line">  .ZIP file.  If you are creating a new .ZIP file and receive this message,</span><br><span class="line">  it is due to an attempt to ZIP a large number of files.  Reduce the scope</span><br><span class="line">  of your command and try again.  If you are using a LIST file in your PKZIP</span><br><span class="line">  command you may be receiving this error because the LIST file is too</span><br><span class="line">  large.  See &#34;List Files&#34; for more information.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E12) No file(s) found.</span></span><br><span class="line"></span><br><span class="line">  No matching files were found to list using the View option.  This means</span><br><span class="line">  the filespec you specified on the command line has no match within the</span><br><span class="line">  .ZIP file.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E12) No files specified for deletion!</span></span><br><span class="line"></span><br><span class="line">  The -d (Delete) option was specified but no filenames were given to</span><br><span class="line">  delete.  This option does NOT default to *.* if no filenames are given.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E12) Nothing to do!</span></span><br><span class="line"></span><br><span class="line">  No matching files, or files with the specified attributes, or files after</span><br><span class="line">  the specified date etc., were found to compress.  Often you will receive</span><br><span class="line">  this message because the command line you entered is not correct.  Check</span><br><span class="line">  the exact name of the file you are specifying as well as the path, if any.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E13) Can&#39;t find: XXXXX.ZIP.</span></span><br><span class="line"></span><br><span class="line">  The named .ZIP file could not be found.  Either it does not exist or is</span><br><span class="line">  not in the specified directory.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E14) Insufficient disk space for ZIP comment.</span></span><br><span class="line"></span><br><span class="line">  There is insufficient disk space to hold the comment as entered.  You will</span><br><span class="line">  need to move the .ZIP file somewhere with more free space, or clear up</span><br><span class="line">  more storage space in its current location.  Note that a temporary copy of</span><br><span class="line">  the .ZIP file is not created.  The .ZIP file comment is appended directly</span><br><span class="line">  to the existing .ZIP file.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E14) Insufficient disk space for updated file: XXXXX.ZIP.</span></span><br><span class="line"></span><br><span class="line">  The -b option was used, and there is not enough space on the original</span><br><span class="line">  drive containing the .ZIP file to receive the updated .ZIP file.  (The</span><br><span class="line">  update operation has added additional or larger files to the .ZIP file,</span><br><span class="line">  causing it to grow larger than the original).  Try to free up some space</span><br><span class="line">  on the drive containing the .ZIP file, and retry the operation.  Also,</span><br><span class="line">  make sure that the drive specified with the -b option is different than</span><br><span class="line">  the drive containing the .ZIP file.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E14) Disk full, file: XXXXX.</span></span><br><span class="line"></span><br><span class="line">  A disk full error occurred while writing to the specified file.  Try</span><br><span class="line">  freeing up some disk space on the target drive.  Also, see the -b option</span><br><span class="line">  and the PKTMP environment variable.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E15) Can&#39;t open XXXXX.ZIP for write access!</span></span><br><span class="line"></span><br><span class="line">  The named .ZIP file is read-only or locked by another application and can</span><br><span class="line">  not be modified.  This may also occur on a Network drive if you do not</span><br><span class="line">  have adequate access to that file to allow you to modify it.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E17) Too many files!</span></span><br><span class="line"></span><br><span class="line">  An attempt was made to compress more than 16,383 files at one time.  This</span><br><span class="line">  message could be received if you update a .ZIP file which has a corrupted</span><br><span class="line">  central end directory.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E24) Fatal EMS error: XXXXXXXX</span></span><br><span class="line">  <span class="ngb">PKZIP: (E25) Fatal XMS error: XXXXXXXX</span></span><br><span class="line"></span><br><span class="line">  An error has occured in the interaction between PKZIP and your EMS or XMS</span><br><span class="line">  handler.  You may have a faulty EMS/XMS driver.</span><br><span class="line"></span><br><span class="line">  To be able to use PKZIP in spite of this problem, disable EMS/XMS usage</span><br><span class="line">  with either the - + or - - option or the configuration file options</span><br><span class="line">  EMS=DISABLE and XMS=DISABLE.</span><br><span class="line"></span><br><span class="line">  Please contact PKWARE Technical Support with a description of the</span><br><span class="line">  situation in which the error occured, the brand and version of your EMS</span><br><span class="line">  driver, and the HEX code printed at the end of this error message.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E26) Warning! DOS 3.0 or later needed to span disks</span></span><br><span class="line"></span><br><span class="line">  DOS versions below 3.0 do not support the features needed by PKZIP in</span><br><span class="line">  order to span a .ZIP file across multiple disks.  You will need to upgrade</span><br><span class="line">  to a newer version of DOS in order to make use of this feature.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP: (E27) Warning! Non-removable or unsupported device</span></span><br><span class="line"></span><br><span class="line">  .ZIP files can only be spanned to a device which supports multiple storage</span><br><span class="line">  units (i.e.  multiple floppy disks can be inserted in series into a floppy</span><br><span class="line">  drive).  The device must also be a standard writable DOS device.  .ZIP</span><br><span class="line">  files may not be spanned onto a device such as a Hard drive which cannot</span><br><span class="line">  be removed.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

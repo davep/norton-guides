@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Utilities</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-651736.html">
+    <link rel="next" href="mrdebug-653293.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-651736.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-651218.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-653293.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">ASSERT</span></span><br><span class="line"> Assertion checking</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">ASSERT [&lt;lExp&gt;] [MESSAGE &lt;list,...&gt;]</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;lExp&gt;</span> is the expression to test.  If this expression evaluates to FALSE,</span><br><span class="line">     then the assertion message is sent to MrDebug, and the program stops.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;list,...&gt;</span> is an optional list of message strings or expressions to use</span><br><span class="line">     as a message for the MrDebug Asset/Trace window.  If <span class="ngb">&lt;list,...&gt;</span> is</span><br><span class="line">     omitted, then <span class="ngb">&lt;lExp&gt;</span> is used as the message for the Assert/Trace window.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     Assertions are most commonly used to test certain conditions that can&#39;t</span><br><span class="line">     be easily test with the parameter type checking.  For example, you may</span><br><span class="line">     want to make sure that an ARRAY type parameter is of a specified length,</span><br><span class="line">     or that an object is of a specific class.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Example</span></span><br><span class="line"></span><br><span class="line">       <span class="ngb">■</span> This example checks that the array parameter is at least 5 elements</span><br><span class="line">         long.</span><br><span class="line"></span><br><span class="line">         #define MIN_ITEMS                5</span><br><span class="line"></span><br><span class="line">         FUNCTION Test(aList AS ARRAY)</span><br><span class="line"></span><br><span class="line">            ASSERT Len(aList) &gt;= MIN_ITEMS</span><br><span class="line">                       MESSAGE &#34;We must have at least&#34;, MIN_ITEMS, &#34;elements&#34;</span><br><span class="line"></span><br><span class="line">            ..</span><br><span class="line">            ..</span><br><span class="line"></span><br><span class="line">         RETURN (NIL)</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Files:</span>  Header file is MrDebug.CH</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-219764.html">MrDebug.CH</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

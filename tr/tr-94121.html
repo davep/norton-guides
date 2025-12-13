@@ -1,0 +1,113 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-92007.html">
+    <link rel="next" href="tr-96690.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-92007.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-96690.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> SEG(&lt;C memvar name&gt;)</span><br><span class="line"> Evaluates the segment portion of a variable&#39;s memory address.</span><br><span class="line"> Returns &lt;expC&gt; variable&#39;s segment address as hexadecimal string.</span><br><span class="line"></span><br><span class="line"> Our SEG() function is used in Summer &#39;87 only.  SEG() and OFF() do</span><br><span class="line"> not work in Clipper 5.0 because of Clipper&#39;s virtual memory manager.</span><br><span class="line"> Memory storage that you can refer to by a segment and offset address</span><br><span class="line"> is usually used only in conjunction with the DOSFUNC or ROMBIOS</span><br><span class="line"> procedures where a pointer address must be specified.  Instead of</span><br><span class="line"> initializing a variable and getting its address with SEG() and</span><br><span class="line"> OFF(), use the ALLOCATE() function to provide the memory space</span><br><span class="line"> needed, initialize it with the POKE...() functions, and read it with</span><br><span class="line"> the PEEK...() functions.</span><br><span class="line"></span><br><span class="line"> Old example (Summer &#39;87 only):</span><br><span class="line"></span><br><span class="line">    m_greeting = &#34;Hello, how are you?$&#34;  &amp;&amp; output string</span><br><span class="line">    m_ds       = SEG(&#34;m_greeting&#34;)       &amp;&amp; output string segment address</span><br><span class="line">    m_dx       = OFF(&#34;m_greeting&#34;)       &amp;&amp; output string offset address</span><br><span class="line">    m_ax       = &#34;0900&#34;                  &amp;&amp; DOS INT 21 output function</span><br><span class="line">    * Set up other registers (see DOSFUNC for example).</span><br><span class="line">    CALL DOSFUNC WITH m_regs, m_flags    &amp;&amp; DOS INT 21 function call</span><br><span class="line"></span><br><span class="line"> New example (Both 5.0 and Summer &#39;87):</span><br><span class="line"></span><br><span class="line">    m_greeting = &#34;Hello, how are you?$&#34;  &amp;&amp; output string</span><br><span class="line">    m_address  = ALLOCATE(LEN(m_greeting)+1)  &amp;&amp; new storage with address</span><br><span class="line">    m_ds       = LEFT(m_address,4)       &amp;&amp; new storage SEGment address</span><br><span class="line">    m_dx       = RIGHT(m_address,4)      &amp;&amp; new storage OFFset address</span><br><span class="line">    POKESTR(m_ds, m_dx, m_greeting)      &amp;&amp; place greeting in new storage</span><br><span class="line">    m_ax       = &#34;0900&#34;                  &amp;&amp; DOS INT 21 output function</span><br><span class="line">    * Set up other registers (see DOSFUNC for example).</span><br><span class="line">    CALL DOSFUNC WITH m_regs, m_flags    &amp;&amp; DOS INT 21 function call</span><br><span class="line"></span><br><span class="line"> To initialize a variable from a value stored in an ALLOCATEd area:</span><br><span class="line"></span><br><span class="line">    * Read new storage value.</span><br><span class="line">    new_var = PEEKSTR(m_ds, m_dx, m_greeting)</span><br><span class="line"></span><br><span class="line"> SEG() calls the _SEGMENT procedure, which can be called directly.</span><br><span class="line"> The SEG() function provides the convenience of a value-returning</span><br><span class="line"> function call.</span><br><span class="line"></span><br><span class="line"> m_greeting = &#34;Hi, how are you?$&#34;  &amp;&amp; $ for function call 9</span><br><span class="line"></span><br><span class="line"> * Set up call to DOSFUNC with registers DS:DX pointing to m_greeting.</span><br><span class="line"></span><br><span class="line"> * Will call DOS function 9 (print string).</span><br><span class="line"> m_ax = &#34;0900&#34;</span><br><span class="line"> m_ds = SEG( &#34;m_greeting&#34; )</span><br><span class="line"> m_dx = OFF( &#34;m_greeting&#34; )</span><br><span class="line"></span><br><span class="line"> &lt;Set up other registers, m_regs, and m_flags.&gt;</span><br><span class="line"> &lt;See example under DOSFUNC procedure.&gt;</span><br><span class="line"></span><br><span class="line"> CALL DOSFUNC WITH m_regs, m_flags</span><br><span class="line"></span><br><span class="line"> Hazard</span><br><span class="line">    If &lt;memvar name&gt; is not passed as a string, this function</span><br><span class="line">    will not return the address of the actual variable, only of a</span><br><span class="line">    temporary location in memory.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-75336.html">OFF()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-114915.html">_OFFSET</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-115647.html">_SEGMENT</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

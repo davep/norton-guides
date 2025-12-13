@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4160000.html">
+    <link rel="next" href="rbint-4179229.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4160000.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4031282.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4179229.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 80FB  - Faxbios Interface - Command Submission  <span class="ngb">(Cont.)</span></span></span><br><span class="line"></span><br><span class="line"> 2Ah 20 BYTEs  first name</span><br><span class="line"> 3Eh 32 BYTEs  company</span><br><span class="line"> 5Eh 32 BYTEs  notes</span><br><span class="line"> 7Eh  6 BYTEs  FAX country code</span><br><span class="line"> 84h  6 BYTEs  FAX city/area code</span><br><span class="line"> 8Ah 14 BYTEs  FAX local number</span><br><span class="line"> 98h 14 BYTEs  FAX extension</span><br><span class="line"> A6h 24 BYTEs  reserved</span><br><span class="line"> BEh  6 BYTEs  voice country code</span><br><span class="line"> C4h  6 BYTEs  voice city/area code</span><br><span class="line"> CAh 14 BYTEs  voice local number</span><br><span class="line"> D8h 14 BYTEs  voice extension</span><br><span class="line"> E6h 24 BYTEs  reserved</span><br><span class="line"> FEh 10 BYTEs  outbound routing information</span><br><span class="line">108h 10 BYTEs  billing information, credit card etc</span><br><span class="line">112h   DWORD   remote FAX capabilities</span><br><span class="line">116h 21 BYTEs  T.30 poll code of FAX number</span><br><span class="line">12Bh 15 BYTEs  reserved</span><br><span class="line">13Ah  6 BYTEs  future expansion</span><br><span class="line">140h   WORD    structure size</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS SCHED_OPEN, SCHED_CANCEL command buffer:</span><br><span class="line">Offset Size    Description (Table 2628)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    scheduler handle</span><br><span class="line"> 0Eh  6 BYTEs  future expansion</span><br><span class="line"> 14h   WORD    structure size</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS SCHED_ADD_DEST command buffer:</span><br><span class="line">Offset Size    Description (Table 2629)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    schedule handle</span><br><span class="line"> 0Eh   WORD    device number if manual send wanted</span><br><span class="line"> 10h   WORD    non-zero if poll desired</span><br><span class="line"> 12h   WORD    person ID</span><br><span class="line"> 14h 20 BYTEs  last name</span><br><span class="line"> 28h 20 BYTEs  first name</span><br><span class="line"> 3Ch 32 BYTEs  company</span><br><span class="line"> 5Ch 32 BYTEs  notes</span><br><span class="line"> 7Ch  6 BYTEs  FAX country code</span><br><span class="line"> 82h  6 BYTEs  FAX city/area code</span><br><span class="line"> 88h 14 BYTEs  FAX local number</span><br><span class="line"> 96h 14 BYTEs  FAX extension</span><br><span class="line"> A4h 24 BYTEs  reserved</span><br><span class="line"> BCh  6 BYTEs  voice country code</span><br><span class="line"> C2h  6 BYTEs  voice city/area code</span><br><span class="line"> C8h 14 BYTEs  voice local number</span><br><span class="line"> D6h 14 BYTEs  voice extension</span><br><span class="line"> E4h 24 BYTEs  reserved</span><br><span class="line"> FCh 10 BYTEs  outbound routing information</span><br><span class="line">106h 10 BYTEs  billing information, credit card etc</span><br><span class="line">110h   DWORD   remote FAX capabilities</span><br><span class="line">114h 21 BYTEs  T.30 poll code of FAX number</span><br><span class="line">129h 15 BYTEs  reserved</span><br><span class="line">138h  6 BYTEs  future expansion</span><br><span class="line">13Eh   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2630</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS SCHED_ADD_FILE command buffer:</span><br><span class="line">Offset Size    Description (Table 2630)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    schedule handle</span><br><span class="line"> 0Eh   WORD    file type</span><br><span class="line">       0000h unidentified</span><br><span class="line">       0001h native file format</span><br><span class="line">       0002h ASCII</span><br><span class="line">       0003h FaxBIOS Tiff Class F</span><br><span class="line"> 10h 80 BYTEs  file name</span><br><span class="line"> 60h 80 BYTEs  font token</span><br><span class="line"> B0h   WORD    conversion options bitmap</span><br><span class="line"> B2h   WORD    resolution</span><br><span class="line">       0000h standard 98 lines per inch, 204 dpi</span><br><span class="line">       0001h fine 196 lines per inch, 204 dpi</span><br><span class="line">       0002h Group4 300 dpi</span><br><span class="line">       0003h Group4 400 dpi</span><br><span class="line"> B4h   WORD    page length</span><br><span class="line">       0000h 279 mm (11 in)</span><br><span class="line">       0001h 297 mm (11.69 in)</span><br><span class="line">       0002h 364 mm (14.33 in)</span><br><span class="line">       0003h unlimited</span><br><span class="line"> B6h   WORD    page width</span><br><span class="line">       0000h 215 mm (8.46 in)</span><br><span class="line">       0001h 255 mm (10.04 in)</span><br><span class="line">       0002h 303 mm (11.93 in)</span><br><span class="line">       0003h 151 mm (5.91 in)</span><br><span class="line">       0004h 107 mm (4.21 in)</span><br><span class="line"> B8h   WORD    binary file transfer specification</span><br><span class="line">       0000h only as FAX</span><br><span class="line">       0001h only as file (for non-faxable files)</span><br><span class="line">       0002h as file when possible else FAX</span><br><span class="line"> BAh   WORD    seam flag (nonzero for seam with next)</span><br><span class="line"> BCh   WORD    delete flag (nonzero to delete when done)</span><br><span class="line"> BEh  6 BYTEs  future expansion</span><br><span class="line"> C4h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2629,#2631</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS SCHED_SET_PARAMS command buffer:</span><br><span class="line">Offset Size    Description (Table 2631)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    scheduler handle</span><br><span class="line"> 0Eh   DWORD   time to send</span><br><span class="line"> 10h 10 BYTEs  priority token</span><br><span class="line"> 1Ch 80 BYTEs  logo file token</span><br><span class="line"> 6Ch 80 BYTEs  signature file token</span><br><span class="line"> BCh 80 BYTEs  cover page token</span><br><span class="line">10Ch 40 BYTEs  Subject text</span><br><span class="line">134h 40 BYTEs  From text</span><br><span class="line">15Ch   WORD    user ID</span><br><span class="line">15Eh  6 BYTEs  future expansion</span><br><span class="line">164h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2629,#2630,#2632</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS SCHED_CLOSE command buffer:</span><br><span class="line">Offset Size    Description (Table 2632)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    scheduler handle</span><br><span class="line"> 0Eh   WORD    envelope ID generated</span><br><span class="line"> 10h  6 BYTEs  future expansion</span><br><span class="line"> 16h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2631</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS SLOG_OPEN, SLOG_CLOSE, RLOG_OPEN, RLOG_CLOSE command buffer:</span><br><span class="line">Offset Size    Description (Table 2633)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    log handle</span><br><span class="line"> 0Eh   WORD    number of entries</span><br><span class="line"> 10h  6 BYTEs  future expansion</span><br><span class="line"> 16h   WORD    structure size</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS GRAPH_GET_FILE_TYPE command buffer:</span><br><span class="line">Offset Size    Description (Table 2634)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch 80 BYTEs  filename</span><br><span class="line"> 5Ch   WORD    file type</span><br><span class="line">       0000h unidentified</span><br><span class="line">       0001h native file format</span><br><span class="line">       0002h ASCII</span><br><span class="line">       0003h FaxBIOS Tiff Class F</span><br><span class="line"> 5Eh   WORD    bitmap of supported capabilities</span><br><span class="line"> 60h  6 BYTEs  future expansion</span><br><span class="line"> 66h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2635,#2636</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS GRAPH_CREATE_FILE command buffer:</span><br><span class="line">Offset Size    Description (Table 2635)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch 80 BYTEs  filename</span><br><span class="line"> 5Ch   WORD    graph handle</span><br><span class="line"> 5Eh  6 BYTEs  future expansion</span><br><span class="line"> 64h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2634,#2636,#2637</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS GRAPH_CLOSE_FILE, GRAPH_END_PAGE command buffer:</span><br><span class="line">Offset Size    Description (Table 2636)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    graph handle</span><br><span class="line"> 0Eh  6 BYTEs  future expansion</span><br><span class="line"> 14h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2635,#2637</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS GRAPH_CREATE_PAGE command buffer:</span><br><span class="line">Offset Size    Description (Table 2637)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    graph handle</span><br><span class="line"> 0Eh   WORD    resolution</span><br><span class="line"> 10h   WORD    page width</span><br><span class="line"> 12h  6 BYTEs  future expansion</span><br><span class="line"> 18h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2635,#2636,#2638</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS GRAPH_WRITE_PAGE command buffer:</span><br><span class="line">Offset Size    Description (Table 2638)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    graph handle</span><br><span class="line"> 0Eh   DWORD   pointer to storage for image</span><br><span class="line"> 12h   WORD    band height in lines</span><br><span class="line"> 14h   WORD    width of page image in bytes</span><br><span class="line"> 16h   WORD    facsimile page width constant</span><br><span class="line"> 18h   WORD    width of page image in bits</span><br><span class="line"> 1Ah   WORD    number of bytes actually processed</span><br><span class="line"> 1Ch  6 BYTEs  future expansion</span><br><span class="line"> 22h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2637,#2639</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS GRAPH_OPEN_FILE command buffer:</span><br><span class="line">Offset Size    Description (Table 2639)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch 80 BYTEs  filename</span><br><span class="line"> 5Ch   WORD    file type</span><br><span class="line"> 5Eh   WORD    graph handle</span><br><span class="line"> 60h   WORD    number of pages</span><br><span class="line"> 62h  6 BYTEs  future expansion</span><br><span class="line"> 68h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2638,#2640</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS GRAPH_GOTO_PAGE command buffer:</span><br><span class="line">Offset Size    Description (Table 2640)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    graph handle</span><br><span class="line"> 0Eh   WORD    page number</span><br><span class="line"> 10h   WORD    vertical resolution</span><br><span class="line"> 12h   WORD    page width</span><br><span class="line"> 14h   DWORD   page length</span><br><span class="line"> 18h  6 BYTEs  future expansion</span><br><span class="line"> 1Eh   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2638,#2639,#2641</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS GRAPH_READ_PAGE command buffer:</span><br><span class="line">Offset Size    Description (Table 2641)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    graph handle</span><br><span class="line"> 0Eh   DWORD   pointer to storage for image</span><br><span class="line"> 12h   WORD    band height in lines</span><br><span class="line"> 14h   WORD    width of page image in bytes</span><br><span class="line"> 16h   WORD    facsimile page width constant</span><br><span class="line"> 18h   WORD    width of page image in bits</span><br><span class="line"> 1Ah   WORD    number of bytes actually processed</span><br><span class="line"> 1Ch  6 BYTEs  future expansion</span><br><span class="line"> 22h   WORD    structure size</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS IOCTL_ANSWER_FAX command buffer:</span><br><span class="line">Offset Size    Description (Table 2642)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    device number</span><br><span class="line"> 0Eh  6 BYTEs  future expansion</span><br><span class="line"> 14h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2643</span><br><span class="line"></span><br><span class="line">Format of FaxBIOS IOCTL_DIAL command buffer:</span><br><span class="line">Offset Size    Description (Table 2643)</span><br><span class="line"> 00h 12 BYTEs  common data (see #2621)</span><br><span class="line"> 0Ch   WORD    device number</span><br><span class="line"> 0Eh  6 BYTEs  country code</span><br><span class="line"> 14h  6 BYTEs  city or area code</span><br><span class="line"> 1Ah 14 BYTEs  local number</span><br><span class="line"> 28h 14 BYTEs  extension</span><br><span class="line"> 36h 14 BYTEs  reserved</span><br><span class="line"> 4Eh  6 BYTEs  future expansion</span><br><span class="line"> 54h   WORD    structure size</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2642</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

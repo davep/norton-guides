@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5594457.html">
+    <link rel="next" href="rbint-5597514.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5594457.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5592013.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5597514.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 6A Fn 0001  U - Super-tcp Dos Tsr Kernel V3.57 - ???                 </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0001h</span><br><span class="line">   BH = function number</span><br><span class="line">       01h ???</span><br><span class="line">       DS:SI -&gt; ??? 24-byte record1 (see #3388)</span><br><span class="line">       ES:DI -&gt; buffer containing ???</span><br><span class="line">       02h ???</span><br><span class="line">       DS:SI -&gt; ??? 18-byte record2 (see #3389)</span><br><span class="line">       ES:DI -&gt; buffer containing ???</span><br><span class="line">       04h ???</span><br><span class="line">       BL = subfunction</span><br><span class="line">           01h</span><br><span class="line">           DS:SI -&gt; ??? 28-byte record3 (see #3390)</span><br><span class="line">           ES:DI -&gt; buffer containing ???</span><br><span class="line">           02h</span><br><span class="line">           DS:SI -&gt; ??? 28-byte record3 (see #3390)</span><br><span class="line">           ES:DI -&gt; buffer containing ???</span><br><span class="line">           03h</span><br><span class="line">           DS:SI -&gt; ??? 28-byte record3 (see #3390)</span><br><span class="line"></span><br><span class="line">           else <span class="ngb">Return:</span> AX = 0005h</span><br><span class="line">       05h ???</span><br><span class="line">       DS:SI -&gt; ??? 20-byte record4 (see #3391)</span><br><span class="line">       ES:DI -&gt; buffer containing ???</span><br><span class="line">       06h ???</span><br><span class="line">       BL = subfunction</span><br><span class="line">           01h</span><br><span class="line">           DS:SI -&gt; ??? 40-byte record5 (see #3392)</span><br><span class="line">           02h</span><br><span class="line">           DS:SI -&gt; ??? 20-byte record6 (see #3393)</span><br><span class="line">           ES:DI -&gt; ???</span><br><span class="line">           03h</span><br><span class="line">           DS:SI -&gt; ??? 20-byte record6 (see #3393)</span><br><span class="line">           04h</span><br><span class="line">           DS:SI -&gt; ??? 46-byte record7 (see #3394)</span><br><span class="line"></span><br><span class="line">           else <span class="ngb">Return:</span> AX = 0005h</span><br><span class="line">       11h ???</span><br><span class="line">       DS:SI -&gt; ??? 28-byte record8 (see #3395)</span><br><span class="line">       ES:DI -&gt; ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = function status (see #3387)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0000h</span><br><span class="line"></span><br><span class="line">(Table 3387)</span><br><span class="line">Values for Super-TCP function status:</span><br><span class="line"> 0000h successful</span><br><span class="line"> 0005h unsupported function</span><br><span class="line"> 000Ah out of memory</span><br><span class="line"></span><br><span class="line">Format of record1:</span><br><span class="line">Offset Size    Description (Table 3388)</span><br><span class="line"> 00h  4 BYTEs  ???</span><br><span class="line"> 04h   WORD    size of ES:DI buffer</span><br><span class="line"> 06h 18 BYTEs  ???</span><br><span class="line"></span><br><span class="line">Format of record2:</span><br><span class="line">Offset Size    Description (Table 3389)</span><br><span class="line"> 00h  4 BYTEs  ???</span><br><span class="line"> 04h   WORD    size of ES:DI buffer</span><br><span class="line"> 06h 12 BYTEs  ???</span><br><span class="line"></span><br><span class="line">Format of record3:</span><br><span class="line">Offset Size    Description (Table 3390)</span><br><span class="line"> 00h  2 BYTEs  ???</span><br><span class="line"> 02h   WORD    ???</span><br><span class="line"> 04h   WORD    size of ES:DI buffer</span><br><span class="line"> 06h   WORD    ???</span><br><span class="line"> 08h   WORD    operation number (for function 0401h)</span><br><span class="line"> 0Ah   DWORD   -&gt; ???</span><br><span class="line"> 0Eh   WORD    (ret) ???</span><br><span class="line"> 10h 12 BYTEs  ???</span><br><span class="line"></span><br><span class="line">Format of record4:</span><br><span class="line">Offset Size    Description (Table 3391)</span><br><span class="line"> 00h  4 BYTEs  ???</span><br><span class="line"> 04h   WORD    size of ES:DI buffer</span><br><span class="line"> 06h 14 BYTEs  ???</span><br><span class="line"></span><br><span class="line">Format of record5:</span><br><span class="line">Offset Size    Description (Table 3392)</span><br><span class="line"> 00h   BYTE    operation??? (00h-07h)</span><br><span class="line"> 01h   BYTE    ???</span><br><span class="line"> 02h   WORD    (ret) ???</span><br><span class="line"> 04h   DWORD   -&gt; ???</span><br><span class="line"> 08h  4 BYTEs  ???</span><br><span class="line"> 0Ch   DWORD   -&gt; ??? or 0000h:0000h</span><br><span class="line"> 10h 16 BYTEs  ???</span><br><span class="line"> 20h   DWORD   ???</span><br><span class="line"> 24h  4 BYTEs  ???</span><br><span class="line"></span><br><span class="line">Format of record6:</span><br><span class="line">Offset Size    Description (Table 3393)</span><br><span class="line"> 00h  4 BYTEs  ???</span><br><span class="line"> 04h   WORD    size of ES:DI buffer</span><br><span class="line"> 06h 14 BYTEs  ???</span><br><span class="line"></span><br><span class="line">Format of record7:</span><br><span class="line">Offset Size    Description (Table 3394)</span><br><span class="line"> 00h   WORD    ???</span><br><span class="line"> 02h   WORD    ???</span><br><span class="line"> 04h   WORD    ???</span><br><span class="line"> 06h 40 BYTEs  ???</span><br><span class="line"></span><br><span class="line">Format of record8:</span><br><span class="line">Offset Size    Description (Table 3395)</span><br><span class="line"> 00h  4 BYTEs  ???</span><br><span class="line"> 04h   WORD    size of ES:DI buffer</span><br><span class="line"> 06h  6 BYTEs  ???</span><br><span class="line"> 0Ch   WORD    (ret) ???</span><br><span class="line"> 0Eh   WORD    operation??? (01h-03h)</span><br><span class="line"> 10h 12 BYTEs  ???</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

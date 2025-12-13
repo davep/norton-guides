@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3233572.html">
+    <link rel="next" href="rbint-3236644.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3233572.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3177957.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3236644.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn F217  - Novell Netware - Get Drive Mapping Table               </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = F217h subfn D7h</span><br><span class="line">   CX = length of request buffer in bytes</span><br><span class="line">   DX = length of reply buffer in bytes</span><br><span class="line">   DS:SI -&gt; request buffer (see #1721 at AH=E3h/SF=D7h)</span><br><span class="line">   ES:DI -&gt; reply buffer (see #1918)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=EF00h,AX=EF01h,AX=EF02h,AH=F2h&#34;Novell&#34;,AH=E3h/SF=D7h</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Get Drive Mapping Table&#34; reply packet:</span><br><span class="line">Offset Size    Description (Table 1918)</span><br><span class="line"> 00h   DWORD   (big-endian) clock tick elapsed since system started</span><br><span class="line"> 04h   BYTE    fault tolerance (SFT) level</span><br><span class="line"> 05h   BYTE    number of logical drives attached to server</span><br><span class="line"> 06h   BYTE    number of physical drives attached to server</span><br><span class="line"> 07h  5 BYTEs  disk channel types (00h none, 01h XT, 02h AT, 03h SCSI,</span><br><span class="line">         04h disk coprocessor drive, 32h-FFh value-added drive types)</span><br><span class="line"> 0Ch   WORD    (big-endian) number of outstanding controller commands</span><br><span class="line"> 0Eh 32 BYTEs  drive mapping table (FFh = no such drive)</span><br><span class="line"> 2Eh 32 BYTEs  drive mirror table (secondary physical drive, FFh = none)</span><br><span class="line"> 4Eh 32 BYTEs  dead mirror table (last drive mapped to, FFh if never mirrored)</span><br><span class="line"> 6Eh   BYTE    physical drive being remirrored (FFh = none)</span><br><span class="line"> 6Fh   BYTE    reserved</span><br><span class="line"> 70h   DWORD   (big-endian) remirrored block</span><br><span class="line"> 74h 60 BYTEs  SFT error table (internal error counters)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1721,#1722 at AH=E3h/SF=D7h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

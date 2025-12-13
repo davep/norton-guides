@@ -1,0 +1,168 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » DOS » Functions</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-150041.html">
+    <link rel="next" href="progref-153780.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-150041.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-75576.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-153780.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 43h (67)        Get or Set File Attributes (CHMOD)</span></span><br><span class="line"></span><br><span class="line">    Gets or sets the attributes of a specified file.</span><br><span class="line"></span><br><span class="line">     1.  To get attributes</span><br><span class="line"></span><br><span class="line">       <span class="ngb">On entry:</span>      AH         43h</span><br><span class="line">                      AL         00h</span><br><span class="line">                      DS:DX      Pointer to filespec (ASCIIZ string)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Returns:</span>       CX         File&#39;s attributes, or</span><br><span class="line">                      AX         Error code, if CF is set</span><br><span class="line"></span><br><span class="line">     2.  To set attributes</span><br><span class="line"></span><br><span class="line">       <span class="ngb">On entry:</span>      AH         43h</span><br><span class="line">                      AL         01h</span><br><span class="line">                      CX         Desired attributes</span><br><span class="line">                      DS:DX      Pointer to filespec (ASCIIZ string)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Returns:</span>       AX         Error code, if CF is set</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Error codes:</span>   1          Invalid function code</span><br><span class="line">                      2          File not found</span><br><span class="line">                      3          Path not found</span><br><span class="line">                      5          Access denied</span><br><span class="line"></span><br><span class="line">                      Call Function 59h for extended error code information</span><br><span class="line">                      (DOS 3.0 and above).</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Network:</span>       To change any attribute bit other than archive,</span><br><span class="line">                      requires Create access rights.</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This function returns or sets the attribute byte of the specified</span><br><span class="line">    file. To determine the current attributes, put 00h in AL; the</span><br><span class="line">    attribute byte is returned in CX. To set attributes, put 01h in AL and</span><br><span class="line">    the desired attribute byte in CX.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Notes:</span>         The CX register specifies the attribute of the file</span><br><span class="line">                      you&#39;re creating, as follows:</span><br><span class="line"></span><br><span class="line"><span class="ngb">                               CX         Attribute specified</span></span><br><span class="line">                               00h        Normal</span><br><span class="line">                               01h        Read-only</span><br><span class="line">                               02h        Hidden</span><br><span class="line">                               04h        System</span><br><span class="line">                               20h        Archive</span><br><span class="line"></span><br><span class="line">                      Sum the values to combine attributes.</span><br><span class="line"></span><br><span class="line">                      Setting any of the bits other than the above will</span><br><span class="line">                      generate an error.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-136262.html">3Ch</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-186441.html">59h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-221299.html">File Attributes</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » FAQ » FAQ</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-88954.html">
+    <link rel="next" href="clipncpp-89941.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-88954.html">Previous</a></li>
+
+
+          
+
+<li><a href="clipncpp-29045.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-89941.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> How do I dial a modem from within a CA-Clipper application?</span></span><br><span class="line"></span><br><span class="line"> The modem on a serial port can be looked at as just another file</span><br><span class="line"> as far as output is concerned.  (This is a useful</span><br><span class="line"> oversimplification.)  You just need to open the serial port as a</span><br><span class="line"> file and write a string such as &#34;ATDT123-4567&#34; to send a Hayes-</span><br><span class="line"> compatible dial command to the modem.  A function like this would</span><br><span class="line"> do the job nicely:</span><br><span class="line"></span><br><span class="line"> FUNCTION dialphone (nPort, cNumber)</span><br><span class="line"> LOCAL nFile := FCREATE (&#34;COM&#34; + STR (nPort, 1))  // Open port</span><br><span class="line"> FWRITE (nFile, &#34;ATDT&#34;+cNumber+CHR(13)+CHR(10))   // Write ATDT command</span><br><span class="line"> FCLOSE (nFile)                                   // Close it</span><br><span class="line"> RETURN NIL</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » FAQ » FAQ</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-44680.html">
+    <link rel="next" href="clipncpp-47756.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-44680.html">Previous</a></li>
+
+
+          
+
+<li><a href="clipncpp-29045.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-47756.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">What are LOCAL variables and why do I care?</span></span><br><span class="line"></span><br><span class="line"> LOCAL variables are somewhat like PRIVATE variables in that they</span><br><span class="line"> do not &#34;scope up&#34;; if you declare a PRIVATE or LOCAL variable in</span><br><span class="line"> function B which is called from function A, then function A does</span><br><span class="line"> not know the variable exists.  Function A is even free to use the</span><br><span class="line"> same name for a different variable entirely without risk of</span><br><span class="line"> confusion.  This is useful for writing functions that can avoid</span><br><span class="line"> &#34;stepping on&#34; the variables that are floating around a larger</span><br><span class="line"> application.</span><br><span class="line"></span><br><span class="line"> LOCAL variables, introduced with Clipper 5.0, enforce a stricter</span><br><span class="line"> kind of modularity.  A LOCAL variable must be declared, and it</span><br><span class="line"> is visible only to the particular function in which it is</span><br><span class="line"> declared.  (Remember that PRIVATEs are created by default.)  Not</span><br><span class="line"> only does a LOCAL variable refrain from &#34;up-scoping&#34; but it also</span><br><span class="line"> will not &#34;down-scope&#34; either.</span><br><span class="line"></span><br><span class="line"> For example:</span><br><span class="line"></span><br><span class="line"> // LOCAL1.PRG</span><br><span class="line"> FUNCTION caller</span><br><span class="line"> LOCAL a</span><br><span class="line"> PRIVATE x, y</span><br><span class="line"> a := &#34;a&#34;</span><br><span class="line"> x := &#34;ABC&#34;</span><br><span class="line"> y := &#34;123&#34;</span><br><span class="line"> ? a, x, y        // Prints &#34;a       ABC     123&#34;</span><br><span class="line"> callee()</span><br><span class="line"> ? a, x, y        // Prints &#34;a       ABC     456&#34;</span><br><span class="line"> RETURN NIL</span><br><span class="line"></span><br><span class="line"> FUNCTION callee</span><br><span class="line"> LOCAL a</span><br><span class="line"> PRIVATE x        // Notice y not declared PRIVATE!</span><br><span class="line"> x := &#34;DEF&#34;</span><br><span class="line"> y := &#34;456&#34;</span><br><span class="line"> ? a, x, y        // Prints &#34;NIL     DEF     456&#34;</span><br><span class="line"> RETURN NIL</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> The values of (a) in the two functions are completely</span><br><span class="line"> independent of each other, because they are indeed two</span><br><span class="line"> separate variables.  The values of (x) in the two functions</span><br><span class="line"> are also separate and independent, because CALLEE() has declared</span><br><span class="line"> its version of (x) PRIVATE.  There is only one (y) variable,</span><br><span class="line"> however, since CALLEE() has neglected to declare it.</span><br><span class="line"></span><br><span class="line"> LOCAL variables are useful for writing code that is guaranteed</span><br><span class="line"> bulletproof regardless of the application environment.  LOCAL</span><br><span class="line"> variables (and their cousins, the STATICs) are immune from having</span><br><span class="line"> their values changed by unrelated underlying functions.  This cuts</span><br><span class="line"> down on maintenance and debugging while offering some speed</span><br><span class="line"> advantages too.</span><br><span class="line"></span><br><span class="line"> Because all uses of a local variable are known to the compiler</span><br><span class="line"> (being all in one function) there is no need for an entry in the</span><br><span class="line"> run-time symbol table, which does save some time and memory during</span><br><span class="line"> program execution.  A side effect is that the names of LOCAL</span><br><span class="line"> variables in a macro expression are not found; therefore</span><br><span class="line"></span><br><span class="line"> LOCAL x, y</span><br><span class="line"> x := &#34;y&#34;</span><br><span class="line"> ? &amp;x</span><br><span class="line"></span><br><span class="line"> will fail unless there is a PRIVATE or PUBLIC variable named (y).</span><br><span class="line"></span><br><span class="line"> LOCALs work just like &#34;auto&#34; or stack variables in C and C++.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

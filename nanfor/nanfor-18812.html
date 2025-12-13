@@ -1,0 +1,141 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » Conversion</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-17309.html">
+    <link rel="next" href="nanfor-20125.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-17309.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-16449.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-20125.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_BYT2HEX()</span></span><br><span class="line"> Convert byte to hexadecimal version of its binary value</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_BYT2HEX( cByte ) -&gt; cHexValue</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cByte&gt;</span> is the byte to convert.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     Three-character string, consisting of two digits of hexadecimal</span><br><span class="line">     notation and letter &#39;h&#39; to signify hex.  Returns NIL if parameters are</span><br><span class="line">     faulty.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     Can be used to show results of bit manipulation, both before and after.</span><br><span class="line"></span><br><span class="line">     This function is presented to illustrate that bit-wise operations</span><br><span class="line">     are possible with Clipper code.  For greater speed, write .C or</span><br><span class="line">     .ASM versions and use the Clipper Extend system.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     These three code lines perform a bitwise AND on bytes with values of</span><br><span class="line">     CHR(20) and CHR(36), and deliver the result as a string in hexadecimal</span><br><span class="line">     format, using &#39;h&#39; to signify hexadecimal.</span><br><span class="line"></span><br><span class="line">          ? FT_BYT2HEX(CHR(20))         // byte1: &#39;14h&#39;</span><br><span class="line">          ? FT_BYT2HEX(CHR(36))         // byte2: &#39;24h&#39;</span><br><span class="line"></span><br><span class="line">          ? FT_BYT2HEX(FT_BYTEAND(CHR(20), CHR(36)))</span><br><span class="line">                             // result: &#39;04h&#39;</span><br><span class="line"></span><br><span class="line">     For a demonstration of Clipper bit manipulations, compile and</span><br><span class="line">     link the program BITTEST.PRG in the Nanforum Toolkit source code.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> BYT2HEX.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Forest Belt, Computer Diagnostic Services, Inc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor-17309.html">FT_BYT2BIT()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

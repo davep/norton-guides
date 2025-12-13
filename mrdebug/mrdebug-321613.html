@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Tutorial » Getting Started</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-319413.html">
+    <link rel="next" href="mrdebug-324987.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-319413.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-317622.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-324987.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Modifying your error system</span></span><br><span class="line"> Changes to ErrorSys.</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> To take full advantage of the features that MrDebug offers, you should make</span><br><span class="line"> two changes to your source code.</span><br><span class="line"></span><br><span class="line">        1. Add the following line to your error system:</span><br><span class="line"></span><br><span class="line">                MrdSaveErr( oError )</span><br><span class="line"></span><br><span class="line">           In the case of ErrorSys.PRG this would be the first line of code</span><br><span class="line">           within the DefError Function. So you would want to insert a line</span><br><span class="line">           of code around line 46&#39;ish that says:</span><br><span class="line"></span><br><span class="line">                MrdSaveErr( e )</span><br><span class="line"></span><br><span class="line">           This allows MrDebug to display the output of any CA-Clipper error</span><br><span class="line">           in it&#39;s own window.</span><br><span class="line"></span><br><span class="line">        2. Replace all STDOUT calls in either the standard error system or</span><br><span class="line">           your error system with ?</span><br><span class="line"></span><br><span class="line"> If you have not made any changes to the standard error system, then you may</span><br><span class="line"> choose to use MrDebug&#39;s replacement error system instead. In which case, you</span><br><span class="line"> will need to compile and link _MrdErSy.prg.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Why the changes?</span></span><br><span class="line"></span><br><span class="line"> Let us take an example:</span><br><span class="line"></span><br><span class="line">        LOCAL a := 1</span><br><span class="line">        LOCAL b := &#34;string&#34;</span><br><span class="line"></span><br><span class="line">        ? a + b</span><br><span class="line"></span><br><span class="line"> Okay, so it&#39;s no award-winning program, but it will serve to make a point.</span><br><span class="line"></span><br><span class="line"> With the above changes in your error system     <span class="fg15 bg4">┌──────────────────┐</span></span><br><span class="line"> you will be able to take advantage of the       <span class="fg15 bg4">│ Error  Base/1081 │</span></span><br><span class="line"> facilities for the error system that MrDebug    <span class="fg15 bg4">│  Argument error  │</span></span><br><span class="line"> has the ability to use. In the above code       <span class="fg15 bg4">│   1 + &#34;string&#34;   │</span></span><br><span class="line"> example, when it falls over you get an ALERT()  <span class="fg15 bg4">│                  │</span></span><br><span class="line"> box similar to the one on the right. When you   <span class="fg15 bg4">│      <span class="fg15 bg1"> Quit <span class="fg15 bg4">      │</span></span></span></span><br><span class="line"> come out of the alert the error window will     <span class="fg15 bg4">└──────────────────┛</span></span><br><span class="line"> automatically be selected and will display</span><br><span class="line"> something similar to the example shown below:</span><br><span class="line"></span><br><span class="line"> <span class="fg15 bg7">┌─ <span class="fg11 bg7">8 <span class="fg15 bg7">Error ────────────────────────────┐</span></span></span> Here we can see the error window</span><br><span class="line"> <span class="fg15 bg7">│   <span class="fg8 bg7">Severity:<span class="fg15 bg7">Error                     │</span></span></span> with the an example of the error</span><br><span class="line"> <span class="fg15 bg7">│ <span class="fg8 bg7">Error Code:<span class="fg15 bg7">BASE/1081                 │</span></span></span> that would occur with the code</span><br><span class="line"> <span class="fg15 bg7">│<span class="fg8 bg7">Description:<span class="fg15 bg7">Argument error            │</span></span></span> shown above.</span><br><span class="line"> <span class="fg15 bg7">│  <span class="fg8 bg7">Operation:<span class="fg15 bg7">1 + &#34;string&#34;              │</span></span></span></span><br><span class="line"> <span class="fg15 bg7">│                                      │</span> You could view the actual error</span><br><span class="line"> <span class="fg15 bg7">└──────────────────────────────────────┛</span> object by pressing &lt;ENTER&gt;.</span><br><span class="line"></span><br><span class="line"> Pressing the &lt;ENTER&gt; would cause MrDebug to call the object browser and you</span><br><span class="line"> would see the following:</span><br><span class="line"></span><br><span class="line"> <span class="fg9 bg3">┌─────────────────┬────────── Error Object ─────────────────────────────┐</span></span><br><span class="line"> <span class="fg9 bg3">│<span class="fg15 bg3">Object Browser   <span class="fg9 bg3">│<span class="fg15 bg3">Variables            Contents                        <span class="fg9 bg3">│</span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│<span class="fg15 bg0">ERROR           ↑<span class="fg9 bg3">│<span class="fg7 bg0">ARGS            E---<span class="fg8 bg3"> <span class="fg7 bg0">{1...2}                        <span class="fg15 bg0">↑<span class="fg9 bg3">│</span></span></span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">█<span class="fg9 bg3">│<span class="fg8 bg3">CANDEFAULT      E--- .F.                            <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">█<span class="fg9 bg3">│<span class="fg8 bg3">CANRETRY        E--- .F.                            <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">█<span class="fg9 bg3">│<span class="fg8 bg3">CANSUBSTIT      E--- .T.                            <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">█<span class="fg9 bg3">│<span class="fg8 bg3">CARGO           E--- NIL                            <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">█<span class="fg9 bg3">│<span class="fg8 bg3">DESCRIPTIO      E--- &#34;Argument error&#34;               <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">↓<span class="fg9 bg3">│<span class="fg8 bg3">FILENAME        E--- &#34;&#34;                             <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">├─────────────────┤<span class="fg8 bg3">GENCODE         E---          1                     <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│<span class="fg15 bg3">Methods          <span class="fg9 bg3">│<span class="fg8 bg3">OPERATION       E--- &#34;+&#34;                            <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│<span class="fg7 bg0">CLASSNAME       <span class="fg15 bg0">↑<span class="fg9 bg3">│<span class="fg8 bg3">OSCODE          E---          0                     <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">█<span class="fg9 bg3">│<span class="fg8 bg3">SEVERITY        E---          2                     <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">█<span class="fg9 bg3">│<span class="fg8 bg3">SUBCODE         E---       1081                     <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">█<span class="fg9 bg3">│<span class="fg8 bg3">SUBSYSTEM       E--- &#34;BASE&#34;                         <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">█<span class="fg9 bg3">│<span class="fg8 bg3">TRIES           E---          0                     <span class="fg15 bg0">█<span class="fg9 bg3">│</span></span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">│                <span class="fg15 bg0">↓<span class="fg9 bg3">│                                                    <span class="fg15 bg0">↓<span class="fg9 bg3">│</span></span></span></span></span></span><br><span class="line"> <span class="fg9 bg3">└─────────────────┴─────────────────────────────────────────────────────┛</span></span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-244008.html">How do I use MrDebug&#39;s Error system</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

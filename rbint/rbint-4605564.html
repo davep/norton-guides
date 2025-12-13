@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4604954.html">
+    <link rel="next" href="rbint-4607282.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4604954.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4581762.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4607282.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 31 Fn 0203  P - Dpmi 0.9+ - Set Processor Exception Handler Vector   </span>  [<span class="ngb">E</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0203h</span><br><span class="line">   BL = exception number (00h-1Fh)</span><br><span class="line">   CX:(E)DX = selector:offset of handler</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (DPMI 1.0+) (8021h,8022h) (see #2814)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> 32-bit programs must supply an offset in EDX and use a 32-bit interrupt</span><br><span class="line">     stack frame on chaining to the next exception handler</span><br><span class="line">   the handler should return using a FAR return</span><br><span class="line">   all fault stack frames contain an error code, but it is only valid for</span><br><span class="line">     exceptions 08h and 0Ah-0Eh</span><br><span class="line">   handlers will only be called if the exception occurs in protected mode,</span><br><span class="line">     and the DPMI host does not transparently handle the exception</span><br><span class="line">   the handler may change certain values on the stack frame</span><br><span class="line">     (see #2817,#2818)</span><br><span class="line">   DPMI 1.0+ supports this function only for backward compatibility; use</span><br><span class="line">      AX=0212h or AX=0213h instead</span><br><span class="line">   not supported by MS Windows 3.0 in Standard mode</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0202h,AX=0212h,AX=0213h,INT 2F/AX=FB42h/BX=0022h</span><br><span class="line"></span><br><span class="line">Format of stack frame for 16-bit programs: (offset from SS:SP)</span><br><span class="line">Offset Size    Description (Table 2817)</span><br><span class="line"> 00h   DWORD   return CS:IP (do not change)</span><br><span class="line"> 04h   WORD    error code</span><br><span class="line"> 06h   DWORD   CS:IP of exception</span><br><span class="line"> 0Ah   WORD    flags</span><br><span class="line"> 0Ch   DWORD   SS:SP</span><br><span class="line"></span><br><span class="line">Format of stack frame for 32-bit programs: (offset from SS:ESP)</span><br><span class="line">Offset Size    Description (Table 2818)</span><br><span class="line"> 00h   DWORD   return EIP (do not change)</span><br><span class="line"> 04h   WORD    return CS selector (do not change)</span><br><span class="line"> 06h   WORD    reserved (do not change)</span><br><span class="line"> 08h   DWORD   error code</span><br><span class="line"> 0Ch   DWORD   EIP of exception</span><br><span class="line"> 10h   WORD    CS selector of exception</span><br><span class="line"> 12h   WORD    reserved (do not change)</span><br><span class="line"> 14h   DWORD   EFLAGS</span><br><span class="line"> 18h   DWORD   ESP</span><br><span class="line"> 1Ch   WORD    SS</span><br><span class="line"> 1Eh   WORD    reserved (do not change)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

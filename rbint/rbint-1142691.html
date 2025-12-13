@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1142102.html">
+    <link rel="next" href="rbint-1143490.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1142102.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1061380.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1143490.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 12  - Topview - Send Message - &#34;dir&#34; - Get Panel File Directory</span>  [<span class="ngb">Q</span>]</span><br><span class="line"></span><br><span class="line">   AH = 12h</span><br><span class="line">   BX = 0300h</span><br><span class="line">   STACK: DWORD handle of panel object (see #0362)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> STACK: DWORD length of directory (always multiple of 14 bytes)</span><br><span class="line">          DWORD address of directory</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  a null string is returned if the object is not open</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=12h/BX=0400h&#34;APPLY&#34;,AH=12h/BH=83h</span><br><span class="line"></span><br><span class="line">Format of TopView panel file:</span><br><span class="line">Offset Size    Description (Table 0362)</span><br><span class="line"> 00h  2 BYTEs  C0h C3h</span><br><span class="line"> 02h   BYTE    number of panels in file</span><br><span class="line"> 03h   for each panel in file:</span><br><span class="line">       8 BYTEs  blank-padded panel name</span><br><span class="line">         DWORD  panel offset in file</span><br><span class="line">         WORD   panel length</span><br><span class="line">   data for panels (each consists of one or more window/query/manager</span><br><span class="line">     streams); first byte of each panel must be 1Bh, fifth byte must be</span><br><span class="line">     E5h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

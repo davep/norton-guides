@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2597847.html">
+    <link rel="next" href="rbint-2599311.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2597847.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2599311.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 5D0A  - Dos 3.1+ - Set Extended Error Information              </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AX = 5D0Ah</span><br><span class="line">   DS:DX -&gt; 11-word DOS parameter list (see #1372)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> nothing.  next call to AH=59h will return values from fields AX,BX,CX,</span><br><span class="line">     DX,DI, and ES in corresponding registers</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> documented for DOS 5+, but undocumented in earlier versions</span><br><span class="line">   the MS-DOS Programmer&#39;s Reference incorrectly states that this call was</span><br><span class="line">     introduced in DOS 4, and fails to mention that the ERROR structure</span><br><span class="line">     passed to this function is a DOS parameter list.</span><br><span class="line">BUGS:  DR DOS 3.41 and 5.0 read the value for ES from the DS field of the</span><br><span class="line">     DPL; fortunately, MS-DOS ignores the DS field, allowing a generic</span><br><span class="line">     routine which sets both DS and ES fields to the same value</span><br><span class="line">   Novell DOS 7 (through at least Update 4) does not save the pointer,</span><br><span class="line">     which is always reported as 0000h:0000h by AH=59h; Update 15 fully</span><br><span class="line">     supports this function</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=59h/BX=0000h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

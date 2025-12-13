@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » FAQ » FAQ</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-36751.html">
+    <link rel="next" href="clipncpp-39240.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-36751.html">Previous</a></li>
+
+
+          
+
+<li><a href="clipncpp-29045.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-39240.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Short: I keep getting financial arithmetic results that don&#39;t add up</span></span><br><span class="line"> <span class="ngb">exactly.  From time to time my calculations are off by a few</span></span><br><span class="line"> <span class="ngb">cents but I&#39;m sure there is nothing wrong with my code.  What&#39;s</span></span><br><span class="line"> <span class="ngb">the deal?</span></span><br><span class="line"></span><br><span class="line"> X-Contributor: David Husnian &lt;76064.1535@compuserve.com&gt;,</span><br><span class="line"></span><br><span class="line"> Clipper and most computer languages use a binary floating</span><br><span class="line"> point format for their real numbers.  This causes precision</span><br><span class="line"> errors which commonly show up in calculations, comparisons</span><br><span class="line"> and when rounding.  The problem is related to trying to represent</span><br><span class="line"> an infinite number of decimal numbers into a fixed number (and a</span><br><span class="line"> small fixed number at that) of binary bits.</span><br><span class="line"></span><br><span class="line"> Statistically, there aren&#39;t any numbers that can be represented</span><br><span class="line"> exactly, of course, from a practical standpoint some can be (but</span><br><span class="line"> they are all somehow related to powers of 2, like 1/2 or 3/8 or</span><br><span class="line"> 127/128 or ...).</span><br><span class="line"></span><br><span class="line"> Taking .275 out to just 16 bits yields:</span><br><span class="line"></span><br><span class="line"> .0100011000100111 but that is really only .274993896484375.  It</span><br><span class="line"> is impossible to represent .275 accurately in a binary numbering</span><br><span class="line"> system, even with unlimited bits, let alone the 64 bits that</span><br><span class="line"> Clipper uses (all of which aren&#39;t used for the decimal portion).</span><br><span class="line"></span><br><span class="line"> Most modern languages use a format defined by the IEEE.  An</span><br><span class="line"> IEEE-compliant double precision implementation meets the following</span><br><span class="line"> criteria:</span><br><span class="line"></span><br><span class="line"> 1. 1 sign bit, 52 bits for the mantissa and 11 for the exponent.</span><br><span class="line"> 2. 2.22 * 10  -16 is the smallest number that, subtracted from 1.0,</span><br><span class="line">    gives something different than 1.0.</span><br><span class="line"> 3. Normalized to 1023, which means that 10  0 will be kept as 1023,</span><br><span class="line">    with 10  -1 as 1022 and 10  1 as 1024.</span><br><span class="line"> 4. Smallest useable floating value is 2.23 * 10  -308.</span><br><span class="line"> 5. Largest useable floating value is 1.79 * 10  308.</span><br><span class="line"></span><br><span class="line"> In the IEEE standard, rounding is considered to be finding the</span><br><span class="line"> closest representable number to the &#34;exact&#34; number.  Not an easy</span><br><span class="line"> task, particularly at the level of Clipper.</span><br><span class="line"></span><br><span class="line"> There are only two complete solutions: use only integers (for</span><br><span class="line"> example, use 1234 to mean 12.34) or use a decimal numeric format</span><br><span class="line"> like BCD.</span><br><span class="line"></span><br><span class="line"> With Visual Objects you will be able to make variable declarations</span><br><span class="line"> such as LOCAL i AS INT, which will have the effect of forcing only</span><br><span class="line"> integer values into a variable.</span><br><span class="line"></span><br><span class="line"> Note that when CA-Clipper 5.3 is released, it will have been</span><br><span class="line"> compiled and linked with the 8.0 release of Microsoft C, including</span><br><span class="line"> the standard math library component.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

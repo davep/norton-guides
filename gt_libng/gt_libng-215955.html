@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="gt_libng-style.css">
+    <title>GT_LIB v1.0 Reference Guide Release 2.0 » Information » Sample Clipper/C Header</title>
+    <meta name="description" content="GT_LIB v1.0 Reference Guide Release 2.0">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="gt_libng-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="gt_libng-5540.html">Audit</a></li>
+                  <li><a href="gt_libng-6547.html">Compression</a></li>
+                  <li><a href="gt_libng-13032.html">Date</a></li>
+                  <li><a href="gt_libng-23409.html">Disk Drive</a></li>
+                  <li><a href="gt_libng-37327.html">Error System</a></li>
+                  <li><a href="gt_libng-40165.html">Environment</a></li>
+                  <li><a href="gt_libng-49799.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-P</li>
+              <li>
+                <ul>
+                  <li><a href="gt_libng-66199.html">General</a></li>
+                  <li><a href="gt_libng-98996.html">Get Reader</a></li>
+                  <li><a href="gt_libng-106381.html">Keyboard</a></li>
+                  <li><a href="gt_libng-114805.html">Maths</a></li>
+                  <li><a href="gt_libng-124424.html">Memory</a></li>
+                  <li><a href="gt_libng-127716.html">Network</a></li>
+                  <li><a href="gt_libng-133468.html">Printer</a></li>
+                  
+                </ul>
+              </li>
+              <li>S-W</li>
+              <li>
+                <ul>
+                  <li><a href="gt_libng-136117.html">Screen Saver</a></li>
+                  <li><a href="gt_libng-140433.html">Security</a></li>
+                  <li><a href="gt_libng-141574.html">String</a></li>
+                  <li><a href="gt_libng-170364.html">System</a></li>
+                  <li><a href="gt_libng-174810.html">Video</a></li>
+                  <li><a href="gt_libng-205251.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="gt_libng-209432.html">About</a></li>
+                  <li><a href="gt_libng-209917.html">Background</a></li>
+                  <li><a href="gt_libng-212755.html">BBS List</a></li>
+                  <li><a href="gt_libng-213177.html">Contributors</a></li>
+                  <li><a href="gt_libng-213853.html">Submitting Code</a></li>
+                  <li><a href="gt_libng-215955.html">Sample Clipper/C Header</a></li>
+                  <li><a href="gt_libng-218225.html">Sample ASM Header</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">                This example shows how you would set up the</span><br><span class="line">               headers for either a Clipper or C source file.</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line"> * File......: PRINSCRN.PRG</span><br><span class="line"> * Author....: Martin Colloby</span><br><span class="line"> * BBS.......: The Dark Knight Returns</span><br><span class="line"> * Net/Node..: 050/069</span><br><span class="line"> * User Name.: Martin Colloby</span><br><span class="line"> * Date......: 18/4/93</span><br><span class="line"> * Revision..: 1.0</span><br><span class="line"> *</span><br><span class="line"> * This is an original work by Martin Colloby and is placed in the public</span><br><span class="line"> * domain.</span><br><span class="line"> *</span><br><span class="line"> * Modification history:</span><br><span class="line"> * ---------------------</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">/*  $DOC$</span><br><span class="line"> *  $FUNCNAME$</span><br><span class="line"> *      GT_PrintScreen</span><br><span class="line"> *  $CATEGORY$</span><br><span class="line"> *      Video</span><br><span class="line"> *  $ONELINER$</span><br><span class="line"> *      Output a screen to the printer</span><br><span class="line"> *  $SYNTAX$</span><br><span class="line"> *      GT_PrintScreen( cScreen )</span><br><span class="line"> *  $ARGUMENTS$</span><br><span class="line"> *      cScreen - Screen saved by FT_SAVRGN()</span><br><span class="line"> *  $RETURNS$</span><br><span class="line"> *      NIL</span><br><span class="line"> *  $DESCRIPTION$</span><br><span class="line"> *      Outputs a screen to the printer.  The screen should be saved using</span><br><span class="line"> *      the Nanforum Toolkit function FT_SAVRGN, and then passed to this</span><br><span class="line"> *      function</span><br><span class="line"> *  $EXAMPLES$</span><br><span class="line"> *      GT_PrintScreen( FT_SAVRGN( 0 , 0 , MAXROW() , MAXCOL() )</span><br><span class="line"> *  $SEEALSO$</span><br><span class="line"> *</span><br><span class="line"> *  $INCLUDE$</span><br><span class="line"> *</span><br><span class="line"> *  $END$</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">                        <span class="fg12 bg1">Formatting Guidelines</span></span><br><span class="line">/*</span><br><span class="line"> * File......: PRINSCRN.PRG</span><br><span class="line"> * Author....: Martin Colloby</span><br><span class="line"> * BBS.......: The Dark Knight Returns</span><br><span class="line"> * Net/Node..: 050/069</span><br><span class="line"> * User Name.: Martin Colloby</span><br><span class="line"> * Date......: 18/4/93</span><br><span class="line"> * Revision..: 1.0</span><br><span class="line"> *</span><br><span class="line"> * This is an original work by Martin Colloby and is placed in the public</span><br><span class="line"> * domain.</span><br><span class="line">   <span class="fg12 bg1">└───────────── This declaration must be present ─────────────────────┛</span></span><br><span class="line"> *</span><br><span class="line"> * Modification history:</span><br><span class="line"> * ---------------------</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">/*  $DOC$</span><br><span class="line"> *  $FUNCNAME$</span><br><span class="line">  <span class="fg12 bg1">┌────┬────────── indent all items 6 spaces after asterisk</span></span><br><span class="line"> *     GT_PrintScreen                        <span class="fg12 bg1">&lt;- 15 characters MAXIMUM</span></span><br><span class="line"> *  $CATEGORY$</span><br><span class="line"> *      Video                                <span class="fg12 bg1">&lt;- Put &#39;General&#39; if not sure</span></span><br><span class="line"> *  $ONELINER$</span><br><span class="line"> *     Output a screen to the printer        <span class="fg12 bg1">&lt;- 60 character MAXIMUM</span></span><br><span class="line"> *  $SYNTAX$</span><br><span class="line"> *      GT_PrintScreen( cScreen )</span><br><span class="line"> *  $ARGUMENTS$</span><br><span class="line"> *      cScreen - Screen saved by FT_SAVRGN()</span><br><span class="line"> *  $RETURNS$</span><br><span class="line"> *      NIL</span><br><span class="line"> *  $DESCRIPTION$</span><br><span class="line"> *      Outputs a screen to the printer.  The screen should be saved via</span><br><span class="line"> *      the Nanforum Toolkit function FT_SAVRGN, and then passed to this</span><br><span class="line"> *      function</span><br><span class="line">        <span class="fg12 bg1">└───────────── Lines no longer than 65 characters ──────────────┛</span></span><br><span class="line"> *  $EXAMPLES$</span><br><span class="line"> *      GT_PrintScreen( FT_SAVRGN( 0 , 0 , MAXROW() , MAXCOL() )</span><br><span class="line"> *  $SEEALSO$</span><br><span class="line"> *                                                      <span class="fg12 bg1">&lt;- optional</span></span><br><span class="line"> *  $INCLUDE$</span><br><span class="line"> *                                                      <span class="fg12 bg1">&lt;- optional</span></span><br><span class="line"> *  $END$</span><br><span class="line"> */</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:41</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

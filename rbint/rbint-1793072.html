@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1792828.html">
+    <link rel="next" href="rbint-1796429.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1792828.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1712194.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1796429.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 1A Fn B001  - Microsoft Real-time Compression Interface (mrci) - Rom-</span>  [<span class="ngb">d</span>]</span><br><span class="line"></span><br><span class="line">   AX = B001h</span><br><span class="line">   CX = 4D52h (&#34;MR&#34;)</span><br><span class="line">   DX = 4349h (&#34;CI&#34;)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CX = 4943h (&#34;IC&#34;) if installed</span><br><span class="line">   DX = 524Dh (&#34;RM&#34;) if installed</span><br><span class="line">       ES:DI -&gt; MRCINFO structure (see #0649)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this call is functionally identical to INT 2F/AX=4A12h, which should</span><br><span class="line">     be called first, as this call is used for the first, ROM-based</span><br><span class="line">     MRCI server, while the other call is used for RAM-based servers</span><br><span class="line">     which may be partially or entirely replacing a prior server</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 2F/AX=4A12h</span><br><span class="line"></span><br><span class="line">Format of MRCINFO structure:</span><br><span class="line">Offset Size    Description (Table 0649)</span><br><span class="line"> 00h  4 BYTEs  vendor signature</span><br><span class="line">       &#34;MSFT&#34; Microsoft</span><br><span class="line"> 04h   WORD    server version (high=major)</span><br><span class="line"> 06h   WORD    MRCI specification version</span><br><span class="line"> 08h   DWORD   address of server entry point (see #0651)</span><br><span class="line"> 0Ch   WORD    bit flags: server capabilities (see #0650)</span><br><span class="line"> 0Eh   WORD    bit flags: hardware assisted capabilities (see #0650)</span><br><span class="line"> 10h   WORD    maximum block size supported by server (at least 8192 bytes)</span><br><span class="line"></span><br><span class="line">Bitfields for MRCI capabilities:</span><br><span class="line">Bit(s) Description (Table 0650)</span><br><span class="line"> 0 standard compress</span><br><span class="line"> 1 standard decompress</span><br><span class="line"> 2 update compress</span><br><span class="line"> 3 MaxCompress (not present in initial public release)</span><br><span class="line"> 4 reserved</span><br><span class="line"> 5 incremental decompress</span><br><span class="line"> 6 MRCI 2.0 standard compress</span><br><span class="line"> 7 MRCI 2.0 standard decompress</span><br><span class="line"> 8-14  reserved</span><br><span class="line"> 15    this structure is in ROM and can&#39;t be modified</span><br><span class="line">   (server capabilities only)</span><br><span class="line"></span><br><span class="line">(Table 0651)</span><br><span class="line">Call MRCI entry point with:</span><br><span class="line">   DS:SI -&gt; MRCREQUEST structure (see #0652)</span><br><span class="line">   CX = type of client (0000h application, 0001h file system)</span><br><span class="line">   AX = operation</span><br><span class="line">       0001h perform standard compression</span><br><span class="line">       0002h perform standard decompression</span><br><span class="line">       0004h perform update compression</span><br><span class="line">       0008h perform MaxCompress</span><br><span class="line">       0020h perform incremental decompression</span><br><span class="line">       0040h perform MRCI 2.0 standard compression</span><br><span class="line">       0080h perform MRCI 2.0 standard decompression</span><br><span class="line">   AX = FFFFh clear flags</span><br><span class="line">       BX = bitmask of flags to clear (set bits in BX are flags to clear)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h successful</span><br><span class="line">       0001h invalid function</span><br><span class="line">       0002h server busy, try again</span><br><span class="line">       0003h destination buffer too small</span><br><span class="line">       0004h incompressible data</span><br><span class="line">       0005h bad compressed data format</span><br><span class="line">   BP destroyed (MS-DOS 6.2)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  MRCI driver may chain to a previous driver</span><br><span class="line"></span><br><span class="line">Format of MRCREQUEST structure:</span><br><span class="line">Offset Size    Description (Table 0652)</span><br><span class="line"> 00h   DWORD   pointer to source buffer</span><br><span class="line"> 04h   WORD    size of source buffer (0000h = 64K)</span><br><span class="line"> 06h   WORD    (UpdateCompress only)</span><br><span class="line">       (call) offset in source buffer of beginning of changed data</span><br><span class="line">       (ret) offset in destination buffer of beginning of changed</span><br><span class="line">             compressed data</span><br><span class="line"> 08h   DWORD   pointer to destination buffer</span><br><span class="line">       must contain original compressed data for UpdateCompress</span><br><span class="line"> 0Ch   WORD    size of destination buffer (0000h = 64K)</span><br><span class="line">       any compression: size of buffer for compressed data</span><br><span class="line">       standard decompression: number of bytes to be decompressed</span><br><span class="line">       incremental decompression: number of byte to decompress now</span><br><span class="line">       (ret) actual size of resulting data</span><br><span class="line"> 0Eh   WORD    client compressed data storage allocation size</span><br><span class="line"> 10h   DWORD   incremental decompression state data</span><br><span class="line">       set to 00000000h before first incremental decompression call</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the source and destination buffers may not overlap</span><br><span class="line">   the source and destination buffer sizes should normally be the same</span><br><span class="line">   application should not update the contents of the MRCREQUEST structure</span><br><span class="line">     between incremental decompression calls</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

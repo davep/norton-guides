@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-814558.html">
+    <link rel="next" href="rbint-816523.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-814558.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-816523.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 13 Fn 1A  - Esdi Fixed Disk - Format Unit (ps)                       </span>  [<span class="ngb">d</span>]</span><br><span class="line"></span><br><span class="line">   AH = 1Ah</span><br><span class="line">   AL = defect table entry count</span><br><span class="line">   CL = format modifiers (see #0182)</span><br><span class="line">   DL = drive (80h,81h)</span><br><span class="line">   ES:BX -&gt; defect table (see #0183), ignored if AL=00h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error</span><br><span class="line">   CF clear if successful</span><br><span class="line">   AH = status (see #0166 at AH=01h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  if periodic interrupt selected, INT 15/AH=0Fh is called after each</span><br><span class="line">     cylinder is formatted</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=07h,INT 15/AH=0Fh</span><br><span class="line"></span><br><span class="line">Bitfields for ESDI format modifiers:</span><br><span class="line">Bit(s) Description (Table 0182)</span><br><span class="line"> 4 generate periodic interrupt</span><br><span class="line"> 3 perform surface analysis</span><br><span class="line"> 2 update secondary defect map</span><br><span class="line"> 1 ignore secondary defect map</span><br><span class="line"> 0 ignore primary defect map</span><br><span class="line"></span><br><span class="line">Format of defect table entry [array]:</span><br><span class="line">Offset Size    Description (Table 0183)</span><br><span class="line"> 00h  3 BYTEs  relative sector address (little-endian)</span><br><span class="line"> 03h   BYTE    flags and defect count</span><br><span class="line">       bit 7: last logical sector on track</span><br><span class="line">       bit 6: first logical sector on track</span><br><span class="line">       bit 5: last logical sector on cylinder</span><br><span class="line">       bit 4: logical sectors are pushed onto next track</span><br><span class="line">       bits 3-0: number of defects pushed from previous cylinder</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

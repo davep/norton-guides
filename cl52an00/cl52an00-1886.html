@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl52an00-style.css">
+    <title>Clipper 5.2c » Anomalies &amp; IE&#39;s v0.99 » Display » Anomalies &amp; Bugs</title>
+    <meta name="description" content="Clipper 5.2c » Anomalies &amp; IE&#39;s v0.99">
+    <link rel="prev" href="cl52an00-1693.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl52an00-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl52an00-1693.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Display</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies &amp; Bugs</a></li>
+                  <li><a href="cl52an00-4386.html">Internal Errors</a></li>
+                  
+                </ul>
+              </li>
+              <li>Commercials</li>
+              <li>
+                <ul>
+                  <li><a href="cl52an00-45386.html">Packages</a></li>
+                  <li><a href="cl52an00-47050.html">Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>View</li>
+              <li>
+                <ul>
+                  <li><a href="cl52an00-48446.html">Credits</a></li>
+                  <li><a href="cl52an00-49457.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">DBSETORDER()</span></span><br><span class="line"> Bug in workarea buffering</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> The problem is that Clipper 5.2c NTX driver does not properly update</span><br><span class="line"> the record pointer when indexorder is changed.  See examples below:</span><br><span class="line"></span><br><span class="line"> An apparent fix is to add DBGOTO( RECNO() ) after SET ORDER / DBSETORDER()</span><br><span class="line"></span><br><span class="line">  FIELD Date, Code, Qty</span><br><span class="line">  LOCAL n := 1, nRec</span><br><span class="line">  dbCreate( &#34;Test&#34;, ;</span><br><span class="line">   { {&#34;Date&#34;, &#34;D&#34;, 8, 0}, {&#34;Code&#34; , &#34;C&#34;, 4, 0}, {&#34;Qty&#34;  , &#34;N&#34;, 4, 0} } )</span><br><span class="line">  CLS</span><br><span class="line">  USE Test NEW</span><br><span class="line">  dbAppend() ; Date := DATE()     ; Code := &#34;001&#34; ; Qty := 100</span><br><span class="line">  dbAppend() ; Date := DATE() + 1 ; Code := &#34;002&#34; ; Qty := 200</span><br><span class="line">  dbAppend() ; Date := DATE() + 2 ; Code := &#34;003&#34; ; Qty := 300</span><br><span class="line">  dbAppend() ; Date := DATE() + 3 ; Code := &#34;004&#34; ; Qty := 400</span><br><span class="line">  INDEX ON Date TO Test1 ; INDEX ON Code TO Test2</span><br><span class="line">  SET INDEX TO Test1, Test2</span><br><span class="line">  WHILE n &lt; 3</span><br><span class="line">    SET ORDER TO 2</span><br><span class="line">    * DBGOTO( RECNO() )      // Uncomment to fix.</span><br><span class="line">    ? nRec := RECNO()</span><br><span class="line">    dbSkip() ; dbSkip(-1)</span><br><span class="line">    ?? RECNO()</span><br><span class="line">    IF( n == 2, QQOUT( &#34; &lt;- Should be 2&#34; ), )</span><br><span class="line">    SET ORDER TO 1</span><br><span class="line">    * DBGOTO( RECNO() )      // Uncomment to fix.</span><br><span class="line">    Qty := 0.0</span><br><span class="line">    n ++</span><br><span class="line">    dbSkip()</span><br><span class="line">  END</span><br><span class="line">  USE</span><br><span class="line"></span><br><span class="line">  <span class="ngb">EXAMPLE 2</span></span><br><span class="line">  FIELD Date, Code, Qty</span><br><span class="line">  LOCAL nRec, cCode, dDate := CTOD(&#34;06/08/92&#34;)</span><br><span class="line">  DBCREATE( &#34;Test&#34;, ;</span><br><span class="line">   { {&#34;Date&#34;, &#34;D&#34;, 8, 0}, {&#34;Code&#34; , &#34;C&#34;, 3, 0}, {&#34;Qty&#34;  , &#34;N&#34;, 4, 0} } )</span><br><span class="line">  CLS</span><br><span class="line">  USE Test NEW</span><br><span class="line">  dbAppend() ; Date := CTOD(&#34;05/27/92&#34;) ; Code := &#34;001&#34; ; Qty := 100</span><br><span class="line">  dbAppend() ; Date := CTOD(&#34;05/27/92&#34;) ; Code := &#34;002&#34; ; Qty := 200</span><br><span class="line">  dbAppend() ; Date := CTOD(&#34;05/27/92&#34;) ; Code := &#34;003&#34; ; Qty := 300</span><br><span class="line">  dbAppend() ; Date := CTOD(&#34;06/08/92&#34;) ; Code := &#34;001&#34; ; Qty := 100</span><br><span class="line">  dbAppend() ; Date := CTOD(&#34;06/08/92&#34;) ; Code := &#34;002&#34; ; Qty := 200</span><br><span class="line">  dbAppend() ; Date := CTOD(&#34;06/08/92&#34;) ; Code := &#34;003&#34; ; Qty := 300</span><br><span class="line">  INDEX ON DTOS(Date) + Code TO Index1</span><br><span class="line">  INDEX ON Code + DTOS(Date) TO index2</span><br><span class="line">  SET INDEX TO Index1, Index2</span><br><span class="line">  SEEK DTOS( dDate )</span><br><span class="line">  WHILE Date == dDate</span><br><span class="line">    nRec := RECNO()  ;  cCode := Code</span><br><span class="line">    SET ORDER TO 2</span><br><span class="line">    * DBGOTO( RECNO() )      // Uncomment to fix.</span><br><span class="line">    QOUT(  Date, Code, RECNO(), &#34; &#34; )</span><br><span class="line">    DBSKIP( -1 )</span><br><span class="line">    * Code := cCode     // Uncomment for more trouble.</span><br><span class="line">    QQOUT( Date, Code, RECNO(), &#34; &#34; )</span><br><span class="line">    QQOUT( IF( Code == cCode, &#34;Ok     &#34;, &#34;Problem&#34; ) )</span><br><span class="line">    DBGOTO( nRec )</span><br><span class="line">    SET ORDER TO 1</span><br><span class="line">    * DBGOTO( RECNO() )      // Uncomment to fix.</span><br><span class="line">    Qty := 0</span><br><span class="line">    DBSKIP()</span><br><span class="line">    QQOUT( RECNO() )     // Should never be less than 5.</span><br><span class="line">  ENDDO</span><br><span class="line">  QOUT( &#34;-------------------&#34; )</span><br><span class="line">  LIST Date, Code, Qty</span><br><span class="line">  USE</span><br><span class="line">  ?</span><br><span class="line"></span><br><span class="line">  <span class="ngu">(Modified Submittal from Peter Birch, 70473,552, 6/93)</span></span><br><span class="line">  <span class="ngu">(jwf 9/1/93)</span></span><br><span class="line"></span><br><span class="line">→</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

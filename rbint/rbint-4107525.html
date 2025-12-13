@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4096501.html">
+    <link rel="next" href="rbint-4116266.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4096501.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4031282.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4116266.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 7A20  - Novell Netware - Adv Netware 4.0 Dos Requester - Get Vlm Call Address  <span class="ngb">(Cont.)</span></span></span><br><span class="line"></span><br><span class="line">Call PRINT.VLM (VLM ID 0042h) with:</span><br><span class="line">Func   Description/Registers</span><br><span class="line"> 01h   Print Get Version</span><br><span class="line">   BX = function</span><br><span class="line">       0000h get version</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line">           BX = major version of VLM supported (0001h)</span><br><span class="line">           CX = minor version of VLM supported (0000h)</span><br><span class="line"> 03h   Print Statistics</span><br><span class="line">   CX = length of buffer</span><br><span class="line">   ES:DI -&gt; buffer for statistics (see #2571)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> AX = status (0000h if successful) (see #2546)</span><br><span class="line">       buffer filled if successful</span><br><span class="line"> 04h   Print Get/Set Data</span><br><span class="line">   BX = subfunction</span><br><span class="line">       00h set printer control flags (see #2572)</span><br><span class="line">       01h get printer control flags</span><br><span class="line">       02h set extended printer control flags (see #2573)</span><br><span class="line">       03h get extended printer control flags</span><br><span class="line">   AX = offset within Print structures at which to start read/write</span><br><span class="line">   CX = number of bytes to transfer</span><br><span class="line">   DX = printing device number (00h=LPT1/PRN, 01h=LPT2, etc.)</span><br><span class="line">   DS:SI -&gt; buffer containing values for flags (subfunctions 00h/02h)</span><br><span class="line">   ES:DI -&gt; buffer for flags (subfunctions 01h/03h</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line">       ---if successful---</span><br><span class="line">       CX = number of bytes returned (subfunctions 01h/03h)</span><br><span class="line">       DX = maximum supported size for function/type of data</span><br><span class="line"> 05h   Print Open Capture File</span><br><span class="line"> 07h   Print Get Num Of Printers</span><br><span class="line">   BX = subfunction</span><br><span class="line">       0000h get number of physical printers</span><br><span class="line">       nonzero: get configured printer (from NET.CFG)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line">       ---if successful---</span><br><span class="line">       BX = number of physical/configured printers</span><br><span class="line"> 08h   Print Redirection</span><br><span class="line">   BX = subfunction</span><br><span class="line">       0000h redirect device to queue</span><br><span class="line">       AX = length of queue name, 0000h to use queue ID</span><br><span class="line">       CX = connection handle</span><br><span class="line">       DX = printer/device number (00h=LPT1/PRN, 01h=LPT2, etc.)</span><br><span class="line">       DS:SI -&gt; uppercased ASCIZ queue name</span><br><span class="line">       ES:DI -&gt; DWORD queue ID, 00000000h to use queue name</span><br><span class="line">       0001h test whether device is redirected</span><br><span class="line">       DX = printer/device number (00h=LPT1/PRN, 01h=LPT2, etc.)</span><br><span class="line">       0002h cancel redirection</span><br><span class="line">       DX = printer/device number (00h=LPT1/PRN, 01h=LPT2, etc.)</span><br><span class="line">       0003h redirect device to file</span><br><span class="line">       AX = 0000h or 4E57h (&#39;NW&#39;)</span><br><span class="line">       CX = connection handle</span><br><span class="line">       DX = printer/device number (00h=LPT1/PRN, 01h=LPT2, etc.)</span><br><span class="line">       ES:DI -&gt; ASCIZ path of file</span><br><span class="line">       0004h get extended redirection information (see #2572)</span><br><span class="line">       DX = printer/device number (00h=LPT1/PRN, 01h=LPT2, etc.)</span><br><span class="line">       ES:DI -&gt; buffer for server/queue name</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> ES:DI buffer filled</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> AX = 0000h if successful</span><br><span class="line"> 09h   Print Flush And Close Job</span><br><span class="line">   BX = subfunction</span><br><span class="line">       0000h unconditional close</span><br><span class="line">       nonzero: conditional close -- close only if concatenate flag is</span><br><span class="line">         clear</span><br><span class="line">   DX = index of printing device (00h=LPT1/PRN, 01h=LPT2, etc.)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line"> 0Ch   Print Get/Set Banner Name</span><br><span class="line">   BL = subfunction</span><br><span class="line">       00h set banner name</span><br><span class="line">       DS:SI -&gt; ASCIZ banner name (12 bytes, including NUL)</span><br><span class="line">       01h get banner name</span><br><span class="line">       ES:DI -&gt; 12-byte buffer for banner name</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line"></span><br><span class="line">Format of PRINT.VLM statistics:</span><br><span class="line">Offset Size    Description (Table 2571)</span><br><span class="line"> 00h   WOFD    size of statistics buffer (including this word)</span><br><span class="line"> 02h   DWORD   -&gt; old INT 17 handler</span><br><span class="line"> 06h   WORD    number of physical printers reported by BIOS</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2570</span><br><span class="line"></span><br><span class="line">Format of PRINT.VLM standard print control information:</span><br><span class="line">Offset Size    Description (Table 2572)</span><br><span class="line"> 00h   BYTE    PFStatus (reserved, 00h)</span><br><span class="line"> 01h   BYTE    print flags (default 80h)</span><br><span class="line">       bit 2: release job for printing if capture interrupted</span><br><span class="line">       bit 3: suppress form feed</span><br><span class="line">       bit 4: notify</span><br><span class="line">       bit 6: text file</span><br><span class="line">       bit 7: print banner</span><br><span class="line"> 02h   BYTE    tab size (01h-12h, default 08h)</span><br><span class="line"> 03h   BYTE    number of copies (default 01h)</span><br><span class="line"> 04h   BYTE    ??? (may be number of copies instead of offset 03h)</span><br><span class="line"> 05h   BYTE    form type to be mounted in printer (default 00h)</span><br><span class="line"> 06h   BYTE    reserved (00h)</span><br><span class="line"> 07h 14 BYTEs  banner</span><br><span class="line"> 15h   BYTE    capture printer (LPT) number</span><br><span class="line"> 16h   WORD    capture timeout in seconds</span><br><span class="line"> 18h   BYTE    job concatenation flag (00h or 01h, default 00h)</span><br><span class="line"> 19h   BYTE    maximum lines per page (default 66)</span><br><span class="line"> 1Ah   BYTE    ??? (may be maximum lines instead of offset 19h)</span><br><span class="line"> 1Bh   BYTE    maximum characters per line (default 132)</span><br><span class="line"> 1Ch   BYTE    ??? (may be maximum characters instead of offset 1Ch)</span><br><span class="line"> 1Dh 13 BYTEs  name of form to be mounted in printer</span><br><span class="line"> 2Ah   BYTE    flag: capture active (00h or FFh, default 00h)</span><br><span class="line"> 2Bh   BYTE    flag: capturing to file (00h or 01h, default 00h)</span><br><span class="line"> 2Ch   BYTE    flag: timeout field is being decremented (default 00h)</span><br><span class="line"> 2Dh   DWORD   -&gt; printer setup string</span><br><span class="line"> 31h   DWORD   -&gt; printer reset string</span><br><span class="line"> 35h   BYTE    reserved (01h)</span><br><span class="line">---remainder is read-only---</span><br><span class="line"> 36h   BYTE    flag: job has started printing (00h or FFh, default 00h)</span><br><span class="line"> 37h   BYTE    flag: job placed in queue (00h or FFh, default 00h)</span><br><span class="line"> 38h   BYTE    flag: PJobValid (00h or FFh, default 00h)</span><br><span class="line">       FFh if associated capture file is open for capturing data</span><br><span class="line"> 39h   DWORD   print-queue ID</span><br><span class="line"> 3Dh   WORD    print-job number (default 00h) (1-999)</span><br><span class="line"> 3Fh   BYTE    number of chars in INT 17h print cache buffer (default 00h)</span><br><span class="line"> 40h   BYTE    ???</span><br><span class="line"> 41h   WORD    high word of print-job number (default 00h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2570,#2573</span><br><span class="line"></span><br><span class="line">Format of PRINT.VLM extended print control information:</span><br><span class="line">Offset Size    Description (Table 2573)</span><br><span class="line"> 00h   DWORD   NDS printer object ID or directory entry number (when capturing</span><br><span class="line">         to a file)</span><br><span class="line"> 04h   BYTE    connection handle for server</span><br><span class="line"> 06h 48 BYTEs  ASCIZ print queue name on server</span><br><span class="line"> 36h   DWORD   ID of target server, or FFFFFFFFh if any server may be used</span><br><span class="line"> 3Ah  6 BYTEs  target print time, FFFFFFFFFFFFh for immediate printing</span><br><span class="line"> 40h   BYTE    status flags</span><br><span class="line"> 41h   BYTE    ???</span><br><span class="line"> 42h 13 BYTEs  client&#39;s banner name (overrides global banner if set)</span><br><span class="line"> 4Fh 13 BYTEs  job description</span><br><span class="line"> 5Ch  4 BYTEs  reserved (0)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2570,#2572</span><br><span class="line"></span><br><span class="line">(Table 2574)</span><br><span class="line">Call GENERAL.VLM (VLM ID 0043h) with:</span><br><span class="line">Func   Description/Registers</span><br><span class="line"> 01h   Gen Get Version</span><br><span class="line">   BX = function</span><br><span class="line">       0000h get version</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line">           BX = major version of VLM supported (0001h)</span><br><span class="line">           CX = minor version of VLM supported (0000h)</span><br><span class="line"> 03h   Gen Statistics</span><br><span class="line">   CX = length of statistics buffer</span><br><span class="line">   ES:DI -&gt; buffer for statistics (see #2575)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line"> 04h   Gen Get/Set Primary</span><br><span class="line">   BX = subfunction</span><br><span class="line">       0001h get primary connection</span><br><span class="line">       CX = primary connection handle to be retrieved</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line">           CX = primary connection handle</span><br><span class="line">       0002h set primary connection</span><br><span class="line">       CX = primary connection handle to be stored</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line"> 06h   Gen Specific</span><br><span class="line">   BX = subfunction</span><br><span class="line">       0000h get command processor and master environment addresses</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> DX = segment of master environment</span><br><span class="line">           ES:DI -&gt; command processor&#39;s private COMSPEC= copy</span><br><span class="line">       0001h get default or primary connection</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (0000h successful)</span><br><span class="line">           CX = connection handle if successful</span><br><span class="line">       0002h last queue information</span><br><span class="line">       AL = operation</span><br><span class="line">           00h zap</span><br><span class="line">           01h set</span><br><span class="line">           02h get</span><br><span class="line">       DI:DX = queue file handle</span><br><span class="line">       CX = connection handle</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (0000h successful)</span><br><span class="line">           DI:DX = queue file handle</span><br><span class="line">           CX = connection handle or 0000h if queue info invalid</span><br><span class="line">       0003h get/set machine name(s)</span><br><span class="line">       AX = name type</span><br><span class="line">           00h get short machine name</span><br><span class="line">           02h get long machine name</span><br><span class="line">           04h set short machine name</span><br><span class="line">           06h set long machine name</span><br><span class="line">           08h get DOS name</span><br><span class="line">           0Ah set DOS name</span><br><span class="line">       ES:SI -&gt; ASCIZ name if setting</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (0000h if successful)</span><br><span class="line">           ES:SI -&gt; ASCIZ name if getting</span><br><span class="line">       0004h set per-task EXEC search mode</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (0000h if successful)</span><br><span class="line"> 09h   Gen Return Drive Info</span><br><span class="line">   BX = subfunction</span><br><span class="line">       0000h get first available drive</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line">           BX = drive letter of first drive</span><br><span class="line">       0001h get Lastdrive</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line">           CH = number lastdrive 1=A: - 1Ah=Z:</span><br><span class="line"></span><br><span class="line">Format of NetWare GENERAL.VLM statistics:</span><br><span class="line">Offset Size    Description (Table 2575)</span><br><span class="line"> 00h   WORD    size of statistics record, including this word</span><br><span class="line"> 02h   DWORD   previous INT 21 vector</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2574</span><br><span class="line"></span><br><span class="line">(Table 2576)</span><br><span class="line">Call NETX.VLM (VLM ID 0050h) with:</span><br><span class="line">Func   Description/Registers</span><br><span class="line"> 01h   NetX Get Version</span><br><span class="line">   BX = function</span><br><span class="line">       0000h get version</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line">           BX = major version of VLM supported (0001h)</span><br><span class="line">           CX = minor version of VLM supported (0000h)</span><br><span class="line"> 03h   NetX Statistics</span><br><span class="line">   CX = length of statistics buffer</span><br><span class="line">   ES:DI -&gt; buffer for statistics (see #2577)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line"></span><br><span class="line">Format of NETX.VLM statistics:</span><br><span class="line">Offset Size    Description (Table 2577)</span><br><span class="line"> 00h   WORD    buffer size, including this word</span><br><span class="line"> 02h   DWORD   previous INT 21 handler</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2576</span><br><span class="line"></span><br><span class="line">(Table 2578)</span><br><span class="line">Call SECURITY.VLM (VLM ID 0061h) with:</span><br><span class="line">Func   Description/Registers</span><br><span class="line"> 01h   Security Get Version</span><br><span class="line">   BX = function</span><br><span class="line">       0000h get version</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (see #2546)</span><br><span class="line">           BX = major version of VLM supported (0001h)</span><br><span class="line">           CX = minor version of VLM supported (0000h)</span><br><span class="line"> 03h   Security Statistics</span><br><span class="line"> 04h   ???</span><br><span class="line">   AL = subfunction</span><br><span class="line">       01h compute session key</span><br><span class="line">       DS:SI -&gt; 24-byte input buffer</span><br><span class="line">       ES:DI -&gt; 8-byte output buffer</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

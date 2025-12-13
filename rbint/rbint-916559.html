@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-916342.html">
+    <link rel="next" href="rbint-923393.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-916342.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-891034.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-923393.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 14 Fn 04  - Connection Manager - Open Communication                  </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = 04h</span><br><span class="line">   DX = FFFFh</span><br><span class="line">   ES:DI -&gt; Connection Request protocol vector (see #0237)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AH = return code</span><br><span class="line">       00h successful</span><br><span class="line">       AL = connection ID</span><br><span class="line">       BH = connection type</span><br><span class="line">           00h direct connection or no dialing</span><br><span class="line">           01h Connection Server dialed phone</span><br><span class="line">       01h no response from Connection Server</span><br><span class="line">       03h invalid request</span><br><span class="line">Program: Connection Manager by Softwarehouse Corp. permits the sharing of</span><br><span class="line">     serial ports over an IPX or NetBIOS-based network</span><br><span class="line"><span class="ngb">Desc:</span>  initiate a connection to the Connection Server listed in the current</span><br><span class="line">     Client parameter set</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> if DX is 0-3 on entry, Connection Manager emulates the standard BIOS</span><br><span class="line">     function, but redirects the port over the network; if DX is any other</span><br><span class="line">     value, the call is chained</span><br><span class="line">   all subvectors of the Connection Request vector are optional; if</span><br><span class="line">     missing, default values are provided by the default connection</span><br><span class="line">     parameter set</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=00h/DX=FFFFh,AH=05h/DX=FFFFh,AH=06h/DX=FFFFh,AH=07h/DX=FFFFh</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=0Ah/DX=FFFFh,AH=0Ch/DX=FFFFh</span><br><span class="line"></span><br><span class="line">Format of Connection Manager protocol command vector:</span><br><span class="line">Offset Size    Description (Table 0237)</span><br><span class="line"> 00h   WORD    (big-endian) total length of command (including this word)</span><br><span class="line"> 02h   WORD    (big-endian) command code</span><br><span class="line">       EF01h Connection Request</span><br><span class="line">       EF06h Modify Connection Parameters</span><br><span class="line"> 04h  N BYTEs  list of subvectors (see #0239)</span><br><span class="line">       allowable subvector types are 01h-04h,17h,18h for command code</span><br><span class="line">         EF01h; 03h,04h for command code EF06h (see #0238)</span><br><span class="line"></span><br><span class="line">(Table 0238)</span><br><span class="line">Values for Connection Manager subvector type code:</span><br><span class="line"> 01h   Connection ID</span><br><span class="line"> 02h   Destination ID</span><br><span class="line"> 03h   Asynchronous line parameters</span><br><span class="line"> 04h   Data transfer parameters</span><br><span class="line"> 09h   Line speed</span><br><span class="line"> 0Ah   Serial coding</span><br><span class="line"> 0Bh   Packet size</span><br><span class="line"> 0Ch   Timers</span><br><span class="line"> 0Dh   Special characters</span><br><span class="line"> 0Eh   Target ID</span><br><span class="line"> 0Fh   Telephone number</span><br><span class="line"> 10h   ASCII destination ID</span><br><span class="line"> 11h   Parity</span><br><span class="line"> 12h   Bits per character</span><br><span class="line"> 13h   Number of stop bits</span><br><span class="line"> 14h   Packet timer</span><br><span class="line"> 15h   Intercharacter timer</span><br><span class="line"> 17h   Flags</span><br><span class="line"> 18h   Parameter ranges</span><br><span class="line"> 19h   Flow control</span><br><span class="line"></span><br><span class="line">Format of Connection Manager subvector:</span><br><span class="line">Offset Size    Description (Table 0239)</span><br><span class="line"> 00h   BYTE    length of subvector</span><br><span class="line"> 01h   BYTE    type code (see #0238)</span><br><span class="line"> 02h N-2 BYTEs data, which may include subvectors</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0240,#0241,#0242,#0243,#0244,#0245,#0246,#0247,#0248,#0249,#0250</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0251,#0252,#0254,#0255,#0256,#0257,#0258,#0259,#0237</span><br><span class="line"></span><br><span class="line">Format of Connection ID subvector:</span><br><span class="line">Offset Size    Description (Table 0240)</span><br><span class="line"> 00h   BYTE    03h (length)</span><br><span class="line"> 01h   BYTE    01h (subvector &#34;Connection ID&#34;)</span><br><span class="line"> 02h   BYTE    connection ID</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Destination ID subvector:</span><br><span class="line">Offset Size    Description (Table 0241)</span><br><span class="line"> 00h   BYTE    length</span><br><span class="line"> 01h   BYTE    02h (subvector &#34;Destination ID&#34;)</span><br><span class="line"> 02h  N BYTEs  subvector(s) of type 0Eh, 0Fh, or 10h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Asynchronous line parameters subvector:</span><br><span class="line">Offset Size    Description (Table 0242)</span><br><span class="line"> 00h   BYTE    length</span><br><span class="line"> 01h   BYTE    03h (subvector &#34;Asynchronous line parameters&#34;)</span><br><span class="line"> 02h  N BYTEs  subvector(s) of type 09h, 0Ah, or 19h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Data transfer parameters subvector:</span><br><span class="line">Offset Size    Description (Table 0243)</span><br><span class="line"> 00h   BYTE    length</span><br><span class="line"> 01h   BYTE    04h (subvector &#34;Data transfer parameters&#34;)</span><br><span class="line"> 02h  N BYTEs  subvector(s) of type 0Bh, 0Ch, or 0Dh</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Line speed subvector:</span><br><span class="line">Offset Size    Description (Table 0244)</span><br><span class="line"> 00h   BYTE    04h (length)</span><br><span class="line"> 01h   BYTE    09h (subvector &#34;Line speed&#34;)</span><br><span class="line"> 02h   WORD    bit map, highest set bit selects speed</span><br><span class="line">       bit 0: 2400</span><br><span class="line">       bits 1-7: 1800, 1200, 600, 300, 115200, 150, 110 bps</span><br><span class="line">       bits 8-15: 57600, 38400, 19200, 14400, 9600, 7200, 4800, 3600</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Serial coding subvector:</span><br><span class="line">Offset Size    Description (Table 0245)</span><br><span class="line"> 00h   BYTE    length</span><br><span class="line"> 01h   BYTE    0Ah (subvector &#34;Serial coding&#34;)</span><br><span class="line"> 02h  N BYTEs  subvector(s) of type 11h, 12h, or 13h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Packet size subvector:</span><br><span class="line">Offset Size    Description (Table 0246)</span><br><span class="line"> 00h   BYTE    04h (length)</span><br><span class="line"> 01h   BYTE    0Bh (subvector &#34;Packet size&#34;)</span><br><span class="line"> 02h   WORD    (big-endian) packet size, 1 to 1024</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Timers subvector:</span><br><span class="line">Offset Size    Description (Table 0247)</span><br><span class="line"> 00h   BYTE    length</span><br><span class="line"> 01h   BYTE    0Ch (subvector &#34;Timers&#34;)</span><br><span class="line"> 02h  8 BYTEs  subvector of type 14h or 15h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Special characters subvector:</span><br><span class="line">Offset Size    Description (Table 0248)</span><br><span class="line"> 00h   BYTE    length</span><br><span class="line"> 01h   BYTE    0Dh (subvector &#34;Special characters&#34;)</span><br><span class="line"> 02h  N BYTEs  list of ASCII characters to be used as EOM or EOB</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Target ID:</span><br><span class="line">Offset Size    Description (Table 0249)</span><br><span class="line"> 00h   BYTE    length</span><br><span class="line"> 01h   BYTE    0Eh (subvector &#34;Target ID&#34;)</span><br><span class="line"> 02h  N BYTEs  target ID, 1-16 bytes</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Telephone number subvector:</span><br><span class="line">Offset Size    Description (Table 0250)</span><br><span class="line"> 00h   BYTE    length</span><br><span class="line"> 01h   BYTE    0Fh (subvector &#34;Telephone number&#34;)</span><br><span class="line"> 02h  N BYTEs  telephone number</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of ASCII destination ID subvector:</span><br><span class="line">Offset Size    Description (Table 0251)</span><br><span class="line"> 00h   BYTE    length</span><br><span class="line"> 01h   BYTE    10h (subvector &#34;ASCII destination ID&#34;)</span><br><span class="line"> 02h  N BYTEs  destination ID</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Parity subvector:</span><br><span class="line">Offset Size    Description (Table 0252)</span><br><span class="line"> 00h   BYTE    03h (length)</span><br><span class="line"> 01h   BYTE    11h (subvector &#34;Parity&#34;)</span><br><span class="line"> 02h   BYTE    parity type (see #0253)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Bitfields for Connection Manager parity type:</span><br><span class="line">Bit(s) Description (Table 0253)</span><br><span class="line"> 7 odd</span><br><span class="line"> 6 even</span><br><span class="line"> 5 mark</span><br><span class="line"> 4 space</span><br><span class="line"> 3 none</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0252</span><br><span class="line"></span><br><span class="line">Format of Bits per character subvector:</span><br><span class="line">Offset Size    Description (Table 0254)</span><br><span class="line"> 00h   BYTE    03h (length)</span><br><span class="line"> 01h   BYTE    12h (subvector &#34;Bits per character&#34;)</span><br><span class="line"> 02h   BYTE    bits per character</span><br><span class="line">       bit 7: seven</span><br><span class="line">       bit 6: eight</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Number of stop bits subvector:</span><br><span class="line">Offset Size    Description (Table 0255)</span><br><span class="line"> 00h   BYTE    03h (length)</span><br><span class="line"> 01h   BYTE    13h (subvector &#34;Number of stop bits&#34;)</span><br><span class="line"> 02h   BYTE    stop bits</span><br><span class="line">       bit 7: one</span><br><span class="line">       bit 6: 1.5</span><br><span class="line">       bit 5: two</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Packet timer and Intercharacter timer subvectors:</span><br><span class="line">Offset Size    Description (Table 0256)</span><br><span class="line"> 00h   BYTE    04h (length)</span><br><span class="line"> 01h   BYTE    subvector type</span><br><span class="line">       14h Packet timer</span><br><span class="line">       15h Intercharacter timer</span><br><span class="line"> 02h   WORD    (big-endian) unit of value representing 20ms</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Flags subvector:</span><br><span class="line">Offset Size    Description (Table 0257)</span><br><span class="line"> 00h   BYTE    03h (length)</span><br><span class="line"> 01h   BYTE    17h (subvector &#34;Flags&#34;)</span><br><span class="line"> 02h   BYTE    flags</span><br><span class="line">       bit 7: queueing requested</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Parameter ranges subvector:</span><br><span class="line">Offset Size    Description (Table 0258)</span><br><span class="line"> 00h   BYTE    length</span><br><span class="line"> 01h   BYTE    18h (subvector &#34;Parameter ranges&#34;)</span><br><span class="line"> 02h  N BYTEs  subvector(s) of type 09h, 11h, 12h, or 13h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br><span class="line"></span><br><span class="line">Format of Flow control subvector:</span><br><span class="line">Offset Size    Description (Table 0259)</span><br><span class="line"> 00h   BYTE    length (02h-04h)</span><br><span class="line"> 01h   BYTE    19h (subvector &#34;Flow control&#34;)</span><br><span class="line"> 02h   BYTE    XOFF character</span><br><span class="line"> 03h   BYTE    XON character</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  if length is 02h, flow control is disabled; if length is 03h, any</span><br><span class="line">     character will be accepted as XON after an XOFF</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0239</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

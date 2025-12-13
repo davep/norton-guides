@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5821873.html">
+    <link rel="next" href="rbint-5828190.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5821873.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5812979.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5828190.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 7C Fn 0007  - Sk-upps Data Link Interface Api - Register Protocol    </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0007h</span><br><span class="line">   ES:BX -&gt; Protocol Control Block (see #3520)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = completion code (see #3517)</span><br><span class="line">Program: SK-UPPS is the Schneider &amp; Koch Universal Portable Protocol Stack,</span><br><span class="line">     which provides an API on top of its Data Link Interface, allowing the</span><br><span class="line">     use of any of several network transport layers</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0008h,AX=000Bh</span><br><span class="line"></span><br><span class="line">Format of SK-UPPS Protocol Control Block (PCB):</span><br><span class="line">Offset Size    Description (Table 3520)</span><br><span class="line"> 00h   WORD    (big-endian) protocol type</span><br><span class="line"> 02h   WORD    protocol mode (see #3521)</span><br><span class="line"> 04h   DWORD   -&gt; Receive Upcall routine (see #3522)</span><br><span class="line"> 08h   DWORD   -&gt; Transmit Upcall routine</span><br><span class="line"> 0Ch   DWORD   -&gt; Event Upcall routine (see #3524)</span><br><span class="line"> 10h   DWORD   -&gt; ASCIZ protocol name (zero if none)</span><br><span class="line"> 14h   WORD    protocol ID will be returned here (always non-zero)</span><br><span class="line"></span><br><span class="line">Bitfields for SK-UPPS protocol mode:</span><br><span class="line">Bit(s) Description (Table 3521)</span><br><span class="line"> 0 promiscuous mode; protocol receives all frames regardless of their</span><br><span class="line">     destination (PROTOCOL TYPE must be FFFFh)</span><br><span class="line"> 1 if set, protocol&#39;s Event Upcall will be called on entry and exit of the</span><br><span class="line">     DLI&#39;s Interrupt Service Routine (see #3525)</span><br><span class="line"> 2 DLI 2.2+ hook mode; protocol receives all directed frames destined for</span><br><span class="line">     this station (PROTOCOL TYPE must be FFFFh)</span><br><span class="line"> 3 DLI 2.3+ receive error frames (only valid in promiscuous mode (0))</span><br><span class="line"> 4-5   DLI 2.5+ frame type:</span><br><span class="line">   00 Ethernet II; specify type code in PROTOCOL TYPE field (high-low)</span><br><span class="line">   01 IEEE 802.2; specify Service Access Point (SAP) in MSB</span><br><span class="line">         (offset 0) of PROCOTOL TYPE field; LSB must be zero</span><br><span class="line">   10 IEEE 802.2 with SNAP header; specify type code in PROTOCOL TYPE</span><br><span class="line">         field (high-low)</span><br><span class="line">   11 reserved (currently unused)</span><br><span class="line"> 6 DLI 2.5+ if set, protocol&#39;s Event Upcall will be called with event code</span><br><span class="line">     EV_BUFFER_WANTED, when DLI runs out of Mbufs</span><br><span class="line"> 7 DLI 2.7+ chain mode; if set, client allows the specified frame type to</span><br><span class="line">     be shared with other clients</span><br><span class="line"> 8 DLI 2.8+ receive non-LLC frames rather than LLC frames</span><br><span class="line"> 9 DLI 2.8+ receive all multicast frames (see also AX=0009h)</span><br><span class="line"> 10-15 reserved (currently unused; must be zero)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> If PROTOCOL TYPE is FFFFh and neither the &#34;promiscuous&#34; nor the &#34;hook&#34;</span><br><span class="line">     mode is set, the protocol receives all frames that did not match</span><br><span class="line">     any registered frame type (demultiplexor mode).</span><br><span class="line">   Protocols using &#34;promiscuous&#34;, &#34;hook&#34; or &#34;chain&#34; mode should always</span><br><span class="line">     return from the Receive Upcall with the received Mbuf in ES:BX and</span><br><span class="line">     the Carry Flag set. The DLI will then pass the Mbuf to the FEED BACK</span><br><span class="line">     BUFFER function (see AX=000Fh).</span><br><span class="line">   Some DLIs do not support all or even any of the &#34;promiscuous&#34;,</span><br><span class="line">     &#34;receive non-LLC&#34; and &#34;receive all multicasts&#34; mode bits.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3520</span><br><span class="line"></span><br><span class="line">(Table 3522)</span><br><span class="line">Values SK-UPPS Receive Upcall is called with:</span><br><span class="line">   ES:BX -&gt; Mbuf</span><br><span class="line">   AX = receive status (see #3523) (also stored in Mbuf&#39;s RECEIVE STATUS field)</span><br><span class="line">   interrupts disabled</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> nothing</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3524</span><br><span class="line"></span><br><span class="line">Bitfields for SK-UPPS receive status:</span><br><span class="line">Bit(s) Description (Table 3523)</span><br><span class="line"> 0-2   reserved (0), currently unused</span><br><span class="line"> 3 frame check sequence (FCS) error</span><br><span class="line"> 4 overflow (frame too long)</span><br><span class="line"> 5 framing error</span><br><span class="line"> 6 reserved (0), currently unused</span><br><span class="line"> 7 non-LLC frame (see #3521 [bit 8])</span><br><span class="line"> 8-15  reserved (0), currently unused</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> The protocol&#39;s Receive Upcall routine will be called whenever a frame</span><br><span class="line">     matching the specified frame type is received. A received frame is</span><br><span class="line">     passed to the protocol in the Mbuf&#39;s DATA area at OFFSET and its size</span><br><span class="line">     is LENGTH bytes.</span><br><span class="line">   The receive status passed to the Receive Upcall in register AL is</span><br><span class="line">     always zero, except for protocols using &#34;non-LLC&#34; mode (8 of PCB&#39;s</span><br><span class="line">     protocol mode field) or &#34;promiscuous&#34; mode together with &#34;receive</span><br><span class="line">     error frames&#34; (0 &amp; 3).</span><br><span class="line">   Upcalls are FAR routines and must return with a RET FAR. If the Carry</span><br><span class="line">     Flag is set on return from a Receive or Transmit Upcall, then ES:BX</span><br><span class="line">     must point to an Mbuf, which the DLI will then pass to the RELEASE</span><br><span class="line">     BUFFER function (see AX=0005h). See also notes for PROTOCOL MODE.</span><br><span class="line"></span><br><span class="line">(Table 3524)</span><br><span class="line">Values SK-UPPS Event Upcall is called with:</span><br><span class="line">   AX = event code (see #3525)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> nothing</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  All Event Upcalls may be ignored by the protocol.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3522</span><br><span class="line"></span><br><span class="line">(Table 3525)</span><br><span class="line">Values for SK-UPPS Event Upcall event code:</span><br><span class="line"> 00h   EV_BUFFER_AVAILABLE client may now call REQUEST BUFFER (AX=0004h)</span><br><span class="line"> 01h   EV_ISR_START        start of Interrupt Service Routine</span><br><span class="line"> 02h   EV_ISR_END      end of ISR (see #3521 [bit 1])</span><br><span class="line"> 03h   EV_BUFFER_WANTED    DLI temporarily out of Mbufs</span><br><span class="line"> 04h   EV_NETWORK_STATUS   DLI 2.8+ network status -- DX=status (see #3526)</span><br><span class="line"> 05h   EV_IO_CONTROL       DLI 2.8+ I/O control -- DX=subfunc (see AX=0016h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3524</span><br><span class="line"></span><br><span class="line">Bitfields for EV_NETWORK_STATUS in register DX:</span><br><span class="line">Bit(s) Description (Table 3526)</span><br><span class="line">   Token-Ring      FDDI</span><br><span class="line"> 15    SIGNAL_LOSS     SIGNAL_LOSS</span><br><span class="line"> 14    HARD_ERROR      HARD_ERROR</span><br><span class="line"> 13    SOFT_ERROR      SOFT_ERROR</span><br><span class="line"> 12    TRANSMIT_BEACON     TRANSMIT_BEACON</span><br><span class="line"> 11    LOBE_WIRE_FAULT     PATH_TEST_FAILED</span><br><span class="line"> 10    AUTO_REMOVAL        SELF_TEST_REQUIRED</span><br><span class="line"> 9 reserved        reserved</span><br><span class="line"> 8 REMOVE_RECEIVED     REMOTE_DISCONNECT</span><br><span class="line"> 7 COUNTER_OVERFLOW    reserved</span><br><span class="line"> 6 SINGLE_STATION      DUPLICATE_ADDRESS</span><br><span class="line"> 5 RING_RECOVERY       NO_RING_OP_STATUS</span><br><span class="line"> 4 reserved        VERSION_MISMATCH</span><br><span class="line"> 3 reserved        STUCK_BYPASS</span><br><span class="line"> 2 reserved        FDDI_EVENT</span><br><span class="line"> 1 reserved        RING_OP_CHANGE</span><br><span class="line"> 0 reserved        reserved</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  EV_NETWORK_STATUS is not supported on Ethernet</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

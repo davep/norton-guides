@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Tutorial » Assertion Checking</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-360760.html">
+    <link rel="next" href="mrdebug-364801.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-360760.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-360448.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-364801.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">How to include Assertion Checking?</span></span><br><span class="line"> #include and compiling</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> To take advantage of MrDebug&#39;s assertion facilities the first thing you must</span><br><span class="line"> do is include the MrDebug.CH header file within each source code module that</span><br><span class="line"> you wish to place an assert command in.</span><br><span class="line"></span><br><span class="line"> Among other things, MrDebug.CH contains the directives for all of MrDebug&#39;s</span><br><span class="line"> assertion commands</span><br><span class="line"></span><br><span class="line"> If you simply want to trace all of the functions that are called, there is</span><br><span class="line"> no need to include MrDebug.Ch or define the MRDEBUG token to the compiler.</span><br><span class="line"> You can simply toggle the Function Trace Messages and run your program.</span><br><span class="line"></span><br><span class="line"> If you are going to take advantage of MrDebug&#39;s Assertion checking command</span><br><span class="line"> then you&#39;ll need to include in each module that you are going to use</span><br><span class="line"> Assertion checking in, a #INCLUDE &#34;MrDebug.ch&#34; line and each module should</span><br><span class="line"> be compiled with an identifier such as <span class="ngb">/dMRDEBUG</span>.</span><br><span class="line"></span><br><span class="line"> Once you have finished testing and you are ready to send out the final</span><br><span class="line"> version of your program, there is no need to leave all of this assertion</span><br><span class="line"> checking in your final application - if your testers have done their job and</span><br><span class="line"> they have run each and every part of your system and all assertions have</span><br><span class="line"> been successful - there is no need to have this code in.</span><br><span class="line"></span><br><span class="line"> If you do wish to use Assertion Checking within your runtime modules then</span><br><span class="line"> you can link in MrAssert.obj, our run-time Assertion library.</span><br><span class="line"></span><br><span class="line"> Besides, if the system does fall over at a later stage, MrDump will be in</span><br><span class="line"> your error system and this will give you enough information to track the</span><br><span class="line"> problem down.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> If you define a compile time variable called MRD_NO_CASE, any</span><br><span class="line"> IF...ELSE...ENDIF constructs will not be preprocessed into</span><br><span class="line"> DO...CASE...ENDCASEstatements - the default behaviour for Clipper. This</span><br><span class="line"> will allow you to step through a problem that you might have within an</span><br><span class="line"> IF...ELSE...ENDIF structure.</span><br><span class="line"></span><br><span class="line"> To remove all assertion checking from you application simply remove the</span><br><span class="line"> compiler token <span class="ngb">/dMRDEBUG</span> from the make script or compile line and all</span><br><span class="line"> assertions will be removed without forcing you to make any changes to your</span><br><span class="line"> source code.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-743655.html">Function Trace Messages</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

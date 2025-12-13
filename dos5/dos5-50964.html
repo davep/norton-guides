@@ -1,0 +1,124 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-46090.html">
+    <link rel="next" href="dos5-51804.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-46090.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-51804.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 4401h          Set Device Data</span></span><br><span class="line"></span><br><span class="line">    Tells DOS how to use the device referenced by the specified</span><br><span class="line">    handle. This function cannot change how DOS uses a file.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX = 4401h</span><br><span class="line">                BX = Device handle</span><br><span class="line">                DX = Device information</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AX changed</span><br><span class="line">                or</span><br><span class="line">                AX = Error code, if CF is set</span><br><span class="line">                     | 01h Invalid function</span><br><span class="line">                     | 05h Access denied</span><br><span class="line">                     | 06h Invalid handle</span><br><span class="line">                     | 0Dh Invalid data</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The information passed in the DX register is:</span><br><span class="line"></span><br><span class="line">                <span class="ngb">Bit     Description</span></span><br><span class="line">                0       1 = Console input device</span><br><span class="line">                1       1 = Console output device</span><br><span class="line">                2       1 = Null device</span><br><span class="line">                3       1 = Clock device</span><br><span class="line">                4       1 = Special device</span><br><span class="line">                5       1 = Binary mode, 0 = ASCII mode</span><br><span class="line">                6       0 = EOF returned if device is read</span><br><span class="line">                7       Must be 1 to indicate a device</span><br><span class="line">                8-15    Must be 0</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-46090.html">4400h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-258925.html">StdDevices</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

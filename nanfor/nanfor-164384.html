@@ -1,0 +1,141 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Keyboard/Mouse</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-163591.html">
+    <link rel="next" href="nanfor-167169.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-163591.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-137802.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-167169.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_MSETSENS()</span></span><br><span class="line"> Set the mouse sensitivity parameters</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">    <span class="fg15 bg1"> FT_MSETSENS( &lt;nHoriz&gt;, &lt;nVert&gt;, &lt;nDouble&gt; ) -&gt; NIL</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">    <span class="ngb">&lt;nHoriz&gt;</span>  is the sensitivity of the mouse on the horizontal axis. This</span><br><span class="line">              value is the integer percentage of highest sensitivity and</span><br><span class="line">              thus has a range of 1 to 100. The default value is 50 and at</span><br><span class="line">              this setting about 3.2 inches of mouse movement will move</span><br><span class="line">              the mouse cursor across the screen. If NIL, the current</span><br><span class="line">              value is used.</span><br><span class="line">    <span class="ngb">&lt;nVert&gt;</span>   is the relative sensitivity of the mouse on the vertical axis.</span><br><span class="line">              The value is an integer percentage of the highest sensitivity</span><br><span class="line">              and thus has a range of 1 to 100. The default value is 50 and</span><br><span class="line">              requires about 2 inches of mouse movement will move from top</span><br><span class="line">              to bottom of the screen.If NIL, the current value is used.</span><br><span class="line">    <span class="ngb">&lt;nDouble&gt;</span> is the relative sensitivity of the mouse to doubling the ratio</span><br><span class="line">              of cursor movement to mouse movement. The default</span><br><span class="line">              value is 50. If NIL, the current value is used.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">    NIL</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">    This function allows one to control the mouse movement sensitivity. The</span><br><span class="line">    first two arguments control the amount of movement necessary to move</span><br><span class="line">    the cursor a given amount. The values are the percentage of full</span><br><span class="line">    sensitivity and the default values after installing the mouse driver</span><br><span class="line">    is 50 which represents approximately 3.2 inches of horizontal</span><br><span class="line">    and 2 inches of vertical mouse movement to cover the entire screen.</span><br><span class="line">    A value of 100 requires about 0.9 inches of horizontal mouse movement to</span><br><span class="line">    cover the screen from one side to the other.</span><br><span class="line"></span><br><span class="line">    The third argument changes the threshold above which the mouse moves at</span><br><span class="line">    twice the normal speed. The value is a percentage of full sensitivity</span><br><span class="line">    with the default (50) providing doubling at 64 mickeys per second.</span><br><span class="line"></span><br><span class="line">    NOTE: These values are NOT restored after resetting the mouse driver/</span><br><span class="line">    hardware. A well behaved application should reset them to the</span><br><span class="line">    original value upon exiting.</span><br><span class="line"></span><br><span class="line">    NOTE: The above description is counter to all of the documentation</span><br><span class="line">    I have available. However, it does not work the way it is documented</span><br><span class="line">    with Microsoft drivers versions 6.16, 6.24, 7.04 and 8.20. The above</span><br><span class="line">    movement values are documented to be the number of mickeys per 8</span><br><span class="line">    pixels and the double speed value as the number mickeys per second</span><br><span class="line">    required to double the speed. Each of these values should range from 1</span><br><span class="line">    to 32K but the driver forces a maximum of 100. Also the documentation</span><br><span class="line">    states that resetting the mouse will reset these values. This is not</span><br><span class="line">    the case.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">    FT_MSETSENS( 75,75,50 )     // a little less mouse movement necessary.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> MOUSE1.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Leo Letendre</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor-155697.html">FT_MGETSENS()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

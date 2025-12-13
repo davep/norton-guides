@@ -1,0 +1,150 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-99441.html">
+    <link rel="next" href="tasm4-101924.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-99441.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-101924.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">STARTUPCODE      Produce startup code                               Extension</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">STARTUPCODE</span>                           ; Ideal or MASM mode</span><br><span class="line">  <span class="ngb">.STARTUP</span>                              ; MASM mode only</span><br><span class="line"></span><br><span class="line">    This directive provides initialization code appropriate for the</span><br><span class="line">    current model and operating system. It also marks the beginning of the</span><br><span class="line">    program.</span><br><span class="line"></span><br><span class="line">    STARTUPCODE initializes the DS, SS, and SP registers. For the SMALL,</span><br><span class="line">    MEDIUM, COMPACT, LARGE, HUGE, and TPASCAL memory models, TASM sets</span><br><span class="line">    DS and SS to @data, and SP to the end of the stack. For TINY and</span><br><span class="line">    TCHUGE models, the STARTUPCODE directive doesn&#39;t change the segment</span><br><span class="line">    registers.</span><br><span class="line"></span><br><span class="line">    The @Startup symbol is placed at the beginning of the startup code</span><br><span class="line">    that the STARTUPCODE directive generates.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Example:</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Source text                     Code generated</span></span><br><span class="line"></span><br><span class="line">    MODEL   os_dos small</span><br><span class="line">    STACK                           ;   STACK   400h</span><br><span class="line">    DATASEG</span><br><span class="line">    msg_hi  db      &#34;Hi$&#34;           ;   msg_hi  db  &#34;Hi$&#34;</span><br><span class="line">    CODESEG                         ;   ASSUME  cs:@code</span><br><span class="line">    StartupCode                     ; @Startup:</span><br><span class="line">    ;                               ;   mov     dx,@data</span><br><span class="line">    ;                               ;   mov     ds,dx</span><br><span class="line">    ;                               ;   ASSUME  ds:@data</span><br><span class="line">    ;                               ;   mov     bx,ss</span><br><span class="line">    ;                               ;   sub     bx,dx</span><br><span class="line">    ;                               ;   shl     bx,1</span><br><span class="line">    ;                               ;   shl     bx,1</span><br><span class="line">    ;                               ;   shl     bx,1</span><br><span class="line">    ;                               ;   shl     bx,1</span><br><span class="line">    ;                               ;   cli</span><br><span class="line">    ;                               ;   mov     ss,dx</span><br><span class="line">    ;                               ;   add     sp,bx</span><br><span class="line">    ;                               ;   sti</span><br><span class="line">    ;                               ;   ASSUME  ss:@data</span><br><span class="line">    mov     dx,offset msg_hi        ;   mov     dx,offset msg_hi</span><br><span class="line">    mov     ah,9                    ;   mov     ah,9</span><br><span class="line">    int     21h                     ;   int     21h</span><br><span class="line">    ExitCode 0                      ;   mov     ax,4c00h</span><br><span class="line">    ;                               ;   int     21h</span><br><span class="line">    END                             ;   END @Startup</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-65434.html">MODEL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-43884.html">EXITCODE</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-155163.html">@data</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-158869.html">@Startup</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-117604.html">Simplified</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-171992.html">/la</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

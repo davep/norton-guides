@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5133660.html">
+    <link rel="next" href="rbint-5136496.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5133660.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5136496.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 61 Fn 0007  - Banyan Vines - Enumerate Streettalk Names              </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0007h</span><br><span class="line">   BX = 0008h</span><br><span class="line">   DS:DX -&gt; enumerate block (see #3108)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status (see also #3103)</span><br><span class="line">       0000h successful</span><br><span class="line">       0411h all matching names have been returned</span><br><span class="line">       0412h some groups unavailable, all available matches returned</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  each program using this call should continue until a nonzero status</span><br><span class="line">     is returned; otherwise, some resources will not be freed for several</span><br><span class="line">     hours</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0007h/BX=0005h,AX=0007h/BX=0007h,AX=0007h/BX=0009h</span><br><span class="line"></span><br><span class="line">Format of VINES enumerate block:</span><br><span class="line">Offset Size    Description (Table 3108)</span><br><span class="line"> 00h   WORD    return code</span><br><span class="line"> 02h   WORD    pointer to pattern string</span><br><span class="line"> 04h   WORD    enumerate type</span><br><span class="line">       0064h (100) organization</span><br><span class="line">       00C8h (200) group</span><br><span class="line">       012Ch (300) item</span><br><span class="line"> 06h   WORD    enumerate class</span><br><span class="line">       0000h unspecified (return all matching items)</span><br><span class="line">       0001h user names</span><br><span class="line">       0002h service names</span><br><span class="line">       0003h list names</span><br><span class="line">       0004h nicknames</span><br><span class="line"> 08h   WORD    pointer to category criteria block (see #3109) or 0</span><br><span class="line"> 0Ah   WORD    pointer to array of 64-byte returned names</span><br><span class="line"> 0Ch   WORD    number of names returned</span><br><span class="line"> 0Eh  6 BYTEs  reserved for subsequent enumerated calls (set to zeros on first</span><br><span class="line">         call)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3107</span><br><span class="line"></span><br><span class="line">Format of category criteria block:</span><br><span class="line">Offset Size    Description (Table 3109)</span><br><span class="line"> 00h   WORD    exclude flag</span><br><span class="line">       0000h return only items with the specified categories</span><br><span class="line">       0001h return all items except those with the given categories</span><br><span class="line"> 02h   WORD    number of categories (max 5, 0000h = match all categories)</span><br><span class="line"> 04h   WORD    category 1 value (see #3110)</span><br><span class="line"> 06h   WORD    category 2 value</span><br><span class="line"> 08h   WORD    category 3 value</span><br><span class="line"> 0Ah   WORD    category 4 value</span><br><span class="line"> 0Ch   WORD    category 5 value</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3108</span><br><span class="line"></span><br><span class="line">(Table 3110)</span><br><span class="line">Values for common VINES service categories:</span><br><span class="line"> 0001h server service</span><br><span class="line"> 0002h file service</span><br><span class="line"> 0003h print service</span><br><span class="line"> 0004h mail service</span><br><span class="line"> 0005h StreetTalk</span><br><span class="line"> 0006h time service</span><br><span class="line"> 0007h FTP service</span><br><span class="line"> 0008h semaphore service</span><br><span class="line"> 0009h 3270/SNA service</span><br><span class="line"> 000Ah terminal emulation service</span><br><span class="line"> 000Bh asynchronous terminal service</span><br><span class="line"> 000Ch NETBIOS service</span><br><span class="line"> 000Dh PC-based service</span><br><span class="line"> 000Eh BSC service</span><br><span class="line"> 000Fh APPC service</span><br><span class="line"> 0010h NM service</span><br><span class="line"> 0011h VS service</span><br><span class="line"> 0012h POP service</span><br><span class="line"> 0013h AFP service</span><br><span class="line"> 0014h VCS service</span><br><span class="line"> 0015h EMS service</span><br><span class="line"> 0016h LN service</span><br><span class="line"> 0017h BS service</span><br><span class="line"> 0023h RIPL service</span><br><span class="line"> 0064h ADM service</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3109</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

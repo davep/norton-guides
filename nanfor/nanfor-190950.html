@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Menus/Prompts</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-190167.html">
+    <link rel="next" href="nanfor-194273.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-190167.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-186992.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-194273.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_BRWSWHL()</span></span><br><span class="line"> Browse an indexed database limited to a while condition</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_BRWSWHL( &lt;aFields&gt;, &lt;bWhileCond&gt;, &lt;cKey&gt;,                  ;</span></span><br><span class="line">                 <span class="fg15 bg1"> [ &lt;nFreeze&gt; ], [ &lt;lSaveScrn&gt; ], [ &lt;cColorList&gt; ], ;</span></span><br><span class="line">                 <span class="fg15 bg1"> [ &lt;cColorShadow&gt; ], [ &lt;nTop&gt; ], [ &lt;nLeft&gt; ],      ;</span></span><br><span class="line">                 <span class="fg15 bg1"> [ &lt;nBottom&gt; ], [ &lt;nRight&gt; ] -&gt; nRecno</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;aFields&gt;</span> is array of field blocks of fields you want to display.</span><br><span class="line">        Example to set up last name and first name in array:</span><br><span class="line">        aFields := {}</span><br><span class="line">        AADD(aFields, {&#34;Last Name&#34; , {||Names-&gt;<span class="ngb">Last}  } )</span></span><br><span class="line">        AADD(aFields, {&#34;First Name&#34;, {||Names-&gt;<span class="ngb">First} } )</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;bWhileCond&gt;</span> is the limiting WHILE condition as a block.</span><br><span class="line">        Example 1: { ||Names-&gt;<span class="ngb">Last == &#34;JONES&#34; }</span></span><br><span class="line">        Example 2: { ||Names-&gt;<span class="ngb">Last == &#34;JONES&#34; .AND. Names-&gt;</span>First == &#34;A&#34;  }</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cKey&gt;</span> is the key to find top condition of WHILE.</span><br><span class="line">        cLast  := &#34;JONES     &#34;</span><br><span class="line">        cFirst := &#34;A&#34;</span><br><span class="line">        Example 1: cKey := cLast</span><br><span class="line">        Example 2: cKey := cLast + cFirst</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nFreeze&gt;</span> is number of fields to freeze in TBrowse.  Defaults</span><br><span class="line">     to 0 if not passed.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;lSaveScrn&gt;</span> is a logical indicating whether or not you want to</span><br><span class="line">     save the screen from the calling program.  Defaults to .T. if</span><br><span class="line">     not passed.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cColorList&gt;</span> is a list of colors for the TBrowse columns.</span><br><span class="line">     The 1st color is used as SAY/TBrowse Background and the</span><br><span class="line">     3rd and 4th colors are used as part of column:defColor := {3, 4}</span><br><span class="line"></span><br><span class="line">     Thus if you pass a cColorList, you MUST pass at least 4 colors.</span><br><span class="line">     Defaults to &#34;N/W, N/BG, B/W, B/BG, B/W, B/BG, R/W, B/R&#34; if not passed.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cColorShad&gt;</span> is the color of the TBrowse box shadow.  Defaults</span><br><span class="line">     to &#34;N/N&#34; if not passed.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nTop&gt;</span>, <span class="ngb">&lt;nLeft&gt;</span>, <span class="ngb">&lt;nBottom&gt;</span>, <span class="ngb">&lt;nRight&gt;</span> are the coordinates of</span><br><span class="line">     the area to display the TBrowse in.  Defaults to 2, 2,</span><br><span class="line">     MAXROW() - 2, MAXCOL() - 2 with shadowed box, i.e. full screen.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     nRecno is the number of the record selected by the <span class="ngb">&lt;Enter&gt;</span> key.</span><br><span class="line">     0 is returned if there are either no records matching the WHILE</span><br><span class="line">     condition or an <span class="ngb">&lt;Esc&gt;</span> is pressed instead of an <span class="ngb">&lt;Enter&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     This is a demonstration of TBrowse with a WHILE condition for an</span><br><span class="line">     indexed database.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     * This example will only show those people with last name of &#34;JONES&#34;</span><br><span class="line">     * in the TBNames.dbf which contains at least the fields:</span><br><span class="line">     * Last, First, City AND is indexed on Last + First.</span><br><span class="line">     LOCAL nRecSel    := 0</span><br><span class="line">     LOCAL aFields    := {}</span><br><span class="line">     LOCAL bWhile     := {||TBNames-&gt;Last = &#34;JONES&#34;}</span><br><span class="line">     LOCAL cKey       := &#34;JONES&#34;</span><br><span class="line">     LOCAL nFreeze    := 1</span><br><span class="line">     LOCAL lSaveScrn  := .t.</span><br><span class="line">     LOCAL cColorList := &#34;N/W, N/BG, B/W, B/BG, B/W, B/BG, R/W, B/R&#34;</span><br><span class="line">     LOCAL cColorShad := &#34;N/N&#34;</span><br><span class="line"></span><br><span class="line">     USE TBNames INDEX TBNames NEW // indexed on Last + First</span><br><span class="line"></span><br><span class="line">     * Pass Heading as character and Field as Block including Alias</span><br><span class="line">     * To eliminate the need to use FIELDWBLOCK() function in FT_BRWSWHL()</span><br><span class="line">     AADD(aFields, {&#34;Last Name&#34; , {||TBNames-&gt;Last}  } )</span><br><span class="line">     AADD(aFields, {&#34;First Name&#34;, {||TBNames-&gt;First} } )</span><br><span class="line">     AADD(aFields, {&#34;City&#34;      , {||TBNames-&gt;City}  } )</span><br><span class="line"></span><br><span class="line">     IF FT_BRWSWHL( aFields, bWhile, cKey, nFreeze, lSaveScrn, ;</span><br><span class="line">        cColorList, cColorShad, 3, 6, MaxRow() - 2, MaxCol() - 6) == 0</span><br><span class="line">        ? &#34;Sorry, NO Records Were Selected&#34;</span><br><span class="line">     ELSE</span><br><span class="line">        ? &#34;You Selected: &#34; + TBNames-&gt;Last +&#34; &#34;+ ;</span><br><span class="line">           TBNames-&gt;First +&#34; &#34;+ TBNames-&gt;City</span><br><span class="line">     ENDIF</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> TBWHILE.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Jim Orlowski</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

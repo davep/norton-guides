@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-86362.html">
+    <link rel="next" href="dpmiv1-88630.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-86362.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-88630.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Get Memory Information</span><br><span class="line"></span><br><span class="line">Returns information about available physical and virtual</span><br><span class="line">memory.  Since DPMI clients will often run in multitasking</span><br><span class="line">environments, some of information related to shared</span><br><span class="line">resources returned by this function should only be</span><br><span class="line">considered as advisory.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 050BH</span><br><span class="line">   ES:(E)DI= selector:offset of 128-byte buffer</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   if function successful</span><br><span class="line">   Carry flag= clear (this function always succeeds in DPMI</span><br><span class="line">           1.0)</span><br><span class="line"></span><br><span class="line">   and the buffer pointed to by ES:(E)DI is filled in with</span><br><span class="line">           the following information:</span><br><span class="line"></span><br><span class="line">   Offset Length  Contents</span><br><span class="line">   00H    4       Total allocated bytes of physical memory</span><br><span class="line">   controlled by DPMI host</span><br><span class="line">   04H    4       Total allocated bytes of virtual memory</span><br><span class="line">   controlled by DPMI host</span><br><span class="line">   08H    4       Total available bytes of virtual memory</span><br><span class="line">   controlled by DPMI host</span><br><span class="line">   0CH    4       Total allocated bytes of virtual memory</span><br><span class="line">   for this virtual machine</span><br><span class="line">   10H    4       Total available bytes of virtual memory</span><br><span class="line">   for this virtual machine</span><br><span class="line">   14H    4       Total allocated bytes of virtual memory</span><br><span class="line">   for this client</span><br><span class="line">   18H    4       Total available bytes of virtual memory</span><br><span class="line">   for this client</span><br><span class="line">   1CH    4       Total locked bytes of memory for this</span><br><span class="line">   client</span><br><span class="line">   20H    4       Maximum locked bytes of memory for this</span><br><span class="line">   client</span><br><span class="line">   24H    4       Highest linear address available to this</span><br><span class="line">   client</span><br><span class="line">   28H    4       Size in bytes of largest available free</span><br><span class="line">   memory block</span><br><span class="line">   2CH    4       Size of minimum allocation unit in bytes</span><br><span class="line">   30H    4       Size of the allocation alignment unit in</span><br><span class="line">   bytes</span><br><span class="line">   34H    4CH     Reserved, currently zero</span><br><span class="line"></span><br><span class="line">   if function unsuccessful</span><br><span class="line">   Carry flag= set (this function always fails in DPMI 0.9)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  DPMI 1.0 clients should use this function in preference</span><br><span class="line">   to Int 31H Fn 0500H.</span><br><span class="line">o  The &#34;total available bytes&#34; field of the data structure</span><br><span class="line">   pointed by ES:(E)DI means the total bytes minus all of</span><br><span class="line">   the allocated bytes.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5789787.html">
+    <link rel="next" href="rbint-5791061.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5789787.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5757296.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5791061.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 7A Fn 0001  R - Autocad Device Interface - Display - Initialize (init</span>  [<span class="ngb">A</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0001h</span><br><span class="line">   BX = configuration</span><br><span class="line">   CX = interface level (0001h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h initialization failed</span><br><span class="line">       0001h pre-v4.0 driver initialized successfully</span><br><span class="line">       0003h post-v3.1 driver initialized successfully (driver truncates</span><br><span class="line">         excessivly long packets)</span><br><span class="line">   BX = width of graphics area in pixels, or 0000h if using packet</span><br><span class="line">         communication</span><br><span class="line">   DX:CX -&gt; packet-mode entry point (see #3503)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0001h,AX=0200h,AX=07D0h,INT 61/AX=0007h&#34;OPTIMA&#34;,INT 78&#34;AutoCAD&#34;</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 79/AX=0001h,INT 7B/AX=8001h&#34;AutoCAD&#34;,INT 7C&#34;AutoShade&#34;</span><br><span class="line"></span><br><span class="line">(Table 3503)</span><br><span class="line">Call packet-mode entry point with:</span><br><span class="line">STACK: DWORD   pointer to request packet (see #3504)</span><br><span class="line">   WORD    length of packet</span><br><span class="line"></span><br><span class="line">Format of request packet:</span><br><span class="line">Offset Size    Description (Table 3504)</span><br><span class="line"> 00h   WORD    function number (00h-45h for Compaq VGADI41.EXE)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

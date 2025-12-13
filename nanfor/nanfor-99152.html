@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » Date/Time</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-98212.html">
+    <link rel="next" href="nanfor-100562.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-98212.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-59070.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-100562.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_WOY()</span></span><br><span class="line"> Find number of week within year</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_WOY( &lt;dDate&gt; ) -&gt; &lt;nResult&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;dDate&gt;</span> is a date in the form &#34;mm/dd/yy&#34; or &#34;mm/dd/yyyy&#34;</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     Return numeric position of week within the year or NIL if</span><br><span class="line">     parameter does not conform.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     Considers a full week as starting on Sunday, ending on Saturday.</span><br><span class="line">     First week of year (week 1) may start on any day, and thus</span><br><span class="line">       contain any number of days.</span><br><span class="line">     Final week of year (week 53) may contain any number of days.</span><br><span class="line">     Handles dates with CENTURY ON|OFF, to allow for 21st century.</span><br><span class="line">     Date validation must be external to this function.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     These code fragments find the week number, given a date.</span><br><span class="line"></span><br><span class="line">     // literal character date</span><br><span class="line">     dDate  := CTOD(&#34;01/01/91&#34;)</span><br><span class="line">     nWkNum := FT_WOY(dDate)              // result:  1</span><br><span class="line"></span><br><span class="line">     // presume DOS date to be 01/06/91</span><br><span class="line">     nWkNum := FT_WOY(DATE())             // result:  2</span><br><span class="line"></span><br><span class="line">     // date input</span><br><span class="line">     cDate  := SPACE(8)</span><br><span class="line">     @ 4,10 get cDate PICT &#34;##/##/##&#34;     // input 07/04/91</span><br><span class="line">     READ</span><br><span class="line">     nWkNum := FT_WOY(CTOD(cDate))        // result: 27</span><br><span class="line"></span><br><span class="line">     // last day of year</span><br><span class="line">     nWkNum := FT_WOY(CTOD(&#34;12/31/91&#34;))    // result: 53</span><br><span class="line"></span><br><span class="line">     For a demonstration of this function, compile and link the</span><br><span class="line">     program WOY.PRG in the Nanforum Toolkit source code.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> WOY.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Forest Belt, Computer Diagnostic Services, Inc.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

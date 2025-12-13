@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="xms30-style.css">
+    <title>XMS Specification  (version 3.0) » XMS » Overview</title>
+    <meta name="description" content="XMS Specification  (version 3.0)">
+    <link rel="prev" href="xms30-6936.html">
+    <link rel="next" href="xms30-9795.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="xms30-about.html">About</a></li>
+
+
+          
+
+<li><a href="xms30-6936.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="xms30-9795.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>XMS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Overview</a></li>
+                  <li><a href="xms30-18951.html">XMS API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">HIGH MEMORY AREA RESTRICTIONS</span></span><br><span class="line"></span><br><span class="line">    Far pointers to data located in the HMA cannot be passed to DOS. DOS</span><br><span class="line">    normalizes any pointer which is passed into it. This will cause data</span><br><span class="line">    addresses in the HMA to be invalidated.</span><br><span class="line"></span><br><span class="line">    Disk I/O directly into the HMA (via DOS, INT 13h, or otherwise) is</span><br><span class="line">    not recommended.</span><br><span class="line"></span><br><span class="line">    Programs, especially drivers and TSRs, which use the HMA *MUST* use</span><br><span class="line">    as much of it as possible. If a driver or TSR is unable to use at</span><br><span class="line">    least 90% of the available HMA (typically ~58K), they must provide a</span><br><span class="line">    command line switch for overriding HMA usage. This will allow the</span><br><span class="line">    user to configure his machine for optimum use of the HMA.</span><br><span class="line"></span><br><span class="line">    Device drivers and TSRs cannot leave the A20 line permanently turned</span><br><span class="line">    on. Several applications rely on 1MB memory wrap and will overwrite</span><br><span class="line">    the HMA if the A20 line is left enabled potentially causing a system</span><br><span class="line">    crash.</span><br><span class="line"></span><br><span class="line">    Interrupt vectors must not point into the HMA.  This is a result of</span><br><span class="line">    the previous restriction. Note that interrupt vectors can point into</span><br><span class="line">    any allocated upper memory blocks however.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:15</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

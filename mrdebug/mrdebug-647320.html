@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Utilities</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-646425.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-646425.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-646269.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">How to use MrDump</span></span><br><span class="line"> Real easy!</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">MrDump( &lt;cFileName&gt; [,&lt;nFlags&gt;] ) --&gt; lSuccessful</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">cFileName</span> - refers to the name of a filefor the output</span><br><span class="line"></span><br><span class="line">     <span class="ngb">nFlags</span> - refers to options to send to the dump file</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     .T. if successful</span><br><span class="line">     .F. otherwise</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     MrDump() may be used by you in your error system to dump the contents of</span><br><span class="line">     various items (controlled by you) to the log file.</span><br><span class="line"></span><br><span class="line">     MrDump takes two parameters, the first is the filename for the crash log</span><br><span class="line">     to be written to. This is NOT optional.</span><br><span class="line"></span><br><span class="line">     The second, optional, parameter is a list of items that you wish to</span><br><span class="line">     include in the dump file. Omit this parameter and MrDump will assume</span><br><span class="line">     that you want all options to be sent to the dump file.</span><br><span class="line"></span><br><span class="line">     The options may be individually set by adding together the indvidual</span><br><span class="line">     items that you wish to set. MRDUMP.CH has been included with Manifest</span><br><span class="line">     constants for easier reading. It contains:</span><br><span class="line"></span><br><span class="line">                MRDUMP_APPEND          1</span><br><span class="line">                MRDUMP_ERROR           2</span><br><span class="line">                MRDUMP_STACK           4</span><br><span class="line">                MRDUMP_VARIABLES       8</span><br><span class="line">                MRDUMP_IN_SCOPE       16</span><br><span class="line">                MRDUMP_WORKAREAS      32</span><br><span class="line">                MRDUMP_SCREEN         64</span><br><span class="line">                MRDUMP_SOURCE        128    // Only applicable with MrDebug</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Note</span></span><br><span class="line"></span><br><span class="line">     ■  MrDump.LIB must be linked in as a FILE. So don&#39;t forget to include</span><br><span class="line">        the .LIB extention. ie. FI MrDump.LIB</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Example</span></span><br><span class="line"></span><br><span class="line">     ■  This example dumps the stack and just variables in scope:</span><br><span class="line"></span><br><span class="line">        MrDump( &#34;Myapp.log&#34;, MRDUMP_STACK+MRDUMP_IN_SCOPE+MRDUMP_VARIABLES )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Files:</span>  Library is MRDUMP.LIB.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

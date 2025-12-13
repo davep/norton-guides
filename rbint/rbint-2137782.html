@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2136941.html">
+    <link rel="next" href="rbint-2139187.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2136941.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2139187.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 252A  P - Phar Lap 386/dos-extender Vmm - New Load Program For </span>  [<span class="ngb">E</span>]</span><br><span class="line"></span><br><span class="line">   AX = 252Ah</span><br><span class="line">   DS:EDX -&gt; ASCIZ program name</span><br><span class="line">   ES:EBX -&gt; parameter block (see #1051)</span><br><span class="line">   ECX = size of LDT buffer in bytes</span><br><span class="line">   ESI = bit flags</span><br><span class="line">       bit 0: allow demand paging rather than loading entire program</span><br><span class="line">       bit 1: demand page from swap file rather than from .EXP</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       EAX = VMM handle or FFFFFFFFh if none</span><br><span class="line">       ECX = number of descriptors in LDT buffer</span><br><span class="line">   CF set on error</span><br><span class="line">       EAX = error code</span><br><span class="line">       02h file error</span><br><span class="line">           EBX = file error code (see #1058)</span><br><span class="line">           ECX = DOS error code if EBX=1,2,3, or 8</span><br><span class="line">       08h insufficient memory</span><br><span class="line">           EBX = memory error code (see #1059)</span><br><span class="line">       80h LDT buffer too small</span><br><span class="line">       87h called twice without intervening call to AX=2531h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=2512h,AX=2517h,AX=2529h,AX=2531h</span><br><span class="line"></span><br><span class="line">(Table 1058)</span><br><span class="line">Values for Phar Lap file error code:</span><br><span class="line"> 01h   DOS open error</span><br><span class="line"> 02h   DOS seek error</span><br><span class="line"> 03h   DOS read error</span><br><span class="line"> 04h   not an .EXP or .REX file</span><br><span class="line"> 05h   invalid file format</span><br><span class="line"> 06h   -OFFSET is not a multiple of 64K</span><br><span class="line"> 07h   -NOPAGE incompatible with -REALBREAK/-OFFSET</span><br><span class="line"> 08h   DOS error loading .EXE file</span><br><span class="line"></span><br><span class="line">(Table 1059)</span><br><span class="line">Values for Phar Lap memory error code:</span><br><span class="line"> 01h   out of physical memory</span><br><span class="line"> 02h   out of swap space</span><br><span class="line"> 04h   unable to change extended memory allocation</span><br><span class="line"> 05h   -MAXPGMMEM exceeded</span><br><span class="line"> 06h   insufficient low memory to REALBREAK value</span><br><span class="line"> 07h   insufficient low memory for PSP and environment</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

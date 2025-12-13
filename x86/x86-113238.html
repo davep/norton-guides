@@ -1,0 +1,157 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-111661.html">
+    <link rel="next" href="x86-114130.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-111661.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-114130.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">PUSHA           Push All General Registers           Flags: Not altered</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">PUSHA</span>                                                CPU: 186+</span><br><span class="line"><span class="ngb">PUSHAD</span>                                               CPU: 386+</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   PUSH eAX</span><br><span class="line">                PUSH eCX</span><br><span class="line">                PUSH eDX</span><br><span class="line">                PUSH eBX</span><br><span class="line">                PUSH eSP        ; SP/ESP before PUSHA</span><br><span class="line">                PUSH eBP</span><br><span class="line">                PUSH eSI</span><br><span class="line">                PUSH eDI</span><br><span class="line"></span><br><span class="line">    PUSHA saves the eight general registers on the stack. Note that</span><br><span class="line">    the value pushed for SP/ESP is the original value. The order of</span><br><span class="line">    the registers pushed is correct for a subsequent POPA.</span><br><span class="line"></span><br><span class="line">    PUSHAD is the 32-bit form of PUSHA.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    Some assemblers support a PUSHA extension (PUSHAW) that forces 8</span><br><span class="line">    16-bit word-style push&#39;es regardless of the code segment&#39;s size</span><br><span class="line">    attribute (80386+).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    60          PUSHA</span><br><span class="line">    60          PUSHAD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Variations  Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    pusha        1              36      17      18      11       5   NP</span><br><span class="line">    pushad       1               -       -      18      11       5   NP</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-111661.html">PUSH</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-114130.html">PUSHF</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-107226.html">POP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-109182.html">POPA</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-110035.html">POPF</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

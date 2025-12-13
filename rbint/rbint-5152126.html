@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5151527.html">
+    <link rel="next" href="rbint-5155353.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5151527.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5155353.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 61 Fn 05  - Banyan Vines - Read Pcconfig Bytes                       </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = 05h</span><br><span class="line">   CX = number of bytes to copy</span><br><span class="line">       (max. 0175h for VINES 4.00, max. 017Fh for VINES 4.10+)</span><br><span class="line">   SI = offset of area to be copied (see #3123,#3124)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h successful</span><br><span class="line">       0004h out of range</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> The PCCONFIG area is located in the code segment of the BANV handler</span><br><span class="line">   To find out which PCCONFIG structure applies, call this function first</span><br><span class="line">     with CX=0006h to get the VINES revision number</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=02h&#34;VINES&#34;,AH=04h&#34;VINES&#34;,AH=06h&#34;VINES&#34;,AH=0Bh&#34;VINES&#34;</span><br><span class="line"></span><br><span class="line">Format of PCCONFIG area (VINES 4.00):</span><br><span class="line">Offset Size    Description (Table 3123)</span><br><span class="line"> 00h  6    BYTEs   VINES revision (ASCII, zero-padded)</span><br><span class="line"> 06h  2    BYTEs   NEWREV-number (ASCII, two digits)</span><br><span class="line"> 08h   WORD    hardware interrupt level</span><br><span class="line"> 0Ah   WORD    DMA channel</span><br><span class="line"> 0Ch   WORD    I/O address</span><br><span class="line"> 0Eh   DWORD   adapter ROM address (linear)</span><br><span class="line"> 12h   DWORD   adapter RAM address (linear)</span><br><span class="line"> 16h   WORD    BANV interrupt</span><br><span class="line"> 18h 32    BYTEs   default login group #1</span><br><span class="line"> 38h 32    BYTEs   default login group #2</span><br><span class="line"> 58h 32    BYTEs   default login group #3</span><br><span class="line"> 78h   WORD    semaphore locking support flag</span><br><span class="line"> 7Ah   WORD    extended StreetTalk flag</span><br><span class="line"> 7Ch   WORD    maximum number of file volumes</span><br><span class="line"> 7Eh   WORD    NetBIOS flag</span><br><span class="line"> 80h 60    BYTEs   default network adapter</span><br><span class="line"> BCh 60    BYTEs   default communications driver</span><br><span class="line"> F8h   WORD    maximum number of SPP connections</span><br><span class="line"> FAh   WORD    maximum number of open sockets</span><br><span class="line"> FCh   WORD    communications buffer size (10..60 KB)</span><br><span class="line"> FEh 20    BYTEs   location directory on drive Z:</span><br><span class="line">112h 33    BYTEs   auxiliary configuration area #1 (see #3125)</span><br><span class="line">133h 33    BYTEs   auxiliary configuration area #2</span><br><span class="line">154h 33    BYTEs   auxiliary configuration area #3</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3124</span><br><span class="line"></span><br><span class="line">Format of PCCONFIG area (VINES 4.10+):</span><br><span class="line">Offset Size    Description (Table 3124)</span><br><span class="line"> 00h  6    BYTEs   VINES revision (ASCII, zero-padded)</span><br><span class="line"> 06h  2    BYTEs   NEWREV-number (ASCII, two digits)</span><br><span class="line"> 08h   WORD    hardware interrupt level</span><br><span class="line"> 0Ah   WORD    DMA channel</span><br><span class="line"> 0Ch   WORD    I/O address</span><br><span class="line"> 0Eh   DWORD   adapter ROM address (linear)</span><br><span class="line"> 12h   DWORD   adapter RAM address (linear)</span><br><span class="line"> 16h   WORD    BANV interrupt</span><br><span class="line"> 18h 32    BYTEs   default login group #1</span><br><span class="line"> 38h 32    BYTEs   default login group #2</span><br><span class="line"> 58h 32    BYTEs   default login group #3</span><br><span class="line"> 78h   WORD    semaphore locking support flag</span><br><span class="line"> 7Ah   WORD    extended StreetTalk flag</span><br><span class="line"> 7Ch   WORD    named pipes support flag</span><br><span class="line"> 7Eh   WORD    maximum number of file volumes</span><br><span class="line"> 80h   WORD    NetBIOS flag</span><br><span class="line"> 82h 60    BYTEs   default network adapter</span><br><span class="line"> BEh 60    BYTEs   default communications driver</span><br><span class="line"> FAh   WORD    maximum number of SPP connections</span><br><span class="line"> FCh   WORD    maximum number of open sockets</span><br><span class="line"> FEh   WORD    communications buffer size (10..60 KB)</span><br><span class="line">100h   WORD    number of mailslots</span><br><span class="line">102h   WORD    maximum number of open files</span><br><span class="line">104h   WORD    maximum number of NetBIOS sessions</span><br><span class="line">106h   WORD    maximum number of NetBIOS commands</span><br><span class="line">108h 20    BYTEs   location directory on drive Z:</span><br><span class="line">11Ch 33    BYTEs   auxiliary configuration area #1 (see #3125)</span><br><span class="line">13Dh 33    BYTEs   auxiliary configuration area #2</span><br><span class="line">15Eh 33    BYTEs   auxiliary configuration area #3</span><br><span class="line"></span><br><span class="line">Format of auxiliary configuration area:</span><br><span class="line">Offset Size    Description (Table 3125)</span><br><span class="line"> 00h 16    BYTEs   item name (no zero terminator if length = 16)</span><br><span class="line"> 10h   BYTE    item value type (1=text, else numeric)</span><br><span class="line"> 11h 16    BYTEs   item value (string if type 1, else DWORD)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3123,#3124</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

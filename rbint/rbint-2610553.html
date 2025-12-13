@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2610289.html">
+    <link rel="next" href="rbint-2617622.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2610289.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2617622.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 5E01  - 10net V5.0 - Get Local 10net Configuration Table       </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 5E01h</span><br><span class="line">   CX = length of buffer</span><br><span class="line">   DS:DX -&gt; buffer for 10Net configuration table (see #1377)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> DS:DX buffer filled</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=5E00h&#34;10NET&#34;,INT 6F/AH=02h,INT 6F/AH=03h</span><br><span class="line"></span><br><span class="line">Format of 10Net Configuration Table:</span><br><span class="line">Offset Size    Description (Table 1377)</span><br><span class="line"> 00h  8 BYTEs  user name</span><br><span class="line"> 08h 15 BYTEs  node ID</span><br><span class="line"> 17h  3 BYTEs  unique portion of Ethernet address</span><br><span class="line"> 1Ah   BYTE    Who group number</span><br><span class="line"> 1Bh   WORD    services mask (see #1379)</span><br><span class="line"> 1Dh   DWORD   serial number</span><br><span class="line"> 21h   BYTE    maximum concurrent users with same serial number allowed on net</span><br><span class="line"> 22h   BYTE    chat mask (see #1380)</span><br><span class="line"> 23h   BYTE    internal system bits (see #1381)</span><br><span class="line"> 24h  9 BYTEs  version number in format MM.mm.xxx</span><br><span class="line"> 2Dh   BYTE    flag: 01h if machine is a PS/2</span><br><span class="line"> 2Eh   BYTE    flag: 03h if 80386</span><br><span class="line"> 2Fh   BYTE    spool termination mode: 01h concatenate, 02h truncate</span><br><span class="line">       (see AX=5D09h)</span><br><span class="line"> 30h   WORD    autospool timeout in clock ticks</span><br><span class="line"> 32h   WORD    monitor timeout in clock ticks</span><br><span class="line"> 34h   WORD    unused</span><br><span class="line"> 36h   WORD    chat timeout in clock ticks</span><br><span class="line"> 38h   WORD    netBIOS session timeout in half-seconds</span><br><span class="line"> 3Ah   WORD    datagram send timeout in seconds</span><br><span class="line"> 3Ch   WORD    keyboard value for initiating chat mode</span><br><span class="line"> 3Eh   WORD    Who timeout in clock ticks</span><br><span class="line"> 40h   BYTE    flag: 01h if server should process rom NetBIOS Post return</span><br><span class="line"> 41h   BYTE    flag: 01h if FCBs should be recycled</span><br><span class="line"> 42h  3 BYTEs  signature &#34;DBG&#34;</span><br><span class="line"> 45h   BYTE    last interrupt (21h or 6Fh)</span><br><span class="line"> 46h   BYTE    last INT 21 AH value</span><br><span class="line"> 47h   BYTE    last INT 6F AH value</span><br><span class="line"> 48h   WORD    last item posted</span><br><span class="line"> 4Ah   WORD    last item free-posted</span><br><span class="line"> 4Ch   WORD    last item handled by server</span><br><span class="line"> 4Eh   WORD    last redirector send NCB</span><br><span class="line"> 50h   WORD    last redirector receive NCB</span><br><span class="line"> 52h  4 BYTEs  signature &#34;TABL&#34;</span><br><span class="line"> 56h   WORD    offset of datagram buffer table header (see #1378)</span><br><span class="line"> 58h   WORD    offset of chat buffer table header (see #1378)</span><br><span class="line"> 5Ah   WORD    offset of Raw buffer table header (see #1378)</span><br><span class="line"> 5Ch   WORD    offset of Workstation buffer table header (see #1378)</span><br><span class="line"> 5Eh   WORD    offset of server receive-any table header (see #1378)</span><br><span class="line"> 60h   WORD    offset of Tiny buffer table header (see #1378)</span><br><span class="line"> 62h   WORD    offset of zero-length buffer table (NCBs) (see #1378)</span><br><span class="line"> 64h   WORD    offset of Rdr (Redirector Mount) table header (see #1378)</span><br><span class="line"> 66h   WORD    offset of Ntab (Redirector Session) table header (see #1378)</span><br><span class="line"> 68h   WORD    offset of FCB table header (see #1378)</span><br><span class="line"> 6Ah   WORD    offset of user file handle table header (see #1378)</span><br><span class="line"> 6Ch   WORD    offset of workstation printer RDR extension table header</span><br><span class="line"> 6Eh   WORD    offset of server shared device table header (see #1378)</span><br><span class="line"> 70h   WORD    offset of server connection table header (see #1378)</span><br><span class="line"> 72h   WORD    offset of server login table header (see #1378)</span><br><span class="line"> 74h   WORD    offset of server file table header (see #1378)</span><br><span class="line"> 76h   WORD    offset of server shared file table header (see #1378)</span><br><span class="line"> 78h   WORD    offset of server record lock table header (see #1378)</span><br><span class="line"> 7Ah   WORD    offset of remote printer claim table header (see #1378)</span><br><span class="line"> 7Ch   WORD    offset of remote printer device table header (see #1378)</span><br><span class="line"> 7Eh   WORD    offset of print server mount table header (see #1378)</span><br><span class="line"> 80h   WORD    offset of print server sessions table header (see #1378)</span><br><span class="line"> 82h   WORD    offset of print server print job structure table header</span><br><span class="line"> 84h   WORD    offset of print server pooled device table header (see #1378)</span><br><span class="line"> 86h   WORD    size of workstation buffer</span><br><span class="line"> 88h   WORD    size of server receive-any buffer</span><br><span class="line"> 8Ah   WORD    size of server raw I/O buffer</span><br><span class="line"> 8Ch  6 BYTEs  reserved</span><br><span class="line"> 92h   DWORD   pointer to profile pathname</span><br><span class="line"> 96h   BYTE    datagram retry count</span><br><span class="line"> 97h   BYTE    NetBIOS LAN adapter number</span><br><span class="line"> 98h  6 BYTEs  physical Ethernet address</span><br><span class="line"> 9Eh   BYTE    NetBIOS server name number</span><br><span class="line"> 9Fh   BYTE    NetBIOS redirector name number</span><br><span class="line"> A0h   BYTE    10Net interrupt number</span><br><span class="line"> A1h   BYTE    flag: chat is loaded</span><br><span class="line"> A2h   BYTE    flag: INT 6F APIs permanently loaded</span><br><span class="line"> A3h   BYTE    flag: file security present</span><br><span class="line"> A4h   WORD    reserved</span><br><span class="line"> A6h   BYTE    fixed mount bitmask for drives A:-H:</span><br><span class="line"> A7h   BYTE    reserved</span><br><span class="line"> A8h   WORD    10Net system flags (see #1382)</span><br><span class="line"> AAh   BYTE    monitor flags (see #1383)</span><br><span class="line"> ABh  5 BYTEs  reserved</span><br><span class="line"> B0h   WORD    offset of monitor timer block</span><br><span class="line"> B2h   WORD    offset of server timer block</span><br><span class="line"> B4h   WORD    offset of chat timer block</span><br><span class="line"> B6h   WORD    timer chain</span><br><span class="line"> B8h  4 BYTEs  signature &#34;TALS&#34;</span><br><span class="line"> BCh   WORD    number of 10Net sends</span><br><span class="line"> BEh   WORD    number of 10Net receives</span><br><span class="line"> C0h   WORD    number of no-buffer conditions</span><br><span class="line"> C2h   WORD    number of dropped posted messages</span><br><span class="line"> C4h   WORD    number of server NCB errors</span><br><span class="line"> C6h   WORD    number of redirector NCB errors</span><br><span class="line"> C8h   WORD    number of datagram send/receive errors</span><br><span class="line"> CAh   WORD    number of dropped Whos</span><br><span class="line"> CCh   WORD    number of dropped submits</span><br><span class="line"> CEh   WORD    number of session aborts</span><br><span class="line"> D0h   BYTE    number of NetBIOS interface-busy errors</span><br><span class="line"> D1h   BYTE    last NetBIOS bad post command</span><br><span class="line"> D2h   BYTE    last NetBIOS bad redirector command</span><br><span class="line"> D3h   BYTE    do send datagram send/receive error command</span><br><span class="line"> D4h   DWORD   -&gt; DOS system parameter table</span><br><span class="line"> D8h   WORD    number of DOS physical drives</span><br><span class="line"> DAh   WORD    offset of DOS PSP field in DOS data segment</span><br><span class="line"> DCh   WORD    offset of in-DOS flag in DOS data segment</span><br><span class="line"> DEh   WORD    DOS data segment</span><br><span class="line"> E0h   WORD    offset of DOS SFT in DOS data segment</span><br><span class="line"> E2h   WORD    offset of number-of-physical-units field in DOS data segment</span><br><span class="line"> E4h   WORD    10Net code segment</span><br><span class="line"> E6h   WORD    10Net data segment</span><br><span class="line"> E8h   WORD    10Net common server segment</span><br><span class="line"> EAh   WORD    10Net file server segment</span><br><span class="line"> ECh   WORD    10Net print server segment</span><br><span class="line"> EEh   WORD    10Net remote printer segment</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  documentation lists field at offset D0h as a WORD, but all following</span><br><span class="line">     offsets are as though it were a BYTE; if it is indeed a WORD, all</span><br><span class="line">     offsets after D0h must be increased by one byte</span><br><span class="line"></span><br><span class="line">Format of 10Net Table Header:</span><br><span class="line">Offset Size    Description (Table 1378)</span><br><span class="line"> -16  4 BYTEs  table identifier</span><br><span class="line"> -12   WORD    peak number of tables allocated</span><br><span class="line"> -10   WORD    number of tables currently in use</span><br><span class="line"> -8    WORD    total number of tables</span><br><span class="line"> -6    WORD    size of each table</span><br><span class="line"> -4    WORD    offset of first allocated table</span><br><span class="line"> -2    WORD    offset of first free table</span><br><span class="line"></span><br><span class="line">Bitfields for 10NET services mask:</span><br><span class="line">Bit(s) Description (Table 1379)</span><br><span class="line"> 0 workstation</span><br><span class="line"> 1 file server</span><br><span class="line"> 2 print queue server</span><br><span class="line"> 3 de-spool server</span><br><span class="line"></span><br><span class="line">Bitfields for 10NET chat mask:</span><br><span class="line">Bit(s) Description (Table 1380)</span><br><span class="line"> 0 chat permitted</span><br><span class="line"> 1 bell enabled</span><br><span class="line"> 2 chat keyboard initiated</span><br><span class="line"> 3 in INT 16 handler</span><br><span class="line"> 4 in Get Input</span><br><span class="line"> 5 display has timed out</span><br><span class="line"> 6 chat is idle</span><br><span class="line"></span><br><span class="line">Bitfields for 10NET internal system bits:</span><br><span class="line">Bit(s) Description (Table 1381)</span><br><span class="line"> 0 submit permitted</span><br><span class="line"> 1 submit initiated</span><br><span class="line"> 2 submit executing</span><br><span class="line"> 3 internal client call/chat/spool/autospool</span><br><span class="line"> 4 in spool termination</span><br><span class="line"> 5 print permitted</span><br><span class="line"> 6 waiting for keyboard input</span><br><span class="line"></span><br><span class="line">Bitfields for 10NET System Flags:</span><br><span class="line">Bit(s) Description (Table 1382)</span><br><span class="line"> 0 in NetBIOS</span><br><span class="line"> 1 processing INT 28</span><br><span class="line"> 2 is server</span><br><span class="line"> 3 in net user-DOS function</span><br><span class="line"> 4 in DOS user-DOS function</span><br><span class="line"> 5 in net for user non-DOS function</span><br><span class="line"> 6 in server DOS function</span><br><span class="line"> 7 in server non-DOS function</span><br><span class="line"> 8 in terminate</span><br><span class="line"> 10    in user on server request</span><br><span class="line"> 13    in DOS for user on server</span><br><span class="line"> 14    disable critical error handler</span><br><span class="line"></span><br><span class="line">Bitfields for Monitor Flags:</span><br><span class="line">Bit(s) Description (Table 1383)</span><br><span class="line"> 0 waiting for monitor response</span><br><span class="line"> 4 in monitor get-input routine</span><br><span class="line"> 5 monitor display timeout</span><br><span class="line"> 6 sensing for escape key</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

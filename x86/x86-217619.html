@@ -1,0 +1,163 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Protection, privilege</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-213542.html">
+    <link rel="next" href="x86-222784.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-213542.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-190707.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-222784.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngb">Task switching</span></span><br><span class="line"></span><br><span class="line">    The 80386 schedules and executes tasks based on a priority set by</span><br><span class="line">    the operating system. To do this, the 80386 uses a Task Register</span><br><span class="line">    (TR) in which it keeps a selector and a descriptor for the running</span><br><span class="line">    task&#39;s task state segment (TSS). The TR has both a visible and an</span><br><span class="line">    invisible portion. The visible and changeable portion can be read</span><br><span class="line">    and modified by instructions. The invisible portion is maintained</span><br><span class="line">    by the processor to correspond to the changeable portion and</span><br><span class="line">    cannot be read by any instruction.</span><br><span class="line"></span><br><span class="line">    Two instructions (STR - Store Task Register, and LTR - Load Task</span><br><span class="line">    Register) read and modify the changeable portion of the TR. Both</span><br><span class="line">    instructions take one operand which is a 16-bit selector.</span><br><span class="line"></span><br><span class="line">    The privileged instruction LTR loads the TR with the selector</span><br><span class="line">    operand that must select a TSS descriptor in the GDT (global</span><br><span class="line">    descriptor table). Generally, LTR gives an initial value to the</span><br><span class="line">    TR during system initialization. After that, the contents of TR</span><br><span class="line">    are changed by task switch operations.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    A <span class="ngu">task gate descriptor</span> gives an indirect, protected reference to</span><br><span class="line">    a TSS. The 80386 uses task gates, in addition to TSS descriptors,</span><br><span class="line">    to satisfy 3 needs:</span><br><span class="line"></span><br><span class="line">        ■ Because the busy-bit is stored in the TSS descriptor, each</span><br><span class="line">          task should have only one such descriptor. However, there</span><br><span class="line">          may be several task gates that select the single TSS</span><br><span class="line">          descriptor.</span><br><span class="line">        ■ With task gates, systems software can limit the right to</span><br><span class="line">          cause task switches to specific tasks.</span><br><span class="line">        ■ Task gates may also reside in the IDT, so it is possible for</span><br><span class="line">          interrupts and exceptions to cause task switching.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    To switch tasks, the operating system issues a JMP or CALL</span><br><span class="line">    instruction whose operand is a selector for the TSS or the task</span><br><span class="line">    gate of the new task.</span><br><span class="line"></span><br><span class="line">    1. The 80386 first checks that the current task is allowed to</span><br><span class="line">       switch to the designated task. Data access privilege rules</span><br><span class="line">       appply in the cases of JMP or CALL instructions. The DPL of the</span><br><span class="line">       TSS descriptor or task gate must be less than or equal to the</span><br><span class="line">       maximum of CPL or the RPL of the gate selector.</span><br><span class="line"></span><br><span class="line">    2. Next, the TSS descriptor is checked to see if it is marked</span><br><span class="line">       present and has a valid limit. A detected error up to this</span><br><span class="line">       point occurs in the context of the <span class="ngb">outgoing</span> task. Errors are</span><br><span class="line">       restartable and can be handled in a way that makes its</span><br><span class="line">       applications transparent.</span><br><span class="line"></span><br><span class="line">    3. The processor next executes the JMP TSS instruction by first</span><br><span class="line">       storing its current registers in the current TSS. The EIP is</span><br><span class="line">       loaded with the address of the instruction after the one that</span><br><span class="line">       caused the task switch.</span><br><span class="line"></span><br><span class="line">    4. The processor then loads the TR with the selector specified in</span><br><span class="line">       the JMP instruction. It marks the incoming task&#39;s TSS</span><br><span class="line">       descriptor as busy and sets the TS bit (task switched) of the</span><br><span class="line">       MSW register. Because it now has the new TSS, the 80386 loads</span><br><span class="line">       its registers with the values in this new TSS. Execution</span><br><span class="line">       continues at the instruction pointed to by the new task&#39;s</span><br><span class="line">       instruction pointer. Any errors detected in this step occur in</span><br><span class="line">       the context of the incoming task.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line">    </span><br><span class="line">    To an exception handler, it appears as if the first instruction of</span><br><span class="line">    the new task has not yet executed. Exception handlers that field</span><br><span class="line">    task-switch exceptions in the incoming task should be cautious</span><br><span class="line">    about taking action that might load the selector causing the</span><br><span class="line">    exception. Unless the handler first examines the selector and</span><br><span class="line">    fixes any potential problems, such an action may well cause</span><br><span class="line">    another exception.</span><br><span class="line"></span><br><span class="line">    Every task switch sets the TS bit in the MSW (low 16 bits of CR0).</span><br><span class="line">    The TS flag is helpful when using a coprocessor such as the</span><br><span class="line">    numeric coprocessor. The TS bit signals that the context of the</span><br><span class="line">    coprocessor <span class="ngb">may not</span> correspond to the current 80386 task.</span><br><span class="line"></span><br><span class="line">    To resume execution of the old task, the operating system issues a</span><br><span class="line">    JMP instruction to the old task&#39;s TSS. The process repeats with</span><br><span class="line">    the storing of current registers, loading of new registers, and</span><br><span class="line">    continuing execution.</span><br><span class="line"></span><br><span class="line">    The privilege level at which execution restarts in the incoming</span><br><span class="line">    task is not restricted by the privilege level of the outgoing</span><br><span class="line">    task. The tasks are isolated by their separate address spaces, and</span><br><span class="line">    TSSs and privilege access rules are used to prevent improper</span><br><span class="line">    access to a TSS. Thus, no special privilege rules are needed to</span><br><span class="line">    constrain the relations between the CPLs of the individual tasks.</span><br><span class="line">    The new task simply begins executing at the privilege level</span><br><span class="line">    indicated by the RPL of the CS selector value that is loaded from</span><br><span class="line">    the TSS.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    JMP, CALL, IRET, interrupts and exceptions are all ordinary</span><br><span class="line">    mechanisms that can be used when a task switch is not required.</span><br><span class="line">    Either the type of descriptor reference or the NT (nested task) in</span><br><span class="line">    the flags register distinguishes between the standard mechanism</span><br><span class="line">    and the variant that causes a task switch.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-211438.html">Multitasking</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-213542.html">TSS</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-195957.html">Selectors</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-197219.html">Descriptors</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-191032.html">Privilege</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-91389.html">LTR</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

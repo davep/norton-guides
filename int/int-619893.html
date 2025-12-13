@@ -1,0 +1,163 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Ports, EMS » I/O ports</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-619469.html">
+    <link rel="next" href="int-622380.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-619469.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-616096.html">Up</a></li>
+
+
+          
+
+<li><a href="int-622380.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">Port 3CF, 05  -  Graphics Mode Register</span></span><br><span class="line"></span><br><span class="line">        1xxx xxxx  Reserved</span><br><span class="line">        x1xx xxxx  256-Color Mode</span><br><span class="line">                     When set to 0, this bit allows bit 5 to control the</span><br><span class="line">                     loading of the shift registers. When set to 1, this</span><br><span class="line">                     bit causes the shift registers to be loadet in a</span><br><span class="line">                     manner that supports the 256-color mode.</span><br><span class="line">        xx1x xxxx  Shift Register Mode</span><br><span class="line">                     When set to 1, this bit directs the shift registers</span><br><span class="line">                     in the graphics controller to format the serial data</span><br><span class="line">                     stream with even-numbered bits from both maps on</span><br><span class="line">                     even-numbered maps, and odd-numbered bits from both</span><br><span class="line">                     mamps on the odd-numbered maps. This bit is used for</span><br><span class="line">                     modes 4 and 5.</span><br><span class="line">        xxx1 xxxx  Odd/Even</span><br><span class="line">                     When set to 1, this bit selects the odd/even</span><br><span class="line">                     addressing mode used by the IBM Color/Graphics</span><br><span class="line">                     Adapter. Normally, the value here follows the value</span><br><span class="line">                     of Memory Mode (3C5, 04) register bit 2 in the</span><br><span class="line">                     sequencer.</span><br><span class="line">        xxxx 1xxx  Read Mode</span><br><span class="line">                     When this bit is set to 1, the system reads the results</span><br><span class="line">                     of the comparation of the four memory maps and the</span><br><span class="line">                     Color Compare Register (3CF, 02).</span><br><span class="line">                     When this bit is set to 0, the system reads data from</span><br><span class="line">                     the memory map selected by the Read Map Select</span><br><span class="line">                     (3CF, 04) Register, or by the two low-order bits of</span><br><span class="line">                     the memory address (this selection depends on the</span><br><span class="line">                     chain-4 bit in the Memory Mode Register (3C5, 04) in</span><br><span class="line">                     the sequencer).</span><br><span class="line">        xxxx x1xx  Reserved</span><br><span class="line">        xxxx xx11  Write Mode</span><br><span class="line">                     The write mode selected and its operation are defined</span><br><span class="line">                     in the table below. The logic operation specified by</span><br><span class="line">                     the function select bits is performed on system data</span><br><span class="line">                     for modes 0, 2 and 3.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Write Mode</span><br><span class="line">        Bits</span><br><span class="line">        <span class="ngu">1 0   Mode Description                                            </span></span><br><span class="line">        0 0   Each memory map is written with the system data rotated by</span><br><span class="line">              the count in Data Rotate register. If the set/reset function</span><br><span class="line">              is enabled for a specific map, that map receives the 8-bit</span><br><span class="line">              value contained in the Set/Reset register.</span><br><span class="line">        0 1   Each memory map is written with the contens of the system</span><br><span class="line">              latches. These latches are loadedby a system read operation.</span><br><span class="line">        1 0   Memory map <span class="ngb">n</span> is written with the 8-bit value of the value</span><br><span class="line">              of the data bit <span class="ngb">n</span>.</span><br><span class="line">        1 1   Each memory map is written with the 8-bit value contained</span><br><span class="line">              in the Set/Reset register for that map (the Enable Set/Reset</span><br><span class="line">              register has no effect). Rotated system data is ANDed with</span><br><span class="line">              the Bit Mask register to form an 8-bit value that performs</span><br><span class="line">              the same function as the Bit Mask register in write modes</span><br><span class="line">              0 and 2 (see also Bit Mask register - 3CF, 08).</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="int-615126.html">3C5, 04</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-617713.html">3CF, 02</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-619469.html">3CF, 04</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-623570.html">3CF, 08</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

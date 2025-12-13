@@ -1,0 +1,151 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-345925.html">
+    <link rel="next" href="int-348801.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-345925.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-332568.html">Up</a></li>
+
+
+          
+
+<li><a href="int-348801.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">Open disk file (INT 21h, 0Fh)</span></span><br><span class="line"></span><br><span class="line">        Entry:</span><br><span class="line">          AH = 0Fh</span><br><span class="line">          DS:DX -&gt; FCB (see below)</span><br><span class="line">        Return:</span><br><span class="line"></span><br><span class="line">          AL = 00h file found</span><br><span class="line">               FFh file not found</span><br><span class="line"></span><br><span class="line">        Note: (DOS 3+) file opened in compatibility mode</span><br><span class="line"></span><br><span class="line">        Format of File Control Block:</span><br><span class="line">                Offset  Size    Description</span><br><span class="line">                 -7     BYTE    extended FCB if FFh</span><br><span class="line">                 -6   5 BYTEs   reserved</span><br><span class="line">                 -1     BYTE    file attribute if extended FCB</span><br><span class="line">                 00h    BYTE    drive number (0 = default, 1 = A, etc)</span><br><span class="line">                 01h  8 BYTEs   blank-padded file name</span><br><span class="line">                 09h  3 BYTEs   blank-padded file extension</span><br><span class="line">                 0Ch    WORD    current block number</span><br><span class="line">                 0Eh    WORD    logical record size</span><br><span class="line">                 10h    DWORD   file size</span><br><span class="line">                 14h    WORD    date of last write (see AX=5700h)</span><br><span class="line">                 16h    WORD    time of last write (see AX=5700h)</span><br><span class="line">                 18h  8 BYTEs   reserved (see below)</span><br><span class="line">                 20h    BYTE    record within current block</span><br><span class="line">                 21h    DWORD   random access record number</span><br><span class="line">                                (if record size is &gt; 64 bytes, high byte</span><br><span class="line">                                is omitted)</span><br><span class="line"></span><br><span class="line">        Format of reserved field for DOS 1.x:</span><br><span class="line">                Offset  Size    Description</span><br><span class="line">                 18h    BYTE    bit 7: set if logical device</span><br><span class="line">                                bit 6: set if open???</span><br><span class="line">                                bits 5-0: disk number or logical device ID</span><br><span class="line">                 19h    WORD    absolute current cluster number</span><br><span class="line">                 1Bh    WORD    starting cluster number</span><br><span class="line">                 1Dh    WORD    relative current cluster number</span><br><span class="line">                 1Fh    BYTE    unused???</span><br><span class="line"></span><br><span class="line">        Format of reserved field for DOS 2.x:</span><br><span class="line">                Offset  Size    Description</span><br><span class="line">                 18h    BYTE    bit 7: set if logical device</span><br><span class="line">                                bit 6: set if open???</span><br><span class="line">                                bits 5-0: ???</span><br><span class="line">                 19h    WORD    starting cluster number</span><br><span class="line">                 1Bh    WORD    ???</span><br><span class="line">                 1Dh    BYTE    ???</span><br><span class="line">                 1Eh    BYTE    ???</span><br><span class="line">                 1Fh    BYTE    ???</span><br><span class="line"></span><br><span class="line">        Format of reserved field for DOS 3.x:</span><br><span class="line">                Offset  Size    Description</span><br><span class="line">                 18h    BYTE    number of system file table entry for file</span><br><span class="line">                 19h    BYTE    attributes</span><br><span class="line">                                bits 7,6: 00 = SHARE.EXE not loaded,</span><br><span class="line">                                               disk file</span><br><span class="line">                                          01 = SHARE.EXE not loaded,</span><br><span class="line">                                               character device</span><br><span class="line">                                          10 = SHARE.EXE loaded, remote file</span><br><span class="line">                                          11 = SHARE.EXE loaded, local file</span><br><span class="line">                                bits 5-0: low six bits, device attribute word</span><br><span class="line"></span><br><span class="line">                ---SHARE.EXE loaded, local file---</span><br><span class="line">                 1Ah    WORD    starting cluster of file</span><br><span class="line">                 1Ch    WORD    offset within SHARE of sharing record</span><br><span class="line">                                (see AH=52h)</span><br><span class="line">                 1Eh    BYTE    file attribute</span><br><span class="line">                 1Fh    BYTE    ???</span><br><span class="line">                ---SHARE.EXE loaded, remote file---</span><br><span class="line">                 1Ah    WORD    number of sector containing directory entry</span><br><span class="line">                 1Ch    WORD    relative cluster within file of last</span><br><span class="line">                                cluster read</span><br><span class="line">                 1Eh    BYTE    absolute cluster number of last cluster read</span><br><span class="line">                 1Fh    BYTE    ???</span><br><span class="line">                ---SHARE.EXE not loaded---</span><br><span class="line">                 1Ah    BYTE    (low byte of device attribute word AND 0Ch)</span><br><span class="line">                                OR open mode</span><br><span class="line">                 1Bh    WORD    starting cluster of file</span><br><span class="line">                 1Dh    WORD    number of sector containing directory entry</span><br><span class="line">                 1Fh    BYTE    number of directory entry within sector</span><br><span class="line"></span><br><span class="line">                Note: if FCB opened on character device, DWORD at 1Ah is set to the address</span><br><span class="line">                      of the device driver header, then the BYTE at 1Ah is overwritten.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="int-348801.html">INT 21h, 10h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-356360.html">INT 21h, 29h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

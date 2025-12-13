@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3715062.html">
+    <link rel="next" href="rbint-3716549.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3715062.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3716549.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 1603  C - Ms Windows/386 - Get Instance Data                   </span>  [<span class="ngb">W</span>]</span><br><span class="line"></span><br><span class="line">   AX = 1603h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = 5248h (&#39;RH&#39;) if supported</span><br><span class="line">       DS:SI -&gt; Windows/386 instance data (see #2317)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> reportedly supported by RM Nimbus MS-DOS 3.3 kernel</span><br><span class="line">   this function is called by DOSMGR when AX=1607h/BX=0015h is not</span><br><span class="line">     supported, as is the case in DOS versions prior to 5.0</span><br><span class="line">   see Geoff Chappell&#39;s book _DOS_Internals_ for additional discussions of</span><br><span class="line">     this function, DOSMGR&#39;s behavior, and instancing in general</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=1607h/BX=0015h</span><br><span class="line"></span><br><span class="line">Format of Windows/386 instance data:</span><br><span class="line">Offset Size    Description (Table 2317)</span><br><span class="line"> 00h   WORD    segment of IO.SYS (0000h = default 0070h)</span><br><span class="line"> 02h   WORD    offset in IO.SYS of STACKS data structure (DOS 3.2x)</span><br><span class="line">       0000h if not applicable</span><br><span class="line"> 04h   WORD    number of instance data entries (max 32)</span><br><span class="line"> 06h   Array of instance data entries</span><br><span class="line">   Offset  Size    Description</span><br><span class="line">    00h    WORD    segment (0002h = DOS kernel)</span><br><span class="line">    02h    WORD    offset</span><br><span class="line">    04h    WORD    size</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

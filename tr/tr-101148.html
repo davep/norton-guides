@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-100595.html">
+    <link rel="next" href="tr-102558.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-100595.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-102558.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> CALL TRHELP [WITH &lt;C keyword&gt;]</span><br><span class="line"> Activate TRHELP from a running Clipper program.</span><br><span class="line"></span><br><span class="line"> This assembly language source code allows you to create an OBJ</span><br><span class="line"> file that will link with your Clipper program to activate TRHELP.</span><br><span class="line"> Write it into your editor with Ctrl-W and assemble it with</span><br><span class="line"> MASM 5.0 or higher.</span><br><span class="line"></span><br><span class="line"> ; TRHELP.ASM</span><br><span class="line"> ; version 1.00 for Clipper programs</span><br><span class="line"> ;</span><br><span class="line"> ; By Leonard Zerman</span><br><span class="line"> ; Placed in the Public Domain by Tom Rettig Associates, 1988.</span><br><span class="line"> ;</span><br><span class="line"> ; Call this function from a Clipper program to pop-up</span><br><span class="line"> ; Tom Rettig&#39;s HELP, optionally with a selected keyword.</span><br><span class="line"> ;</span><br><span class="line"> ; This source file must be assembled into an .OBJ file, linked</span><br><span class="line"> ; with your application, and CALLed from your Clipper program.</span><br><span class="line"> ;</span><br><span class="line"> ; Written for Microsoft MASM 5.0 and later versions only.</span><br><span class="line"> ; Large memory model.</span><br><span class="line"> ;</span><br><span class="line"> ; Assemble and link with your application.</span><br><span class="line"> ;    MASM TRHELP;                  (creates OBJ file)</span><br><span class="line"> ;    LINK &lt;your OBJ list&gt;+TRHELP;  (creates EXE file)</span><br><span class="line"> ;</span><br><span class="line"> ; Usage:</span><br><span class="line"> ;    CALL TRHELP [WITH &lt;C keyword&gt;]</span><br><span class="line"> ;--------------------------------------------------------------;</span><br><span class="line"> KEYBOARDINT  EQU 16h</span><br><span class="line"> POPUPREQUEST EQU 98</span><br><span class="line"></span><br><span class="line"> .MODEL LARGE</span><br><span class="line"> .CODE</span><br><span class="line"></span><br><span class="line">    PUBLIC TRHELP</span><br><span class="line"></span><br><span class="line"> TRHELP    PROC</span><br><span class="line">    PUSH   BP</span><br><span class="line">    MOV    BP,SP</span><br><span class="line">    MOV    AH,POPUPREQUEST        ; signal to TRHELP</span><br><span class="line">    INT    KEYBOARDINT            ; call TRHELP via interrupt</span><br><span class="line">    POP    BP</span><br><span class="line">    RETF</span><br><span class="line"> TRHELP    ENDP</span><br><span class="line">    END</span><br><span class="line"> ;--------------------------------------------------------------;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

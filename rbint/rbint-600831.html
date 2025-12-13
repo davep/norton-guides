@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-598586.html">
+    <link rel="next" href="rbint-603648.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-598586.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-578992.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-603648.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 10 Fn 4F01  - Vesa Supervga Bios - Get Supervga Mode Information     </span>  [<span class="ngb">V</span>]</span><br><span class="line"></span><br><span class="line">   AX = 4F01h</span><br><span class="line">   CX = SuperVGA video mode</span><br><span class="line">   ES:DI -&gt; 256-byte buffer for mode information (see #0077)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = 4Fh if function supported</span><br><span class="line">   AH = status</span><br><span class="line">       00h successful</span><br><span class="line">       ES:DI buffer filled</span><br><span class="line">       01h failed</span><br><span class="line"><span class="ngb">Desc:</span>  determine the attributes of the specified video mode</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=4F00h,AX=4F02h</span><br><span class="line"></span><br><span class="line">Format of VESA SuperVGA mode information:</span><br><span class="line">Offset Size    Description (Table 0077)</span><br><span class="line"> 00h   WORD    mode attributes (see #0078)</span><br><span class="line"> 02h   BYTE    window attributes, window A (see #0079)</span><br><span class="line"> 03h   BYTE    window attributes, window B (see #0079)</span><br><span class="line"> 04h   WORD    window granularity in KB</span><br><span class="line"> 06h   WORD    window size in KB</span><br><span class="line"> 08h   WORD    start segment of window A</span><br><span class="line"> 0Ah   WORD    start segment of window B</span><br><span class="line"> 0Ch   DWORD   -&gt; FAR window positioning function (equivalent to AX=4F05h)</span><br><span class="line"> 10h   WORD    bytes per scan line</span><br><span class="line">---remainder is optional for VESA modes in v1.0/1.1, needed for OEM modes---</span><br><span class="line"> 12h   WORD    width in pixels (graphics) or characters (text)</span><br><span class="line"> 14h   WORD    height in pixels (graphics) or characters (text)</span><br><span class="line"> 16h   BYTE    width of character cell in pixels</span><br><span class="line"> 17h   BYTE    height of character cell in pixels</span><br><span class="line"> 18h   BYTE    number of memory planes</span><br><span class="line"> 19h   BYTE    number of bits per pixel</span><br><span class="line"> 1Ah   BYTE    number of banks</span><br><span class="line"> 1Bh   BYTE    memory model type (see #0080)</span><br><span class="line"> 1Ch   BYTE    size of bank in KB</span><br><span class="line"> 1Dh   BYTE    number of image pages</span><br><span class="line"> 1Eh   BYTE    reserved (0)</span><br><span class="line">---VBE v1.2+---</span><br><span class="line"> 1Fh   BYTE    red mask size</span><br><span class="line"> 20h   BYTE    red field position</span><br><span class="line"> 21h   BYTE    green mask size</span><br><span class="line"> 22h   BYTE    green field size</span><br><span class="line"> 23h   BYTE    blue mask size</span><br><span class="line"> 24h   BYTE    blue field size</span><br><span class="line"> 25h   BYTE    reserved mask size</span><br><span class="line"> 26h   BYTE    reserved mask position</span><br><span class="line"> 27h   BYTE    direct color mode info</span><br><span class="line">       bit 0: color ramp is programmable</span><br><span class="line">       bit 1: bytes in reserved field may be used by application</span><br><span class="line">---VBE v2.0 ---</span><br><span class="line"> 28h   DWORD   physical address of linear video buffer</span><br><span class="line"> 2Ch   DWORD   pointer to start of offscreen memory</span><br><span class="line"> 30h   WORD    KB of offscreen memory</span><br><span class="line"> 32h 206 BYTEs reserved (0)</span><br><span class="line"></span><br><span class="line">Bitfields for VESA SuperVGA mode attributes:</span><br><span class="line">Bit(s) Description (Table 0078)</span><br><span class="line"> 0 mode supported</span><br><span class="line"> 1 optional information available</span><br><span class="line"> 2 BIOS output supported</span><br><span class="line"> 3 set if color, clear if monochrome</span><br><span class="line"> 4 set if graphics mode, clear if text mode</span><br><span class="line">---VBE v2.0 ---</span><br><span class="line"> 5 mode is not VGA-compatible</span><br><span class="line"> 6 bank-switched mode not supported</span><br><span class="line"> 7 linear framebuffer mode supported</span><br><span class="line"></span><br><span class="line">Bitfields for VESA SuperVGA window attributes:</span><br><span class="line">Bit(s) Description (Table 0079)</span><br><span class="line"> 0 exists</span><br><span class="line"> 1 readable</span><br><span class="line"> 2 writable</span><br><span class="line"> 3-7   reserved</span><br><span class="line"></span><br><span class="line">(Table 0080)</span><br><span class="line">Values for VESA SuperVGA memory model type:</span><br><span class="line"> 00h   text</span><br><span class="line"> 01h   CGA graphics</span><br><span class="line"> 02h   HGC graphics</span><br><span class="line"> 03h   16-color (EGA) graphics</span><br><span class="line"> 04h   packed pixel graphics</span><br><span class="line"> 05h   &#34;sequ 256&#34; (non-chain 4) graphics</span><br><span class="line"> 06h   direct color (HiColor, 24-bit color)</span><br><span class="line"> 07h   YUV (luminance-chrominance, also called YIQ)</span><br><span class="line"> 08h-0Fh reserved for VESA</span><br><span class="line"> 10h-FFh OEM memory models</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

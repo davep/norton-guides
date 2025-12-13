@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » DOS » PSP Description</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">PSP Structure</span></span><br><span class="line"></span><br><span class="line">            <span class="ngb">Length</span></span><br><span class="line"><span class="ngb">    Offset  (bytes)     Description</span></span><br><span class="line"></span><br><span class="line">    00h        2        <span class="ngb">INT 20h</span> instruction.</span><br><span class="line">    02h        2        <span class="ngb">Top of memory</span>. Segment address of the top of the</span><br><span class="line">                        current program&#39;s memory  allocation block.</span><br><span class="line">    04h        1        Reserved.</span><br><span class="line">    05h        1        <span class="ngb">INT 21h</span> instruction.</span><br><span class="line">    06h        2        <span class="ngb">Available memory</span>--the number of bytes available in</span><br><span class="line">                        the segment.</span><br><span class="line">    08h        2        Reserved.</span><br><span class="line">    0Ah        4        <span class="ngb">Terminate address</span> (IP,CS). Address of the</span><br><span class="line">                        termination interrupt handler (INT 22h) inherited</span><br><span class="line">                        by the current program. DOS uses this value to</span><br><span class="line">                        restore the INT 22h vector when the program</span><br><span class="line">                        terminates.</span><br><span class="line">    0Eh        4        <span class="ngb">Ctrl-Break address</span> (IP,CS). Address of the Ctrl-</span><br><span class="line">                        Break interrupt handler (INT 23h) inherited by the</span><br><span class="line">                        current program. DOS uses this value to restore the</span><br><span class="line">                        INT 23h vector when the program terminates.</span><br><span class="line">    12h        4        <span class="ngb">Critical error address</span> (IP,CS). Address of the</span><br><span class="line">                        Critical error interrupt handler (INT 24h)</span><br><span class="line">                        inherited by the current program. DOS uses this</span><br><span class="line">                        value to restore the INT 24h vector when the</span><br><span class="line">                        program terminates.</span><br><span class="line">    16h       22        Reserved.</span><br><span class="line">    2Ch        2        <span class="ngb">Environment</span>--the segment address of the DOS</span><br><span class="line">                        environment.</span><br><span class="line">    2Eh       46        Reserved.</span><br><span class="line">    5Ch       16        <span class="ngb">Unopened standard FCB1</span>, as parsed from the first</span><br><span class="line">                        parameter in the command tail.</span><br><span class="line">    6Ch       20        <span class="ngb">Unopened standard FCB2</span>, as parsed from the second</span><br><span class="line">                        parameter in the command tail.</span><br><span class="line">    80h        1        <span class="ngb">Parameter length</span>--the length, in bytes, of the</span><br><span class="line">                        command tail.</span><br><span class="line">    81h      127        <span class="ngb">Command tail</span>. Also used as default DTA for FCB</span><br><span class="line">                        functions.</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">      <span class="ngb">Notes:</span>    Programs should not alter any of the data below 5Ch in the</span><br><span class="line">                PSP, since DOS uses this information when the program</span><br><span class="line">                exits.</span><br><span class="line"></span><br><span class="line">                The second FCB at 6Ch will be overwritten if the first FCB</span><br><span class="line">                is used to open a file.  This happens because the only 16</span><br><span class="line">                bytes are reserved for the first FCB, whereas an entire</span><br><span class="line">                FCB is 37 bytes long.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-227007.html">FCB</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

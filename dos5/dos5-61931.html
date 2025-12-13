@@ -1,0 +1,148 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-61395.html">
+    <link rel="next" href="dos5-63103.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-61395.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-63103.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 440Ch /4ch     Start Code-Page Prepare                      DOS 3.3+</span></span><br><span class="line"></span><br><span class="line">    Instructs a device driver to begin to prepare a new code-page</span><br><span class="line">    list.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX    = 440Ch</span><br><span class="line">                BX    = Device handle</span><br><span class="line">                CH    = Device category:</span><br><span class="line">                        | 01h   Serial device</span><br><span class="line">                        | 03h   Console (screen)</span><br><span class="line">                        | 05h   Parallel printer</span><br><span class="line">                CL    = 4ch</span><br><span class="line">                DS:DX = Pointer to a CPPrepare structure</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AX = Error code, if CF is set</span><br><span class="line">                     | ??</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    After calling Start Code-Page Prepare, a program must write data</span><br><span class="line">    defining the codepage fonts to the device driver by using function</span><br><span class="line">    4403h (Send Control Data to Character Device). The code-page data</span><br><span class="line">    is device-specific. The program must end the code-page preparation</span><br><span class="line">    by using function 440Ch /4dh (End Code-Page Prepare).</span><br><span class="line"></span><br><span class="line">    A program can instruct the device driver to set up the device with</span><br><span class="line">    the most recently prepared code page by calling Start Code-Page</span><br><span class="line">    Prepare with all code-page numbers set to 0FFFFh. This operation</span><br><span class="line">    must be followed immediately with a call to End Code-Page Prepare.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-52697.html">4403h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-61395.html">440Ch /4ah</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-63103.html">440Ch /4dh</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-64884.html">440Ch /6ah</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-65398.html">440Ch /6bh</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-227190.html">CPPrepare</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

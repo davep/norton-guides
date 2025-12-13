@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2234579.html">
+    <link rel="next" href="rbint-2240352.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2234579.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2240352.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 3D  - Dos 2+ - &#34;open&#34; - Open Existing File                     </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 3Dh</span><br><span class="line">   AL = access and sharing modes (see #1090)</span><br><span class="line">   DS:DX -&gt; ASCIZ filename</span><br><span class="line">   CL = attribute mask of files to look for (server call only)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AX = file handle</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (01h,02h,03h,04h,05h,0Ch,56h) (see #1366 at AH=59h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> file pointer is set to start of file</span><br><span class="line">   if SHARE or a network is loaded, the file open may fail if the file</span><br><span class="line">     is already open, depending on the combination of sharing modes</span><br><span class="line">     (see #1091,#3760)</span><br><span class="line">   file handles which are inherited from a parent also inherit sharing</span><br><span class="line">     and access restrictions</span><br><span class="line">   files may be opened even if given the hidden or system attributes</span><br><span class="line">   under the FlashTek X-32 DOS extender, the pointer is in DS:EDX</span><br><span class="line">   DR DOS checks the system password or explicitly supplied password at</span><br><span class="line">     the end of the filename (following a semicolon) against the reserved</span><br><span class="line">     field in the directory entry before allowing access</span><br><span class="line">   sharing modes are only effective on local drives if SHARE is loaded</span><br><span class="line">BUG:   Novell DOS 7 SHARE v1.00 would refuse file access in the cases in</span><br><span class="line">     #1091 marked with [1] (read-only open of a read-only file</span><br><span class="line">     which had previously been opened in compatibility mode); this was</span><br><span class="line">     fixed in SHARE v1.01 of 09/29/94</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=0Fh,AH=3Ch,AX=4301h,AX=5D00h,INT 2F/AX=1116h,INT 2F/AX=1226h</span><br><span class="line"></span><br><span class="line">Bitfields for access and sharing modes:</span><br><span class="line">Bit(s) Description (Table 1090)</span><br><span class="line"> 2-0   access mode</span><br><span class="line">   000 read only</span><br><span class="line">   001 write only</span><br><span class="line">   010 read/write</span><br><span class="line">   011 (DOS 5+ internal) passed to redirector on EXEC to allow</span><br><span class="line">       case-sensitive filenames</span><br><span class="line"> 3 reserved (0)</span><br><span class="line"> 6-4   sharing mode (DOS 3.0+) (see #1091)</span><br><span class="line">   000 compatibility mode</span><br><span class="line">   001 &#34;DENYALL&#34; prohibit both read and write access by others</span><br><span class="line">   010 &#34;DENYWRITE&#34; prohibit write access by others</span><br><span class="line">   011 &#34;DENYREAD&#34; prohibit read access by others</span><br><span class="line">   100 &#34;DENYNONE&#34; allow full access by others</span><br><span class="line">   111 network FCB (only available during server call)</span><br><span class="line"> 7 inheritance</span><br><span class="line">   if set, file is private to current process and will not be inherited</span><br><span class="line">     by child processes</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1471,#1091</span><br><span class="line"></span><br><span class="line">(Table 1091)</span><br><span class="line">Values of DOS 2-6.22 file sharing behavior:</span><br><span class="line">     | Second and subsequent Opens</span><br><span class="line"> First   |Compat  Deny   Deny   Deny   Deny</span><br><span class="line"> Open    |    All    Write  Read   None</span><br><span class="line">     |R W RW R W RW R W RW R W RW R W RW</span><br><span class="line"> - - - - -| - - - - - - - - - - - - - - - - -</span><br><span class="line"> Compat R |Y Y Y  N N N     1 N N  N N N  1 N N</span><br><span class="line">   W |Y Y Y  N N N  N N N  N N N  N N N</span><br><span class="line">   RW|Y Y Y  N N N  N N N  N N N  N N N</span><br><span class="line"> - - - - -|</span><br><span class="line"> Deny  R |C C C  N N N  N N N  N N N  N N N</span><br><span class="line"> All   W |C C C  N N N  N N N  N N N  N N N</span><br><span class="line">   RW|C C C  N N N  N N N  N N N  N N N</span><br><span class="line"> - - - - -|</span><br><span class="line"> Deny  R |2 C C  N N N  Y N N  N N N  Y N N</span><br><span class="line"> Write W |C C C  N N N  N N N  Y N N  Y N N</span><br><span class="line">   RW|C C C  N N N  N N N  N N N  Y N N</span><br><span class="line"> - - - - -|</span><br><span class="line"> Deny  R |C C C  N N N  N Y N  N N N  N Y N</span><br><span class="line"> Read  W |C C C  N N N  N N N  N Y N  N Y N</span><br><span class="line">   RW|C C C  N N N  N N N  N N N  N Y N</span><br><span class="line"> - - - - -|</span><br><span class="line"> Deny  R |2 C C  N N N  Y Y Y  N N N  Y Y Y</span><br><span class="line"> None  W |C C C  N N N  N N N  Y Y Y  Y Y Y</span><br><span class="line">   RW|C C C  N N N  N N N  N N N  Y Y Y</span><br><span class="line">Legend: Y = open succeeds, N = open fails with error code 05h</span><br><span class="line">   C = open fails, INT 24 generated</span><br><span class="line">   1 = open succeeds if file read-only, else fails with error code</span><br><span class="line">   2 = open succeeds if file read-only, else fails with INT 24</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1322,#3760</span><br><span class="line"></span><br><span class="line">(Table 3760)</span><br><span class="line">Values for DOS 7.x file sharing behavior:</span><br><span class="line">     | Second and subsequent Opens</span><br><span class="line"> First   |Compat    Deny      Deny  Deny      Deny</span><br><span class="line"> Open    |      All       Write     Read      None</span><br><span class="line">     |R W RW A  R W RW A  R W RW A  R W RW A  R W RW A</span><br><span class="line"> - - - - -| - - - - - - - - - - - - - - - - - - - - - - - -</span><br><span class="line"> Compat R |Y Y Y Y   N N N N   Y N N Y  N N N Y   Y N N Y</span><br><span class="line">   W |Y Y Y C   N N N N   N N N N   N N N Y   Y N N Y</span><br><span class="line">   RW|Y Y Y C   N N N N   N N N N   N N N Y   Y N N Y</span><br><span class="line">   NA|Y C C Y   N N N N   Y N N Y   N N N Y   Y N N Y</span><br><span class="line"> - - - - -|</span><br><span class="line"> Deny  R |C C C C   N N N N   N N N N   N N N N   N N N N</span><br><span class="line"> All   W |C C C C   N N N N   N N N N   N N N N   N N N N</span><br><span class="line">   RW|C C C C   N N N N   N N N N   N N N N   N N N N</span><br><span class="line">   NA|C C C C   N N N N   N N N N   N N N N   N N N N</span><br><span class="line"> - - - - -|</span><br><span class="line"> Deny  R |Y C C Y   N N N N   Y N N Y   N N N Y   Y N N Y</span><br><span class="line"> Write W |C C C C   N N N N   N N N N   Y N N Y   Y N N Y</span><br><span class="line">   RW|C C C C   N N N N   N N N N   N N N Y   Y N N Y</span><br><span class="line">   NA|Y C C Y   N N N N   Y N N Y   N N N Y   Y N N Y</span><br><span class="line"> - - - - -|</span><br><span class="line"> Deny  R |C C C C   N N N N   N Y N N   N N N N   N Y N N</span><br><span class="line"> Read  W |C C C C   N N N N   N N N N   N Y N N   N Y N N</span><br><span class="line">   RW|C C C C   N N N N   N N N N   N N N N   N Y N N</span><br><span class="line">   NA|Y Y Y Y   N N N N   Y Y Y Y   N N N Y   Y Y Y Y</span><br><span class="line"> - - - - -|</span><br><span class="line"> Deny  R |Y Y Y Y   N N N N   Y Y Y Y   N N N Y   Y Y Y Y</span><br><span class="line"> None  W |C C C C   N N N N   N N N N   Y Y Y Y   Y Y Y Y</span><br><span class="line">   RW|C C C C   N N N N   N N N N   N N N Y   Y Y Y Y</span><br><span class="line">   NA|Y Y Y Y   N N N N   Y Y Y Y   N N N Y   Y Y Y Y</span><br><span class="line">Legend: R -&gt; reading, W -&gt; writing, RW -&gt; both reading &amp; writing,</span><br><span class="line">   A/NA -&gt; reading without access time update</span><br><span class="line">   Y = open succeeds, N = open fails with error code 05h</span><br><span class="line">   C = open fails, INT 24 generated</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1091,#1322</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

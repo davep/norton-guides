@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-65602.html">
+    <link rel="next" href="perl-67307.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-65602.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-67307.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>PERL</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="perl-90961.html">Languages</a></li>
+                  <li><a href="perl-159711.html">Command line options</a></li>
+                  <li><a href="perl-170094.html">Regular Expressions</a></li>
+                  <li><a href="perl-171332.html">Special Variables</a></li>
+                  <li><a href="perl-188582.html">Operators</a></li>
+                  <li><a href="perl-197905.html">Debugging</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tables</li>
+              <li>
+                <ul>
+                  <li><a href="perl-204383.html">ASCII Chart</a></li>
+                  <li><a href="perl-207014.html">Literals</a></li>
+                  <li><a href="perl-207867.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">     sort(SUBROUTINE LIST)</span><br><span class="line"></span><br><span class="line">     sort(LIST)</span><br><span class="line"></span><br><span class="line">     sort SUBROUTINE LIST</span><br><span class="line"></span><br><span class="line">     sort LIST</span><br><span class="line"></span><br><span class="line">             Sorts the LIST and returns the sorted  array  value.</span><br><span class="line">             Nonexistent  values  of arrays are stripped out.  If</span><br><span class="line">             SUBROUTINE is omitted, sorts in standard string com-</span><br><span class="line">             parison  order.   If  SUBROUTINE is specified, gives</span><br><span class="line">             the name of a subroutine  that  returns  an  integer</span><br><span class="line">             less than, equal to, or greater than 0, depending on</span><br><span class="line">             how the elements of the array  are  to  be  ordered.</span><br><span class="line">             (The  &lt;=&gt;  and cmp operators are extremely useful in</span><br><span class="line">             such routines.)  In the interests of efficiency  the</span><br><span class="line">             normal  calling  code  for  subroutines is bypassed,</span><br><span class="line">             with the following effects: the subroutine  may  not</span><br><span class="line">             be  a  recursive subroutine, and the two elements to</span><br><span class="line">             be compared are passed into the subroutine  not  via</span><br><span class="line">             @_  but  as $a and $b (see example below).  They are</span><br><span class="line">             passed by reference so don&#39;t modify $a and $b.  SUB-</span><br><span class="line">             ROUTINE may be a scalar variable name, in which case</span><br><span class="line">             the value provides the name  of  the  subroutine  to</span><br><span class="line">             use.  Examples:</span><br><span class="line"></span><br><span class="line">                  sub byage {</span><br><span class="line">                      $age{$a} &lt;=&gt; $age{$b};    # presuming integers</span><br><span class="line">                  }</span><br><span class="line">                  @sortedclass = sort byage @class;</span><br><span class="line"></span><br><span class="line">                  sub reverse { $b cmp $a; }</span><br><span class="line">                  @harry = (&#39;dog&#39;,&#39;cat&#39;,&#39;x&#39;,&#39;Cain&#39;,&#39;Abel&#39;);</span><br><span class="line">                  @george = (&#39;gone&#39;,&#39;chased&#39;,&#39;yz&#39;,&#39;Punished&#39;,&#39;Axed&#39;);</span><br><span class="line">                  print sort @harry;</span><br><span class="line">                       # prints AbelCaincatdogx</span><br><span class="line">                  print sort reverse @harry;</span><br><span class="line">                       # prints xdogcatCainAbel</span><br><span class="line">                  print sort @george, &#39;to&#39;, @harry;</span><br><span class="line">                       # prints AbelAxedCainPunishedcatchaseddoggonetoxyz</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="perl-59353.html">reverse</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:49</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

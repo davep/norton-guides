@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-371206.html">
+    <link rel="next" href="progref-375033.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-371206.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-350222.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-375033.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 13h,  08h (8)        Get Current Drive Parameters                   fixed</span></span><br><span class="line"></span><br><span class="line">    Reports disk drive parameters, such as the number of heads, tracks,</span><br><span class="line">    and sectors per track.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">On entry:</span>      AH         08h</span><br><span class="line">                      DL         Drive number</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Returns:</span>       CH         Maximum value for cylinder (10-bit value;</span><br><span class="line">                                 upper 2 bits in CL)</span><br><span class="line">                      CL         Maximum value for sector</span><br><span class="line">                      DH         Maximum value for heads</span><br><span class="line"></span><br><span class="line"><span class="ngb">       For Fixed Disks:</span></span><br><span class="line">                      AH         Status of operation (See Service 01h)</span><br><span class="line">                      DL         Number of fixed disks</span><br><span class="line">                      CF         Set if error; otherwise cleared</span><br><span class="line"></span><br><span class="line"><span class="ngb">       For Diskettes:</span></span><br><span class="line">                      AX         0</span><br><span class="line">                      BL         Bits 7 to 4 = 0</span><br><span class="line">                                 Bits 3 to 0 ── Valid drive type in CMOS (See</span><br><span class="line">                                 below)</span><br><span class="line">                      BH         0</span><br><span class="line">                      DL         Number of diskettes</span><br><span class="line">                      ES:DI      Pointer to 11-byte Diskette Drive Parameter</span><br><span class="line">                                 Table.</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Notes:</span>         This service is available for diskettes on PC</span><br><span class="line">                      Convertibles, XT-286s, and ATs dated after 1/10/84.</span><br><span class="line">                      All machines support the fixed disk mode of this</span><br><span class="line">                      service.</span><br><span class="line"></span><br><span class="line">                      Values in DL less than 80h specify diskettes; values</span><br><span class="line">                      greater than 80h specify fixed disks. For example, 0</span><br><span class="line">                      means the first diskette, while 80h means the first</span><br><span class="line">                      fixed disk.</span><br><span class="line"></span><br><span class="line">                      The cylinder number is a ten-bit quantity (0 through</span><br><span class="line">                      1023). Its most significant two bits are in bits 7</span><br><span class="line">                      and 6 of CL; the remaining eight bits are in CH. The</span><br><span class="line">                      starting sector number fits in the low-order portion</span><br><span class="line">                      (lower 6 bits) of CL.</span><br><span class="line"></span><br><span class="line">                      If the drive is a fixed disk and there is an error,</span><br><span class="line">                      the Carry Flag will be set. If the drive number is</span><br><span class="line">                      invalid, AH will be equal to 7. And if no fixed disk</span><br><span class="line">                      drive is present or the fixed disk drive adapter is</span><br><span class="line">                      not installed, AH will be equal to 1.</span><br><span class="line"></span><br><span class="line">                      If the drive is a diskette and there is an error,</span><br><span class="line">                      then:</span><br><span class="line"></span><br><span class="line">                      If the drive type is known but 1) the CMOS is invalid,</span><br><span class="line">                      not present, 2) the battery is discharged, or 3) the</span><br><span class="line">                      CMOS checksum is invalid, then all registers will</span><br><span class="line">                      contain valid information, but BL will be 0.</span><br><span class="line"></span><br><span class="line">                      If the drive type is not known or the requested drive</span><br><span class="line">                      is not installed, then BX, CX, DH, ES, and DI will all</span><br><span class="line">                      be 0. DL will contain the number of diskette drives.</span><br><span class="line"></span><br><span class="line"><span class="ngb">                          Valid Diskette Drive Types in CMOS</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">                               BL (bits 3-0)      Meaning</span></span><br><span class="line">                                    00h           Unknown drive type</span><br><span class="line">                                    01h           360K,  5.25 inch, 40 track</span><br><span class="line">                                    02h           1.2M,  5.25 inch, 80 track</span><br><span class="line">                                    03h           720K,  3.5 inch,  80 track</span><br><span class="line">                                    04h           1.44M, 3.5 inch,  80 track</span><br><span class="line"></span><br><span class="line">                      For the AT, XT-286, and PC Convertible, the BIOS</span><br><span class="line">                      executes INT 15h, Service 90h (Device Busy), for the</span><br><span class="line">                      diskette (Type = 01h) and the fixed disk (Type =</span><br><span class="line">                      00h) prior to waiting for the interrupt. INT 15h,</span><br><span class="line">                      Service 91h (Interrupt Complete), is executed upon</span><br><span class="line">                      completion. Also diskette operations that require</span><br><span class="line">                      the diskette motor to be on will call INT 15h,</span><br><span class="line">                      Service 90 (Device Busy), with the type equal to</span><br><span class="line">                      &#34;Diskette Drive Motor Start&#34; (Type = FDh). This</span><br><span class="line">                      allows the system to perform another task while the</span><br><span class="line">                      drive motor is waiting to get up to speed.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

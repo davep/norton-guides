@@ -1,0 +1,168 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » BIOS Interrupts</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    <link rel="prev" href="progref-382181.html">
+    <link rel="next" href="progref-385031.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><a href="progref-382181.html">Previous</a></li>
+
+
+          
+
+<li><a href="progref-350222.html">Up</a></li>
+
+
+          
+
+<li><a href="progref-385031.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">INT 13h,  0Dh (13)       Alternate Disk Reset                      fixed disk</span></span><br><span class="line"></span><br><span class="line">    Resets the fixed disk controller and drives, forcing recalibration of</span><br><span class="line">    the read/write heads. This service can be performed on fixed disks</span><br><span class="line">    only.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">On entry:</span>      AH         0Dh</span><br><span class="line">                      DL         Drive number (Bit 7 must be set)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Returns:</span>       AH         Status of operation (See Service 01h)</span><br><span class="line">                      CF         Set if error, else cleared</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Notes:</span>         See Service 00h for a more generalized version of</span><br><span class="line">                      this service.</span><br><span class="line"></span><br><span class="line">                      A fixed disk reset is only executed if the value in</span><br><span class="line">                      DL is less than or equal to the last fixed disk on</span><br><span class="line">                      the system. That is, the lower 7 bits of DL should</span><br><span class="line">                      be less than or equal to the number of fixed disks.</span><br><span class="line">                      the system. That is, the lower 7 bits of DL should</span><br><span class="line">                      be less than or equal to the number of fixed disks.</span><br><span class="line"></span><br><span class="line">                      For the AT, XT-286, and PC Convertible, the BIOS</span><br><span class="line">                      executes INT 15h, Service 90h (Device Busy), for the</span><br><span class="line">                      diskette (Type = 01h) and the fixed disk (Type =</span><br><span class="line">                      00h) prior to waiting for the interrupt. INT 15h,</span><br><span class="line">                      Service 91h (Interrupt Complete), is executed upon</span><br><span class="line">                      completion.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-351477.html">INT 13h,  00h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-353185.html">INT 13h,  01h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="progref-385841.html">INT 13h,  11h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,144 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-91545.html">
+    <link rel="next" href="tasm4-97291.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-91545.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-97291.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">SETFIELD         Set record field value                             Extension</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">SETFIELD</span> field_name destination_r/m, source_reg</span><br><span class="line"></span><br><span class="line">    Generates code that sets a value in a record field. Sets the field in</span><br><span class="line">    the destination register or memory address with the contents of a</span><br><span class="line">    source register. Source register must be a register of the same size</span><br><span class="line">    as destination_r/m or smaller; if smaller, it must be the least</span><br><span class="line">    significant part of another register that is the same size as the</span><br><span class="line">    destination.</span><br><span class="line">    To perform its function, SETFIELD generates a series of XOR, XCHG,</span><br><span class="line">    ROL, ROR, OR, and MOVZX instructions. The contents of source_reg</span><br><span class="line">    are changed.</span><br><span class="line"></span><br><span class="line">    If you&#39;re using SETFIELD when your source and target registers are</span><br><span class="line">    the same, the instruction does not OR the source value to itself.</span><br><span class="line">    Instead, SETFIELD ensures that the fields of the target register not</span><br><span class="line">    being set will be zero.</span><br><span class="line"></span><br><span class="line">    SETFIELD does not attempt to clear the target field before ORing the</span><br><span class="line">    new value. If this is necessary, you must explicitly clear the field</span><br><span class="line">    (using MASKFLAG).</span><br><span class="line"></span><br><span class="line">    Example:    RECORD FiDate year:7, month:4, day:5</span><br><span class="line">                sub      dx,dx                ; Clear all fields</span><br><span class="line">                setfield year   dx,bx         ; (bx changed)</span><br><span class="line">                setfield month  dx,cx         ; (cx changed)</span><br><span class="line">                setfield day    dx,al</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-87522.html">RECORD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-37700.html">ENUM</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-48702.html">GETFIELD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-64085.html">MASKFLAG</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-118957.html">Xtensions</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

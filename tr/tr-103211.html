@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-102558.html">
+    <link rel="next" href="tr-104654.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-102558.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-104654.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> STREET(&lt;C street address&gt;)</span><br><span class="line"> Orders a database by street name.</span><br><span class="line"> Returns &lt;expC&gt; street name from &lt;street address&gt;.</span><br><span class="line"></span><br><span class="line"> Returned street name is uppercase and padded with trailing</span><br><span class="line"> blank spaces to be the same length as &lt;street address&gt; so</span><br><span class="line"> that index keys will have a consistent case and length.</span><br><span class="line"></span><br><span class="line"> Useful in creating a street directory of addresses.</span><br><span class="line"></span><br><span class="line"> If the first non-space character in &lt;street address&gt; is a digit,</span><br><span class="line"> all characters before the second word are ignored; if the second</span><br><span class="line"> word is a North, South, East, or West direction, it too is ignored.</span><br><span class="line"> Otherwise, the first word in &lt;street address&gt; is considered to</span><br><span class="line"> begin the street name.</span><br><span class="line"></span><br><span class="line"> Fails on                Use instead</span><br><span class="line"> ═════════════════════   ═════════════════════</span><br><span class="line"> One Snobby Court        1 Snobby Court</span><br><span class="line"> 123 1/2 31st Street     123-1/2 31st Street</span><br><span class="line"> 123 N.E. Central Ave.   123 Central Ave. N.E.</span><br><span class="line"> 123 North Street        123 East North Street</span><br><span class="line"> 69th Street Main        Main 69th Street</span><br><span class="line"> 6th Street 34th         Sixth Street 34th</span><br><span class="line"></span><br><span class="line"> * Examples assume an open database file</span><br><span class="line"></span><br><span class="line"> * Street directory</span><br><span class="line"> INDEX ON STREET( Address ) TO Streets</span><br><span class="line"> m_street = SPACE(16)</span><br><span class="line"> @...SAY &#34;Enter street name&#34; GET m_street</span><br><span class="line"> READ</span><br><span class="line"> SEEK UPPER(m_street)</span><br><span class="line"></span><br><span class="line"> * Street directory by city</span><br><span class="line"> INDEX ON City + STREET( Address ) TO Cty_strt</span><br><span class="line"> STORE SPACE(16) TO m_street, m_city</span><br><span class="line"> @...SAY &#34;Enter city name&#34; GET m_city</span><br><span class="line"> @...SAY &#34;Enter street name&#34; GET m_street</span><br><span class="line"> READ</span><br><span class="line"> SEEK UPPER(m_city + m_street)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3573889.html">
+    <link rel="next" href="rbint-3575772.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3573889.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3575772.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F  - Ross Wentworth&#39;s Turbo Pascal Popup Library                    </span>  [<span class="ngb">t</span>]</span><br><span class="line"></span><br><span class="line">   AH = programmer-selected multiplex number</span><br><span class="line">   AL = function</span><br><span class="line">       00h installation check</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AL = FFh if installed</span><br><span class="line">       01h get TSR interrupt vectors</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> DX:AX -&gt; vector table (see #2274)</span><br><span class="line">       02h get TSR code segment</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = code segment for all interrupt handlers</span><br><span class="line">       03h call user exit routine and release TSR&#39;s memory</span><br><span class="line">       04h get signature string</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> DX:AX -&gt; counted string containing signature</span><br><span class="line">       05h get TSR&#39;s INT 2F handler</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> DX:AX -&gt; INT 2F handler</span><br><span class="line">       06h enable/disable TSR</span><br><span class="line">       BL = new state (00h disabled, 01h enabled)</span><br><span class="line">       07h activate TSR (popup if not disabled)</span><br><span class="line">       08h get hotkeys</span><br><span class="line">       BL = which hotkey (00h = hotkey 1, 01h = hotkey 2)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = hotkey (AH = keyflags, AL = scancode)</span><br><span class="line">       09h set hotkey</span><br><span class="line">       BL = which hotkey (00h = hotkey 1, 01h = hotkey 2)</span><br><span class="line">       CX = new hotkey (CH = keyflags, CL = scancode)</span><br><span class="line">       0Ah-1Fh reserved</span><br><span class="line">Index: installation check;Ross Wentworth POPUP library</span><br><span class="line">Index: hotkeys;Ross Wentworth POPUP library</span><br><span class="line"></span><br><span class="line">Format of POPUP vector table entry:</span><br><span class="line">Offset Size    Description (Table 2274)</span><br><span class="line"> 00h   BYTE    vector number (00h = end of table)</span><br><span class="line"> 01h   DWORD   original vector</span><br><span class="line"> 05h   WORD    offset of interrupt handler in TSR&#39;s code segment</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

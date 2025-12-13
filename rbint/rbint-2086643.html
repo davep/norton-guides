@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2086458.html">
+    <link rel="next" href="rbint-2091796.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2086458.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2091796.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 0F  - Dos 1+ - Open File Using Fcb                             </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 0Fh</span><br><span class="line">   DS:DX -&gt; unopened File Control Block (see #1034,#1035)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status</span><br><span class="line">       00h successful</span><br><span class="line">       FFh file not found or access denied</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> (DOS 3.1+) file opened for read/write in compatibility mode</span><br><span class="line">   an unopened FCB has the drive, filename, and extension fields filled</span><br><span class="line">     in and all other bytes cleared</span><br><span class="line">   not supported by MS Windows 3.0 DOSX.EXE DOS extender</span><br><span class="line">   DR DOS checks password attached with AX=4303h</span><br><span class="line">   (FAT32 drive) this function will only succeed for creating a volume</span><br><span class="line">     label; FAT32 does not support FCBs for file I/O</span><br><span class="line">BUG:   APPEND for DOS 3.3+ corrupts DX if the file is not found</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=10h,AH=16h,AH=3Dh,AX=4303h</span><br><span class="line"></span><br><span class="line">Format of File Control Block:</span><br><span class="line">Offset Size    Description (Table 1034)</span><br><span class="line"> 00h   BYTE    drive number (0 = default, 1 = A, etc)</span><br><span class="line">       FFh is not allowed (signals extended FCB, see #1035)</span><br><span class="line"> 01h  8 BYTEs  blank-padded file name</span><br><span class="line"> 09h  3 BYTEs  blank-padded file extension</span><br><span class="line"> 0Ch   WORD    current block number</span><br><span class="line"> 0Eh   WORD    logical record size</span><br><span class="line"> 10h   DWORD   file size</span><br><span class="line"> 14h   WORD    date of last write (see #1352 at AX=5700h)</span><br><span class="line"> 16h   WORD    time of last write (see #1351 at AX=5700h) (DOS 1.1+)</span><br><span class="line"> 18h  8 BYTEs  reserved (see #1036,#1037,#1038,#1039,#1040)</span><br><span class="line"> 20h   BYTE    record within current block</span><br><span class="line"> 21h   DWORD   random access record number (if record size is &gt; 64 bytes, high</span><br><span class="line">         byte is omitted)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1035</span><br><span class="line"></span><br><span class="line">Format of Extended File Control Block (XFCB):</span><br><span class="line">Offset Size    Description (Table 1035)</span><br><span class="line"> 00h   BYTE    FFh signature for extended FCB</span><br><span class="line"> 01h  5 BYTEs  reserved</span><br><span class="line"> 06h   BYTE    file attribute if extended FCB</span><br><span class="line"> 07h 36 BYTEs  standard FCB (all offsets are shifted by seven bytes)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0942</span><br><span class="line"></span><br><span class="line">Format of FCB reserved field for DOS 1.0:</span><br><span class="line">Offset Size    Description (Table 1036)</span><br><span class="line"> 16h   WORD    location in directory (if high byte = FFh, low byte is device</span><br><span class="line">         ID)</span><br><span class="line"> 18h   WORD    number of first cluster in file</span><br><span class="line"> 1Ah   WORD    current absolute cluster number on disk</span><br><span class="line"> 1Ch   WORD    current relative cluster number within file</span><br><span class="line">       (0 = first cluster of file, 1 = second cluster, etc.)</span><br><span class="line"> 1Eh   BYTE    dirty flag (00h = not dirty)</span><br><span class="line"> 1Fh   BYTE    unused</span><br><span class="line"></span><br><span class="line">Format of FCB reserved field for DOS 1.10-1.25:</span><br><span class="line">Offset Size    Description (Table 1037)</span><br><span class="line"> 18h   BYTE    bit 7: set if logical device</span><br><span class="line">       bit 6: not dirty</span><br><span class="line">       bits 5-0: disk number or logical device ID</span><br><span class="line"> 19h   WORD    starting cluster number on disk</span><br><span class="line"> 1Bh   WORD    current absolute cluster number on disk</span><br><span class="line"> 1Dh   WORD    current relative cluster number within file</span><br><span class="line"> 1Fh   BYTE    unused</span><br><span class="line"></span><br><span class="line">Format of FCB reserved field for DOS 2.x:</span><br><span class="line">Offset Size    Description (Table 1038)</span><br><span class="line"> 18h   BYTE    bit 7: set if logical device</span><br><span class="line">       bit 6: set if open???</span><br><span class="line">       bits 5-0: ???</span><br><span class="line"> 19h   WORD    starting cluster number on disk</span><br><span class="line"> 1Bh   WORD    ???</span><br><span class="line"> 1Dh   BYTE    ???</span><br><span class="line"> 1Eh   BYTE    ???</span><br><span class="line"> 1Fh   BYTE    ???</span><br><span class="line"></span><br><span class="line">Format of FCB reserved field for DOS 3.x:</span><br><span class="line">Offset Size    Description (Table 1039)</span><br><span class="line"> 18h   BYTE    number of system file table entry for file</span><br><span class="line"> 19h   BYTE    attributes</span><br><span class="line">       bits 7,6: 00 = SHARE.EXE not loaded, disk file</span><br><span class="line">             01 = SHARE.EXE not loaded, character device</span><br><span class="line">             10 = SHARE.EXE loaded, remote file</span><br><span class="line">             11 = SHARE.EXE loaded, local file or device</span><br><span class="line">       bits 5-0: low six bits of device attribute word</span><br><span class="line">---SHARE.EXE loaded, local file---</span><br><span class="line"> 1Ah   WORD    starting cluster of file on disk</span><br><span class="line"> 1Ch   WORD    (DOS 3.x) offset within SHARE of sharing record</span><br><span class="line">         (see #1323 at AH=52h)</span><br><span class="line"> 1Eh   BYTE    file attribute</span><br><span class="line"> 1Fh   BYTE    ???</span><br><span class="line">---SHARE.EXE loaded, remote file---</span><br><span class="line"> 1Ah   WORD    number of sector containing directory entry (see #1041)</span><br><span class="line"> 1Ch   WORD    relative cluster within file of last cluster accessed</span><br><span class="line"> 1Eh   BYTE    absolute cluster number of last cluster accessed</span><br><span class="line"> 1Fh   BYTE    ???</span><br><span class="line">---SHARE.EXE not loaded---</span><br><span class="line"> 1Ah   BYTE    (low byte of device attribute word AND 0Ch) OR open mode</span><br><span class="line"> 1Bh   WORD    starting cluster of file</span><br><span class="line"> 1Dh   WORD    number of sector containing directory entry (see #1041)</span><br><span class="line"> 1Fh   BYTE    number of directory entry within sector</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  if FCB opened on character device, DWORD at 1Ah is set to the address</span><br><span class="line">     of the device driver header, then the BYTE at 1Ah is overwritten.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1332</span><br><span class="line"></span><br><span class="line">Format of FCB reserved field for DOS 5.0:</span><br><span class="line">Offset Size    Description (Table 1040)</span><br><span class="line"> 18h   BYTE    number of system file table entry for file</span><br><span class="line"> 19h   BYTE    attributes</span><br><span class="line">       bits 7,6: 00 = SHARE.EXE not loaded, disk file</span><br><span class="line">             01 = SHARE.EXE not loaded, character device</span><br><span class="line">             10 = SHARE.EXE loaded, remote file</span><br><span class="line">             11 = SHARE.EXE loaded, local file or device</span><br><span class="line">       bits 5-0: low six bits of device attribute word</span><br><span class="line">---SHARE.EXE loaded, local file---</span><br><span class="line"> 1Ah   WORD    starting cluster of file on disk</span><br><span class="line"> 1Ch   WORD    unique sequence number of sharing record</span><br><span class="line"> 1Eh   BYTE    file attributes</span><br><span class="line"> 1Fh   BYTE    unused???</span><br><span class="line">---SHARE.EXE loaded, remote file---</span><br><span class="line"> 1Ah   WORD    network handle</span><br><span class="line"> 1Ch   DWORD   network ID</span><br><span class="line">---SHARE not loaded, local device---</span><br><span class="line"> 1Ah   DWORD   pointer to device driver header (see #1332)</span><br><span class="line"> 1Eh  2 BYTEs  unused???</span><br><span class="line">---SHARE not loaded, local file---</span><br><span class="line"> 1Ah   BYTE    extra info</span><br><span class="line">       bit 7: read-only attribute from SFT</span><br><span class="line">       bit 6: archive attribute from SFT</span><br><span class="line">       bits 5-0: high bits of sector number</span><br><span class="line"> 1Bh   WORD    starting cluster of file</span><br><span class="line"> 1Dh   WORD    low word of sector number containing directory entry</span><br><span class="line">       (see #1041)</span><br><span class="line"> 1Fh   BYTE    number of directory entry within sector</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

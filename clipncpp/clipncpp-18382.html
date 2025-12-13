@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » C/C++ » Using C</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-17580.html">
+    <link rel="next" href="clipncpp-22768.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-17580.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-22768.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Example 1</span></span><br><span class="line"></span><br><span class="line"> This program demonstrates how to receive parameters passed from a</span><br><span class="line"> Clipper application, from within C, using the Clipper Extend system.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /***</span><br><span class="line"> *   Test.prg</span><br><span class="line"> *</span><br><span class="line"> *   By: Scott McIntosh, Nantucket Corp.</span><br><span class="line"> *</span><br><span class="line"> *   Program to test the TestC.c program.</span><br><span class="line"> *</span><br><span class="line"> *   Compile: CLIPPER test /n /a /w</span><br><span class="line"> *</span><br><span class="line"> *      Link: RTLINK FI test, testc LIB clipper, llibca /NOE</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"> PROCEDURE Main()</span><br><span class="line"></span><br><span class="line">    // define a set of misc. data to check the C function with.</span><br><span class="line">    // The array in aVar1 contains a nested array. The nested array</span><br><span class="line">    // can not be accessed through the extend system!</span><br><span class="line">    //</span><br><span class="line">    LOCAL aVar1 := { &#34;Hello, world&#34;, 12, DATE(), .F., { &#34;One&#34;, &#34;Two&#34; } }</span><br><span class="line">    LOCAL nVar1 := 1234</span><br><span class="line">    LOCAL cVar1 := &#34;This string is bigger than 30 characters!&#34;</span><br><span class="line">    LOCAL dVar1 := DATE()</span><br><span class="line">    LOCAL lVar1 := .T.</span><br><span class="line">    LOCAL xVar</span><br><span class="line"></span><br><span class="line">    // and create a new set of data to pass by reference</span><br><span class="line">    //</span><br><span class="line">    LOCAL aVar2 := { &#34;First Element&#34;, &#34;Second Element&#34;, &#34;Third Element&#34; }</span><br><span class="line">    LOCAL nVar2 := -1234</span><br><span class="line">    LOCAL cVar2 := &#34;A shorter string&#34;</span><br><span class="line">    LOCAL dVar2 := CTOD( &#34;9/15/91&#34; )</span><br><span class="line">    LOCAL lVar2 := .F.</span><br><span class="line"></span><br><span class="line">    CLS</span><br><span class="line"></span><br><span class="line">    ExtendTest( aVar1,  nVar1,  cVar1,  dVar1,  lVar1, xVar,   ;</span><br><span class="line">                @aVar2, @nVar2, @cVar2, @dVar2, @lVar2, )</span><br><span class="line"></span><br><span class="line">    SETPOS( MAXROW(), 0 )</span><br><span class="line"></span><br><span class="line"> QUIT</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /***</span><br><span class="line"> *   TestC.c</span><br><span class="line"> *</span><br><span class="line"> *   By: Scott McIntosh, Nantucket Corp.</span><br><span class="line"> *</span><br><span class="line"> *   Demonstrates how to use the Clipper extend system to receive parameters</span><br><span class="line"> *   from Clipper.  This program simply displays the types and values of the</span><br><span class="line"> *   parameters that are passed to it.</span><br><span class="line"> *</span><br><span class="line"> *   Display is written to stdout and is DOS re-directable.</span><br><span class="line"> *</span><br><span class="line"> *   Compile: cl /AL /c /FPa /Gs /Oalt /Zl testc.c</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"> #include &#34;extend.h&#34;</span><br><span class="line"></span><br><span class="line"> CLIPPER ExtendTest( void )</span><br><span class="line"> {</span><br><span class="line">    int parNum;                     // current parameter number</span><br><span class="line">    int arrIndex;                   // current array index number</span><br><span class="line"></span><br><span class="line">      // process each parameter in turn</span><br><span class="line">    for( parNum = 1; parNum &lt;= PCOUNT; parNum++ )</span><br><span class="line">    {</span><br><span class="line">         // make sure the array index counter is zeroed</span><br><span class="line">       arrIndex = 0;</span><br><span class="line"></span><br><span class="line">         // display the current parameter number</span><br><span class="line">       cprintf(  &#34;\r\nParameter %2i    &#34;, parNum );</span><br><span class="line"></span><br><span class="line">         // show the type of the current parameter</span><br><span class="line">       ShowType( _parinfo( parNum ), parNum, arrIndex );</span><br><span class="line"></span><br><span class="line">       if( ISARRAY( parNum ) )</span><br><span class="line">       {</span><br><span class="line"></span><br><span class="line">            // parameter is an array - process each element in turn</span><br><span class="line">          for( arrIndex = 1; arrIndex &lt;= ALENGTH( parNum ); arrIndex++ )</span><br><span class="line">          {</span><br><span class="line">               // indent and display the current array element number</span><br><span class="line">             cprintf(  &#34;       Element %2i    &#34;, arrIndex );</span><br><span class="line"></span><br><span class="line">               // display the current array element type</span><br><span class="line">             ShowType( _parinfa( parNum, arrIndex ), parNum, arrIndex );</span><br><span class="line">          }</span><br><span class="line">       }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    _ret();</span><br><span class="line"></span><br><span class="line"> }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /***</span><br><span class="line"> *   ShowType( int parameterType, int parameterNumber, int arrayElement )</span><br><span class="line"> *</span><br><span class="line"> *   Processes parameters and the individual elements of array parameters.</span><br><span class="line"> *</span><br><span class="line"> *   Displays the numeric value of the data type of the parameter/element,</span><br><span class="line"> *   a text description of the type (i.e.: &#34;Character&#34; ), and the value of</span><br><span class="line"> *   the parameter/element.</span><br><span class="line"> *</span><br><span class="line"> *   The text description will be preceded with a &#34;@&#34; to indicate a</span><br><span class="line"> *   parameters that was passed by reference.</span><br><span class="line"> *</span><br><span class="line"> *   The following substitutions are made for the actual value of the</span><br><span class="line"> *   parameter/element:</span><br><span class="line"> *       Arrays     display  &#34;{...}&#34;</span><br><span class="line"> *       Logicals   display  0 or 1  ( 0 = .F., 1 = .T. )</span><br><span class="line"> *       Characters display  First 30 characters of the string</span><br><span class="line"> *       Undefines  display  &#34;???&#34;</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line"> void ShowType( int type, int param, int index )</span><br><span class="line"> {</span><br><span class="line"></span><br><span class="line">      // show the correct text description and value for the current item</span><br><span class="line">    switch ( type )</span><br><span class="line">    {</span><br><span class="line">       case UNDEF:</span><br><span class="line">          cprintf( &#34;Undefined    Value: ???\r\n&#34; );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case CHARACTER:</span><br><span class="line">          cprintf( &#34;Character    Value: %.30s\r\n&#34;, _parc( param, index ) );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case NUMERIC:</span><br><span class="line">          cprintf( &#34;Numeric      Value: %i\r\n&#34;, _parnl( param, index ) );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case LOGICAL:</span><br><span class="line">          cprintf( &#34;Logical      Value: %i\r\n&#34;, _parl( param, index ) );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case DATE:</span><br><span class="line">          cprintf( &#34;Date         Value: %s\r\n&#34;, _pards( param, index ) );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case ARRAY:</span><br><span class="line">          cprintf( &#34;Array        Value: {...}\r\n&#34; );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case (MPTR + UNDEF):</span><br><span class="line">          cprintf( &#34;@Undefined   Value: ???\r\n&#34; );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case (MPTR + CHARACTER):</span><br><span class="line">          cprintf( &#34;@Character   Value: %.30s\r\n&#34;, _parc( param, index ) );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case (MPTR + NUMERIC):</span><br><span class="line">          cprintf( &#34;@Numeric     Value: %i\r\n&#34;, _parni( param, index ) );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case (MPTR + LOGICAL):</span><br><span class="line">          cprintf( &#34;@Logical     Value: %i\r\n&#34;, _parl( param, index ) );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case (MPTR + DATE):</span><br><span class="line">          cprintf( &#34;@Date        Value: %s\r\n&#34;, _pards( param, index ) );</span><br><span class="line">          break;</span><br><span class="line"></span><br><span class="line">       case (MPTR + ARRAY):</span><br><span class="line">          cprintf( &#34;@Array       Value: {...}\r\n&#34; );</span><br><span class="line">          break;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    return;</span><br><span class="line"></span><br><span class="line"> }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> /* EOF: Example 1 */</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

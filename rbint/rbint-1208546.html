@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1208332.html">
+    <link rel="next" href="rbint-1211085.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1208332.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1061380.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1211085.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 13  - Multidos Plus - Get Task Control Block                   </span>  [<span class="ngb">T</span>]</span><br><span class="line"></span><br><span class="line">   AH = 13h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> BX:AX -&gt; task control block (see #0382)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=15h&#34;MultiDOS&#34;</span><br><span class="line"></span><br><span class="line">Format of MultiDOS Plus v4.0 task control block:</span><br><span class="line">Offset Size    Description (Table 0382)</span><br><span class="line"> 00h   DWORD   pointer to next TCB</span><br><span class="line"> 04h  8 BYTEs  ASCIZ task name</span><br><span class="line"> 0Ch  2 BYTEs  ???</span><br><span class="line"> 0Eh   WORD    task PSP segment</span><br><span class="line"> 10h   WORD    abort/suspend flags</span><br><span class="line"> 12h   WORD    current screen segment (see AH=0Bh,AH=0Ch)</span><br><span class="line"> 14h   WORD    priority level (0000h-FFFEh)</span><br><span class="line"> 16h   WORD    time slice counter</span><br><span class="line"> 18h  2 BYTEs  ???</span><br><span class="line"> 1Ah   WORD    suspend timer value</span><br><span class="line"> 1Ch   WORD    stack segment</span><br><span class="line"> 1Eh   WORD    stack pointer</span><br><span class="line"> 20h   WORD    display type</span><br><span class="line"> 22h   WORD    display memory</span><br><span class="line"> 24h  2 BYTEs  ???</span><br><span class="line"> 26h   WORD    termination count</span><br><span class="line"> 28h   WORD    equipment flag for BIO10 driver</span><br><span class="line"> 2Ah   BYTE    background CRT mode</span><br><span class="line"> 2Bh   WORD    screen width in columns</span><br><span class="line"> 2Dh   WORD    screen size in bytes</span><br><span class="line"> 2Fh   WORD    segment of physical screen memory</span><br><span class="line"> 31h 16 BYTEs  eight cursor positions</span><br><span class="line"> 41h   WORD    current cursor shape</span><br><span class="line"> 43h   BYTE    active display page</span><br><span class="line"> 44h   WORD    CRT controller I/O port base</span><br><span class="line"> 46h  2 BYTEs  ???</span><br><span class="line"> 48h   WORD    foreground task flag</span><br><span class="line"> 4Ah  6 BYTEs  ???</span><br><span class="line"> 50h   WORD    saved video segment (see AH=0Bh,AH=0Ch)</span><br><span class="line"> 52h   DWORD   old INT 22</span><br><span class="line"> 56h   DWORD   old INT 23</span><br><span class="line"> 5Ah   DWORD   old INT 24</span><br><span class="line"> 5Eh   WORD    top of memory for task</span><br><span class="line"> 60h  4 BYTEs  ???</span><br><span class="line"> 64h   WORD    DTA segment (see INT 21/AH=1Ah)</span><br><span class="line"> 66h   WORD    DTA offset</span><br><span class="line"> 68h  4 BYTEs  ???</span><br><span class="line"> 6Ch   BYTE    current ANSI.SYS attribute</span><br><span class="line"> 6Dh   BYTE    current ANSI.SYS column</span><br><span class="line"> 6Eh   BYTE    current ANSI.SYS row</span><br><span class="line"> 6Fh   BYTE    current ANSI.SYS display state</span><br><span class="line"> 70h   BYTE    maximum ANSI.SYS columns</span><br><span class="line"> 71h   BYTE    current ANSI.SYS page</span><br><span class="line"> 72h   WORD    saved ANSI.SYS cursor position</span><br><span class="line"> 74h   BYTE    ANSI.SYS parameter buffer index</span><br><span class="line"> 75h   BYTE    current ANSI.SYS screen mode</span><br><span class="line"> 76h   BYTE    ANSI.SYS wrap flag</span><br><span class="line"> 77h  6 BYTEs  ANSI.SYS parameter buffer</span><br><span class="line"> 7Dh   BYTE    ANSI.SYS keyboard DSR state</span><br><span class="line"> 7Eh  7 BYTEs  ANSI.SYS keyboard DSR buffer</span><br><span class="line"> 85h  3 BYTEs  ???</span><br><span class="line"> 88h 16 BYTEs  request header for DOS driver calls</span><br><span class="line"> 98h 14 BYTEs  ???</span><br><span class="line"> A6h   WORD    segment of EMS map if EMS task</span><br><span class="line"> A8h   WORD    flag: task makes EMS calls</span><br><span class="line"> AAh   WORD    EMS handle for task</span><br><span class="line"> ACh   WORD    keyboard shift state</span><br><span class="line"> AEh 12 BYTEs  ???</span><br><span class="line"> BAh   WORD    TCB of parent if child task</span><br><span class="line"> BCh   WORD    termination code</span><br><span class="line"> BEh   WORD    COM port number</span><br><span class="line"> C0h  4 BYTEs  ???</span><br><span class="line"> C4h   WORD    current IRQ number</span><br><span class="line"> C6h  2 BYTEs  ???</span><br><span class="line"> C8h   WORD    miscellaneous flag word</span><br><span class="line"> CAh  2 BYTEs  ???</span><br><span class="line"> CCh   DWORD   old INT 10</span><br><span class="line"> D0h   WORD    EMS alternate map set number</span><br><span class="line"> D2h 414 BYTEs DOS current disk and directory context (optional)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

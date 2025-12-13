@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-48917.html">
+    <link rel="next" href="click-54740.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-48917.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-54740.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Getting Started</a></li>
+                  <li><a href="click-10263.html">Features</a></li>
+                  <li><a href="click-15048.html">Click .INI file</a></li>
+                  
+                </ul>
+              </li>
+              <li>Support</li>
+              <li>
+                <ul>
+                  <li><a href="click-32383.html">Support</a></li>
+                  <li><a href="click-34012.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Commands with a length of 4 or less were not being recognized correctly.</span><br><span class="line"></span><br><span class="line">This is fixed.</span><br><span class="line"></span><br><span class="line">index on DEPARTMENT to( TEMPRECP )</span><br><span class="line"></span><br><span class="line">now processes into:</span><br><span class="line"></span><br><span class="line">index on DEPARTMENT to ( TEMPRECP )</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Added the ability to force recreation of the CLICK.DBF and CLICK.NSX</span><br><span class="line">files. Any of the following methods...</span><br><span class="line"></span><br><span class="line">CLICK /REBUILD  &lt;Enter&gt;</span><br><span class="line">CLICK /UPDATE   &lt;Enter&gt;</span><br><span class="line">CLICK CLICK.DBF &lt;Enter&gt;</span><br><span class="line"></span><br><span class="line">...will rebuild these two files ( according to the master CLICK.INI )</span><br><span class="line">and quit.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Added more options for scanning libraries for function cross reference.</span><br><span class="line"></span><br><span class="line">1: You specify that you want to use the LIB= environment path. (this is</span><br><span class="line">   the way it worked before.)</span><br><span class="line"></span><br><span class="line">2: You specify a path or set of paths, just like the environment, except</span><br><span class="line">   in CLICK.INI.</span><br><span class="line"></span><br><span class="line">3: You specify that you want CLICK.EXE to search your hard drive for</span><br><span class="line">   every library in every directory, even including multiple drives and</span><br><span class="line">   network drives. This one might take longer, but creates the ultimate</span><br><span class="line">   cross reference.</span><br><span class="line"></span><br><span class="line">// options are ENVIRONMENT, (specified path), DRIVES</span><br><span class="line">//MAKE_CLICK_DBF_FROM=ENVIRONMENT</span><br><span class="line">//MAKE_CLICK_DBF_FROM=C:\CLIPPER5\LIB;E:\GRUMP52\LIB;F:\FUNCKY\LIB</span><br><span class="line">MAKE_CLICK_DBF_FROM=DRIVES</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">If you select DRIVES in the above step, you can limit how deep the</span><br><span class="line">recursion level will go with...</span><br><span class="line"></span><br><span class="line">RECURSION_LIMIT=N</span><br><span class="line"></span><br><span class="line">... means that it will only recurse the first N-1 levels and will skip</span><br><span class="line">all N level directories and below.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">If you created a custom CLICK.INI file and placed it in a local</span><br><span class="line">directory, CLICK.EXE wanted to build another copy of CLICK.DBF and</span><br><span class="line">CLICK.NSX. This is corrected, so no matter how many copies of CLICK.INI</span><br><span class="line">you have, there is only one master function to library cross reference.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Added ability to turn off the DBCREATE( aligner and leave other sections</span><br><span class="line">of The Aligner working. From CLICK.INI...</span><br><span class="line"></span><br><span class="line">ALIGN_DBCREATE_IN_THE_ALIGNER=YES</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Tightened up the code which decides if a DBCREATE follows a prescribed</span><br><span class="line">pattern, and avoids alignment if this pattern is not found.</span><br><span class="line"></span><br><span class="line">The Aligner will now only align DBCREATE() arrays if they follow the</span><br><span class="line">format shown here.</span><br><span class="line"></span><br><span class="line">So, this:</span><br><span class="line"></span><br><span class="line">dbcreate( &#39;filename.dbf&#39;, { { &#39;xxxxx&#39;, &#39;C&#39;, 23, 0 }, ;</span><br><span class="line">                            { &#39;yyy&#39;, &#39;D&#39;, 8, 0 }, ;</span><br><span class="line">                            { &#39;yy&#39;, &#39;C&#39;, 8, 0 }, ;</span><br><span class="line">                            { &#39;yuu&#39;, &#39;D&#39;, 8, 0 }, ;</span><br><span class="line">                            { &#39;yijiiiyy&#39;, &#39;N&#39;, 9, 2 }, ;</span><br><span class="line">                            { &#39;yhhfyy&#39;, &#39;D&#39;, 8, 0 } } )</span><br><span class="line"></span><br><span class="line">ends up looking like this:</span><br><span class="line"></span><br><span class="line">dbcreate( &#39;FILENAME.DBF&#39;, { { &#39;XXXXX&#39;   , &#39;C&#39;, 23, 0 }, ;</span><br><span class="line">                            { &#39;YYY&#39;     , &#39;D&#39;,  8, 0 }, ;</span><br><span class="line">                            { &#39;YY&#39;      , &#39;C&#39;,  8, 0 }, ;</span><br><span class="line">                            { &#39;YUU&#39;     , &#39;D&#39;,  8, 0 }, ;</span><br><span class="line">                            { &#39;YIJIIIYY&#39;, &#39;N&#39;,  9, 2 }, ;</span><br><span class="line">                            { &#39;YHHFYY&#39;  , &#39;D&#39;,  8, 0 } } )</span><br><span class="line"></span><br><span class="line">Any DBCREATE() which does not follow the above format is not changed,</span><br><span class="line">code such as...</span><br><span class="line"></span><br><span class="line">local temp := {}</span><br><span class="line"></span><br><span class="line">aadd( temp, { &#39;xxxxx&#39;, &#39;C&#39;, 23, 0 } )</span><br><span class="line">aadd( temp, { &#39;yyy&#39;, &#39;D&#39;, 8, 0 } )</span><br><span class="line">aadd( temp, { &#39;yy&#39;, &#39;C&#39;, 8, 0 } )</span><br><span class="line">aadd( temp, { &#39;yuu&#39;, &#39;D&#39;, 8, 0 } )</span><br><span class="line">aadd( temp, { &#39;yijiiiyy&#39;, &#39;N&#39;, 9, 2 } )</span><br><span class="line">aadd( temp, { &#39;yhhfyy&#39;, &#39;D&#39;, 8, 0 } )</span><br><span class="line"></span><br><span class="line">dbcreate( filename, temp )</span><br><span class="line"></span><br><span class="line">...is ignored.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

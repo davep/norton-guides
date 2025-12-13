@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2562914.html">
+    <link rel="next" href="rbint-2566049.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2562914.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2566049.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 58  - Dos 2.11+ - Get Or Set Memory Allocation Strategy        </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 58h</span><br><span class="line">   AL = subfunction</span><br><span class="line">       00h get allocation strategy</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = current strategy (see #1365)</span><br><span class="line">       01h set allocation strategy</span><br><span class="line">       BL = new allocation strategy (see #1365)</span><br><span class="line">       BH = 00h (DOS 5+)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (01h) (see #1366)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the Set subfunction accepts any value in BL for DOS 3.x and 4.x;</span><br><span class="line">     2 or greater means last fit</span><br><span class="line">   the Get subfunction returns the last value set</span><br><span class="line">   setting an allocation strategy involving high memory does not</span><br><span class="line">     automatically link in the UMB memory chain; this must be done</span><br><span class="line">     explicitly with AX=5803h in order to actually allocate high memory</span><br><span class="line">   a program which changes the allocation strategy should restore it</span><br><span class="line">     before terminating</span><br><span class="line">   Toshiba MS-DOS v2.11 supports subfunctions 00h and 01h, as does the</span><br><span class="line">     TI Professional MS-DOS v2.13</span><br><span class="line">   DR DOS 3.41 reportedly reverses subfunctions 00h and 01h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=48h,AH=49h,AH=4Ah,INT 2F/AX=4310h&#34;XMS&#34;,INT 67/AH=3Fh</span><br><span class="line"></span><br><span class="line">(Table 1365)</span><br><span class="line">Values for DOS memory allocation strategy:</span><br><span class="line"> 00h low memory first fit</span><br><span class="line"> 01h low memory best fit</span><br><span class="line"> 02h low memory last fit</span><br><span class="line">---DOS 5+ ---</span><br><span class="line"> 40h high memory first fit</span><br><span class="line"> 41h high memory best fit</span><br><span class="line"> 42h high memory last fit</span><br><span class="line"> 80h first fit, try high then low memory</span><br><span class="line"> 81h best fit, try high then low memory</span><br><span class="line"> 82h last fit, try high then low memory</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

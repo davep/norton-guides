@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2380247.html">
+    <link rel="next" href="rbint-2382693.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2380247.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2382693.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 4405  - Combi-disk V1.13 - Control Combi-disk                  </span>  [<span class="ngb">d</span>]</span><br><span class="line"></span><br><span class="line">   AX = 4405h</span><br><span class="line">   BL = drive number (00h = default, 01h = A:, etc) for RAM disk</span><br><span class="line">   CX = number of bytes to write</span><br><span class="line">   DS:DX -&gt; buffer containing command packet (see #1226)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AX = number of bytes actually transferred</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (01h,05h,06h,0Dh) (see #1366 at AH=59h/BX=0000h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=4404h&#34;COMBI&#34;</span><br><span class="line"></span><br><span class="line">(Table 1225)</span><br><span class="line">Values for COMBI-disk command code:</span><br><span class="line"> 80h   flush cache</span><br><span class="line"> 81h   change options byte</span><br><span class="line"> 82h   shrink memory</span><br><span class="line"> 83h   expand memory</span><br><span class="line"> 84h   get dirty block information</span><br><span class="line"> 85h   reset write errors</span><br><span class="line"> 86h   reset counters</span><br><span class="line"></span><br><span class="line">Format of COMBI-disk command packet:</span><br><span class="line">Offset Size    Description (Table 1226)</span><br><span class="line"> 00h   WORD    version</span><br><span class="line"> 02h   BYTE    command code (see #1225)</span><br><span class="line">---command code 80h---</span><br><span class="line"> no additional fields</span><br><span class="line">---command code 81h---</span><br><span class="line"> 03h   BYTE    new options byte (see #1227)</span><br><span class="line">---command code 82h---</span><br><span class="line"> 03h   WORD    number of KB to release</span><br><span class="line">---command code 83h---</span><br><span class="line"> 03h   WORD    number of KB to expand</span><br><span class="line">---command code 84h---</span><br><span class="line"> 03h   DWORD   -&gt; buffer for block info (see #1228)</span><br><span class="line">---command code 85h---</span><br><span class="line"> 03h   DWORD   block ID</span><br><span class="line">---command code 86h---</span><br><span class="line"> 03h   BYTE    which counters to reset</span><br><span class="line">       bit 0: hard disk read counts</span><br><span class="line">       bit 1: hard disk write counts</span><br><span class="line">       bit 2: RAM disk read/write counts</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  multiple commands may be placed in a single packet by stringing</span><br><span class="line">     together as many command/argument pairs as desired</span><br><span class="line"></span><br><span class="line">Bitfields for COMBI-disk options byte:</span><br><span class="line">Bit(s) Description (Table 1227)</span><br><span class="line"> 0 cache off</span><br><span class="line"> 1 cache frozen</span><br><span class="line"> 2 write caching enabled</span><br><span class="line"> 3 delayed writing disabled</span><br><span class="line"> 5 fix memory allocation (no XMS lending)</span><br><span class="line"> 6 no &#39;sector not found&#39; error</span><br><span class="line"></span><br><span class="line">Format of COMBI-disk block info:</span><br><span class="line">Offset Size    Description (Table 1228)</span><br><span class="line"> 00h   DWORD   block ID</span><br><span class="line"> 04h   BYTE    bitmask of valid sectors in block</span><br><span class="line"> 05h   BYTE    bitmask of dirty sectors in block</span><br><span class="line"> 06h   BYTE    last error returned by BIOS</span><br><span class="line"> 07h   BYTE    number of errors</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

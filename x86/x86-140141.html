@@ -1,0 +1,169 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-138798.html">
+    <link rel="next" href="x86-142724.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-138798.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-142724.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">SCAS            Scan String                          Flags: O D I T S Z A P C</span></span><br><span class="line">                                                            * - - - * * * * *</span><br><span class="line"><span class="ngb">SCAS</span> destination_string</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   CMP accumulator,[ES:eDI]</span><br><span class="line">                if DF = 0</span><br><span class="line">                   eDI ← eDI + n        ; n = 1 for byte, 2 for word,</span><br><span class="line">                else                    ;     4 for dword (386+)</span><br><span class="line">                   eDI ← eDI - n</span><br><span class="line">                endif</span><br><span class="line"></span><br><span class="line">    This instruction compares the contents of the AL, AX, or EAX</span><br><span class="line">    register with the memory byte, word, or doubleword pointed to by</span><br><span class="line">    ES and the destination-index register (DI or EDI). After the</span><br><span class="line">    comparison, eDI is automatically incremented (if the direction</span><br><span class="line">    flag is cleared) or decremented (if the direction flag is set), in</span><br><span class="line">    preparation for comparing the next element of the string.</span><br><span class="line"></span><br><span class="line">    If the address-size attribute of SCAS is 16 bits, DI is used for</span><br><span class="line">    the destination-index register; otherwise the the address-size</span><br><span class="line">    attribute is 32 bits, and the EDI register will be used.</span><br><span class="line"></span><br><span class="line">    The destination segment must be addressable from the ES register;</span><br><span class="line">    it cannot be changed with a segment override.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span>:       This instruction is always translated by the</span><br><span class="line">                assembler into SCASB, Scan String Byte, SCASW, Scan</span><br><span class="line">                String Word, or SCASD, Scan String Dword, depending</span><br><span class="line">                upon whether destination refers to a string of bytes,</span><br><span class="line">                words or doublewords. In either case, you must</span><br><span class="line">                explicitly load the eDI register with the offset of</span><br><span class="line">                the destination string.</span><br><span class="line"></span><br><span class="line">                SCASB, SCASW, and SCASD are synonyms for the byte,</span><br><span class="line">                word, and doubleword SCAS instructions that do not</span><br><span class="line">                require an operand. They are simpler to use but</span><br><span class="line">                provide no type or segment checking.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    SCAS is usually preceded with a REP prefix for a block scan of CX</span><br><span class="line">    or ECX bytes bytes, words, or doublewords.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Example:</span><br><span class="line">                dataseg</span><br><span class="line">                aname db &#34;Frederik x&#34;</span><br><span class="line">                a_len = ($ - aname)</span><br><span class="line">                codeseg</span><br><span class="line">                mov     di,ds</span><br><span class="line">                mov     es,di</span><br><span class="line">                assume  es:dgroup</span><br><span class="line">                mov     di,offset aname</span><br><span class="line">                mov     cx,a_len</span><br><span class="line">                mov     al,&#34;x&#34;</span><br><span class="line">                cld                     ; Auto-increment di</span><br><span class="line">                repne   scasb           ; Look for &#34;x&#34;</span><br><span class="line">                jne     not_found       ; Can&#39;t use JCXZ</span><br><span class="line">                dec     di              ; Point di to &#34;x&#34;</span><br><span class="line">                mov     [byte di],&#34;X&#34;</span><br><span class="line">                ;...</span><br><span class="line">             not_found:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    AE          SCAS m8                 ; = SCASB</span><br><span class="line">    AF          SCAS m16                ; = SCASW</span><br><span class="line">    AF          SCAS m32                ; = SCASD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Variations  Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    scasb        1      19      15       7       7       6       4   NP</span><br><span class="line">    scasw        1      19      15       7       7       6       4   NP</span><br><span class="line">    scasd        1       -       -       -       7       6       4   NP</span><br><span class="line">    repX scasb   2      9+15n   5+15n   5+8n    5+8n    7+5n*   8+4n NP</span><br><span class="line">    repX scasw   2      9+19n   5+15n   5+8n    5+8n    7+5n*   8+4n NP</span><br><span class="line">    repX scasd   2       -       -       -      5+8n    7+5n*   8+4n NP</span><br><span class="line"></span><br><span class="line">    repX = repe or repz or repne or repnz</span><br><span class="line"></span><br><span class="line">                     * = 5 if n=0</span><br><span class="line">                     (n = count of bytes, words or dwords)</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-125491.html">REP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-33587.html">CMPS</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-26242.html">CLD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-154030.html">STD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-66690.html">Jcc</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-69579.html">JCXZ</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-179453.html">Flags</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

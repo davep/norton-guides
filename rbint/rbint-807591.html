@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-807096.html">
+    <link rel="next" href="rbint-810977.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-807096.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-810977.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 13 Fn 1700  - Future Domain Scsi Controller - Get Inquiry Info From S</span>  [<span class="ngb">d</span>]</span><br><span class="line"></span><br><span class="line">   AX = 1700h</span><br><span class="line">   CL = length of buffer</span><br><span class="line">   DL = hard drive ID</span><br><span class="line">   ES:BX -&gt; buffer for info (see #0175)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       CH = number of bytes returned in buffer???</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = status code (see #0166 at AH=01h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this function is not available with 8-bit controller ROM versions &lt; 7.0</span><br><span class="line">   information block bytes 5-n are vendor-specific in older SCSI devices</span><br><span class="line">   the TMC-950 does not support any Future Domain BIOS calls; instead,</span><br><span class="line">     it provides a full CAM implementation (see INT 4F/AX=8100h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=18h&#34;SCSI&#34;,AH=1Bh&#34;SCSI&#34;</span><br><span class="line"></span><br><span class="line">Format of Future Domain SCSI inquiry information block:</span><br><span class="line">Offset Size    Description (Table 0175)</span><br><span class="line"> 00h   BYTE    device type</span><br><span class="line">       bits 0-4: peripheral device type (see #0176)</span><br><span class="line">       bits 5-7: peripheral qualifier (see #0177)</span><br><span class="line"> 01h   BYTE    device type modifier</span><br><span class="line">       bits 0-6: device type modifier</span><br><span class="line">       bit 7: removable medium</span><br><span class="line"> 02h   BYTE    SCSI version (see #0178)</span><br><span class="line"> 03h   BYTE    data format/capabilities (see #0179)</span><br><span class="line"> 04h   BYTE    additional data length (total remaining bytes)</span><br><span class="line"> 05h  2 BYTEs  reserved</span><br><span class="line"> 07h   BYTE    device capabilities (see #0180)</span><br><span class="line"> 08h  8 BYTEs  vendor identification (space-padded ASCII)</span><br><span class="line"> 10h  8 BYTEs  product identification (space-padded ASCII)</span><br><span class="line"> 20h  4 BYTEs  product revision level (space-padded ASCII)</span><br><span class="line"> 24h 20 BYTEs  vendor specific</span><br><span class="line"> 38h 40 BYTEs  reserved</span><br><span class="line"> 60h   var vendor specific parameters</span><br><span class="line"></span><br><span class="line">(Table 0176)</span><br><span class="line">Values for Future Domain SCSI peripheral device type:</span><br><span class="line"> 00h   direct-access device (e.g., magnetic disk)</span><br><span class="line"> 01h   sequential-access device (e.g., magnetic tape)</span><br><span class="line"> 02h   printer device</span><br><span class="line"> 03h   processor device</span><br><span class="line"> 04h   write-once device (e.g., some optical disks)</span><br><span class="line"> 05h   CD-ROM device</span><br><span class="line"> 06h   scanner device</span><br><span class="line"> 07h   optical memory device (e.g., some optical disks)</span><br><span class="line"> 08h   medium changer device (e.g., jukeboxes)</span><br><span class="line"> 09h   communications device</span><br><span class="line"> 0Ah   (defined by ASC IT8)</span><br><span class="line"> 0Bh   (defined by ASC IT8)</span><br><span class="line"> 0Ch-1Eh reserved</span><br><span class="line"> 1Fh   unknown or no device type</span><br><span class="line"></span><br><span class="line">(Table 0177)</span><br><span class="line">Values for Future Domain SCSI peripheral qualifier:</span><br><span class="line"> 000b  device is currently connected to this logical unit and available</span><br><span class="line"> 001b  target is capable of supporting the specified peripheral, but the</span><br><span class="line">     physical device is not currently connected to this logical unit</span><br><span class="line"> 010b  reserved</span><br><span class="line"> 011b  target can&#39;t support a physical device on this logical unit</span><br><span class="line"> 1xxb  vendor specific</span><br><span class="line"></span><br><span class="line">Bitfields for Future Domain SCSI version:</span><br><span class="line">Bit(s) Description (Table 0178)</span><br><span class="line"> 0-2   ANSI-approved version</span><br><span class="line">   000 device might or might not comply to ANSI standard</span><br><span class="line">   001 device complies to ANSI SCSI-1</span><br><span class="line">   010 device complies to ANSI SCSI-2</span><br><span class="line">   other reserved</span><br><span class="line"> 3-5   ECMA version</span><br><span class="line"> 6-7   ISO version</span><br><span class="line"></span><br><span class="line">Bitfields for Future Domain SCSI data format/capabilities:</span><br><span class="line">Bit(s) Description (Table 0179)</span><br><span class="line"> 0-2   response data format</span><br><span class="line">   000 information block is as specified in SCSI-1</span><br><span class="line">   001 information block is as specified in CCS</span><br><span class="line">   010 information block is as specified in SCSI-2</span><br><span class="line">   other reserved</span><br><span class="line"> 4-5   reserved</span><br><span class="line"> 6 terminate I/O process supported</span><br><span class="line"> 7 asynchronous event notification supported</span><br><span class="line"></span><br><span class="line">Bitfields for Future Domain SCSI device capabilities:</span><br><span class="line">Bit(s) Description (Table 0180)</span><br><span class="line"> 0 device responds to RESET with a hard RESET</span><br><span class="line"> 1 tagged command queuing supported</span><br><span class="line"> 2 reserved</span><br><span class="line"> 3 linked commands supported</span><br><span class="line"> 4 synchronous data transfer supported</span><br><span class="line"> 5 16-transfers supported</span><br><span class="line"> 6 32-transfers supported</span><br><span class="line"> 7 relative addressing supported</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

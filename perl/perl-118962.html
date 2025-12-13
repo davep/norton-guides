@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Languages</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-117908.html">
+    <link rel="next" href="perl-121858.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-117908.html">Previous</a></li>
+
+
+          
+
+<li><a href="perl-90961.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-121858.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>PERL</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="perl-90961.html">Languages</a></li>
+                  <li><a href="perl-159711.html">Command line options</a></li>
+                  <li><a href="perl-170094.html">Regular Expressions</a></li>
+                  <li><a href="perl-171332.html">Special Variables</a></li>
+                  <li><a href="perl-188582.html">Operators</a></li>
+                  <li><a href="perl-197905.html">Debugging</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tables</li>
+              <li>
+                <ul>
+                  <li><a href="perl-204383.html">ASCII Chart</a></li>
+                  <li><a href="perl-207014.html">Literals</a></li>
+                  <li><a href="perl-207867.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">     Expressions</span><br><span class="line"></span><br><span class="line">     The autoincrement operator has a little extra built-in magic</span><br><span class="line">     to it.  If you increment a variable that is numeric, or that</span><br><span class="line">     has ever been used in a numeric context, you  get  a  normal</span><br><span class="line">     increment.   If, however, the variable has only been used in</span><br><span class="line">     string contexts since it was set, and has a  value  that  is</span><br><span class="line">     not  null  and  matches the pattern /^[a-zA-Z]*[0-9]*$/, the</span><br><span class="line">     increment is done as a  string,  preserving  each  character</span><br><span class="line">     within its range, with carry:</span><br><span class="line"></span><br><span class="line">          print ++($foo = &#39;99&#39;);   # prints &#39;100&#39;</span><br><span class="line">          print ++($foo = &#39;a0&#39;);   # prints &#39;a1&#39;</span><br><span class="line">          print ++($foo = &#39;Az&#39;);   # prints &#39;Ba&#39;</span><br><span class="line">          print ++($foo = &#39;zz&#39;);   # prints &#39;aaa&#39;</span><br><span class="line"></span><br><span class="line">     The autodecrement is not magical.</span><br><span class="line"></span><br><span class="line">     The range operator (in an array context) makes  use  of  the</span><br><span class="line">     magical  autoincrement  algorithm if the minimum and maximum</span><br><span class="line">     are strings.  You can say</span><br><span class="line"></span><br><span class="line">          @alphabet = (&#39;A&#39; .. &#39;Z&#39;);</span><br><span class="line"></span><br><span class="line">     to get all the letters of the alphabet, or</span><br><span class="line"></span><br><span class="line">          $hexdigit = (0 .. 9, &#39;a&#39; .. &#39;f&#39;)[$num &amp; 15];</span><br><span class="line"></span><br><span class="line">     to get a hexadecimal digit, or</span><br><span class="line"></span><br><span class="line">          @z2 = (&#39;01&#39; .. &#39;31&#39;);  print @z2[$mday];</span><br><span class="line"></span><br><span class="line">     to get dates with leading zeros.  (If the final value speci-</span><br><span class="line">     fied is not in the sequence that the magical increment would</span><br><span class="line">     produce, the sequence goes until the  next  value  would  be</span><br><span class="line">     longer than the final value specified.)</span><br><span class="line"></span><br><span class="line">     The || and &amp;&amp; operators differ from C&#39;s in that, rather than</span><br><span class="line">     returning  0  or  1,  they  return the last value evaluated.</span><br><span class="line">     Thus, a portable way to find out the  home  directory  might</span><br><span class="line">     be:</span><br><span class="line"></span><br><span class="line">          $home = $ENV{&#39;HOME&#39;} || $ENV{&#39;LOGDIR&#39;} ||</span><br><span class="line">              (getpwuid($&lt;))[7] || die &#34;You&#39;re homeless!\n&#34;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     Along with the literals and variables mentioned earlier, the</span><br><span class="line">     operations in the following section can serve as terms in an</span><br><span class="line">     expression.  Some of these operations  take  a  LIST  as  an</span><br><span class="line">     argument.   Such  a  list  can consist of any combination of</span><br><span class="line">     scalar arguments or array values; the array values  will  be</span><br><span class="line">     included  in  the  list  as  if each individual element were</span><br><span class="line">     interpolated at that point in the  list,  forming  a  longer</span><br><span class="line">     single-dimensional array value.  Elements of the LIST should</span><br><span class="line">     be separated by commas.  If an operation is listed both with</span><br><span class="line">     and  without  parentheses around its arguments, it means you</span><br><span class="line">     can either use it as a unary operator or as a function call.</span><br><span class="line">     To  use  it  as  a function call, the next token on the same</span><br><span class="line">     line must be a left parenthesis.  (There may be  intervening</span><br><span class="line">     white  space.)  Such a function then has highest precedence,</span><br><span class="line">     as you would expect from a function.   If  any  token  other</span><br><span class="line">     than  a  left parenthesis follows, then it is a unary opera-</span><br><span class="line">     tor, with a precedence depending only on  whether  it  is  a</span><br><span class="line">     LIST  operator  or  not.   LIST  operators  have lowest pre-</span><br><span class="line">     cedence.   All  other  unary  operators  have  a  precedence</span><br><span class="line">     greater  than  relational operators but less than arithmetic</span><br><span class="line">     operators.  See the section on Precedence.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:49</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

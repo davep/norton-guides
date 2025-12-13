@@ -1,0 +1,114 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmi-style.css">
+    <title>Dos Protected Mode Interface » DPMI » DPMI API</title>
+    <meta name="description" content="Dos Protected Mode Interface">
+    <link rel="prev" href="dpmi-81344.html">
+    <link rel="next" href="dpmi-86570.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmi-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmi-81344.html">Previous</a></li>
+
+
+          
+
+<li><a href="dpmi-38393.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmi-86570.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">OverView</a></li>
+                  <li><a href="dpmi-38393.html">DPMI API</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Get Raw Mode Switch Addresses</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                 This function returns addresses that can be jumped to</span><br><span class="line">                 for low-level mode switching.</span><br><span class="line"></span><br><span class="line">            To Call</span><br><span class="line"></span><br><span class="line">                 AX = 0306h</span><br><span class="line"></span><br><span class="line">            Returns</span><br><span class="line"></span><br><span class="line">                 If function was successful:</span><br><span class="line">                 Carry flag is clear</span><br><span class="line">                 BX:CX = Real -&gt; Protected mode switch address</span><br><span class="line">                 SI:(E)DI = Protected -&gt; Real mode switch address</span><br><span class="line"></span><br><span class="line">                 If function was not successful:</span><br><span class="line">                 Carry flag is set</span><br><span class="line"></span><br><span class="line">            Parameters To State-Save Procedures</span><br><span class="line"></span><br><span class="line">                 Execute a  far jump to the appropriate address (real or</span><br><span class="line">                      pmode) with:</span><br><span class="line">                 AX   = New DS</span><br><span class="line">                 CX   = New ES</span><br><span class="line">                 DX   = New SS</span><br><span class="line">                 (E)BX     = New (E)SP</span><br><span class="line">                 SI   = New CS</span><br><span class="line">                 (E)DI     = New (E)IP</span><br><span class="line"></span><br><span class="line">                 The processor  will be placed in the desired mode.  The</span><br><span class="line">                 DS, ES,  SS, (E)SP,  CS, and  (E)IP  will  contain  the</span><br><span class="line">                 values specified.  The (E)BP register will be preserved</span><br><span class="line">                 across the  call and  so can be used as a pointer.  The</span><br><span class="line">                 values in  (E)AX, (E)BX, (E)CX, (E)DX, (E)SI, and (E)DI</span><br><span class="line">                 will be  undefined.  On an 80386 or 80486 the FS and GS</span><br><span class="line">                 segment registers  will contain  zero  after  the  mode</span><br><span class="line">                 switch.</span><br><span class="line"></span><br><span class="line">            Programmer&#39;s Notes</span><br><span class="line"></span><br><span class="line">                 o    The address  returned in BX:CX must only be called</span><br><span class="line">                      in real  mode to  switch into protected mode.  The</span><br><span class="line">                      address returned  in SI:(E)DI  must only be called</span><br><span class="line">                      in protected mode to switch into real mode.</span><br><span class="line">                 o    16-bit programs  should call  the address returned</span><br><span class="line">                      in SI:DI  to switch  from protected  to real mode.</span><br><span class="line">                      32-bit programs  should call  the address returned</span><br><span class="line">                      in SI:EDI.</span><br><span class="line">                 o    It is  up to  the caller  to save  and restore the</span><br><span class="line">                      state of  the task  when using  this  function  to</span><br><span class="line">                      switch modes.   This  usually requires  using  the</span><br><span class="line">                      state save function (see function 0600H).</span><br><span class="line">                 o    The  parameters   must  contain   segment   values</span><br><span class="line">                      appropriate for  the mode  that is  being switched</span><br><span class="line">                      to.   If  invalid  selectors  are  specified  when</span><br><span class="line">                      switching into  protected mode,  an exception will</span><br><span class="line">                      occur.</span><br><span class="line">                 o    Applications  may  find  functions  0300h,  0301h,</span><br><span class="line">                      0302h, and 0304h more convenient to use than using</span><br><span class="line">                      this type of mode switching.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dpmi-94279.html">INT 31H Function 0600H</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

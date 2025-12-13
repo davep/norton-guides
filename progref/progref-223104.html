@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » DOS » Standard Handles</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Standard file handles</span></span><br><span class="line"></span><br><span class="line">          0       Standard input device           Stdin</span><br><span class="line">          1       Standard output device          Stdout</span><br><span class="line">          2       Standard error device           Stderr</span><br><span class="line">          3       Standard auxiliary device       Stdaux</span><br><span class="line">          4       Standard printer device         Stdprn</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Stdin</span>          This is usually the keyboard, but it can be</span><br><span class="line">                      redirected so that input is read from a file.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Stdout</span>         This is usually the display, but can be redirected</span><br><span class="line">                      so the output is written to a file.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Stderr</span>         This is the display and cannot be redirected on the</span><br><span class="line">                      command line.  Stderr is useful for displaying error</span><br><span class="line">                      or copyright messages that you don&#39;t want</span><br><span class="line">                      redirected.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Stdaux</span>         This is usually a serial device, and is the same as</span><br><span class="line">                      the DOS `AUX:&#39; device.  You can both read from and</span><br><span class="line">                      write to this device.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Stdprn</span>         This is usually the printer, and is the same as the</span><br><span class="line">                      DOS `PRN:&#39; device.  You can both read from and write</span><br><span class="line">                      to this device.</span><br><span class="line"></span><br><span class="line">  ──────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The file handles listed above are open when a program first starts.</span><br><span class="line">    You don&#39;t need to explicitly open any of these devices unless you had</span><br><span class="line">    previously closed one of these file handles.</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Notes:</span>         All five predefined handles are in ASCII mode, which</span><br><span class="line">                      means that DOS attaches special meaning to a number</span><br><span class="line">                      of characters, including Ctrl-C (Ctrl-Break), Ctrl-</span><br><span class="line">                      S, and Ctrl-P.  In ASCII mode, Ctrl-Z is treated as</span><br><span class="line">                      an end-of-file mark; characters read from Stdin are</span><br><span class="line">                      echoed to the screen; control characters written to</span><br><span class="line">                      Stdout and Stderr are displayed as a X sequence</span><br><span class="line">                      (for example, D); and tabs are filled with spaces</span><br><span class="line">                      to the next 8-character boundary.</span><br><span class="line"></span><br><span class="line">                      You can change the mode of these devices between</span><br><span class="line">                      ASCII and binary using the IOCTL calls (DOS function</span><br><span class="line">                      44h).  Note, however, that because the first three</span><br><span class="line">                      devices (Stdin, Stdout, and Stderr) are all</span><br><span class="line">                      duplicate handles, changing the mode on any one</span><br><span class="line">                      changes the mode for the other two.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="progref-153780.html">44h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

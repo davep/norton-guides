@@ -1,0 +1,187 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-91389.html">
+    <link rel="next" href="x86-95607.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-91389.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-95607.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">MOV             Move Data                            Flags: Not altered</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">MOV</span> destination,source</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   destination ← source</span><br><span class="line"></span><br><span class="line">    MOV transfers (copies) a byte, word, or (80386+) doubleword from</span><br><span class="line">    the source operand to the destination operand.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                <span class="ngb">Note</span></span><br><span class="line">                MOV cannot move from memory to memory or from</span><br><span class="line">                a segment register to a segment register.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    A MOV into SS inhibits all interrupts until after the execution of</span><br><span class="line">    the next instruction, which is presumably a MOV into SP/ESP. (Some</span><br><span class="line">    early 8088/8086 processors don&#39;t disable interrupts properly after</span><br><span class="line">    a MOV into SS; remedy: CLI/STI.)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Protected mode</span></span><br><span class="line">    If the destination operand is a segment register (DS,ES,SS,FS,GS)</span><br><span class="line">    the value moved must be a selector. Loading the selector initiates</span><br><span class="line">    automatic loading of the descriptor information associated with</span><br><span class="line">    that selector into the programmer-invisible part of the segment</span><br><span class="line">    register; loading also initiates validation of both the selector</span><br><span class="line">    and the descriptor information.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    88 /r       MOV  r/m8,r8</span><br><span class="line">    89 /r       MOV  r/m16,r16</span><br><span class="line">    89 /r       MOV  r/m32,r32</span><br><span class="line">    8A /r       MOV  r8,r/m8</span><br><span class="line">    8B /r       MOV  r16,r/m16</span><br><span class="line">    8B /r       MOV  r32,r/m32</span><br><span class="line">    8C /r       MOV  r/m16,Sreg</span><br><span class="line">    8E /r       MOV  Sreg,r/m16</span><br><span class="line">    A0          MOV  AL,moffs8</span><br><span class="line">    A1          MOV  AX,moffs16</span><br><span class="line">    A1          MOV  EAX,moffs32</span><br><span class="line">    A2          MOV  moffs8,AL</span><br><span class="line">    A3          MOV  moffs16,AX</span><br><span class="line">    A3          MOV  moffs32,EAX</span><br><span class="line">    B0 + rb     MOV  r8,imm8</span><br><span class="line">    B8 + rw     MOV  r16,imm16</span><br><span class="line">    B8 + rd     MOV  r32,imm32</span><br><span class="line">    C6          MOV  m8,imm8</span><br><span class="line">    C7          MOV  m16,imm16</span><br><span class="line">    C7          MOV  m32,imm32</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">MOV to/from special registers</span>                    CPU: 386+ <span class="ngu">Priv</span></span><br><span class="line"></span><br><span class="line">    In protected mode, MOV to/from a special register is a privileged</span><br><span class="line">    instruction and can be executed only if CPL=0. 32-bit operands are</span><br><span class="line">    always used with these instructions, regardless of the operand-size</span><br><span class="line">    attribute.</span><br><span class="line"></span><br><span class="line">    Note that the CR4 register was introduced with the Pentium, and that</span><br><span class="line">    the test registers do not exist on the Pentium or the Pentium Pro.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    0F 20 /r    MOV  r32,CR0/CR2/CR3/CR4</span><br><span class="line">    0F 21 /r    MOV  r32,DR0/DR1/DR2/DR3/DR6/DR7</span><br><span class="line">    0F 22 /r    MOV  CR0/CR2/CR3/CR4,r32</span><br><span class="line">    0F 23 /r    MOV  DR0/DR1/DR2/DR3/DR6/DR7,r32</span><br><span class="line">    0F 24 /r    MOV  r32,TR6/TR7                ; 386-486</span><br><span class="line">    0F 26 /r    MOV  TR6/TR7,r32                ; 386-486</span><br><span class="line">    0F 24 /r    MOV  r32,TR3/TR4/TR5            ; 486</span><br><span class="line">    0F 26 /r    MOV  TR3/TR4/TR5,r32            ; 486</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    reg, reg     2       2       2       2       2       1       1   UV</span><br><span class="line">    mem, reg  2+d(0-2)  13+EA    9       3       2       1       1   UV</span><br><span class="line">    reg, mem  2+d(0-2)  12+EA   12       5       4       1       1   UV</span><br><span class="line">    mem, imm  2+d(0-2)  14+EA   12-13    3       2       1       1   UV*</span><br><span class="line">               +i(1,2)</span><br><span class="line">    reg, imm  2+i(1,2)   4       3-4     2       2       1       1   UV</span><br><span class="line"></span><br><span class="line">    acc, mem     3      14       8       5       4       1       1   UV</span><br><span class="line">    mem, acc     3      14       9       3       2       1       1   UV</span><br><span class="line"></span><br><span class="line">        * = not pairable if there is a displacement and immediate</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                       <span class="ngb">Segment Register Moves</span></span><br><span class="line"></span><br><span class="line">                               Real Mode</span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    seg, r16     2       2       2       2       2       3     2-11   NP</span><br><span class="line">    seg, m16   2+d(0,2) 12+EA    9       5       5       3     3-12   NP</span><br><span class="line">    r16, seg     2       2       2       2       2       3       1    NP</span><br><span class="line">    m16, seg   2+d(0,2) 13+EA   11       3       2       3       1    NP</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                       <span class="ngb">Protected Mode Differences</span></span><br><span class="line">    Operands    Bytes                   286     386     486     Pentium</span><br><span class="line">    seg, r16     2                      17      18       9     2-11*  NP</span><br><span class="line">    seg, m16   2+d(0,2)                 19      19       9     3-12*  NP</span><br><span class="line">                        * = add 8 if new descriptor; add 6 if SS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    <span class="ngb">MOV to/from special registers (386+)</span></span><br><span class="line"></span><br><span class="line">    Operands    Bytes                           386     486     Pentium</span><br><span class="line">    r32, cr32    3                               6       4       4    NP</span><br><span class="line">    cr32, r32    3                              4/10*   4/16*  12/22* NP</span><br><span class="line"></span><br><span class="line">    r32, dr32    3                              14/22*  10      2/12* NP</span><br><span class="line">    dr32, r32    3                              16/22*  11     11/12* NP</span><br><span class="line"></span><br><span class="line">    r32, tr32    3                              12      3/4*     -    NP</span><br><span class="line">    tr32, r32    3                              12      4/6*     -    NP</span><br><span class="line"></span><br><span class="line">              * = Cycles depend on which special register</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-98713.html">MOVZX</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-98155.html">MOVSX</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-169147.html">XCHG</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-170145.html">XLAT</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-111661.html">PUSH</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-107226.html">POP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-95607.html">MOVS</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-155712.html">STOS</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-76751.html">LEA</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-195957.html">Selectors</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Command line options</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-166554.html">
+    <link rel="next" href="perl-168537.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-166554.html">Previous</a></li>
+
+
+          
+
+<li><a href="perl-159711.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-168537.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>PERL</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="perl-90961.html">Languages</a></li>
+                  <li><a href="perl-159711.html">Command line options</a></li>
+                  <li><a href="perl-170094.html">Regular Expressions</a></li>
+                  <li><a href="perl-171332.html">Special Variables</a></li>
+                  <li><a href="perl-188582.html">Operators</a></li>
+                  <li><a href="perl-197905.html">Debugging</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tables</li>
+              <li>
+                <ul>
+                  <li><a href="perl-204383.html">ASCII Chart</a></li>
+                  <li><a href="perl-207014.html">Literals</a></li>
+                  <li><a href="perl-207867.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">     -S   makes perl use the PATH environment variable to  search</span><br><span class="line">          for  the  script  (unless the name of the script starts</span><br><span class="line">          with a slash).  Typically this is used  to  emulate  #!</span><br><span class="line">          startup  on machines that don&#39;t support #!, in the fol-</span><br><span class="line">          lowing manner:</span><br><span class="line"></span><br><span class="line">               #!/usr/bin/perl</span><br><span class="line">               eval &#34;exec /usr/bin/perl -S $0 $*&#34;</span><br><span class="line">                    if $running_under_some_shell;</span><br><span class="line"></span><br><span class="line">          The system ignores the first line and feeds the  script</span><br><span class="line">          to  /bin/sh,  which proceeds to try to execute the perl</span><br><span class="line">          script as a  shell  script.   The  shell  executes  the</span><br><span class="line">          second  line as a normal shell command, and thus starts</span><br><span class="line">          up the perl interpreter.  On some  systems  $0  doesn&#39;t</span><br><span class="line">          always  contain the full pathname, so the -S tells perl</span><br><span class="line">          to search for the  script  if  necessary.   After  perl</span><br><span class="line">          locates  the  script,  it  parses the lines and ignores</span><br><span class="line">          them because the variable $running_under_some_shell  is</span><br><span class="line">          never  true.   A  better  construct  than  $*  would be</span><br><span class="line">          ${1+&#34;$@&#34;}, which handles embedded spaces  and  such  in</span><br><span class="line">          the  filenames, but doesn&#39;t work if the script is being</span><br><span class="line">          interpreted by csh.  In order to  start  up  sh  rather</span><br><span class="line">          than  csh, some systems may have to replace the #! line</span><br><span class="line">          with a line containing just a colon, which will be pol-</span><br><span class="line">          itely  ignored  by  perl.   Other systems can&#39;t control</span><br><span class="line">          that, and need a totally devious  construct  that  will</span><br><span class="line">          work  under any of csh, sh or perl, such as the follow-</span><br><span class="line">          ing:</span><br><span class="line"></span><br><span class="line">               eval &#39;(exit $?0)&#39; &amp;&amp; eval &#39;exec /usr/bin/perl -S $0 ${1+&#34;$@&#34;}&#39;</span><br><span class="line">               &amp; eval &#39;exec /usr/bin/perl -S $0 $argv:q&#39;</span><br><span class="line">                    if 0;</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:49</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1400487.html">
+    <link rel="next" href="rbint-1401655.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1400487.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1340639.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1401655.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn CE  - Later Ps/2s - Allocate Dma Arbitration Level             </span>  [<span class="ngb">B</span>]</span><br><span class="line"></span><br><span class="line">   AH = CEh</span><br><span class="line">   BL = 00h-0Eh arbitration level to be allocated</span><br><span class="line">        0Fh-FFh reserved</span><br><span class="line">   AL = option byte</span><br><span class="line">       bit 7-1: reserved (0)</span><br><span class="line">       bit 0: 0 = need DMA channel for arbitration level requested</span><br><span class="line">          1 = no channel required for arbitration level</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error</span><br><span class="line">       AH = status (80h,86h = function not supported)</span><br><span class="line">   CF clear on success</span><br><span class="line">       AL = channel number</span><br><span class="line">       00h-07h channel number allocated for the arbiration level</span><br><span class="line">       08h-FEh reserved</span><br><span class="line">       FFh no channel requested for arbitration level</span><br><span class="line">       AH = status (see #0455)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span>  arbitration level 00h has the highest priority, 0Eh the lowest</span><br><span class="line">    to perform a DMA transfer operation, be sure to call this function</span><br><span class="line">      first, and call AH=CFh afterward.  Failure to use this function</span><br><span class="line">      can cause unpredictable results.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=CFh</span><br><span class="line"></span><br><span class="line">(Table 0455)</span><br><span class="line">Values for DMA arbitration status:</span><br><span class="line"> 00h   success</span><br><span class="line"> 01h   arbitration level not available</span><br><span class="line"> 02h   channel not available</span><br><span class="line"> 03h   invalid arbitration level passed</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

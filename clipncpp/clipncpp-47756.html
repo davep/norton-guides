@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » FAQ » FAQ</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-45338.html">
+    <link rel="next" href="clipncpp-48998.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-45338.html">Previous</a></li>
+
+
+          
+
+<li><a href="clipncpp-29045.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-48998.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">What are STATIC variables and why do I care?</span></span><br><span class="line"></span><br><span class="line"> STATIC variables are similar to LOCALs in that they do not</span><br><span class="line"> &#34;up-scope&#34; or &#34;down-scope.&#34;  STATICs, however, keep their value</span><br><span class="line"> throughout the duration of the program, even when they are not</span><br><span class="line"> &#34;visible.&#34;  For example:</span><br><span class="line"></span><br><span class="line"> // STATIC1.PRG</span><br><span class="line"> FUNCTION caller</span><br><span class="line"> LOCAL i</span><br><span class="line"> ? &#34;BEGIN&#34;</span><br><span class="line"> FOR i := 1 TO 100</span><br><span class="line">         ? &#34;Loop number &#34;, i</span><br><span class="line">         callee()</span><br><span class="line"> NEXT</span><br><span class="line"> ? &#34;END&#34;</span><br><span class="line"> RETURN NIL</span><br><span class="line"></span><br><span class="line"> FUNCTION callee</span><br><span class="line"> LOCAL l := 0</span><br><span class="line"> STATIC s := 0</span><br><span class="line"> l++</span><br><span class="line"> s++</span><br><span class="line"> ? l, s</span><br><span class="line"> RETURN NIL</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> The output will look like this:</span><br><span class="line"></span><br><span class="line">     BEGIN</span><br><span class="line">     Loop number     1</span><br><span class="line">         1      1</span><br><span class="line">     Loop number     2</span><br><span class="line">         1      2</span><br><span class="line">     Loop number     3</span><br><span class="line">         1      3</span><br><span class="line">     Loop number     4</span><br><span class="line">         1      4</span><br><span class="line">         ...    ...</span><br><span class="line">     Loop number   100</span><br><span class="line">         1    100</span><br><span class="line">     END</span><br><span class="line"></span><br><span class="line"> Notice that each iteration of the loop increments the value of (s)</span><br><span class="line"> from the previous iteration, while the value of (l) starts all over</span><br><span class="line"> again from scratch.</span><br><span class="line"></span><br><span class="line"> The most common use of STATIC variables is to maintain values that</span><br><span class="line"> are useful to a group of functions, or to the whole application,</span><br><span class="line"> without resorting to global PRIVATE or PUBLIC variables.  (See next</span><br><span class="line"> Question.)</span><br><span class="line"></span><br><span class="line"> STATIC variables carry the same features as LOCALs with regard to</span><br><span class="line"> symbol table entries and macro expansion as noted above.</span><br><span class="line"></span><br><span class="line"> STATICs work just like static variables in C and C++.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

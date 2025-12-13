@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-132840.html">
+    <link rel="next" href="bios-135998.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-132840.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-94319.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-135998.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 13h, 17h            Set DASD Type for Format                         many</span></span><br><span class="line"></span><br><span class="line">    This service sets the type of diskette for a particular type of</span><br><span class="line">    drive in order that the disk is properly formatted. This service</span><br><span class="line">    can be performed on diskettes only.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 17h</span><br><span class="line">                AL = Diskette/drive combination (see below)</span><br><span class="line">                DL = Drive number (bit 7 must be clear)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  CF   Set if error, else cleared</span><br><span class="line">                AH = Status of operation (see Service 01h)</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">                <span class="ngb">Diskette/Drive Combination</span></span><br><span class="line">                AL      Meaning</span><br><span class="line">                01h     Diskette 320/360K in 360K drive</span><br><span class="line">                02h     Diskette 360K in 1.2M drive</span><br><span class="line">                03h     Diskette 1.2M in 1.2M drive</span><br><span class="line">                04h     Diskette 720K in 720K drive</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This service is not available for PCs, PCjrs, and XTs dated before</span><br><span class="line">    1/10/86.</span><br><span class="line"></span><br><span class="line">    A diskette/drive combination value of 04h is not valid for ATs</span><br><span class="line">    before 6/10/85.</span><br><span class="line"></span><br><span class="line">    For the AT, XT-286, and PC Convertible, the BIOS executes Int 15h,</span><br><span class="line">    Service 90h (Device Busy), for the diskette (Type = 01h) prior to</span><br><span class="line">    waiting for the interrupt. Int 15h, Service 91h (Interrupt</span><br><span class="line">    Complete), is executed upon completion. Diskette operations that</span><br><span class="line">    require the diskette motor to be on will call Int 15h, Service 90</span><br><span class="line">    (Device Busy), with the type equal to &#34;Diskette Drive Motor Start&#34;</span><br><span class="line">    (Type = FDh). This allows the system to perform another task while</span><br><span class="line">    the drive motor is waiting to get up to speed.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-97437.html">Int 13h, 01h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-131130.html">Int 13h, 15h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-132840.html">Int 13h, 16h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

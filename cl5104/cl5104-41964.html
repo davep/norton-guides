@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5104-style.css">
+    <title>Clipper 5.01 vs 1.29 Anomalies (#04) » Menu » Anomalies</title>
+    <meta name="description" content="Clipper 5.01 vs 1.29 Anomalies (#04)">
+    <link rel="prev" href="cl5104-41674.html">
+    <link rel="next" href="cl5104-42795.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5104-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5104-41674.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5104-42795.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Menu</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies</a></li>
+                  <li><a href="cl5104-45500.html">Credits</a></li>
+                  <li><a href="cl5104-45901.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  TBROWSE           Miscellaneous Comments</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Clipper Version</span>  1.29 dtd 04/15/91.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Problem Statement</span></span><br><span class="line"></span><br><span class="line">  1) oTb:Freeze must be defined _after_ the column to be frozen is added</span><br><span class="line">     to the browse object.</span><br><span class="line"></span><br><span class="line">  2) oTb:setColumn returns the browse object, not the column object as</span><br><span class="line">     stated in the NG.</span><br><span class="line"></span><br><span class="line">  3) oTb:colorSpec affects the color outside the browse window. Use</span><br><span class="line">     SetColor() before writing to this area.</span><br><span class="line"></span><br><span class="line">  4) Using oTb:panRight() and oTb:colorRect() together can cause a runaway</span><br><span class="line">     situation requiring a warm boot - specifically, this sequence:</span><br><span class="line"></span><br><span class="line">  oTb:colorRect(), InKey(), oTb:panRight(), oTb:colorRect(), oTb:Stabilize()</span><br><span class="line"></span><br><span class="line">     A solution is to use oTb:refreshCurrent() in place of the 2nd</span><br><span class="line">     oTb:colorRect() or use the sequence:</span><br><span class="line"></span><br><span class="line">  oTb:colorRect(), InKey(), oTb:colorRect(), oTb:panRight(), oTb:Stabilize()</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

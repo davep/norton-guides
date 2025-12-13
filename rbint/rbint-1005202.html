@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1004888.html">
+    <link rel="next" href="rbint-1006314.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1004888.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-993233.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1006314.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 14 Fn 8006  - Articom - Get Resource Information                     </span>  [<span class="ngb">S</span>]</span><br><span class="line"></span><br><span class="line">   AX = 8006h</span><br><span class="line">   BX = remote port (COM1=0, COM2=1, ...)</span><br><span class="line">   CL = adapter number, FFh to try all adapters</span><br><span class="line">   ES:DI -&gt; resource information structure (see #0288)</span><br><span class="line">   DS:SI -&gt; 16 byte server name. See note.</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = error code, if error (see #0286)</span><br><span class="line">   BX = next remote port, recall to get next resource info</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  Wild cards supported in both the resource field and server name</span><br><span class="line">     string DS:SI. If wild cards used then first matching available</span><br><span class="line">     resource information is searched. Set the resource field to FFh to</span><br><span class="line">     return all resources.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=8000h,AX=8002h,AX=8003h,AX=8007h</span><br><span class="line"></span><br><span class="line">Format of ARTICOM resource information structure:</span><br><span class="line">Offset Size    Description (Table 0288)</span><br><span class="line"> 00h   BYTE    00h = free, else used</span><br><span class="line"> 01h 16 BYTEs  resource name</span><br><span class="line"> 11h 16 BYTEs  username of resource user</span><br><span class="line"> 21h   WORD    amount of time used</span><br><span class="line"> 23h   WORD    amount of time remaining</span><br><span class="line"> 53h 48 BYTEs  description of resource</span><br><span class="line"> 93h 64 BYTEs  initialization string for modem</span><br><span class="line"> B3h 32 BYTEs  dial string for modem</span><br><span class="line"> D3h 32 BYTEs  hang-up string for modem</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

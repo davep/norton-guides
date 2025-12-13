@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    
+    <link rel="next" href="bios-173397.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="bios-171114.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-173397.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 16h, 00h            Keyboard Read                                     all</span></span><br><span class="line"></span><br><span class="line">    Returns the next character in the keyboard buffer; if no character</span><br><span class="line">    is available, this service waits until one is available.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 00h</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AL = ASCII character code</span><br><span class="line">                AH = Scan code</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The scan codes are the numbers representing the location of the</span><br><span class="line">    key on the keyboard. As new keys have been added and the keyboard</span><br><span class="line">    layout rearranged, this numbering scheme has not been consistent</span><br><span class="line">    with its original purpose.</span><br><span class="line"></span><br><span class="line">    If the character is a special character, then AL will be 0 and the</span><br><span class="line">    value in AH will be the extended scan code for the key.</span><br><span class="line"></span><br><span class="line">    Use the scan codes to differentiate between keys representing the</span><br><span class="line">    same ASCII code, such as the plus key across the top of the</span><br><span class="line">    keyboard and the gray plus key.</span><br><span class="line"></span><br><span class="line">    After the character has been removed from the keyboard buffer, the</span><br><span class="line">    keyboard buffer start pointer (at 0040h:001Ah) is increased by 2.</span><br><span class="line">    If the start pointer is beyond the end of the buffer, the start</span><br><span class="line">    pointer is reset to the start of the keyboard buffer.</span><br><span class="line"></span><br><span class="line">    If no character is available at the keyboard, then the AT, XT-286,</span><br><span class="line">    and PC Convertible issue an Int 15h, Service 90h (Device Busy),</span><br><span class="line">    for the keyboard, informing the operating system that there is a</span><br><span class="line">    keyboard loop taking place and thereby allowing the operating</span><br><span class="line">    system to perform another task.</span><br><span class="line"></span><br><span class="line">    After every character is typed, the AT, XT-286, and PC Convertible</span><br><span class="line">    issue an Int 15h, Service 91h (Interrupt Complete). This allows</span><br><span class="line">    the operating system to switch back to a task that is waiting for</span><br><span class="line">    a character at the keyboard.</span><br><span class="line"></span><br><span class="line">    See Service 10h for an equivalent service that supports the</span><br><span class="line">    enhanced (101/102-key) keyboard.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-173397.html">Int 16h, 01h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-177391.html">Int 16h, 05h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-178107.html">Int 16h, 10h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

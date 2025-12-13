@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-57359.html">
+    <link rel="next" href="tr-59172.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-57359.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-59172.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> ISFIXED(&lt;C drive letter&gt;)</span><br><span class="line"> Evaluates whether a specified disk drive is a functioning hard disk.</span><br><span class="line"> Returns &lt;expL&gt; true if &lt;drive&gt; is a hard disk and working, otherwise false.</span><br><span class="line"></span><br><span class="line"> Useful in backup and installation programs.</span><br><span class="line"></span><br><span class="line"> &lt;drive letter&gt; may be uppercase or lowercase.</span><br><span class="line"></span><br><span class="line"> drive_let = SPACE(1)</span><br><span class="line"> DO WHILE .T.</span><br><span class="line">    @...SAY &#34;Enter drive letter of hard disk:&#34;;</span><br><span class="line">        GET drive_let PICTURE &#34;A&#34; VALID ISDRIVE(drive_let)</span><br><span class="line">    READ</span><br><span class="line">    IF .NOT. ISFIXED( drive_let )</span><br><span class="line">       @...SAY &#34;Drive is not a hard disk or is not working&#34;</span><br><span class="line">    ELSE</span><br><span class="line">       EXIT</span><br><span class="line">    ENDIF</span><br><span class="line"> ENDDO</span><br><span class="line"></span><br><span class="line"> * Check for floppy disk with ISDRIVE()</span><br><span class="line"> * because .NOT. ISFIXED() could be invalid drive only</span><br><span class="line"> IF ISDRIVE( D ) .AND. .NOT. ISFIXED( D )</span><br><span class="line">    ? &#34;Drive D is a removable disk&#34;</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> Hazard</span><br><span class="line">    False return value indicates either a floppy disk or an invalid</span><br><span class="line">    drive; use ISDRIVE() to differentiate.</span><br><span class="line"></span><br><span class="line">    Wherever possible, library routines use DOS function calls</span><br><span class="line">    (int 21h) for maximum portability between various computers.</span><br><span class="line">    But, for the library to perform an operation where that</span><br><span class="line">    facility is not available from DOS, we had to use a direct ROM</span><br><span class="line">    BIOS interrupt.  These may not work properly (or at all) on</span><br><span class="line">    some computers.  Test this function on the target hardware</span><br><span class="line">    before relying on their use in your application.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-32993.html">DIRMAKE()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-56045.html">ISDRIVE()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

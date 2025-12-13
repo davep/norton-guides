@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » FAQ » FAQ</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-78263.html">
+    <link rel="next" href="clipncpp-79905.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-78263.html">Previous</a></li>
+
+
+          
+
+<li><a href="clipncpp-29045.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-79905.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> I want to write a C function that concatenates a list of</span></span><br><span class="line"><span class="ngb"> strings whose lengths are unknown at compile-time.  How can I</span></span><br><span class="line"><span class="ngb"> do this efficiently?</span></span><br><span class="line"></span><br><span class="line"> If you&#39;re concerned about performance, the best possible solution</span><br><span class="line"> would be to define a maximum string length beforehand.  If you can</span><br><span class="line"> do that, this piece of code, submitted by Brian Marasca</span><br><span class="line"> (71230, 1650 on Compuserve), is pretty high-performance:</span><br><span class="line"></span><br><span class="line"> #define MAXLEN 120   /* Set this to the maximum required length. */</span><br><span class="line"></span><br><span class="line"> CLIPPER cStrCat()</span><br><span class="line"> {</span><br><span class="line">     char *p, *q, *buf ;</span><br><span class="line">     int cx = 1, parms = _parinfo ( 0 ) ;</span><br><span class="line"></span><br><span class="line">     q = buf = _xgrab (MAXLEN + 1) ;</span><br><span class="line"></span><br><span class="line">     while (parms--)</span><br><span class="line">     {</span><br><span class="line">          p = _parc (cx++) ;</span><br><span class="line">          while (*p) *q++ = *p++ ;</span><br><span class="line">     }</span><br><span class="line">     *q = &#39;\0&#39; ;       /* very important! */</span><br><span class="line"></span><br><span class="line">     _retc (buf) ;</span><br><span class="line">     _xfree (buf) ;</span><br><span class="line"> }</span><br><span class="line"></span><br><span class="line"> # Brian Marasca (71230,1650) Section 2 #172316 30-Oct-91</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

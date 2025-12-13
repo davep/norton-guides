@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5528161.html">
+    <link rel="next" href="rbint-5529716.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5528161.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5448544.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5529716.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 67 Fn 5DEA  - Rm386 - V86-mode I/o Port Trapping Control             </span>  [<span class="ngb">m</span>]</span><br><span class="line"></span><br><span class="line">   AX = 5DEAh</span><br><span class="line">   BX = function</span><br><span class="line">       00h globally disable V86-mode trapping</span><br><span class="line">       01h globally enable V86-mode trapping</span><br><span class="line">       CL = interrupt to use for trapping</span><br><span class="line">       02h get I/O trapping state</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AH = status</span><br><span class="line">       00h successful</span><br><span class="line">       BX = current trapping state (function 02h)</span><br><span class="line">           0000h disabled, 0001h enabled</span><br><span class="line">       CX = interrupt used as trap interrupt (functions 00h and 02h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> RM386 traps this function on the initial transition to protected</span><br><span class="line">     mode caused by the INT instruction, which means it can not be</span><br><span class="line">     overridden simply by hooking the interrupt</span><br><span class="line">   when I/O trapping is enabled and I/O port access occurs, RM386</span><br><span class="line">     simulates an INT instruction for the specified interrupt; the</span><br><span class="line">     interrupt handler is responsible for decoding the trapped instruction</span><br><span class="line">     and performing the appropriate action.  INT 2C/AX=002Dh provides a</span><br><span class="line">     similar but more-easily used interface.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=5DEBh,AH=EFh&#34;RM386&#34;,INT 2C/AX=002Dh</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

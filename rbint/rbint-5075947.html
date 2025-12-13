@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5075169.html">
+    <link rel="next" href="rbint-5077245.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5075169.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5077245.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 61 Fn 0001  - Banyan Vines - &#34;soint&#34; - Set User Completion Function  </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0001h subfn 000Bh</span><br><span class="line">   DS:DX -&gt; communications control block (function 000Bh) (see #3014)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status (00h-0Ah,A2h) (see #3010)</span><br><span class="line">Range: INT 60h to INT 66h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  The Banyan interrupt handler is identified by the string &#34;BANV&#34; in</span><br><span class="line">     the four bytes immediately preceding the interrupt handler</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0001h/SF=0005h,AX=0001h/SF=0008h</span><br><span class="line"></span><br><span class="line">Format of VINES control block for subfunction 000Bh:</span><br><span class="line">Offset Size    Description (Table 3014)</span><br><span class="line"> 00h   WORD    000Bh</span><br><span class="line"> 02h   WORD    pointer to argument block (see #3015)</span><br><span class="line"> 04h   WORD    error return code (see #2996)</span><br><span class="line"> 06h  2 BYTEs  reserved</span><br><span class="line"> 08h   WORD    user CS register</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3013</span><br><span class="line"></span><br><span class="line">Format of VINES argument block for subfunction 000Bh:</span><br><span class="line">Offset Size    Description (Table 3015)</span><br><span class="line"> 00h   WORD    pointer to user interrupt function (see #3016)</span><br><span class="line"> 02h   WORD    pointer to user stack</span><br><span class="line"> 04h   WORD    initial timeout value in multiples of 200ms, FFFFh = infinite</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3015</span><br><span class="line"></span><br><span class="line">(Table 3016)</span><br><span class="line">Values FAR user function is invoked with:</span><br><span class="line">   SS = DS = ES = segment of control block</span><br><span class="line">   STACK:  DWORD   return address</span><br><span class="line">       WORD    argument pointer (sosend or sorec argument block)</span><br><span class="line">       WORD    error return code</span><br><span class="line">           0000h argument pointer is valid</span><br><span class="line">           00A3h timeout</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

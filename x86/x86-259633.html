@@ -1,0 +1,133 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-259109.html">
+    <link rel="next" href="x86-260444.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-259109.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-260444.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FDISI           Disable interrupts                   Exceptions: None</span></span><br><span class="line"><span class="ngb">FNDISI          Disable interrupts, no wait</span>          C3 C2 C1 C0: [??]</span><br><span class="line"></span><br><span class="line"><span class="ngb">FDISI</span></span><br><span class="line"><span class="ngb">FNDISI</span></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   Interrupt Enable Mask ← 1</span><br><span class="line"></span><br><span class="line">    FDISI disables interrupts in the 8087 only. It sets the Interrupt</span><br><span class="line">    Enable Mask (IEM) in the control word, which prevents the 8087 from</span><br><span class="line">    issuing interrupt requests. If WAIT is decoded with pending</span><br><span class="line">    exceptions, the 8087 produces an input (whether masked or not).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    This instruction disables interrupts in the 8087 only. It is</span><br><span class="line">    recognized but ignored in later FPUs.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    9B DB E1    FDISI</span><br><span class="line">    DB E1       FNDISI</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Timing</span></span><br><span class="line">    Variations    8087         287        387      486     Pentium</span><br><span class="line">    fdisi         2-8           2          2        3       1      NP</span><br><span class="line">    fndisi        2-8           2          2        3       1      NP</span><br><span class="line"></span><br><span class="line">                The wait version may take additional cycles</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-263344.html">FENI</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4286084.html">
+    <link rel="next" href="rbint-4303713.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4286084.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4197937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4303713.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn C000  - Novell Odi Link Support Layer (lsl.com) - Installation Check  <span class="ngb">(Cont.)</span></span></span><br><span class="line"></span><br><span class="line"> 01h   BYTE    statistics table minor version (decimal, 0-99)</span><br><span class="line"> 02h   WORD    number of generic counters following</span><br><span class="line"> 04h   DWORD   &#34;ValidCountersMask&#34; (bitmask, bit 31 is TotalTxPackets)</span><br><span class="line"> 08h   DWORD   TotalTxPackets</span><br><span class="line"> 0Ch   DWORD   TotalRxPackets</span><br><span class="line"> 10h   DWORD   IgnoredRxPackets</span><br><span class="line"> 14h   WORD    number of custom counters</span><br><span class="line"> 16h  N DWORDs custom counters</span><br><span class="line">      N DWORDs -&gt; CustomCounterStrN (one per custom counter)</span><br><span class="line">   var length-prepended and NULL terminated string for Counter 0</span><br><span class="line">   ...</span><br><span class="line">   var length-prepended and NULL terminated string for Counter N-1</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2683,#2690</span><br><span class="line"></span><br><span class="line">Format of Protocol Stack Configuration Table:</span><br><span class="line">Offset Size    Description (Table 2685)</span><br><span class="line"> 00h   BYTE    configuration table major version</span><br><span class="line"> 01h   BYTE    configuration table minor version (decimal, 0-99)</span><br><span class="line"> 02h   DWORD   -&gt; counted NUL-terminated long descriptive name for protocol</span><br><span class="line"> 06h   DWORD   -&gt; counted NUL-terminated short name for protocol (15 chars)</span><br><span class="line"> 0Ah   BYTE    protocol stack major version</span><br><span class="line"> 0Bh   BYTE    protocol stack minor version (decimal, 0-99)</span><br><span class="line"> 0Ch 16 BYTEs  reserved for future use</span><br><span class="line"></span><br><span class="line">Format of MLID Configuration Table:</span><br><span class="line">Offset Size    Description (Table 2686)</span><br><span class="line"> 00h 26 BYTEs  signature &#39;HardwareDriverMLID        &#39; (8 spaces on end)</span><br><span class="line"> 1Ah   BYTE    configuration table major version</span><br><span class="line"> 1Bh   BYTE    configuration table minor version (decimal, 0-99)</span><br><span class="line"> 1Ch  6 BYTEs  node address</span><br><span class="line"> 22h   WORD    MLID mode flags (see #2687)</span><br><span class="line"> 24h   WORD    board number</span><br><span class="line"> 26h   WORD    board instance (if more than one of same board installed)</span><br><span class="line"> 28h   WORD    maximum packet size</span><br><span class="line"> 2Ah   WORD    BestDataSize</span><br><span class="line"> 2Ch   WORD    WorstDataSize</span><br><span class="line"> 2Eh   DWORD   -&gt; counted NUL-terminated long name for NIC</span><br><span class="line"> 32h   DWORD   -&gt; counted NUL-terminated short name for NIC (8 chars max)</span><br><span class="line"> 36h   DWORD   -&gt; counted NUL-terminated Frame and Media type</span><br><span class="line"> 3Ah   WORD    reserved (0000h)</span><br><span class="line"> 3Ch   WORD    frame type ID</span><br><span class="line"> 3Eh   WORD    TransportTime (milliseconds)</span><br><span class="line"> 40h   DWORD   -&gt; SourceRouteHandler for TokenRing. (Used by ROUTE.COM)</span><br><span class="line"> 44h   WORD    lookahead size</span><br><span class="line"> 46h   WORD    line speed (Mbps if high bit clear, else Kbps)</span><br><span class="line"> 48h   WORD    QueueDepth</span><br><span class="line"> 4Ah  6 BYTEs  reserved (0)</span><br><span class="line"> 50h   BYTE    driver major version</span><br><span class="line"> 51h   BYTE    driver minor version (decimal, 0-99)</span><br><span class="line"> 52h   WORD    bus/multicast flags (see #2688)</span><br><span class="line"> 54h   WORD    send retries</span><br><span class="line"> 56h   DWORD   ConfigTableLink</span><br><span class="line"> 5Ah   WORD    MLID sharing flags (see #2689)</span><br><span class="line"> 5Ch   WORD    slot number</span><br><span class="line"> 5Eh   WORD    I/O address 1</span><br><span class="line"> 60h   WORD    I/O range 1</span><br><span class="line"> 62h   WORD    I/O address 2</span><br><span class="line"> 64h   WORD    I/O range 2</span><br><span class="line"> 66h   DWORD   memory address 1</span><br><span class="line"> 6Ah   WORD    memory size 1</span><br><span class="line"> 6Ch   DWORD   memory address 2</span><br><span class="line"> 70h   WORD    memory size 2</span><br><span class="line"> 72h   BYTE    interrupt line 1</span><br><span class="line"> 73h   BYTE    interrupt line 2</span><br><span class="line"> 74h   BYTE    DMA line 1</span><br><span class="line"> 75h   BYTE    DMA line 2</span><br><span class="line"></span><br><span class="line">Bitfields for MLID mode flags:</span><br><span class="line">Bit(s) Description (Table 2687)</span><br><span class="line"> 15    MLID supports Octet Reversal</span><br><span class="line"> 14    node address is non-canonical</span><br><span class="line"> 13    promiscuous mode is supported</span><br><span class="line"> 12-8  reserved</span><br><span class="line"> 7 LDataSize field in LookAhead structure supported</span><br><span class="line"> 6 raw send supported</span><br><span class="line"> 5 MLID needs to be polled by LSL</span><br><span class="line"> 4 reserved (0)</span><br><span class="line"> 3 multicasting is supported</span><br><span class="line"> 2 not currently used by DOS ODI, set to 0.</span><br><span class="line"> 1 network card uses DMA.</span><br><span class="line"> 0 RealDriverBit, always set to 1.</span><br><span class="line"></span><br><span class="line">Bitfields for bus/multicast flags:</span><br><span class="line">Bit(s) Description (Table 2688)</span><br><span class="line"> 10-9  specialized multicast support</span><br><span class="line">   00 = Group addressing is default for medium</span><br><span class="line">   01 = Invalid</span><br><span class="line">   10 = Filter group address in MLID.</span><br><span class="line">   11 = Adapter filters group address.</span><br><span class="line"> 2 supports Micro Channel cards</span><br><span class="line"> 1 supports ISA cards</span><br><span class="line"> 0 supports EISA cards</span><br><span class="line"></span><br><span class="line">Bitfields for MLID sharing flags:</span><br><span class="line">Bit(s) Description (Table 2689)</span><br><span class="line"> 8 NIC can share DMA2</span><br><span class="line"> 7 NIC can share DMA1</span><br><span class="line"> 6 NIC can share IRQ2</span><br><span class="line"> 5 NIC can share IRQ1</span><br><span class="line"> 4 NIC can share Memory2</span><br><span class="line"> 3 NIC can share Memory1</span><br><span class="line"> 2 NIC can share IO2</span><br><span class="line"> 1 NIC can share IO1</span><br><span class="line"> 0 MLID is currently shut down</span><br><span class="line"></span><br><span class="line">Format of MLID Statistics Table:</span><br><span class="line">Offset Size    Description (Table 2690)</span><br><span class="line"> 00h   BYTE    driver statistics table major version</span><br><span class="line"> 01h   BYTE    driver statistics table minor version (decimal, 0-99)</span><br><span class="line"> 02h   WORD    number of generic counters (typically 13)</span><br><span class="line"> 04h   DWORD   &#34;ValidCountersMask&#34; (bit mask, bit 31 is TotalTxCount)</span><br><span class="line"> 08h   DWORD   TotalTxCount</span><br><span class="line"> 0Ch   DWORD   TotalRxCount</span><br><span class="line"> 10h   DWORD   NoECBAvailableCount</span><br><span class="line"> 14h   DWORD   TxTooBigCount</span><br><span class="line"> 18h   DWORD   TxTooSmallCount</span><br><span class="line"> 1Ch   DWORD   RxOverflowCount</span><br><span class="line"> 20h   DWORD   RxTooBigCount</span><br><span class="line"> 24h   DWORD   RxTooSmallCount</span><br><span class="line"> 28h   DWORD   TxMiscCount</span><br><span class="line"> 2Ch   DWORD   RxMiscCount</span><br><span class="line"> 30h   DWORD   TxRetryCount</span><br><span class="line"> 34h   DWORD   RxChecksumErrorCount</span><br><span class="line"> 38h   DWORD   RxMismatchCount</span><br><span class="line"> 3Ch   WORD    number of custom counters</span><br><span class="line"> 3Eh  N DWORDs custom counters</span><br><span class="line">      N DWORDs -&gt; CustomCounterStrN (one per custom counter)</span><br><span class="line">   var length-prepended and NULL terminated string for Counter 0</span><br><span class="line">   ...</span><br><span class="line">   var length-prepended and NULL terminated string for Counter N-1</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2683,#2684</span><br><span class="line"></span><br><span class="line">Format of bound stack info structure:</span><br><span class="line">Offset Size    Description (Table 2691)</span><br><span class="line"> 00h   DWORD   -&gt; protocol stack&#39;s short name (counted, NUL-terminated)</span><br><span class="line"> 04h   DWORD   -&gt; receive handler</span><br><span class="line"> 08h   DWORD   -&gt; control handler</span><br><span class="line"></span><br><span class="line">Format of stack info structure:</span><br><span class="line">Offset Size    Description (Table 2692)</span><br><span class="line"> 00h   DWORD   -&gt; receive handler</span><br><span class="line"> 04h   DWORD   -&gt; control handler</span><br><span class="line"></span><br><span class="line">Format of General Service Control Block:</span><br><span class="line">Offset Size    Description (Table 2693)</span><br><span class="line"> 00h   DWORD   -&gt; next GSCB (maintained internally by LSL)</span><br><span class="line"> 04h   DWORD   -&gt; entry point for general service handler</span><br><span class="line"> 08h   WORD    command code for this general service (8000h-FFFFh)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the control block must not be altered or deallocated until the general</span><br><span class="line">     service is removed</span><br><span class="line"></span><br><span class="line">Format of Lookahead structure:</span><br><span class="line">Offset Size    Description (Table 2694)</span><br><span class="line"> 00h   DWORD   -&gt; Media header</span><br><span class="line"> 04h   DWORD   -&gt; lookahead buffer</span><br><span class="line"> 08h   WORD    length of lookahead buffer</span><br><span class="line"> 0Ah  6 BYTEs  protocol ID</span><br><span class="line"> 10h   WORD    logical board number</span><br><span class="line"> 12h   WORD    lookahead size</span><br><span class="line"></span><br><span class="line">Format of ODI ECB:</span><br><span class="line">Offset Size    Description (Table 2695)</span><br><span class="line"> 00h   DWORD   link to next ECB</span><br><span class="line"> 04h   DWORD   link to previous ECB</span><br><span class="line"> 08h   WORD    general status</span><br><span class="line">       0000h received successfully</span><br><span class="line">       8006h packet overflow</span><br><span class="line">       8007h reception aborted (data not valid)</span><br><span class="line"> 0Ah   DWORD   -&gt; event service routine or RETF (never 0000h:0000h)(see #2696)</span><br><span class="line"> 0Eh   WORD    protocol stack identifier</span><br><span class="line"> 10h  6 BYTEs  protocol ID (sending only)</span><br><span class="line"> 16h   WORD    MLID board number (sending only)</span><br><span class="line"> 18h  6 BYTEs  MAC destination address</span><br><span class="line"> 1Eh  4 BYTEs  driver workspace</span><br><span class="line"> 22h  8 BYTEs  protocol workspace</span><br><span class="line"> 2Ah   WORD    total length of sent buffer</span><br><span class="line"> 2Ch   WORD    fragment count</span><br><span class="line"> 2Eh  2 WORDs  segment,offset of first fragment buffer</span><br><span class="line"> 32h   WORD    length of first fragment buffer</span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2681</span><br><span class="line"></span><br><span class="line">(Table 2696)</span><br><span class="line">Values event service routine is called with:</span><br><span class="line">   ES:SI -&gt; associated ODI ECB (see #2695)</span><br><span class="line">   interrupts disabled</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> DS,BP,SS,SP preserved</span><br><span class="line">   interrupt disabled</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the service routine may invoke any IPX/ODI function except CloseSocket</span><br><span class="line">   it is safe to send a packet and wait for completion if enough stack</span><br><span class="line">     space is available</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » FAQ » FAQ</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-47756.html">
+    <link rel="next" href="clipncpp-50784.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-47756.html">Previous</a></li>
+
+
+          
+
+<li><a href="clipncpp-29045.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-50784.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Short: I heard that you should use STATIC variables instead</span></span><br><span class="line"> <span class="ngb">of PUBLICs at all times, but I can&#39;t figure out how to make</span></span><br><span class="line"> <span class="ngb">the switch.</span></span><br><span class="line"></span><br><span class="line"> Pull these variables in logical groups (e.g., all colors in</span><br><span class="line"> one place) into separate source files and declare them STATIC.</span><br><span class="line"> Then write a function or set of functions which allow you to get</span><br><span class="line"> (and optionally set) the values of these variables.  For example,</span><br><span class="line"> COLORS1.PRG will return the current value of the cNormal variable,</span><br><span class="line"> and will also set the variable if you pass it a value.</span><br><span class="line"></span><br><span class="line"> // COLORS1.PRG</span><br><span class="line"> STATIC cNormal</span><br><span class="line"> FUNCTION setnorm (x)</span><br><span class="line"> LOCAL cRet := cNormal</span><br><span class="line"> IF x != NIL</span><br><span class="line">  cNormal := x</span><br><span class="line"> ENDIF</span><br><span class="line"> RETURN cRet</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> If you have more than a few of these variables to get and set this</span><br><span class="line"> may present a problem; the source and object code for these functions</span><br><span class="line"> will quickly grow out of hand!  So let&#39;s take it one step further by</span><br><span class="line"> hiding this batch of functions with the preprocessor.</span><br><span class="line"></span><br><span class="line"> // COLORS2.PRG--Link this into your application.</span><br><span class="line"> // Colors: 1 Normal  2 Error Message  3 Prompt  4 F-key legend</span><br><span class="line"> STATIC acColor[4]</span><br><span class="line"> FUNCTION setstdcol (x, y)</span><br><span class="line"> LOCAL cRet := acColor[x]</span><br><span class="line"> IF y != NIL</span><br><span class="line">  acColor[x] := y</span><br><span class="line"> ENDIF</span><br><span class="line"> RETURN cRet</span><br><span class="line"></span><br><span class="line"> // APP.CH-- #include this in all your application&#39;s source files.</span><br><span class="line"> #xtranslate setnorm   (&lt;x&gt;) =&gt; setstdcol (1, &lt;x&gt;)</span><br><span class="line"> #xtranslate seterr    (&lt;x&gt;) =&gt; setstdcol (2, &lt;x&gt;)</span><br><span class="line"> #xtranslate setprompt (&lt;x&gt;) =&gt; setstdcol (3, &lt;x&gt;)</span><br><span class="line"> #xtranslate setfkey   (&lt;x&gt;) =&gt; setstdcol (4, &lt;x&gt;)</span><br><span class="line"></span><br><span class="line"> With this set of directives and the single function setstdcol()</span><br><span class="line"> you can keep the size of your sources and EXE down.  At the same</span><br><span class="line"> time the application programmer (you or someone else) can have a</span><br><span class="line"> stable interface to this array of values no matter how large the</span><br><span class="line"> application gets or how many new elements you want to add to the</span><br><span class="line"> array.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

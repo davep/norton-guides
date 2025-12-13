@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2564628.html">
+    <link rel="next" href="rbint-2566882.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2564628.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2566882.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 58  - Dos 5+ - Get Or Set Umb Link State                       </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 58h</span><br><span class="line">   AL = subfunction</span><br><span class="line">       02h get UMB link state</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AL = current link state</span><br><span class="line">               00h UMBs not part of DOS memory chain</span><br><span class="line">               01h UMBs in DOS memory chain</span><br><span class="line">       03h set UMB link state</span><br><span class="line">       BX = new link state</span><br><span class="line">           0000h remove UMBs from DOS memory chain</span><br><span class="line">           0001h add UMBs to DOS memory chain</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (01h) (see #1366)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> a program which changes the UMB link state should restore it before</span><br><span class="line">     terminating</span><br><span class="line">   UMBs will only be available if CONFIG.SYS contains the line DOS=UMB,</span><br><span class="line">     the UMBs have been linked into the memory chain with AX=5803h, and</span><br><span class="line">     the allocation strategy has been set to include high memory with</span><br><span class="line">     AX=5801h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1373,#2453 at INT 2F/AX=4310h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

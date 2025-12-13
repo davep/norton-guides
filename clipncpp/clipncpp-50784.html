@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » FAQ » FAQ</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-48998.html">
+    <link rel="next" href="clipncpp-51628.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-48998.html">Previous</a></li>
+
+
+          
+
+<li><a href="clipncpp-29045.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-51628.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">What are the ground rules for using LOCALs and STATICs?</span></span><br><span class="line"></span><br><span class="line"> LOCALs and STATICs must be the first statements in a function,</span><br><span class="line"> except possibly for the PARAMETERS statement.  They may be</span><br><span class="line"> declared with initial values (e.g. LOCAL a := 1), but STATICs may</span><br><span class="line"> not be initialized with a value that is unknown to the compiler</span><br><span class="line"> (e.g. STATIC b := myfunc()--where myfunc is the name of your</span><br><span class="line"> user-defined function--is invalid).  The initialization is</span><br><span class="line"> performed every time the function is called (in the case of</span><br><span class="line"> LOCALs) or once at the beginning of the program (in the case of</span><br><span class="line"> STATICs).</span><br><span class="line"></span><br><span class="line"> If you want to use a file-wide STATIC variable to share information</span><br><span class="line"> among functions within the same source module, that module must be</span><br><span class="line"> compiled with the /n switch, and the STATIC declarations must</span><br><span class="line"> precede the first FUNCTION or PROCEDURE.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

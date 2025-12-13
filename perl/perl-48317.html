@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Commands</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-48165.html">
+    <link rel="next" href="perl-51423.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-48165.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-51423.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>PERL</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="perl-90961.html">Languages</a></li>
+                  <li><a href="perl-159711.html">Command line options</a></li>
+                  <li><a href="perl-170094.html">Regular Expressions</a></li>
+                  <li><a href="perl-171332.html">Special Variables</a></li>
+                  <li><a href="perl-188582.html">Operators</a></li>
+                  <li><a href="perl-197905.html">Debugging</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tables</li>
+              <li>
+                <ul>
+                  <li><a href="perl-204383.html">ASCII Chart</a></li>
+                  <li><a href="perl-207014.html">Literals</a></li>
+                  <li><a href="perl-207867.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">     pack(TEMPLATE,LIST)</span><br><span class="line"></span><br><span class="line">             Takes an array or list of values and packs it into a</span><br><span class="line">             binary  structure,  returning  the string containing</span><br><span class="line">             the structure.  The TEMPLATE is a sequence of  char-</span><br><span class="line">             acters  that  give  the order and type of values, as</span><br><span class="line">             follows:</span><br><span class="line"></span><br><span class="line">                  A    An ascii string, will be space padded.</span><br><span class="line">                  a    An ascii string, will be null padded.</span><br><span class="line">                  c    A signed char value.</span><br><span class="line">                  C    An unsigned char value.</span><br><span class="line">                  s    A signed short value.</span><br><span class="line">                  S    An unsigned short value.</span><br><span class="line">                  i    A signed integer value.</span><br><span class="line">                  I    An unsigned integer value.</span><br><span class="line">                  l    A signed long value.</span><br><span class="line">                  L    An unsigned long value.</span><br><span class="line">                  n    A short in &#34;network&#34; order.</span><br><span class="line">                  N    A long in &#34;network&#34; order.</span><br><span class="line">                  f    A single-precision float in the native format.</span><br><span class="line">                  d    A double-precision float in the native format.</span><br><span class="line">                  p    A pointer to a string.</span><br><span class="line">                  x    A null byte.</span><br><span class="line">                  X    Back up a byte.</span><br><span class="line">                  @    Null fill to absolute position.</span><br><span class="line">                  u    A uuencoded string.</span><br><span class="line">                  b    A bit string (ascending bit order, like vec()).</span><br><span class="line">                  B    A bit string (descending bit order).</span><br><span class="line">                  h    A hex string (low nybble first).</span><br><span class="line">                  H    A hex string (high nybble first).</span><br><span class="line"></span><br><span class="line">             Each letter may optionally be followed by  a  number</span><br><span class="line">             which  gives  a repeat count.  With all types except</span><br><span class="line">             &#34;a&#34;, &#34;A&#34;, &#34;b&#34;, &#34;B&#34;, &#34;h&#34; and &#34;H&#34;, the  pack  function</span><br><span class="line">             will  gobble up that many values from the LIST.  A *</span><br><span class="line">             for the repeat count means to use however many items</span><br><span class="line">             are  left.   The  &#34;a&#34;  and &#34;A&#34; types gobble just one</span><br><span class="line">             value, but pack it as a string of length count, pad-</span><br><span class="line">             ding  with  nulls  or  spaces  as  necessary.  (When</span><br><span class="line">             unpacking, &#34;A&#34; strips trailing spaces and nulls, but</span><br><span class="line">             &#34;a&#34;  does  not.)   Likewise,  the &#34;b&#34; and &#34;B&#34; fields</span><br><span class="line">             pack a string that many bits long.  The &#34;h&#34; and  &#34;H&#34;</span><br><span class="line">             fields  pack  a string that many nybbles long.  Real</span><br><span class="line">             numbers (floats  and  doubles)  are  in  the  native</span><br><span class="line">             machine  format  only;  due  to  the multiplicity of</span><br><span class="line">             floating formats around, and the lack of a  standard</span><br><span class="line">             &#34;network&#34;  representation,  no  facility  for inter-</span><br><span class="line">             change has been made.  This means that packed float-</span><br><span class="line">             ing  point  data  written  on one machine may not be</span><br><span class="line">             readable on another - even if both use IEEE floating</span><br><span class="line">             point  arithmetic  (as the endian-ness of the memory</span><br><span class="line">             representation is not part of the IEEE spec).   Note</span><br><span class="line">             that  perl  uses  doubles internally for all numeric</span><br><span class="line">             calculation, and converting from double -&gt; float  -&gt;</span><br><span class="line">             double   will   lose   precision  (i.e.  unpack(&#34;f&#34;,</span><br><span class="line">             pack(&#34;f&#34;, $foo)) will not in general equal $foo).</span><br><span class="line">             Examples:</span><br><span class="line"></span><br><span class="line">                  $foo = pack(&#34;cccc&#34;,65,66,67,68);</span><br><span class="line">                  # foo eq &#34;ABCD&#34;</span><br><span class="line">                  $foo = pack(&#34;c4&#34;,65,66,67,68);</span><br><span class="line">                  # same thing</span><br><span class="line"></span><br><span class="line">                  $foo = pack(&#34;ccxxcc&#34;,65,66,67,68);</span><br><span class="line">                  # foo eq &#34;AB\0\0CD&#34;</span><br><span class="line"></span><br><span class="line">                  $foo = pack(&#34;s2&#34;,1,2);</span><br><span class="line">                  # &#34;\1\0\2\0&#34; on little-endian</span><br><span class="line">                  # &#34;\0\1\0\2&#34; on big-endian</span><br><span class="line"></span><br><span class="line">                  $foo = pack(&#34;a4&#34;,&#34;abcd&#34;,&#34;x&#34;,&#34;y&#34;,&#34;z&#34;);</span><br><span class="line">                  # &#34;abcd&#34;</span><br><span class="line"></span><br><span class="line">                  $foo = pack(&#34;aaaa&#34;,&#34;abcd&#34;,&#34;x&#34;,&#34;y&#34;,&#34;z&#34;);</span><br><span class="line">                  # &#34;axyz&#34;</span><br><span class="line"></span><br><span class="line">                  $foo = pack(&#34;a14&#34;,&#34;abcdefg&#34;);</span><br><span class="line">                  # &#34;abcdefg\0\0\0\0\0\0\0&#34;</span><br><span class="line"></span><br><span class="line">                  $foo = pack(&#34;i9pl&#34;, gmtime);</span><br><span class="line">                  # a real struct tm (on my system anyway)</span><br><span class="line"></span><br><span class="line">                  sub bintodec {</span><br><span class="line">                      unpack(&#34;N&#34;, pack(&#34;B32&#34;, substr(&#34;0&#34; x 32 . shift, -32)));</span><br><span class="line">                  }</span><br><span class="line">             The same template may generally also be used in  the</span><br><span class="line">             unpack function.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="perl-82779.html">unpack</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:49</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

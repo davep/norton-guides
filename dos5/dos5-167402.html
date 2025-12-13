@@ -1,0 +1,136 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Interrupts 20h-28h</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-162169.html">
+    <link rel="next" href="dos5-173544.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-162169.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-159299.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-173544.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 24h                 Critical-Error Handler</span></span><br><span class="line"></span><br><span class="line">    Critical-Error Handler (Interrupt 24h) carries out program-specific</span><br><span class="line">    actions in response to critical errors during read and write</span><br><span class="line">    operations. DOS issues this interrupt if a critical error occurs</span><br><span class="line">    while a system function is attempting to read from or write to a</span><br><span class="line">    device or file. The handler carries out its actions then returns</span><br><span class="line">    to the system to retry the function, terminate the function, or</span><br><span class="line">    terminate the current program.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Programs must not issue Interrupt 24h.</span></span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Before</span> issuing Int 24h, DOS does the following:</span><br><span class="line"></span><br><span class="line">        ■   Sets the AX, DI, BP, and SI registers with information</span><br><span class="line">            about the error, such as the error value, location of the</span><br><span class="line">            error, type of device, and type of operation.</span><br><span class="line"></span><br><span class="line">        ■   Sets the program&#39;s stack to be the current stack. When the</span><br><span class="line">            handler receives control, the stack has the following</span><br><span class="line">            contents (from the top of the stack):</span><br><span class="line"></span><br><span class="line">                The return address (CS:IP) and the flags needed for</span><br><span class="line">                the IRET instruction back to the system.</span><br><span class="line"></span><br><span class="line">                The contents of the program&#39;s registers at the time</span><br><span class="line">                the system function that caused the error was called.</span><br><span class="line">                The registers are preserved in the following order:</span><br><span class="line">                AX,BX,CX,DX,SI,DI,BP,DS, and ES.</span><br><span class="line"></span><br><span class="line">                The return address (CS:IP) and the flags needed for</span><br><span class="line">                the IRET instruction back to the program.</span><br><span class="line"></span><br><span class="line">        ■   Sets internal system variables, such as those for InDOS</span><br><span class="line">            and ErrorMode. InDOS is set to zero to permit the handler</span><br><span class="line">            to call system functions. ErrorMode is set to 1 to prevent</span><br><span class="line">            the system from issuing Int 24h again before the handler</span><br><span class="line">            returns; DOS issues only one Int 24h at a time.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    DOS passes information about the error to the handler by using the</span><br><span class="line">    following registers:</span><br><span class="line"></span><br><span class="line">      <span class="ngb">Register  Description</span></span><br><span class="line">        AH      Specifies information about when and where the error</span><br><span class="line">                occurred, as well as how the critical-error handler</span><br><span class="line">                can respond to the error.</span><br><span class="line">                <span class="ngb">Bit     Meaning</span></span><br><span class="line">                0       0 = Error during read operation</span><br><span class="line">                        1 = Error during write operation</span><br><span class="line">                2,1     Location of error (only if the error</span><br><span class="line">                        occurred on a block device)</span><br><span class="line">                        00 = reserved sector (DOS area)</span><br><span class="line">                        01 = file allocation table (FAT)</span><br><span class="line">                        10 = directory</span><br><span class="line">                        11 = data area</span><br><span class="line">                3       0|1 = Handler cannot|can Fail the function  (*)</span><br><span class="line">                4       0|1 = Handler cannot|can Retry the function (*)</span><br><span class="line">                5       0|1 = Handler cannot|can Ignore the error   (*)</span><br><span class="line">                              (*) = (DOS 3.0+)</span><br><span class="line">                6       Reserved</span><br><span class="line">                <span class="ngb">7</span>       0 = Error occurred on a block device</span><br><span class="line">                        1 = Error occurred on a character device</span><br><span class="line">                            if bit 15 in the dhAttributes field</span><br><span class="line">                            (offset 04h) of the DeviceHeader structure</span><br><span class="line">                            is set, otherwise the error occurred in</span><br><span class="line">                            the memory image of the FAT.</span><br><span class="line">        AL      Specifies the drive number (0 = A, 1 = B, 2 = C, etc.)</span><br><span class="line">                if the error occurred on a block device. This register</span><br><span class="line">                is not used for errors that occur on character</span><br><span class="line">                devices.</span><br><span class="line">        DI      Specifies the error value:</span><br><span class="line">                (Low-order byte of DI only, upper byte is undefined)</span><br><span class="line">                00h     Attempt to write on write-protected disk</span><br><span class="line">                01h     Unknown unit</span><br><span class="line">                02h     Drive not ready</span><br><span class="line">                03h     Unknown command</span><br><span class="line">                04h     CRC error in data</span><br><span class="line">                05h     Incorrect length of drive-request structure</span><br><span class="line">                06h     Seek error</span><br><span class="line">                07h     Unknown media type</span><br><span class="line">                08h     Sector not found</span><br><span class="line">                09h     Printer out of paper</span><br><span class="line">                0Ah     Write fault</span><br><span class="line">                0Bh     Read fault</span><br><span class="line">                0Ch     General failure</span><br><span class="line">        BP:SI   Points to the DeviceHeader structure that contains</span><br><span class="line">                information about the device on which the error</span><br><span class="line">                occurred.</span><br><span class="line">                The Int 24h handler must <span class="ngu">not</span> change the contents of</span><br><span class="line">                the DeviceHeader struture.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The critical-error handler must determine what action to take in</span><br><span class="line">    response to the error. For example, the default handler displays</span><br><span class="line">    information about the error and prompts the user for input on how</span><br><span class="line">    to proceed.</span><br><span class="line"></span><br><span class="line">    The Int 24h handler can call the following Interrupt 21h</span><br><span class="line">    functions:</span><br><span class="line">                Character I/O           Functions 01h through 0Ch</span><br><span class="line">                Get Version Number      Function 30h</span><br><span class="line">                Get Ctrl-C Check Flag   Function 3300h</span><br><span class="line">                Set Ctrl-C Check Flag   Function 3301h</span><br><span class="line">                Get Startup Drive       Function 3305h</span><br><span class="line">                Get MS-DOS Version      Function 3306h</span><br><span class="line">                Set PSP Address         Function 50h</span><br><span class="line">                Get PSP Address         Functions 51h and 62h</span><br><span class="line">                Get Extended Error      Function 59h</span><br><span class="line">                <span class="ngu">No other system functions are permitted</span></span><br><span class="line"></span><br><span class="line">    Get Extended Error (function 59h) retrieves detailed information</span><br><span class="line">    about the error and is useful for handlers that display as much</span><br><span class="line">    information as possible about the error.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    The Int 24h handler must preserve the BX,CX,DX,DS,ES,SS, and SP</span><br><span class="line">    registers and restore the preserved values before returning to the</span><br><span class="line">    system. The critical-error handler returns to the system by using</span><br><span class="line">    the IRET instruction. Before returning, it also must set the AL</span><br><span class="line">    register to a value specifying the action the system should take.</span><br><span class="line">    Depending on what actions are allowed (as specified by bits 3, 4,</span><br><span class="line">    and 5 in the AH register), the AL register can contain one of the</span><br><span class="line">    following values:</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Value   Meaning</span></span><br><span class="line">        00h     Ignore the error. The system permits the system</span><br><span class="line">                functions to return to the program as if it had</span><br><span class="line">                completed successfully.</span><br><span class="line">        01h     Retry the operation. The system calls the system</span><br><span class="line">                function again. In this case, the system expects the</span><br><span class="line">                handler to have preserved and restored registers</span><br><span class="line">                before returning.</span><br><span class="line">        02h     Terminate the program. The system sets the termination</span><br><span class="line">                type to be exit_critical_error (02h) and carries out</span><br><span class="line">                the same actions as End Program (Int 21h function 4ch).</span><br><span class="line">        03h     Terminate the function (&#34;fail&#34;). The system permits</span><br><span class="line">                the system function to return to the program with an</span><br><span class="line">                error value.</span><br><span class="line">        </span><br><span class="line">    DOS checks the value to ensure that it is allowed. If values 00h</span><br><span class="line">    and 01h are not allowed, the system terminates (fails) the</span><br><span class="line">    function. If value 03h is not allowed, the system terminates the</span><br><span class="line">    program.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    COMMAND.COM provides the <span class="ngb">default</span> critical-error handler, which</span><br><span class="line">    displays a message about the error and, after displaying a</span><br><span class="line">    question such as &#34;Abort, Retry, Fail, or Ignore?&#34;, prompts the</span><br><span class="line">    user for a response.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-105927.html">59h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-6264.html">06h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-26783.html">34h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-227497.html">DeviceHeader</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

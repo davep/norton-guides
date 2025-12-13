@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Tutorial » Using the Profiler</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-355524.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-355524.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-354363.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Profiler Results</span></span><br><span class="line"> What does it all mean?</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> Once you have finished running each and every one of your functions,</span><br><span class="line"> procedures, routines, cleaned the kitchen sink and put the cat out you can</span><br><span class="line"> take a look at the results.</span><br><span class="line"></span><br><span class="line"> The output contained within the profiler window shows you all of the</span><br><span class="line"> functions, or procedures that have been called from your program. By default</span><br><span class="line"> they are displayed within the order that they were called, with the first</span><br><span class="line"> function called at the top of the window, and the last function at the</span><br><span class="line"> bottom of the list.</span><br><span class="line"></span><br><span class="line"> The times recorded in the profiler window, do not include the time taken to</span><br><span class="line"> make calls to MrDebug or any parts of the profiler. So this should at least</span><br><span class="line"> give you an rough approximation of how long your functions will take to call</span><br><span class="line"> without MrDebug linked.</span><br><span class="line"></span><br><span class="line"> The columns within the display show you the following for each</span><br><span class="line"> function/procedure:</span><br><span class="line"></span><br><span class="line">        <span class="ngb">The .PRG name, where the function came from.</span></span><br><span class="line">        <span class="ngb">The name of the function.</span></span><br><span class="line">        <span class="ngb">The number of calls made to the each function.</span></span><br><span class="line">        <span class="ngb">The Total Time spent in the function during the program run.</span></span><br><span class="line">        <span class="ngb">The Average Time spent in the function.</span></span><br><span class="line">        <span class="ngb">The Quickest Time spent in the function.</span></span><br><span class="line">        <span class="ngb">The Slowest Time spent in the function.</span></span><br><span class="line"></span><br><span class="line"> When you first see the profiler window, you will notice that there is no</span><br><span class="line"> sort order for the information held within the window.  When there is no</span><br><span class="line"> sort order, items are added to the top of the list so you can see the most</span><br><span class="line"> recently added items straight away.  You may set a sort order from the</span><br><span class="line"> Profile Sort Order submenu.</span><br><span class="line"></span><br><span class="line"> Available orders are:</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Filename &amp; function name.</span>                (Alphabetical)</span><br><span class="line">        <span class="ngb">Function name.</span>                           (Alphabetical)</span><br><span class="line">        <span class="ngb">Total calls to function.</span>                 (Most at top)</span><br><span class="line">        <span class="ngb">Total duration of calls to function.</span>     (Most at top)</span><br><span class="line">        <span class="ngb">Avarage duration of calls to function.</span>   (Most at top)</span><br><span class="line">        <span class="ngb">Quickest call to function.</span>               (Least at top)</span><br><span class="line">        <span class="ngb">Slowest call to function.</span>                (Most at top)</span><br><span class="line"></span><br><span class="line"> It is up to you to decide which order works best for you, and you may well</span><br><span class="line"> discover that it takes a few different views of the data to decide what</span><br><span class="line"> needs your attention.  For example, you could set the Sort Order to be</span><br><span class="line"> Calls.  This would sort the profile window by the number of calls made to</span><br><span class="line"> each function.</span><br><span class="line"></span><br><span class="line"> This would be handy as you would be able to see the most called functions</span><br><span class="line"> and acting on this information, you would be able to move some of these</span><br><span class="line"> functions out of the overlay modules and into the root module of the program</span><br><span class="line"> - thus speeding up the program as it would not have to make so many calls</span><br><span class="line"> to the external overlay.</span><br><span class="line"></span><br><span class="line"> But, be warned, you do not want to add everything to the root module as this</span><br><span class="line"> will increase the size of the load module and reduce the amount of memory</span><br><span class="line"> made available to your application - thus slowing down the program and</span><br><span class="line"> defeating the object of this exercise.</span><br><span class="line"></span><br><span class="line"> The profiler is often handy to spot functions which are getting called way</span><br><span class="line"> too many times because of a program error, and not because of program</span><br><span class="line"> behavior.  Once you have spotted that offending piece of code, you can</span><br><span class="line"> inspect it straight away by pressing the &lt;Enter&gt; key which will select the</span><br><span class="line"> Source Code Window and position you on the first executable line of code for</span><br><span class="line"> that function.  Or in the case of a Code-Block, it will place you on the</span><br><span class="line"> line that it was defined.  The &lt;Space&gt; bar will also position the Source</span><br><span class="line"> Code Window in the same manner but will leave you in the Profiler Window.</span><br><span class="line"></span><br><span class="line"> PS. Don&#39;t be alarmed when you see you tBrowse code-block Call count to be in</span><br><span class="line">     the 1000&#39;s just for a single screen stabilization.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

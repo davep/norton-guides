@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5569488.html">
+    <link rel="next" href="rbint-5571010.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5569488.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5545384.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5571010.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 68 Fn 02  - Appc/pc - Connection Control - Send Data                 </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = 02h subfn 0F00h</span><br><span class="line">   DS:DX -&gt; control block (see #3366)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> control block updated</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=02h/SF=0E00h,AH=02h/SF=1000h</span><br><span class="line"></span><br><span class="line">Format of APPC/PC &#34;Send_Data&#34; control block:</span><br><span class="line">Offset Size    Description (Table 3366)</span><br><span class="line"> 00h 12 BYTEs  reserved</span><br><span class="line"> 0Ch   WORD    0F00h (verb &#34;Send_Data&#34; or &#34;MC_Send_Data&#34;)</span><br><span class="line"> 0Eh   BYTE    1 if MC_ (mapped conversation) form of verb</span><br><span class="line">       0 if basic verb</span><br><span class="line"> 0Fh  5 BYTEs  reserved (0)</span><br><span class="line"> 14h   WORD    (big-endian) primary return code (see #3352)</span><br><span class="line"> 16h   DWORD   (big-endian) error code (see #3353)</span><br><span class="line"> 1Ah  8 BYTEs  (big-endian) TP_ID</span><br><span class="line"> 22h   DWORD   (big-endian) conversation ID</span><br><span class="line"> 26h   BYTE    request to send received (0=no, 1=yes)</span><br><span class="line"> 27h   BYTE    00h</span><br><span class="line"> 28h   WORD    data length</span><br><span class="line"> 2Ah   DWORD   pointer to data</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,193 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Hardware » Video</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="int-638292.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">IBM Video Graphics Array</span></span><br><span class="line"></span><br><span class="line">        The IBM Video Graphics Array (VGA) and its associated circuitry</span><br><span class="line">        consists of a video buffer, a video digital-to-analog converter</span><br><span class="line">        (DAC), and test circuitry. Then 256Kb video memory is mapped as</span><br><span class="line">        four planes of 64Kb by 8 bits (maps 0 through 3). The video DAC</span><br><span class="line">        drives the analog output to the display connector. The test</span><br><span class="line">        circuitry is used to test for the type of display attached,</span><br><span class="line">        color or monochrome.</span><br><span class="line"></span><br><span class="line">        The video subsystem supports all video modes available on the</span><br><span class="line">        IBM Monochrome Display Adapter, IBM Color/Graphics Adapter and</span><br><span class="line">        Enhanced Graphics Adapter. When a monochrome display is</span><br><span class="line">        attached, the colors for the color modes appear as shades of</span><br><span class="line">        gray.</span><br><span class="line"></span><br><span class="line">        The new modes available are:</span><br><span class="line"></span><br><span class="line">            640 x 480  16- and 2-color graphics</span><br><span class="line">            720 x 400  16-color and monochrome alphanumeric</span><br><span class="line">            350 x 400  16-color alphanumeric</span><br><span class="line">            320 x 200  256-color graphics</span><br><span class="line"></span><br><span class="line">        In the 200-scan-line modes, the data for each scan line is</span><br><span class="line">        scanned twice. The double scanning allows the 200-scan-line</span><br><span class="line">        image to be displayed as 400 scan lines.</span><br><span class="line"></span><br><span class="line">        The video subsystem serves as the interface between the system</span><br><span class="line">        microprocessor and video memory. When the system microprocessor</span><br><span class="line">        writes to or reads from video memory, all data passes through</span><br><span class="line">        the video subsystem.</span><br><span class="line"></span><br><span class="line">        The video subsystem controls the access to video memory form</span><br><span class="line">        the system and the cathode-ray tube (CRT) controller.</span><br><span class="line">        Therefore, programs do not need to wait for horizontal retrace</span><br><span class="line">        to update the display buffer in order to preserve screen</span><br><span class="line">        appearance. The system performs better when accessing the</span><br><span class="line">        display buffer during nonactive display times because there is</span><br><span class="line">        less interference from the CRT controller.</span><br><span class="line"></span><br><span class="line">        The video subsystem also controls the system addresses assigned</span><br><span class="line">        to video memory. Up to three different starting addresses can</span><br><span class="line">        be programmed for compatibility with previous video adapters.</span><br><span class="line"></span><br><span class="line">        In the graphics modes, the mode determine the way video</span><br><span class="line">        information is formatted into memory, and the way memory is</span><br><span class="line">        organized.</span><br><span class="line"></span><br><span class="line">        In alphanumeric modes, the system writes the ASCII character</span><br><span class="line">        code and attribute data to video memory maps 0 and 1,</span><br><span class="line">        respectively. Memory map 2 contains the character font loaded</span><br><span class="line">        by BIOS during an alphanumeric mode set. The font is used by</span><br><span class="line">        the character generator to create the character image on the</span><br><span class="line">        display.</span><br><span class="line"></span><br><span class="line">        Three fonts are contained in ROM. Two of these have dot</span><br><span class="line">        patterns that are the same as previous IBM display adapters.</span><br><span class="line">        The third font is a new 8-by-16 character font. Up to eight</span><br><span class="line">        256-character fonts can be loaded into video memory map 2 at</span><br><span class="line">        one time; two fonts can be active at any one time, allowing a</span><br><span class="line">        512-character font.</span><br><span class="line"></span><br><span class="line">        The video subsystem formats the information in video memory and</span><br><span class="line">        sends the output to the video DAC. For color displays, the</span><br><span class="line">        video DAC sends three analog color signals (red, green and</span><br><span class="line">        blue) to the display connector. For monochrome displays, BIOS</span><br><span class="line">        translates the color information in the DAC, and the DAC drives</span><br><span class="line">        the summed signal into the green output.</span><br><span class="line"></span><br><span class="line">        The auxiliary video connector allows video data to be passed</span><br><span class="line">        between the video subsystem and an adapter plugged into the</span><br><span class="line">        channel connector. The video subsystem can be disabled through</span><br><span class="line">        the POS registers. When it is disabled, the video subsystem</span><br><span class="line">        will not respond to video memory or I/O reads or writes, and</span><br><span class="line">        the video from the adapter can directly drive the video DAC.</span><br><span class="line"></span><br><span class="line">        Note: Compatibility with other hardware is best achieved by</span><br><span class="line">              using the BIOS interface or operating system interface</span><br><span class="line">              whenever possible.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="int-603522.html">3C0-W</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-179344.html">3C2-W</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-181159.html">3C2-R</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-181487.html">3C3</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-610123.html">3C5</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-182005.html">3CA-R</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-182199.html">3CC-R</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-616096.html">3CF</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-182732.html">3D5</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

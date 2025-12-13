@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dpmiv1-style.css">
+    <title>DPMI v1 Norton Guide » DPMI » Functions</title>
+    <meta name="description" content="DPMI v1 Norton Guide">
+    <link rel="prev" href="dpmiv1-69211.html">
+    <link rel="next" href="dpmiv1-73816.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dpmiv1-about.html">About</a></li>
+
+
+          
+
+<li><a href="dpmiv1-69211.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dpmiv1-73816.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DPMI</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions</a></li>
+                  <li><a href="dpmiv1-126452.html">Errors</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">Resize Linear Memory Block</span><br><span class="line"></span><br><span class="line">Changes the size of a memory block that was previously</span><br><span class="line">allocated with the Allocate Linear Memory Block function</span><br><span class="line">(Int 31H Fn 0504H).</span><br><span class="line"></span><br><span class="line"><span class="ngb">Call With:</span></span><br><span class="line"></span><br><span class="line">   AX     = 0505H</span><br><span class="line">   ESI    = memory block handle</span><br><span class="line">   ECX    = new block size (bytes, must be nonzero)</span><br><span class="line">   EDX    = flags</span><br><span class="line">           Bit    Significance</span><br><span class="line">           0      0 = create uncommitted pages</span><br><span class="line">                  1 = create committed pages</span><br><span class="line">           1      0 = do not update segment descriptors</span><br><span class="line">                  1 = segment descriptor update required</span><br><span class="line">           2-31   reserved, must be zero</span><br><span class="line"></span><br><span class="line">   and, if bit 1 of EDX is set (1):</span><br><span class="line">   ES:EBX = selector:offset of a buffer containing an array</span><br><span class="line">           of selectors, 1 word (16 bits) per selector</span><br><span class="line">   EDI    = count of selectors in array</span><br><span class="line"></span><br><span class="line"><span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">   if function successful</span><br><span class="line">   Carry flag= clear</span><br><span class="line">   EBX    = new linear base address of memory block</span><br><span class="line">   ESI    = new handle for memory block</span><br><span class="line"></span><br><span class="line">   if function unsuccessful</span><br><span class="line">   Carry flag= set</span><br><span class="line">   AX     = error code</span><br><span class="line">           8001H   unsupported function (16-bit host)</span><br><span class="line">           8012H   linear memory unavailable</span><br><span class="line">           8013H   physical memory unavailable</span><br><span class="line">           8014H   backing store unavailable</span><br><span class="line">           8016H   handle unavailable</span><br><span class="line">           8021H   invalid value (ECX=0)</span><br><span class="line">           8023H   invalid handle (in ESI)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line">o  A DPMI 1.0 host that is 16-bit only will not support this</span><br><span class="line">   function.</span><br><span class="line">o  A 16-bit client of a 32-bit DPMI 1.0 host can use this</span><br><span class="line">function.</span><br><span class="line">o  After this function returns, the previous handle for the</span><br><span class="line">   memory block is invalid and should not be used.</span><br><span class="line">o  If this function fails, the block&#39;s size and base address</span><br><span class="line">   are always unmodified.</span><br><span class="line">o  If the size of the block is increased, the new pages are</span><br><span class="line">   committed or uncommitted according to the value of bit 0</span><br><span class="line">   of EDX, and the block&#39;s linear base address may change.</span><br><span class="line">   If the size of the block is decreased, pages at the end</span><br><span class="line">   of the block are freed, and the block&#39;s base address is</span><br><span class="line">   always unchanged.</span><br><span class="line">o  If the block&#39;s linear base address is changed by this</span><br><span class="line">   function, and the function was called with bit 1 of EDX</span><br><span class="line">   set (1), the DPMI host updates the descriptors f</span><br><span class="line">or each of the segments in the update list which fall within the</span><br><span class="line">   memory block.  Descriptors for segments which do not fall</span><br><span class="line">   within the memory block are not modified.  Expand-up</span><br><span class="line">   segments fall within the memory block if the segment base</span><br><span class="line">   is within the block.   Expand-down segments fall within</span><br><span class="line">   the memory block if the (segment base + the limit - 1) is</span><br><span class="line">   within the block.  In either case, the segment base is</span><br><span class="line">   modified by the distance the block moves, and the segment</span><br><span class="line">   limit is not changed. The moving of the memory block and</span><br><span class="line">   the updating of descriptors is performed atomically; i.e.</span><br><span class="line">   the host will not deliver any hardware interrupts to the</span><br><span class="line">   client during the update.</span><br><span class="line">o  Int 31H Fn 0503H, which also resizes linear memory</span><br><span class="line">   blocks, does not necessarily page-align blocks and cannot</span><br><span class="line">   create uncommitted pages or update descriptors.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:40</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

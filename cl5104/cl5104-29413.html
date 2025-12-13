@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5104-style.css">
+    <title>Clipper 5.01 vs 1.29 Anomalies (#04) » Menu » Anomalies</title>
+    <meta name="description" content="Clipper 5.01 vs 1.29 Anomalies (#04)">
+    <link rel="prev" href="cl5104-28912.html">
+    <link rel="next" href="cl5104-30534.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5104-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5104-28912.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5104-30534.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Menu</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies</a></li>
+                  <li><a href="cl5104-45500.html">Credits</a></li>
+                  <li><a href="cl5104-45901.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  PICTURE           Comments on 5.01&#39;s PICTURE clause.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Clipper Version</span>  1.29 dtd 04/15/91.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Problem Statement</span></span><br><span class="line"></span><br><span class="line">  1) The PICTURE clause will not increase a variable&#39;s length.</span><br><span class="line">     Example:</span><br><span class="line"></span><br><span class="line">        cVar := &#34;&#34;</span><br><span class="line">        @ row, col get cVar PICTURE &#34;!!!!!&#34;   // Does not work.</span><br><span class="line"></span><br><span class="line">  2) The PICTURE format function, &#34;@Z #&#34; does not perform per S&#39;87.</span><br><span class="line">     Assuming the get variable is zero, the active get will display 0.</span><br><span class="line">     Note: Clipper 5.01 documentation has been changed.</span><br><span class="line"></span><br><span class="line">  3) The GET PICTURE format function, &#34;@S&lt;n&gt;&#34; performs differently</span><br><span class="line">     than S&#39;87; i.e., large values of &lt;n&gt; will not wrap to the next</span><br><span class="line">     line(s). Clipper 5.01 documentation reflects this change.</span><br><span class="line"></span><br><span class="line">  4) The PICTURE format function &#34;@( &#34; does not work correctly with</span><br><span class="line">     commas in the picture clause; e.g., try entering -100 below:</span><br><span class="line">       LOCAL x:= -10, Getlist := {}</span><br><span class="line">       @ 10, 10 SAY &#34;Enter&#34; GET x PICTURE &#34;@( 99,999&#34;</span><br><span class="line">       READ</span><br><span class="line"></span><br><span class="line">  5) The PICTURE format function &#34;@R &#34; may not work correctly with</span><br><span class="line">     character strings; e.g.:</span><br><span class="line">       LOCAL x:= &#34;213&#34;, Getlist := {}</span><br><span class="line">       @ 10, 10 SAY &#34;Enter&#34; GET x PICTURE &#34;@R (999)&#34;</span><br><span class="line">       READ</span><br><span class="line"></span><br><span class="line">     Note: numerical vars are formatted correctly.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

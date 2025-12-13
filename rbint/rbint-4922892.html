@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4922312.html">
+    <link rel="next" href="rbint-4927862.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4922312.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4908825.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4927862.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 60  - Ti Professional Pc - System Rom Data Area Pointer (not A Vector</span>  [<span class="ngb">b</span>]</span><br><span class="line"></span><br><span class="line"><span class="ngb">Desc:</span>  the low word of this vector contains the segment of the RAM data area</span><br><span class="line">     to be used by the system ROM at F400h:A000h, and the high word</span><br><span class="line">     contains the length of the data area (see #2934)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 61&#34;TI Professional PC&#34;,INT 66&#34;TI Professional PC&#34;</span><br><span class="line"></span><br><span class="line">Format of TI Professional System ROM data area:</span><br><span class="line">Offset Size    Description (Table 2934)</span><br><span class="line"> 00h   BYTE    port 00h shadow</span><br><span class="line"> 01h   BYTE    port 03h shadow</span><br><span class="line"> 02h   BYTE    port 04h shadow</span><br><span class="line"> 03h   WORD    system configuration word (see #2937)</span><br><span class="line"> 05h   BYTE    25ms count</span><br><span class="line"> 06h   WORD    offset of timing event 1 (0008h)</span><br><span class="line"> 08h   WORD    (event 1) offset of timing event 2 (0010h)</span><br><span class="line"> 0Ah   BYTE    (event 1) unused (FFh)</span><br><span class="line"> 0Bh   BYTE    (event 1) active flag (bit 7 set if on)</span><br><span class="line"> 0Ch   WORD    (event 1) count-down until end of event</span><br><span class="line"> 0Eh   WORD    (event 1) event routine (in segment F400h) to call at timeout</span><br><span class="line"> 10h   WORD    (event 2) offset of timing event 3 (0018h)</span><br><span class="line"> 12h   BYTE    (event 2) unused (FFh)</span><br><span class="line"> 13h   BYTE    (event 2) active flag (bit 7 set if on)</span><br><span class="line"> 14h   WORD    (event 2) count-down until end of event</span><br><span class="line"> 16h   WORD    (event 2) event routine (in segment F400h) to call at timeout</span><br><span class="line"> 18h   WORD    (event 3) offset of timing event 3 (0020h)</span><br><span class="line"> 1Ah   BYTE    (event 3) unused (FFh)</span><br><span class="line"> 1Bh   BYTE    (event 3) active flag (bit 7 set if on)</span><br><span class="line"> 1Ch   WORD    (event 3) count-down until end of event</span><br><span class="line"> 1Eh   WORD    (event 3) event routine (in segment F400h) to call at timeout</span><br><span class="line"> 20h   WORD    (event 4) 0000h - last event</span><br><span class="line"> 22h   BYTE    (event 4) unused (FFh)</span><br><span class="line"> 23h   BYTE    (event 4) active flag (bit 7 set if on)</span><br><span class="line"> 24h   WORD    (event 4) count-down until end of event</span><br><span class="line"> 26h   WORD    (event 4) event routine (in segment F400h) to call at timeout</span><br><span class="line"> 28h   WORD    offset of start of text display within segment DE00h</span><br><span class="line"> 2Ah   WORD    end of display</span><br><span class="line"> 2Ch   WORD    current absolute cursor position</span><br><span class="line"> 2Eh   WORD    start of current character row</span><br><span class="line"> 30h   WORD    current cursor column</span><br><span class="line"> 32h   WORD    cursor type and size (see #2935)</span><br><span class="line"> 34h   WORD    start of protected status region on screen (0000h = none)</span><br><span class="line"> 36h   BYTE    pop flag used by some ROM routines</span><br><span class="line">       00h pop registers before return</span><br><span class="line">       nonzero: do not pop</span><br><span class="line"> 37h   BYTE    unused (FFh)</span><br><span class="line"> 38h   BYTE    PAUSE flag</span><br><span class="line">       00h off</span><br><span class="line">       FFh on</span><br><span class="line"> 39h   BYTE    temp: current attribute while moving characters on screen</span><br><span class="line"> 3Ah   WORD    start of keyboard queue (next key at start+2 or 0042h if 0060h)</span><br><span class="line"> 3Ch   WORD    end of keyboard queue (next key inserted at end+2 or 0042h)</span><br><span class="line"> 3Eh   BYTE    number of characters in buffer</span><br><span class="line"> 3Fh   BYTE    keyboard mode flags (see #2936)</span><br><span class="line"> 40h   BYTE    Alt-digit-digit-digit accumulator</span><br><span class="line"> 41h   BYTE    Alt-digit-digit-digit count of digits (mod 3)</span><br><span class="line"> 42h 16 WORDs  keyboard buffer (circular queue)</span><br><span class="line"> 62h  8 DWORDs Drive Interface Table pointers for floppies A:-D: + four others</span><br><span class="line">       (0000h:0000h if pointer not in use)</span><br><span class="line"> 82h   BYTE    disk-error retry count (incremented on each disk error)</span><br><span class="line"> 83h  2    BYTEs   BIOS scratch space</span><br><span class="line"> 85h  8 BYTEs  current cylinder number for drives 0-7</span><br><span class="line">       FFh = unknown</span><br><span class="line"> 8Dh   BYTE    BIOS scratch space</span><br><span class="line"> 8Eh   BYTE    hard error code for last disk access</span><br><span class="line">       00h operation successful</span><br><span class="line"> 8Fh  8 BYTEs  save area for disk DSR parameters</span><br><span class="line"> 97h  6 BYTEs  current drive status</span><br><span class="line"> 9Dh   BYTE    retry error status</span><br><span class="line"> 9Eh   BYTE    BIOS scratch space</span><br><span class="line"> 9Fh  7 BYTEs  ???</span><br><span class="line"> A6h  2    WORDs   INT 47 save area for SS,SP</span><br><span class="line"> AAh  2    WORDs   INT 46 save area for SS,SP</span><br><span class="line"> AEh  2    WORDs   INT 43 save area for SS,SP</span><br><span class="line"> B2h  2    WORDs   save area for SS,SP to be restored by common intr. exit routine</span><br><span class="line"> B6h 24 WORDs  stack for INT 47</span><br><span class="line"> E6h 24 WORDs  stack for INT 46</span><br><span class="line">116h 17 WORDs  stack for INT 43</span><br><span class="line">13Ah  6 BYTEs  system date and time (hundredths, seconds, minutes, hours, and</span><br><span class="line">         WORD days since 01jan1980)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  timing event 1 is the disk I/O timeout, event 2 is the floppy disk</span><br><span class="line">     motor timeout, event 3 is the floppy disk motor spin-up time, and</span><br><span class="line">     event 4 is used to turn off the speaker after a delay</span><br><span class="line"></span><br><span class="line">Bitfields for TI Professional PC cursor size and type:</span><br><span class="line">Bit(s) Description (Table 2935)</span><br><span class="line"> 15    reserved (0)</span><br><span class="line"> 14-13 cursor type</span><br><span class="line">   00 nonblinking</span><br><span class="line">   01 off</span><br><span class="line">   10 slow blink</span><br><span class="line">   11 fast blink</span><br><span class="line"> 12-8  starting scan line (0-11)</span><br><span class="line"> 7-5   reserved (0)</span><br><span class="line"> 4-0   ending scan line (0-11)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2934</span><br><span class="line"></span><br><span class="line">Bitfields for TI Professional PC keyboard mode flags:</span><br><span class="line">Bit(s) Description (Table 2936)</span><br><span class="line"> 7 CapsLock was ON at last keypress</span><br><span class="line"> 6-4   reserved (0)</span><br><span class="line"> 3 repeat key</span><br><span class="line"> 2 Shift was down at last keypress</span><br><span class="line"> 1 Alt was down at last keypress</span><br><span class="line"> 0 Ctrl was down at last keypress</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2934</span><br><span class="line"></span><br><span class="line">Bitfields for TI Professional System Configuration Word:</span><br><span class="line">Bit(s) Description (Table 2937)</span><br><span class="line"> 0 drive A: installed</span><br><span class="line"> 1 drive B: installed</span><br><span class="line"> 2 drive C: installed</span><br><span class="line"> 3 drive D: installed</span><br><span class="line"> 4 drive A: is 80-track</span><br><span class="line"> 5 drive A: is double-sided</span><br><span class="line"> 6 60-Hz (USA,etc.) system instead of 50-Hz (Europe)</span><br><span class="line"> 7 hard disk installed</span><br><span class="line"> 8 serial port 1 installed</span><br><span class="line"> 9 serial port 2 installed</span><br><span class="line"> 10    serial port 3 installed</span><br><span class="line"> 11    serial port 4 installed</span><br><span class="line"> 14-12 installed graphics planes</span><br><span class="line">   000 none</span><br><span class="line">   001 plane A</span><br><span class="line">   111 planes A, B, and C</span><br><span class="line"> 15    clock installed</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2934</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

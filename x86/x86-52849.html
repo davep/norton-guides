@@ -1,0 +1,163 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-51378.html">
+    <link rel="next" href="x86-55994.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-51378.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-55994.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">IMUL            Multiplication, Signed               Flags: O D I T S Z A P C</span></span><br><span class="line">                                                            * - - - ? ? ? ? *</span><br><span class="line"></span><br><span class="line">    IMUL performs a signed multiplication. This instruction has 3</span><br><span class="line">    variations:</span><br><span class="line"></span><br><span class="line">    i)  One-operand form        <span class="ngb">IMUL source</span></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   AX      ← AL * source</span><br><span class="line">             or</span><br><span class="line">                DX:AX   ← AX * source</span><br><span class="line">             or</span><br><span class="line">                EDX:EAX ← EAX * source  ; 386+</span><br><span class="line"></span><br><span class="line">        The source can be a byte, word, or doubleword located in</span><br><span class="line">        memory or in a general register.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    ii) Two-operand form        <span class="ngb">IMUL oper1,oper2</span>       CPU: 186+/386+</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   oper1 ← oper1 * oper2</span><br><span class="line"></span><br><span class="line">        The first operand can be in any general register while the</span><br><span class="line">        second operand can be an immediate value (80186+), or a value</span><br><span class="line">        in memory or a general register (80386+). The product replaces</span><br><span class="line">        the first operand.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    iii) Three-operand form     <span class="ngb">IMUL dest,oper1,oper2</span>  CPU: 186+</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   dest ← oper1 * oper2</span><br><span class="line"></span><br><span class="line">        The second operand (oper1) can be in any general register or a</span><br><span class="line">        value in memory while the third operand (oper2) must be an</span><br><span class="line">        immediate value. The product is stored in destination which</span><br><span class="line">        can be any general register.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    An immediate value used with IMUL is automatically sign-extended</span><br><span class="line">    to match the size of the general register operand.</span><br><span class="line"></span><br><span class="line">    IMUL clears the carry and overflow flags (CF and OF) under these</span><br><span class="line">    conditions:</span><br><span class="line">    - form i     : if the upper half of the destination does not contain</span><br><span class="line">                   any significant digits of the result</span><br><span class="line">    - form ii,iii: if the result fits within the size of the destination</span><br><span class="line">    (otherwise CF and OF are set to 1).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    F6 /5       IMUL r/m8</span><br><span class="line">    F7 /5       IMUL r/m16</span><br><span class="line">    F7 /5       IMUL r/m32              ; 386+</span><br><span class="line"></span><br><span class="line">    0F AF /r    IMUL r16,r/m16          ; 386+</span><br><span class="line">    0F AF /r    IMUL r32,r/m32          ; 386+</span><br><span class="line"></span><br><span class="line">    69 /r iw    IMUL r16,imm16          ; 186+</span><br><span class="line">    69 /r iw    IMUL r16,r/m16,imm16    ; 186+</span><br><span class="line">    69 /r id    IMUL r32,imm32          ; 386+</span><br><span class="line">    69 /r id    IMUL r32,r/m32,imm32    ; 386+</span><br><span class="line"></span><br><span class="line">    6B /r ib    IMUL r16,imm8           ; 186+</span><br><span class="line">    6B /r ib    IMUL r16,r/m16,imm8     ; 186+</span><br><span class="line">    6B /r ib    IMUL r32,imm8           ; 386+</span><br><span class="line">    6B /r ib    IMUL r32,r/m32,imm8     ; 386+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line"></span><br><span class="line">                        <span class="ngb">Accumulator multiplies</span></span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    r8           2      80-98    25-28  13      9-14    13-18   11   NP</span><br><span class="line">    r16          2     128-154   34-37  21      9-22    13-26   11   NP</span><br><span class="line">    r32          2       -        -      -      9-38    13-42   10   NP</span><br><span class="line">    mem8     2+d(0-2)  86-104+EA 32-34  16     12-17    13-18   11   NP</span><br><span class="line">    mem16    2+d(0-2) 134-160+EA 40-43  24     12-25    13-26   11   NP</span><br><span class="line">    mem32    2+d(0-2)    -        -      -     12-41    13-42   10   NP</span><br><span class="line"></span><br><span class="line">                        <span class="ngb">2 and 3 operand multiplies</span></span><br><span class="line">    Operands        Bytes     186   286    386         486      Pentium</span><br><span class="line">    r16, imm       2+i(1,2)    -    21  9-14/9-22  13-18/13-26  10   NP</span><br><span class="line">    r32, imm       2+i(1,2)    -     -     9-38       13-42     10   NP</span><br><span class="line">    r16,r16,imm    2+i(1,2)  22/29  21  9-14/9-22  13-18/13-26  10   NP</span><br><span class="line">    r32,r32,imm    2+i(1,2)    -     -     9-38       13-42     10   NP</span><br><span class="line">    r16,m16,imm    2+d(0-2)  25/32  24 12-17/12-25 13-18/13-26  10   NP</span><br><span class="line">                    +i(1,2)</span><br><span class="line">    r32,m32,imm    2+d(0-2)+i(1,2)   -    12-41       13-42     10   NP</span><br><span class="line">    r16, r16       2+i(1,2)    -     -     9-22    13-18/13-26  10   NP</span><br><span class="line">    r32, r32       2+i(1,2)    -     -     9-38       13-42     10   NP</span><br><span class="line">    r16, m16       2+d(0-2)+i(1,2)   -    12-25    13-18/13-26  10   NP</span><br><span class="line">    r32, m32       2+d(0-2)+i(1,2)   -    12-41       13-42     10   NP</span><br><span class="line"></span><br><span class="line">    All forms: dest, src                        cycles for:   byte/word</span><br><span class="line">               or                                             dword</span><br><span class="line">               dest, src1, src2</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-99341.html">MUL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-146103.html">SHL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-147826.html">SHLD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-7638.html">AAM</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-7032.html">AAD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-51378.html">IDIV</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3761447.html">
+    <link rel="next" href="rbint-3763669.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3761447.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3763669.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 1684  - Ms Windows - Vmd - Get Api Entry Point                 </span>  [<span class="ngb">W</span>]</span><br><span class="line"></span><br><span class="line">   AX = 1684h</span><br><span class="line">   BX = 000Ch (virtual device ID for VMD device) (see #2329)</span><br><span class="line">   ES:DI = 0000h:0000h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> ES:DI -&gt; VxD API entry point (see #2337)</span><br><span class="line">         0000h:0000h if the VxD does not support API in current mode</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=1684h&#34;DEVICE API&#34;,INT 20&#34;Windows&#34;</span><br><span class="line"></span><br><span class="line">(Table 2337)</span><br><span class="line">Call VMOUSE entry point with:</span><br><span class="line">   EAX = function number</span><br><span class="line">       0000h get VMOUSE version</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF clear</span><br><span class="line">           AH = major version</span><br><span class="line">           AL = minor version</span><br><span class="line">       0001h</span><br><span class="line">       EBX = ???</span><br><span class="line">       ECX = ???</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">           CF set on error (e.g. fn 0003h not yet called)</span><br><span class="line">       0002h ??? (calls &#34;test system VM handle&#34;)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF clear if successful (in system VM)</span><br><span class="line">           CF set on error</span><br><span class="line">       0003h ???</span><br><span class="line">       ECX = ???</span><br><span class="line">       DX = ???</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF clear</span><br><span class="line">       0004h ???</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span> invokes Call_Priority_VM_Event</span><br><span class="line">       0005h get mouse port data</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF clear</span><br><span class="line">           AL = ??? (04h)</span><br><span class="line">           AH = mouse IRQ interrupt number (IRQ4=0Ch,etc.)</span><br><span class="line">           CX = mouse I/O port address (e.g. 03F8h)</span><br><span class="line">           DX = COM port number??? (0001h for mouse on COM1)</span><br><span class="line">       0100h NOP???</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF clear</span><br><span class="line">       0101h init???</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF clear</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   appears to be the same as fn 0005h, but returns no data</span><br><span class="line">       0102h unimplemented</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF set</span><br><span class="line">       0103h check ???</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AX = status (0000h/0001h)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   checks flag set by fn 0003h</span><br><span class="line">       else</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF set</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2336,#2338</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

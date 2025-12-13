@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » OverView » Questions and Answers</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    
+    <link rel="next" href="mrdebug-246001.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="mrdebug-241082.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-246001.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">How do I use MrDebug&#39;s Error system?</span></span><br><span class="line"> We recommended the following changes to your error system.</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> Included with MrDebug is an example error system, _MrDErSy.PRG that includes</span><br><span class="line"> some of the changes that you should make to your system&#39;s to enable them to</span><br><span class="line"> work effectively with MrDebug.</span><br><span class="line"></span><br><span class="line"> Many of you have written your own error systems that have their own special</span><br><span class="line"> qualities. The following section will guide you through the changes needed</span><br><span class="line"> to take full advantage of MrDebug.</span><br><span class="line"></span><br><span class="line"> There are a few problems with CA-Clipper&#39;s GT system handling of unexpected</span><br><span class="line"> screen modes for which CA-Clipper was not designed to handle. An example of</span><br><span class="line"> this is when you are running MrDebug in a text mode of 132 columns by 60</span><br><span class="line"> rows and your application screen is set to 80 columns by 25 rows.</span><br><span class="line"></span><br><span class="line"> The problem lies somewhere within either __gtPreExt or __gtPostExt.</span><br><span class="line"> Basically, it causes the application screen to become garbled.</span><br><span class="line"></span><br><span class="line"> To work around this problem:</span><br><span class="line"></span><br><span class="line">    Replace all occurrences of &#39;STDOUT()&#39; with &#39;?&#39;</span><br><span class="line"></span><br><span class="line">    If you have any lines within either your error system or the standard</span><br><span class="line">    error system that do something similar to the following</span><br><span class="line"></span><br><span class="line">         #command ? &lt;list,...&gt;   =&gt;  ?? Chr(13) + Chr(10) ; ?? &lt;list&gt;</span><br><span class="line">         #command ?? &lt;list,...&gt;  =&gt;  OutErr(&lt;list&gt;)</span><br><span class="line"></span><br><span class="line">    then comment them out.</span><br><span class="line"></span><br><span class="line"> NOTE: If you have to use STDOUT with MrDebug, then it is possible. You must</span><br><span class="line">       run your application in full screen mode with screen swapping turned</span><br><span class="line">       on and Force Application into 80x25 turned off.</span><br><span class="line"></span><br><span class="line"> To enable MrDebug to capture an error object from your application and</span><br><span class="line"> display it in an error window, where you may browse and edit the object, add</span><br><span class="line"> the following line to your error system:</span><br><span class="line"></span><br><span class="line">                MrdSaveErr(oError)</span><br><span class="line"></span><br><span class="line"> This will allow MrDebug to save any error, if it occurs, and display it in</span><br><span class="line"> an Error Window. You may then select this window, if not already selected,</span><br><span class="line"> and press ◄──┛ to display further details of the error object.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

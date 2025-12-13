@@ -1,0 +1,156 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-48702.html">
+    <link rel="next" href="tasm4-51480.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-48702.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-51480.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">GLOBAL           Define global symbol                               Directive</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">GLOBAL</span> definition [, definition ]...</span><br><span class="line"></span><br><span class="line">    Acts as a combination of the EXTRN and PUBLIC directives to define a</span><br><span class="line">    global symbol. definition describes the symbol and has the following</span><br><span class="line">    format:</span><br><span class="line"></span><br><span class="line">       [language] name [<span class="ngb">[</span>count1<span class="ngb">]</span>] :complex_type [:count2]</span><br><span class="line"></span><br><span class="line">    - language specifies that the naming conventions of C, CPP, PASCAL,</span><br><span class="line">      BASIC, FORTRAN, NOLANGUAGE, or PROLOG are to be applied to symbol</span><br><span class="line">      name; temporarily overrides language set with a MODEL directive.</span><br><span class="line">    - If name is defined in the current source file, it is made public</span><br><span class="line">      exactly as if used in a PUBLIC directive. If not, it is declared as</span><br><span class="line">      an external symbol of type complex_type, as if the EXTRN directive</span><br><span class="line">      had been used.</span><br><span class="line">    - name can be followed by an optional array count multiplier, count1,</span><br><span class="line">      which defaults to one</span><br><span class="line">    - complex_type must match the type of the symbol in the module where</span><br><span class="line">      it is defined (the ABS type is used for symbols that represent</span><br><span class="line">      absolute numbers)</span><br><span class="line">    - count2 specifies how many items this symbol defines (one is the</span><br><span class="line">      default).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    The GLOBAL directive lets you have an include file included by all</span><br><span class="line">    source files; the include file contains all shared data defined as</span><br><span class="line">    global symbols. When you reference these data items in each module,</span><br><span class="line">    the GLOBAL definition acts as an EXTRN directive, describing how the</span><br><span class="line">    data is defined in another module. In the module in which you define</span><br><span class="line">    the data item, the GLOBAL definition acts as a PUBLIC directive,</span><br><span class="line">    making the data available to the other modules.</span><br><span class="line"></span><br><span class="line">    You must define a symbol GLOBAL before you first use it elsewhere in a</span><br><span class="line">    source file.</span><br><span class="line"></span><br><span class="line">    Examples:   GLOBAL uncap_al    :proc</span><br><span class="line">                GLOBAL str_len     :abs</span><br><span class="line">                GLOBAL C carray[32]:word:400</span><br><span class="line">                GLOBAL help_texts  :byte:panic_levels</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-83858.html">PUBLIC</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-45041.html">EXTRN</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-91545.html">SEGMENT</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-22406.html">COMM</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-81770.html">PROCDESC</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-192722.html">Address subtypes</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-199535.html">Syntax</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

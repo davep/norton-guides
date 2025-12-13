@@ -1,0 +1,149 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Tutorial » Inspecting Variables</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-341187.html">
+    <link rel="next" href="mrdebug-347000.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-341187.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-338287.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-347000.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Inspecting Code blocks</span></span><br><span class="line"> Code blocks</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> When you edit or inspect a code block, a code block information box will</span><br><span class="line"> appear similar to the following:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">This section shows the variables that are within the scope of the</span></span><br><span class="line">    <span class="ngb">codeblock. These variables can be variables that are detached, sometimes</span></span><br><span class="line">    <span class="ngb">referred to as &#34;bound&#34; variables - these are variables that were in scope</span></span><br><span class="line">    <span class="ngb">when the code block was created and the code block holds a copy of the</span></span><br><span class="line">    <span class="ngb">variables. If the code block is created using a macro, then there will be</span></span><br><span class="line">    <span class="ngb">no variables appearing here.        │</span></span><br><span class="line">                                        <span class="ngb">│</span></span><br><span class="line">                                        <span class="ngb">│</span></span><br><span class="line">    <span class="ngb">┌───────────────────────────────────┴─────────────────────────────────┐</span></span><br><span class="line">   <span class="fg9 bg3">┌──────────────────────────────── CBLOCK ───────────────────────────────┐</span></span><br><span class="line">   <span class="fg9 bg3">│<span class="fg15 bg3">Variable   Contents                                                    <span class="fg9 bg3">│</span></span></span></span><br><span class="line">   <span class="fg9 bg3">│<span class="fg15 bg0">nArea     <span class="fg9 bg3"> <span class="fg7 bg0">        35                                                  <span class="fg9 bg3">│</span></span></span></span></span></span><br><span class="line">   <span class="fg9 bg3">│<span class="fg15 bg3">aRay       {1...9}<span class="fg9 bg3">                                                     │</span></span></span></span><br><span class="line">   <span class="fg9 bg3">│<span class="fg15 bg3">I                  24<span class="fg9 bg3">                                                  │</span></span></span></span><br><span class="line">   <span class="fg9 bg3">│<span class="fg15 bg3">CBLOCK     {|X, Y| QOUT(&#34;Hello World&#34;)}<span class="fg9 bg3">                                │</span></span></span></span><br><span class="line">   <span class="fg9 bg3">│<span class="fg15 bg3">bDetached  {|| QOUT(&#34;Hey Look at me I&#39;m detached&#34;)}<span class="fg9 bg3">                    │</span></span></span></span><br><span class="line">   <span class="fg9 bg3">│                                                                       │</span></span><br><span class="line">   <span class="fg9 bg3">│                                                                       │</span></span><br><span class="line">  <span class="ngb">┌<span class="fg9 bg3">├──────────────┬────────────────────────────────────────────────────────┤</span></span><span class="ngb">┐</span></span><br><span class="line">  <span class="ngb">│<span class="fg9 bg3">│<span class="fg15 bg3">Block Locals<span class="fg9 bg3">  │Defining Source File: TEST.PRG                          │</span></span></span></span><span class="ngb">│</span></span><br><span class="line">  <span class="ngb">│<span class="fg9 bg3">│<span class="fg7 bg0">X             <span class="fg9 bg3">│         In Function: MAIN                              │</span></span></span></span><span class="ngb">│</span></span><br><span class="line"> <span class="ngb">┌┤<span class="fg9 bg3">│<span class="fg7 bg3">Y<span class="fg9 bg3">             │             At Line: 38                                │</span></span></span></span><span class="ngb">├┐</span></span><br><span class="line"> <span class="ngb">││<span class="fg9 bg3">│              │            Detached: No                                │</span></span><span class="ngb">││</span></span><br><span class="line"> <span class="ngb">│└<span class="fg9 bg3">├──────────────┴────────────────────────────────────────────────────────┤</span></span><span class="ngb">┛│</span></span><br><span class="line"> <span class="ngb">│ <span class="fg9 bg3">│<span class="fg15 bg3">Code Block Code Dump<span class="fg9 bg3">                                                   │</span></span></span></span> <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│ <span class="fg9 bg3">│<span class="fg7 bg0">{|X, Y| QOUT(&#34;Hello World&#34;)}                                           <span class="fg9 bg3">│</span></span></span></span> <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│ <span class="fg9 bg3">│                                                                       │</span></span> <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│ <span class="fg9 bg3">│                                                                       │</span></span> <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│ <span class="fg9 bg3">│                                                                       │</span></span> <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│ <span class="fg9 bg3">└───────────────────────────────────────────────────────────────────────┛</span></span> <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│  └────────────────────────────────┬────────────────────────────────────┛  │</span></span><br><span class="line"> <span class="ngb">│</span>                                   <span class="ngb">│</span>                                       <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│</span>  <span class="ngb">This section contains a dump of the codeblock code that is run when the</span>  <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│</span>  <span class="ngb">codeblock is evaluated. If the code block can be deciphered, the code is</span> <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│</span>  <span class="ngb">shown. If it cannot be shown then it is broken down into hex&#39;n&#39;text</span>      <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│</span>  <span class="ngb">sections. This is meaningful to those sad people among us who understand</span> <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│</span>  <span class="ngb">these types of things!!</span>                                                  <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">│</span>                                                                           <span class="ngb">│</span></span><br><span class="line"> <span class="ngb">└───</span> <span class="ngb">This section will contain the names of any block variables. Block</span>      <span class="ngb">│</span></span><br><span class="line">      <span class="ngb">variables are temporary variables that are declared within the ||</span>      <span class="ngb">│</span></span><br><span class="line">      <span class="ngb">characters of the codeblock when it is created or declared.</span>            <span class="ngb">│</span></span><br><span class="line">                                                                             <span class="ngb">│</span></span><br><span class="line">   <span class="ngb">This section will contain information regrading the nature of the code</span> <span class="ngb">───┛</span></span><br><span class="line">      <span class="ngb">block. A Detached code block is one that contains information about</span></span><br><span class="line">     <span class="ngb">variables that are no longer in scope. For further information refer</span></span><br><span class="line">                                              <span class="ngb">to the Notes section below.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> You can completely replace the contents of a codeblock (along with most</span><br><span class="line"> other variables) by using the Command Window. To replace a codeblock you</span><br><span class="line"> will need to use the command window to assign a new codeblock to the</span><br><span class="line"> variable. For example:</span><br><span class="line"></span><br><span class="line">        cBlock := {|| QOUT(&#39;A Codeblock&#39;)}</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Notes:</span></span><br><span class="line"></span><br><span class="line"> There are four different types of code blocks:</span><br><span class="line"></span><br><span class="line"> 1. Detached code blocks - These are code blocks that make use of local</span><br><span class="line">    variables from a specific level in the stack (external to the code</span><br><span class="line">    block). In this case, the code block takes a copy of the variables at the</span><br><span class="line">    specific stack level.</span><br><span class="line"></span><br><span class="line"> 2. Semi-Detached code blocks - These are similar to detached code blocks,</span><br><span class="line">    except that the variables are still in scope (at the current level in the</span><br><span class="line">    stack). In this case the variables are copied into the code blocks, but</span><br><span class="line">    the values have not yet been copied.</span><br><span class="line"></span><br><span class="line"> 3. Non-Detached code blocks - These are codeblocks that do not use any</span><br><span class="line">    external variables.</span><br><span class="line"></span><br><span class="line"> 4. Macro&#39;d code blocks - These are code blocks that have been brought into</span><br><span class="line">    existance using a macro. The folllowing notes need to be kept in mind</span><br><span class="line">    when viewing code blocks created with a macro:</span><br><span class="line"></span><br><span class="line">     i) Code blocks created with macros never contain any references to local</span><br><span class="line">        variables - hence the <span class="ngb">Variables</span> section of the code block viewer</span><br><span class="line">        will be empty.</span><br><span class="line"></span><br><span class="line">    ii) Code blocks created with macros never contain real names for block</span><br><span class="line">        locals - those that are created within the code block ||&#39;. Instead</span><br><span class="line">        they will appear within the <span class="ngb">Block Locals</span> section of the code</span><br><span class="line">        blocks viewer as BLOCK LOCAL 1, BLOCK LOCAL 2 etc.</span><br><span class="line"></span><br><span class="line">   iii) Code blocks created with macros do not contain line number</span><br><span class="line">        information.</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-81111.html">The Variables Window</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="mrdebug-94498.html">The Command Window</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

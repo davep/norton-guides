@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3866270.html">
+    <link rel="next" href="rbint-3867443.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3866270.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3693080.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3867443.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 1AA5  - Ansiplus V4.00+ - Get/set Ansiplus Clipboard           </span>  [<span class="ngb">V</span>]</span><br><span class="line"></span><br><span class="line">   AX = 1AA5h</span><br><span class="line">   DH = subfunction</span><br><span class="line">       00h get clipboard information</span><br><span class="line">       01h get clipboard text</span><br><span class="line">       02h set clipboard text</span><br><span class="line">       03h append text to clipboard</span><br><span class="line">       04h clear clipboard</span><br><span class="line">       05h paste clipboard to keyboard</span><br><span class="line">   ES:BX -&gt; data area for subfunctions 01h, 02h, and 03h</span><br><span class="line">   CX = size of data area (maximum size for subfunction 01h, actual size</span><br><span class="line">       to add to clipboard for subfunctions 02h and 03h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status</span><br><span class="line">       00h successful</span><br><span class="line">       01h unsupported subfunction (reduced capability driver)</span><br><span class="line">       02h insufficient space</span><br><span class="line">       A5h unsupported function (ANSIPLUS before v4.00)</span><br><span class="line">   ES:BX -&gt; ANSIPLUS local clipboard data</span><br><span class="line">   CX = number of bytes currently in local clipboard</span><br><span class="line">   DX = maximum size of local clipboard</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=1A00h/BX=414Eh,AX=1AA4h,AX=1AA6h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1406765.html">
+    <link rel="next" href="rbint-1409247.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1406765.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1340639.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1409247.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn D101  - Later Ps/2s - Return Device Descriptor Table (ddt) Entr</span>  [<span class="ngb">B</span>]</span><br><span class="line"></span><br><span class="line">   AX = D101h</span><br><span class="line">   BX = number of requested entry (starting with 1)</span><br><span class="line">   DX = 0000h (reserved, must be set to 0)</span><br><span class="line">   ES:DI -&gt; buffer to contain DDT entry (see #0459)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AH = return code (see #0458)</span><br><span class="line">   CF set on error</span><br><span class="line">   CF clear on success</span><br><span class="line">       ES:DI buffer filled with DDT entry</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=C0h,AH=C7h,AH=C9h,AX=D100h,AX=D102h,AX=D104h</span><br><span class="line"></span><br><span class="line">Format of Device Descriptor Table (DDT):</span><br><span class="line">Offset Size    Description (Table 0459)</span><br><span class="line"> 00h   BYTE    bits 7-4: reserved (set to 0)</span><br><span class="line">       bits 3-0: slot of device (0 = system board)</span><br><span class="line"> 01h   BYTE    bits 7-4: second interrupt for this device (0 = none)</span><br><span class="line">       bits 3-0: first interrupt for this device (0 = none)</span><br><span class="line"> 02h   BYTE    bits 7-4: second arbitration level for this device</span><br><span class="line">       bits 3-0: first arbitration level for this device</span><br><span class="line"> 03h   WORD    DDT indicators (see #0460)</span><br><span class="line"> 05h   BYTE    reserved (0)</span><br><span class="line"> 06h   WORD    device ID (0 = none)</span><br><span class="line"> 08h   WORD    starting address of first  I/O block (0 = none)</span><br><span class="line"> 0Ah   WORD    starting address of second I/O block (0 = none)</span><br><span class="line"> OCh   WORD    starting address of third  I/O block (0 = none)</span><br><span class="line"> OEh   DWORD   start of first non-system memory block (0 = none)</span><br><span class="line"> 12h   WORD    size of first non-system memory block (in kilobytes)</span><br><span class="line"> 14h   DWORD   start of second non-system memory block (0 = none)</span><br><span class="line"> 18h   WORD    size of second non-system memory block (in kilobytes)</span><br><span class="line"> 1Ah   BYTE    implementation identifier of the device</span><br><span class="line"> 1Bh   BYTE    implementation revision level of the device</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  I/O block addresses and non-system memory addresses are listed in</span><br><span class="line">     ascending order in each DDT entry.</span><br><span class="line"></span><br><span class="line">Bitfields for DDT indicators:</span><br><span class="line">Bit(s) Description (Table 0460)</span><br><span class="line"> 15    reserved (0)</span><br><span class="line"> 14    second arbitration level exists</span><br><span class="line"> 13    first arbitration level exists</span><br><span class="line"> 12    serial interface is RS-422</span><br><span class="line"> 11    not address limited</span><br><span class="line"> 10    DMA channel used</span><br><span class="line"> 9 second arbitration level can be shared</span><br><span class="line"> 8 first arbitration level can be shared</span><br><span class="line"> 7-0   reserved (0)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

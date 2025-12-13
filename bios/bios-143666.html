@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-142156.html">
+    <link rel="next" href="bios-145112.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-142156.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-139731.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-145112.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 14h, 04h            Initialize Extended Serial Port                  PS/2</span></span><br><span class="line"></span><br><span class="line">    Sets up the PS/2 Serial Port parameters.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH = 04h</span><br><span class="line">                AL = Break:</span><br><span class="line">                     | 00  No Break</span><br><span class="line">                     | 01  Break</span><br><span class="line">                BH = Parity:</span><br><span class="line">                     | 00  None</span><br><span class="line">                     | 01  Odd</span><br><span class="line">                     | 02  Even</span><br><span class="line">                     | 03  Stick parity odd</span><br><span class="line">                     | 04  Stick parity even</span><br><span class="line">                BL = Stop Bits:</span><br><span class="line">                     | 00  1 stop bit</span><br><span class="line">                     | 01  2 for word length 6, 7, or 8</span><br><span class="line">                           1½ for word length 5</span><br><span class="line">                CH = Word Length:</span><br><span class="line">                     | 00  5 bits</span><br><span class="line">                     | 01  6 bits</span><br><span class="line">                     | 02  7 bits</span><br><span class="line">                     | 03  8 bits</span><br><span class="line">                CL = Baud Rate:</span><br><span class="line">                     | 00  110 baud</span><br><span class="line">                     | 01  150 baud</span><br><span class="line">                     | 02  300 baud</span><br><span class="line">                     | 03  600 baud</span><br><span class="line">                     | 04  1200 baud</span><br><span class="line">                     | 04  2400 baud</span><br><span class="line">                     | 04  4800 baud</span><br><span class="line">                     | 04  9600 baud</span><br><span class="line">                     | 04  19,200 baud</span><br><span class="line">                DX = Serial Port to Configure</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AL = Modem Status (See Service 03h)</span><br><span class="line">                AH = Line Status (See Service 03h)</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This service configures the PS/2 serial ports. It is recommended</span><br><span class="line">    over service 00h.</span><br><span class="line"></span><br><span class="line">    This is the way you can select the baud rate, word length, parity</span><br><span class="line">    settings, and stop bits that are required in serial</span><br><span class="line">    communications. You only need to code the settings you want as</span><br><span class="line">    shown above and call this service. The PS/2 supports baud rates up</span><br><span class="line">    to 19,200.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    This service returns modem and line status, as does Service 03h.</span><br><span class="line">    (See Service 03h for details.) See Services 01h and 02h for</span><br><span class="line">    information on sending and receiving characters.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-140820.html">Int 14h, 01h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-141417.html">Int 14h, 02h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-142156.html">Int 14h, 03h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

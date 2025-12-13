@@ -1,0 +1,88 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-13237.html">
+    <link rel="next" href="tr-16286.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-13237.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-16286.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> BLANK(&lt;exp&gt;)</span><br><span class="line"> Evaluates an empty value of any data type expression.</span><br><span class="line"> Returns the empty value of &lt;exp&gt;.</span><br><span class="line"></span><br><span class="line"> &lt;exp&gt; can be any valid data type, or a specifically defined</span><br><span class="line"> character data type as defined below.</span><br><span class="line"></span><br><span class="line"> Type   Returns            Note</span><br><span class="line"> ════   ═══════            ════════════════════════════════════════</span><br><span class="line">  L     .F.                logical type</span><br><span class="line">  N     0.00               numeric type</span><br><span class="line">  D     &#39;  /  /  &#39;         date type</span><br><span class="line">  C     &#34;...&#34;              char type: LEN(&lt;expC&gt;) blank spaces</span><br><span class="line">  C     &#34;  :  :  &#34;          8 byte,  6 digit time string</span><br><span class="line">  C     &#34;     -    &#34;       11 byte, 10 digit zip code</span><br><span class="line">  C     &#34;(   )   -    &#34;    13 byte, 10 digit telephone</span><br><span class="line">  C     &#34;   -  -    &#34;      11 byte,  9 digit social security number</span><br><span class="line"></span><br><span class="line"> Returns unchanged &lt;expC&gt; if not enough memory to allocate for the</span><br><span class="line"> blank return string of a long character-type expression</span><br><span class="line"></span><br><span class="line"> * Examples assume an open database file.</span><br><span class="line"></span><br><span class="line"> * To permanently delete a record.</span><br><span class="line"> REPLACE Last_name  WITH BLANK( Last_name ),;</span><br><span class="line">         First_name WITH BLANK( First_name ),;</span><br><span class="line">         Address    WITH BLANK( Address )</span><br><span class="line"></span><br><span class="line"> * To reuse deleted records</span><br><span class="line"> SEEK BLANK( Last_name ) &amp;&amp; find empty key field</span><br><span class="line"> IF .NOT. FOUND()</span><br><span class="line">    APPEND BLANK</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> Useful with REPLACE as a self-maintaining delete algorithm.</span><br><span class="line"> Replacing all fields with blanks means never having to PACK</span><br><span class="line"> your database file.  Simply re-use the blank records before</span><br><span class="line"> appending a new blank record as in the last example.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,180 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » / » Commands</title>
+    <meta name="description" content="DEBUG">
+    <link rel="prev" href="debug-29668.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><a href="debug-29668.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>/</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="debug-36268.html">Parameters</a></li>
+                  <li><a href="debug-41899.html">Messages</a></li>
+                  <li><a href="debug-45534.html">Common</a></li>
+                  <li><a href="debug-46838.html">Starting DEBUG</a></li>
+                  <li><a href="debug-49445.html">Introduction</a></li>
+                  
+                </ul>
+              </li>
+              <li>*</li>
+              <li>
+                <ul>
+                  <li><a href="debug-50016.html">Flags register</a></li>
+                  <li><a href="debug-51925.html">PSP structure</a></li>
+                  <li><a href="debug-54321.html">EXE header</a></li>
+                  <li><a href="debug-55255.html">BPB structure</a></li>
+                  <li><a href="debug-56377.html">FCB structure</a></li>
+                  <li><a href="debug-57564.html">ASCII table</a></li>
+                  
+                </ul>
+              </li>
+              <li>-</li>
+              <li>
+                <ul>
+                  <li><a href="debug-62697.html">Comments</a></li>
+                  <li><a href="debug-63334.html">Scripts</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">    <span class="ngb">Write command</span></span><br><span class="line"></span><br><span class="line">    Purpose:  Writes the data being debugged to disk.</span><br><span class="line"></span><br><span class="line">              <span class="ngr">                                </span></span><br><span class="line">              <span class="ngr">   Use this command with care   </span></span><br><span class="line">              <span class="ngr">                                </span></span><br><span class="line"></span><br><span class="line">    Format:   W [address [drive sector sector]]</span><br><span class="line"></span><br><span class="line">    Remarks:  The maximum number of sectors that can be written with a</span><br><span class="line">              single Write command is 80h (128).</span><br><span class="line"></span><br><span class="line">              DEBUG displays a message if a disk write error occurs. You</span><br><span class="line">              can retry the write operation by pressing F3 to redisplay</span><br><span class="line">              the Write command, then press the Enter key.</span><br><span class="line"></span><br><span class="line">              The Write command has two format options:</span><br><span class="line"></span><br><span class="line">              <span class="ngr">Option 1                                                    </span></span><br><span class="line"></span><br><span class="line">              Use this option to write data to disk beginning at a speci-</span><br><span class="line">              fied address. For example:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">W address drive sector sector</span></span><br><span class="line"></span><br><span class="line">              The data beginning at the specified address is written to</span><br><span class="line">              the disk in the indicated drive. The data is written start-</span><br><span class="line">              ing at the specified starting relative sector (first sector)</span><br><span class="line">              and continues until the requested number of sectors are fil-</span><br><span class="line">              led (second sector).</span><br><span class="line"></span><br><span class="line">              <span class="ngb">Notes</span>:</span><br><span class="line"></span><br><span class="line">              1.  <span class="ngr">Be extremely careful</span> when you write data to absolute</span><br><span class="line">                  sectors because an erroneous sector specification <span class="ngb">destroys</span></span><br><span class="line">                  whatever was on the disk at that location.</span><br><span class="line"></span><br><span class="line">              2.  If only an offset is entered for the beginning address,</span><br><span class="line">                  the W command assumes the segment contained in the <span class="ngb">CS</span></span><br><span class="line">                  <span class="ngb">register</span>.</span><br><span class="line"></span><br><span class="line">              3.  Remember, the starting sector and the sector count are</span><br><span class="line">                  both specified in <span class="ngb">hexadecimal</span>.</span><br><span class="line"></span><br><span class="line">              4.  Option 1 cannot be used if the drive specified is a net-</span><br><span class="line">                  work drive.</span><br><span class="line"></span><br><span class="line">              For example:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">W 1FD 1 100 A</span></span><br><span class="line"></span><br><span class="line">              The data beginning at CS:01FDh is written to the disk in</span><br><span class="line">              drive B, starting at relative sector 100h (256) and conti-</span><br><span class="line">              nuing for 0Ah (10) sectors.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">              <span class="ngr">Option 2                                                    </span></span><br><span class="line"></span><br><span class="line">              This option allows you to use the Write command without spe-</span><br><span class="line">              cifying parameters or only specifying the address parameter.</span><br><span class="line">              For example:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">W</span></span><br><span class="line">                 or</span><br><span class="line">              <span class="ngb">W address</span></span><br><span class="line"></span><br><span class="line">              When issued as shown above, the Write command writes the file</span><br><span class="line">              (whose filespec is at CS:80h) to disk.</span><br><span class="line"></span><br><span class="line">              This condition is met by specifying the filespec when start-</span><br><span class="line">              ing the DEBUG program, or by using the Name command.</span><br><span class="line"></span><br><span class="line">              <span class="ngb">Note</span>:</span><br><span class="line">              If DEBUG was started with a filespec and subsequent Name</span><br><span class="line">              commands were used, you may need to enter a new Name command</span><br><span class="line">              for the proper filespec before issuing the Write command.</span><br><span class="line"></span><br><span class="line">              In addition, the <span class="ngr">BX</span> and <span class="ngr">CX</span> registers <span class="ngb">must be set to the</span></span><br><span class="line">              <span class="ngb">number of bytes to be written</span>. They may have been set pro-</span><br><span class="line">              perly by the DEBUG or Load commands, but might have been</span><br><span class="line">              changed by a Go or Trace command. <span class="ngb">You must be certain the</span></span><br><span class="line">              <span class="ngb">BX and CX registers contain the correct values</span>.</span><br><span class="line"></span><br><span class="line">              The file beginning at CS:100h, or at the location specified</span><br><span class="line">              by address, is written to the disk in the drive specified in</span><br><span class="line">              filespec or the default drive if none was specified.</span><br><span class="line"></span><br><span class="line">              The debugged file is written over the original file that was</span><br><span class="line">              loaded into memory, or into a new file if the filename in the</span><br><span class="line">              FCB didn&#39;t previously exist.</span><br><span class="line"></span><br><span class="line">              <span class="ngb">Note</span>:</span><br><span class="line">              An error message is issued if you try to write a file with</span><br><span class="line">              an extension of <span class="ngb">.EXE</span> or <span class="ngb">.HEX</span>. These files must be written</span><br><span class="line">              in a specific format that DEBUG cannot support.</span><br><span class="line"></span><br><span class="line">              If you find it necessary to modify a file with an extension</span><br><span class="line">              of .EXE or .HEX, and the exact locations to be modified are</span><br><span class="line">              known, use the following procedure:</span><br><span class="line"></span><br><span class="line">              1.  RENAME the file to an extension other than .EXE or .HEX.</span><br><span class="line">                  Back up the file first if appropriate.</span><br><span class="line"></span><br><span class="line">              2.  Load the file into memory using the DEBUG or Load command.</span><br><span class="line"></span><br><span class="line">              3.  Modify the file as needed in memory, but do not try to</span><br><span class="line">                  execute it with the Go or Trace commands. Unpredictable</span><br><span class="line">                  results would occur.</span><br><span class="line"></span><br><span class="line">              4.  Write the file back using the Write command.</span><br><span class="line"></span><br><span class="line">              5.  RENAME the file to its correct name.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="debug-16229.html">Load</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-19816.html">Name</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-46838.html">Starting</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-36619.html">address</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-37521.html">drive</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-39551.html">sector</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-51925.html">PSP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="debug-54321.html">EXE</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:38</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

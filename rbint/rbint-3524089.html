@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3523749.html">
+    <link rel="next" href="rbint-3527888.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3523749.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3521795.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3527888.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2D  - Alternate Multiplex Interrupt Specification (amis) [v3.6]      </span>  [<span class="ngb">t</span>]</span><br><span class="line"></span><br><span class="line">   AH = multiplex number</span><br><span class="line">   AL = function</span><br><span class="line">       00h installation check</span><br><span class="line">       01h get private entry point</span><br><span class="line">       02h uninstall</span><br><span class="line">       03h request popup</span><br><span class="line">       04h determine chained interrupts</span><br><span class="line">       05h get hotkey list</span><br><span class="line">       06h get device-driver information</span><br><span class="line">       07h-0Fh reserved for future enhancements</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AL = 00h (not implemented)</span><br><span class="line">       other  application-dependent</span><br><span class="line">   other registers vary by function (also see individual entries below)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> varies by function</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> programs should not use fixed multiplex numbers; rather, a program</span><br><span class="line">     should scan all multiplex numbers from 00h to FFh, remembering the</span><br><span class="line">     first unused multiplex in case the program is not yet installed.</span><br><span class="line">     For multiplex numbers which are in use, the program should compare</span><br><span class="line">     the first 16 bytes of the signature string to determine whether it</span><br><span class="line">     is already installed on that multiplex number.  If not previously</span><br><span class="line">     installed, it should use the first free multiplex number.</span><br><span class="line">   functions other than 00h are not valid unless a program is installed</span><br><span class="line">     on the selected multiplex number</span><br><span class="line">   to be considered fully compliant with version 3.6 of the specification,</span><br><span class="line">     programs must implement at least functions 00h, 02h (no resident</span><br><span class="line">     uninstall code required), and 04h (return value 04h).  TSRs that</span><br><span class="line">     provide hotkeys with which the user can activate them must also</span><br><span class="line">     implement function 05h.  TSRs which provide DOS device drivers must</span><br><span class="line">     also implement function 06h.  The absolute minimum fully-compliant</span><br><span class="line">     implementation has an overhead of 64 bytes (80 bytes with function</span><br><span class="line">     05h) plus 22 bytes per hooked interrupt (for the interrupt sharing</span><br><span class="line">     protocol header and hook list entry).</span><br><span class="line">   the signature string and description may be used by memory mappers</span><br><span class="line">     to display the installed programs</span><br><span class="line">   to be considered fully compliant, users of this specification must</span><br><span class="line">     adhere to the IBM interrupt sharing protocol (see #2256), which will</span><br><span class="line">     permit removal of TSRs in arbitrary order and interrupt handler</span><br><span class="line">     reordering.  All TSRs following this specification should be</span><br><span class="line">     removable unless they are loaded from CONFIG.SYS, though they need</span><br><span class="line">     not keep the code for removing themselves resident; it is acceptable</span><br><span class="line">     for a separate program to perform the interrupt unhooking and</span><br><span class="line">     memory-freeing steps of removal.</span><br><span class="line">   A sample public-domain implementation including example TSRs and</span><br><span class="line">     utility programs may be found in a separate package distributed as</span><br><span class="line">     AMISLnnn.ZIP (AMISL092.ZIP as of this writing).</span><br><span class="line">   Please let me know if you choose to follow this proposal.  The</span><br><span class="line">     signature and a list of the private API calls you use would be</span><br><span class="line">     appreciated, as well.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 2D/AL=00h,INT 2D/AL=01h,INT 2D/AL=02h,INT 2D/AL=03h,INT 2D/AL=04h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 2D/AL=05h,INT 2D/AL=06h,INT 2F&#34;NOTES&#34;</span><br><span class="line"></span><br><span class="line">Format of interrupt sharing protocol interrupt handler entry point:</span><br><span class="line">Offset Size    Description (Table 2256)</span><br><span class="line"> 00h  2 BYTEs  short jump to actual start of interrupt handler, immediately</span><br><span class="line">         following this data block (EBh 10h)</span><br><span class="line"> 02h   DWORD   address of next handler in chain</span><br><span class="line"> 06h   WORD    signature 424Bh</span><br><span class="line"> 08h   BYTE    EOI flag</span><br><span class="line">       00h software interrupt or secondary hardware interrupt handler</span><br><span class="line">       80h primary hardware interrupt handler (will issue EOI)</span><br><span class="line"> 09h  2 BYTEs  short jump to hardware reset routine</span><br><span class="line">       must point at a valid FAR procedure (may be just RETF)</span><br><span class="line"> 0Bh  7 BYTEs  reserved (0) by IBM for future expansion</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  when chaining to the prior handler, the interrupt handler must perform</span><br><span class="line">     an indirect jump/call using the address at offset 02h in the</span><br><span class="line">     ISP header.  This permits another AMIS TSR to hook itself into</span><br><span class="line">     the chain at a position other than as the first handler to receive</span><br><span class="line">     an interrupt.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT F1/AH=01h&#34;Common ISDN API&#34;,INT F1/AH=06h&#34;CAPI&#34;,#3708</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

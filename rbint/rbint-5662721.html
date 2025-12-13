@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5662346.html">
+    <link rel="next" href="rbint-5664868.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5662346.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5624141.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5664868.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 6F Fn 03  - 10net - Get Address Of Configuration Table               </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = 03h</span><br><span class="line">   DS:DI -&gt; node ID (optional)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> ES:BX -&gt; configuration table (see #3427)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=13h,INT 21/AX=5E01h&#34;10NET&#34;</span><br><span class="line"></span><br><span class="line">Format of 10NET configuration table:</span><br><span class="line">Offset Size    Description (Table 3427)</span><br><span class="line">-41    WORD    local device table address</span><br><span class="line">-39    WORD    extended network error mapping table address</span><br><span class="line">-37    WORD    shared device table address</span><br><span class="line">-35    WORD    mounted device table address</span><br><span class="line">-33    BYTE    receive buffer counter</span><br><span class="line">-32    BYTE    collect buffer counter</span><br><span class="line">-31    WORD    TUF address</span><br><span class="line">-29    BYTE    enable flag</span><br><span class="line">-28    BYTE    FCB keep flag</span><br><span class="line">-27    WORD    reserved</span><br><span class="line">---up to here, 10NET v3.3---</span><br><span class="line">-25    WORD    count of dropped Send6F</span><br><span class="line">-23    WORD    buffer start address</span><br><span class="line">-21    WORD    comm driver base address</span><br><span class="line">-19    WORD    send/receive retry count</span><br><span class="line">-17    BYTE    number of 550ms loops before timeout</span><br><span class="line">-16    WORD    UFH address</span><br><span class="line">-14    WORD    CDIR address</span><br><span class="line">-12    WORD    LTAB address</span><br><span class="line">-10    WORD    SFH address</span><br><span class="line">-8 WORD    FTAB address</span><br><span class="line">-6 WORD    RLTAB address</span><br><span class="line">-4 WORD    SMI address</span><br><span class="line">-2 WORD    NTAB address</span><br><span class="line"> 00h   WORD    address of first CT_DRV</span><br><span class="line"> 02h   BYTE    number of DRV entries</span><br><span class="line"> 03h  8 BYTEs  login name</span><br><span class="line"> 0Bh 12 BYTEs  node ID (blank-padded)</span><br><span class="line"> 17h  6 BYTEs  node address</span><br><span class="line"> 1Dh   BYTE    flag</span><br><span class="line"> 1Eh   BYTE    CT_CFLG (chat permit)</span><br><span class="line">       bit 1: sound bell</span><br><span class="line">       bit 0: CHAT permit</span><br><span class="line"> 1Fh   BYTE    CT_PSFLG (see #3428)</span><br><span class="line"> 20h   BYTE    in 10Net flag</span><br><span class="line"> 21h   WORD    receive message count</span><br><span class="line"> 23h   WORD    send message count</span><br><span class="line"> 25h   WORD    retry count</span><br><span class="line"> 27h   WORD    failed count</span><br><span class="line"> 29h   WORD    driver errors</span><br><span class="line"> 2Bh   WORD    dropped responses/CHATs</span><br><span class="line"> 2Dh  9 BYTEs  LIST ID/NTAB address (3 entries--LPT1-3)</span><br><span class="line"> 36h  6 BYTEs  AUX ID/NTAB address (2 entries--COM1-2)</span><br><span class="line"> 3Ch   BYTE    active CB channel</span><br><span class="line"> 3Dh   BYTE    received 6F messages on queue</span><br><span class="line"> 3Eh  9 BYTEs  activity counters for channels 1-9</span><br><span class="line">---beyond here, 10NET v3.3---</span><br><span class="line"> 47h   BYTE    bit 0: RS232 gate</span><br><span class="line">       bit 1: Send6F gate (user set)</span><br><span class="line"> 48h   DWORD   pointer into gate (user set)</span><br><span class="line"> 4Ch   DWORD   pointer into 10Net send</span><br><span class="line"> 50h  N WORDs  addresses of timer blocks</span><br><span class="line"></span><br><span class="line">Bitfields for CT_PSFLG:</span><br><span class="line">Bit(s) Description (Table 3428)</span><br><span class="line"> 5 PRINT permit</span><br><span class="line"> 4 KB initiated</span><br><span class="line"> 3 CHAT called FOXPTRM</span><br><span class="line"> 2 SUBMIT active</span><br><span class="line"> 1 SUBMIT received</span><br><span class="line"> 0 SUBMIT permit</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

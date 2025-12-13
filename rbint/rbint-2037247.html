@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2036555.html">
+    <link rel="next" href="rbint-2039065.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2036555.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1984373.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2039065.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 20  P - Microsoft Windows - Vmini / Enable - Vxd Services            </span>  [<span class="ngb">W</span>]</span><br><span class="line"></span><br><span class="line">   VxD = 0037h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the desired VxD and service number are identified by the data</span><br><span class="line">     immediately following the INT 20 instruction, as in:</span><br><span class="line">       INT 20h</span><br><span class="line">       DW  service number</span><br><span class="line">       DW  VxD identifier</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 2F/AX=1684h&#34;DEVICE API&#34;,INT 30&#34;Windows&#34;,#0961,#1032</span><br><span class="line"></span><br><span class="line">(Table 0996)</span><br><span class="line">Values for VMINI / ENABLE (VxD ID 0037h) service number:</span><br><span class="line"> 0000h get version</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> CF clear</span><br><span class="line">       EAX = version (AH = major, AL = minor)</span><br><span class="line"> 0001h &#34;VMINI_Update&#34;</span><br><span class="line">   ??? (performs VMMCall 1800Eh, then falls through to service 04h)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> EAX = system time???</span><br><span class="line"> 0002h &#34;VMINI_Status&#34;</span><br><span class="line">   get current ???</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> EAX = ???</span><br><span class="line"> 0003h &#34;VMINI_DisplayError&#34; (schedules a global event via VMMCall 1800Eh)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> ???</span><br><span class="line"> 0004h &#34;VMINI_SetTimeStamp&#34; (performs VMMCall 100CFh)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> EAX = system time</span><br><span class="line"> 0005h &#34;VMINI_Siren&#34; (call ??? priority event)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> nothing</span><br><span class="line"> 0006h &#34;VMINI_RegisterAccess&#34; (set ??? / get ???)</span><br><span class="line">   EDI -&gt; buffer containing data to copy into VxD and space for results</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> EDI buffer updated</span><br><span class="line"> 0007h &#34;VMINI_GetData&#34;</span><br><span class="line">   EBX = ??? flags (bits 2,15,17,18 checked)</span><br><span class="line">   EDI -&gt; ???</span><br><span class="line">   ???</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> ???</span><br><span class="line"> 0008h &#34;VMINI_ShutDownItem&#34; (schedules a global event via VMMCall 1800Eh)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> ???</span><br><span class="line"> 0009h &#34;VMINI_RegisterSK&#34; (get ??? data)</span><br><span class="line">   EDI -&gt; buffer for data (see #0997)</span><br><span class="line"></span><br><span class="line">   <span class="ngb">Return:</span> EDI buffer updated if large enough</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0995,#0998,#2364 at INT 2F/AX=1684h/BX=0037h</span><br><span class="line"></span><br><span class="line">Format of ENABLE.VXD ??? data:</span><br><span class="line">Offset Size    Description (Table 0997)</span><br><span class="line"> 00h   DWORD   (ret) length of data, including this word</span><br><span class="line">       (call) length of buffer</span><br><span class="line"> 04h   DWORD   -&gt; 24-byte (or larger) buffer</span><br><span class="line"> 08h   DWORD   -&gt; 20-byte buffer</span><br><span class="line"> 0Ch   DWORD   -&gt; 260-byte buffer</span><br><span class="line"> 10h   DWORD   -&gt; 260-byte buffer</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0996</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

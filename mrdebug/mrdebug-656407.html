@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Utilities</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-653293.html">
+    <link rel="next" href="mrdebug-659526.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-653293.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-651218.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-659526.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">METHOD</span></span><br><span class="line"> Parameter type checking for Methods</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">METHOD FUNCTION &lt;idMethod&gt;(&lt;idParam&gt; AS|ASREF &lt;idType&gt;, ...)</span></span><br><span class="line">        <span class="ngb">.</span></span><br><span class="line">        <span class="ngb">. &lt;executable statements&gt;</span></span><br><span class="line">        <span class="ngb">.</span></span><br><span class="line">        <span class="ngb">RETURN[(] &lt;exp&gt; [)] [AS &lt;idType&gt;]</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;idMethod&gt;</span> is the name of the user-defined method to declare.</span><br><span class="line">     Please see the Class(y) guides for more information.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;idParam&gt;</span> is the declaration of one or more parameter variables.</span><br><span class="line">     Variables specified in this list are declared local.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">AS|ASREF</span> indicates whether the parameter is expected to be normal or</span><br><span class="line">     passed by reference.  AS specifies a normal parameter and ASREF</span><br><span class="line">     specifies a parameter that is expected to be passed by reference.  If</span><br><span class="line">     you specify AS, and the parameter is passed by reference, then no error</span><br><span class="line">     will be given, as program behaviour is not effected.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;idType&gt;</span> is the type of the parameter/return value.  For the METHOD</span><br><span class="line">     FUNCTION statement, this is called every time the method is called, and</span><br><span class="line">     for the RETURN statement it is called just before the return is</span><br><span class="line">     executed.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     This allows you to define a method which will, at run time, check the</span><br><span class="line">     parameter types that has been passed to it.  For example, if you define</span><br><span class="line">     a method as:</span><br><span class="line"></span><br><span class="line">        <span class="ngb">METHOD FUNCTION Foo(nNumber1 AS INT, nNumber2 AS INT)</span></span><br><span class="line">        <span class="ngb">RETURN ( nNumber + nNumber2 ) AS INT</span></span><br><span class="line"></span><br><span class="line">     And you call this Method with:</span><br><span class="line"></span><br><span class="line">        <span class="ngb">? oObject:Foo(1, 1.1)</span></span><br><span class="line"></span><br><span class="line">     The MrDebug will pop up with the following message in the Assert/Trace</span><br><span class="line">     window:</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Param 2 is not type INT</span></span><br><span class="line"></span><br><span class="line">     And the program will stop at that point for your inspection.  So you can</span><br><span class="line">     take a look at the calling routine to see what has caused the problem.</span><br><span class="line"></span><br><span class="line">     If you then continued the program would stop on the RETURN because the</span><br><span class="line">     result of 1 + 1.1 is not an integer value.  So you would get another</span><br><span class="line">     message in the Assert/Trace window:</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return value is not type INT</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Notes</span></span><br><span class="line"></span><br><span class="line">     The allowable types for &lt;idType&gt; are:</span><br><span class="line"></span><br><span class="line">          <span class="ngb">CHARACTER       A character string</span></span><br><span class="line">          <span class="ngb">STRING          A character string (Same as CHARACTER)</span></span><br><span class="line">          <span class="ngb">NUMERIC         A number of any specification</span></span><br><span class="line">          <span class="ngb">INTEGER         A numeric integer (no decimal places)</span></span><br><span class="line">          <span class="ngb">INT             A numeric integer (no decimal places)</span></span><br><span class="line">          <span class="ngb">FLOAT           A floating pointer number</span></span><br><span class="line">          <span class="ngb">LOGICAL         A logical value</span></span><br><span class="line">          <span class="ngb">DATE            A date value</span></span><br><span class="line">          <span class="ngb">BLOCK           A code block</span></span><br><span class="line">          <span class="ngb">CODEBLOCK       A code block</span></span><br><span class="line">          <span class="ngb">ARRAY           An array of any length</span></span><br><span class="line">          <span class="ngb">OBJECT          An object of any class</span></span><br><span class="line">          <span class="ngb">ANY             Any data type</span></span><br><span class="line">          <span class="ngb">USUAL           Any data type (Same as ANY)</span></span><br><span class="line"></span><br><span class="line">     If you try to compile something like:</span><br><span class="line"></span><br><span class="line">        RETURN (NIL) AS STRING</span><br><span class="line"></span><br><span class="line">     you will get a compile time warning.  Well, it&#39;s the least we can do...</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Example</span></span><br><span class="line"></span><br><span class="line">       <span class="ngb">■</span>   This example shows a Method declaration with the second</span><br><span class="line">           parameter passed by reference.</span><br><span class="line"></span><br><span class="line">           METHOD FUNCTION Message(nCounter AS INT, cPrompt AS REF)</span><br><span class="line"></span><br><span class="line">              nCounter ++</span><br><span class="line">              ? cPrompt</span><br><span class="line"></span><br><span class="line">           RETURN (nCounter) AS STRING</span><br><span class="line"></span><br><span class="line">           When this program runs, it will stop on the return and MrDebug</span><br><span class="line">           will pop up because &#39;nCounter&#39; is not an STRING.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Files:</span>  Header file is MrDebug.CH</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-219764.html">MrDebug.CH</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

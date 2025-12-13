@@ -1,0 +1,139 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-45301.html">
+    <link rel="next" href="x86-49654.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-45301.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-49654.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">ENTER           Make Procedure Stack Frame           Flags: Not altered</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">ENTER</span> locals,nesting                                 CPU: 186+</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   push eBP</span><br><span class="line">                temp ← eSP</span><br><span class="line">                while (nesting &gt; 0)</span><br><span class="line">                   nesting ← nesting - 1</span><br><span class="line">                   eBP ← eBP - n</span><br><span class="line">                   push [SS:eBP]</span><br><span class="line">                endwhile</span><br><span class="line">                eBP ← temp</span><br><span class="line">                eSP ← eSP - locals</span><br><span class="line"></span><br><span class="line">        Note: If the operand-size attribute of ENTER is 16 bits, BP</span><br><span class="line">              and SP are used and n = 2; if 32 bits, EBP and ESP are</span><br><span class="line">              used and n = 4.</span><br><span class="line">              </span><br><span class="line"></span><br><span class="line">    ENTER creates the a stack frame that can be used to implement the</span><br><span class="line">    rules of block-structured, high-level languages. A LEAVE</span><br><span class="line">    instruction at the end of the procedure complements ENTER.</span><br><span class="line"></span><br><span class="line">    ENTER has two parameters. The first specifies the number of bytes</span><br><span class="line">    of dynamic storage to be allocated on the stack for the routine</span><br><span class="line">    being entered. The second paramter corresponds to the lexical</span><br><span class="line">    nesting level (0 to 31) of the routine within the high-level</span><br><span class="line">    language source code. This level determines how many sets of stack</span><br><span class="line">    frame pointers the CPU copies into the new stack frame from the</span><br><span class="line">    preceding stack frame. This list of stack frames is often called</span><br><span class="line">    the <span class="ngb">display</span>. Lexical level has <span class="ngb">no</span> relationship to either the</span><br><span class="line">    protection levels or to the I/O privilege level.</span><br><span class="line"></span><br><span class="line">    ENTER creates the new display for a procedure. Then it allocates</span><br><span class="line">    the dynamic storage space for that procedure by decrementing eSP by</span><br><span class="line">    the number of bytes specified in the first parameter. This new</span><br><span class="line">    value of eSP serves as the starting point for all PUSH and POP</span><br><span class="line">    operations within that procedure.</span><br><span class="line"></span><br><span class="line">    ENTER can be used either nested or non-nested. If the lexical</span><br><span class="line">    level is zero, the non-nested form is used (enter n,0). The main</span><br><span class="line">    procedure operates at the highest logical level, level 1. The</span><br><span class="line">    first procedure it calls operates at the next deeper level, level</span><br><span class="line">    2, etc. A level 2 procedure can access the variables in the main</span><br><span class="line">    program because a program operating at a higher logical level</span><br><span class="line">    (calling a program at a lower level) requires that the called</span><br><span class="line">    procedure have access to the variables of the calling program.</span><br><span class="line"></span><br><span class="line">    A procedure calling another procedure at the same level implies</span><br><span class="line">    that they are parallel procedures and should not have access to</span><br><span class="line">    the variables of the calling program. The new stack frame does not</span><br><span class="line">    include the pointer for addressing the calling procedure&#39;s stack</span><br><span class="line">    frame. ENTER treats a re-entrant procedure as a procedure calling</span><br><span class="line">    another procedure at the same level.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    Some assemblers support ENTER extensions that force the use of</span><br><span class="line">    SP,BP (ENTERW) or ESP,EBP (ENTERD) regardless of the code</span><br><span class="line">    segment&#39;s size attribute (80386+).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    C8 iw ib    ENTER imm16,imm8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    imm16, 0      3      -      15      11      10      14      11   NP</span><br><span class="line">    imm16, 1      4      -      25      15      12      17      15   NP</span><br><span class="line">    imm16, imm8   4      -   22+16n    12+4n   15+4n   17+3i  15+2i  NP</span><br><span class="line">                             n = imm8-1;  i = imm8</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-78742.html">LEAVE</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-111661.html">PUSH</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

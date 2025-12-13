@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5ie4-style.css">
+    <title>Clipper 5.00a » Internal Errors  V1.04 » Show » Internal Errors</title>
+    <meta name="description" content="Clipper 5.00a » Internal Errors  V1.04">
+    <link rel="prev" href="cl5ie4-25659.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5ie4-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5ie4-25659.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Show</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Internal Errors</a></li>
+                  <li><a href="cl5ie4-27006.html">Accuracy ...</a></li>
+                  <li><a href="cl5ie4-28420.html">Credits ...</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  <span class="ngb">Internal Error #5333</span></span><br><span class="line"></span><br><span class="line">  (#98457) Macro expanded to a local variable.  <span class="ngu">Means that VMM has died</span></span><br><span class="line">  <span class="ngu">with a reference to an invalid or NULL memory pointer.</span></span><br><span class="line"></span><br><span class="line">  (#114101) One user says that perhaps changing PRIVATE or PUBLIC variables</span><br><span class="line">  to LOCAL or STATIC may affect this error.</span><br><span class="line"></span><br><span class="line">  (#114263) This suggests that perhaps getting a macro variable: GET &amp;mtest</span><br><span class="line">  where mtest is a public, may cause the problem.  I was unable to duplicate</span><br><span class="line">  this.</span><br><span class="line"></span><br><span class="line">  () I was able to get an internal error #5333 by declaring a local array</span><br><span class="line">  larger than 4096 (we&#39;ll say &#39;x&#39;), then accessing an array element beyond</span><br><span class="line">  x % 4096.  For instance:</span><br><span class="line"></span><br><span class="line">  LOCAL aList[5000]</span><br><span class="line">  aList[769] := &#34;Hello World&#34;</span><br><span class="line"></span><br><span class="line">  (Mail: Greg Dahl [72050,650]) While using Roger Donnay&#39;s MEM50, Greg got  <span class="ngb">~</span></span><br><span class="line">  IE 5333 REFRESHCUR(0) after making a data change using DBEDIT().  Some</span><br><span class="line">  symbol is apparently not available for DBEDIT() that should be.  Not using</span><br><span class="line">  MEM50 eliminated the problem.</span><br><span class="line"></span><br><span class="line">  (#116024) In this thread, a user was battling with a #5333 error that     <span class="ngb">~</span></span><br><span class="line">  kept popping up during a READ.  He solved the problem by doing a CLEAR</span><br><span class="line">  GETS immediately before the first @ GET was issued.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

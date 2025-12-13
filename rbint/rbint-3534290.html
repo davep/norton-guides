@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3532899.html">
+    <link rel="next" href="rbint-3535278.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3532899.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3521795.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3535278.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2D  - Amis V3.0+ - Request Pop-up                                    </span>  [<span class="ngb">t</span>]</span><br><span class="line"></span><br><span class="line">   AL = 03h</span><br><span class="line">   AH = multiplex number for program</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status</span><br><span class="line">       00h not implemented or TSR is not a pop-up</span><br><span class="line">       01h can not pop up at this time, try again later</span><br><span class="line">       02h can not pop up yet, will do so when able</span><br><span class="line">       03h already popped up</span><br><span class="line">       04h unable to pop up, user intervention required</span><br><span class="line">       BX = standard reason code</span><br><span class="line">           0000h unknown failure</span><br><span class="line">           0001h interrupt chain passes through memory</span><br><span class="line">             which must be swapped out to pop up</span><br><span class="line">           0002h swap-in failed</span><br><span class="line">       CX = application&#39;s reason code if nonzero</span><br><span class="line">       FFh TSR popped up and was exited by user</span><br><span class="line">       BX = return value</span><br><span class="line">           0000h no return value</span><br><span class="line">           0001h TSR unloaded</span><br><span class="line">           0002h-00FFh reserved</span><br><span class="line">           0100h-FFFFh application-dependent</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this function is not valid unless a program is installed on the</span><br><span class="line">     specified multiplex number; use INT 2D/AL=00h to check</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 2D/AL=00h,INT 2D/AL=01h,INT 2D/AL=02h,INT 2D/AL=04h,INT 2D/AL=05h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 2D/AL=06h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

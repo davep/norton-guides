@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="fgl_v15-style.css">
+    <title>Ferns&#39; Graphics Library V 1.5 » General » Alphabetical list</title>
+    <meta name="description" content="Ferns&#39; Graphics Library V 1.5">
+    <link rel="prev" href="fgl_v15-18553.html">
+    <link rel="next" href="fgl_v15-22939.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="fgl_v15-about.html">About</a></li>
+
+
+          
+
+<li><a href="fgl_v15-18553.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="fgl_v15-22939.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>General</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Alphabetical list</a></li>
+                  <li><a href="fgl_v15-27902.html">About Ferns&#39; Graphics library</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="fg14 bg4">  DEMO version ! After registering you will receive a complete version.</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">This function sets the right video mode.</span><br><span class="line">This mode switching is fundamental to the operation of Ferns&#39; Graphics</span><br><span class="line">Library because it also sets all the internal variables.</span><br><span class="line">If called with no parameters, this function will return information about</span><br><span class="line">the current mode.</span><br><span class="line">If you call the function with a negative Modenum value, the function checks</span><br><span class="line">if the mode is available.</span><br><span class="line">For a list of the available modes, see &#34;About Ferns&#39; Graphics Library&#34;;</span><br><span class="line">&#34;Different Modes&#34;.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">FGLSetMode([ Modenum ]) -&gt; OldmodeArray.</span></span><br><span class="line"></span><br><span class="line">  [ Modenum ] : The desired (graphic) mode. See &#34;About Ferns&#39; Graphics</span><br><span class="line">                Library&#34;;&#34;Different Modes&#34;.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="ngb">Return value</span></span><br><span class="line"></span><br><span class="line">This function returns information about the old graphic mode when [ Modenum ]</span><br><span class="line">is passed as parameter, or information about the current mode when no</span><br><span class="line">parameter is passed.</span><br><span class="line">The OldmodeArray has the following meaning :</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  OldmodeArray[_OPTION_], where _OPTION_ can be (defined in fgl.ch) :</span><br><span class="line"></span><br><span class="line">  FGL_MODE_TEXT_ROW    = Number of text rows.</span><br><span class="line">  FGL_MODE_TEXT_COL    = Number of text colomns.</span><br><span class="line">  FGL_MODE_GRAPH_MAXY  = Number of pixels on a graphical scanline-1.</span><br><span class="line">                         So in 640x480 mode, this option returns 639.</span><br><span class="line">  FGL_MODE_GRAPH_MAXX  = Number of graphical scanlines-1.</span><br><span class="line">                         So in 640x480 mode, this option returns 479.</span><br><span class="line">  FGL_MODE_FONT_HEIGHT = Fontheight.</span><br><span class="line">  FGL_MODE_FONT_WIDTH  = FontWidth.</span><br><span class="line">  FGL_MODE_NUMCOLORS   = Number of bits used to represent a color in</span><br><span class="line">                           the current mode. 2[this value] gives the number</span><br><span class="line">                           of available colors.</span><br><span class="line">                           Possible values are : 4,8,15 or 16.</span><br><span class="line">  FGL_MODE_IN_USE      = Mode in use. The value of the current mode that is</span><br><span class="line">                           set (the mode used with FGLSetMode()).</span><br><span class="line">  FGL_MODE_GRAPHIC     = Graphic mode or not.</span><br><span class="line">                           FGL_TEXT  if textmode.</span><br><span class="line">                           FGL_GRAPH if graphic mode.</span><br><span class="line">  FGL_MODE_FOREGROUND  = Last color setting for the foreground color for</span><br><span class="line">                         standard output (output which is done via the GT).</span><br><span class="line">                         This color setting is only relevant in graphic</span><br><span class="line">                         mode.</span><br><span class="line">  FGL_MODE_BACKGROUND  = Last color setting for the background color for</span><br><span class="line">                         standard output (output which is done via the GT).</span><br><span class="line">                         This color setting is only relevant in graphic</span><br><span class="line">                         mode.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">If the mode is not available, the function will return NIL.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="ngb">Advanced features</span></span><br><span class="line"></span><br><span class="line">Just like with Light Lib Graphics it is possible to test if a mode is</span><br><span class="line">available. The mode doesn&#39;t switch to it. You can test for the availability</span><br><span class="line">of a mode by calling FGLSetMode with the negative value of the mode number.</span><br><span class="line">If the mode is available, you will get an array with 7 elements. These</span><br><span class="line">seven elements are the same as the first seven elements of the OldmodeArray,</span><br><span class="line">which is returned if you try to switch to a mode (so FGL_MODE_IN_USE,</span><br><span class="line">FGL_MODE_GRAPHIC, FGL_MODE_BACKGROUND and FGL_MODE_FOREGROUND aren&#39;t</span><br><span class="line">available).</span><br><span class="line">If the mode is not available, you will get the NIL value as return.</span><br><span class="line">This special feature allows you to check available modes before to try to</span><br><span class="line">switch to them.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="ngb">Example</span></span><br><span class="line"></span><br><span class="line"> #include &#34;fgl.ch&#34;</span><br><span class="line"></span><br><span class="line"> local mode;</span><br><span class="line"> // Test if we have VGA.</span><br><span class="line"> IF (FGLSetMode(-FGL_GRAPHICS_640_480_16) == NIL)</span><br><span class="line">  ? &#34;You&#39;ll have to have at least VGA to execute this program&#34;</span><br><span class="line">  QUIT</span><br><span class="line"> ENDIF</span><br><span class="line"> mode := FGL_GRAPHICS_640_480_16</span><br><span class="line"> IF (FGLSetMode(-FGL_GRAPHICS_640_480_256) != NIL)</span><br><span class="line">  mode := FGL_GRAPHICS_640_480_256</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> // Right, now safely switch to 16 or 256 color mode.</span><br><span class="line"> FGLSetMode(mode)</span><br><span class="line"></span><br><span class="line"> // begin your program here...</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:41</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

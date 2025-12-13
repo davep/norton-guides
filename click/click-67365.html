@@ -1,0 +1,110 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="click-style.css">
+    <title>Click! 2.00 Source Code Reformatter » Support » Changes</title>
+    <meta name="description" content="Click! 2.00 Source Code Reformatter">
+    <link rel="prev" href="click-66254.html">
+    <link rel="next" href="click-69001.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="click-about.html">About</a></li>
+
+
+          
+
+<li><a href="click-66254.html">Previous</a></li>
+
+
+          
+
+<li><a href="click-34012.html">Up</a></li>
+
+
+          
+
+<li><a href="click-69001.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Getting Started</a></li>
+                  <li><a href="click-10263.html">Features</a></li>
+                  <li><a href="click-15048.html">Click .INI file</a></li>
+                  
+                </ul>
+              </li>
+              <li>Support</li>
+              <li>
+                <ul>
+                  <li><a href="click-32383.html">Support</a></li>
+                  <li><a href="click-34012.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">You can now include your own text in the header block. Just put some</span><br><span class="line">text in a file named CLICK.HDR, and it will be placed in the title block</span><br><span class="line">of each file processed.</span><br><span class="line"></span><br><span class="line">You can have a CLICK.HDR in with your CLICK.INI and CLICK.EXE, and if</span><br><span class="line">you place a CLICK.HDR in the local directory, it will override the</span><br><span class="line">master file.</span><br><span class="line"></span><br><span class="line">You don&#39;t need to comment or indent it. Plain text is all you need.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Click! had some problems ignoring comment lines. This is improved.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">If the word SET is the first element of a line, and is followed by a (,</span><br><span class="line">it is now understood to be a function, not a command.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">If a source file ends with the comment block still turned on, Click! now</span><br><span class="line">ends gracefully.</span><br><span class="line"></span><br><span class="line">So, you can have a source module like:</span><br><span class="line"></span><br><span class="line">function stuff</span><br><span class="line"></span><br><span class="line">xfunc( x, y )</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">This should have a comment end block, but it doesn&#39;t</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">If the output file in the output directory has the same or later</span><br><span class="line">date/time than the source file, you can use:</span><br><span class="line"></span><br><span class="line">SKIP_FILES_WITH_NO_CHANGES=YES</span><br><span class="line"></span><br><span class="line">to not process them again.</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">The Aligner now removes the extra spaces in assignment blocks, so:</span><br><span class="line"></span><br><span class="line">nIndIf        := 0</span><br><span class="line">nIndFor       := 0</span><br><span class="line">nIndCase      := 0</span><br><span class="line">nIndFunc      := 0</span><br><span class="line">nIndBegin     := 0</span><br><span class="line">nIndWhile     := 0</span><br><span class="line"></span><br><span class="line">becomes:</span><br><span class="line"></span><br><span class="line">nIndIf    := 0</span><br><span class="line">nIndFor   := 0</span><br><span class="line">nIndCase  := 0</span><br><span class="line">nIndFunc  := 0</span><br><span class="line">nIndBegin := 0</span><br><span class="line">nIndWhile := 0</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">The Aligner now removes extra spaces in declarations, so:</span><br><span class="line"></span><br><span class="line">local CRLF           := chr( 13 ) + chr( 10 )</span><br><span class="line">local cContSpace     := &#39;&#39;</span><br><span class="line">local cFullPath      := if( file( &#39;CLICK.INI&#39; ), &#39;CLICK&#39;, rootname( ft_origin() ) )</span><br><span class="line"></span><br><span class="line">becomes:</span><br><span class="line"></span><br><span class="line">local CRLF       := chr( 13 ) + chr( 10 )</span><br><span class="line">local cContSpace := &#39;&#39;</span><br><span class="line">local cFullPath  := if( file( &#39;CLICK.INI&#39; ), &#39;CLICK&#39;, rootname( ft_origin() ) )</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

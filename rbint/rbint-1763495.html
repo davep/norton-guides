@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1762928.html">
+    <link rel="next" href="rbint-1764242.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1762928.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1712194.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1764242.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 1A Fn 94  - Pcmcia Socket Services V1.00 - Write Multiple            </span>  [<span class="ngb">X</span>]</span><br><span class="line"></span><br><span class="line">   AH = 94h</span><br><span class="line">   AL = adapter number</span><br><span class="line">   BL = socket number (01h to maximum supported by adapter)</span><br><span class="line">   BH = attributes (see #0611)</span><br><span class="line">   CX = number of bytes or words to read</span><br><span class="line">   DX:DI = card address</span><br><span class="line">   DS:SI -&gt; buffer containing data</span><br><span class="line">   BP = Card Technology type (0000h = RAM)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AH destroyed</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = error code (01h,07h,0Bh,0Ch,12h,14h) (see #0580)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this function is only available on I/O-mapped sockets</span><br><span class="line">   Socket Services calls the Card Technology callback (see #0585) for</span><br><span class="line">     any card technology it does not directly support</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=82h&#34;PCMCIA&#34;,AH=92h,AH=93h,INT 21/AX=440Dh&#34;DOS 3.2+&#34;</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

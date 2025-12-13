@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4928992.html">
+    <link rel="next" href="rbint-4932309.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4928992.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4908825.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4932309.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 60  - Pc-ipc Api                                                     </span>  [<span class="ngb">r</span>]</span><br><span class="line"></span><br><span class="line">   STACK:  DWORD   pointer to parameter block (see #2939)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> STACK: unchanged</span><br><span class="line">Program: PC-IPC is a shareware TSR by Donnelly Software Engineering which</span><br><span class="line">     allows communication between independent programs</span><br><span class="line">Range: INT 00 to INT FF, selected by commandline switch</span><br><span class="line"></span><br><span class="line">Format of PC-IPC parameter block:</span><br><span class="line">Offset Size    Description (Table 2939)</span><br><span class="line"> 00h   WORD    caller&#39;s ID</span><br><span class="line"> 02h   WORD    to ID</span><br><span class="line"> 04h   WORD    command code (see #2940)</span><br><span class="line"> 06h   WORD    returned status (see #2941)</span><br><span class="line"> 08h   WORD    returned error code (see #2942)</span><br><span class="line"> 0Ah   WORD    size of data</span><br><span class="line"> 0Ch   DWORD   pointer to data buffer</span><br><span class="line"></span><br><span class="line">(Table 2940)</span><br><span class="line">Values for PC-IPC command code:</span><br><span class="line"> 01h &#34;IPC_CMND_INQUIRE&#34;     inquire current status</span><br><span class="line">   set status field, writes WORD to data buffer containing free</span><br><span class="line">     message space in bytes, and sets the &#34;size&#34; field to the</span><br><span class="line">     number of messages waiting</span><br><span class="line"> 02h &#34;IPC_CMND_ENABLE&#34; reenable PC-IPC</span><br><span class="line">   ignored unless called with the same ID that disabled PC-IPC</span><br><span class="line"> 03h &#34;IPC_CMND_DISABLE&#34; disable PC-IPC</span><br><span class="line"> 04h &#34;IPC_CMND_INSTALL&#34; reset PC-IPC</span><br><span class="line"> 06h &#34;IPC_CMND_RDATA&#34;  read data</span><br><span class="line">   returns first message in data buffer, sets &#34;size&#34; to message length</span><br><span class="line">     and &#34;to ID&#34; field to sender&#39;s ID</span><br><span class="line">   if no messages available, bit 4 of status is cleared and &#34;size&#34; is</span><br><span class="line">     set to zero</span><br><span class="line"> 07h &#34;IPC_CMND_SDATA&#34;  send data</span><br><span class="line"> 08h &#34;IPC_CMND_REQID&#34;  require user ID</span><br><span class="line">   create a new recognized ID and return in &#34;caller&#39;s ID&#34; field</span><br><span class="line"> 09h &#34;IPC_CMND_DELID&#34;  cancel user ID</span><br><span class="line">   delete caller&#39;s ID from pool of recognized IDs</span><br><span class="line"> 0Ah &#34;IPC_CMND_RDATAW&#34; read data, wait if no messages available</span><br><span class="line"> 0Bh &#34;IPC_CMND_VERS&#34;   get PC-IPC version</span><br><span class="line">   string representing version returned in data buffer, &#34;size&#34; field</span><br><span class="line">     set to length of string</span><br><span class="line"></span><br><span class="line">Bitfields for returned status:</span><br><span class="line">Bit(s) Description (Table 2941)</span><br><span class="line"> 0 unused</span><br><span class="line"> 1 IPC enabled</span><br><span class="line"> 2 IPC installed</span><br><span class="line"> 3 error</span><br><span class="line"> 4 message(s) available</span><br><span class="line"></span><br><span class="line">(Table 2942)</span><br><span class="line">Values for PC-IPC error code:</span><br><span class="line"> 00h   no error</span><br><span class="line"> 01h   invalid command or parameter</span><br><span class="line"> 02h   only process 0 can install/reset IPC</span><br><span class="line"> 03h   process can not install/reset IPC</span><br><span class="line"> 04h   IPC is not enabled</span><br><span class="line"> 05h   process can not disable IPC</span><br><span class="line"> 06h   invalid destination process ID</span><br><span class="line"> 07h   invalid sending process ID</span><br><span class="line"> 08h   invalid data destination</span><br><span class="line"> 09h   no more process IDs available</span><br><span class="line"> 0Ah   can not relinquish that process ID</span><br><span class="line"> 0Bh   message space is full</span><br><span class="line"> 0Ch   IPC is not installed</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

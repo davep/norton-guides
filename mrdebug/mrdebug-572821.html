@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Utilities</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-569067.html">
+    <link rel="next" href="mrdebug-575298.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-569067.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-565186.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-575298.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">CharWin() - Replaces screen characters</span></span><br><span class="line"> Replaces specific characters</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">CharWin( [&lt;nTop&gt;,&lt;nLeft&gt;,&lt;nBottom&gt;, &lt;nRight&gt;, [&lt;cNewChar | nNewChar&gt;],</span></span><br><span class="line">        <span class="ngb">[&lt;cOldChar | nOldChar&gt;]]) --&gt; cNull</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nTop&gt;</span>  top coordinate for the top-left corner of the window area.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nLeft&gt;</span>  left coordinate for the top-left corner of the window area.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nBottom&gt;</span>  bottom coordinate for the bottom-right corner of the</span><br><span class="line">     window area.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nRight&gt;</span>  right coordinate for the bottom-right corner of the window</span><br><span class="line">     area.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cNewChar | nNewChar&gt;</span>  is the new character for the screen area.</span><br><span class="line">     Specify the parameter as a numeric in the range of 0 to 255 or as a</span><br><span class="line">     character string.  The default value is the character 255.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cOldChar | nOldChar&gt;</span>  is the character to exchange.  Specify the</span><br><span class="line">     parameter as a numeric in the range of  0 to 255 or as a character</span><br><span class="line">     string.  The default is to exchange all characters.</span><br><span class="line"></span><br><span class="line">     ()  When no parameter is designated, the function replaces all</span><br><span class="line">     characters in the screen area with character 255.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     The function always returns a null string for compatibility with</span><br><span class="line">     CA-Tools.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     If the current output area is a window then this function will apply to</span><br><span class="line">     a window and not the application window. If there are no windows open,</span><br><span class="line">     then the following applies to the application window.</span><br><span class="line"></span><br><span class="line">     Within a window or the application window, CharWin() replaces instances</span><br><span class="line">     of a character, or all characters with a new one.  If &lt;cNewchar |</span><br><span class="line">     nNewchar&gt; is not passed a parameter then a CHR(255) is used by default.</span><br><span class="line">     The top-left and bottom-right corner rows and columns are given for the</span><br><span class="line">     borders of the area.  If these arguments are missing, then the entire</span><br><span class="line">     area of the current window is used - if a window is opened and selected,</span><br><span class="line">     otherwise the application window is used.</span><br><span class="line"></span><br><span class="line">     If [&lt;cNewChar | nNewChar&gt;] is not specified then the CLEARB character is</span><br><span class="line">     used.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Notes</span></span><br><span class="line"></span><br><span class="line">     ■  If a window is currently selected, the this function will be applied</span><br><span class="line">        to the window.</span><br><span class="line"></span><br><span class="line">     ■  This function does not alter the cursor position.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     ■  Replace all &#34;B&#34; for &#34;A&#34; in the current window</span><br><span class="line"></span><br><span class="line">        CharWin( 0, 0, MaxRow(), MaxCol(), &#34;B&#34;, &#34;A&#34;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     ■  Numeric characters can also be designated:</span><br><span class="line"></span><br><span class="line">        CharWin( 0, 0, MaxRow(), MaxCol(), 66, 65)</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Files:</span>  Library is MRWINDOW.LIB.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-611030.html">SetClearB()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

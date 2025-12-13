@@ -1,0 +1,142 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Device Driver Fnx</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-182799.html">
+    <link rel="next" href="dos5-191925.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-182799.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-182062.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-191925.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Device driver function 00h      Init                    B   C</span></span><br><span class="line"></span><br><span class="line">    Init directs the driver to initialize the device driver and</span><br><span class="line">    corresponding device. This function is called only once, when the</span><br><span class="line">    driver is loaded.</span><br><span class="line"></span><br><span class="line">    This function is required for both block and character device</span><br><span class="line">    drivers.</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The Init function is called only once; its code and data need not</span><br><span class="line">    be retained after it has initialized its device. A device driver</span><br><span class="line">    can release the Init function&#39;s code and data by placing the</span><br><span class="line">    function at the end of the driver and returning the function&#39;s</span><br><span class="line">    starting address in the irEndAddress field.</span><br><span class="line"></span><br><span class="line">    If the Init function uses Int 21h system functions, it may use</span><br><span class="line">    <span class="ngb">only</span> the following functions:</span><br><span class="line"></span><br><span class="line">                01h - 0Ch       Character I/O</span><br><span class="line">                25h             Set Interrupt Vector</span><br><span class="line">                30h             Get Version Number</span><br><span class="line">                35h             Get Interrupt Vector</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">irStatus</span></span><br><span class="line">    Specifies the status of the completed function. If the function</span><br><span class="line">    was successful, the driver must set the done bit (bit 8).</span><br><span class="line">    Otherwise, the driver must set both the error and done bits (bits</span><br><span class="line">    15 and 8) and copy an error value to the low-order byte.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">irUnits</span></span><br><span class="line">    Specifies the number of units supported by the driver. DOS uses</span><br><span class="line">    this number to assign sequential drive numbers to the units. The</span><br><span class="line">    driver must set this field.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">irEndAddress</span></span><br><span class="line">    Contains the 32-bit address (segment:offset) of the end of memory</span><br><span class="line">    available to the device driver and receives the 32-bit address of</span><br><span class="line">    of the end of the initialized driver.</span><br><span class="line"></span><br><span class="line">        input   Points to the first byte of memory that immediately</span><br><span class="line">                follows the device driver and which must not be used</span><br><span class="line">                by the driver. During initialization, the driver may</span><br><span class="line">                use any memory between its starting address and this</span><br><span class="line">                address. The driver can also reserve some or all of</span><br><span class="line">                this memory for use after initialization.</span><br><span class="line">                (This field is <span class="ngu">not</span> used for input in DOS versions</span><br><span class="line">                earlier than version 5.0. The driver should check the</span><br><span class="line">                DOS version number before using the value in this</span><br><span class="line">                field.)</span><br><span class="line">        output  Points to the first byte of memory that immediately</span><br><span class="line">                follows the initialized driver. The driver must set</span><br><span class="line">                this field to an address that is not greater than the</span><br><span class="line">                end of available memory. If the driver fails to</span><br><span class="line">                initialize, it should set this field to its starting</span><br><span class="line">                address. This directs DOS to <span class="ngb">remove</span> the driver and</span><br><span class="line">                free all memory associated with it.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">irParamAddress</span></span><br><span class="line">    Contains a 32-bit address (segment:offset) of the initialization</span><br><span class="line">    parameters and receives a 32-bit address of an array of pointers</span><br><span class="line">    to BPB structures.</span><br><span class="line"></span><br><span class="line">        input   Points to the initialization parameters for the driver</span><br><span class="line">                as copied from the CONFIG.SYS file. The parameters</span><br><span class="line">                consist of the filename for the driver and any</span><br><span class="line">                command-line switches - that is, all text on the</span><br><span class="line">                corresponding DEVICE or DEVICEHIGH command line up to</span><br><span class="line">                the terminating carriage-return character (0dh) or</span><br><span class="line">                linefeed character (0ah) but not including the DEVICE</span><br><span class="line">                or DEVICEHIGH command and equal sign.</span><br><span class="line"></span><br><span class="line">        output  Points to an array of pointers to BPB structures.</span><br><span class="line">                These structures specify the BIOS parameters for each</span><br><span class="line">                unit supported by the drive. (Each pointer is a 16-bit</span><br><span class="line">                offset relative to the start of the driver.)</span><br><span class="line">                If all units are the same, all pointers in the array</span><br><span class="line">                can be the same.</span><br><span class="line"></span><br><span class="line">                Character device drivers must set the irParamAddress</span><br><span class="line">                field to <span class="ngu">zero</span>.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">irDriveNumber</span></span><br><span class="line">    Contains the zero-based drive number for the driver&#39;s first unit</span><br><span class="line">    as assigned by DOS. DOS supplies this number so that the driver</span><br><span class="line">    can determine whether DOS will accept all its supported units. DOS</span><br><span class="line">    allows no more than 26 units in the system.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">irMessageFlag</span></span><br><span class="line">    Specifies whether DOS displays an error message on initialization</span><br><span class="line">    failure. To direct DOS to display the message, the driver must set</span><br><span class="line">    this field to 1. The message is displayed only if the driver also</span><br><span class="line">    sets the irStatus field to indicate failure.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-246849.html">InitRequest</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-224731.html">BPB</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-21145.html">30h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-6264.html">06h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-182799.html">Dev*</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

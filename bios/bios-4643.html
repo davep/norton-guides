@@ -1,0 +1,114 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-2150.html">
+    <link rel="next" href="bios-6513.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-2150.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-6513.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 11h                 Read Equipment-List</span></span><br><span class="line"></span><br><span class="line">    Returns a list of installed equipment on the system.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   No parameters</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AX = Equipment code</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Equipment code (AX)</span></span><br><span class="line"></span><br><span class="line">    FEDCBA98  76543210</span><br><span class="line">    xx......  ........  Number of printers installed</span><br><span class="line">    ..x.....  ........  Internal modem installed</span><br><span class="line">    ...x....  ........  Game adapter installed? (always 1 on PCJr)</span><br><span class="line">    ....xxx.  ........  Number of RS-232 ports</span><br><span class="line">    .......x  ........  Reserved</span><br><span class="line">    ........  xx......  Number of diskettes - 1 (i.e. 0=1 disk)</span><br><span class="line">    ........  ..xx....  Initial video mode</span><br><span class="line">                        00   Reserved</span><br><span class="line">                        01   40 x 25 Color</span><br><span class="line">                        10   80 x 25 Color</span><br><span class="line">                        11   80 x 25 Monochrome</span><br><span class="line">    ........  ....x...  Reserved</span><br><span class="line">    ........  .....x..  Reserved</span><br><span class="line">    ........  ......x.  Math coprocessor installed?</span><br><span class="line">    ........  .......x  1=diskettes present; 0=no disks present</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The value returned in AX is the same as that stored at memory</span><br><span class="line">    location 0040h:0010h, which is initialized during the power-up</span><br><span class="line">    tests.</span><br><span class="line"></span><br><span class="line">    For the IBM PC, XT, and PCjr, bits 2 and 3 used to list the amount</span><br><span class="line">    of RAM installed on the system board in increments of 16K. For</span><br><span class="line">    example, 00 meant 16K, while 11 meant 64K.</span><br><span class="line"></span><br><span class="line">    Bit 0 indicates only whether the system has one or more diskette</span><br><span class="line">    drives. Refer to bits 6 and 7 to find out how many diskettes are</span><br><span class="line">    actually present. To determine the number of hard disks installed,</span><br><span class="line">    use Int 13h, Service 8.</span><br><span class="line"></span><br><span class="line">    If the DIP switches for PCs and XTs are not set correctly</span><br><span class="line">    reflecting the presence of a math coprocessor, then bit 1 (math</span><br><span class="line">    coprocessor present) may be incorrect. A better test for the math</span><br><span class="line">    coprocessor is to test it directly by executing a math coprocessor</span><br><span class="line">    instruction and then checking to see if the instruction was</span><br><span class="line">    executed.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-116243.html">Int 13h, 08h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

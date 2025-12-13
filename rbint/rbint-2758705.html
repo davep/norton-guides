@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2758255.html">
+    <link rel="next" href="rbint-2760002.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2758255.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2760002.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 7160  - Windows95 - Long Filename - &#34;truename&#34; - Canonicalize P</span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AX = 7160h</span><br><span class="line">   CL = 00h</span><br><span class="line">   CH = SUBST expansion flag</span><br><span class="line">       00h return a path containing true path for a SUBSTed drive letter</span><br><span class="line">       80h return a path containing the SUBSTed drive letter</span><br><span class="line">   DS:SI -&gt; ASCIZ filename or path (either long name or short name)</span><br><span class="line">   ES:DI -&gt; 261-byte buffer for canonicalized name</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error</span><br><span class="line">       AX = error code</span><br><span class="line">       02h invalid component in directory path or drive letter only</span><br><span class="line">       03h malformed path or invalid drive letter</span><br><span class="line">       ES:DI buffer unchanged</span><br><span class="line">   CF clear if successful</span><br><span class="line">       ES:DI buffer filled with fully qualified name</span><br><span class="line">       AX destroyed</span><br><span class="line"><span class="ngb">Desc:</span>  determine the canonical name of the specified filename or path,</span><br><span class="line">     corresponding to the undocumented TRUENAME command in COMMAND.COM</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> if a complete path is given, the result will be a short-form complete</span><br><span class="line">     path; otherwise, the given relative path is appended to the</span><br><span class="line">     short-form current directory name, &#39;.&#39;/&#39;..&#39;/&#39;...&#39;/etc. are resolved,</span><br><span class="line">     and the final result uppercased without converting any remaining</span><br><span class="line">     long-form names to short-form</span><br><span class="line">   for compatibility with DOS versions prior to v7.00, the carry flag</span><br><span class="line">     should be set on call to ensure that it is set on exit</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=60h,AX=7160h/CL=01h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

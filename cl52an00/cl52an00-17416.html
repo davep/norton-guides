@@ -1,0 +1,117 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl52an00-style.css">
+    <title>Clipper 5.2c » Anomalies &amp; IE&#39;s v0.99 » Display » Internal Errors</title>
+    <meta name="description" content="Clipper 5.2c » Anomalies &amp; IE&#39;s v0.99">
+    <link rel="prev" href="cl52an00-16598.html">
+    <link rel="next" href="cl52an00-19060.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl52an00-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl52an00-16598.html">Previous</a></li>
+
+
+          
+
+<li><a href="cl52an00-4386.html">Up</a></li>
+
+
+          
+
+<li><a href="cl52an00-19060.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Display</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies &amp; Bugs</a></li>
+                  <li><a href="cl52an00-4386.html">Internal Errors</a></li>
+                  
+                </ul>
+              </li>
+              <li>Commercials</li>
+              <li>
+                <ul>
+                  <li><a href="cl52an00-45386.html">Packages</a></li>
+                  <li><a href="cl52an00-47050.html">Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>View</li>
+              <li>
+                <ul>
+                  <li><a href="cl52an00-48446.html">Credits</a></li>
+                  <li><a href="cl52an00-49457.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Internal Error #  332</span></span><br><span class="line"> String/Array memory overflow</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> The maximum capacity of the Segment Virtual Object Store (SVOS)</span><br><span class="line"> system has been exceeded.  Because of the dynamic nature of SVOS, it</span><br><span class="line"> is impossible to state exactly when this error will occur (see the</span><br><span class="line"> Release Notes database in Norton Guides, &#34;5.01 Notes&#34; under &#34;Runtime</span><br><span class="line"> Memory Management&#34;).  In the worst case, this error will occur when</span><br><span class="line"> slightly over a megabyte of strings and/or arrays are in use; the</span><br><span class="line"> best case is in excess of 16 megabytes.</span><br><span class="line"></span><br><span class="line"> Action:  This problem can be resolved by reducing the size and/or</span><br><span class="line"> number of strings and arrays that are active at any one time.</span><br><span class="line"> Probably the most common cause of this error is the declaration of</span><br><span class="line"> extremely large arrays (e.g., LOCAL aArray[500][300]).  Note that</span><br><span class="line"> every array element requires memory to store -- even if its value is</span><br><span class="line"> NIL -- and that the number of array elements in an array is</span><br><span class="line"> determined by multiplying the number of elements in every dimension</span><br><span class="line"> and adding the sum of all dimensions except for the last.  For</span><br><span class="line"> example, a 500x300 array has (500x300) + 500, or 150,500, elements.</span><br><span class="line"></span><br><span class="line"> Because every array element in Clipper requires 14 bytes, this</span><br><span class="line"> amounts to 150,500 x 14, or 2,107,000 bytes -- well in excess of one</span><br><span class="line"> megabyte and therefore potentially dangerous.</span><br><span class="line"></span><br><span class="line"> Note: There is no benefit gained by reusing arrays.  Clipper is much</span><br><span class="line"> more efficient when strings and arrays are thrown away and rebuilt</span><br><span class="line"> often rather than kept around unnecessarily for long durations.</span><br><span class="line"></span><br><span class="line"> <span class="ngu">(CA Internal Error Listing 03OCT93)</span></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5835339.html">
+    <link rel="next" href="rbint-5838814.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5835339.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5812979.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5838814.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 7C Fn 0015  - Sk-upps Data Link Interface Api - Dli 2.6+ - Get Media </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0015h</span><br><span class="line">   ES:DI -&gt; media-specific statistics buffer (see #3530,#3531,#3532)</span><br><span class="line">   BX = offset of 1st field within MSS to be returned</span><br><span class="line">   CX = number of bytes to be returned</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = completion code (see #3517)</span><br><span class="line">   CX = number of bytes copied (regardless of value returned in AX)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  not supported by all DLIs (will return AX=FFFFh if not supported).</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0000h,AX=000Dh</span><br><span class="line"></span><br><span class="line">Format of SK-UPPS media-specific statistics for Ethernet:</span><br><span class="line">Offset Size    Description (Table 3530)</span><br><span class="line"> 00h   DWORD   alignment errors</span><br><span class="line"> 04h   DWORD   frame check sequence (FCS) errors</span><br><span class="line"> 08h   DWORD   single collision frames</span><br><span class="line"> 0Ch   DWORD   multiple collision frames</span><br><span class="line"> 10h   DWORD   signal quality error (SQE) test errors</span><br><span class="line"> 14h   DWORD   deferred transmissions</span><br><span class="line"> 18h   DWORD   late collisions</span><br><span class="line"> 1Ch   DWORD   excessive collisions</span><br><span class="line"> 20h   DWORD   internal MAC transmit errors</span><br><span class="line"> 24h   DWORD   carrier sense errors</span><br><span class="line"> 28h   DWORD   excessive deferrals</span><br><span class="line"> 2Ch   DWORD   frame too longs</span><br><span class="line"> 30h   DWORD   in range length errors</span><br><span class="line"> 34h   DWORD   out of range length fields</span><br><span class="line"> 38h   DWORD   internal MAC receive errors</span><br><span class="line"></span><br><span class="line">Format of SK-UPPS media-specific statistics for FDDI:</span><br><span class="line">Offset Size    Description (Table 3531)</span><br><span class="line"> 00h   DWORD   SMT operating version id (refer to ANSI 7.1.2.2)</span><br><span class="line"> 04h   DWORD   SMT CF state: 1=Isolated, 2= Wrap_S, 3=Wrap_A, 4=Wrap_B,</span><br><span class="line">         5=Wrap_AB, 6=Thru (refer to ANSI SMT 9.7.4.3)</span><br><span class="line"> 08h   DWORD   SMT frames sent</span><br><span class="line"> 0Ch   DWORD   SMT frames received</span><br><span class="line"> 10h   DWORD   SMT ring up count</span><br><span class="line"> 14h  6 BYTEs  MAC upstream neighbour</span><br><span class="line"> 1Ah  6 BYTEs  MAC downstream neighbour</span><br><span class="line"> 20h   DWORD   MAC frame counter (refer to ANSI MAC 2.2.1)</span><br><span class="line"> 24h   DWORD   MAC error counter ( &#34; )</span><br><span class="line"> 28h   DWORD   MAC lost counter ( &#34; )</span><br><span class="line"> 2Ch   BYTE    port 1 link error estimate (ranges from 10**-4 to 10**-15 and</span><br><span class="line">         is reported as the absolute value of the exponent)</span><br><span class="line"> 2Dh   BYTE    port 2 link error estimate ( &#34; )</span><br><span class="line"> 2Eh  2 BYTEs  reserved (currently unused)</span><br><span class="line"> 30h   DWORD   attachment class: 1=single-attachment (S PORT),</span><br><span class="line">         2=dual-attachment (A/B PORT pairs), 3=concentrator (M PORTs)</span><br><span class="line"> 34h   DWORD   attachment optical bypass present: 1=true, 2=false</span><br><span class="line"></span><br><span class="line">Format of SK-UPPS media-specific statistics for Token-Ring:</span><br><span class="line">Offset Size    Description (Table 3532)</span><br><span class="line"> 00h  6 BYTEs  upstream neighbour</span><br><span class="line"> 06h   WORD    local ring number</span><br><span class="line"> 08h   DWORD   ring up count</span><br><span class="line"> 0Ch   DWORD   signal loss errors</span><br><span class="line"> 10h   DWORD   lobe wire faults</span><br><span class="line"> 14h   DWORD   ring recovery count</span><br><span class="line"> 18h   DWORD   line errors</span><br><span class="line"> 1Ch   DWORD   burst errors</span><br><span class="line"> 20h   DWORD   ARI/FCI errors</span><br><span class="line"> 24h   DWORD   lost frame errors</span><br><span class="line"> 28h   DWORD   receive congestion errors</span><br><span class="line"> 2Ch   DWORD   frame copied errors</span><br><span class="line"> 30h   DWORD   token errors</span><br><span class="line"> 34h   DWORD   DMA bus errors</span><br><span class="line"> 38h   DWORD   DMA parity errors</span><br><span class="line"> 3Ch   DWORD   receive overflow errors</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

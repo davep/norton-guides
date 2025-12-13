@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-558860.html">
+    <link rel="next" href="int-566502.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-558860.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-551872.html">Up</a></li>
+
+
+          
+
+<li><a href="int-566502.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">Appc/pc</span></span><br><span class="line"></span><br><span class="line">        Entry:</span><br><span class="line">          AH = 03h</span><br><span class="line">           DS:DX -&gt; control block (see below)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Format of control block:</span></span><br><span class="line"></span><br><span class="line">        Offset  Size    Description</span><br><span class="line">         00h 12 BYTEs   reserved</span><br><span class="line">         0Ch    WORD    verb (action)</span><br><span class="line">         0Eh  6 BYTEs   0</span><br><span class="line">         14h    DWORD   (high byte first) return code (see AH=01h)</span><br><span class="line">         18h    WORD    0</span><br><span class="line">         1Ah  8 BYTEs   (high byte first) logical unit ID</span><br><span class="line">        <span class="ngb">---if verb=2400h (TP Started), control block continues---</span></span><br><span class="line">         22h  8 BYTEs   (high byte first) TP ID</span><br><span class="line">        <span class="ngb">---if verb=2800h (Get ALLOCATE), control block continues---</span></span><br><span class="line">         22h    BYTE    type</span><br><span class="line">                        00h dequeue</span><br><span class="line">                        01h test</span><br><span class="line">         23h    DWORD   pointer to CREATE_TP record</span><br><span class="line">        <span class="ngb">---if verb=2A00h (Change Logical Unit). control block continues---</span></span><br><span class="line">         22h    DWORD   pointer to CREATE_TP_EXIT routine</span><br><span class="line">                        FFFFFFFFh reject incoming ALLOCATEs</span><br><span class="line">                        00000000h queue ALLOCATEs</span><br><span class="line">         26h    DWORD   00000000h</span><br><span class="line">         2Ah    DWORD   pointer to SYSTEM_LOG_EXIT routine, FFFFFFFFh= don&#39;t log errors</span><br><span class="line">         2Eh    DWORD   00000000h</span><br><span class="line">         32h    BYTE    maximum TPs</span><br><span class="line">         33h    BYTE    00h stop QUEUE_ALLOCATEs</span><br><span class="line">                        01h resume QUEUE_ALLOCATEs</span><br><span class="line">         34h    DWORD   pointer to LU_LU_PASSWORD_EXIT routine, FFFFFFFFh = no exit</span><br><span class="line">         38h    DWORD   00000000h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4440057.html">
+    <link rel="next" href="rbint-4441182.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4440057.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4422878.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4441182.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn D201  - Quarterdeck Rpci - Qemm/qram V5.0+ - Get Hiram Memory C</span>  [<span class="ngb">m</span>]</span><br><span class="line"></span><br><span class="line">   AX = D201h</span><br><span class="line">   BX = 4849h (&#34;HI&#34;)</span><br><span class="line">   CX = 5241h (&#34;RA&#34;)</span><br><span class="line">   DX = 4D30h (&#34;M0&#34;)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> BX = 4F4Bh (&#34;OK&#34;)</span><br><span class="line">   CX = segment of start of HIRAM chain</span><br><span class="line">   DX = reserved block owner (QEMM/QRAM code segment)</span><br><span class="line">Range: AH=C0h to AH=FFh, selected by scanning AH=D2h-FFh, then AH=C0h-D1h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the HIRAM memory chain has the same format as the regular DOS 4.0</span><br><span class="line">     memory chain (see #1314 at INT 21/AH=52h), except that XMS Upper</span><br><span class="line">     Memory Blocks have the block header program name field set to</span><br><span class="line">     &#34;UMB&#34;; blocks whose &#34;owner&#34; field is set to the reserved segment</span><br><span class="line">     returned in DX are locked-out regions such as video memory and ROMs.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=12FFh/BX=0006h,AX=D200h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

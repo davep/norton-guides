@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4610002.html">
+    <link rel="next" href="rbint-4612351.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4610002.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4581762.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4612351.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 31 Fn 0300  P - Dpmi 0.9+ - Simulate Real Mode Interrupt             </span>  [<span class="ngb">E</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0300h</span><br><span class="line">   BL = interrupt number</span><br><span class="line">   BH = flags</span><br><span class="line">       bit 0: reset the interrupt controller and A20 line (DPMI 0.9)</span><br><span class="line">           reserved, must be 0 (DPMI 1.0+)</span><br><span class="line">       others: reserved, must be 0</span><br><span class="line">   CX = number of words to copy from protected mode to real mode stack</span><br><span class="line">   ES:(E)DI = selector:offset of real mode call structure (see #2819)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       real mode call structure modified (all fields except SS:SP, CS:IP</span><br><span class="line">         filled with return values from real mode interrupt)</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (DPMI 1.0+) (8012h,8013h,8014h,8021h)(see #2814)</span><br><span class="line">   protected mode stack unchanged</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> 16-bit programs use ES:DI as pointer, 32-bit programs use ES:EDI</span><br><span class="line">   CS:IP in the real mode call structure is ignored for this call,</span><br><span class="line">     instead, the indicated interrupt vector is used for the address</span><br><span class="line">   the flags in the call structure are pushed on the real mode stack to</span><br><span class="line">     form an interrupt stack frame, and the trace and interrupt flags are</span><br><span class="line">     clear on entry to the handler</span><br><span class="line">   DPMI will provide a small (30 words) real mode stack if SS:SP is zero</span><br><span class="line">   the real mode handler must return with the stack in the same state as</span><br><span class="line">     it was on being called</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0302h,AX=FF01h,INT 21/AX=2511h,INT 21/AH=E3h&#34;OS/286&#34;</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 2C/AX=0026h,INT 2F/AX=FB42h/BX=000Dh</span><br><span class="line"></span><br><span class="line">Format of DPMI real mode call structure:</span><br><span class="line">Offset Size    Description (Table 2819)</span><br><span class="line"> 00h   DWORD   EDI</span><br><span class="line"> 04h   DWORD   ESI</span><br><span class="line"> 08h   DWORD   EBP</span><br><span class="line"> 0Ch   DWORD   reserved (00h)</span><br><span class="line"> 10h   DWORD   EBX</span><br><span class="line"> 14h   DWORD   EDX</span><br><span class="line"> 18h   DWORD   ECX</span><br><span class="line"> 1Ch   DWORD   EAX</span><br><span class="line"> 20h   WORD    flags</span><br><span class="line"> 22h   WORD    ES</span><br><span class="line"> 24h   WORD    DS</span><br><span class="line"> 26h   WORD    FS</span><br><span class="line"> 28h   WORD    GS</span><br><span class="line"> 2Ah   WORD    IP</span><br><span class="line"> 2Ch   WORD    CS</span><br><span class="line"> 2Eh   WORD    SP</span><br><span class="line"> 30h   WORD    SS</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

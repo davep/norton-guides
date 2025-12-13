@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-457008.html">
+    <link rel="next" href="int-461639.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-457008.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-411523.html">Up</a></li>
+
+
+          
+
+<li><a href="int-461639.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">XMS - Get driver address</span></span><br><span class="line"></span><br><span class="line">        Entry:</span><br><span class="line">          AX = 4310h</span><br><span class="line">        Return:</span><br><span class="line">          ES:BX -&gt; driver entry point</span><br><span class="line"></span><br><span class="line">        Perform a FAR call to the driver entry point with AH set to the</span><br><span class="line">        function code</span><br><span class="line"></span><br><span class="line">        AH      function</span><br><span class="line">        00h  Get XMS version number</span><br><span class="line">             Return: AX = XMS version (in BCD)</span><br><span class="line">                     BX = internal revision number</span><br><span class="line">                     DX = 0001h if HMA (1M to 1M + 64K) exists</span><br><span class="line">                          0000h if HMA does not exist</span><br><span class="line">        01h  Request High Memory Area (1M to 1M + 64K)</span><br><span class="line">             DX = memory in bytes (for TSR or device drivers)</span><br><span class="line">                  FFFFh if application program</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        02h  Release High Memory Area</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        03h  Global enable A20, for using the HMA</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        04h  Global disable A20</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        05h  Local enable A20, for direct access to extended memory</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        06h  Local disable A20</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        07h  Query A20 state</span><br><span class="line">             Return: AX = 0001h enabled</span><br><span class="line">                        = 0000h disabled</span><br><span class="line">                     BL = error code (0 = successful)</span><br><span class="line">        08h  Query free extended memory, not counting HMA</span><br><span class="line">             Return: AX = size of largest extended memory block in K</span><br><span class="line">                     DX = total extended memory in K</span><br><span class="line">                     BL = error code (see below)</span><br><span class="line">        09h  Allocate extended memory block</span><br><span class="line">             DX = Kbytes needed</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                           DX = handle for memory block</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        0Ah  Free extended memory block</span><br><span class="line">             DX = handle of block to free</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        0Bh  Move extended memory block</span><br><span class="line">             DS:SI -&gt; EMM structure (see below)</span><br><span class="line">             Note: if either handle is 0000h, the corresponding offset is</span><br><span class="line">                   considered to be an absolute segment:offset address in</span><br><span class="line">                   directly addressable memory</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        0Ch  Lock extended memory block</span><br><span class="line">             DX = handle of block to lock</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                           DX:BX = 32-bit linear address of locked block</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        0Dh  Unlock extended memory block</span><br><span class="line">             DX = handle of block to unlock</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        0Eh  Get handle information</span><br><span class="line">             DX = handle for which to get info</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                           BH = block&#39;s lock count</span><br><span class="line">                           BL = number of free handles left</span><br><span class="line">                           DX = block size in K</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        0Fh  Reallocate extended memory block</span><br><span class="line">             DX = handle of block</span><br><span class="line">             BX = new size of block in K</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">        10h  Request upper memory block (nonEMS memory above 640K)</span><br><span class="line">             DX = size of block in paragraphs</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                           BX = segment address of UMB</span><br><span class="line">                           DX = actual size of block</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line">                           DX = largest available block</span><br><span class="line">        11h  Release upper memory block</span><br><span class="line">             DX = segment address of UMB to release</span><br><span class="line">             Return: AX = 0001h success</span><br><span class="line">                        = 0000h failure</span><br><span class="line">                           BL = error code (see below)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Note: HIMEM.SYS requires at least 256 bytes free stack space</span></span><br><span class="line"></span><br><span class="line">        Format of EMM structure:</span><br><span class="line">                Offset  Size    Description</span><br><span class="line">                 00h    DWORD   number of bytes to move (must be even)</span><br><span class="line">                 04h    WORD    source handle</span><br><span class="line">                 06h    DWORD   offset into source block</span><br><span class="line">                 0Ah    WORD    destination handle</span><br><span class="line">                 0Ch    DWORD   offset into destination block</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Error codes returned in BL:</span></span><br><span class="line"></span><br><span class="line">        80h Function not implemented</span><br><span class="line">        81h Vdisk was detected</span><br><span class="line">        82h An A20 error occurred</span><br><span class="line">        8Eh a general driver error</span><br><span class="line">        8Fh unrecoverable driver error</span><br><span class="line">        90h HMA does not exist</span><br><span class="line">        91h HMA is already in use</span><br><span class="line">        92h DX is less than the /HMAMIN= parameter</span><br><span class="line">        93h HMA is not allocated</span><br><span class="line">        94h A20 line still enabled</span><br><span class="line">        A0h all extended memory is allocated</span><br><span class="line">        A1h all available extended memory handles are allocated</span><br><span class="line">        A2h Invalid handle</span><br><span class="line">        A3h Source handle is invalid</span><br><span class="line">        A4h Source offset is invalid</span><br><span class="line">        A5h Destination handle is invalid</span><br><span class="line">        A6h Destination offset is invalid</span><br><span class="line">        A7h Length is invalid</span><br><span class="line">        A8h Move has an invalid overlap</span><br><span class="line">        A9h Parity error occurred</span><br><span class="line">        AAh Block is not locked</span><br><span class="line">        ABh Block is locked</span><br><span class="line">        ACh Block lock count overflowed</span><br><span class="line">        ADh Lock failed</span><br><span class="line">        B0h Only a smaller UMB is available</span><br><span class="line">        B1h No UMB&#39;s are available</span><br><span class="line">        B2h UMB segment number is invalid</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

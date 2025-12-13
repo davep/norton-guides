@@ -1,0 +1,205 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Hardware » Serial Communication (RS-232)</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">        <span class="ngb">Serial Communication (RS-232)</span></span><br><span class="line"></span><br><span class="line">        The PC supports up to 4 serial communication ports at one</span><br><span class="line">        time.</span><br><span class="line"></span><br><span class="line">                <span class="ngu">Name    Interrupt    Ports </span></span><br><span class="line">                COM1       0Ch      3F8-3FF</span><br><span class="line">                COM2       0Bh      2F8-2FF</span><br><span class="line">                COM3       0Ch      3E8-3EF</span><br><span class="line">                COM4       0Bh      2E8-2EF</span><br><span class="line"></span><br><span class="line">        A serial communication adapter has 8 ports:</span><br><span class="line"></span><br><span class="line">                <span class="ngu">Port    Name                                            </span></span><br><span class="line">                xx8     Transmit/Receive buffer or Baud rate divisor LSB</span><br><span class="line">                xx9     Interrupt enable or Baud rate divisor MSB</span><br><span class="line">                xxA     Interrupt identification register</span><br><span class="line">                xxB     Line control register</span><br><span class="line">                xxC     Modem control register</span><br><span class="line">                xxD     Line status register</span><br><span class="line">                xxE     Modem status register</span><br><span class="line">                xxF     Scratch pad register</span><br><span class="line"></span><br><span class="line">        When programming the RS-232 port, a lot of steps has to be</span><br><span class="line">        made, and a lot af things has to be considered.</span><br><span class="line"></span><br><span class="line">          1.  The communications parameters has to be set.</span><br><span class="line">              a.  The baud rate (port xx8, xx9 and xxB).</span><br><span class="line">                  Remember to reset bit 7 on port xxB afterwards.</span><br><span class="line">              b.  The parity and number of stop-bits (port xxB).</span><br><span class="line">          2.  Interrupt parameters has to be set.</span><br><span class="line">              a.  Set interrupt vectors (int 0Ch and 0Bh).</span><br><span class="line">              b.  Select which interrupts to answer (port xx9).</span><br><span class="line">              c.  Enable interrupt (port 021).</span><br><span class="line">          3.  The serial port has to be reset.</span><br><span class="line">              Read port xxA, xxD and xxC.</span><br><span class="line"></span><br><span class="line">        The interrupt handler has to do the following things:</span><br><span class="line"></span><br><span class="line">          1.  Get interrupt type.</span><br><span class="line">              Read port xxA.</span><br><span class="line">          2.  Multiplex on interrupt type.</span><br><span class="line">              a.  If change-in-modem status</span><br><span class="line">                  Read xxC and take action upon it.</span><br><span class="line">              b.  If transmit-register-empty</span><br><span class="line">                  Write next character to xx8 (if any).</span><br><span class="line">              c.  If data-ready</span><br><span class="line">                  Read data from xx8.</span><br><span class="line">              d.  If line-status-change</span><br><span class="line">                  An error has occurred - read port xxD and take</span><br><span class="line">                  action upon it.</span><br><span class="line"></span><br><span class="line">          3.  Return from interrupt</span><br><span class="line">              a.  Send 20h to port 020 (signal end-of-interrupt).</span><br><span class="line">              b.  Return from interrupt.</span><br><span class="line"></span><br><span class="line">        When the program terminate, it must do the following things:</span><br><span class="line"></span><br><span class="line">          1.  Disable interrupt (port 021).</span><br><span class="line">          2.  Restore interrupt vector.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="int-188490.html">3F8</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-189365.html">3F9</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-189851.html">3FA</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-190907.html">3FB</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-191945.html">3FC</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-192644.html">3FD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-193749.html">3FE</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-165890.html">020</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-166656.html">021</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-13312.html">INT 0Ch</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-12769.html">INT 0Bh</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

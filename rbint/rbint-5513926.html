@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5513549.html">
+    <link rel="next" href="rbint-5514884.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5513549.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5448544.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5514884.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 67 Fn 59  - Lim Ems 4.0 - Get Expanded Memory Hardware Information   </span>  [<span class="ngb">m</span>]</span><br><span class="line"></span><br><span class="line">   AH = 59h</span><br><span class="line">   AL = subfunction</span><br><span class="line">       00h get hardware configuration array</span><br><span class="line">       ES:DI -&gt; buffer to be filled with array (see #3326)</span><br><span class="line">       01h get unallocated raw page count</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> BX = unallocated raw pages</span><br><span class="line">           DX = total raw pages</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AH = status (see also AH=58h&#34;EMS 4.0&#34;)</span><br><span class="line">       A4h access denied by operating system</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  subfunction 00h is for use by operating systems only, and can be</span><br><span class="line">     enabled or disabled at any time by the operating system</span><br><span class="line"></span><br><span class="line">Format of EMS hardware configuration array:</span><br><span class="line">Offset Size    Description (Table 3326)</span><br><span class="line"> 00h   WORD    size of raw EMM pages in paragraphs</span><br><span class="line"> 02h   WORD    number of alternate register sets</span><br><span class="line"> 04h   WORD    size of mapping-context save area in bytes</span><br><span class="line"> 06h   WORD    number of register sets assignable to DMA</span><br><span class="line"> 08h   WORD    DMA operation type</span><br><span class="line">       0000h DMA with alternate register sets</span><br><span class="line">       0001h only one DMA register set</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

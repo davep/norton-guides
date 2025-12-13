@@ -1,0 +1,114 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="vgaregs-style.css">
+    <title>VGA registers » VGA » Regs</title>
+    <meta name="description" content="VGA registers">
+    
+    <link rel="next" href="vgaregs-4694.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="vgaregs-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="vgaregs-4694.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>VGA</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Regs</a></li>
+                  <li><a href="vgaregs-43932.html">ASM</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Misc. output reg.      read 03CCh  write 03C2h</span></span><br><span class="line"></span><br><span class="line">Layout  b7     VSP  Vertical sync polarity</span><br><span class="line">        b6     HSP  Horizontal sync polarity</span><br><span class="line">        b5     BP   Page bit for odd/even</span><br><span class="line">        b4     DVD  (EGA only)</span><br><span class="line">        b3     CS   Clock select 1</span><br><span class="line">        b2     CS   Clock select 0</span><br><span class="line">        b1     ER   Enable/Disable display RAM</span><br><span class="line">        b0     IOA  I/O address select</span><br><span class="line"></span><br><span class="line">- Sync polarity (bits 7-6)</span><br><span class="line">        Bits are set as below for VGA displays that use sync polarity</span><br><span class="line">        to determine screen resolution. Many newer multiple frequency</span><br><span class="line">        displays are insensitive to sync polarity.</span><br><span class="line"></span><br><span class="line">                b7 b6   Vertical size  Active lines</span><br><span class="line">                0  0    Reserved       Reserved</span><br><span class="line">                0  1    400 lines      414 lines</span><br><span class="line">                1  0    350 -          362 -</span><br><span class="line">                1  1    480 -          496 -</span><br><span class="line"></span><br><span class="line">- Page bit for odd/even (bit 5)</span><br><span class="line">        Selects which 64 KB memory page to use when the system is in</span><br><span class="line">        the odd/even modes (modes 0,1,2,3, and 7), i.e. the modes that</span><br><span class="line">        send even addresses to plane 0 and odd addresses to plane 1.</span><br><span class="line"></span><br><span class="line">        0 : Select the low 64 KB page</span><br><span class="line">        1 : Select the high 64 KB page</span><br><span class="line"></span><br><span class="line">- Clock select (bits 3-2)                               <span class="ngr"> CAUTION! </span></span><br><span class="line">        The horizontal frequency controls the number of pixels per</span><br><span class="line">        line. The vertical frequency controls the number of lines per</span><br><span class="line">        screen, and whether the display is color or mono. The monitor</span><br><span class="line">        type used decides which clock frequencies are implemented.</span><br><span class="line"></span><br><span class="line">                b3 b2   Frequency</span><br><span class="line">                0  0    25 MHz (640 columns)</span><br><span class="line">                0  1    28 MHz (720 -)</span><br><span class="line">                1  0    Reserved for external clock</span><br><span class="line">                1  1    Reserved for future expansion</span><br><span class="line"></span><br><span class="line">- Enable RAM (bit 1)</span><br><span class="line">        0 : Disable access of the video memory from the CPU</span><br><span class="line">        1 : Enable access of the video memory from the CPU</span><br><span class="line"></span><br><span class="line">- I/O address select (bit 0)</span><br><span class="line">        0 : Selects the monochrome I/O address space (03B?h)</span><br><span class="line">        1 : Selects the color I/O address space (03D?h)</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="vgaregs-6747.html">Clocking mode</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

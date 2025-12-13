@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3236644.html">
+    <link rel="next" href="rbint-3239662.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3236644.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3177957.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3239662.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn F217  - Novell Netware - Get Disk Channel Statistics           </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = F217h subfn D9h</span><br><span class="line">   CX = length of request buffer in bytes</span><br><span class="line">   DX = length of reply buffer in bytes</span><br><span class="line">   DS:SI -&gt; request buffer (see #1725 at AH=E3h/SF=D9h)</span><br><span class="line">   ES:DI -&gt; reply buffer (see #1920)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=F2h&#34;Novell&#34;,AH=E3h/SF=D9h,AX=F217h/SF=D8h</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Get Disk Channel Statistics&#34; reply packet:</span><br><span class="line">Offset Size    Description (Table 1920)</span><br><span class="line"> 00h   DWORD   (big-endian) clock ticks since system started</span><br><span class="line"> 04h   WORD    (big-endian) channel run state (see #1727)</span><br><span class="line"> 06h   WORD    (big-endian) channel synchronization state (see #1728)</span><br><span class="line"> 08h   BYTE    driver type</span><br><span class="line"> 09h   BYTE    major version of driver</span><br><span class="line"> 0Ah   BYTE    minor version of driver</span><br><span class="line"> 0Bh 65 BYTEs  ASCIZ driver description</span><br><span class="line"> 4Ch   WORD    (big-endian) first I/O address used</span><br><span class="line"> 4Eh   WORD    (big-endian) length of first I/O address</span><br><span class="line"> 50h   WORD    (big-endian) second I/O address used</span><br><span class="line"> 52h   WORD    (big-endian) length of second I/O address</span><br><span class="line"> 54h  3 BYTEs  first shared memory address</span><br><span class="line"> 57h  2 BYTEs  length of first shared memory address</span><br><span class="line"> 59h  3 BYTEs  second shared memory address</span><br><span class="line"> 5Ch  2 BYTEs  length of second shared memory address</span><br><span class="line"> 5Eh   BYTE    first interrupt number in-use flag</span><br><span class="line"> 5Fh   BYTE    first interrupt number used</span><br><span class="line"> 60h   BYTE    second interrupt number in-use flag</span><br><span class="line"> 61h   BYTE    second interrupt number used</span><br><span class="line"> 62h   BYTE    first DMA channel in-use flag</span><br><span class="line"> 63h   BYTE    first DMA channel used</span><br><span class="line"> 64h   BYTE    second DMA channel in-use flag</span><br><span class="line"> 65h   BYTE    second DMA channel used</span><br><span class="line"> 66h   BYTE    flags</span><br><span class="line"> 67h   BYTE    reserved</span><br><span class="line"> 68h 80 BYTEs  ASCIZ configuration description</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1725,#1726 at AH=E3h/SF=D9h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

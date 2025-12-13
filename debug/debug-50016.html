@@ -1,0 +1,125 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="debug-style.css">
+    <title>DEBUG » * » Flags register</title>
+    <meta name="description" content="DEBUG">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="debug-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>/</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="debug-36268.html">Parameters</a></li>
+                  <li><a href="debug-41899.html">Messages</a></li>
+                  <li><a href="debug-45534.html">Common</a></li>
+                  <li><a href="debug-46838.html">Starting DEBUG</a></li>
+                  <li><a href="debug-49445.html">Introduction</a></li>
+                  
+                </ul>
+              </li>
+              <li>*</li>
+              <li>
+                <ul>
+                  <li><a href="debug-50016.html">Flags register</a></li>
+                  <li><a href="debug-51925.html">PSP structure</a></li>
+                  <li><a href="debug-54321.html">EXE header</a></li>
+                  <li><a href="debug-55255.html">BPB structure</a></li>
+                  <li><a href="debug-56377.html">FCB structure</a></li>
+                  <li><a href="debug-57564.html">ASCII table</a></li>
+                  
+                </ul>
+              </li>
+              <li>-</li>
+              <li>
+                <ul>
+                  <li><a href="debug-62697.html">Comments</a></li>
+                  <li><a href="debug-63334.html">Scripts</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">    <span class="ngb">Flags register</span></span><br><span class="line"></span><br><span class="line">    The flags register contains various bits that control and record the</span><br><span class="line">    state of the microprocessor, as defined below.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">               <span class="ngb">Bit:</span>    15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0</span><br><span class="line">                      ┌──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┐</span><br><span class="line">    <span class="ngb">Flags register:</span>   │  │  │  │  │OF│DF│IF│TF│SF│ZF│  │AF│  │PF│  │CF│</span><br><span class="line">                      └──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┴──┛</span><br><span class="line"></span><br><span class="line">    <span class="ngb">DEBUG</span> readout:</span><br><span class="line">    Flag clear (0)                 NV UP DI .. PL NZ    NA    PO    NC</span><br><span class="line">    Flag set   (1)                 OV DN EI .. NG ZR    AC    PE    CY</span><br><span class="line"></span><br><span class="line">    ─────────────────────────────── <span class="ngb">Flags</span> ──────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">O</span>verflow            Set when an arithmetic overflow occurred.  An</span><br><span class="line">                        arithmetic overflow occurs when the size of a</span><br><span class="line">                        computation exceeds the size of the</span><br><span class="line">                        destination.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">D</span>irection           Set for auto-decrement with string</span><br><span class="line">                        instructions, clear for auto-increment.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">I</span>nterrupt Enable    Interrupts are enabled as long as this flag is</span><br><span class="line">                        set.  When this flag is cleared, interrupts</span><br><span class="line">                        except for nonmaskable interrupts are disabled.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">T</span>rap                This flag is used by debuggers to single step</span><br><span class="line">                        through programs.  When this flag is set, an</span><br><span class="line">                        INT 3 is generated after every instruction.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">S</span>ign                Set when the high-order bit of the result is 1.</span><br><span class="line">                        In other words, S = 0 for positive numbers and</span><br><span class="line">                        S = 1 for negative numbers.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Z</span>ero                Set whenever the result is 0.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">A</span>uxiliary Carry     Set when the is a carry out of the lower half</span><br><span class="line">                        of an 8 or 16 bit number, or when there is a</span><br><span class="line">                        borrow from the upper to the lower half.  This</span><br><span class="line">                        flag is used mainly by the decimal-arithmetic</span><br><span class="line">                        instructions.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">P</span>arity Flag         Set if there is an even number of 1-bits in the</span><br><span class="line">                        result.  Cleared if there is an odd number of</span><br><span class="line">                        1-bits.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">C</span>arry Flag          Set if there was a carry out of, or a borrow</span><br><span class="line">                        into the high-order bit of the result.  This</span><br><span class="line">                        flag is useful for propagating carries and</span><br><span class="line">                        borrows for multi-word numbers.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:38</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

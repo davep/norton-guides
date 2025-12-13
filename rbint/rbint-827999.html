@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-827744.html">
+    <link rel="next" href="rbint-829094.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-827744.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-764933.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-829094.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 13 Fn 1D  - Ibmcache.sys - Cache Status                              </span>  [<span class="ngb">c</span>]</span><br><span class="line"></span><br><span class="line">   AH = 1Dh</span><br><span class="line">   AL = subfunction</span><br><span class="line">       01h get status record</span><br><span class="line">       DL = drive???</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> ES:BX -&gt; status record (see #0195)</span><br><span class="line">           CF set on error</span><br><span class="line">               AH = error code</span><br><span class="line">       02h set cache status</span><br><span class="line">       ES:BX -&gt; status record (see #0195)</span><br><span class="line">       DL = drive???</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> CF set on error</span><br><span class="line"></span><br><span class="line">Format of IBMCACHE.SYS status record:</span><br><span class="line">Offset Size    Description (Table 0195)</span><br><span class="line"> 00h   DWORD   total number of read requests</span><br><span class="line"> 04h   DWORD   total number of hits</span><br><span class="line"> 08h   DWORD   number of physical disk reads</span><br><span class="line"> 0Ch   DWORD   total number of sectors requested by physical disk reads</span><br><span class="line"> 10h  6 BYTEs  ???</span><br><span class="line"> 16h   DWORD   pointer to start of error list (see #0196)</span><br><span class="line"> 1Ah   DWORD   pointer to end of error list</span><br><span class="line"> 1Eh   WORD    ???</span><br><span class="line"> 20h   BYTE    using extended memory if nonzero</span><br><span class="line"> 21h   BYTE    ???</span><br><span class="line"> 22h  4 BYTEs  ASCII version number</span><br><span class="line"> 26h   WORD    cache size in KB</span><br><span class="line"> 28h   WORD    sectors per page</span><br><span class="line"></span><br><span class="line">Format of IBMCACHE.SYS error list:</span><br><span class="line">Offset Size    Description (Table 0196)</span><br><span class="line"> 00h   DWORD   relative block address of bad page</span><br><span class="line"> 04h   BYTE    drive</span><br><span class="line"> 05h   BYTE    sector bit-map</span><br><span class="line"> 06h   WORD    next error</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

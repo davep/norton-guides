@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="perl-style.css">
+    <title>PERL 4.0 Reference Guide » PERL » Operators</title>
+    <meta name="description" content="PERL 4.0 Reference Guide">
+    <link rel="prev" href="perl-192074.html">
+    <link rel="next" href="perl-194411.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="perl-about.html">About</a></li>
+
+
+          
+
+<li><a href="perl-192074.html">Previous</a></li>
+
+
+          
+
+<li><a href="perl-188582.html">Up</a></li>
+
+
+          
+
+<li><a href="perl-194411.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>PERL</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="perl-90961.html">Languages</a></li>
+                  <li><a href="perl-159711.html">Command line options</a></li>
+                  <li><a href="perl-170094.html">Regular Expressions</a></li>
+                  <li><a href="perl-171332.html">Special Variables</a></li>
+                  <li><a href="perl-188582.html">Operators</a></li>
+                  <li><a href="perl-197905.html">Debugging</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tables</li>
+              <li>
+                <ul>
+                  <li><a href="perl-204383.html">ASCII Chart</a></li>
+                  <li><a href="perl-207014.html">Literals</a></li>
+                  <li><a href="perl-207867.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">     ..      The range operator, which is  really  two  different</span><br><span class="line">             operators  depending  on  the  context.  In an array</span><br><span class="line">             context, returns an array  of  values  counting  (by</span><br><span class="line">             ones)  from the left value to the right value.  This</span><br><span class="line">             is useful for writing &#34;for (1..10)&#34;  loops  and  for</span><br><span class="line">             doing slice operations on arrays.</span><br><span class="line"></span><br><span class="line">             In a scalar context, ..  returns  a  boolean  value.</span><br><span class="line">             The  operator  is bistable, like a flip-flop..  Each</span><br><span class="line">             .. operator maintains its own boolean state.  It  is</span><br><span class="line">             false  as  long  as its left operand is false.  Once</span><br><span class="line">             the left operand is true, the range  operator  stays</span><br><span class="line">             true  until  the  right operand is true, AFTER which</span><br><span class="line">             the range operator becomes false again.  (It doesn&#39;t</span><br><span class="line">             become  false  till the next time the range operator</span><br><span class="line">             is evaluated.  It  can  become  false  on  the  same</span><br><span class="line">             evaluation it became true, but it still returns true</span><br><span class="line">             once.)  The right operand is not evaluated while the</span><br><span class="line">             operator  is  in  the  &#34;false&#34;  state,  and the left</span><br><span class="line">             operand is not evaluated while the  operator  is  in</span><br><span class="line">             the  &#34;true&#34;  state.   The scalar .. operator is pri-</span><br><span class="line">             marily intended for doing line number  ranges  after</span><br><span class="line">             the fashion of sed or awk.  The precedence is a lit-</span><br><span class="line">             tle lower than || and &amp;&amp;.   The  value  returned  is</span><br><span class="line">             either  the  null  string  for  false, or a sequence</span><br><span class="line">             number (beginning with 1) for  true.   The  sequence</span><br><span class="line">             number  is  reset  for  each range encountered.  The</span><br><span class="line">             final sequence number in a range has the string &#39;E0&#39;</span><br><span class="line">             appended  to  it,  which  doesn&#39;t affect its numeric</span><br><span class="line">             value, but gives you something to search for if  you</span><br><span class="line">             want  to  exclude the endpoint.  You can exclude the</span><br><span class="line">             beginning point by waiting for the  sequence  number</span><br><span class="line">             to  be  greater than 1.  If either operand of scalar</span><br><span class="line">             .. is static, that operand is implicitly compared to</span><br><span class="line">             the $. variable, the current line number.  Examples:</span><br><span class="line"></span><br><span class="line">             As a scalar operator:</span><br><span class="line">                 if (101 .. 200) { print; }       # print 2nd hundred lines</span><br><span class="line"></span><br><span class="line">                 next line if (1 .. /^$/);       # skip header lines</span><br><span class="line"></span><br><span class="line">                 s/^/&gt; / if (/^$/ .. eof());    # quote body</span><br><span class="line"></span><br><span class="line">             As an array operator:</span><br><span class="line">                 for (101 .. 200) { print; }      # print $_ 100 times</span><br><span class="line"></span><br><span class="line">                 @foo = @foo[$[ .. $#foo]; # an expensive no-op</span><br><span class="line">                 @foo = @foo[$#foo-4 .. $#foo]; # slice last 5 items</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:49</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

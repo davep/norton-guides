@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-89073.html">
+    <link rel="next" href="tr-91235.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-89073.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-91235.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> SAVESCR(&lt;C filespec&gt; [,&lt;C memvar name&gt; [,&#34;G&#34;]])</span><br><span class="line"> Saves the current screen to a disk file for later use.</span><br><span class="line"> Returns &lt;expL&gt; true if file is successfully written, otherwise false.</span><br><span class="line"></span><br><span class="line"> &lt;filespec&gt; is the file name to which to save a screen image.</span><br><span class="line"> &lt;memvar name&gt; optionally saves a screen stored in a memory variable.</span><br><span class="line"> &#34;G&#34; allows use on monochrome graphics cards such as Hercules and Compaq.</span><br><span class="line"></span><br><span class="line"> Since the second parameter is also optional, if you need to</span><br><span class="line"> pass the third parameter, but want to go directly to/from</span><br><span class="line"> the screen instead of a memvar, you must pass a null, &#34;&#34;,</span><br><span class="line"> for the second parameter:  RESTSCR( &lt;filespec&gt;, &#34;&#34;, &#34;G&#34; )</span><br><span class="line"></span><br><span class="line"> Provides permanent storage for screens which you do not save</span><br><span class="line"> in memory variable (.MEM) files.</span><br><span class="line"></span><br><span class="line"> Default file extension is .SCN if none is specified.</span><br><span class="line"></span><br><span class="line"> * Default extension</span><br><span class="line"> IF .NOT. SAVESCR( &#34;Myscreen&#34; )</span><br><span class="line">    * If file is not completely written,</span><br><span class="line">    * delete it, so RESTSCR() won&#39;t find it.</span><br><span class="line">    IF FILE(&#34;Myscreen.scn&#34;)</span><br><span class="line">       ERASE Myscreen.scn</span><br><span class="line">    ENDIF</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> * Specified extension</span><br><span class="line"> IF .NOT. SAVESCR( &#34;Myscreen.xxx&#34; )</span><br><span class="line">    * If file is not completely written,</span><br><span class="line">    * delete it, so RESTSCR() won&#39;t find it.</span><br><span class="line">    IF FILE(&#34;Myscreen.xxx&#34;)</span><br><span class="line">       ERASE Myscreen.xxx</span><br><span class="line">    ENDIF</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> * Save from memvar instead of current screen.</span><br><span class="line"> * m_screen contains the screen image.</span><br><span class="line"> IF SAVESCR( &#34;Myscreen&#34;, m_screen )</span><br><span class="line">    * Image from m_screen is saved in Myscreen</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-85716.html">RESTSCR()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

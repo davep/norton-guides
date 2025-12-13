@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » OverView » Questions and Answers</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-252701.html">
+    <link rel="next" href="mrdebug-255668.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-252701.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-241082.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-255668.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">I need some speed.</span></span><br><span class="line"> Making MrDebug Faster</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> As with any excellent product, there are always ways to improve the</span><br><span class="line"> performance, at the cost of memory.</span><br><span class="line"></span><br><span class="line"> To get the fastest possible usage out of MrDebug, you may want to exclude</span><br><span class="line"> MrDebug&#39;s link script and simply link in MrDebug.LIB as an object module.</span><br><span class="line"></span><br><span class="line"> To link MrDebug.LIB as an object module:</span><br><span class="line"></span><br><span class="line"> with a protected mode linker, include MrDebug as:</span><br><span class="line"></span><br><span class="line">        <span class="fg10 bg1">FILE MrDebug.LIB</span></span><br><span class="line"></span><br><span class="line"> Whatever happens....PLEASE make sure that you are using EMS memory as</span><br><span class="line"> Clipper likes to have some EMS memory around so that it can take advantage</span><br><span class="line"> of this extra memory for it&#39;s virtual memory, unless you are using ClipXMS.</span><br><span class="line"></span><br><span class="line"> To take full advantage of MrDebug we recommend that you use a linker, such</span><br><span class="line"> as Blinker 3, that allows you to run your application in protected mode.</span><br><span class="line"></span><br><span class="line"> Other options that may help include:</span><br><span class="line"></span><br><span class="line">      - Turning off all of the color syntax highlighting options from the</span><br><span class="line">        Source appearance sub-menu held in the options menu. This will save</span><br><span class="line">        time when MrDebug refreshes the source code window.</span><br><span class="line"></span><br><span class="line">      - Using as few watch points and trace points as possible, for optimum</span><br><span class="line">        Performance don&#39;t set any watch points or trace points.</span><br><span class="line"></span><br><span class="line">      - Turning off the .PPO window. This will save MrDebug from having to</span><br><span class="line">        find which line it should be on when you change lines in the source</span><br><span class="line">        code window.</span><br><span class="line"></span><br><span class="line">      - Turn the profiler off. The Profiler adds to the MrDebug overhead and</span><br><span class="line">        can result in some very slow performance penalties - especially in</span><br><span class="line">        real mode.</span><br><span class="line"></span><br><span class="line">      - Highlight changes. This can really slow down MrDebug if you have All</span><br><span class="line">        Levels Changes set on. This is noticeable when you have a lot of</span><br><span class="line">        variables at all levels of the program.</span><br><span class="line"></span><br><span class="line">      - Turn off the Step Timer from the Options menu.</span><br><span class="line"></span><br><span class="line"> The Fast Run command may be used to run MrDebug - this has the advantage of</span><br><span class="line"> speed when using MrDebug in slow situations.</span><br><span class="line"></span><br><span class="line"> Running Fast Run Mode, turns off MrDebug&#39;s checking of Trace Points, Watch</span><br><span class="line"> Points, Pass Points, Tracked variables, Stop Points i.e. stop on next</span><br><span class="line"> return, run out of codeblock, run to codeblock.</span><br><span class="line"></span><br><span class="line"> However checks still occur for the key press of &lt;Alt&gt;&lt;D&gt; and any ALTD()</span><br><span class="line"> functions within your code. If you have disabled any ALTD() functions that</span><br><span class="line"> are embedded in your code, the disabled is ignored,</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

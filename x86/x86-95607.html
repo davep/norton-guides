@@ -1,0 +1,157 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-92014.html">
+    <link rel="next" href="x86-98155.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-92014.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-98155.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">MOVS            Move String                          Flags: Not altered</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">MOVS</span> source_string,destination_string</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   [ES:eDI] ← [DS:eSI]</span><br><span class="line">                if DF = 0</span><br><span class="line">                   eSI ← eSI + n        ; n = 1 for byte, 2 for word,</span><br><span class="line">                   eDI ← eDI + n        ;     4 for dword (386+)</span><br><span class="line">                else</span><br><span class="line">                   eSI ← eSI - n</span><br><span class="line">                   eDI ← eDI - n</span><br><span class="line">                endif</span><br><span class="line"></span><br><span class="line">    MOVS copies the byte, word, or doubleword at DS:eSI to the byte,</span><br><span class="line">    word, or doubleword at ES:eDI. After the transfer, eSI and eDI are</span><br><span class="line">    incremented (if the direction flag is cleared) or decremented (if</span><br><span class="line">    the direction flag is set), in preparation for copying the next</span><br><span class="line">    element of the string. If the address-size attribute of MOVS is</span><br><span class="line">    16 bits, the SI and DI registers will be used as source and</span><br><span class="line">    destination indices; if 32 bits, ESI and EDI will be used.</span><br><span class="line"></span><br><span class="line">    The source segment can be changed with a segment override, the</span><br><span class="line">    destination segment cannot.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span>:       This instruction is always translated by the</span><br><span class="line">                assembler into MOVSB, Move String Byte, MOVSW,</span><br><span class="line">                Move String Word, or MOVSD, Move String Dword,</span><br><span class="line">                depending upon whether source refers to a string of</span><br><span class="line">                bytes, words or doublewords. In either case, you must</span><br><span class="line">                explicitly load the eSI and eDI registers with the</span><br><span class="line">                offset of the source and destination strings.</span><br><span class="line"></span><br><span class="line">                MOVSB, MOVSW, and MOVSD are synonyms for the byte,</span><br><span class="line">                word, and doubleword MOVS instructions that do not</span><br><span class="line">                require any operands. They are simpler to use but</span><br><span class="line">                provide no type or segment checking.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    If the REP prefix modifies this instruction, the CPU moves the</span><br><span class="line">    value of the source string element to the value of the destination</span><br><span class="line">    string element. It then steps eSI and eDI in the direction</span><br><span class="line">    indicated by DF by the indicated size, until either the REP</span><br><span class="line">    condition is false or eCX counts to zero.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Example:</span><br><span class="line">                dataseg</span><br><span class="line">                src     db      &#34;A string&#34;,0</span><br><span class="line">                dest    db      9 dup (0)</span><br><span class="line">                codeseg</span><br><span class="line">                mov     di,ds</span><br><span class="line">                mov     es,di</span><br><span class="line">                assume  ds:dgroup,es:dgroup</span><br><span class="line">                mov     di,offset dest</span><br><span class="line">                mov     si,offset src</span><br><span class="line">                mov     cx,9</span><br><span class="line">                cld</span><br><span class="line">                rep     movs [src],[dest]       ; rep movsb</span><br><span class="line">                ; ax register unchanged by MOVS</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    A4          MOVS m8,m8              ; = MOVSB</span><br><span class="line">    A5          MOVS m16,m16            ; = MOVSW</span><br><span class="line">    A5          MOVS m32,m32            ; = MOVSD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Variations  Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    movsb        1      18       9       5       7       7       4   NP</span><br><span class="line">    movsw        1      26       9       5       7       7       4   NP</span><br><span class="line">    movsd        1       -       -       -       7       7       4   NP</span><br><span class="line">    rep movsb    2      9+17n   8+8n    5+4n    7+4n   12+3n*   3+n  NP</span><br><span class="line">    rep movsw    2      9+25n   8+8n    5+4n    7+4n   12+3n*   3+n  NP</span><br><span class="line">    rep movsd    2       -       -       -      7+4n   12+3n*   3+n  NP</span><br><span class="line"></span><br><span class="line">                        * = 5 if n=0, 13 if n=1</span><br><span class="line">                 (n = count of bytes, words or dwords)</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-125491.html">REP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-26242.html">CLD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-154030.html">STD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-155712.html">STOS</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-92014.html">MOV</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » DOS functions</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-94692.html">
+    <link rel="next" href="int-98620.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-94692.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-50943.html">Up</a></li>
+
+
+          
+
+<li><a href="int-98620.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">Get extended error code (INT 21h, 59h)</span></span><br><span class="line"></span><br><span class="line">        Entry:</span><br><span class="line">          AH = 59h</span><br><span class="line">          BX = version code (0000 for DOS 3.x and DOS 4.0)</span><br><span class="line">        Return:</span><br><span class="line">          AX = extended error code (see error codes)</span><br><span class="line">          BH = class of error</span><br><span class="line">          BL = suggested action code</span><br><span class="line">          CH = locus (where error occurred)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Values for extended error code:</span></span><br><span class="line">        01h function number invalid</span><br><span class="line">        02h file not found</span><br><span class="line">        03h path not found</span><br><span class="line">        04h too many open files (no handles available)</span><br><span class="line">        05h access denied</span><br><span class="line">        06h invalid handle</span><br><span class="line">        07h memory control block destroyed</span><br><span class="line">        08h insufficient memory</span><br><span class="line">        09h memory block address invalid</span><br><span class="line">        0Ah environment invalid (usually &gt;32K in length)</span><br><span class="line">        0Bh format invalid</span><br><span class="line">        0Ch access code invalid</span><br><span class="line">        0Dh data invalid</span><br><span class="line">        0Fh invalid drive</span><br><span class="line">        10h attempted to remove current directory</span><br><span class="line">        11h not same device</span><br><span class="line">        12h no more files</span><br><span class="line">        13h disk write-protected</span><br><span class="line">        14h unknown unit</span><br><span class="line">        15h drive not ready</span><br><span class="line">        16h unknown command</span><br><span class="line">        17h data error (CRC)</span><br><span class="line">        18h bad request structure length</span><br><span class="line">        19h seek error</span><br><span class="line">        1Ah unknwon media type (non-DOS disk)</span><br><span class="line">        1Bh sector not found</span><br><span class="line">        1Ch printer out of paper</span><br><span class="line">        1Dh write fault</span><br><span class="line">        1Eh read fault</span><br><span class="line">        1Fh general failure</span><br><span class="line">        20h sharing violation</span><br><span class="line">        21h lock violation</span><br><span class="line">        22h disk change invalid</span><br><span class="line">            ES:DI -&gt; ASCIZ volume label of required disk</span><br><span class="line">        23h FCB unavailable</span><br><span class="line">        24h sharing buffer overflow</span><br><span class="line">        25h-31h reserved</span><br><span class="line">        32h Network request not supported (DOS 3.1 + MS Networks)</span><br><span class="line">        33h Remote computer not listening</span><br><span class="line">        34h Duplicate name on network</span><br><span class="line">        35h Network name not found</span><br><span class="line">        36h Network busy</span><br><span class="line">        37h Network device no longer exists</span><br><span class="line">        38h Network BIOS command limit exceeded</span><br><span class="line">        39h Network adapter hardware error</span><br><span class="line">        3Ah Incorrect response from network</span><br><span class="line">        3Bh Unexpected network error</span><br><span class="line">        3Ch Incompatible remote adapter</span><br><span class="line">        3Dh Print queue full</span><br><span class="line">        3Eh Queue not full</span><br><span class="line">        3Fh Not enough space to print file</span><br><span class="line">        40h Network name was deleted</span><br><span class="line">        41h Network: Access denied</span><br><span class="line">        42h Network device type incorrect</span><br><span class="line">        43h Network name not found</span><br><span class="line">        44h Network name limit exceeded</span><br><span class="line">        45h Network BIOS session limit exceeded</span><br><span class="line">        46h Temporarily paused</span><br><span class="line">        47h Network request not accepted</span><br><span class="line">        48h Print/disk redirection paused (DOS 3.1 + MS Networks)</span><br><span class="line">        49h-4Fh reserved</span><br><span class="line">        50h file exists</span><br><span class="line">        51h reserved</span><br><span class="line">        52h cannot make directory</span><br><span class="line">        53h fail on INT 24h</span><br><span class="line">        54h (DOS 3.3+) too many redirections</span><br><span class="line">        55h (DOS 3.3+) duplicate redirection</span><br><span class="line">        56h (DOS 3.3+) invalid password</span><br><span class="line">        57h (DOS 3.3+) invalid parameter</span><br><span class="line">        58h (DOS 3.3+) network write fault</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Values for Error Class:</span></span><br><span class="line">        01h out of resource (storage space or I/O channels)</span><br><span class="line">        02h temporary situation (file or record lock)</span><br><span class="line">        03h authorization (denied access)</span><br><span class="line">        04h internal (system software bug)</span><br><span class="line">        05h hardware failure</span><br><span class="line">        06h system failure (configuration file missing or incorrect)</span><br><span class="line">        07h application program error</span><br><span class="line">        08h not found</span><br><span class="line">        09h bad format</span><br><span class="line">        0Ah locked</span><br><span class="line">        0Bh media error</span><br><span class="line">        0Ch already exists</span><br><span class="line">        0Dh unknown</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Values for Suggested Action:</span></span><br><span class="line">        01h retry</span><br><span class="line">        02h delayed retry</span><br><span class="line">        03h prompt user to reenter input</span><br><span class="line">        04h abort after cleanup</span><br><span class="line">        05h immediate abort</span><br><span class="line">        06h ignore</span><br><span class="line">        07h retry after user intervention</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Values for Error Locus:</span></span><br><span class="line">        01h unknown or not appropriate</span><br><span class="line">        02h block device (disk error)</span><br><span class="line">        03h network related</span><br><span class="line">        04h serial device (timeout)</span><br><span class="line">        05h memory related</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="int-150514.html">Error codes</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

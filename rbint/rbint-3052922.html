@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3050500.html">
+    <link rel="next" href="rbint-3054783.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3050500.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3002060.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3054783.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - File Server - Get File Server Misc Infor</span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = E3h subfn E8h</span><br><span class="line">   DS:SI -&gt; request buffer (see #1769)</span><br><span class="line">   ES:DI -&gt; reply buffer (see #1770)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status (00h,C6h) (see #1741)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this function is supported by Advanced NetWare 2.1+</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=0Eh,AH=E3h/SF=11h,AH=E3h/SF=CDh,AH=E3h/SF=E7h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=F217h/SF=E8h</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Get File Server Misc Information&#34; request buffer:</span><br><span class="line">Offset Size    Description (Table 1769)</span><br><span class="line"> 00h   WORD    0001h (length of following data)</span><br><span class="line"> 02h   BYTE    E8h (subfunction &#34;Get File Server Misc Information&#34;)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1770,#1934 at AX=F217h/SF=E8h</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Get File Server Misc Information&#34; reply buffer:</span><br><span class="line">Offset Size    Description (Table 1770)</span><br><span class="line"> 00h   WORD    (call) size of following results buffer (max 0048h)</span><br><span class="line"> 02h   DWORD   (big-endian) clock ticks since system started</span><br><span class="line"> 06h   BYTE    CPU type</span><br><span class="line">       00h Motorola 68000</span><br><span class="line">       01h Intel 8086, 8088, or V20</span><br><span class="line">       02h Intel 80286+</span><br><span class="line"> 07h   BYTE    reserved</span><br><span class="line"> 08h   BYTE    number of service processes in server</span><br><span class="line"> 09h   BYTE    server utilization in percent</span><br><span class="line"> 0Ah   WORD    (big-endian) maximum bindery objects set by configuration</span><br><span class="line">       0000h = unlimited</span><br><span class="line"> 0Ch   WORD    (big-endian) maximum number of bindery objects used</span><br><span class="line"> 0Eh   WORD    (big-endian) current number of bindery objects in use</span><br><span class="line"> 10h   WORD    (big-endian) total server memory in KB</span><br><span class="line"> 12h   WORD    (big-endian) wasted server memory in KB</span><br><span class="line">       normally 0000h</span><br><span class="line"> 14h   WORD    number of records following (01h-03h)</span><br><span class="line"> 16h   var array of Dynamic Memory Information records (see #1771)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1769,#1934 at AX=F217h/SF=E8h</span><br><span class="line"></span><br><span class="line">Format of NetWare Dynamic Memory Information:</span><br><span class="line">Offset Size    Description (Table 1771)</span><br><span class="line"> 00h   DWORD   (big-endian) total dynamic space</span><br><span class="line"> 04h   DWORD   (big-endian) maximum dynamic space used</span><br><span class="line"> 08h   DWORD   (big-endian) current dynamic space usage</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

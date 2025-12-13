@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2380773.html">
+    <link rel="next" href="rbint-2385553.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2380773.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2385553.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 4405  - Sfs V1.00 - Driver Control                             </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AX = 4405h</span><br><span class="line">   BL = drive number (00h = default, 01h = A:, etc)</span><br><span class="line">   CX = number of bytes to write</span><br><span class="line">   DS:DX -&gt; data to write (see #1230)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AX = number of bytes actually written</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (01h,05h,06h,0Dh) (see #1366 at AH=59h/BX=0000h)</span><br><span class="line">Program: SFS (Secure FileSystem) is a shareware encrypting disk driver by</span><br><span class="line">     Peter C. Gutmann</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=4404h&#34;SFS&#34;</span><br><span class="line"></span><br><span class="line">(Table 1229)</span><br><span class="line">Values for SFS control function:</span><br><span class="line"> 00h   &#34;PACKET_SET_DISKINFO&#34;    set disk parameters</span><br><span class="line"> 01h   &#34;PACKET_SET_KEYINFO&#34;     set keying information</span><br><span class="line"> 02h   &#34;PACKET_SET_READONLY&#34;    select read/write or read-only</span><br><span class="line"> 03h   &#34;PACKET_SET_DRIVENO&#34;     set drive number to mount</span><br><span class="line"> 04h   &#34;PACKET_SET_MOUNTSTATUS&#34; set mount status</span><br><span class="line"> 05h   &#34;PACKET_SET_UNMOUNT&#34;     set/clear quick-unmount hotkey</span><br><span class="line"> 06h   &#34;PACKET_SET_TIMEOUT&#34;     set/clear auto-unmount timeout</span><br><span class="line"></span><br><span class="line">Format of SFS control data packet:</span><br><span class="line">Offset Size    Description (Table 1230)</span><br><span class="line"> 00h   WORD    signature 4330h (&#39;C0&#39;)</span><br><span class="line"> 02h   WORD    function (see #1229)</span><br><span class="line">---function 00h---</span><br><span class="line"> 04h   WORD    sector size in bytes</span><br><span class="line"> 06h   BYTE    sectors per cluster</span><br><span class="line"> 07h   WORD    number of boot sectors</span><br><span class="line"> 09h   BYTE    number of copies of FAT</span><br><span class="line"> 0Ah   WORD    size of root directory in entries</span><br><span class="line"> 0Ch   WORD    number of sectors on disk, 16-bit</span><br><span class="line"> 0Eh   BYTE    media descriptor byte</span><br><span class="line"> 0Fh   WORD    sectors per FAT</span><br><span class="line"> 11h   WORD    sectors per track</span><br><span class="line"> 13h   WORD    number of heads</span><br><span class="line"> 15h   DWORD   number of hidden sectors</span><br><span class="line"> 19h   DWORD   number of sectors on disk, 32-bit</span><br><span class="line">---function 01h---</span><br><span class="line"> 04h 20 BYTEs  master IV for encrypted disk</span><br><span class="line"> 18h 64 BYTEs  NDC/SHS keying information</span><br><span class="line">---function 02h---</span><br><span class="line"> 04h   WORD    read-only state: 00h read-only, 01h read/write</span><br><span class="line">---function 03h---</span><br><span class="line"> 04h   WORD    drive number (see #1231)</span><br><span class="line"> 06h   DWORD   sector offset of logical volume from start of physical volume</span><br><span class="line">       0 if logical volume = physical volume</span><br><span class="line">---function 04h---</span><br><span class="line"> 04h   WORD    mount status (00h unmounted, 01h mounted)</span><br><span class="line">---function 05h---</span><br><span class="line"> 04h   WORD    hotkey (high byte = shift state, low byte = scan code or 00h)</span><br><span class="line">       (see #0005)</span><br><span class="line">       0000h to disable hotkey</span><br><span class="line">---function 06h---</span><br><span class="line"> 04h   WORD    timeout in minutes before automatic unmount</span><br><span class="line">       0000h to disable auto-unmount</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the data for function 00h corresponds to a DOS BPB (see AH=53h)</span><br><span class="line">   functions 00h, 01h, and 03h automatically unmount the encrypted drive</span><br><span class="line">   unmounting a drive with function 04h also destroys the encryption</span><br><span class="line">     information in the driver and forces all dirty buffers to be flushed</span><br><span class="line"></span><br><span class="line">Bitfields for SFS drive number:</span><br><span class="line">Bit(s) Description (Table 1231)</span><br><span class="line"> 15-12 drive access mode</span><br><span class="line">   0000 BIOS access</span><br><span class="line">   0001 direct IDE access</span><br><span class="line">   0010 direct SCSI access</span><br><span class="line">---if BIOS access---</span><br><span class="line"> 11-8  unused (0)</span><br><span class="line"> 7-0   BIOS drive number</span><br><span class="line">---if IDE access---</span><br><span class="line"> 11-8  unused (0)</span><br><span class="line"> 7-0   IDE drive number</span><br><span class="line">---if SCSI access---</span><br><span class="line"> 11-8  SCSI host number</span><br><span class="line"> 7-4   SCSI target ID</span><br><span class="line"> 3-0   SCSI logical unit number</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

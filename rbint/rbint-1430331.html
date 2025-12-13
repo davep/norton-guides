@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1429922.html">
+    <link rel="next" href="rbint-1432144.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1429922.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1340639.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1432144.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn DB00  U - Ami Bios - Flash Rom - Read Flash Bios               </span>  [<span class="ngb">b</span>]</span><br><span class="line"></span><br><span class="line">   AX = DB00h</span><br><span class="line">   DS:SI -&gt; parameter block (see #0468)</span><br><span class="line">   ES:DI -&gt; buffer for copied information</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = status (86h if not implemented)</span><br><span class="line">   DS,ES destroyed, possibly other registers</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  used by FMUP.EXE, Intel&#39;s Flash Memory Update utility</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=DAh,AX=DB01h,AX=DB04h</span><br><span class="line"></span><br><span class="line">Format of AMI BIOS Flash ROM parameter block:</span><br><span class="line">Offset Size    Description (Table 0468)</span><br><span class="line"> 00h 32 BYTEs  ASCIZ description of the file&#39;s contents</span><br><span class="line"> 20h   BYTE    Logical area type (see #0469)</span><br><span class="line"> 21h   DWORD   logical area size (overall size of area)</span><br><span class="line"> 25h   BYTE    flag: load from file (FF=yes, 00=no)</span><br><span class="line"> 26h   BYTE    flag: reboot after update (FF=yes, 00=no)</span><br><span class="line"> 27h   BYTE    flag: update entire image (FF=yes, 00=no)</span><br><span class="line"> 28h 24    BYTEs   ASCIZ logical area name (cooresponds to offset 20)</span><br><span class="line">       &#34;System BIOS&#34;</span><br><span class="line">       &#34;Logo Data Area&#34;, etc.</span><br><span class="line"> 40h 15 BYTEs  ASCIZ time stamp string: MM/DD/YY-HH:MM</span><br><span class="line"> 4Fh   BYTE    checksum for this header (sum of all bytes except this one)</span><br><span class="line">       if checksum would be 00h,01h, or FFh, it is set to 2Ah</span><br><span class="line"> 50h   DWORD   this file&#39;s starting address (offset in image)</span><br><span class="line"> 54h   DWORD   size of image chunk in this file</span><br><span class="line"> 58h   BYTE    logical area type - same as offset 20h</span><br><span class="line"> 59h   BYTE    flag: last file in chain (FF=yes, 00=no)</span><br><span class="line"> 5Ah  6 BYTEs  ASCIZ signature &#34;FLASH&#34;</span><br><span class="line"> 60h 16 BYTEs  ASCIZ filename of next file in chain</span><br><span class="line"> 70h 16 BYTEs  ASCIZ BIOS reserved string (usually version #)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this block is identical in format to the 128-byte header on an AMI</span><br><span class="line">     BIOS Update file</span><br><span class="line">   for AX=DB00h, the following fields must be specified: 50h,54h,58h;</span><br><span class="line">     the fields at offset 20h and 5Ah should also be set if possible</span><br><span class="line">   the fields at offsets 40h and 70h will be set on return, if available</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0470</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

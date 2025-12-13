@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3319566.html">
+    <link rel="next" href="rbint-3323485.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3319566.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3177957.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3323485.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn F256  - Novell Netware - Duplicate Extended Attributes         </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = F256h subfn 05h</span><br><span class="line">   CX = length of request buffer in bytes</span><br><span class="line">   DX = length of reply buffer in bytes</span><br><span class="line">   DS:SI -&gt; request buffer (see #2058)</span><br><span class="line">   ES:DI -&gt; reply buffer (see #2059)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status (see #2546 at INT 2F/AX=7A20h/BX=0000h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=F2h&#34;Novell&#34;,AX=F256h/SF=01h,AX=F256h/SF=02h,AX=F256h/SF=04h</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Duplicate Extended Attributes&#34; request packet:</span><br><span class="line">Offset Size    Description (Table 2058)</span><br><span class="line"> 00h   BYTE    05h (subfunction &#34;Duplicate Extended Attributes&#34;)</span><br><span class="line"> 01h   WORD    source flags (see #2060)</span><br><span class="line"> 03h   WORD    destination flags (see #2060)</span><br><span class="line"> 05h  8 BYTEs  source extended attribute structure (see #2061)</span><br><span class="line"> 0Dh  8 BYTEs  destination extended attribute structure (see #2061)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2059</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Duplicate Extended Attributes&#34; reply packet:</span><br><span class="line">Offset Size    Description (Table 2059)</span><br><span class="line"> 00h   DWORD   number duplicated</span><br><span class="line"> 04h   DWORD   data size duplicated</span><br><span class="line"> 08h   DWORD   key size duplicated</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2058</span><br><span class="line"></span><br><span class="line">Bitfields for NetWare extended attribute flags:</span><br><span class="line">Bit(s) Description (Table 2060)</span><br><span class="line"> 1-0   extended attribute handle structure type</span><br><span class="line">   00 volume number and directory entry number</span><br><span class="line">   01 NetWare file handle</span><br><span class="line">   10 extended attribute handle</span><br><span class="line">   11 not used</span><br><span class="line"> 2 close handle on error</span><br><span class="line"> 6-4   information level (0,1,6,7)</span><br><span class="line"> 7 not used</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2058,#2061</span><br><span class="line"></span><br><span class="line">Format of NetWare extended attribute structure:</span><br><span class="line">Offset Size    Description (Table 2061)</span><br><span class="line">---type 0---</span><br><span class="line"> 00h   DWORD   volume number</span><br><span class="line"> 04h   DWORD   directory entry number</span><br><span class="line">---type 1---</span><br><span class="line"> 00h   DWORD   NetWare file handle</span><br><span class="line"> 04h  4 BYTEs  unused</span><br><span class="line">---type 2---</span><br><span class="line"> 00h   DWORD   extended attribute handle</span><br><span class="line"> 04h  4 BYTEs  unused</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2060</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

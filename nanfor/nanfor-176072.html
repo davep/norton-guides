@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Keyboard/Mouse</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-174558.html">
+    <link rel="next" href="nanfor-177920.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-174558.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-137802.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-177920.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_SETKEYS()</span></span><br><span class="line"> Get array of keys redirected via the SetKey() or SET KEY</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">    <span class="fg15 bg1"> FT_SetKeys() --&gt; aKeyValues</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">    None</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">    An array from 0 to n elements, where n is the number of keys that</span><br><span class="line">    have been redirected via SetKey().  Each element in the array contains</span><br><span class="line">    the Inkey() value of a key that has been redirected.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">    CA encourages Clipper programmers to write modular code -- black</span><br><span class="line">    boxes that do not modify any global settings without resetting them</span><br><span class="line">    on exit.  In the past, this has proven cumbersome where SetKey() is</span><br><span class="line">    concerned, because the only way to see if a key had been redirected</span><br><span class="line">    was to call SetKey() and see if it returned NIL or a code block.  To</span><br><span class="line">    check every possible key value was unacceptably slow.</span><br><span class="line"></span><br><span class="line">    This function attempts to alleviate this problem by returning an array</span><br><span class="line">    that contains only those keys that have been redirected.  It is</span><br><span class="line">    substantially faster than the method mentioned above because it</span><br><span class="line">    directly accesses Clipper&#39;s internal table of redirected keys.</span><br><span class="line"></span><br><span class="line">    Some highly unorthodox programming techniques, not to mention rather</span><br><span class="line">    strange use of Clipper internals, was necessary to make this function</span><br><span class="line">    work.  If this makes you uncomfortable, then don&#39;t use this function,</span><br><span class="line">    you snivelling coward.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">    local aKeys := FT_SetKeys()    // Get the key table</span><br><span class="line">    local aBlox := {}              // Create a parallel array</span><br><span class="line">    local i</span><br><span class="line"></span><br><span class="line">    for i := 1 to len( aKeys )</span><br><span class="line">      // Nullify all redirections, while saving code block</span><br><span class="line">      // for later restoration</span><br><span class="line"></span><br><span class="line">      aadd( aBlox, setkey( aKeys[ i ], NIL )</span><br><span class="line">    next</span><br><span class="line"></span><br><span class="line">    // Do some stuff</span><br><span class="line"></span><br><span class="line">    for i := 1 to len( aKeys )</span><br><span class="line">      // Restore the redirections</span><br><span class="line"></span><br><span class="line">      setkey( aKeys[ i ], aBlox[ i ] )</span><br><span class="line">    next</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> SETKEYS.ASM</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Ted Means</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

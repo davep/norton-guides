@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5511017.html">
+    <link rel="next" href="rbint-5512927.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5511017.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5448544.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5512927.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 67 Fn 57  - Lim Ems 4.0 - Move/exchange Memory Region                </span>  [<span class="ngb">m</span>]</span><br><span class="line"></span><br><span class="line">   AH = 57h</span><br><span class="line">   AL = subfunction</span><br><span class="line">       00h move memory region</span><br><span class="line">       01h exchange memory region</span><br><span class="line">   DS:SI -&gt; structure describing source and destination (see #3324)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AH = status (see #3323)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  source and destination may overlap for a move, in which case the copy</span><br><span class="line">     direction is chosen such that the destination receives an intact copy</span><br><span class="line">     of the source region</span><br><span class="line"></span><br><span class="line">(Table 3323)</span><br><span class="line">Values for EMS function status:</span><br><span class="line"> 00h   successful</span><br><span class="line"> 80h   internal error</span><br><span class="line"> 81h   hardware failure</span><br><span class="line"> 83h   invalid handle</span><br><span class="line"> 84h   undefined function requested</span><br><span class="line"> 8Ah   invalid logical page number encountered</span><br><span class="line"> 8Fh   undefined subfunction</span><br><span class="line"> 92h   successful, but a portion of the source region has been overwritten</span><br><span class="line"> 93h   length of source or destination region exceeds length of region</span><br><span class="line">     allocated to either source or destination handle</span><br><span class="line"> 94h   conventional and expanded memory regions overlap</span><br><span class="line"> 95h   offset within logical page exceeds size of logical page</span><br><span class="line"> 96h   region length exceeds 1M</span><br><span class="line"> 97h   source and destination EMS regions have same handle and overlap</span><br><span class="line"> 98h   memory source or destination type undefined</span><br><span class="line"> A2h   attempted to wrap around 1M conventional address space</span><br><span class="line"></span><br><span class="line">Format of EMS copy data:</span><br><span class="line">Offset Size    Description (Table 3324)</span><br><span class="line"> 00h   DWORD   region length in bytes</span><br><span class="line"> 04h   BYTE    source memory type</span><br><span class="line">       00h conventional</span><br><span class="line">       01h expanded</span><br><span class="line"> 05h   WORD    source handle (0000h if conventional memory)</span><br><span class="line"> 07h   WORD    source initial offset (within page if EMS, segment if convent)</span><br><span class="line"> 09h   WORD    source initial segment (conv mem) or logical page (EMS)</span><br><span class="line"> 0Bh   BYTE    destination memory type</span><br><span class="line">       00h conventional</span><br><span class="line">       01h expanded</span><br><span class="line"> 0Ch   WORD    destination handle</span><br><span class="line"> 0Eh   WORD    destination initial offset</span><br><span class="line"> 10h   WORD    destination initial segment or page</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

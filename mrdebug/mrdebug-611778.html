@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Utilities</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-611030.html">
+    <link rel="next" href="mrdebug-613588.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-611030.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-565186.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-613588.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">SetCursor() - Sets the cursor</span></span><br><span class="line"> Sets the cursor shape</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">SetCursor([[&lt;nCursorType&gt;], [&lt;lInsert&gt;]]) --&gt; nCursor</span></span><br><span class="line"></span><br><span class="line">     or:</span><br><span class="line"></span><br><span class="line">     <span class="ngb">SetCursor([[&lt;idCursorForm&gt;], [&lt;lInsert&gt;]]) --&gt; nCursor</span></span><br><span class="line"></span><br><span class="line">     or:</span><br><span class="line"></span><br><span class="line">     <span class="ngb">SetCursor([[&lt;nTopLine&gt;,&lt;nBottomLine&gt;], [&lt;lInsert&gt;]]) --&gt; nCursor</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nCursorType&gt;</span> is a standard CA-Clipper cursor value of between 0 and 4.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;idCursorForm&gt;</span> is a 16-bit integer value representing the cursor.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nTopLine&gt;</span> is the top scan line of the new cursor.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nBottomLine&gt;</span> is the bottom scan line of the new cursor.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;lInsert&gt;</span> if .T. the cursor is set to Insert mode or if .F. the cursor</span><br><span class="line">     is set to overstrike mode</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     SetCursor() returns the current cursor setting as numeric value. A</span><br><span class="line">     return value of betwen 0 and 4 represents a value that may be used by</span><br><span class="line">     CA-Clipper SetCursor() function.</span><br><span class="line"></span><br><span class="line">     Any other value represents the cursor value set by specifying &lt;nTopLine&gt;</span><br><span class="line">     and &lt;nBottomLine&gt;.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     This version of SetCursor() allows you to set the cursor in one of two</span><br><span class="line">     ways:</span><br><span class="line"></span><br><span class="line">     1. By the CA-Clipper SetCursor() method - passing a value of between 0</span><br><span class="line">        and 4.</span><br><span class="line"></span><br><span class="line">     2. Or by creating your own cursor by specifying the top and bottom lines</span><br><span class="line">        of your cursor using &lt;nTopLine&gt; and &lt;nBottomLine&gt;.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     ■  Standard SetCursor usage:</span><br><span class="line"></span><br><span class="line">        nNormCursor  :=  SetCursor(.F.)         // Overwrite mode</span><br><span class="line">        nInsCursor   :=  SetCursor(.T.)         // Insert mode</span><br><span class="line">        .</span><br><span class="line">        . during program execution the cursor is changed.</span><br><span class="line">        .</span><br><span class="line">        SetCursor(nNormCursor, .F.)             // Reset cursor</span><br><span class="line">        SetCursor(nInsCursor, .T.)              // Reset cursor</span><br><span class="line"></span><br><span class="line">     ■  A User defined cursor:</span><br><span class="line"></span><br><span class="line">        SetCursor(10, 13)                       // Cursor as thick</span><br><span class="line">                                                // underscore</span><br><span class="line"> <span class="ngb">Files:</span>  Library is MRWINDOW.LIB.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

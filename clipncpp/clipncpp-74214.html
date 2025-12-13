@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » FAQ » FAQ</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-74104.html">
+    <link rel="next" href="clipncpp-75430.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-74104.html">Previous</a></li>
+
+
+          
+
+<li><a href="clipncpp-29045.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-75430.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Can you combine Borland C/C++ or Turbo C/C++ code with your</span></span><br><span class="line"><span class="ngb"> CA-Clipper applications?</span></span><br><span class="line"></span><br><span class="line"> Yes, if you follow these guidelines:</span><br><span class="line"></span><br><span class="line"> 1. Use large model only (the -ml command-line compiler switch).</span><br><span class="line"> 2. Use no floating point operations, and disable them with</span><br><span class="line">     the -f- switch.</span><br><span class="line"> 3. Use no Borland library functions; you may use standard C</span><br><span class="line">     functions if they are found in CLIPPER.LIB or LLIBCE.LIB.</span><br><span class="line"> 4. You may leave register variables on and/or optimize</span><br><span class="line">     for registers/jumps/speed.</span><br><span class="line"> 5. You may use the -v switch to include debugging information</span><br><span class="line">     in your object code for Turbo Debugger.</span><br><span class="line"> 6. Turn stack checking off.</span><br><span class="line"> 7. If you use inline assembly, push DS before doing anything</span><br><span class="line">     and pop it when done, unless you are SURE your code doesn&#39;t</span><br><span class="line">     do anything to affect DS.</span><br><span class="line"></span><br><span class="line"> One workable set of switches seems to be:</span><br><span class="line"></span><br><span class="line">                             -c -f- -ml -N-</span><br><span class="line"></span><br><span class="line"> These switches work, delivering optimized C code:</span><br><span class="line"></span><br><span class="line">                       -c -f- -ml -N- -Z -O -G -w</span><br><span class="line"></span><br><span class="line"> # Ed Boggan (72701,1720) Section 4 #158250 22-Aug-91</span><br><span class="line"> # Carl Nelson (70363,1027) Section 2 #172091 29-Oct-91</span><br><span class="line"> # Nick Pombra (71477,2077) Section 4 #156089 12-Aug-91</span><br><span class="line"> # Alex Matijaca (73657,3171) Section 2 #152148 24-Jul-91</span><br><span class="line"> # Mark Zurier (71240,1222) Section 4 #294108 2-Feb-93</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

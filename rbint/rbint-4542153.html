@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4541272.html">
+    <link rel="next" href="rbint-4543634.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4541272.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4533134.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4543634.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn FB42  PU - Borland C++ 3.0 Dpmiload.exe - Allocate Memory      </span>  [<span class="ngb">E</span>]</span><br><span class="line"></span><br><span class="line">   AX = FB42h</span><br><span class="line">   BX = 0002h</span><br><span class="line">   ES:SI -&gt; memory block info (see #2799)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  The version of DPMILOAD distributed with BC++ v2.0 identifies itself</span><br><span class="line">     as version 1.000, while the version distributed with BC++ 3.0</span><br><span class="line">     identifies itself as version 1.0; the former is 10864 bytes, the</span><br><span class="line">     latter 22180 bytes.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=FB42h/BX=0003h,AX=FB42h/BX=0008h,INT 31/AX=0501h</span><br><span class="line"></span><br><span class="line">Format of DPMILOAD memory block info:</span><br><span class="line">Offset Size    Description (Table 2799)</span><br><span class="line"> 00h   WORD    flags (see #2800)</span><br><span class="line"> 02h   DWORD   block size in bytes</span><br><span class="line">---DPMI memory block---</span><br><span class="line"> 06h   DWORD   DPMI memory block handle</span><br><span class="line">---DOS memory block---</span><br><span class="line"> 06h   WORD    real-mode segment of memory block</span><br><span class="line"> 08h   WORD    selector of memory block</span><br><span class="line">---</span><br><span class="line"> 0Ah   DWORD   linear address of memory</span><br><span class="line"> 0Eh   WORD    memory operation error code</span><br><span class="line">       0008h no more free LDT descriptors</span><br><span class="line">---if flags bit 0 clear---</span><br><span class="line"> 10h   WORD    code segment selector for memory block or 0000h or FFFFh</span><br><span class="line"> 12h   WORD    data alias selector for memory block or 0000h or FFFFh</span><br><span class="line">---if flags bit 0 set---</span><br><span class="line"> 10h   WORD    data segment selector for memory block or 0000h or FFFFh</span><br><span class="line"> 12h   WORD    unused???</span><br><span class="line"></span><br><span class="line">Bitfields for DPMILOAD memory block flags:</span><br><span class="line">Bit(s) Description (Table 2800)</span><br><span class="line"> 0 set if data segment rather than code segment</span><br><span class="line"> 1 information valid</span><br><span class="line"> 2 set if DOS memory block rather than DPMI memory block</span><br><span class="line"> 4 ???</span><br><span class="line"> 15    set if no LDT selectors for memory block???</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2799</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-14257.html">
+    <link rel="next" href="x86-16888.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-14257.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-16888.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">BSF             Bit Scan Forward                     Flags: O D I T S Z A P C</span></span><br><span class="line">                                                            ? - - - ? * ? ? ?</span><br><span class="line"><span class="ngb">BSF</span> destination,source                               CPU: 386+</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   if a set bit is found in source</span><br><span class="line">                   ZF ← 0</span><br><span class="line">                   destination ← bit index of first set bit</span><br><span class="line">                else</span><br><span class="line">                   ZF ← 1</span><br><span class="line">                   destination ← ?</span><br><span class="line">                endif</span><br><span class="line"></span><br><span class="line">    BSF scans (starting with bit 0) source for a one-bit. The zero</span><br><span class="line">    flag (ZF) is set to 1 if the bits are all zero; otherwise, ZF is</span><br><span class="line">    cleared to 0 and destination is loaded with the bit index of the</span><br><span class="line">    first set bit.</span><br><span class="line"></span><br><span class="line">        Example:        mov     dx,0110b</span><br><span class="line">                        bsf     cx,dx   ; zf = 0, cx = 1</span><br><span class="line">                        bsr     cx,dx   ; zf = 0, cx = 2</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    Some sources wrongly state different result flags. Some 386 and</span><br><span class="line">    early 486 CPUs change destination if source = 0.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    0F BC       BSF  r16,r/m16</span><br><span class="line">    0F BC       BSF  r32,r/m32</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    r16, r16     3                             10+3n    6-42   6-34  NP</span><br><span class="line">    r32, r32     3                             10+3n    6-42   6-42  NP</span><br><span class="line">    r16, m16  3+d(0,1,2)                       10+3n    7-43   6-35  NP</span><br><span class="line">    r32, m32  3+d(0,1,2,4)                     10+3n    7-43   6-43  NP</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-16888.html">BSR</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-159707.html">TEST</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-149277.html">SHR</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

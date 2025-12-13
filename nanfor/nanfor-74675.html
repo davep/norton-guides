@@ -1,0 +1,141 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » A-F » Date/Time</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-73801.html">
+    <link rel="next" href="nanfor-77166.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-73801.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-59070.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-77166.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_DATECNFG()</span></span><br><span class="line"> Set beginning of year/week for FT_ date functions</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_DATECNFG( [ &lt;cFYStart&gt; ], [ &lt;nDow&gt; ] ) -&gt; aDateInfo</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cFYStart&gt;</span> is a character date string in the user&#39;s system date</span><br><span class="line">     format, i.e., the same as the user would enter for CTOD().  If</span><br><span class="line">     this argument is NIL, the current value is unchanged.</span><br><span class="line"></span><br><span class="line">     Note: The year portion of the date string must be present and</span><br><span class="line">     be a valid year; however, it has no real meaning.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nDow&gt;</span> is a number from 1 to 7 (1 = Sunday) indicating the</span><br><span class="line">     desired start of a work week.  If this argument is NIL,</span><br><span class="line">     the current value is unchanged.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     A 2-element array containing the following information:</span><br><span class="line"></span><br><span class="line">        aDateInfo[1] - an ANSI date string indicating the beginning</span><br><span class="line">                       date of the year.  Only the month and day are</span><br><span class="line">                       meaningful.</span><br><span class="line"></span><br><span class="line">        aDateInfo[2] - the number of the first day of the week</span><br><span class="line">                       (1 = Sunday)</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     FT_DATECNFG() is called internally by many of the date functions</span><br><span class="line">     in the library to determine the beginning of year date and</span><br><span class="line">     beginning of week day.</span><br><span class="line"></span><br><span class="line">     The default beginning of the year is January 1st and the default</span><br><span class="line">     beginning of the week is Sunday (day 1).  Either or both of these</span><br><span class="line">     settings may be changed by calling FT_DATECNFG() with the proper</span><br><span class="line">     arguments.  They will retain their values for the duration of the</span><br><span class="line">     program or until they are changed again by a subsequent call to</span><br><span class="line">     FT_DATECNFG().</span><br><span class="line"></span><br><span class="line">     It is not necessary to call FT_DATECNFG() unless you need to</span><br><span class="line">     change the defaults.</span><br><span class="line"></span><br><span class="line">     FT_DATECNFG() affects the following library functions:</span><br><span class="line"></span><br><span class="line">       FT_WEEK()       FT_ACCTWEEK()       FT_DAYTOBOW()</span><br><span class="line">       FT_MONTH()      FT_ACCTMONTH()      FT_DAYOFYR()</span><br><span class="line">       FT_QTR()        FT_ACCTQTR()        FT_ACCTADJ()</span><br><span class="line">       FT_YEAR()       FT_ACCTYEAR()</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">       // Configure library date functions to begin year on</span><br><span class="line">       //  July 1st.</span><br><span class="line"></span><br><span class="line">       FT_DATECNFG(&#34;07/01/80&#34;)    // year is insignificant</span><br><span class="line"></span><br><span class="line">       // Examples of return values:</span><br><span class="line"></span><br><span class="line">       //  System date format: American           aArray[1]    aArray[2]</span><br><span class="line"></span><br><span class="line">       aArray := FT_DATECNFG()              //  &#39;1980.01.01&#39;     1 (Sun.)</span><br><span class="line">       aArray := FT_DATECNFG(&#39;07/01/80&#39;)    //  &#39;1980.07.01&#39;     1 (Sun.)</span><br><span class="line">       aArray := FT_DATECNFG(&#39;07/01/80&#39;, 2) //  &#39;1980.07.01&#39;     2 (Mon.)</span><br><span class="line">       aArray := FT_DATECNFG( , 2 )         //  &#39;1980.01.01&#39;     2 (Mon.)</span><br><span class="line"></span><br><span class="line">       //  System date format: British</span><br><span class="line"></span><br><span class="line">       aArray := FT_DATECNFG(&#39;01/07/80&#39;, 2) //  &#39;1980.07.01&#39;     2 (Mon.)</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> DATECNFG.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Jo W. French dba Practical Computing</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor-61016.html">FT_ACCTADJ()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

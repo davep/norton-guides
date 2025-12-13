@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5104-style.css">
+    <title>Clipper 5.01 vs 1.29 Anomalies (#04) » Menu » Anomalies</title>
+    <meta name="description" content="Clipper 5.01 vs 1.29 Anomalies (#04)">
+    <link rel="prev" href="cl5104-7997.html">
+    <link rel="next" href="cl5104-9979.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5104-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5104-7997.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5104-9979.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Menu</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies</a></li>
+                  <li><a href="cl5104-45500.html">Credits</a></li>
+                  <li><a href="cl5104-45901.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  BREAK/RECOVER     May not return code block.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Clipper Version</span>  1.29 dtd 04/15/91.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Problem Statement</span></span><br><span class="line"></span><br><span class="line">  The BREAK / RECOVER USING methodology may not return a code block.</span><br><span class="line">  Here&#39;s one example from Jeff Cheney [72570,675] :</span><br><span class="line"></span><br><span class="line">    *********************</span><br><span class="line">    ** PRNERROR.PRG    **</span><br><span class="line">    ** compile with /N **</span><br><span class="line">    *********************</span><br><span class="line">    FUNCTION prnError</span><br><span class="line">    LOCAL lErrorObj</span><br><span class="line">    SET DEVICE TO PRINT</span><br><span class="line">    DO WHILE .T.</span><br><span class="line">      // begin trapping printer errors</span><br><span class="line">      BEGIN SEQUENCE</span><br><span class="line">        // make sure printer is turned off to invoke handler</span><br><span class="line">        @ 1,0 SAY &#34;!!!!!&#34;</span><br><span class="line">        RECOVER USING lErrorObj</span><br><span class="line">        // set a break point here and have a look at lErrorObj with</span><br><span class="line">        //   Monitor Locals under the debugger, it&#39;s NOT AN OBJECT anymore!</span><br><span class="line">        IF lErrorObj:cargo</span><br><span class="line">          LOOP</span><br><span class="line">        ELSE</span><br><span class="line">          EXIT</span><br><span class="line">        ENDIF</span><br><span class="line">      END SEQUENCE</span><br><span class="line">    ENDDO</span><br><span class="line">    SET DEVICE TO SCREEN</span><br><span class="line">    RETURN NIL</span><br><span class="line"></span><br><span class="line">    **********************</span><br><span class="line">    ** ERROR.prg        **</span><br><span class="line">    ** compile with /N  **</span><br><span class="line">    **********************</span><br><span class="line">    #include &#34;Error.Ch&#34;</span><br><span class="line"></span><br><span class="line">    FUNCTION errorsys</span><br><span class="line">    // set up new error handler</span><br><span class="line">    ERRORBLOCK( { | lErrorObj | ErrorTest( lErrorObj ) } )</span><br><span class="line">    RETURN NIL</span><br><span class="line"></span><br><span class="line">    FUNCTION ErrorTest( lErrorObj )</span><br><span class="line">    LOCAL lChoice,lSetDevice</span><br><span class="line">    IF lErrorObj:genCode == EG_PRINT .AND. lErrorObj:canRetry</span><br><span class="line">      lSetDevice := SET( _SET_DEVICE,&#34;SCREEN&#34; )</span><br><span class="line">      lChoice := ALERT( &#34;Printer Error&#34;, { &#34;Abort&#34;,&#34;Retry&#34;,&#34;Restart&#34; } )</span><br><span class="line">      SET( _SET_DEVICE,lSetDevice )</span><br><span class="line">      IF lChoice &lt;&gt; 2</span><br><span class="line">        lErrorObj:cargo := ( lChoice == 3 )</span><br><span class="line">        BREAK                  // I also tried BREAK( lChoice == 3 )</span><br><span class="line">      ENDIF                    //   and BREAK( lErrorObj ) but it acts</span><br><span class="line">    ENDIF                      //   the same way</span><br><span class="line">    RETURN ( lChoice == 2 )</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Cause</span></span><br><span class="line"></span><br><span class="line">  Unknown.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Work Around(s)</span></span><br><span class="line"></span><br><span class="line">  Code would be unique to each incidence.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

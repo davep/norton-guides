@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-318027.html">
+    <link rel="next" href="rbint-319502.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-318027.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-319502.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Function:</span></span><br><span class="line"></span><br><span class="line">POPA and POPAD pop all general purpose registers from the stack.</span><br><span class="line">POPA pops 16-bit registers and POPAD pops 32-bit registers. The opcode is</span><br><span class="line">the same. POPAD is POPA with an operand size prefix (66h).</span><br><span class="line"></span><br><span class="line">If either POPA or POPAD is followed by an instruction which uses an</span><br><span class="line">effective address calculation consisting of a base register and another</span><br><span class="line">register other than (E)AX as an index, the contents of EAX is corrupted.</span><br><span class="line"></span><br><span class="line">Also, if POPA or POPAD in 16-bit mode is followed by an instruction which</span><br><span class="line">uses an effective address using EAX as a base or index, the CPU will hang.</span><br><span class="line"></span><br><span class="line">The workaround is to always code a NOP after POPA as well as POPAD.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Prefetch queue, bus &amp; cache parameters per CPU</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">              NEC         NEC          sx  dx  sx  dx</span><br><span class="line">           88 V20 188  86 V30 186 286 386 386 486 486 Pentium</span><br><span class="line">         ┌─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─────┐</span><br><span class="line">  SPQB───┼ 4 │ 4 │ 4 │ 6 │ 6 │ 6 │ 6 │16 │16 │32 │32 │32 x 2 │</span><br><span class="line"> NEBIPQ──┼ 1 │ 1 │ 1 │ 2 │ 2 │ 2 │ 2 │ 2 │ 4 │16 │16 │     ? │</span><br><span class="line"> MPBRMP──┼ 1 │ 1 │ 1 │ 1 │ 1 │ 1 │ 1 │ 1 │ 1 │16b│16b│    32a│</span><br><span class="line">  DIQL───┼ - │ - │ - │ - │ - │ - │ 3 │ 3 │ 3 │ - │ - │     ? │</span><br><span class="line">  OCSKB──┼ - │ - │ - │ - │ - │ - │ - │ - │ - │ 8 │ 8 │ 8 x 2 │</span><br><span class="line">  DBSB───┼ 8 │ 8 │ 8 │16 │16 │16 │16 │16 │32 │32 │32 │    64 │</span><br><span class="line">  ABSB───┼20 │20 │20 │20 │20 │20 │24 │24 │32 │32 │32 │    32 │</span><br><span class="line">         └───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───────┛</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

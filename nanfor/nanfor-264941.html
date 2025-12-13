@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Video</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-264205.html">
+    <link rel="next" href="nanfor-266212.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-264205.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-260934.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor-266212.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_GETVCUR()</span></span><br><span class="line"> Return info about the cursor on a specified video page</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_GETVCUR( [ &lt;nPage&gt; ] ) -&gt; &lt;aCurInfo&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">    <span class="ngb">&lt;nPage&gt;</span> is the video page to get the cursor information for.</span><br><span class="line">    Defaults to the current page, as returned by FT_GETVPG().</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     A four-element array (<span class="ngb">&lt;aCurInfo&gt;</span>), set up as follows:</span><br><span class="line"></span><br><span class="line">     aCurInfo[1] = Top line of cursor</span><br><span class="line">     aCurInfo[2] = Bottom line of cursor</span><br><span class="line">     aCurInfo[3] = Character row</span><br><span class="line">     aCurInfo[4] = Character column</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    FT_GETVCUR() uses FT_INT86() to invoke interrupt 10h, function</span><br><span class="line">    3, to return the character cursor location for the specified</span><br><span class="line">    video page.</span><br><span class="line"></span><br><span class="line">    The top line and bottom line of cursor are set depending on</span><br><span class="line">    the current cursor mode, and are only meaningful in alphanumeric</span><br><span class="line">    video modes.</span><br><span class="line"></span><br><span class="line">    For more information on graphics programming, cursors, and</span><br><span class="line">    cursor modes, refer to Richard Wilton&#39;s _Programmer&#39;s Guide to</span><br><span class="line">    PC and PS/2 Video Systems_ (Microsoft Press).</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     aCurInfo := getVCur( 1 )    // Get info on cursor pos in page 1</span><br><span class="line">     QOut(&#34;Row: &#34; + str( aCurInfo[3] ) + &#34;  Col: &#34; + str( aCurInfo[4] ) )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> VIDCUR.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Glenn Scott</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Hardware » Video</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="int-638292.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">         <span class="ngb">VGA Programming Considerations</span></span><br><span class="line"></span><br><span class="line">         The following are some programming considerations for the VGA:</span><br><span class="line"></span><br><span class="line">         •  The following rules must be followed to guarantee the</span><br><span class="line">            critical timings necessary to ensure proper operation of the</span><br><span class="line">            CRT controller:</span><br><span class="line"></span><br><span class="line">            -  The value in the Horizontal Total register must be at</span><br><span class="line">               lease 19h.</span><br><span class="line">            -  The minimum positive pulse width of the &#39;horizontal</span><br><span class="line">               synchronization&#39; signal must be four character clock</span><br><span class="line">               units.</span><br><span class="line">            -  The End Horizontal Retrace register must be programmed</span><br><span class="line">               such that the &#39;horizontal synchronization&#39; signal goes to</span><br><span class="line">               0 at least one character before the &#39;horizontal display</span><br><span class="line">               enable&#39; signal goes active.</span><br><span class="line">            -  The End Vertical Blanking register must be set to a</span><br><span class="line">               minimum of one horizontal scan line greater than the line-</span><br><span class="line">               compare value.</span><br><span class="line"></span><br><span class="line">         •  When PEL panning compatibility is enabled in the Attribute</span><br><span class="line">            Mode Control Register, a successful line compare in the CRT</span><br><span class="line">            controller forces the output of the Horizontal PEL Panning</span><br><span class="line">            register to 0&#39;s until a vertical synchronization occurs. When</span><br><span class="line">            the vertical synchronization occurs, the output returns to</span><br><span class="line">            the programmed value. This allows the portion of the screen</span><br><span class="line">            indicated by the Line Compare Register to be operated on by</span><br><span class="line">            the Horizontal PEL Panning Register.</span><br><span class="line"></span><br><span class="line">         •  A write to the Character Map Select register becomes valid on</span><br><span class="line">            the next whole character line. This will prevent deformed</span><br><span class="line">            character images when changing character generators in the</span><br><span class="line">            middle of a scan line.</span><br><span class="line"></span><br><span class="line">         •  For mode 13h, the attribute controller is configured so that</span><br><span class="line">            the 8-bit attribute in the video memory becomes the 8-bit</span><br><span class="line">            address (P0-P7) into the video DAC. The user should not</span><br><span class="line">            modify the contents of the Internal Palette Registers when</span><br><span class="line">            using this mode.</span><br><span class="line"></span><br><span class="line">         •  The following is the sequence for accessing the attribute</span><br><span class="line">            data registers:</span><br><span class="line"></span><br><span class="line">            1. Disable interrupts.</span><br><span class="line">            2. Reset the flip-flop for the Attribute Address register.</span><br><span class="line">            3. Write the index</span><br><span class="line">            4. Access the data register.</span><br><span class="line">            5. Enable interrupts.</span><br><span class="line"></span><br><span class="line">         •  The Color Select register in the attribute controller section</span><br><span class="line">            allows the programmer to rapidly switch color sets in the</span><br><span class="line">            video DAC. Bit 7 of the Attribute Mode Control register</span><br><span class="line">            controls the number of bits in the Color Select register used</span><br><span class="line">            to address the color information in the video DAC (either two</span><br><span class="line">            or four bits are used). By changing the value in the Color</span><br><span class="line">            Select register, an application can switch color sets in</span><br><span class="line">            graphics and alphanumeric modes (mode 13h does not use the</span><br><span class="line">            feature).</span><br><span class="line"></span><br><span class="line">            Note: For multiple color sets, the user must load the color</span><br><span class="line">                  values.</span><br><span class="line"></span><br><span class="line">         •  An application that saves the video state must store the four</span><br><span class="line">            bytes of information contained in the system microprocessor</span><br><span class="line">            latches in the graphics controller subsection. These latches</span><br><span class="line">            are loaded with 32 bits from video memory (8 bits per map)</span><br><span class="line">            each time the system reads from video memory. The application</span><br><span class="line">            needs to:</span><br><span class="line"></span><br><span class="line">            1. Use write mode 1 to write the values in the latches to a</span><br><span class="line">               location in video memory that is not part of the display</span><br><span class="line">               buffer, such as the last location in the address range.</span><br><span class="line">            2. Save the values of the latches by reading them back from</span><br><span class="line">               video memory.</span><br><span class="line"></span><br><span class="line">               Note: If memory addressing is in the chain-4 or odd/even</span><br><span class="line">                     mode, reconfigure the memory as four sequential maps</span><br><span class="line">                     prior to performing the sequence above.</span><br><span class="line"></span><br><span class="line">            BIOS provides support for completely saving and restoring the</span><br><span class="line">            video state.</span><br><span class="line"></span><br><span class="line">         •  The Horizontal PEL Panning register controls the number of</span><br><span class="line">            PELs shifted left. Further panning, beyond that shown under</span><br><span class="line">            the register control, can be accomplished by changing the</span><br><span class="line">            start-address value in the CRT controller registers, Start</span><br><span class="line">            Address High and Start Address Low. The sequence is:</span><br><span class="line"></span><br><span class="line">            1. Use the Horizontal PEL Panning register to shift the</span><br><span class="line">               maximum number of bits to the left.</span><br><span class="line">            2. Increment the start address.</span><br><span class="line">            3. Set the Horizontal PEL Panning register so that no bits</span><br><span class="line">               are shifted.</span><br><span class="line"></span><br><span class="line">               The screen will now be shifted one PEL to the left of the</span><br><span class="line">               position it was in at the end of step 1. Step 1 through 3</span><br><span class="line">               are repeated as often as necessary.</span><br><span class="line"></span><br><span class="line">         •  When using a split-screen application that scroll a second</span><br><span class="line">            screen on top of the first screen and operating in a mode</span><br><span class="line">            with 200 scan lines, the Line Compare register (CRT</span><br><span class="line">            controller register 19h) must contain an even value. This is</span><br><span class="line">            a requirement of the double scanning logic in the CRT</span><br><span class="line">            controller.</span><br><span class="line"></span><br><span class="line">         •  If the value in the Cursor Start register (CRT Controller</span><br><span class="line">            register 0Ah) is greater than that in the Cursor End Register</span><br><span class="line">            (CRT controller 0Bh), the cursor is not displayed.</span><br><span class="line"></span><br><span class="line">         •  In 8-dot character modes, the underline attribute produces a</span><br><span class="line">            solid line across adjacent character. In 9-dot character</span><br><span class="line">            modes the underline across adjacent characters is dashed. In</span><br><span class="line">            9-dot modes with the line-graphics characters (C0h-DFh</span><br><span class="line">            character codes), the underline is solid.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

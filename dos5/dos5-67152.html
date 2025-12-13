@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Functions (Int 21h)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-66721.html">
+    <link rel="next" href="dos5-68530.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-66721.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-68530.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Function 440Dh /40h     Set Device Parameters                        DOS 3.2+</span></span><br><span class="line"></span><br><span class="line">    Sets the device parameters for the specified block device.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX    = 440Dh</span><br><span class="line">                BX    = Drive number (0 = default, 1 = A, etc.)</span><br><span class="line">                CH    = 08h (device category, must be 8)</span><br><span class="line">                CL    = 40h</span><br><span class="line">                DS:DX = Pointer to a DeviceParams structure</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AX = Error code, if CF is set</span><br><span class="line">                     | 01h Invalid function</span><br><span class="line">                     | 02h File not found (invalid drive number)</span><br><span class="line">                     | 05h Access denied</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The following statements define device parameters for several</span><br><span class="line">    common media formats:</span><br><span class="line"></span><br><span class="line">    radix 10</span><br><span class="line">    ss160  DeviceParams &lt;0,1,2,40,0,512,1,1,2, 64, 320,0feh,1, 8,1,0,0&gt;</span><br><span class="line">    ss180  DeviceParams &lt;0,1,2,40,0,512,1,1,2, 64, 360,0fch,2, 9,1,0,0&gt;</span><br><span class="line">    dd320  DeviceParams &lt;0,1,2,40,0,512,2,1,2,112, 640,0ffh,1, 8,2,0,0&gt;</span><br><span class="line">    dd360  DeviceParams &lt;0,1,2,40,0,512,2,1,2,112, 720,0fdh,1, 9,2,0,0&gt;</span><br><span class="line">    sh320  DeviceParams &lt;0,1,2,80,0,512,2,1,2,112, 640,0fah,1, 8,1,0,0&gt;</span><br><span class="line">    dh360  DeviceParams &lt;0,1,2,80,0,512,2,1,2,112, 720,0fch,2, 9,1,0,0&gt;</span><br><span class="line">    dh640  DeviceParams &lt;0,1,2,80,0,512,2,1,2,112,1280,0fbh,2, 8,2,0,0&gt;</span><br><span class="line">    dh720  DeviceParams &lt;0,1,2,80,0,512,2,1,2,112,1440,0f9h,3, 9,2,0,0&gt;</span><br><span class="line">    dh144  DeviceParams &lt;0,1,2,80,0,512,1,1,2,224,2880,0f0h,9,18,2,0,0&gt;</span><br><span class="line">    dh120  DeviceParams &lt;0,1,2,80,0,512,1,1,2,224,2400,0f0h,7,15,2,0,0&gt;</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-70895.html">440Dh /60h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-229595.html">DeviceParams</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-251263.html">Media types</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

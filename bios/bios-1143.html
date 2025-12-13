@@ -1,0 +1,144 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    
+    <link rel="next" href="bios-2150.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-2150.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 08h                 System Timer</span></span><br><span class="line"></span><br><span class="line">    This interrupt is a hardware interrupt (IRQ 0) activated by the</span><br><span class="line">    system timer 18.2 times per second (every 55 ms). The default</span><br><span class="line">    handler does the following:</span><br><span class="line"></span><br><span class="line">         ■   Keeps a count of the number of timer ticks at memory</span><br><span class="line">             location 0040h:006Ch (System Timer Counter--long</span><br><span class="line">             integer). After 24 hours of operation, a flag is set at</span><br><span class="line">             memory location 0040h:0070h to signal this condition and</span><br><span class="line">             the System Timer Counter (0040h:006Ch) is reset to 0.</span><br><span class="line"></span><br><span class="line">         ■   Decrements the Diskette Drive Motor Off Counter at memory</span><br><span class="line">             location 0040h:0040h if it is not 0. When this location</span><br><span class="line">             reaches 0, the diskette drive motor is turned off and the</span><br><span class="line">             Diskette Drive Motor Status byte at memory location</span><br><span class="line">             0040h:003Fh is updated to reflect that the motor has been</span><br><span class="line">             turned off.</span><br><span class="line"></span><br><span class="line">         ■   Generates Int 1Ch.</span><br><span class="line"></span><br><span class="line">         ■   For the PC Convertible, generates Int 4Ah if an alarm</span><br><span class="line">             interrupt occurs.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-194189.html">Int 1Ah, 06h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-11368.html">Int 1Ch</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-32958.html">0040h:006Ch</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-33568.html">0040h:0070h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-26751.html">0040h:0040h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-25702.html">0040h:003Fh</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

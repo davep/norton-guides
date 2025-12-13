@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-94121.html">
+    <link rel="next" href="tr-99324.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-94121.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-99324.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> SOUNDEX(&lt;expC&gt;)</span><br><span class="line"> Searches for similar sounding names that are spelled differently.</span><br><span class="line"> Returns &lt;expC&gt; soundex code as a four-character string in the format &#34;A999&#34;.</span><br><span class="line"></span><br><span class="line"> Our SOUNDEX() function is used in Summer &#39;87 only.</span><br><span class="line"> In Clipper 5.0, use Clipper&#39;s own SOUNDEX() function.</span><br><span class="line"></span><br><span class="line"> Useful for indexing large name and address databases where</span><br><span class="line"> the user may misspell names to search for.</span><br><span class="line"></span><br><span class="line"> Based on the soundex algorithm on page 392 in The Art of Computer</span><br><span class="line"> Programming, Volume 3, Sorting and Searching, by Donald E. Knuth.</span><br><span class="line"></span><br><span class="line"> The first character in &lt;expC&gt; becomes the first character in the</span><br><span class="line"> soundex code.  The remaining 3 characters in the soundex code</span><br><span class="line"> will be digits assigned according to the remaining characters in &lt;expC&gt;.</span><br><span class="line"></span><br><span class="line"> Assigns a number code for letters until the soundex code reaches 4</span><br><span class="line"> characters.  Pads with zeros if &lt;expC&gt; ends before the soundex code</span><br><span class="line"> reaches 4 characters.</span><br><span class="line"></span><br><span class="line"> Ignores all characters not listed below, those listed when their code</span><br><span class="line"> repeats, and everything after the soundex code reaches 4 characters.</span><br><span class="line"></span><br><span class="line"> Alpha character(s)        Soundex digit</span><br><span class="line"> ══════════════════════    ═════════════</span><br><span class="line"> B, F, P, V                1</span><br><span class="line"> C, G, J, K, Q, S, X, Z    2</span><br><span class="line"> D, T                      3</span><br><span class="line"> L                         4</span><br><span class="line"> M, N                      5</span><br><span class="line"> R                         6</span><br><span class="line"></span><br><span class="line"> SOUNDEX(&#34;Smith&#34;)  returns S530</span><br><span class="line"> SOUNDEX(&#34;Smythe&#34;) returns S530</span><br><span class="line"></span><br><span class="line"> SOUNDEX(&#34;Rettig&#34;)  returns R320</span><br><span class="line"> SOUNDEX(&#34;Reddick&#34;) returns R322</span><br><span class="line"></span><br><span class="line"> SOUNDEX(&#34;Silver&#34;) returns S416</span><br><span class="line"> SOUNDEX(&#34;Slevor&#34;) returns S416</span><br><span class="line"></span><br><span class="line"> * Both examples assume an open database file</span><br><span class="line"></span><br><span class="line"> * Create soundex index for the first time</span><br><span class="line"> INDEX ON SOUNDEX( Last_name ) TO Lname</span><br><span class="line"></span><br><span class="line"> * Search for user entry in indexed file</span><br><span class="line"> m_lastname = SPACE(25)</span><br><span class="line"> @...SAY &#34;Enter last name: &#34; GET m_lastname</span><br><span class="line"> READ</span><br><span class="line"> SEEK SOUNDEX( m_lastname )</span><br><span class="line"> IF FOUND()</span><br><span class="line">    @...SAY &#34;Is this the right record? (Y/N)&#34;</span><br><span class="line">    @...SAY &#34;Press Escape to return to the menu&#34;</span><br><span class="line">    DO WHILE SOUNDEX(m_lastname) ==;</span><br><span class="line">             SOUNDEX(Last_name);</span><br><span class="line">             .AND. (.NOT. EOF())</span><br><span class="line">       &lt;display fields from record&gt;</span><br><span class="line">       choice = INKEY(5000)</span><br><span class="line">       DO CASE</span><br><span class="line">          CASE CHR(choice) $ &#34;yY&#34;   &amp;&amp; right one</span><br><span class="line">             @...SAY    &amp;&amp; clear the user prompt</span><br><span class="line">             &lt;do appropriate routine&gt;</span><br><span class="line">          CASE choice = 27 .OR. choice = 0</span><br><span class="line">             RETURN</span><br><span class="line">          OTHERWISE</span><br><span class="line">             SKIP  &amp;&amp; next record with same code</span><br><span class="line">       ENDCASE</span><br><span class="line">    ENDDO</span><br><span class="line">    * Looked at all; none were chosen by user</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> If the first character in &lt;expC&gt; passed to SOUNDEX() is not an</span><br><span class="line"> alpha character, an empty 4-byte string is returned.  This causes</span><br><span class="line"> the record to be placed at the top of the index.</span><br><span class="line"></span><br><span class="line"> Hazard</span><br><span class="line">    Fails in some cases such as Rogers and Rodgers having</span><br><span class="line">    different codes but, in most cases, the soundex code greatly</span><br><span class="line">    increases the chance of finding a name in one of its disguises.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-71183.html">NDXSIZE()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tr-74079.html">NTXSIZE()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

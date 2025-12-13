@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Reference » Menus</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-454784.html">
+    <link rel="next" href="mrdebug-458562.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-454784.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-449056.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-458562.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Track Trace</span></span><br><span class="line"> Setting a track trace point.</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> The idea of a tracked variable is the ability to watch a particular instance</span><br><span class="line"> of a variable (by name) at a particular level, or activation, in the call</span><br><span class="line"> stack.</span><br><span class="line"></span><br><span class="line"> If you were at activation 1 (the base item in the call stack) and selected</span><br><span class="line"> the variable window, you can press &lt;Shift&gt;&lt;Alt&gt;&lt;T&gt; to mark a variable as a</span><br><span class="line"> tracked variable. This means that as long as the activation that the</span><br><span class="line"> variable belongs to is in the call stack then you can see this variable, no</span><br><span class="line"> matter how many other variables of the same name are between this activation</span><br><span class="line"> and the  current activation.  Even if there is a variable of the same name</span><br><span class="line"> in current activation, you will still see the one that you marked as a watch</span><br><span class="line"> track variable.</span><br><span class="line"></span><br><span class="line"> This is handy if you want to constantly view a variable from a particular</span><br><span class="line"> activation.</span><br><span class="line"></span><br><span class="line"> Another example for using a watch track variable would be if you were</span><br><span class="line"> passing variables by reference. You could view both of them together at the</span><br><span class="line"> same time, in the same window.  This way you can see both occurrences of the</span><br><span class="line"> same variable.  And so if you have forgotten to pass a value by reference</span><br><span class="line"> and it is re-assigned, you can instantly see what has happened.</span><br><span class="line"></span><br><span class="line"> Tracked variables are obtained in exactly the same way as variables in the</span><br><span class="line"> variable window, so you cannot track an expression.</span><br><span class="line"></span><br><span class="line"> Please Note: There is one side effect of using trace or watch track</span><br><span class="line">              variables.  Imagine the scenario:</span><br><span class="line"></span><br><span class="line">                            MAIN</span><br><span class="line">                             │</span><br><span class="line">                      ┌──────┴───────┐</span><br><span class="line">                      │              │</span><br><span class="line">                    FRED            JOHN</span><br><span class="line"></span><br><span class="line">               If the function FRED has a variable called &#39;cString&#39; and</span><br><span class="line">               so too does the function JOHN, then you watch the variable</span><br><span class="line">               in FRED.  You then go down a level and back up a level to</span><br><span class="line">               JOHN, will men that the &#39;cString&#39; in JOHN will be picked</span><br><span class="line">               up.  This is because tracked variables are located by their</span><br><span class="line">               position in the call stack.</span><br><span class="line"></span><br><span class="line"> Tracked variables may be either watched or traced.</span><br><span class="line"></span><br><span class="line"> You can edit a track variable in exactly the same manner as a variable in</span><br><span class="line"> the variable window, and it will only effect that instance of the variable.</span><br><span class="line"></span><br><span class="line"> You can identify a tracked variable by the following means:</span><br><span class="line"></span><br><span class="line">        cString &lt;vtp, Local, 1, C&gt; : &#34;Contents&#34;</span><br><span class="line">           │     ││     │    │  │</span><br><span class="line">           │     ││     │    │  └─ Type of Contents</span><br><span class="line">           │     ││     │    └──── Activation (From top of stack)</span><br><span class="line">           │     ││     └───────── Variable Type</span><br><span class="line">           │     │└─────────────── &#39;wp&#39; Watch Point, &#39;tp&#39; Trace Point</span><br><span class="line">           │     └──────────────── It&#39;s a Variable</span><br><span class="line">           └────────────────────── Variable Name</span><br><span class="line"></span><br><span class="line"> whereas a normal watch may look like this:</span><br><span class="line"></span><br><span class="line">        TestFunc() &lt;tp, C&gt; : &#34;Contents&#34;</span><br><span class="line">           │        │   │</span><br><span class="line">           │        │   └─ Type of Contents</span><br><span class="line">           │        └───── &#39;wp&#39; Watch Point, &#39;tp&#39; Trace Point</span><br><span class="line">           └────────────── Expression</span><br><span class="line"></span><br><span class="line"> Please Note: If Fast Run Mode is enabled, this option will not work.</span><br><span class="line"></span><br><span class="line"> The hot-key combination for this item is &lt;Shift&gt;&lt;Alt&gt;&lt;T&gt;.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-54521.html">Shift-Alt-T</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

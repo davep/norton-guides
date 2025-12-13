@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1745759.html">
+    <link rel="next" href="rbint-1748749.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1745759.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1712194.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1748749.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 1A Fn 82  - Pcmcia Socket Services V1.00 - Register Card Technology C</span>  [<span class="ngb">X</span>]</span><br><span class="line"></span><br><span class="line">   AH = 82h</span><br><span class="line">   DS:DX -&gt; callback routine (see #0585) or 0000h:0000h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AH destroyed</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = error code (see #0580)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the callback is invoked on a Write Multiple request with an unsupported</span><br><span class="line">     card technology type</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=81h&#34;PCMCIA&#34;,AH=94h</span><br><span class="line"></span><br><span class="line">(Table 0585)</span><br><span class="line">Values PCMCIA callback routine is invoked with:</span><br><span class="line">   ES:AX -&gt; Low-Level Socket Services Routines (see #0587)</span><br><span class="line">   BH = socket attributes (see #0586)</span><br><span class="line">   CX = number of bytes or words to write</span><br><span class="line">   DS:SI -&gt; data buffer to be written</span><br><span class="line">   DX:DI -&gt; 26-bit linear card address</span><br><span class="line">   BP = card technology type</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = error code (07h,0Ch,12h,14h) (see #0580)</span><br><span class="line"></span><br><span class="line">Bitfields for PCMCIA socket attributes:</span><br><span class="line">Bit(s) Description (Table 0586)</span><br><span class="line"> 7-4   reserved (0)</span><br><span class="line"> 3 packed buffer</span><br><span class="line"> 2 even bytes only (only valid if 1 set)</span><br><span class="line"> 1 data width (clear = byte, set = word)</span><br><span class="line"> 0 memory type (clear = common, set = attribute)</span><br><span class="line"></span><br><span class="line">Format of PCMCIA Low-Level Socket Services Routines:</span><br><span class="line">Offset Size    Description (Table 0587)</span><br><span class="line"> 00h   WORD    offset of Write Many routine (see #0588)</span><br><span class="line"> 02h   WORD    offset of Write One routine (see #0589)</span><br><span class="line"> 04h   WORD    offset of Read One routine (see #0590)</span><br><span class="line"> 06h   WORD    offset of Increment Offset routine (see #0591)</span><br><span class="line"> 08h   WORD    offset of Set Offset routine (see #0592)</span><br><span class="line"> 0Ah   WORD    offset of Get Status routine (see #0593)</span><br><span class="line"></span><br><span class="line">(Table 0588)</span><br><span class="line">Call Write Many routine with:</span><br><span class="line">   BH = socket attributes (see #0586)</span><br><span class="line">   CX = number of bytes or words to write</span><br><span class="line">   DS:SI -&gt; data to be written</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line"></span><br><span class="line">(Table 0589)</span><br><span class="line">Call Write One routine with:</span><br><span class="line">   AL/AX = data to be written</span><br><span class="line">   BH = socket attributes (see #0586)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line"></span><br><span class="line">(Table 0590)</span><br><span class="line">Call Read One routine with:</span><br><span class="line">   BH = socket attributes (see #0586)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AL/AX = data read</span><br><span class="line">   CF set on error</span><br><span class="line"></span><br><span class="line">(Table 0591)</span><br><span class="line">Call Increment Offset routine with:</span><br><span class="line">   BH = socket attributes (see #0586)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line"></span><br><span class="line">(Table 0592)</span><br><span class="line">Call Set Offset routine with:</span><br><span class="line">   DX:DI = new offset address</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line"></span><br><span class="line">(Table 0593)</span><br><span class="line">Call Get Status routine with:</span><br><span class="line">   nothing</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = current card status (see #0584)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2109355.html">
+    <link rel="next" href="rbint-2110666.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2109355.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2110666.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 25  - Dos 1+ - Set Interrupt Vector                            </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 25h</span><br><span class="line">   AL = interrupt number</span><br><span class="line">   DS:DX -&gt; new interrupt handler</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this function is preferred over direct modification of the interrupt</span><br><span class="line">     vector table</span><br><span class="line">   some DOS extenders place an API on this function, as it is not</span><br><span class="line">     directly meaningful in protected mode</span><br><span class="line">   under DR DOS 5.0+, this function does not use any of the DOS-internal</span><br><span class="line">     stacks and may thus be called at any time</span><br><span class="line">   Novell NetWare (except the new DOS Requester) monitors the offset of</span><br><span class="line">     any INT 24 set, and if equal to the value at startup, substitutes</span><br><span class="line">     its own handler to allow handling of network errors; this introduces</span><br><span class="line">     the potential bug that any program whose INT 24 handler offset</span><br><span class="line">     happens to be the same as COMMAND.COM&#39;s will not have its INT 24</span><br><span class="line">     handler installed</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=2501h,AH=35h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

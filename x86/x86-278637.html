@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » FPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-278317.html">
+    <link rel="next" href="x86-279599.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-278317.html">Previous</a></li>
+
+
+          
+
+<li><a href="x86-245307.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-279599.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">FPATAN          Partial arctangent                   Exceptions: U P</span></span><br><span class="line">                                                     (operands not checked)</span><br><span class="line"><span class="ngb">FPATAN</span>                                               C3 C2 C1 C0: ? ? * ?</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   ST ← arctan(ST(1)/ST)</span><br><span class="line">                pop ST</span><br><span class="line"></span><br><span class="line">    FPATAN computes the artangent of ST(1) divided by ST and puts the</span><br><span class="line">    result (in radians) in ST. It then pops the stack. The result has</span><br><span class="line">    the same sign as the operand from ST(1), and a magnitude less than</span><br><span class="line">    PI.</span><br><span class="line"></span><br><span class="line">    On the 8087 and 80287, ST and ST(1) must be within certain limits.</span><br><span class="line">    There is no restriction on ST(1) or ST on later FPUs.</span><br><span class="line"></span><br><span class="line">    You can also use FPATAN to compute other trigonometric functions.</span><br><span class="line">    For example, arcsin(x) is the arctangent of x divided by</span><br><span class="line">    sqrt(1 - x**2).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    The 80486+ check for interrupts while executing this instruction. It</span><br><span class="line">    will abort FPATAN to service an interrupt.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    D9 F3       FPATAN</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Timing</span></span><br><span class="line">    Operand       8087         287        387      486     Pentium</span><br><span class="line">    -           250-800      250-800    314-487  218-303   17-173</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-281255.html">FPTAN</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-279599.html">FPREM</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-315779.html">CC</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

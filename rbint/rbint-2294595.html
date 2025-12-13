@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2292581.html">
+    <link rel="next" href="rbint-2299911.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2292581.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2299911.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 4402  - Cd-rom Device Driver - Ioctl Input                     </span>  [<span class="ngb">d</span>]</span><br><span class="line"></span><br><span class="line">   AX = 4402h</span><br><span class="line">   BX = file handle referencing character device for CD-ROM driver</span><br><span class="line">   CX = number of bytes to read</span><br><span class="line">   DS:DX -&gt; control block (see #1136)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AX = number of bytes actually read</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (01h,05h,06h,0Dh) (see #1366 at AH=59h/BX=0000h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the data returned depends on the first byte of the control block</span><br><span class="line">     (two bytes for functions 01h/07h/0Bh, see #1136); the remainder of</span><br><span class="line">     the control block is filled by the driver</span><br><span class="line">   some device drivers support several subunits (that is more than one</span><br><span class="line">     drive) but it is not possible to distinguish between them with this</span><br><span class="line">     function; use INT 2F/AX=1510h or INT 2F/AX=0802h instead</span><br><span class="line">   under Windows95, the &#34;mscd$$$$&#34; device cannot be opened so you cannot</span><br><span class="line">     obtain the handle required by this function: use INT 2F/AX=1510h</span><br><span class="line">     or INT 2F/AX=0802h instead</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=4403h&#34;CD-ROM&#34;,INT 2F/AX=0802h,INT 2F/AX=1510h</span><br><span class="line"></span><br><span class="line">(Table 1135)</span><br><span class="line">Values for CD-ROM data being requested:</span><br><span class="line"> 00h   device driver header address</span><br><span class="line"> 01h   drive head location</span><br><span class="line"> 02h   reserved</span><br><span class="line"> 03h   error statistics</span><br><span class="line"> 04h   audio channel info</span><br><span class="line"> 05h   raw drive bytes (uninterpreted and device-specific)</span><br><span class="line"> 06h   device status</span><br><span class="line"> 07h   sector size</span><br><span class="line"> 08h   volume size</span><br><span class="line"> 09h   media change status</span><br><span class="line"> 0Ah   audio disk info</span><br><span class="line"> 0Bh   audio track info</span><br><span class="line"> 0Ch   audio Q-Channel info</span><br><span class="line"> 0Dh   audio sub-channel info</span><br><span class="line"> 0Eh   UPC code</span><br><span class="line"> 0Fh   audio status info</span><br><span class="line"></span><br><span class="line">Format of CD-ROM control block:</span><br><span class="line">Offset Size    Description (Table 1136)</span><br><span class="line"> 00h   BYTE    data being requested (see #1135)</span><br><span class="line">---function 00h---</span><br><span class="line"> 01h   DWORD   device driver header address (see also AH=52h,#1332)</span><br><span class="line">---function 01h---</span><br><span class="line"> 01h   BYTE    (call) addressing mode</span><br><span class="line">       00h HSG</span><br><span class="line">       01h Red Book</span><br><span class="line"> 02h   DWORD   current location of drive&#39;s head</span><br><span class="line">       logical sector number in HSG mode</span><br><span class="line">       frame/second/minute/unused in Red Book mode</span><br><span class="line">       (HSG sector = minute * 4500 + second * 75 + frame - 150)</span><br><span class="line">---function 03h---</span><br><span class="line"> 01h  N BYTEs  undefined as of 5 Aug 88 specification</span><br><span class="line">---function 04h---</span><br><span class="line"> 01h   BYTE    input channel (0-3) for output channel 0</span><br><span class="line"> 02h   BYTE    volume for output channel 0</span><br><span class="line"> 03h   BYTE    input channel (0-3) for output channel 1</span><br><span class="line"> 04h   BYTE    volume for output channel 1</span><br><span class="line"> 05h   BYTE    input channel (0-3) for output channel 2</span><br><span class="line"> 06h   BYTE    volume for output channel 2</span><br><span class="line"> 07h   BYTE    input channel (0-3) for output channel 3</span><br><span class="line"> 08h   BYTE    volume for output channel 3</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> output channels 0 and 1 are left and right, 2 and 3 are left prime and</span><br><span class="line">     right prime; a volume of 00h is off</span><br><span class="line">   the default setting is for each input channel to be assigned to the</span><br><span class="line">     same-numbered output channel at full (FFh) volume</span><br><span class="line">---function 05h---</span><br><span class="line"> 01h   BYTE    number of bytes read</span><br><span class="line"> 02h 128 BYTEs buffer for drive bytes</span><br><span class="line">---function 06h---</span><br><span class="line"> 01h   DWORD   device parameters (see #1137)</span><br><span class="line">---function 07h---</span><br><span class="line"> 01h   BYTE    (call) read mode</span><br><span class="line">       00h cooked</span><br><span class="line">       01h raw</span><br><span class="line"> 02h   WORD    (return) sector size in bytes</span><br><span class="line">---function 08h---</span><br><span class="line"> 01h   DWORD   volume size in sectors</span><br><span class="line">BUGS:  Aztech device driver v1.10 and v1.27 (at least) return the last sector</span><br><span class="line">     number, i.e. total number of sectors - 1</span><br><span class="line">   Windows95 returns the total number of sectors + 150 (see the Red Book</span><br><span class="line">     to HSG conversion formula at function 01h to understand why this</span><br><span class="line">     happens)</span><br><span class="line">---function 09h---</span><br><span class="line"> 01h   BYTE    media change status</span><br><span class="line">       00h don&#39;t know</span><br><span class="line">       01h media unchanged</span><br><span class="line">       FFh media has been changed</span><br><span class="line">---function 0Ah---</span><br><span class="line"> 01h   BYTE    lowest audio track number</span><br><span class="line"> 02h   BYTE    highest audio track number</span><br><span class="line"> 03h   DWORD   start address of lead-out track (Red Book format)</span><br><span class="line">--function 0Bh---</span><br><span class="line"> 01h   BYTE    (call) track number</span><br><span class="line"> 02h   DWORD   starting point of track (Red Book format)</span><br><span class="line"> 06h   BYTE    track control info</span><br><span class="line">       bits 15,14,12: track type (notice: bits not contiguous!)</span><br><span class="line">           000 two audio channels, no pre-emphasis</span><br><span class="line">           001 two audio channels with pre-emphasis</span><br><span class="line">           010 data track</span><br><span class="line">           100 four audio channels, no pre-emphasis</span><br><span class="line">           101 four audio channels with pre-emphasis</span><br><span class="line">           other reserved</span><br><span class="line">       bit 13: digital copy permitted</span><br><span class="line">---function 0Ch---</span><br><span class="line"> 01h   BYTE    CONTROL and ADR byte (as received from drive)</span><br><span class="line"> 02h   BYTE    track number</span><br><span class="line"> 03h   BYTE    point or index</span><br><span class="line"> 04h   BYTE    minute  \</span><br><span class="line"> 05h   BYTE    second   &gt; running time within track</span><br><span class="line"> 06h   BYTE    frame   /</span><br><span class="line"> 07h   BYTE    zero</span><br><span class="line"> 08h   BYTE    &#34;AMIN&#34; or &#34;PMIN&#34;     \</span><br><span class="line"> 09h   BYTE    &#34;ASEC&#34; or &#34;PSEC&#34;      &gt; running time on disk</span><br><span class="line"> 0Ah   BYTE    &#34;AFRAME&#34; or &#34;PFRAME&#34; /</span><br><span class="line">---function 0Dh---</span><br><span class="line"> 01h   DWORD   starting frame address (Red Book format)</span><br><span class="line"> 05h   DWORD   transfer address</span><br><span class="line"> 09h   DWORD   number of sectors to read</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  copies 96 bytes of sub-channel info per sector into buffer</span><br><span class="line">---function 0Eh---</span><br><span class="line"> 01h   BYTE    CONTROL and ADR byte</span><br><span class="line"> 02h  7 BYTEs  UPC/EAN code (13 BCD digits,low-order nybble of last byte is 0)</span><br><span class="line"> 09h   BYTE    zero</span><br><span class="line"> 0Ah   BYTE    &#34;AFRAME&#34;</span><br><span class="line">---function 0Fh---</span><br><span class="line"> ??? documentation not yet available</span><br><span class="line"> 01h   WORD    pause status (0000h not paused, 0001h paused)</span><br><span class="line"> 03h   DWORD   audio play start address</span><br><span class="line"> 07h   DWORD   ??? audio play length or end address</span><br><span class="line"></span><br><span class="line">Bitfields for CD-ROM device parameters:</span><br><span class="line">Bit(s) Description (Table 1137)</span><br><span class="line"> 0 door open</span><br><span class="line"> 1 door unlocked</span><br><span class="line"> 2 supports raw reading in addition to cooked</span><br><span class="line"> 3 writable</span><br><span class="line"> 4 can play audio/video tracks</span><br><span class="line"> 5 supports interleaving</span><br><span class="line"> 6 reserved</span><br><span class="line"> 7 supports prefetch requests</span><br><span class="line"> 8 supports audio channel control</span><br><span class="line"> 9 supports Red Book addressing in addition to HSG</span><br><span class="line"> 10    audio is playing</span><br><span class="line"> 11    no disk in drive</span><br><span class="line"> 12    supports R-W subchannels</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

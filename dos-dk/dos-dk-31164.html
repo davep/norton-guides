@@ -1,0 +1,130 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos-dk-style.css">
+    <title>DOS kommando database. » DOS » ANSI sekvenser</title>
+    <meta name="description" content="DOS kommando database.">
+    <link rel="prev" href="dos-dk-30850.html">
+    <link rel="next" href="dos-dk-32849.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos-dk-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos-dk-30850.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos-dk-30445.html">Up</a></li>
+
+
+          
+
+<li><a href="dos-dk-32849.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">DOS kommandoer</a></li>
+                  <li><a href="dos-dk-26653.html">BATCH kommandoer</a></li>
+                  <li><a href="dos-dk-28063.html">EDLIN kommandoer</a></li>
+                  <li><a href="dos-dk-30445.html">ANSI sekvenser</a></li>
+                  <li><a href="dos-dk-34858.html">Maskin konfigurering</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tabeller</li>
+              <li>
+                <ul>
+                  <li><a href="dos-dk-40068.html">ASCII tabel</a></li>
+                  
+                </ul>
+              </li>
+              <li>Andet</li>
+              <li>
+                <ul>
+                  <li><a href="dos-dk-45464.html">Program beskrivelser</a></li>
+                  <li><a href="dos-dk-50058.html">Litt. liste</a></li>
+                  <li><a href="dos-dk-54238.html">Ord forklaring</a></li>
+                  
+                </ul>
+              </li>
+              <li>LBT SOFT</li>
+              <li>
+                <ul>
+                  <li><a href="dos-dk-61465.html">LBT SOFT</a></li>
+                  <li><a href="dos-dk-61868.html">Andre programmer</a></li>
+                  <li><a href="dos-dk-67653.html">Copyright</a></li>
+                  <li><a href="dos-dk-68334.html">Tak til...</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">                        --- ANSI.SYS eksempler ---</span><br><span class="line"></span><br><span class="line">        Den nemmeste måde at lære ting på er efter min mening at se nogle</span><br><span class="line">        eksempler, og derefter pr¢ve selv.</span><br><span class="line">        I alle de efterf¢lgende eksempler laves der en lille fil der</span><br><span class="line">        indeholder de omtalte karakterer.   Denne fil kan laves med de</span><br><span class="line">        fleste teksteditorer (også EDLIN).</span><br><span class="line">        Efter at filen er lavet, kopieres den til skærmen med COPY</span><br><span class="line">        kommandoen.   Hvis vi antager at der er lavet en fil hved navn</span><br><span class="line">        TEST.ANS, og vi ¢nsker at kopiere den til skærmen, g¢res dette med</span><br><span class="line">        flg. kommando:</span><br><span class="line"></span><br><span class="line">                        &gt;COPY test.ans con</span><br><span class="line"></span><br><span class="line">        Flg. sekvens vil f.eks. udskifte det store A på tastaturet, med et</span><br><span class="line">        B:</span><br><span class="line">                        ESC[65;66p</span><br><span class="line"></span><br><span class="line">        ESC er ikke tegnene E, S og C, men ASCII tegnet 27.   Dette er</span><br><span class="line">        selvf¢lgeligt ikke særligt praktisk, og da også kun ment som et</span><br><span class="line">        eksempel.   Et mere anvendeligt eksempel er at placere $ tegnet</span><br><span class="line">        hvor det oprindeligt h¢rer hjemme over 4 tallet.:</span><br><span class="line"></span><br><span class="line">                        ESC[175;36p</span><br><span class="line"></span><br><span class="line">        Som i det forrige eksempel er den f¢rste kode den oprindelige, og</span><br><span class="line">        den anden er den nye kode.</span><br><span class="line"></span><br><span class="line">        ANSI escape sekvenser kan også benyttes til at programmere</span><br><span class="line">        funktionstasterne.   Se f.eks. f¢lgende definitioner:</span><br><span class="line"></span><br><span class="line">                        ESC[0;94;&#34;DIR C:&#34;;13p</span><br><span class="line">                        ESC[0;95;&#34;CHKDSK C:&#34;;13p</span><br><span class="line">                        ESC[0;96;&#34;FORMAT A:&#34;;13p</span><br><span class="line"></span><br><span class="line">        Disse tre eksempler programmerer &lt;CTRL&gt;+&lt;F1&gt; til &lt;CTRL&gt;+&lt;F3&gt; til at</span><br><span class="line">        indeholde nogle almindeligt brugte DOS kommandoer.</span><br><span class="line"></span><br><span class="line">        Det sidste eksempel på anvendelse af ANSI escape sekvenser jeg vil</span><br><span class="line">        vise her, har med farver at g¢re.   Man kan nemlig også ændre DOS</span><br><span class="line">        farver med escape sekvenser.   Flg. eksempel vil få DOS til at</span><br><span class="line">        fremstå som gule tegn på blå baggrund:</span><br><span class="line"></span><br><span class="line">                        ESC[1;33;44m</span><br><span class="line"></span><br><span class="line">        En komplet oversigt over ANSI escape sekvenser findes selvstændigt</span><br><span class="line">        under et andet menu punkt.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

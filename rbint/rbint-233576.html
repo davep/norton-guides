@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » CMOS</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-225462.html">
+    <link rel="next" href="rbint-241195.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-225462.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-180090.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-241195.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Accessing the CMOS  <span class="ngb">(Cont.)</span></span></span><br><span class="line"></span><br><span class="line">Bitfields for AMI (Saturn) parallel port:</span><br><span class="line">Bit(s) Description (Table C065)</span><br><span class="line"> 4 IRQ active high</span><br><span class="line"> 3 parallel port extended mode</span><br><span class="line"> 1-0   parallel port address</span><br><span class="line">----------R4C--------------------------------</span><br><span class="line">CMOS 4Ch - AMI (PicoPower) - CLOCK SPEEDS</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) clock speeds:</span><br><span class="line">Bit(s) Description (Table C066)</span><br><span class="line"> 7-6   back-to-back I/O delay</span><br><span class="line">   00  none</span><br><span class="line">   01  1 SYSCLK</span><br><span class="line">   10  2 SYSCLKs</span><br><span class="line">   11  3 SYSCLKs</span><br><span class="line"> 5-3   Turbo clock select</span><br><span class="line">   001 CLK2IN/3</span><br><span class="line">   010 CLK2IN/4</span><br><span class="line">   011 CLK2IN/5</span><br><span class="line">   100 CLK2IN/6</span><br><span class="line">   101 CLK2IN/7</span><br><span class="line">   110 CLK2IN/8</span><br><span class="line">   111 CLK2IN/9</span><br><span class="line"> 2-0   SYSCLK select (same as for Turbo clock select)</span><br><span class="line">----------R4D--------------------------------</span><br><span class="line">CMOS 4Dh - AMI (Saturn) - RESERVED</span><br><span class="line">----------R4D--------------------------------</span><br><span class="line">CMOS 4Dh - AMI (PicoPower) - MIDDLE BIOS</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  Middle BIOS is enabled if bit 1 set</span><br><span class="line">----------R4D--------------------------------</span><br><span class="line">CMOS 4Dh - AWARD - USER PASSWORD</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 4Eh&#34;AWARD&#34;,CMOS 1Ch&#34;AWARD&#34;</span><br><span class="line">----------R4E--------------------------------</span><br><span class="line">CMOS 4Eh - AMI (Saturn) - SERIAL PORT</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (Saturn) serial port:</span><br><span class="line">Bit(s) Description (Table C067)</span><br><span class="line"> 7-5   serial port 1</span><br><span class="line"> 4-2   serial port 2</span><br><span class="line"> 0 manual programming mode</span><br><span class="line">----------R4E--------------------------------</span><br><span class="line">CMOS 4Eh - AMI (PicoPower) - TURBO BUS VIDEO</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) Turbo Bus video:</span><br><span class="line">Bit(s) Description (Table C068)</span><br><span class="line"> 2 memory enabled</span><br><span class="line"> 1 I/O enabled</span><br><span class="line">----------R4E--------------------------------</span><br><span class="line">CMOS 4Eh - AWARD - USER PASSWORD</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 4Dh&#34;AWARD&#34;,CMOS 1Ch&#34;AWARD&#34;</span><br><span class="line">----------R50--------------------------------</span><br><span class="line">CMOS 50h - AWARD - PCI Bus Slot 1 Latency Timer 0-255 (default: 0)</span><br><span class="line">----------R51--------------------------------</span><br><span class="line">CMOS 51h - AMI - MEMORY ACCESS CONTROL</span><br><span class="line"></span><br><span class="line">Bitfields for AMI memory access control:</span><br><span class="line">Bit(s) Description (Table C069)</span><br><span class="line"> 7 Bank 0/1 RAS Precharge</span><br><span class="line"> 6 Bank 0/1 Access Wait States</span><br><span class="line"> 3-2   Bank 0/1 Wait States</span><br><span class="line">----------R51--------------------------------</span><br><span class="line">CMOS 51h - AWARD - PCI Bus Setup</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD PCI bus setup:</span><br><span class="line">Bit(s) Description (Table C070)</span><br><span class="line"> 7 PIRQ0# Interrupt Triggering</span><br><span class="line">   0 = Edge Sensitive,</span><br><span class="line">   1 = Level Sensitive</span><br><span class="line"> 6-2   ??? Default: all 1&#39;s</span><br><span class="line"> 0-1   Slot 1 IRQ Setup</span><br><span class="line">   00 = A-PIRQ0 (Default)</span><br><span class="line">   01 = B-PIRQ1</span><br><span class="line">   10 = C-PIRQ2</span><br><span class="line">   11 = D-PIRQ3</span><br><span class="line">----------R52--------------------------------</span><br><span class="line">CMOS 52h - ???</span><br><span class="line">----------R52--------------------------------</span><br><span class="line">CMOS 52h - AWARD - PCI Bus Slot 2 Latency Timer 0-255 (default: 0)</span><br><span class="line">----------R53--------------------------------</span><br><span class="line">CMOS 53h - AMI - MEMORY ACCESS CONTROL</span><br><span class="line"></span><br><span class="line">Bitfields for AMI memory access control:</span><br><span class="line">Bit(s) Description (Table C071)</span><br><span class="line"> 7 Bank 2/3 RAS Precharge</span><br><span class="line"> 6 Bank 2/3 Access Wait States</span><br><span class="line"> 3-2   Bank 2/3 Wait States</span><br><span class="line">----------R53--------------------------------</span><br><span class="line">CMOS 53h - AWARD - PCI Bus Setup</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD PCI bus setup:</span><br><span class="line">Bit(s) Description (Table C072)</span><br><span class="line"> 7 PIRQ1# Interrupt Triggering</span><br><span class="line">   0 = Edge Sensitive,</span><br><span class="line">   1 = Level Sensitive</span><br><span class="line"> 6-2   ??? Default: all 1&#39;s</span><br><span class="line"> 0-1   Slot 2 IRQ Setup</span><br><span class="line">   00 = A-PIRQ1 (Default)</span><br><span class="line">   01 = B-PIRQ2</span><br><span class="line">   10 = C-PIRQ3</span><br><span class="line">   11 = D-PIRQ0</span><br><span class="line">----------R547F------------------------------</span><br><span class="line">CMOS 54h-7Fh - ???</span><br><span class="line">----------R54--------------------------------</span><br><span class="line">CMOS 54h - AWARD - PCI Bus Slot 3 Latency Timer 0-255 (default: 0)</span><br><span class="line">----------R55--------------------------------</span><br><span class="line">CMOS 55h - AWARD - PCI Bus Setup</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD PCI bus setup:</span><br><span class="line">Bit(s) Description (Table C073)</span><br><span class="line"> 7 PIRQ2# Interrupt Triggering</span><br><span class="line">   0 = Edge Sensitive,</span><br><span class="line">   1 = Level Sensitive</span><br><span class="line"> 6-2   ??? Default: all 1&#39;s</span><br><span class="line"> 0-1   Slot 3 IRQ Setup</span><br><span class="line">   00 = A-PIRQ2 (Default)</span><br><span class="line">   01 = B-PIRQ3</span><br><span class="line">   10 = C-PIRQ0</span><br><span class="line">   11 = D-PIRQ1</span><br><span class="line">----------R56--------------------------------</span><br><span class="line">CMOS 56h - AWARD - ??? reserved for PCI Bus Slot 4 Latency Timer ???</span><br><span class="line">----------R57--------------------------------</span><br><span class="line">CMOS 57h - AWARD - PCI Bus Setup</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD PCI bus setup:</span><br><span class="line">Bit(s) Description (Table C074)</span><br><span class="line"> 7 PIRQ3# Interrupt Triggering</span><br><span class="line">   0 = Edge Sensitive,</span><br><span class="line">   1 = Level Sensitive</span><br><span class="line"> 6-0   ???not used Default: all 1&#39;s</span><br><span class="line">----------R58--------------------------------</span><br><span class="line">CMOS 58h - AWARD - ??? reserved for PCI Bus Slot 5 Latency Timer ???</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD PCI bus slot 5 latency timer:</span><br><span class="line">Bit(s) Description (Table C075)</span><br><span class="line"> 3 onboard CMD IDE Mode 3</span><br><span class="line">----------R59--------------------------------</span><br><span class="line">CMOS 59h - AWARD - ??? reserved for PCI Bus Setup ???</span><br><span class="line">----------R5A--------------------------------</span><br><span class="line">CMOS 5Ah - AWARD - PCI Bus IRQ Setup 1</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD PCI bus IRQ setup 1:</span><br><span class="line">Bit(s) Description (Table C076)</span><br><span class="line"> 4-7   PIRQ1# Interrupt Line (0=none, Bh=IRQ11, etc)</span><br><span class="line"> 0-3   PIRQ0# Interrupt Line     &#34;      &#34;        &#34;</span><br><span class="line">----------R5B--------------------------------</span><br><span class="line">CMOS 5Bh - AWARD - PCI Bus IRQ Setup 2</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD PCI bus IRQ setup 2:</span><br><span class="line">Bit(s) Description (Table C077)</span><br><span class="line"> 4-7   PIRQ3# Interrupt Line (0=none, Bh=IRQ11, etc)</span><br><span class="line"> 0-3   PIRQ2# Interrupt Line     &#34;      &#34;        &#34;</span><br><span class="line">----------R5C--------------------------------</span><br><span class="line">CMOS 5Ch - AMI (PicoPower) - LOW-SPEED CLOCK</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) low-speed clock select:</span><br><span class="line">Bit(s) Description (Table C078)</span><br><span class="line"> 2-0   low-speed clock divisor</span><br><span class="line">   000  /1</span><br><span class="line">   001  /2</span><br><span class="line">   010  /4</span><br><span class="line">----------R5C5F------------------------------</span><br><span class="line">CMOS 5Ch-5Fh - AWARD - ??? unused ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  Defaults to all FFh&#39;s.</span><br><span class="line">----------R5D--------------------------------</span><br><span class="line">CMOS 5Dh - AMI (PicoPower) - DOZE MODE</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) doze mode control:</span><br><span class="line">Bit(s) Description (Table C079)</span><br><span class="line"> 7 APM enabled</span><br><span class="line"> 6-4   doze mode CPU clock speed (see #C080)</span><br><span class="line"> 3 hotkey setup enabled</span><br><span class="line"> 2-0   &#34;sleep mode&#34; CPU CLK speed (see #C080)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #C082</span><br><span class="line"></span><br><span class="line">(Table C080)</span><br><span class="line">Values for AMI (PicoPower) CPU clock speeds:</span><br><span class="line"> 000   MAX</span><br><span class="line"> 001   MAX/2</span><br><span class="line"> 010   MAX/4</span><br><span class="line"> 011   MAX/8</span><br><span class="line"> 100   MAX/16</span><br><span class="line"> 101   MAX/32</span><br><span class="line"> 110   MAX/64</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #C079,#C082</span><br><span class="line">----------R5E--------------------------------</span><br><span class="line">CMOS 5Eh - AMI 1990 Hyundai super-NB368S notebook - ???</span><br><span class="line">   00h when values from bios defaults</span><br><span class="line">   34h when values from power up defaults</span><br><span class="line">----------R5E--------------------------------</span><br><span class="line">CMOS 5Eh - AWARD v4.50G - ?</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 5Fh&#34;AWARD&#34;</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD register 5Eh:</span><br><span class="line">Bit(s) Description (Table C081)</span><br><span class="line"> 0 user password enabled</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #C012</span><br><span class="line">----------R5E5F------------------------------</span><br><span class="line">CMOS 5Eh-5Fh - AMI (PicoPower) - CPU SPEEDS</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) CPU speeds:</span><br><span class="line">Bit(s) Description (Table C082)</span><br><span class="line"> 7 suspend warning beeps enabled</span><br><span class="line"> 6-4   &#34;full on&#34; CPU CLK speed</span><br><span class="line">   000 MAX</span><br><span class="line">   001 MAX/2</span><br><span class="line">   010 MAX/4</span><br><span class="line">   011 MAX/8</span><br><span class="line"> 1-0   power management mode</span><br><span class="line">   00 disabled</span><br><span class="line">   01 Auto</span><br><span class="line">   10 enabled</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #C079</span><br><span class="line">----------R5F--------------------------------</span><br><span class="line">CMOS 5Fh - AMI (PicoPower) - POWER MANAGEMENT TIMEOUTS</span><br><span class="line"></span><br><span class="line">Bitfields for AMI (PicoPower) power management timeouts:</span><br><span class="line">Bit(s) Description (Table C083)</span><br><span class="line"> 7 enable battery-low beeps</span><br><span class="line"> 5-3   SUSPEND timeout</span><br><span class="line">   000  disabled</span><br><span class="line">   001  5 minutes</span><br><span class="line">   010  10 minutes</span><br><span class="line">   011  15 minutes</span><br><span class="line">   100  20 minutes</span><br><span class="line">   101  30 minutes</span><br><span class="line">   110  40 minutes</span><br><span class="line">   111  60 minutes</span><br><span class="line"> 2-0   DOZE timeout</span><br><span class="line">   000  disabled</span><br><span class="line">   100  1 second</span><br><span class="line">   101  4 seconds</span><br><span class="line">   110  8 seconds</span><br><span class="line">   111  16 seconds</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #C085</span><br><span class="line">----------R5F--------------------------------</span><br><span class="line">CMOS 5Fh - AWARD v4.50G - USER PASSWORD CHECKSUM</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> CMOS 5Eh&#34;AWARD&#34;</span><br><span class="line">----------R60--------------------------------</span><br><span class="line">CMOS 60h - AWARD - POWER MANAGEMENT</span><br><span class="line"></span><br><span class="line">Bitfields for AWARD power management:</span><br><span class="line">Bit(s) Description (Table C084)</span><br><span class="line"> 7 ???</span><br><span class="line"> 6 Video Off Method</span><br><span class="line">   1  = V/H SYNC + Blank (default)</span><br><span class="line">   0  = Blank Screen</span><br><span class="line"> 4,5   Video Off Option</span><br><span class="line">   00 = Always On (default)</span><br><span class="line">   01 = Suspend -&gt; Off</span><br><span class="line">   10 = Suspend, Standby -&gt; Off</span><br><span class="line">   11 = All Modes -&gt; Off</span><br><span class="line"> 3 PM Control by APM (1=Yes)</span><br><span class="line"> 2 ???</span><br><span class="line"> 1,0   Power Management Setup</span><br><span class="line">   00  User Defined</span><br><span class="line">   01  Disabled (default)</span><br><span class="line">   10  Minimum Power Savings (40 Minutes for all events)</span><br><span class="line">   11  Maximum Power Savings (20 Seconds for all events)</span><br><span class="line">----------R60--------------------------------</span><br><span class="line">CMOS 60h - AMI (PicoPower) - SLEEP TIMEOUT</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

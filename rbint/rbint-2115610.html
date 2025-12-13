@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2115192.html">
+    <link rel="next" href="rbint-2116744.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2115192.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2116744.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 250D  P - Phar Lap 386/dos-extender - Get Real-mode Link Inform</span>  [<span class="ngb">E</span>]</span><br><span class="line"></span><br><span class="line">   AX = 250Dh</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear</span><br><span class="line">   EAX = CS:IP of real-mode callback procedure (see #1046) that will</span><br><span class="line">         call through from real mode to a protected-mode routine</span><br><span class="line">   EBX = 32-bit real-mode address of intermode call data buffer</span><br><span class="line">   ECX = size in bytes of intermode call data buffer</span><br><span class="line">   ES:EDX = protected-mode address of intermode call data buffer</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this function is also supported by FlashTek X-32VM</span><br><span class="line">   X-32VM guarantees the intermode buffer to be at least 4 KB</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=250Eh</span><br><span class="line"></span><br><span class="line">(Table 1046)</span><br><span class="line">Call Phar Lap real-mode callback with:</span><br><span class="line">   STACK:  DWORD   offset to protected-mode code</span><br><span class="line">       WORD    placeholder for protected-mode CS</span><br><span class="line">       DWORD   pointer to selector structure (see #1047)</span><br><span class="line">           or 0000h:0000h for defaults</span><br><span class="line">       var parameters for protected-mode procedure</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> via FAR return</span><br><span class="line"></span><br><span class="line">Format of Phar Lap selector structure:</span><br><span class="line">Offset Size    Description (Table 1047)</span><br><span class="line"> 00h   WORD    protected-mode GS selector</span><br><span class="line"> 02h   WORD    protected-mode FS selector</span><br><span class="line"> 04h   WORD    protected-mode ES selector</span><br><span class="line"> 06h   WORD    protected-mode DS selector</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

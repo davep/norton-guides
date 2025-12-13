@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5104816.html">
+    <link rel="next" href="rbint-5106243.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5104816.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5106243.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 61 Fn 0004  - Banyan Vines - File Service Control                    </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0004h</span><br><span class="line">   DS:DX -&gt; request block (see #3072)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status (see #3071)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> This service is handled by the redirector</span><br><span class="line">   The request dispatch table contains dummy entries for requests 0Ah,</span><br><span class="line">     0Dh, 15h, 19h, and 1Ah, which always return error 0033h (invalid</span><br><span class="line">     request ID)</span><br><span class="line"></span><br><span class="line">(Table 3071)</span><br><span class="line">Values for Banyan VINES file service control status code:</span><br><span class="line"> 0000h successful</span><br><span class="line"> 0002h file not found</span><br><span class="line"> 0003h path not found</span><br><span class="line"> 000Fh invalid drive</span><br><span class="line"> 0015h drive not ready</span><br><span class="line"> 0033h invalid request ID</span><br><span class="line"> 0034h drive not connected</span><br><span class="line"> 0037h drive number out of range</span><br><span class="line"> 0038h drive number not available</span><br><span class="line"> 003Ah invalid operation</span><br><span class="line"> 0055h drive already connected</span><br><span class="line"> 0057h invalid number of entries</span><br><span class="line"></span><br><span class="line">Format of Banyan VINES file service request block:</span><br><span class="line">Offset Size    Description (Table 3072)</span><br><span class="line"> 00h   WORD    request ID (1..28)</span><br><span class="line"> 02h  n BYTES  additional parameters and result buffer</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

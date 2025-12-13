@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3636522.html">
+    <link rel="next" href="rbint-3637608.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3636522.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3558542.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3637608.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 1127  - Netware 4.0 - Remote File Copy                         </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 1127h</span><br><span class="line">   BX = 4E57h (&#39;NW&#39;) (signature identifying this as a NetWare call)</span><br><span class="line">   SI = source file handle</span><br><span class="line">   DI = destination file handle</span><br><span class="line">   DX:CX = number of bytes to copy, starting at current file position</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (05h,06h,0Bh,11h,3Bh) (see #1366)</span><br><span class="line">   DX:CX = number of bytes successfully copied (file position updated)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this is the only call which may be made directly to the NetWare</span><br><span class="line">     redirector from an application</span><br><span class="line">   COMMAND.COM&#39;s COPY and DOS&#39;s XCOPY reportedly call INT 21/AX=1127h in</span><br><span class="line">     order to speed up copies between files on the same network server;</span><br><span class="line">     if error code 11h (not same device) is returned, the copy is</span><br><span class="line">     performed in the usual manner.  However, no such calls appear to</span><br><span class="line">     be present in MS-DOS 6.22.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

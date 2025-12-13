@@ -1,0 +1,169 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Hardware » 8253-5 Programmable Interval Timer</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">8253-5 Programmable Interval Timer</span></span><br><span class="line"></span><br><span class="line">        The 8253-5 features three independent programmable timers</span><br><span class="line">        with several modes of timing operations available. See the</span><br><span class="line">        <span class="ngb">Intel Microprosessor and Peripheral Handbook</span>, for</span><br><span class="line">        specifications.</span><br><span class="line"></span><br><span class="line">        The three timer is used this way:</span><br><span class="line"></span><br><span class="line">                Channel      Used for</span><br><span class="line">                ────────────────────────────────────</span><br><span class="line">                   0         System timer (INT 8)</span><br><span class="line">                   1         Memory refresh</span><br><span class="line">                   2         Casette and speaker</span><br><span class="line"></span><br><span class="line">        The 8253 clock input of 1,193,180 Hz is derived from the</span><br><span class="line">        4,772,727 Hz systen clock which is obtained from the system</span><br><span class="line">        board 14,3178 MHz crystal. This frequency results in an</span><br><span class="line">        interrupt frequency ranging between a high of every 838 ns</span><br><span class="line">        (corresponding to one bus cycle, or four 8088 cycles) to a</span><br><span class="line">        low of every 54.925493 ms depending on the 1-65536 divisor</span><br><span class="line">        selected. Use a divisor of 0 after 65535 to obtain 65536.</span><br><span class="line">        Set the mode bits in port 43h to load the LSB/MSB divisor</span><br><span class="line">        for the desired channel.</span><br><span class="line"></span><br><span class="line">        Load the divisor into the port for that channel (40h-42h) to</span><br><span class="line">        set the interrupt rate. To calculate the divisor, divide</span><br><span class="line">        1,193,180 by the desired frequency. Or, the frequency per second</span><br><span class="line">        equals 1,193,180 divided by the divisor. For example, MS-BASIC</span><br><span class="line">        uses a divisor of 16,384 to obtain 1,193,180/16,384=72.826</span><br><span class="line">        interrupts per second (an interrupt every 13.73 ms) to time</span><br><span class="line">        its music functions.</span><br><span class="line"></span><br><span class="line">        Timer channel current contents may be obtained without</span><br><span class="line">        affecting the current countdown in that channel by latching</span><br><span class="line">        the channel using port 43h, then reading LSB/MSB. <span class="ngb">Both LSB</span></span><br><span class="line">        <span class="ngb">and MSB most be read to insure proper operation.</span></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="int-167144.html">040</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-167736.html">041</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-168064.html">042</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-168235.html">043</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="int-11022.html">INT 08h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

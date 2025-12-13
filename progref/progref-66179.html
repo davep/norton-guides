@@ -1,0 +1,141 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="progref-style.css">
+    <title>Programmers Reference 0.02b » Low Level » I/O Addresses</title>
+    <meta name="description" content="Programmers Reference 0.02b">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="progref-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Low Level</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">BIOS Interrupts</a></li>
+                  <li><a href="progref-27119.html">Low Memory Usage</a></li>
+                  <li><a href="progref-66179.html">I/O Addresses</a></li>
+                  <li><a href="progref-69857.html">Device Adapters</a></li>
+                  <li><a href="progref-71828.html">System ID-Byte</a></li>
+                  <li><a href="progref-72459.html">POST</a></li>
+                  <li><a href="progref-73742.html">Flags Register</a></li>
+                  
+                </ul>
+              </li>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="progref-75576.html">Functions</a></li>
+                  <li><a href="progref-202334.html">Interrupts</a></li>
+                  <li><a href="progref-217806.html">Error Codes</a></li>
+                  <li><a href="progref-221299.html">File Attributes</a></li>
+                  <li><a href="progref-223104.html">Standard Handles</a></li>
+                  <li><a href="progref-225061.html">PSP Description</a></li>
+                  <li><a href="progref-227007.html">FCB Fields</a></li>
+                  
+                </ul>
+              </li>
+              <li>Xtensions</li>
+              <li>
+                <ul>
+                  <li><a href="progref-229144.html">Mouse Driver</a></li>
+                  <li><a href="progref-251183.html">EMS Driver</a></li>
+                  <li><a href="progref-268819.html">Fossil Driver</a></li>
+                  <li><a href="progref-292076.html">NetBios</a></li>
+                  <li><a href="progref-292575.html">Windows</a></li>
+                  
+                </ul>
+              </li>
+              <li>Misc.</li>
+              <li>
+                <ul>
+                  <li><a href="progref-293074.html">ASCII Chart</a></li>
+                  <li><a href="progref-298047.html">Line Drawing Chars</a></li>
+                  <li><a href="progref-298869.html">Special Characters</a></li>
+                  <li><a href="progref-300756.html">Color Chart</a></li>
+                  <li><a href="progref-302236.html">Keyboard Codes</a></li>
+                  <li><a href="progref-314224.html">Credits</a></li>
+                  <li><a href="progref-314503.html">Future additions</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><a class="line" href="progref-458440.html">000h - 00Fh       DMA 8237A</a><br><a class="line" href="progref-458490.html">020h - 021h       Interupt controller 8259</a><br><a class="line" href="progref-458917.html">040h - 043h       Timer 8253</a><br><a class="line" href="progref-459637.html">060h - 063h       PIO 8255</a><br><span class="line">064h              (AT) Keyboard Command Port</span><br><span class="line">066h - 067h       (Some PC&#39;s) Configuration Switches</span><br><a class="line" href="progref-68351.html">070h - 071        (AT) RealTime Clock and CMOS-RAM, MC146818</a><br><span class="line">080h - 083h       DMA Page registers (AT - 087h)</span><br><span class="line">08Eh              (AT) Battery Test (bits 6 &amp; 7)</span><br><span class="line">0A0h              (PC) NMI enable register</span><br><span class="line">0A0h - 0A1h       (AT) Slave Interupt Controller, 8259</span><br><span class="line">0C0h - 0CFh       (AT) DMA-Controller for 16-bit transfers, 8237A</span><br><span class="line">0F0h - 0FFh       Math CO-Processor, 80x87</span><br><span class="line">     - 1FFh       Reserved</span><br><span class="line">200h - 20Fh       Game control</span><br><a class="line" href="progref-69069.html">210h - 217h       Expansion unit</a><br><span class="line">220h - 24Fh       Reserved</span><br><a class="line" href="progref-69154.html">258h - 259h       Peel development system (PDS)</a><br><span class="line">268h - 26Fh       Copy II PC deluxe option board (1)</span><br><a class="line" href="progref-460363.html">278h - 27Fh       LPT 2</a><br><span class="line">2B0h - 2DFh       Alternate EGA</span><br><a class="line" href="progref-461069.html">2E0h - 2EFh       PCANET</a><br><a class="line" href="progref-461568.html">2E1h              GPIB adapter #0</a><br><a class="line" href="progref-462067.html">2E2h &amp; 2E3h       Data acquisition #0</a><br><a class="line" href="progref-462566.html">2E8h - 2EFh       COM 4</a><br><span class="line">2F0h - 2F7h       Reserved</span><br><a class="line" href="progref-462985.html">2F8h - 2FFh       COM 2</a><br><span class="line">300h - 31Fh       Prototype card</span><br><a class="line" href="progref-69261.html">300h - 303h       PC-I/O Port #1</a><br><a class="line" href="progref-69386.html">320h - 32Fh       Hard disk adapter</a><br><a class="line" href="progref-463404.html">348h - 357h       DCA 3278</a><br><a class="line" href="progref-463903.html">360h - 367h       PC Network (low)</a><br><a class="line" href="progref-464402.html">368h - 36Fh       PC Network (high)</a><br><a class="line" href="progref-464901.html">378h - 37Fh       LPT 1</a><br><a class="line" href="progref-465607.html">380h - 389h       BISYNC adapter #2</a><br><a class="line" href="progref-466106.html">380h - 38Fh       SDLC communications adapter</a><br><a class="line" href="progref-466605.html">390h - 393h       Cluster adapter #0</a><br><a class="line" href="progref-467104.html">3A0h - 3A9h       BISYNC adapter #1</a><br><span class="line">3AAh - 3AFh       Reserved</span><br><a class="line" href="progref-467603.html">3B0h - 3BFh       Monochrome display adapter and printer</a><br><a class="line" href="progref-469837.html">3C0h - 3CFh       EGA</a><br><a class="line" href="progref-484249.html">3D0h - 3DFh       Color graphics adapter</a><br><a class="line" href="progref-485838.html">3E8h - 3EFh       COM 3</a><br><a class="line" href="progref-69715.html">3F0h - 3F7h       Floppy disk adapter</a><br><a class="line" href="progref-486257.html">3F8h - 3FFh       COM 1</a><br><span class="line"></span><br><span class="line">6E2h &amp; 6E3h       Data acquisition #1</span><br><span class="line">790h - 793h       Cluster adaptor #1</span><br><span class="line">AE2h &amp; AE3h       Data acquisition #2</span><br><span class="line">B90h - B93h       Cluster adaptor #2</span><br><span class="line">EE2h &amp; EE3h       Data acquisition #3</span><br><span class="line">1390h - 1393h     Cluster adaptor #3</span><br><span class="line">22E1h             GPIB adaptor #1</span><br><span class="line">2390h - 2393h     Cluster adaptor #4</span><br><span class="line">42E1h             GPIB adaptor #2</span><br><span class="line">62E1h             GPIB adaptor #3</span><br><span class="line">82E1h             GPIB adaptor #4</span><br><span class="line">A2E1h             GPIB adaptor #5</span><br><span class="line">C2E1h             GPIB adaptor #6</span><br><span class="line">E2E1h             GPIB adaptor #7</span><br></pre>
+  
+  
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

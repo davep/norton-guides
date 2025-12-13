@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-267522.html">
+    <link rel="next" href="rbint-269967.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-267522.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-269967.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Function:</span></span><br><span class="line"></span><br><span class="line">Breakpoints are used in the process of debugging programs.</span><br><span class="line">On the 386+, debug registers may be used instead of a one byte opcode.</span><br><span class="line"></span><br><span class="line">386 specific debugging bugs occurring on some 386s:</span><br><span class="line">Breakpoints are missed under the following conditions:</span><br><span class="line"></span><br><span class="line">- A data breakpoint set to a mem16 operand of a VERR, VERW, LSL or LAR while</span><br><span class="line">  the segment with selector at mem16 is not accessible.</span><br><span class="line"></span><br><span class="line">- A data breakpoint is set to the write operand of a REP MOVS instruction</span><br><span class="line">  and the read cycle of the next iteration generates a fault.</span><br><span class="line"></span><br><span class="line">- A code or data breakpoint is set on the instruction following a MOV or</span><br><span class="line">  POP to SS while the instruction needs more than two clocks.</span><br><span class="line">  (see &lt;MOV&gt; and &lt;POP&gt;)</span><br><span class="line"></span><br><span class="line">Random breakpoints may occur under the following condition:</span><br><span class="line"></span><br><span class="line">- Breakpoints set using debug registers DR0 to DR4 may produce spurious</span><br><span class="line">  breaks if breakpoints were enabled before a MOV from CR3, TR6 or TR7 took</span><br><span class="line">  place. These unreliable breaks may continue to occur until the next JMP</span><br><span class="line">  instruction is executed. A workaround would be to:</span><br><span class="line">  = disable breakpoints before any MOV from CR3, TR6 or TR7</span><br><span class="line">  = MOV the values</span><br><span class="line">  = perform a JMP</span><br><span class="line">  = enable breakpoints.</span><br><span class="line"></span><br><span class="line">Single stepping is not disabled in the handler for a TSS fault if the code</span><br><span class="line">that caused the fault was being single-stepped and a task gate was used to</span><br><span class="line">handle the fault.</span><br><span class="line"></span><br><span class="line">486 specific debugging bugs occurring on some 486s:</span><br><span class="line"></span><br><span class="line">A code breakpoint set on control transfer instructions (like CALL, RET, JMP</span><br><span class="line">etc.) will clear the lowest four bits of DR6 when the breakpoint is taken.</span><br><span class="line"></span><br><span class="line">A code breakpoint set on an instruction immediately following a RETN, JCXZ,</span><br><span class="line">intrasegment indirect CALL (CALL word ptr [bx] for example) or</span><br><span class="line">intrasegment indirect JMP (JMP word ptr [bx] for example) will always be</span><br><span class="line">satisfied, even when the control instruction is taken. A breakpoint set at</span><br><span class="line">the target of these control transfer instructions will not be taken,</span><br><span class="line">even if control is transferred to them, because the buggy breakpoint sets</span><br><span class="line">the RF (Resume Flag). There is said to be no workaround other than to avoid</span><br><span class="line">the situation, however, coding a nop after the control transfer instruction</span><br><span class="line">and setting the breakpoint to the instruction following the nop may,</span><br><span class="line">according to my view, very well solve the problem. (untested)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">BRKEM   Break for emulation (NEC V20/30 only)</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

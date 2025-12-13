@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-402632.html">
+    <link rel="next" href="rbint-404579.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-402632.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-372526.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-404579.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 0C  - Ibm System 36/38 Workstation Emulation - Api Pointer           </span>  [<span class="ngb">I</span>]</span><br><span class="line"></span><br><span class="line"><span class="ngb">Desc:</span>  the IBM System 36/38 emulator may be invoked through a private API,</span><br><span class="line">     whose entry point address (see #0006) is offset 100h in the segment</span><br><span class="line">     pointed at by this vector</span><br><span class="line"></span><br><span class="line">(Table 0006)</span><br><span class="line">Call the System 36/38 emulator API entry point with:</span><br><span class="line">   AH = function</span><br><span class="line">       03h update screen</span><br><span class="line">       05h select next session</span><br><span class="line">       AL = session number (00h-03h)</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> AL = session type code</span><br><span class="line">               00h not active</span><br><span class="line">               01h display session</span><br><span class="line">               02h printer session</span><br><span class="line">               FEh invalid session number</span><br><span class="line">           DS = requested session&#39;s data segment (0 if not active)</span><br><span class="line">               (see #0007)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> ???</span><br><span class="line"></span><br><span class="line">Format of System 36/38 emulator&#39;s data area:</span><br><span class="line">Offset Size    Description (Table 0007)</span><br><span class="line">13Eh   BYTE    bit flags for status line indicators turned on since this byte</span><br><span class="line">       last zerod</span><br><span class="line">13Fh   BYTE    bit flags for status line indicators turned off since this</span><br><span class="line">       byte last set to FFh</span><br><span class="line">140h   WORD    offset of EBCDIC to ASCII translation</span><br><span class="line">146h   WORD    offset of EBCDIC screen buffer</span><br><span class="line">148h   WORD    offset of EC (engineering change) level signature</span><br><span class="line">150h   BYTE    &#34;KEYI&#34;</span><br><span class="line">151h   BYTE    5250 key scan code to be sent to remote</span><br><span class="line">15Bh   BYTE    &#34;SYSAV&#34;</span><br><span class="line">15Dh   BYTE    5250 cursor column</span><br><span class="line">15Eh   BYTE    5250 cursor row</span><br><span class="line">167h   BYTE    &#34;DVCTAD&#34;</span><br><span class="line">178h   BYTE    &#34;FLAGS&#34;</span><br><span class="line">184h   BYTE    &#34;SESSNOAD&#34;</span><br><span class="line">193h   BYTE    &#34;STNAD&#34;</span><br><span class="line">198h   BYTE    &#34;NSDS&#34;</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  offsets are from the interrupt handler&#39;s segment</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

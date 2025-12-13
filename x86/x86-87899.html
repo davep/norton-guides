@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-85987.html">
+    <link rel="next" href="x86-89671.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-85987.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-89671.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">LOOP            Loop on Count                        Flags: Not altered</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">LOOP</span> location                   Loop</span><br><span class="line"><span class="ngb">LOOPE</span>/<span class="ngb">LOOPZ</span> location            Loop While Equal/Zero</span><br><span class="line"><span class="ngb">LOOPNE</span>/<span class="ngb">LOOPNZ</span> location          Loop While Not Equal/Zero</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span></span><br><span class="line">        ; loop              ; loope                 ; loopne</span><br><span class="line">        eCX ← eCX - 1       eCX ← eCX - 1           eCX ← eCX - 1</span><br><span class="line">        if eCX &lt;&gt; 0         if eCX &lt;&gt; 0 AND ZF=1    if eCX &lt;&gt; 0 AND ZF=0</span><br><span class="line">           JMP location        JMP location            JMP location</span><br><span class="line">        endif               endif                   endif</span><br><span class="line"></span><br><span class="line">    The LOOP instructions are conditional jumps that use the count</span><br><span class="line">    value in eCX (LOOPE/LOOPNE also use the zero flag) to determine</span><br><span class="line">    whether a code loop should be continued or terminated.</span><br><span class="line"></span><br><span class="line">    All LOOPs automatically decrement eCX and terminate when eCX = 0.</span><br><span class="line">    The operand, a short code label, must be in the range -128 to +127</span><br><span class="line">    bytes from the next instruction.</span><br><span class="line"></span><br><span class="line">    If the address-size attribute is 16 bits, the CX register is used</span><br><span class="line">    as the count register; otherwise, ECX is used (80386+).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Example:        sub     ax,ax</span><br><span class="line">                        jcxz    skip    ; Don&#39;t execute 65,535 times</span><br><span class="line">                    again:</span><br><span class="line">                        add     ax,[bx]</span><br><span class="line">                        stosw</span><br><span class="line">                        inc     bx</span><br><span class="line">                        inc     bx</span><br><span class="line">                        loop    again</span><br><span class="line">                        mov     [looped],1</span><br><span class="line">                    skip:</span><br><span class="line"></span><br><span class="line">        Example:        mov     cx,127</span><br><span class="line">                        mov     si,0081h</span><br><span class="line">                    blanks:</span><br><span class="line">                        lodsb</span><br><span class="line">                        cmp     al,20h</span><br><span class="line">                        loopz   blanks</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    Some assemblers support the following LOOP extensions that force</span><br><span class="line">    the use of CX (loopw forms) or ECX (loopd forms) regardless of the</span><br><span class="line">    code segment&#39;s size attribute (80386+):</span><br><span class="line"></span><br><span class="line">        loopw,loopwe,loopwne,loopwnz,loopwz</span><br><span class="line">        loopd,loopde,loopdne,loopdnz,loopdz</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    E0 cb       LOOPNE rel8</span><br><span class="line">    E1 cb       LOOPE rel8</span><br><span class="line">    E2 cb       LOOP rel8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">LOOP  short       2     5/17    5/15    4/8+m   11+m    6/7     5/6  NP</span><br><span class="line">LOOPE short       2     6/18    5/16    4/8     11+m    6/9     7/8  NP</span><br><span class="line">LOOPNE short      2     5/19    5/16    4/8     11+m    6/9     7/8  NP</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-69579.html">JCXZ</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-44687.html">DEC</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-179453.html">Flags</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

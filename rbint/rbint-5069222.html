@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-5066938.html">
+    <link rel="next" href="rbint-5071465.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-5066938.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-5037937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-5071465.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 61 Fn 0001  - Banyan Vines - &#34;sosend&#34; - Initiate Output Event        </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 0001h subfn 0002h</span><br><span class="line">   DS:DX -&gt; communications control block (function 0002h) (see #3000)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status (0000h-0002h,0097h,009Bh-009Dh,00A2h,00A3h,00B1h)</span><br><span class="line">       (see #2996)</span><br><span class="line">Range: INT 60h to INT 66h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  The Banyan interrupt handler is identified by the string &#34;BANV&#34; in</span><br><span class="line">     the four bytes immediately preceding the interrupt handler</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=0001h/SF=0001h,AX=0001h/SF=0005h</span><br><span class="line"></span><br><span class="line">Format of VINES control block for subfunction 0002h:</span><br><span class="line">Offset Size    Description (Table 3000)</span><br><span class="line"> 00h   WORD    0002h</span><br><span class="line"> 02h   WORD    pointer to argument block (see #3001)</span><br><span class="line"> 04h   WORD    error return code (0000h,0097h,00A2h,00A3h,00A5h,00A6h,00B1h)</span><br><span class="line">       (see #2996)</span><br><span class="line"> 06h  4 BYTEs  reserved</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3005</span><br><span class="line"></span><br><span class="line">Format of VINES argument block for subfunction 0002h:</span><br><span class="line">Offset Size    Description (Table 3001)</span><br><span class="line"> 00h   WORD    routine metric</span><br><span class="line"> 02h   WORD    error return code</span><br><span class="line"> 04h   WORD    socket identifier</span><br><span class="line"> 06h   WORD    pointer to send buffer (see #3003)</span><br><span class="line"> 08h   WORD    length of send buffer</span><br><span class="line"> 0Ah   WORD    message request flags (see #3002)</span><br><span class="line"> 0Ch 16 BYTEs  socket address (see #3004)</span><br><span class="line"> 1Ch   WORD    timeout value in multiples of 200ms</span><br><span class="line"> 1Eh   WORD    connection identifier</span><br><span class="line"> 20h   WORD    type of request</span><br><span class="line">       0001h send message</span><br><span class="line">       0002h establish a virtual connection</span><br><span class="line">       0003h terminate a virtual connection</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3000,#3006</span><br><span class="line"></span><br><span class="line">Bitfields for message request flags:</span><br><span class="line">Bit(s) Description (Table 3002)</span><br><span class="line"> 0 async request</span><br><span class="line"> 1 reliable message</span><br><span class="line"> 2 flush receive buffer on overflow</span><br><span class="line"> 3 end of user message received</span><br><span class="line"> 4 vectored request (if set, send buffer contains buffer descriptors)</span><br><span class="line"> 5 connection-specific receive</span><br><span class="line"> 6 change to connection-specific receive mode</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3001,#3006</span><br><span class="line"></span><br><span class="line">Format of buffer descriptor:</span><br><span class="line">Offset Size    Description (Table 3003)</span><br><span class="line"> 00h   WORD    data segment</span><br><span class="line"> 02h   WORD    buffer pointer</span><br><span class="line"> 04h   WORD    buffer length</span><br><span class="line"> 06h   WORD    character count</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3001</span><br><span class="line"></span><br><span class="line">Format of VINES socket address for unreliable datagrams:</span><br><span class="line">Offset Size    Description (Table 3004)</span><br><span class="line"> 00h   WORD    0003h     address family</span><br><span class="line"> 02h   DWORD   FFFFFFFFh network number</span><br><span class="line"> 06h   WORD    FFFFh     subnet number</span><br><span class="line"> 08h   WORD          local port number</span><br><span class="line"> 0Ah   BYTE    00h-0Fh   hop count</span><br><span class="line"> 0Bh  5 BYTEs  0000h     filler</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2999</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

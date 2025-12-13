@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3017244.html">
+    <link rel="next" href="rbint-3019802.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3017244.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3002060.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3019802.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn E3  - Novell Netware - File Server - Get File System Statistics</span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = E3h subfn D4h</span><br><span class="line">   DS:SI -&gt; request buffer (see #1715)</span><br><span class="line">   ES:DI -&gt; reply buffer (see #1716)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status (00h,C6h) (see #1713)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this function is supported by Advanced NetWare 2.1+</span><br><span class="line">   the calling workstation must have console operator privileges</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=E3h/SF=0Eh,AH=E3h/SF=C8h,AH=E3h/SF=D9h,AH=E3h/SF=E7h,AH=E3h/SF=E8h</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=F217h/SF=D4h</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Get File System Statistics&#34; request buffer:</span><br><span class="line">Offset Size    Description (Table 1715)</span><br><span class="line"> 00h   WORD    0001h (length of following data)</span><br><span class="line"> 02h   BYTE    D4h (subfunction &#34;Get File System Statistics&#34;)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1716,#1915 at AX=F217h/SF=D4h</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Get File System Statistics&#34; reply buffer:</span><br><span class="line">Offset Size    Description (Table 1716)</span><br><span class="line"> 00h   WORD    (call) 0028h (size of following results buffer)</span><br><span class="line"> 02h   DWORD   clock ticks since system started</span><br><span class="line"> 06h   WORD    maximum open files set by configuration</span><br><span class="line"> 08h   WORD    maximum files open concurrently</span><br><span class="line"> 0Ah   WORD    current number of open files</span><br><span class="line"> 0Ch   DWORD   total files opened</span><br><span class="line"> 10h   DWORD   total file read requests</span><br><span class="line"> 14h   DWORD   total file write requests</span><br><span class="line"> 18h   WORD    current changed FATs</span><br><span class="line"> 1Ah   WORD    total changed FATs</span><br><span class="line"> 1Ch   WORD    number of FAT write errors</span><br><span class="line"> 1Eh   WORD    number of fatal FAT write errors</span><br><span class="line"> 20h   WORD    number of FAT scan errors</span><br><span class="line"> 22h   WORD    maximum concurrently-indexed files</span><br><span class="line"> 24h   WORD    current number of indexed files</span><br><span class="line"> 26h   WORD    number of attached indexed files</span><br><span class="line"> 28h   WORD    number of indexed files available</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  all fields except the first are big-endian</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1715,#1915 at AX=F217h/SF=D4h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,145 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » DOS List formats</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-143398.html">
+    <link rel="next" href="int-145976.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-143398.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-127442.html">Up</a></li>
+
+
+          
+
+<li><a href="int-145976.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngb">Format of device driver header:</span></span><br><span class="line"></span><br><span class="line">Offset  Size    Description</span><br><span class="line"> 00h    DWORD   pointer to next driver, offset=FFFFh if last driver</span><br><span class="line"> 04h    WORD    device attributes</span><br><span class="line">                Character device:</span><br><span class="line">                   bit 15  set</span><br><span class="line">                   bit 14  IOCTL supported (see AH=44h)</span><br><span class="line">                   bit 13  output until busy supported</span><br><span class="line">                   bit 12  reserved</span><br><span class="line">                   bit 11  OPEN/CLOSE/RemMedia calls supported</span><br><span class="line">                   bits 10-7 reserved</span><br><span class="line">                   bit 6  Generic IOCTL call supported (command 13h)</span><br><span class="line">                                (see AX=440Ch,440Dh)</span><br><span class="line">                   bit 5  reserved</span><br><span class="line">                   bit 4  device is special (use INT 29 &#34;fast console output&#34;)</span><br><span class="line">                   bit 3  device is CLOCK$</span><br><span class="line">                   bit 2  device is NUL</span><br><span class="line">                   bit 1  device is standard output</span><br><span class="line">                   bit 0  device is standard input</span><br><span class="line">                Block device:</span><br><span class="line">                   bit 15  clear</span><br><span class="line">                   bit 14  IOCTL supported</span><br><span class="line">                   bit 13  non-IBM format</span><br><span class="line">                   bit 12  reserved</span><br><span class="line">                   bit 11  OPEN/CLOSE/RemMedia calls supported</span><br><span class="line">                   bit 10  reserved</span><br><span class="line">                   bit 9   ??? set by DOS 3.3 DRIVER.SYS for &#34;new&#34; drives</span><br><span class="line">                   bit 8   ??? set by DOS 3.3 DRIVER.SYS for &#34;new&#34; drives</span><br><span class="line">                   bit 7   reserved</span><br><span class="line">                   bit 6  Generic IOCTL call supported (command 13h)</span><br><span class="line">                                implies support for commands 17h and 18h</span><br><span class="line">                                (see AX=440Ch,440Dh,440Eh,440Fh)</span><br><span class="line">                   bits 5-2 reserved</span><br><span class="line">                   bit 1   driver supports 32-bit sector addressing</span><br><span class="line">                   bit 0   reserved</span><br><span class="line"> 06h    WORD    device strategy entry point</span><br><span class="line">                call with ES:BX -&gt; request header (see INT 2F/AX=1510h)</span><br><span class="line"> 08h    WORD    device interrupt entry point</span><br><span class="line"> 0Ah  8 BYTEs   blank-padded character device name</span><br><span class="line"> 12h    WORD    (CD-ROM driver) reserved, must be 0000h</span><br><span class="line"> 14h    BYTE    (CD-ROM driver) drive letter (must initially be 00h)</span><br><span class="line"> 15h    BYTE    (CD-ROM driver) number of units</span><br><span class="line"> 16h  6 BYTEs   (CD-ROM driver) signature &#39;MSCDnn&#39; where &#39;nn&#39; is version</span><br><span class="line">                        (currently &#39;00&#39;)</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="int-93200.html">INT 21h, 52h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

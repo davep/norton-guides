@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2638224.html">
+    <link rel="next" href="rbint-2641476.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2638224.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2641476.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 5F41  u - Lan Manager Enhanced Dos - Local Netserviceenum      </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = 5F41h</span><br><span class="line">   BL = level of detail (0000h, 0001h or 0002h)</span><br><span class="line">   CX = buffer length</span><br><span class="line">   ES:DI -&gt; buffer of service_info_0, service_info_1, or service_info_2</span><br><span class="line">       (see #1393,#1394,#1395)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       CX = entries read</span><br><span class="line">       DX = total available</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code</span><br><span class="line"></span><br><span class="line">Format of LAN Manager service_info_0 structure:</span><br><span class="line">Offset Size    Description (Table 1393)</span><br><span class="line"> 00h 16 BYTEs  name</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1394,#1395</span><br><span class="line"></span><br><span class="line">Format of service_info_1 structure:</span><br><span class="line">Offset Size    Description (Table 1394)</span><br><span class="line"> 00h 16 BYTEs  name</span><br><span class="line"> 10h   WORD    status bitmask (see #1396)</span><br><span class="line"> 12h   DWORD   status code (see #1397)</span><br><span class="line">       (also see Microsoft LAN Manager Programmer&#39;s Reference)</span><br><span class="line"> 16h   WORD    process id</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1393,#1395</span><br><span class="line"></span><br><span class="line">Format of service_info_2 structure:</span><br><span class="line">Offset Size    Description (Table 1395)</span><br><span class="line"> 00h 16 BYTEs  name</span><br><span class="line"> 10h   WORD    status bitmask (see #1396)</span><br><span class="line"> 12h   DWORD   status code (see #1397)</span><br><span class="line"> 16h   WORD    process id</span><br><span class="line"> 18h 64 BYTEs  text</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1393,#1394</span><br><span class="line"></span><br><span class="line">Bitfields for LAN Manager status bitmask:</span><br><span class="line">Bit(s) Description (Table 1396)</span><br><span class="line"> 0,1   00 uninstall</span><br><span class="line">       01 install pending</span><br><span class="line">       10 uninstall pending</span><br><span class="line">       11 installed</span><br><span class="line"> 2,3   00 active</span><br><span class="line">       01 Continue pending</span><br><span class="line">       10 Pause pending</span><br><span class="line">       11 paused</span><br><span class="line"> 4 uninstallable</span><br><span class="line"> 5 pausable</span><br><span class="line"> 8 disk redirector paused</span><br><span class="line"> 9 spooled device redirector paused (printing)</span><br><span class="line"> 10    communication device redirector paused</span><br><span class="line"></span><br><span class="line">(Table 1397)</span><br><span class="line">Values for LAN Manager status code:</span><br><span class="line"> high word</span><br><span class="line">    3051 Bad parameter value</span><br><span class="line">    3052 A parameter is missing</span><br><span class="line">    3053 An unknown parameter was specified</span><br><span class="line">    3054 The resource is insufficient</span><br><span class="line">    3055 Configuration is faulty</span><br><span class="line">    3056 An MS-DOS or MS OS/2 error occured</span><br><span class="line">    3057 An internal error occured</span><br><span class="line">    3058 An ambiguous parameter name was given</span><br><span class="line">    3059 A duplicate parameter exists</span><br><span class="line">    3060 The service was terminated by NetSeviceControl when it did not respond</span><br><span class="line">    3061 The service program file could not be executed</span><br><span class="line">    3062 The subservice failed to start</span><br><span class="line">    3063 There is a conflict in the value or use of these parameters</span><br><span class="line">    3064 There is a problem with the file</span><br><span class="line"> low word</span><br><span class="line">    3070 There is insufficient memory</span><br><span class="line">    3071 There is insufficeient disk space</span><br><span class="line">    3072 Unable to create thread</span><br><span class="line">    3073 Unable to create process</span><br><span class="line">    3074 A security failure occured</span><br><span class="line">    3075 There is bad or missing default path</span><br><span class="line">    3076 Network software is not installed</span><br><span class="line">    3077 Server software is not installed</span><br><span class="line">    3078 The server could not access the UAS database</span><br><span class="line">    3079 The action requires user-level security</span><br><span class="line">    3080 The log directory is invalid</span><br><span class="line">    3081 The LAN group specificed could not be used</span><br><span class="line">    3082 The computername is being used as a message alias on another computer</span><br><span class="line">    3083 The workstation failed to announce the servername</span><br><span class="line">    3084 The user accounts system is not configured properly</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

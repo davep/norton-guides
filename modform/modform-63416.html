@@ -1,0 +1,118 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="modform-style.css">
+    <title>MOD File Format » Reference » .GIF  (Graphics)</title>
+    <meta name="description" content="MOD File Format">
+    <link rel="prev" href="modform-60879.html">
+    <link rel="next" href="modform-67072.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="modform-about.html">About</a></li>
+
+
+          
+
+<li><a href="modform-60879.html">Previous</a></li>
+
+
+          
+
+<li><a href="modform-45998.html">Up</a></li>
+
+
+          
+
+<li><a href="modform-67072.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">.MOD  (Sound)</a></li>
+                  <li><a href="modform-35120.html">.STM  (Sound)</a></li>
+                  <li><a href="modform-45998.html">.GIF  (Graphics)</a></li>
+                  <li><a href="modform-78940.html">.VOC  (SoundBlaster)</a></li>
+                  <li><a href="modform-86188.html">.CMF  (Soundblaster)</a></li>
+                  <li><a href="modform-90842.html">.QWK  (Mailreaders)</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Interactive Sequences</span></span><br><span class="line"></span><br><span class="line">           <span class="ngu">GIF Sequence Exchanges for an Interactive Environment</span></span><br><span class="line"></span><br><span class="line"> The following sequences are defined for use  in  mediating  control</span><br><span class="line"> between a GIF sender and GIF receiver over an interactive communications</span><br><span class="line"> line.  These  sequences  do  not  apply  to  applications  that  involve</span><br><span class="line"> downloading  of  static  GIF  files and are not considered part of a GIF</span><br><span class="line"> file.</span><br><span class="line"></span><br><span class="line"> <span class="ngu">GIF CAPABILITIES ENQUIRY</span></span><br><span class="line">   The GCE sequence is issued from a host and requests an  interactive GIF</span><br><span class="line">   decoder  to  return  a  response  message that defines the graphics</span><br><span class="line">   parameters for the decoder.  This involves returning  information  about</span><br><span class="line">   available screen sizes, number of bits/colour supported and the amount of</span><br><span class="line">   colour detail supported.  The escape sequence for the GCE is defined as:</span><br><span class="line"></span><br><span class="line">      ESC [ &gt; 0 g     (g is lower case, spaces inserted for clarity)</span><br><span class="line">                       (0x1B 0x5B 0x3E 0x30 0x67)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngu">GIF CAPABILITIES RESPONSE</span></span><br><span class="line">   The GIF Capabilities Response message is returned by an interactive GIF</span><br><span class="line">   decoder  and  defines  the  decoder&#39;s  display capabilities for all</span><br><span class="line">   graphics modes that are supported by the software.  Note that  this  can</span><br><span class="line">   also include graphics printers as well as a monitor screen.  The general</span><br><span class="line">   format of this message is:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     #version;protocol{;dev, width, height, colour-bits, colour-res}... &lt;CR&gt;</span><br><span class="line"></span><br><span class="line">     &#39;#&#39;          - GCR identifier character (Number Sign)</span><br><span class="line">     version      - GIF format version number;  initially &#39;87a&#39;</span><br><span class="line">     protocol=&#39;0&#39; - No end-to-end protocol supported by decoder</span><br><span class="line">                    Transfer as direct 8-bit data stream.</span><br><span class="line">     protocol=&#39;1&#39; - Can use an error correction protocol to transfer GIF data</span><br><span class="line">                    interactively from the host directly to the display.</span><br><span class="line"></span><br><span class="line">     dev = &#39;0&#39;    - Screen parameter set follows</span><br><span class="line">     dev = &#39;1&#39;    - Printer parameter set follows</span><br><span class="line"></span><br><span class="line">     width        - Maximum supported display width in pixels</span><br><span class="line">     height       - Maximum supported display height in pixels</span><br><span class="line">     colour-bits  - Number of  bits  per  pixel  supported.   The  number  of</span><br><span class="line">                    supported colours is therefore 2**colour-bits.</span><br><span class="line">     colour-res   - Number of bits  per  colour  component  supported  in  the</span><br><span class="line">                    hardware  colour  palette.   If  colour-res  is  &#39;0&#39;</span><br><span class="line">                    then  no hardware palette table is available.</span><br><span class="line"></span><br><span class="line">   Note that all values in the  GCR  are  returned  as  ASCII  decimal</span><br><span class="line">   numbers and the message is terminated by a Carriage Return character.</span><br><span class="line"></span><br><span class="line">   The  following   GCR   message   describes   three   standard   EGA</span><br><span class="line">   configurations  with  no  printer;  the GIF data stream can be processed</span><br><span class="line">   within an error correcting protocol:</span><br><span class="line"></span><br><span class="line">      #87a;1 ;0,320,200,4,0 ;0,640,200,2,2 ;0,640,350,4,2&lt;CR&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngu">ENTER GIF GRAPHICS MODE</span></span><br><span class="line">   Two sequences are currently defined to invoke  an  interactive  GIF</span><br><span class="line">   decoder into action.  The only difference between them is that different</span><br><span class="line">   output media are selected.  These sequences are:</span><br><span class="line"></span><br><span class="line">     ESC [ &gt; 1 g   Display GIF image on screen</span><br><span class="line">                   (0x1B 0x5B 0x3E 0x31 0x67)</span><br><span class="line"></span><br><span class="line">     ESC [ &gt; 2 g   Display image directly to an attached graphics  printer.</span><br><span class="line">                   The  image  may optionally be displayed on the screen as</span><br><span class="line">                   well.</span><br><span class="line">                   (0x1B 0x5B 0x3E 0x32 0x67)</span><br><span class="line"></span><br><span class="line">   Note that the &#39;g&#39; character terminating each sequence is  in  lower</span><br><span class="line">   case.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngu">INTERACTIVE ENVIRONMENT</span></span><br><span class="line">   The assumed environment for the transmission of GIF image data from an</span><br><span class="line">   interactive  application  is  a  full 8-bit data stream from host to</span><br><span class="line">   micro.  All 256 character codes must be transferrable.  The establishing</span><br><span class="line">   of  an 8-bit data path for communications will normally be taken care of</span><br><span class="line">   by the host application programs.  It is however  up  to  the  receiving</span><br><span class="line">   communications programs supporting GIF to be able to receive and pass on</span><br><span class="line">   all 256 8-bit codes to the GIF decoder software.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="modform-48432.html">General File Format</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

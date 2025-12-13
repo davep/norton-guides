@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    
+    <link rel="next" href="rbint-3469570.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="rbint-3467750.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3469570.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 26  - Dos 1+ - Absolute Disk Write (except Partitions &gt; 32m)         </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AL = drive number (00h = A:, 01h = B:, etc)</span><br><span class="line">   CX = number of sectors to write (not FFFFh)</span><br><span class="line">   DX = starting logical sector number (0000h - highest sector on drive)</span><br><span class="line">   DS:BX -&gt; data to write</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = status (see #2235)</span><br><span class="line">       AL = error code (same as passed to INT 24 in DI)</span><br><span class="line">       AX = 0207h if more than 64K sectors on drive -- use new-style call</span><br><span class="line">   may destroy all other registers except segment registers</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> original flags are left on stack, and must be popped by caller</span><br><span class="line">   this call bypasses the DOS filesystem, though DOS 5+ invalidates any</span><br><span class="line">     disk buffers referencing sectors which are written with this call</span><br><span class="line">   examination of CPWIN386.CPL indicates that if this call fails with</span><br><span class="line">     error 0408h on an old-style (&lt;32M) call, one should retry the</span><br><span class="line">     call with the high bit of the drive number in AL set</span><br><span class="line">   Novell DOS 7 decides whether the old-style or new-style (&gt;32M) version</span><br><span class="line">     of INT 26 must be used solely on the basis of the partition&#39;s size,</span><br><span class="line">     thus forcing use of the new-style call even for data in the first</span><br><span class="line">     32M of the partition</span><br><span class="line">BUGS:  DOS 3.1 through 3.3 set the word at ES:[BP+1Eh] to FFFFh if AL is an</span><br><span class="line">     invalid drive number</span><br><span class="line">   DR DOS 3.41 will return with a jump instead of RETF, leaving the</span><br><span class="line">     wrong number of bytes on the stack; use the huge-partition version</span><br><span class="line">     (INT 26/CX=FFFFh) for all partition sizes under DR DOS 3.41</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> INT 13/AH=03h,INT 25,INT 26/CX=FFFFh,INT 21/AX=7305h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

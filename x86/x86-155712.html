@@ -1,0 +1,157 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-154576.html">
+    <link rel="next" href="x86-157873.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-154576.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-157873.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">STOS            Store String                         Flags: Not altered</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">STOS</span> destination_string</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   [ES:eDI] ← accumulator</span><br><span class="line">                if DF = 0</span><br><span class="line">                   eDI ← eDI + n        ; n = 1 for byte, 2 for word,</span><br><span class="line">                else                    ;     4 for dword (386+)</span><br><span class="line">                   eDI ← eDI - n</span><br><span class="line">                endif</span><br><span class="line"></span><br><span class="line">    This instruction transfers the contents of the AL, AX, or EAX</span><br><span class="line">    register to the memory byte, word, or doubleword pointed to by</span><br><span class="line">    ES and the destination-index register (DI or EDI). After the</span><br><span class="line">    transfer is made, eDI is automatically incremented (if the</span><br><span class="line">    direction flag is cleared) or decremented (if the direction flag</span><br><span class="line">    is set), in preparation for storing the next element of the</span><br><span class="line">    string.</span><br><span class="line"></span><br><span class="line">    If the address-size attribute of STOS is 16 bits, DI is used for</span><br><span class="line">    the destination-index register; otherwise the the address size is</span><br><span class="line">    32 bits, and the EDI register will be used.</span><br><span class="line"></span><br><span class="line">    The destination segment must be addressable from the ES register;</span><br><span class="line">    it cannot be changed with a segment override.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span>:       This instruction is always translated by the assembler</span><br><span class="line">                into STOSB, Store String Byte, STOSW, Store String</span><br><span class="line">                Word, or STOSD, Store String Dword, depending upon</span><br><span class="line">                whether destination refers to a string of bytes, words</span><br><span class="line">                or doublewords. In either case, you must explicitly</span><br><span class="line">                load the eDI register with the offset of the</span><br><span class="line">                destination string.</span><br><span class="line"></span><br><span class="line">                STOSB, STOSW, and STOSD are synonyms for the byte,</span><br><span class="line">                word, and doubleword STOS instructions that do not</span><br><span class="line">                require an operand. They are simpler to use but</span><br><span class="line">                provide no type or segment checking.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    STOS is usually preceded with a REP prefix for a block fill of CX</span><br><span class="line">    or ECX bytes bytes, words, or doublewords.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    AA          STOS m8                 ; = STOSB</span><br><span class="line">    AB          STOS m16                ; = STOSW</span><br><span class="line">    AB          STOS m32                ; = STOSD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Variations  Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    stosb        1      11      10       3       4       5       3   NP</span><br><span class="line">    stosw        1      15      10       3       4       5       3   NP</span><br><span class="line">    stosd        1       -       -       -       4       5       3   NP</span><br><span class="line">    rep stosb    2      9+10n   6+9n    4+3n    5+5n    7+4n*   3+n  NP</span><br><span class="line">    rep stosw    2      9+14n   6+9n    4+3n    5+5n    7+4n*   3+n  NP</span><br><span class="line">    rep stosd    2       -       -       -      5+5n    7+4n*   3+n  NP</span><br><span class="line"></span><br><span class="line">                        * = 5 if n=0, 13 if n=1</span><br><span class="line">                 (n = count of bytes, words or dwords)</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-125491.html">REP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-95607.html">MOVS</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-87899.html">LOOP</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-26242.html">CLD</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-154030.html">STD</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

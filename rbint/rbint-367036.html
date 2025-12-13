@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » 86 Bugs</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-366986.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-366986.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-250757.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Function:</span></span><br><span class="line"></span><br><span class="line">FSTENV saves the FPU environment to the memory operand.</span><br><span class="line">See &lt;FPU environment image layout&gt;.</span><br><span class="line">This environment does not include the FPU stack, but does include</span><br><span class="line">Control Word, Status Word, Tag Word and exception pointers.</span><br><span class="line"></span><br><span class="line">The FPU does not execute this instruction until all pending FPU</span><br><span class="line">operations have completed (decoded instructions have been processed).</span><br><span class="line">After completion, FSTENV initializes the FPU as if it had executed FINIT.</span><br><span class="line"></span><br><span class="line">Apparently on all FPUs, the contents of the data pointer field is</span><br><span class="line">undefined if the last FPU arithmetic instruction did not use a memory</span><br><span class="line">operand.</span><br><span class="line"></span><br><span class="line">On some 386s operating in Real or V86 mode, the opcode saved is incorrect.</span><br><span class="line">The linear address saved for the opcode&#39;s address however is correct and</span><br><span class="line">can be used to retrieve the opcode. No opcode is saved in Protected mode.</span><br><span class="line"></span><br><span class="line">If either of the two last bytes of the image being saved by FSTENV cannot</span><br><span class="line">be accessed for whatever reason, the instruction cannot be restarted on</span><br><span class="line">some 387s.</span><br><span class="line"></span><br><span class="line">A workaround is to attempt to write to those bytes before the FSTENV is</span><br><span class="line">executed or to align the image on a 128 byte boundary so it is</span><br><span class="line">unlikely to fall outside a segment or page boundary.</span><br><span class="line">Should that be the case, the integer unit can cause an exception or</span><br><span class="line">make sure the page (in case of a swapped page) is read into memory</span><br><span class="line">before FSTENV starts.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Layout of environment &amp; state stored by FSTENV and FSAVE</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">The environment area saved by &lt;FSTENV&gt; and loaded by &lt;FLDENV&gt; depends on the</span><br><span class="line">current operating mode of the FPU. Apart from the mode, the current</span><br><span class="line">default addressing mode within the operating mode is also important.</span><br><span class="line"></span><br><span class="line">The state information saved by &lt;FSAVE&gt; and loaded by &lt;FRSTOR&gt;</span><br><span class="line">consists of the environment mentioned above but also has the eight FPU</span><br><span class="line">stack registers appended to it in temporary real format starting with the</span><br><span class="line">current ST register. Note that which register represents ST depends on</span><br><span class="line">the values in the Control Word.</span><br><span class="line"></span><br><span class="line">There are four states in which the 387+ FPU can operate</span><br><span class="line"></span><br><span class="line">  16-bit real or V86 mode (like in DOS)</span><br><span class="line">  16-bit Protected Mode (16-bit code segment)</span><br><span class="line">  32-bit real or V86 mode (using 66h and 67h prefixes)</span><br><span class="line">  32-bit Protected Mode (32-bit code segment)</span><br><span class="line"></span><br><span class="line">        16-bit real or V86 mode:</span><br><span class="line"></span><br><span class="line">    15     12      8       4       0</span><br><span class="line">    ┌─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬┴┐</span><br><span class="line">    │d│d│d│d│0│0│0│0│0│0│0│0│0│0│0│0│ d = Data pointer bits 16 - 19</span><br><span class="line">    ├─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┤</span><br><span class="line">    │ Data pointer bits 0-15        │</span><br><span class="line">    ├─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┬─┤     bit 11 is zero, not a typo.</span><br><span class="line">    │i│i│i│i│0│o│o│o│o│o│o│o│o│o│o│o│ i = Instruction pointer bits 16 - 19</span><br><span class="line">    ├─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┤ o = Opcode highest 11 bits</span><br><span class="line">    │ Instruction pointer bits 0-15 │</span><br><span class="line">    ├───────────────────────────────┤</span><br><span class="line">    │ Tag Word (16 bit)             │</span><br><span class="line">    ├───────────────────────────────┤</span><br><span class="line">    │ Status Word (16 bit)          │</span><br><span class="line">    ├───────────────────────────────┤</span><br><span class="line">    │ Control Word (16 bit)         │ Low memory</span><br><span class="line">    └───────────────────────────────┛</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        16-bit Protected Mode:</span><br><span class="line"></span><br><span class="line">    15     12      8       4       0</span><br><span class="line">    ┌─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬┴┐</span><br><span class="line">    │ Data selector                 │</span><br><span class="line">    ├───────────────────────────────┤</span><br><span class="line">    │ Data offset                   │</span><br><span class="line">    ├───────────────────────────────┤</span><br><span class="line">    │ Instruction selector          │</span><br><span class="line">    ├───────────────────────────────┤</span><br><span class="line">    │ Instruction offset            │</span><br><span class="line">    ├───────────────────────────────┤</span><br><span class="line">    │ Tag Word (16 bit)             │</span><br><span class="line">    ├───────────────────────────────┤</span><br><span class="line">    │ Status Word (16 bit)          │</span><br><span class="line">    ├───────────────────────────────┤</span><br><span class="line">    │ Control Word (16 bit)         │ Low memory</span><br><span class="line">    └───────────────────────────────┛</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        32-bit Real Mode:</span><br><span class="line"></span><br><span class="line">    31     28      24      20       15     12       8       4       0</span><br><span class="line">    ┌─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┬┴┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬┴┐</span><br><span class="line">    │0│0│0│0│  Data pointer bits 16-31      │0│0│0│0│0│0│0│0│0│0│0│0│</span><br><span class="line">    ├─┴─┴─┴─┼───────────────────────┼───────┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┤</span><br><span class="line">    │- - - - - - - - - - - - - - - -│ Data pointer bits 0-15        │</span><br><span class="line">    ├─┬─┬─┬─┼───────────────────────┼───────┼─┼─────────────────────┤</span><br><span class="line">    │0│0│0│0│ Instruction pointer bits 16-31│0│ Opcode top 11 bits  │</span><br><span class="line">    ├─┴─┴─┴─┴───────────────────────┼───────┴─┴─────────────────────┤</span><br><span class="line">    │- - - - - - - - - - - - - - - -│ Instruction pointer 0-15      │</span><br><span class="line">    ├───────────────────────────────┼───────────────────────────────┤</span><br><span class="line">    │- - - - - - - - - - - - - - - -│ Tag Word (16 bit)             │</span><br><span class="line">    ├───────────────────────────────┼───────────────────────────────┤</span><br><span class="line">    │- - - - - - - - - - - - - - - -│ Status Word (16 bit)          │</span><br><span class="line">    ├───────────────────────────────┼───────────────────────────────┤</span><br><span class="line">    │- - - - - - - - - - - - - - - -│ Control Word (16 bit)         │</span><br><span class="line">    └───────────────────────────────┴───────────────────────────────┛</span><br><span class="line">                                                          Low memory</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        32-bit Protected Mode:</span><br><span class="line"></span><br><span class="line">    31     28      24      20       15     12       8       4       0</span><br><span class="line">    ┌─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┬┴┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬─┼─┬─┬─┬┴┐</span><br><span class="line">    │- - - - - - - - - - - - - - - -│ Data selector                 │</span><br><span class="line">    ├───────────────────────────────┼───────────────────────────────┤</span><br><span class="line">    │                      Data offset (32-bit)                     │</span><br><span class="line">    ├───────────────────────────────┼───────────────────────────────┤</span><br><span class="line">    │- - - - - - - - - - - - - - - -│ Instruction selector          │</span><br><span class="line">    ├───────────────────────────────┼───────────────────────────────┤</span><br><span class="line">    │                  Instruction offset (32-bit)                  │</span><br><span class="line">    ├───────────────────────────────┼───────────────────────────────┤</span><br><span class="line">    │- - - - - - - - - - - - - - - -│ Tag Word (16 bit)             │</span><br><span class="line">    ├───────────────────────────────┼───────────────────────────────┤</span><br><span class="line">    │- - - - - - - - - - - - - - - -│ Status Word (16 bit)          │</span><br><span class="line">    ├───────────────────────────────┼───────────────────────────────┤</span><br><span class="line">    │- - - - - - - - - - - - - - - -│ Control Word (16 bit)         │</span><br><span class="line">    └───────────────────────────────┴───────────────────────────────┛</span><br><span class="line">                                                          Low memory</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

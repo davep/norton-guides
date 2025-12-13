@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1481247.html">
+    <link rel="next" href="rbint-1483892.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1481247.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1340639.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1483892.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn E820  - Newer Bioses - Get System Memory Map                   </span>  [<span class="ngb">b</span>]</span><br><span class="line"></span><br><span class="line">   AX = E820h</span><br><span class="line">   EAX = 0000E820h</span><br><span class="line">   EDX = 534D4150h (&#39;SMAP&#39;)</span><br><span class="line">   EBX = continuation value or 00000000h to start at beginning of map</span><br><span class="line">   ECX = size of buffer for result, in bytes (should be &gt;= 20 bytes)</span><br><span class="line">   ES:DI -&gt; buffer for result (see #0505)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       EAX = 534D4150h (&#39;SMAP&#39;)</span><br><span class="line">       ES:DI buffer filled</span><br><span class="line">       EBX = next offset from which to copy or 00000000h if all done</span><br><span class="line">       ECX = actual length returned in bytes</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = error code (86h) (see #0422 at INT 15/AH=80h)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> originally introduced with the Phoenix BIOS v4.0, this function is</span><br><span class="line">     now supported by most newer BIOSes, since various versions of Windows</span><br><span class="line">     call it to find out about the system memory</span><br><span class="line">   a maximum of 20 bytes will be transferred at one time, even if ECX is</span><br><span class="line">     higher; some BIOSes (e.g. Award Modular BIOS v4.50PG) ignore the</span><br><span class="line">     value of ECX on entry, and always copy 20 bytes</span><br><span class="line">   some BIOSes expect the high word of EAX to be clear on entry, i.e.</span><br><span class="line">     EAX=0000E820h</span><br><span class="line">   if this function is not supported, an application should fall back</span><br><span class="line">     to AX=E802h, AX=E801h, and then AH=88h</span><br><span class="line">   the BIOS is permitted to return a nonzero continuation value in EBX</span><br><span class="line">     and indicate that the end of the list has already been reached by</span><br><span class="line">     returning with CF set on the next iteration</span><br><span class="line">   this function will return base memory and ISA/PCI memory contiguous</span><br><span class="line">     with base memory as normal memory ranges; it will indicate</span><br><span class="line">     chipset-defined address holes which are not in use and motherboard</span><br><span class="line">     memory-mapped devices, and all occurrences of the system BIOS as</span><br><span class="line">     reserved; standard PC address ranges will not be reported</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=C7h,AX=E801h&#34;Phoenix&#34;,AX=E881h,MEM xxxxh:xxx0h&#34;ACPI&#34;</span><br><span class="line"></span><br><span class="line">Format of Phoenix BIOS system memory map address range descriptor:</span><br><span class="line">Offset Size    Description (Table 0504)</span><br><span class="line"> 00h   QWORD   base address</span><br><span class="line"> 08h   QWORD   length in bytes</span><br><span class="line"> 10h   DWORD   type of address range (see #0505)</span><br><span class="line"></span><br><span class="line">(Table 0505)</span><br><span class="line">Values for System Memory Map address type:</span><br><span class="line"> 01h   memory, available to OS</span><br><span class="line"> 02h   reserved, not available (e.g. system ROM, memory-mapped device)</span><br><span class="line"> 03h   ACPI Reclaim Memory (usable by OS after reading ACPI tables)</span><br><span class="line"> 04h   ACPI NVS Memory (OS is required to save this memory between NVS</span><br><span class="line">     sessions)</span><br><span class="line"> other not defined yet -- treat as Reserved</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #0504</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

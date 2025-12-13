@@ -1,0 +1,114 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="vgaregs-style.css">
+    <title>VGA registers » VGA » ASM</title>
+    <meta name="description" content="VGA registers">
+    <link rel="prev" href="vgaregs-43997.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="vgaregs-about.html">About</a></li>
+
+
+          
+
+<li><a href="vgaregs-43997.html">Previous</a></li>
+
+
+          
+
+<li><a href="vgaregs-43932.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>VGA</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Regs</a></li>
+                  <li><a href="vgaregs-43932.html">ASM</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">; <span class="ngb">VGA macros</span></span><br><span class="line"></span><br><span class="line">; Output a 16 bit value to an I/O port</span><br><span class="line"></span><br><span class="line">OUT_16 macro register,value</span><br><span class="line">        ifdifi  &lt;register&gt;,&lt;dx&gt;         ;; If dx not set up</span><br><span class="line">        mov     dx,register             ;; then select register</span><br><span class="line">        endif</span><br><span class="line">        ifdifi  &lt;value&gt;,&lt;ax&gt;            ;; If ax not set up</span><br><span class="line">        mov     ax,value                ;; then get data value</span><br><span class="line">        endif</span><br><span class="line">        out     dx,ax                   ;; Set I/O register(s)</span><br><span class="line">        endm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">; Output an 8 bit value to an I/O Port</span><br><span class="line"></span><br><span class="line">OUT_8 macro register,value</span><br><span class="line">        ifdifi  &lt;register&gt;,&lt;dx&gt;         ;; If dx not set up</span><br><span class="line">        mov     dx,register             ;; then select register</span><br><span class="line">        endif</span><br><span class="line">        ifdifi  &lt;value&gt;,&lt;al&gt;            ;; If al not set up</span><br><span class="line">        mov     al,value                ;; then get data value</span><br><span class="line">        endif</span><br><span class="line">        out     dx,al                   ;; Set I/O register</span><br><span class="line">        endm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">; Wait until the start of the VGA&#39;s vertical retrace period.</span><br><span class="line">; Bit 3 of Input Status #1 register signals:</span><br><span class="line">;       0 : display is in display mode</span><br><span class="line">;       1 : display is in vertical retrace mode</span><br><span class="line"></span><br><span class="line">        ; INPUT_1 = 03DAh       ; 03DAh color, 03BAh mono</span><br><span class="line">WAIT_VR macro</span><br><span class="line">        local VR1, VR2</span><br><span class="line">        mov     dx,INPUT_1      ; Input status #1 port</span><br><span class="line">      VR1:</span><br><span class="line">        in      al,dx           ; Get port status</span><br><span class="line">        test    al,08h          ; Test bit 3</span><br><span class="line">        jnz short VR1           ; If set, we missed the</span><br><span class="line">                                ; beginning, so re-wait</span><br><span class="line">      VR2:</span><br><span class="line">        in      al,dx           ; Get port status</span><br><span class="line">        test    al,08h          ; Test bit 3</span><br><span class="line">        jz  short VR2           ; Wait while in display</span><br><span class="line">                                ; mode (bit 3 = 0)</span><br><span class="line">        ; Now at the start of</span><br><span class="line">        ; a full VR period</span><br><span class="line">        endm</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">; Wait until start of either a vertical or a horizontal</span><br><span class="line">; retrace period (the horizontal retrace period is</span><br><span class="line">; significantly shorter).</span><br><span class="line">; Bit 0 of Input Status #1 register signals:</span><br><span class="line">;       0 : display is in display mode</span><br><span class="line">;       1 : display is in horiz. or vert. retrace mode</span><br><span class="line"></span><br><span class="line">WAIT_display_off macro</span><br><span class="line">        local DO1, DO2</span><br><span class="line">        mov     dx,INPUT_1      ; Input status #1 port</span><br><span class="line">      if (@Cpu and 8)           ; 80386+</span><br><span class="line">      DO1:</span><br><span class="line">        in      al,dx           ; Get port status</span><br><span class="line">        test    al,1            ; Test bit 0</span><br><span class="line">        jnz short DO1           ; If set, we missed the</span><br><span class="line">                                ; beginning, so re-wait</span><br><span class="line">      DO2:</span><br><span class="line">        in      al,dx           ; Get port status</span><br><span class="line">        test    al,1            ; Test bit 0</span><br><span class="line">        jz  short DO2           ; Wait while in display</span><br><span class="line">                                ; mode (bit 0 = 0)</span><br><span class="line">      else                      ; 8086-80286:</span><br><span class="line">      DO1:                      ;   SHR faster than TEST</span><br><span class="line">        in      al,dx</span><br><span class="line">        shr     al,1</span><br><span class="line">        jc  short DO1</span><br><span class="line">      DO2:</span><br><span class="line">        in      al,dx</span><br><span class="line">        shr     al,1</span><br><span class="line">        jnc short DO2</span><br><span class="line">      endif</span><br><span class="line">        ; Now at the start of</span><br><span class="line">        ; a (short) HR period</span><br><span class="line">        ; or a (long) VR period</span><br><span class="line">        endm</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="vgaregs-5431.html">Input status #1</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

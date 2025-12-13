@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    
+    <link rel="next" href="int-558860.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="int-551872.html">Up</a></li>
+
+
+          
+
+<li><a href="int-558860.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">Appc/pc</span></span><br><span class="line"></span><br><span class="line">        Entry:</span><br><span class="line">          AH = 01h</span><br><span class="line">          DS:DX -&gt; control block</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Format of control block:</span></span><br><span class="line"></span><br><span class="line">        Offset  Size    Description</span><br><span class="line">         00h 12 BYTEs   reserved</span><br><span class="line">         0Ch    WORD    verb (action)</span><br><span class="line">         0Eh  6 BYTEs   0</span><br><span class="line">         14h    DWORD   (high byte first) return code (see below)</span><br><span class="line">        <span class="ngb">---if verb = 1B00h (DISPLAY)---</span></span><br><span class="line">         18h    WORD    0</span><br><span class="line">         1Ah  8 BYTEs   (high byte first) logical unit ID</span><br><span class="line">         22h  8 BYTEs   (high byte first) partner logical unit name</span><br><span class="line">         2Ah  8 BYTEs   (high byte first) mode name</span><br><span class="line">         32h    BYTE    logical unit session limit</span><br><span class="line">         33h    BYTE    partner logical unit session limit</span><br><span class="line">         34h    BYTE    mode maximum negotiable session limit</span><br><span class="line">         35h    BYTE    current session limit</span><br><span class="line">         36h    BYTE    minimum negotiated winner limit</span><br><span class="line">         37h    BYTE    maximum negotiated loser limit</span><br><span class="line">         38h    BYTE    active session count</span><br><span class="line">         39h    BYTE    active CONWINNER session count</span><br><span class="line">         3Ah    BYTE    active CONLOSER session count</span><br><span class="line">         3Bh    BYTE    session termination count</span><br><span class="line">         3Ch    BYTE    bit 7: SESSION_TERMINATION_TARGET_DRAIN</span><br><span class="line">                        bit 6: SESSION_TERMINATION_SOURCE_DRAIN</span><br><span class="line">        <span class="ngb">---if verb=2000h (Attach Physical Unit)---</span></span><br><span class="line">         18h    WORD    0</span><br><span class="line">         1Ah    BYTE    version</span><br><span class="line">         1Bh    BYTE    release</span><br><span class="line">         1Ch  8 BYTEs   (high byte first) net name</span><br><span class="line">         24h  8 BYTEs   (high byte first) physical unit name</span><br><span class="line">         2Ch  8 BYTEs   0</span><br><span class="line">         34h    DWORD   pointer to SYSTEM_LOG_EXIT routine, FFFFFFFFh=don&#39;t log errors</span><br><span class="line">         38h    DWORD   0</span><br><span class="line">         3Ch    BYTE    00h RETURN_CONTROL: COMPLETE</span><br><span class="line">                        01h RETURN_CONTROL: INCOMPLETE</span><br><span class="line">        <span class="ngb">---if verb=2100h (Attach Logical Unit)---</span></span><br><span class="line">         18h    WORD    70  offset to partner logical unit record</span><br><span class="line">         1Ah  8 BYTEs   (high byte first) logical unit name</span><br><span class="line">         22h  8 BYTEs   (high byte first) logical unit ID</span><br><span class="line">         2Ah    BYTE    logical unit local address</span><br><span class="line">         2Bh    BYTE    logical unit session limit</span><br><span class="line">         2Ch    DWORD   pointer to CREATE_TP_EXIT routine,</span><br><span class="line">                        FFFFFFFFh = reject incoming ALLOCATEs</span><br><span class="line">                        00000000h = queue ALLOCATEs</span><br><span class="line">         30h    DWORD   0</span><br><span class="line">         34h    DWORD   pointer to SYSTEM_LOG_EXIT routine, FFFFFFFFh=don&#39;t log errors</span><br><span class="line">         38h    DWORD   0</span><br><span class="line">         3Ch    BYTE    maximum TPs</span><br><span class="line">         3Dh    BYTE    queue depth</span><br><span class="line">         3Eh    DWORD   pointer to LU_LU_PASSWORD_EXIT routine, FFFFFFFFh=no pswd exit</span><br><span class="line">         42h    DWORD   0</span><br><span class="line">         46h    WORD    total length of partner records</span><br><span class="line">            for each partner logical unit:</span><br><span class="line">                WORD  length of this partner logical unit record</span><br><span class="line">                WORD  42  offset to mode records</span><br><span class="line">              8 BYTEs (high byte first) partner logical unit name</span><br><span class="line">                BYTE  partner logical unit security capabilities</span><br><span class="line">                        bit 7: already verified</span><br><span class="line">                        bit 6: conversation level security</span><br><span class="line">                        bit 5: session level security</span><br><span class="line">                BYTE  partner logical unit session limit</span><br><span class="line">                WORD  partner logical unit maximum MC_SEND_LL</span><br><span class="line">              8 BYTEs (high byte first) partner logical unit DLC name</span><br><span class="line">                BYTE  partner logical unit adapter number</span><br><span class="line">             17 BYTEs (counted string) partner logical unit adapter address</span><br><span class="line">                WORD  total length of mode records</span><br><span class="line">           for each mode:</span><br><span class="line">                WORD  16  length of this mode record</span><br><span class="line">              8 BYTEs (high byte first) mode name</span><br><span class="line">                WORD  RU_SIZE high bound</span><br><span class="line">                WORD  RU_SIZE low bound</span><br><span class="line">                BYTE  mode maximum negotiable session limit</span><br><span class="line">                BYTE  pacing size for receive</span><br><span class="line">        <span class="ngb">---if verb=2200h (Detach Logical Unit)---</span></span><br><span class="line">         18h  8 BYTEs   (high byte first) logical unit ID</span><br><span class="line">         20h    BYTE    0</span><br><span class="line">        <span class="ngb">---if verb=2700h (Detach Physical Unit)---</span></span><br><span class="line">         18h    BYTE    00h  type: hard</span><br><span class="line">                        01h  type: soft</span><br><span class="line">        <span class="ngb">---if verb=2B00h (Activate DLC)---</span></span><br><span class="line">         18h  8 BYTEs   (high byte first) DLC name</span><br><span class="line">         20h    BYTE    adapter number</span><br><span class="line"></span><br><span class="line">        Values for return code:</span><br><span class="line">                 0000h  successful</span><br><span class="line">                 0001h  BAD_TP_ID</span><br><span class="line">                 0002h  BAD_CONV_ID</span><br><span class="line">                 0003h  bad logical unit ID</span><br><span class="line">                 0008h  no physical unit attached</span><br><span class="line">                 0110h  bad state</span><br><span class="line">                 01B1h  BAD_PART_LUNAME</span><br><span class="line">                 01B2h  bad mode name</span><br><span class="line">                 0201h  physical unit already active</span><br><span class="line">                 0211h  logical unit already active</span><br><span class="line">                 0212h  BAD_PART_SESS</span><br><span class="line">                 0213h  BAD_RU_SIZES</span><br><span class="line">                 0214h  BAD_MODE_SESS</span><br><span class="line">                 0216h  BAD_PACING_CNT</span><br><span class="line">                 0219h  EXTREME_RUS</span><br><span class="line">                 021Ah  SNASVCMG_1</span><br><span class="line">                 0223h  SSCP_CONNECTED_LU</span><br><span class="line">                 0230h  invalid change</span><br><span class="line">                 0243h  too many TPs</span><br><span class="line">                 0272h  adapter close failure</span><br><span class="line">                 0281h  GET_ALLOC_BAD_TYPE</span><br><span class="line">                 0282h  unsuccessful</span><br><span class="line">                 0283h  DLC failure</span><br><span class="line">                 0284h  unrecognized DLC</span><br><span class="line">                 0286h  duplicate DLC</span><br><span class="line">                 0301h  SSCP_PU_SESSION_NOT_ACTIVE</span><br><span class="line">                 0302h  data exceeds RU size</span><br><span class="line">                 0401h  invalid direction</span><br><span class="line">                 0402h  invalid type</span><br><span class="line">                 0403h  segment overlap</span><br><span class="line">                 0404h  invalid first character</span><br><span class="line">                 0405h  table error</span><br><span class="line">                 0406h  conversion error</span><br><span class="line">             F0010000h  APPC disabled</span><br><span class="line">             F0020000h  APPC busy</span><br><span class="line">             F0030000h  APPC abended</span><br><span class="line">             F0040000h  incomplete</span><br><span class="line"></span><br><span class="line">        Routines defined by LU_LU_PASSWORD_EXIT, CREATE_TP_EXIT, and</span><br><span class="line">        SYSTEM_LOG_EXIT pointers are called by pushing the DWORD pointer</span><br><span class="line">        to the verb on the stack and then performing a FAR call.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Format of ACCESS_LU_LU_PW verb:</span></span><br><span class="line"></span><br><span class="line">        Offset  Size    Description</span><br><span class="line">         00h 12 BYTEs   reserved</span><br><span class="line">         0Ch    WORD    1900h</span><br><span class="line">         0Eh  8 BYTEs   (high byte first) logical unit ID</span><br><span class="line">         16h  8 BYTEs   (high byte first) logical unit name</span><br><span class="line">         1Eh  8 BYTEs   (high byte first) partner logical unit name</span><br><span class="line">         26h 17 BYTEs   (counted string) partner fully qualified logical unit name</span><br><span class="line">         37h    BYTE    password available (0=no, 1=yes)</span><br><span class="line">         38h  8 BYTEs   password</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Format of CREATE_TP verb:</span></span><br><span class="line"></span><br><span class="line">        Offset  Size    Description</span><br><span class="line">         00h 12 BYTEs   reserved</span><br><span class="line">         0Ch    WORD    2300h</span><br><span class="line">         0Eh  6 BYTEs   0</span><br><span class="line">         14h    DWORD   (high byte first) sense code</span><br><span class="line">                        00000000h       Ok</span><br><span class="line">                        080F6051h       SECURITY_NOT_VALID</span><br><span class="line">                        084B6031h       TP_NOT_AVAIL_RETRY</span><br><span class="line">                        084C0000h       TP_NOT_AVAIL_NO_RETRY</span><br><span class="line">                        10086021h       TP_NAME_NOT_RECOGNIZED</span><br><span class="line">                        10086034h       CONVERSATION_TYPE_MISMATCH</span><br><span class="line">                        10086041h       SYNC_LEVEL_NOT_SUPPORTED</span><br><span class="line">         18h  8 BYTEs   (high byte first) TP ID</span><br><span class="line">         20h  8 BYTEs   (high byte first) logical unit ID</span><br><span class="line">         28h    DWORD   (high byte first) conversation ID</span><br><span class="line">         2Ch    BYTE    0 basic conversation, 1 mapped conversation</span><br><span class="line">         2Dh    BYTE    0 no sync level, 1 confirm</span><br><span class="line">         2Eh    BYTE    reserved</span><br><span class="line">         2Fh 65 BYTEs   (counted string) transaction program name</span><br><span class="line">         70h  6 BYTEs   0</span><br><span class="line">         76h    WORD    length of ERROR_LOG_DATA to return</span><br><span class="line">         78h    DWORD   pointer to ERROR_LOG_DATA buffer</span><br><span class="line">         7Ch  8 BYTEs   (high byte first) partner logical unit name</span><br><span class="line">         84h 18 BYTEs   (counted string) partner fully qualified logical unit name</span><br><span class="line">         96h  8 BYTEs   (high byte first) mode name</span><br><span class="line">         9Eh 12 BYTEs   0</span><br><span class="line">         AAh 11 BYTEs   (counted string) password</span><br><span class="line">         B5h 11 BYTEs   (counted string) user ID</span><br><span class="line">         C0h    BYTE    0 verification should be performed</span><br><span class="line">                        1 already verified</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Format of SYSLOG verb:</span></span><br><span class="line"></span><br><span class="line">        Offset  Size    Description</span><br><span class="line">         00h 12 BYTEs   reserved</span><br><span class="line">         0Ch    WORD    2600h</span><br><span class="line">         0Eh 10 BYTEs   0</span><br><span class="line">         18h    WORD    (high byte first) type</span><br><span class="line">         1Ah    DWORD   (high byte first) subtype</span><br><span class="line">         1Eh    DWORD   pointer to ADDITIONAL_INFO</span><br><span class="line">         22h    DWORD   (high byte first) conversation ID</span><br><span class="line">         26h  8 BYTEs   (high byte first) TP ID</span><br><span class="line">         2Eh  8 BYTEs   (high byte first) physical unit or logical unit name</span><br><span class="line">         36h    WORD    length of data</span><br><span class="line">         38h    DWORD   pointer to data</span><br><span class="line">         3Ch    BYTE    0</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

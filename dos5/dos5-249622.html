@@ -1,0 +1,124 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Structures</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-248492.html">
+    <link rel="next" href="dos5-250484.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-248492.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-221655.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-250484.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">struc LoadExec</span><br><span class="line"> leEnvironment  dw ?    ; Environment-block segment</span><br><span class="line"> leCommandTail  dd ?    ; Address of command tail</span><br><span class="line"> leFCB_1        dd ?    ; Address of default FCB #1</span><br><span class="line"> leFCB_2        dd ?    ; Address of default FCB #2</span><br><span class="line">ends                    ; = 14d bytes</span><br><span class="line"></span><br><span class="line">;       ; leEnvironment</span><br><span class="line">;       if 0000h, parent&#39;s environment block is duplicated to child,</span><br><span class="line">;       else segment of memory block containing child&#39;s environment.</span><br><span class="line">;</span><br><span class="line">;       ; leCommandTail</span><br><span class="line">;       Pointer to the command tail that DOS copies to the child</span><br><span class="line">;       program&#39;s PSP, offset 0080h.</span><br><span class="line">;       Any redirection of standard files must be accomplished by the</span><br><span class="line">;       parent program. Including redirection characters (&lt; &gt; |) does</span><br><span class="line">;       not redirect files.</span><br><span class="line">;       Refer to PSP for format requirements.</span><br><span class="line">;</span><br><span class="line">;       ; leFCB_1, leFCB_2</span><br><span class="line">;       Pointer to the 2 default FCBs that DOS copies to the child</span><br><span class="line">;       program&#39;s PSP, offset 5Ch and 6Ch, respectively.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-87638.html">4B00h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-255713.html">PSP</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

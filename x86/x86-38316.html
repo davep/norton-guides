@@ -1,0 +1,133 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-37561.html">
+    <link rel="next" href="x86-42192.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-37561.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-42192.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">CPUID           Identify CPU                         Flags: Not altered</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">CPUID</span>                                                CPU: Pentium+ (*)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   case EAX of</span><br><span class="line">                   0 : EAX ← Highest input value recognized by CPUID</span><br><span class="line">                       EBX:ECX:EDX ← Vendor ID string</span><br><span class="line">                   1 : EAX ← CPU stepping ID, model, family, type</span><br><span class="line">                       EBX:ECX ← Reserved</span><br><span class="line">                       EDX ← Feature flags</span><br><span class="line">                   2 : EAX:EBX:ECX:EDX ← Cache information</span><br><span class="line">                otherwise</span><br><span class="line">                   EAX:EBX:ECX:EDX ← Undefined</span><br><span class="line">                endcase</span><br><span class="line"></span><br><span class="line">    CPUID identifies CPU and revision information for the installed CPU.</span><br><span class="line">    The instruction (currently) has 3 functions, all expecting input in</span><br><span class="line">    EAX and all returning information in the EAX, EBX, ECX, and EDX</span><br><span class="line">    registers.</span><br><span class="line"></span><br><span class="line">    i)  Entry:  EAX = 0  Check CPU installed</span><br><span class="line">        Return: EAX = Max. value of EAX before executing CPUID</span><br><span class="line">                      (max. function number supported)</span><br><span class="line">                EBX:EDX:ECX = 12-byte vendor ID string,</span><br><span class="line">                      e.g. &#34;GenuineIntel&#34;:</span><br><span class="line">                      EBX = 756e6547h  ; &#34;uneG&#34;</span><br><span class="line">                      EDX = 49656e69h  ; &#34;Ieni&#34;</span><br><span class="line">                      ECX = 6c65746eh  ; &#34;letn&#34;</span><br><span class="line"></span><br><span class="line">    ii) Entry:  EAX = 1  Get model-specific information</span><br><span class="line">        Return: EAX bits 0-3   Stepping level  (e.g. 5 on 486DX-2/66)</span><br><span class="line">                    bits 4-7   Model  (e.g. 3 on 486DX-2/66)</span><br><span class="line">                    bits 8-11  Family (4=80486, 5=Pentium, 6=P6)</span><br><span class="line">                    bits 12-31 Reserved (zero)</span><br><span class="line">                EBX bits 0-31  Reserved (zero)</span><br><span class="line">                ECX bits 0-31  Reserved (zero)</span><br><span class="line">                EDX Feature flags (1 means option available):</span><br><span class="line">                    bit        feature</span><br><span class="line">                     0  FPU    On-chip FPU, executes i387 instructions</span><br><span class="line">                     1  VME    Virtual 8086 Mode Enhancements supported:</span><br><span class="line">                               - CR4.VME bit enables V86 mode extensions</span><br><span class="line">                               - CR4.PVI bit enables protected-mode</span><br><span class="line">                                 virtual interrupts</span><br><span class="line">                               - Expansion of the TSS with the software</span><br><span class="line">                                 indirection bitmap</span><br><span class="line">                               - EFLAGS.VIF bit enables the virtual</span><br><span class="line">                                 interrupt flag.</span><br><span class="line">                               - EFLAGS.VIP bit enables the virtual</span><br><span class="line">                                 interrupt pending flag.</span><br><span class="line">                     2  DE     I/O breakpoints possible</span><br><span class="line">                     3  PSE    4 MB paging supported</span><br><span class="line">                     4  TSC    RDTSC instruction supported</span><br><span class="line">                     5  MSR    Has Pentium-compatible Model Specific</span><br><span class="line">                                 Registers</span><br><span class="line">                     6  PAE    Physical Address Extension &gt; 32 bits</span><br><span class="line">                     7  MCE    Machine Check Exception supported</span><br><span class="line">                     8  CX8    CMPXCHG8B instruction supported</span><br><span class="line">                     9  APIC   On-chip Advanced Programmable Interrupt</span><br><span class="line">                               Controller exists, is enabled, and</span><br><span class="line">                               available for use.</span><br><span class="line">                    10         Reserved</span><br><span class="line">                    11         Reserved</span><br><span class="line">                    12  MTRR   Memory Type Range Registers supported</span><br><span class="line">                    13  PGE    PTE Global Flag. Processor supports the</span><br><span class="line">                               CR4.PGE flag enabling the global bit in</span><br><span class="line">                               both PTDEs and PTEs.</span><br><span class="line">                    14  MCA    Machine Check Architecture. Processor</span><br><span class="line">                               supports the MCG_CAP (machine check</span><br><span class="line">                               global capability) MSR.</span><br><span class="line">                    15  CMOV   CMOVcc instructions supported.</span><br><span class="line">                               The FCMOVcc and FCOMI instructions are</span><br><span class="line">                               supported if bit 0 (FPU) is also set.</span><br><span class="line">                    16-31      Reserved (zero)</span><br><span class="line">                    Assume zero if bit is not mentioned.</span><br><span class="line"></span><br><span class="line">    iii) Entry: EAX = 2  Get cache information (Pentium Pro+)</span><br><span class="line">        Return: EAX bits 0-7   Number of times the CPUID instruction</span><br><span class="line">                               must be executed with an input value of 2</span><br><span class="line">                               (two) to get a complete description of</span><br><span class="line">                               the processor&#39;s caches and TLBs.</span><br><span class="line">                               Pentium Pro will return 1.</span><br><span class="line">                    bits 8-30  Cache information. Refer to Intel doc.</span><br><span class="line">                    bit  31    0 = Register has valid information</span><br><span class="line">                               1 = Reserved</span><br><span class="line">                EBX bits 0-30  Cache information. Refer to Intel doc.</span><br><span class="line">                    bit  31    0 = Register has valid information</span><br><span class="line">                               1 = Reserved</span><br><span class="line">                ECX bits 0-30  Cache information. Refer to Intel doc.</span><br><span class="line">                    bit  31    0 = Register has valid information</span><br><span class="line">                               1 = Reserved</span><br><span class="line">                EDX bits 0-30  Cache information. Refer to Intel doc.</span><br><span class="line">                    bit  31    0 = Register has valid information</span><br><span class="line">                               1 = Reserved</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    The CPUID instruction was introduced with the Pentium processor but</span><br><span class="line">    works on later Intel 80486 models, too.</span><br><span class="line">    The ID flag in the EFLAGS register can be used to determine if this</span><br><span class="line">    instruction is supported. If a procedure is able to set or clear</span><br><span class="line">    this flag, the CPUID is supported by the processor running the</span><br><span class="line">    procedure.</span><br><span class="line"></span><br><span class="line">    Executing CPUID on an early 80486 produces an invalid opcode</span><br><span class="line">    exception.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    0F A2       CPUID</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    -             2     -       -       -       -       -       14   NP</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-179453.html">Flags</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,102 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5104-style.css">
+    <title>Clipper 5.01 vs 1.29 Anomalies (#04) » Menu » Anomalies</title>
+    <meta name="description" content="Clipper 5.01 vs 1.29 Anomalies (#04)">
+    <link rel="prev" href="cl5104-25362.html">
+    <link rel="next" href="cl5104-27466.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5104-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5104-25362.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5104-27466.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Menu</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Anomalies</a></li>
+                  <li><a href="cl5104-45500.html">Credits</a></li>
+                  <li><a href="cl5104-45901.html">Read Me</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  NETWORKS          Seeks and Indexing comments.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Clipper Version</span>  1.29 dtd 04/15/91.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Problem Statement</span>  per Darren DeLoach [76264,1042]</span><br><span class="line"></span><br><span class="line">  1) A bug exists which can result in failed SEEK statements on a</span><br><span class="line">     workstation whenever _another_ workstation on the network edits the</span><br><span class="line">     logical top record in the file to have a new index key which moves it</span><br><span class="line">     in the index such that it is no longer at the logical top-of-file.</span><br><span class="line">     Other stations do not see the new index value in the NTX pages, and so</span><br><span class="line">     incorrectly perform SEEKs in the file.  The problem only occurs with</span><br><span class="line">     the logical first record in the file; adding new records does not cause</span><br><span class="line">     the problem, even if you are adding the first record in the file.</span><br><span class="line"></span><br><span class="line">  2) General comment on indexing (see workaround #2).</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Cause</span></span><br><span class="line"></span><br><span class="line">  1) Unknown.</span><br><span class="line">  2) N/A</span><br><span class="line"></span><br><span class="line">  <span class="ngb">Work Around(s)</span></span><br><span class="line"></span><br><span class="line">  1) Setting SOFTSEEK ON seems to make SEEK perform correctly.  A GO TOP</span><br><span class="line">     before the SEEK worked in one specific case, but is not guaranteed</span><br><span class="line">     to work in all situations.</span><br><span class="line"></span><br><span class="line">  2) A user has reported that the following methodology has eliminated</span><br><span class="line">     problems he was having with indices:</span><br><span class="line"></span><br><span class="line">        Lock the File</span><br><span class="line">        Index the File</span><br><span class="line">        Close the Index</span><br><span class="line">        UnLock the File</span><br><span class="line">        Set Index to ...</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:36</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

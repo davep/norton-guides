@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2494717.html">
+    <link rel="next" href="rbint-2496693.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2494717.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2496693.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 50  - Dos 2+ Internal - Set Current Process Id (set Psp Address</span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 50h</span><br><span class="line">   BX = segment of PSP for new process</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> DOS uses the current PSP address to determine which processes own files</span><br><span class="line">     and memory; it corresponds to process identifiers used by other OSs</span><br><span class="line">   under DOS 2.x, this function cannot be invoked inside an INT 28h</span><br><span class="line">     handler without setting the Critical Error flag</span><br><span class="line">   under MS-DOS 3.0+ and DR DOS 3.41+, this function does not use any of</span><br><span class="line">     the DOS-internal stacks and may thus be called at any time, even</span><br><span class="line">     during another INT 21h call</span><br><span class="line">   some Microsoft applications such as Quick C 2.51 use segments of 0000h</span><br><span class="line">     and FFFFh and direct access to the SDA (see #1373 at AX=5D06h) to</span><br><span class="line">     test whether they are running under MS-DOS rather than a compatible</span><br><span class="line">     OS; although one should only call this function with valid PSP</span><br><span class="line">     addresses, any program hooking it should be prepared to handle</span><br><span class="line">     invalid addresses</span><br><span class="line">   this function is supported by the OS/2 compatibility box</span><br><span class="line">   this call was undocumented prior to the release of DOS 5.0</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=26h,AH=51h,AH=62h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

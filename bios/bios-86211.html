@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="bios-style.css">
+    <title>BIOS ref. » BIOS » Interrupts</title>
+    <meta name="description" content="BIOS ref.">
+    <link rel="prev" href="bios-85612.html">
+    <link rel="next" href="bios-88023.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="bios-about.html">About</a></li>
+
+
+          
+
+<li><a href="bios-85612.html">Previous</a></li>
+
+
+          
+
+<li><a href="bios-54487.html">Up</a></li>
+
+
+          
+
+<li><a href="bios-88023.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>BIOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="bios-14162.html">Low memory</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 10h, 13h            Write Character String                           many</span></span><br><span class="line"></span><br><span class="line">    Writes a string of characters with specified attributes to any</span><br><span class="line">    display page.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AH    = 13h</span><br><span class="line">                AL    = Subservice (0-3)</span><br><span class="line">                BH    = Display page number</span><br><span class="line">                BL    = Attribute (Subservices 0 and 1)</span><br><span class="line">                CX    = Length of string</span><br><span class="line">                DH    = Row position where string is to be written</span><br><span class="line">                DL    = Column position where string is to be written</span><br><span class="line">                ES:BP = Pointer to string to write</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  Nothing</span><br><span class="line"></span><br><span class="line">    ──────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    This service is available only for XTs dated 1/19/86 and later,</span><br><span class="line">    ATs, EGAs, and PC Convertibles.</span><br><span class="line"></span><br><span class="line">    The service has four subservices, as follows:</span><br><span class="line"></span><br><span class="line">        AL=00h: Assign all characters the attribute in BL; do not</span><br><span class="line">                update cursor</span><br><span class="line">        AL=01h: Assign all characters the attribute in BL; update</span><br><span class="line">                cursor</span><br><span class="line">        AL=02h: Use attributes in string; do not update cursor</span><br><span class="line">        AL=03h: Use attributes in string; update cursor</span><br><span class="line"></span><br><span class="line">    In Subservices 0 and 1, all characters in the string are written</span><br><span class="line">    to the screen with the same attribute-- the attribute specified in</span><br><span class="line">    BL.</span><br><span class="line"></span><br><span class="line">    In Subservices 2 and 3, the attribute byte for each character is</span><br><span class="line">    found in the string itself. The string itself consists of a</span><br><span class="line">    character followed by its attribute, another character followed by</span><br><span class="line">    its attribute, and so on. The string is copied directly to the</span><br><span class="line">    video buffer as is.</span><br><span class="line"></span><br><span class="line">    In Subservices 0 and 2, the cursor position is not updated after</span><br><span class="line">    the string is written.</span><br><span class="line"></span><br><span class="line">    In Subservices 1 and 3, the cursor is moved to the first position</span><br><span class="line">    following the last character in the string.</span><br><span class="line"></span><br><span class="line">    Like Service 0Eh, Service 13h responds appropriately to ASCII 07h</span><br><span class="line">    (bell), 08h (backspace), 10h (line feed), and 0Dh (carriage</span><br><span class="line">    return). All other characters are printed.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="bios-64715.html">Int 10h, 09h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-65142.html">Int 10h, 0Ah</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="bios-66934.html">Int 10h, 0Eh</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:35</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

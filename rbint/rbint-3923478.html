@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-3923102.html">
+    <link rel="next" href="rbint-3925194.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-3923102.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-3870311.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-3925194.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn 39  - Kingswood Tsr Interface - Installation Check             </span>  [<span class="ngb">t</span>]</span><br><span class="line"></span><br><span class="line">   AH = 39h</span><br><span class="line">   BL = 00h</span><br><span class="line">   AL = TSR ID number (01h-FFh, currently only 01h-1Bh used) (see #2429)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status</span><br><span class="line">       00h not installed</span><br><span class="line">       FFh installed</span><br><span class="line">       DX = segment address of resident module</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  All of Kingswood Software&#39;s TSRs use this interface.  Usually the</span><br><span class="line">     resident module is installed by allocating a block of upper memory,</span><br><span class="line">     setting its owner ID to 000Ah (used by DOS), and filling the MCB name</span><br><span class="line">     field with the TSR&#39;s name.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #2430,AX=3900h,AH=39h/BL=01h</span><br><span class="line"></span><br><span class="line">(Table 2429)</span><br><span class="line">Values for Kingswood TSR ID number:</span><br><span class="line"> 01h   TSR Windows</span><br><span class="line"> 02h   NOBUSY</span><br><span class="line"> 03h   CD STACK</span><br><span class="line"> 04h   DISK WATCH</span><br><span class="line"> 05h   PUSHBP</span><br><span class="line"> 06h   ALIAS</span><br><span class="line"> 07h   KEYMACRO</span><br><span class="line"> 08h   SLOWDOWN</span><br><span class="line"> 09h   ANSIGRAB</span><br><span class="line"> 0Ah   TEE</span><br><span class="line"> 0Bh   FASTMOUS</span><br><span class="line"> 0Ch   EXTWILD</span><br><span class="line"> 0Dh   BREAKOUT</span><br><span class="line"> 0Eh   STOPDISK</span><br><span class="line"> 0Fh   MEMINIT</span><br><span class="line"> 10h   JANUSEXT</span><br><span class="line"> 11h   CAPS</span><br><span class="line"> 12h   ANSI</span><br><span class="line"> 13h   TRAPPER</span><br><span class="line"> 14h   EATMEM</span><br><span class="line"> 15h   WPJOKE</span><br><span class="line"> 16h   SHOWDOS</span><br><span class="line"> 17h   LOGINTS</span><br><span class="line"> 18h   BLANKVGA</span><br><span class="line"> 19h   SWAPEXEC</span><br><span class="line"> 1Ah   SHELL</span><br><span class="line"> 1Bh   TSRGAMES</span><br><span class="line"></span><br><span class="line">Format of Kingswood TSR modules:</span><br><span class="line">Offset Size    Description (Table 2430)</span><br><span class="line"> 00h  4 BYTEs  signature &#34;FTSR&#34;</span><br><span class="line"> 04h   WORD    segment address of this module (used to check validity)</span><br><span class="line"> 06h   WORD    number of words to skip (usually 0000h if no PSP present)</span><br><span class="line"> 08h  N WORDs  module-defined data that must be at a fixed segment offset</span><br><span class="line">       (usually only a PSP if file access is required)</span><br><span class="line">     5N BYTEs  interrupt list (see #2431)</span><br><span class="line">   BYTE    FFh terminator</span><br><span class="line"></span><br><span class="line">Format of Kingswood TSR interrupt list entry:</span><br><span class="line">Offset Size    Description (Table 2431)</span><br><span class="line"> 00h   BYTE    interrupt number (00h-FEh)</span><br><span class="line"> 01h   WORD    offset within segment of DWORD pointer to previous interrupt</span><br><span class="line"> 03h   WORD    offset within segment of begin of interrupt handler code</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

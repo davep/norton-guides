@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2771169.html">
+    <link rel="next" href="rbint-2772345.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2771169.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2693185.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2772345.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 73  - Ms-dos 7 - Drive Locking ???                             </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 73h</span><br><span class="line">   DL = drive (0=current, 1=A:, etc.)</span><br><span class="line">   CL = which flag to get or set</span><br><span class="line">       00h drive flag???</span><br><span class="line">       01h ???</span><br><span class="line">   AL = subfunction</span><br><span class="line">       00h get ???</span><br><span class="line">       01h set ???</span><br><span class="line">       CH = new values for ??? flags</span><br><span class="line">           bit 1: ??? (CL=00h only)</span><br><span class="line">           bit 3: ??? (CL=01h only)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       for AL=00h:</span><br><span class="line">       AL = value of CL on entry</span><br><span class="line">       for CL=00h: AH = new flag and 06h (i.e. bits 1 and 2 used)</span><br><span class="line">       for CL=01h: AH = new flag and 08h (i.e. bit 3 used)</span><br><span class="line">       (flag being taken from a table of bytes)</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (01h,0Fh,etc.) (see #1366)</span><br><span class="line">       7300h if function not supported</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  these two subfunctions are available even when only the MS-DOS kernel</span><br><span class="line">     is running</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

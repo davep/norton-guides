@@ -1,0 +1,101 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tr-style.css">
+    <title>Tom Rettigs Library</title>
+    <meta name="description" content="Tom Rettigs Library">
+    <link rel="prev" href="tr-85107.html">
+    <link rel="next" href="tr-87176.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tr-about.html">About</a></li>
+
+
+          
+
+<li><a href="tr-85107.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tr-87176.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> RESTSCR(&lt;C filespec&gt; [,&lt;C memvar name&gt; [,&#34;G&#34;]])</span><br><span class="line"> Reads a disk file directly into video RAM, or into a character-type memvar.</span><br><span class="line"> Returns &lt;expL&gt; false if the file is not found, otherwise true.</span><br><span class="line"></span><br><span class="line"> &lt;filespec&gt; is the file name from which to restore the screen.</span><br><span class="line"> &lt;memvar name&gt; optionally restores the screen to a memory variable.</span><br><span class="line"> &#34;G&#34; allows use on monochrome graphics cards such as Hercules and Compaq.</span><br><span class="line"></span><br><span class="line"> Since the second parameter is also optional, if you need to</span><br><span class="line"> pass the third parameter, but want to go directly to/from</span><br><span class="line"> the screen instead of a memvar, you must pass a null, &#34;&#34;,</span><br><span class="line"> for the second parameter:  RESTSCR( &lt;filespec&gt;, &#34;&#34;, &#34;G&#34; ).</span><br><span class="line"></span><br><span class="line"> Provides rapid screen painting for screens which cannot be saved</span><br><span class="line"> in memory variables, like opening screens.</span><br><span class="line"></span><br><span class="line"> Default file extension is .SCN if none is specified.</span><br><span class="line"></span><br><span class="line"> * Default extension</span><br><span class="line"> IF .NOT. RESTSCR( &#34;Myscreen&#34; )</span><br><span class="line">    ? &#34;Error -- screen file not found&#34;</span><br><span class="line"> ELSE</span><br><span class="line">    &lt;appropriate code for the restored screen&gt;</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> * Specified extension</span><br><span class="line"> IF RESTSCR( &#34;Myscreen.xxx&#34; )</span><br><span class="line">    &lt;appropriate code for the restored screen&gt;</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> * Into memvar instead of screen</span><br><span class="line"> m_screen = SPACE(4000)  &amp;&amp; requires 4,000 bytes</span><br><span class="line"> IF RESTSCR( &#34;Myscreen&#34;, &#34;m_screen&#34; )</span><br><span class="line">    * Restored screen is in m_screen, not on CRT</span><br><span class="line"> ENDIF</span><br><span class="line"></span><br><span class="line"> Hazard</span><br><span class="line">    Does not reactivate any GETs that were on the screen. If you</span><br><span class="line">    want to READ the GETs again, you must @...GET them again.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">             Placed in the Public Domain by Tom Rettig Assoc.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tr-89788.html">SAVESCR()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

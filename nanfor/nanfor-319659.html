@@ -1,0 +1,147 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » Information » Sample source code headers</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-316894.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-316894.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-314363.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngb">               This example shows how you would set up</span></span><br><span class="line"><span class="ngb">                 the headers for an ASM source file.</span></span><br><span class="line"></span><br><span class="line">; File......: ADAPTER.ASM</span><br><span class="line">; Author....: Ted Means</span><br><span class="line">; CIS ID....: 73067,3332</span><br><span class="line">;</span><br><span class="line">; This is an original work by Ted Means and is placed in the</span><br><span class="line">; public domain.</span><br><span class="line">;</span><br><span class="line">; Modification history:</span><br><span class="line">; ---------------------</span><br><span class="line">;</span><br><span class="line">;</span><br><span class="line">;  $DOC$</span><br><span class="line">;  $FUNCNAME$</span><br><span class="line">;     FT_ADAPTER()</span><br><span class="line">;  $CATEGORY$</span><br><span class="line">;     Video</span><br><span class="line">;  $ONELINER$</span><br><span class="line">;     Report the type of video adapter installed</span><br><span class="line">;  $SYNTAX$</span><br><span class="line">;     FT_ADAPTER() -&gt; nResult</span><br><span class="line">;  $ARGUMENTS$</span><br><span class="line">;     None</span><br><span class="line">;  $RETURNS$</span><br><span class="line">;     0  if monochrome</span><br><span class="line">;     1  if CGA</span><br><span class="line">;     2  if EGA</span><br><span class="line">;     3  if VGA</span><br><span class="line">;  $DESCRIPTION$</span><br><span class="line">;     This function is valuable if you use a graphics library and need to</span><br><span class="line">;     know what type of graphics adapter is installed.</span><br><span class="line">;</span><br><span class="line">;     The source code is written to adhere to Turbo Assembler&#39;s IDEAL mode.</span><br><span class="line">;     To use another assembler, you will need to rearrange the PROC and</span><br><span class="line">;     SEGMENT directives, and also the ENDP and ENDS directives (a very</span><br><span class="line">;     minor task).</span><br><span class="line">;  $EXAMPLES$</span><br><span class="line">;     iVideo := FT_ADAPTER()</span><br><span class="line">;</span><br><span class="line">;     DO CASE</span><br><span class="line">;        CASE iVideo == 0</span><br><span class="line">;           Qout( &#34;You have a monochrome adapter.&#34; )</span><br><span class="line">;        CASE iVideo == 1</span><br><span class="line">;           Qout( &#34;You have a CGA adapter.&#34; )</span><br><span class="line">;        CASE iVideo == 2</span><br><span class="line">;           Qout( &#34;You have an EGA adapter.&#34; )</span><br><span class="line">;        CASE iVideo == 3</span><br><span class="line">;           Qout( &#34;You have a VGA adapter.&#34; )</span><br><span class="line">;     ENDCASE</span><br><span class="line">;  $INCLUDE$</span><br><span class="line">;     FTVIDEO.CH</span><br><span class="line">;  $SEEALSO$</span><br><span class="line">;     FT_SETMODE()  FT_GETMODE()</span><br><span class="line">;  $END$</span><br><span class="line">;</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor-316894.html">Sample Clipper or C header</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor-314487.html">Submitting code for the Library</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

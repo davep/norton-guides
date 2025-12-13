@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="edlin-style.css">
+    <title>EDLIN » * » Scripts</title>
+    <meta name="description" content="EDLIN">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="edlin-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>/</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="edlin-23630.html">Parameters</a></li>
+                  <li><a href="edlin-25426.html">Messages</a></li>
+                  <li><a href="edlin-29042.html">Common</a></li>
+                  <li><a href="edlin-31544.html">Starting EDLIN</a></li>
+                  <li><a href="edlin-33858.html">Introduction</a></li>
+                  
+                </ul>
+              </li>
+              <li>*</li>
+              <li>
+                <ul>
+                  <li><a href="edlin-35220.html">DOS keys</a></li>
+                  <li><a href="edlin-37611.html">Comments</a></li>
+                  <li><a href="edlin-38617.html">Scripts</a></li>
+                  <li><a href="edlin-43102.html">Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">    <span class="ngb">Using EDLIN scripts</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Two examples of batch files using EDLIN and redirection of input and</span><br><span class="line">    output. Both files have been slightly changed for clarity.</span><br><span class="line"></span><br><span class="line">    EDLOOP.BAT appeared in PC Magazine 1991-05-28 (Vol. 10, no. 10)</span><br><span class="line">    REPL.BAT appeared in PC Magazine 1990-11-13 (Vol. 9 no. 19)</span><br><span class="line"></span><br><span class="line">    ─────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">      @echo off</span><br><span class="line"></span><br><span class="line">    rem EDLOOP.BAT -- creates a batch file to repetitively execute a</span><br><span class="line">    rem series of commands.  In this case ring the doorbell.</span><br><span class="line"></span><br><span class="line">      if &#34;%1&#34;==&#34;&#34; goto NEEDNUMBER</span><br><span class="line"></span><br><span class="line">    rem  Open the file ring.bat with the statements to be reiterated</span><br><span class="line"></span><br><span class="line">       echo echo DING DONG &gt; ring.bat</span><br><span class="line">       echo echo **** **** &gt;&gt; ring.bat</span><br><span class="line"></span><br><span class="line">    rem  Create input for the Edlin script</span><br><span class="line">    rem  Use the copy count option &amp; delete the first existence</span><br><span class="line">    rem  Multiple commands on one line must be separated with a</span><br><span class="line">    rem  semicolon</span><br><span class="line"></span><br><span class="line">      echo 1,2,1,%1C;1,2D;E; &gt; edlininp.dat</span><br><span class="line">      edlin ring.bat &lt; edlininp.dat &gt;nul</span><br><span class="line"></span><br><span class="line">    rem  Run the reiterative batch job &amp; tidy up</span><br><span class="line"></span><br><span class="line">      call ring.bat</span><br><span class="line">      erase edlininp.dat</span><br><span class="line">      erase ring.*</span><br><span class="line">      goto DONE</span><br><span class="line"></span><br><span class="line">    :NEEDNUMBER</span><br><span class="line"></span><br><span class="line">      ECHO The syntax should be</span><br><span class="line">      ECHO     EDLOOP n</span><br><span class="line">      ECHO where n is the number of iterations</span><br><span class="line"></span><br><span class="line">    :DONE</span><br><span class="line"></span><br><span class="line">    ───────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    The following batch file creates a DEBUG script that creates an EDLIN</span><br><span class="line">    script to make a simple text search-and-replace utility. DEBUG is used</span><br><span class="line">    to put the Ctrl-Z character (1Ah) that EDLIN needs for the Replace Text</span><br><span class="line">    command into TEMPEDLN.SCR. The script and log files are listed below.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">REPL.BAT</span></span><br><span class="line"></span><br><span class="line">    @ECHO OFF</span><br><span class="line">    REM This is REPL.BAT</span><br><span class="line">    IF &#39;%3&#39;==&#39;&#39; GOTO explain</span><br><span class="line">    ECHO Now checking for valid parameters . . .</span><br><span class="line">    ECHO %2 | FIND &#34;%1&#34; &gt; XXXXXXXX.TMP</span><br><span class="line">    REM Only if %2 contained %1 will the tempfile be</span><br><span class="line">    REM non-empty.  DOS won&#39;t copy an empty file.  So</span><br><span class="line">    REM if the second tempfile exists, %2 DID contain %1.</span><br><span class="line">    COPY XXXXXXXX.TMP YYYYYYYY.TMP &gt; NUL</span><br><span class="line">    DEL XXXXXXXX.TMP &gt; NUL</span><br><span class="line">    IF EXIST YYYYYYYY.TMP GOTO BadParams</span><br><span class="line">    ECHO Replacing &#34;%1&#34; with &#34;%2&#34; in files matching:</span><br><span class="line">    ECHO %3 %4 %5 %6 %7 %8 %9</span><br><span class="line">    :--------------------------------------------------</span><br><span class="line">    ECHO Now creating DEBUG script. . .</span><br><span class="line">    ECHO NTEMPEDLN.SCR &gt; TEMPDEBG.SCR</span><br><span class="line">    ECHO E CS:100 &#39;1R%1&#39; 1A &#39;%2&#39; 0D 0A &#39;E&#39; 0D 0A 1A &gt;&gt; TEMPDEBG.SCR</span><br><span class="line">    ECHO RCX &gt;&gt; TEMPDEBG.SCR</span><br><span class="line">    ECHO 40 &gt;&gt; TEMPDEBG.SCR</span><br><span class="line">    ECHO W &gt;&gt; TEMPDEBG.SCR</span><br><span class="line">    ECHO Q &gt;&gt; TEMPDEBG.SCR</span><br><span class="line">    :--------------------------------------------------</span><br><span class="line">    ECHO Now creating EDLIN script . . .</span><br><span class="line">    DEBUG &lt; TEMPDEBG.SCR &gt; NUL</span><br><span class="line">    DEL TEMPDEBG.SCR</span><br><span class="line">    ECHO Replacing &#34;%1&#34; with &#34;%2&#34; in files matching: &gt; REPL.LOG</span><br><span class="line">    ECHO %3 %4 %5 %6 %7 %8 %9 &gt;&gt; REPL.LOG</span><br><span class="line">    :--------------------------------------------------</span><br><span class="line">    ECHO Now performing replacement . . .</span><br><span class="line">    FOR %%f IN (%3 %4 %5 %6 %7 %8 %9) DO EDLIN %%f &lt; tempedln.scr &gt;&gt; REPL.LOG</span><br><span class="line">    DEL TEMPEDLN.SCR</span><br><span class="line">    ECHO To see a log of the work REPL.BAT did, read the file REPL.LOG</span><br><span class="line">    GOTO end</span><br><span class="line">    :BadParams</span><br><span class="line">    DEL YYYYYYYY.TMP &gt; NUL</span><br><span class="line">    ECHO Unfortunately, the string &#34;%2&#34; _contains_</span><br><span class="line">    ECHO the string &#34;%1&#34;.  REPL.BAT can&#39;t handle that.</span><br><span class="line">    GOTO end</span><br><span class="line">    :Explain</span><br><span class="line">    ECHO SYNTAX: &#34;REPL findstr replacestr filespec [filespec...]</span><br><span class="line">    ECHO This batch program will search files matching up to 7</span><br><span class="line">    ECHO file specifications and replace all occurrences of the</span><br><span class="line">    ECHO &#34;find string&#34; with the &#34;replace string&#34; in each file.</span><br><span class="line">    :end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">TEMPDEBG.SCR</span></span><br><span class="line"></span><br><span class="line">    NTEMPEDLN.SCR</span><br><span class="line">    E CS:100 &#39;1Rpush&#39; 1A &#39;PUSH&#39; 0D 0A &#39;E&#39; 0D 0A 1A</span><br><span class="line">    RCX</span><br><span class="line">    40</span><br><span class="line">    W</span><br><span class="line">    Q</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">TEMPEDLN.SCR</span></span><br><span class="line"></span><br><span class="line">    1Rpush^ZPUSH</span><br><span class="line">    E</span><br><span class="line">    ^Z</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">REPL.LOG</span></span><br><span class="line"></span><br><span class="line">    Replacing &#34;push&#34; with &#34;PUSH&#34; in files matching:</span><br><span class="line">    *.asm</span><br><span class="line">    End of input file</span><br><span class="line">    *1Rpush^ZPUSH</span><br><span class="line">    Not found</span><br><span class="line">    *E</span><br><span class="line">    End of input file</span><br><span class="line">    *1Rpush^ZPUSH</span><br><span class="line">       146:      PUSHf</span><br><span class="line">       147:      PUSH    ds</span><br><span class="line">       148:      PUSH    es</span><br><span class="line">       149:      PUSH    ax</span><br><span class="line">       150:      PUSH    bx</span><br><span class="line">       151:      PUSH    cx</span><br><span class="line">       152:      PUSH    dx</span><br><span class="line">       153:      PUSH    di</span><br><span class="line">       154:      PUSH    si</span><br><span class="line">    *E</span><br><span class="line">    End of input file</span><br><span class="line">    *1Rpush^ZPUSH</span><br><span class="line">       367:      PUSH    ax</span><br><span class="line">       402:      PUSH    es</span><br><span class="line">    *E</span><br><span class="line">    End of input file</span><br><span class="line">    *1Rpush^ZPUSH</span><br><span class="line">    Not found</span><br><span class="line">    *E</span><br><span class="line">    End of input file</span><br><span class="line">    *1Rpush^ZPUSH</span><br><span class="line">    Not found</span><br><span class="line">    *E</span><br><span class="line"></span><br><span class="line">    ─────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line">    This batch file tests for EDLIN presence:</span><br><span class="line"></span><br><span class="line">    @echo off</span><br><span class="line">    rem     DOS will accept a &#39;Bad Command&#39; with an errorlevel of zero.</span><br><span class="line">    rem     EDLIN will terminate with an errorlevel of 255 if called with</span><br><span class="line">    rem     no file name (correct format is: EDLIN filename.ext [/B]).</span><br><span class="line">    edlin &gt; nul</span><br><span class="line">    if errorlevel 1 goto IS_EDLIN</span><br><span class="line">    echo EDLIN is not in path.</span><br><span class="line">    goto EO_BAT</span><br><span class="line">    :IS_EDLIN</span><br><span class="line">    echo EDLIN is in path.</span><br><span class="line">    :EO_BAT</span><br><span class="line"></span><br><span class="line">    ─────────────────────────────────────────────────────────────────────</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:41</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

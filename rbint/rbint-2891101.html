@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2890788.html">
+    <link rel="next" href="rbint-2892707.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2890788.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2829337.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2892707.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn E2  - Novell Netware - Directory Services - Set Directory Handl</span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AH = E2h subfn 00h</span><br><span class="line">   DS:SI -&gt; request buffer (see #1528)</span><br><span class="line">   ES:DI -&gt; reply buffer (see #1529)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status (00h,98h,9Bh,9Ch) (see #1527)</span><br><span class="line"><span class="ngb">Desc:</span>  set the target handle to reference the directory specified by the</span><br><span class="line">     source handle and the source path; both handles must refer to the</span><br><span class="line">     same file server</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and</span><br><span class="line">     Alloy NTNX</span><br><span class="line">   the target handle is not changed if this function fails</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=E2h/SF=01h,AH=E2h/SF=12h,AH=E2h/SF=13h,AX=F216h/SF=00h</span><br><span class="line"></span><br><span class="line">(Table 1527)</span><br><span class="line">Values for NetWare function status:</span><br><span class="line"> 00h   successful</span><br><span class="line"> 84h   not permitted to create</span><br><span class="line"> 8Ah   not permitted to delete</span><br><span class="line"> 8Bh   not permitted to rename</span><br><span class="line"> 8Ch   not permitted to modify</span><br><span class="line"> 98h   nonexistent volume</span><br><span class="line"> 9Bh   invalid directory handle</span><br><span class="line"> 9Ch   invalid path</span><br><span class="line"> 9Eh   invalid filename</span><br><span class="line"> 9Fh   directory currently in use</span><br><span class="line"> A0h   directory not empty</span><br><span class="line"> C6h   no console rights</span><br><span class="line"> FCh   no such bindery object</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1522,#1554</span><br><span class="line"></span><br><span class="line">Format of NetWare &#34;Set Directory Handle&#34; request buffer:</span><br><span class="line">Offset Size    Description (Table 1528)</span><br><span class="line"> 00h   WORD    length of following data (max 103h)</span><br><span class="line"> 02h   BYTE    00h (subfunction &#34;Set Directory Handle&#34;)</span><br><span class="line"> 03h   BYTE    directory handle of target</span><br><span class="line"> 04h   BYTE    directory handle of source</span><br><span class="line"> 05h   BYTE    length of source directory path (01h-FFh)</span><br><span class="line"> 06h  N BYTEs  source directory path</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1529</span><br><span class="line"></span><br><span class="line">Format of NetWare reply buffer:</span><br><span class="line">Offset Size    Description (Table 1529)</span><br><span class="line"> 00h   WORD    (call) 0000h (no results returned)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1528</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

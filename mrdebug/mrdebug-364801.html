@@ -1,0 +1,149 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » Tutorial » Assertion Checking</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-362595.html">
+    <link rel="next" href="mrdebug-368181.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-362595.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-360448.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-368181.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">An Introduction</span></span><br><span class="line"> Why would you want to use Assertion Checking?</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> The simple reason is so that you can make sure that your variables are being</span><br><span class="line"> delivered to where they should go.  Assertion checking does this by allowing</span><br><span class="line"> you to check that you are at least passing the correct number of variables</span><br><span class="line"> around your system without any silly errors creeping in such as</span><br><span class="line"> typographical errors, incorrect variable types or possibly even commas</span><br><span class="line"> missing in a list of parameters being passed down.</span><br><span class="line"></span><br><span class="line"> Think of Assertion checking as another layer of added protection for your</span><br><span class="line"> program.</span><br><span class="line"></span><br><span class="line"> Assertion checking is not going to catch every single error that could</span><br><span class="line"> possibly occur, but it will help you to cut down on those odd errors that</span><br><span class="line"> normally creep in during the development cycle.</span><br><span class="line"></span><br><span class="line"> The easiest form of Assertion checking is with the variable list in the</span><br><span class="line"> FUNCTION declaration statement. For Example, let us suppose that we start of</span><br><span class="line"> with a function:</span><br><span class="line"></span><br><span class="line">  <span class="ngb">FUNCTION DrawBox( nTop, nLeft, nBottom, nRight )</span></span><br><span class="line"></span><br><span class="line">      <span class="ngb">@ nTop, nLeft, nBottom, nRight BOX B_DOUBLE</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">RETURN( NIL )</span></span><br><span class="line"></span><br><span class="line"> This looks fine as long as you pass the correct parameters then this will</span><br><span class="line"> draw a box on the screen. Now let&#39;s just say that you&#39;d accidently mis-typed</span><br><span class="line"> something and instead called the function as:</span><br><span class="line"></span><br><span class="line">  <span class="ngb">DrawBox( 1, 1,,10, 10 )</span></span><br><span class="line"></span><br><span class="line"> Please note the extra comma between the 1 and the 10 - a common enough</span><br><span class="line"> typing mistake that can cost time trying to track down. When this runs,</span><br><span class="line"> nothing will happen, the program will not fall over, there will be no screen</span><br><span class="line"> output - so how are you supposed to know if something has gone wrong?</span><br><span class="line"></span><br><span class="line"> There is an easier way than tracing through each line of code watching for</span><br><span class="line"> something not happening!</span><br><span class="line"></span><br><span class="line"> Take a look at the following  function, an enhancement on the previous one:</span><br><span class="line"></span><br><span class="line">  <span class="ngb">FUNCTION DrawBox( nTop AS INT, nLeft AS INT, nBottom AS INT, nRight AS INT )</span></span><br><span class="line"></span><br><span class="line">      <span class="ngb">@ nTop, nLeft, nBottom, nRight BOX B_DOUBLE</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">RETURN( NIL )</span></span><br><span class="line"></span><br><span class="line"> Notice that each variable in the function declaration parameter list has the</span><br><span class="line"> words <span class="ngb">AS INT</span> after them. These signify that if any parameters that are</span><br><span class="line"> passed down to this function are not integers then flag them as an error.</span><br><span class="line"></span><br><span class="line"> Now, when this function is called using the following function call:</span><br><span class="line"></span><br><span class="line">  <span class="ngb">DrawBox( 1, 1,,10,10)</span></span><br><span class="line"></span><br><span class="line"> Instead of nothing happening, the program will halt with an <span class="fg12 bg1">Assertion</span></span><br><span class="line"> Break warning message in the MrDebug&#39;s command window and an entry in the</span><br><span class="line"> Assert/ Trace Window with the Time the function was called, the filename the</span><br><span class="line"> function is in, the name of the function that was called, the line number</span><br><span class="line"> and a message, such as <span class="fg12 bg1">Param 2 is not type INT</span>.</span><br><span class="line"></span><br><span class="line"> From this we can see precisely what has happened i.e., why the assertion</span><br><span class="line"> occurred. At this point your options are open - you could quit out, load</span><br><span class="line"> your editor correct the mistake, re-compile, re-link and re-run the program</span><br><span class="line"> - NOT!</span><br><span class="line"></span><br><span class="line"> You could instead, press &lt;Shift&gt;&lt;Alt&gt;&lt;N&gt;, make a note of the problem, make</span><br><span class="line"> the necessary changes to the variables within the variable and continue on</span><br><span class="line"> with the program - the easy life!</span><br><span class="line"></span><br><span class="line"> And much later when you have finished running your program, with the use of</span><br><span class="line"> the notes that you made earlier go into your source code and make the</span><br><span class="line"> necessary changes to correct the source code all in one go.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-653293.html">FUNCTION</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="mrdebug-52585.html">Shift-Alt-N</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

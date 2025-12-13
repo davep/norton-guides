@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="vgaregs-style.css">
+    <title>VGA registers » VGA » Regs</title>
+    <meta name="description" content="VGA registers">
+    <link rel="prev" href="vgaregs-19035.html">
+    <link rel="next" href="vgaregs-20869.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="vgaregs-about.html">About</a></li>
+
+
+          
+
+<li><a href="vgaregs-19035.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="vgaregs-20869.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>VGA</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Regs</a></li>
+                  <li><a href="vgaregs-43932.html">ASM</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Vert retrace end       index 11h  CRTC    (protected)</span></span><br><span class="line"></span><br><span class="line">Layout  b7     PR   Protect CRTC registers 0 to 7</span><br><span class="line">        b6     BW   Bandwidth (refresh cycle select)</span><br><span class="line">        b5     DVI  (EGA only)</span><br><span class="line">        b4     CVI  (EGA only)</span><br><span class="line">        b4-b0  EVR  Vertical retrace end (4 or 5 bits??)</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Note</span></span><br><span class="line">        This register is protected by the CR field in the End</span><br><span class="line">        horizontal blanking register.</span><br><span class="line"></span><br><span class="line">- Protect CRTC registers 0-7 (bit 7)</span><br><span class="line">        Protects the CRTC registers at indexes 0 to 7 from being</span><br><span class="line">        modified. The lower 8 registers in the CRTC contain sensitive</span><br><span class="line">        horizontal and vertical timing settings. Software expecting</span><br><span class="line">        the EGA may program these registers unwittingly.</span><br><span class="line"></span><br><span class="line">        0 : No protection is active.</span><br><span class="line">        1 : Writing from the host to CRTC registers 0-7 is disabled.</span><br><span class="line"></span><br><span class="line">- Vertical retrace end (bits 4-0 (3-0??))</span><br><span class="line">        The low-order 5 (4??) bits of the value that will cause the</span><br><span class="line">        vertical retrace period to end. The horizontal scan line count</span><br><span class="line">        is compared to the Vertical retrace start register. When the</span><br><span class="line">        values are equal, a vertical retrace period is started. After</span><br><span class="line">        this time, the low-order five bits of the scan line counter</span><br><span class="line">        are compared to the five bits in the EVR field. When they are</span><br><span class="line">        equal, the vertical retrace period ends.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="vgaregs-11989.html">CRTC registers</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="vgaregs-13322.html">End horiz blank</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="vgaregs-19035.html">Vert retrace start</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:13</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

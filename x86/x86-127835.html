@@ -1,0 +1,163 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-125491.html">
+    <link rel="next" href="x86-130438.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-125491.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-130438.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">RET             Return from Procedure                Flags: Not altered</span></span><br><span class="line"></span><br><span class="line"><span class="ngb">RET</span> optional_pop_value</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   POP eIP</span><br><span class="line">                if FAR return (inter-segment)</span><br><span class="line">                    POP CS</span><br><span class="line">                endif</span><br><span class="line">                eSP ← eSP + optional_pop_value (if specified)</span><br><span class="line"></span><br><span class="line">    RET transfers control to a return address located on the stack.</span><br><span class="line">    The address is usually placed on the stack by a CALL instruction,</span><br><span class="line">    and the return is made to the instruction that follows the CALL.</span><br><span class="line"></span><br><span class="line">    For a near (intrasegment) return, the address on the stack is a</span><br><span class="line">    segment offset, which is popped into the instruction pointer</span><br><span class="line">    (eIP). The CS register is unchanged.</span><br><span class="line">    For a far (intersegment) return, the address on the stack is a</span><br><span class="line">    long pointer; the offset is popped first, followed by the segment</span><br><span class="line">    value.</span><br><span class="line"></span><br><span class="line">    The optional numeric parameter to RET gives the number of stack</span><br><span class="line">    bytes (operand-size 16) or words (operand-size 32) to be released</span><br><span class="line">    after the return address is popped. These items are typically used</span><br><span class="line">    as input parameters to the procedure called (the Pascal calling</span><br><span class="line">    convention).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                <span class="ngb">Note</span></span><br><span class="line">                Strictly speaking, RET is not an instruction,</span><br><span class="line">                but a macro. It is always translated by the</span><br><span class="line">                assembler into a RETN or a RETF instruction.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Protected mode</span></span><br><span class="line">    In real mode, CS and IP are loaded directly. In protected mode, an</span><br><span class="line">    intersegment return causes the processor to check the descriptor</span><br><span class="line">    addressed by the return selector. The Access Rights (AR) byte of</span><br><span class="line">    the descriptor must indicate a code segment of equal or lesser</span><br><span class="line">    privilege than the current privilege level (CPL). Returns to a</span><br><span class="line">    lesser privilege level cause the stack to be reloaded from the</span><br><span class="line">    value saved beyond the parameter block.</span><br><span class="line"></span><br><span class="line">    The DS, ES, FS, and GS segment registers can be set to zero by the</span><br><span class="line">    RET instruction during an interlevel transfer. If these registers</span><br><span class="line">    refer to segments that cannot be used by the new privilege level,</span><br><span class="line">    they are set to zero to prevent unauthorized access from the new</span><br><span class="line">    privilege level.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    C2 iw       RETN imm16</span><br><span class="line">    C3          RETN</span><br><span class="line">    CA iw       RETF imm16</span><br><span class="line">    CB          RETF</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Variations/</span><br><span class="line">    operands    Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    retn        1       20      16      11+m    10+m     5       2   NP</span><br><span class="line">    retn imm16  1+d(2)  24      18      11+m    10+m     5       3   NP</span><br><span class="line">    retf        1       34      22      15+m    18+m    13       4   NP</span><br><span class="line">    retf imm16  1+d(2)  33      25      15+m    18+m    14       4   NP</span><br><span class="line"></span><br><span class="line">                             <span class="ngb">Protected Mode</span></span><br><span class="line">    Variations/</span><br><span class="line">    operands    bytes                   286     386     486     Pentium</span><br><span class="line">    retf        1                     25+m/55  32+m/62 18/33  4-13/23 NP</span><br><span class="line">    retf imm16  1+d(2)                25+m/55  32+m/68 17/33  4-13/23 NP</span><br><span class="line"></span><br><span class="line">         Cycles for: same privilege level/lower privilege level</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-21292.html">CALL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-46760.html">ENTER</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-78742.html">LEAVE</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-64904.html">IRET</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-195957.html">Selectors</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-197219.html">Descriptors</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

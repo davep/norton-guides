@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2624977.html">
+    <link rel="next" href="rbint-2626762.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2624977.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2471063.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2626762.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 5F05  - Dos 4.0+ Network - Get Extended Redirection List Entry </span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AX = 5F05h</span><br><span class="line">   BX = redirection list index</span><br><span class="line">   DS:SI -&gt; buffer for ASCIZ source device name</span><br><span class="line">   ES:DI -&gt; buffer for destination ASCIZ network path</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF set on error</span><br><span class="line">       AX = error code (see #1366 at AH=59h/BX=0000h)</span><br><span class="line">   CF clear if successful</span><br><span class="line">       AX = server&#39;s network process ID handle (10NET)</span><br><span class="line">       BH = device status flag (bit 0 clear if valid)</span><br><span class="line">       BL = device type (03h if printer, 04h if drive)</span><br><span class="line">       CX = stored parameter value (user data) from AX=5F03h</span><br><span class="line">       BP = NETBIOS local session number</span><br><span class="line">       DS:SI buffer filled</span><br><span class="line">       ES:DI buffer filled</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> the local session number allows sharing the redirector&#39;s session number</span><br><span class="line">   if an error is caused on the NETBIOS LSN, the redirector may be unable</span><br><span class="line">     to correctly recover from errors</span><br><span class="line">   the DOS kernel calls INT 2F/AX=111Eh with AX on top of the stack</span><br><span class="line">   supported by DR DOS 5.0</span><br><span class="line">   also supported by 10NET v5.0</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=5F06h&#34;Network&#34;,INT 2F/AX=111Eh</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

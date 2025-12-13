@@ -1,0 +1,143 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="mrdebug-style.css">
+    <title>MrDebug for CA-Clipper Ver 1.20.147ß » OverView » Questions and Answers</title>
+    <meta name="description" content="MrDebug for CA-Clipper Ver 1.20.147ß">
+    <link rel="prev" href="mrdebug-267196.html">
+    <link rel="next" href="mrdebug-271262.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="mrdebug-about.html">About</a></li>
+
+
+          
+
+<li><a href="mrdebug-267196.html">Previous</a></li>
+
+
+          
+
+<li><a href="mrdebug-241082.html">Up</a></li>
+
+
+          
+
+<li><a href="mrdebug-271262.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Menus</a></li>
+                  <li><a href="mrdebug-7600.html">Keys</a></li>
+                  <li><a href="mrdebug-64852.html">Windows</a></li>
+                  <li><a href="mrdebug-123570.html">Mouse Support</a></li>
+                  <li><a href="mrdebug-132681.html">The Colour Settings</a></li>
+                  <li><a href="mrdebug-137446.html">Index</a></li>
+                  <li><a href="mrdebug-167558.html">Tables</a></li>
+                  <li><a href="mrdebug-219067.html">Utilities</a></li>
+                  
+                </ul>
+              </li>
+              <li>OverView</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-232955.html">Introduction</a></li>
+                  <li><a href="mrdebug-241082.html">Questions and Answers</a></li>
+                  <li><a href="mrdebug-289945.html">Technical Support</a></li>
+                  <li><a href="mrdebug-295928.html">Versions</a></li>
+                  <li><a href="mrdebug-311206.html">Acknowledgements</a></li>
+                  
+                </ul>
+              </li>
+              <li>Tutorial</li>
+              <li>
+                <ul>
+                  <li><a href="mrdebug-317622.html">Getting Started</a></li>
+                  <li><a href="mrdebug-329292.html">Working with Source code</a></li>
+                  <li><a href="mrdebug-338287.html">Inspecting Variables</a></li>
+                  <li><a href="mrdebug-348923.html">Accessing your Database</a></li>
+                  <li><a href="mrdebug-354363.html">Using the Profiler</a></li>
+                  <li><a href="mrdebug-360448.html">Assertion Checking</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">How can I determine where a GPF has occurred?</span></span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> General Protection Faults are mainly caused by illegal instructions. When</span><br><span class="line"> people first see a GPF they assume that the problem is with the linker. This</span><br><span class="line"> is not the case. The cause of the problem has been determined at the exact</span><br><span class="line"> point where it has occurred.</span><br><span class="line"></span><br><span class="line"> Had the same program been run in real mode the problem would not have been</span><br><span class="line"> detected until much later in the running of the program and an error would</span><br><span class="line"> have occurred - although the error message could have been anything and</span><br><span class="line"> probably nothing to do with the real problem.</span><br><span class="line"></span><br><span class="line"> When linking in protected you should always create a .MAP file of the</span><br><span class="line"> application so that the results of the GPF can be cross referenced.</span><br><span class="line"></span><br><span class="line"> This is done with the simple use of a &#39;MAP A&#39; command on your link line or</span><br><span class="line"> within the link script, which will produce an Address map.</span><br><span class="line"></span><br><span class="line"> When a GPF occurs, MrDebug traps the GPF and reproduces the output in the</span><br><span class="line"> Error/GPF window. If you have an up-to-date .MAP file, you can press ◄──┛</span><br><span class="line"> and MrDebug will scan the .MAP file for the information required to seek out</span><br><span class="line"> and display the meaningful information, but don&#39;t blink otherwise you will</span><br><span class="line"> miss the map scan!</span><br><span class="line"></span><br><span class="line"> MrDebug is not going to catch all of the GPF&#39;s as sometimes you&#39;ll get a GPF</span><br><span class="line"> whilst a GPF is being reported in which case you&#39;ll have fun tracking the</span><br><span class="line"> GPF down as you won&#39;t have any information about the first GPF!</span><br><span class="line"></span><br><span class="line"> Well we thought of that. When a GPF occurs, the first thing that happens is</span><br><span class="line"> MrDebug creates a .GPF plain text file that contains the information about</span><br><span class="line"> the GPF sufficient enough for MrGPF to use to report the GPF information.</span><br><span class="line"></span><br><span class="line"> When your run MrGPF, MrGPF will scan the.GPF file first and report the</span><br><span class="line"> information that it finds in there, it will then scan the screen to report</span><br><span class="line"> on the second GPF and report that as well. So you&#39;ll know that 2 GPF&#39;s</span><br><span class="line"> occurred and that the first GPF reported by MrGPF is always the first GPF to</span><br><span class="line"> occur. But please note, this will only work with MrDebug, a MrDebug creates</span><br><span class="line"> the .GPF file.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">The manual way of locating a GPF.</span></span><br><span class="line"></span><br><span class="line"> The output generated by Blinker when a general protection fault or similar</span><br><span class="line"> looks something like the following, the bits you need to look at have been</span><br><span class="line"> marked.</span><br><span class="line"></span><br><span class="line"> BLX286 : 1313 : exception error 0D : general protection fault, code = 0000h</span><br><span class="line"></span><br><span class="line"> Active host is DPMI</span><br><span class="line"></span><br><span class="line"> Reg  Value  Limit  S<span class="ngb">┌──┐</span>nt  Module    File</span><br><span class="line"> CS   0137   EDA7    <span class="ngb">│01│</span>    GPF       D:\C700\DEV\MRDEBUG\GPF\GPF.EXE</span><br><span class="line"> DS   0177   FFFF    <span class="ngb">└──┛</span>    GPF       D:\C700\DEV\MRDEBUG\GPF\GPF.EXE</span><br><span class="line"> ES   0000   ****</span><br><span class="line"> SS   0177   FFFF     09     GPF       D:\C700\DEV\MRDEBUG\GPF\GPF.EXE</span><br><span class="line"></span><br><span class="line"> [Code byte CS] 00 00 00 00 33 DB 8E C3 [IP] 26 8A 07 2A E4 50 9A 84 70 37</span><br><span class="line">                                                              <span class="ngb">┌────┐</span></span><br><span class="line"> [Registers]  AX=01BF  BX=0000  CX=0001  DX=467C   CS:IP=0137:<span class="ngb">│00C0│</span></span><br><span class="line">              SI=0032  DI=46A6  BP=3F0C  SP=3EFC              <span class="ngb">└────┛</span></span><br><span class="line">              NV UP EI NT PL NZ NA PE NC</span><br><span class="line"></span><br><span class="line"> [Stack value SS] 467C 0001 0000 4B55 [SP] B5D7 0137 0137 B04D 0000 0000</span><br><span class="line"></span><br><span class="line"> [Stack frame SS] 0000 0000 468A 04C2 [BP] 3F26 0022 0137 0026 0137 0000</span><br><span class="line"></span><br><span class="line"> The first number is the extended mode segment number that the currently</span><br><span class="line"> executing code is in. The second number is the offset within the segment of</span><br><span class="line"> the code.  Just look at the map file for the segment and offset, and hey</span><br><span class="line"> presto, you&#39;ve found the target. You probably won&#39;t find an exact match to</span><br><span class="line"> the offset, just look for the nearest address below the actual GPF location.</span><br><span class="line"></span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="mrdebug-113007.html">The Error/GPF Window - GPF Errors</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:45</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

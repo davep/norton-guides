@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5ie4-style.css">
+    <title>Clipper 5.00a » Internal Errors  V1.04 » Show » Internal Errors</title>
+    <meta name="description" content="Clipper 5.00a » Internal Errors  V1.04">
+    <link rel="prev" href="cl5ie4-22437.html">
+    <link rel="next" href="cl5ie4-25659.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5ie4-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5ie4-22437.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5ie4-25659.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Show</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Internal Errors</a></li>
+                  <li><a href="cl5ie4-27006.html">Accuracy ...</a></li>
+                  <li><a href="cl5ie4-28420.html">Credits ...</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  <span class="ngb">Internal Error #5320, __DBCREATI (0)</span></span><br><span class="line"></span><br><span class="line">  (#94001) Index Problem.</span><br><span class="line"></span><br><span class="line">  (#96249) Sometimes solved by reducing index key size.</span><br><span class="line"></span><br><span class="line">  (#95342) Possibly a conflict with CACHE, VDISK, or SMARTDRV.</span><br><span class="line"></span><br><span class="line">  (#95701) More of the same - May not be CACHE - perhaps combination of</span><br><span class="line">  key length and available memory.</span><br><span class="line"></span><br><span class="line">  (#95087) Indexing may have problems with macros.  Try surrounding your</span><br><span class="line">  key expression with parenthesis.</span><br><span class="line"></span><br><span class="line">  (#101629) Suggests that perhaps not pre-linking with BASE50 will help.</span><br><span class="line"></span><br><span class="line">  (#108574) <span class="ngu">One user appended a CHR(0) to the end of his key string at</span></span><br><span class="line">  <span class="ngu">Nantucket&#39;s suggestion, and this error went away for good.</span></span><br><span class="line"></span><br><span class="line">  (#112220) Reports that this error occurred also during a SORT -D in</span><br><span class="line">  __DBARRANG(0).  No resolution was offered.  Try the sort in a stand alone</span><br><span class="line">  program - the problem may be related to the size of the DBF and available</span><br><span class="line">  memory.</span><br><span class="line"></span><br><span class="line">  (#112803) This error seems to occur when clipper thinks you have expanded</span><br><span class="line">  memory, but you do not.  Installing expanded memory has been known to</span><br><span class="line">  solve it.  No guaranties, but it could be worth a try.  It also seems</span><br><span class="line">  Smartdrv.sys is usually installed at the time.</span><br><span class="line"></span><br><span class="line">  (#112960) <span class="ngu">In essence, the 5320 means the VMM has tried to map an EMS</span></span><br><span class="line">  <span class="ngu">page when no EMS is available or that the EMS manager has returned an</span></span><br><span class="line">  <span class="ngu">error code.</span></span><br><span class="line"></span><br><span class="line">  () Most of the 5320 reported errors have been on INDEXing or SORTing</span><br><span class="line">  operations.  (PACKs with NTXs open, REPLACING a key field, etc...)  Since</span><br><span class="line">  5320 is in the VMM error range (53xx), this would indicate that 5320 has</span><br><span class="line">  something to do with indexes related to VMM.  VMM is used for buffers,</span><br><span class="line">  variables, and clipper code.  It should be noted that 53xx does not</span><br><span class="line">  necessarily mean that there is a low memory problem - any VMM problem will</span><br><span class="line">  do.</span><br><span class="line"></span><br><span class="line">  (Mail: 71660,1440) While installing a Clipper 5.0 program on a Novell     <span class="ngb">~</span></span><br><span class="line">  Network, this user solved continuous 5320 errors by switching from DOS 3.3</span><br><span class="line">  to 4.x.  I personally believe that the switch in DOS versions was not the</span><br><span class="line">  deciding factor, and that perhaps a change in EMS Driver or General RAM</span><br><span class="line">  configuration during the OS switch caused the errors to disappear.</span><br><span class="line"></span><br><span class="line">  (#117235) Ray Crisp [73667,1450] solved his 5320 woes by changing the     <span class="ngb">~</span></span><br><span class="line">  following code:</span><br><span class="line"></span><br><span class="line">  SELECT 1</span><br><span class="line">  USE ARTRANS</span><br><span class="line">  INDEX ON VndNo+FileNo+STR(TransNo) TO ARTRANSA</span><br><span class="line">  INDEX ON FileNo+STR(TransNo) TO ARTRANSF</span><br><span class="line">  CLOSE DATABASES                        // Ray Added this, and ...</span><br><span class="line">  SELECT 1                               // this, and his problems disappeared</span><br><span class="line">  USE ARFILE</span><br><span class="line">  INDEX ON FileNo TO ARFILE</span><br><span class="line">  // etc ...</span><br><span class="line"></span><br><span class="line">  (#115909) Kurt Schaldenbrand [72137,2703] suggests that this error is     <span class="ngb">~</span></span><br><span class="line">  related in some way to expanded memory: &#34;When a customer adds expanded</span><br><span class="line">  memory, occurrences of both 416 and 5320 go away.&#34;</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="cl5ie4-3968.html">Internal Error #416</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

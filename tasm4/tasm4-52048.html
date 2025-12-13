@@ -1,0 +1,150 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="tasm4-style.css">
+    <title>TASM v4.0 » Assembler » Directives</title>
+    <meta name="description" content="TASM v4.0">
+    <link rel="prev" href="tasm4-51480.html">
+    <link rel="next" href="tasm4-53649.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="tasm4-about.html">About</a></li>
+
+
+          
+
+<li><a href="tasm4-51480.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="tasm4-53649.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Assembler</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Directives</a></li>
+                  <li><a href="tasm4-124679.html">Operators</a></li>
+                  <li><a href="tasm4-151581.html">Predefined equates</a></li>
+                  <li><a href="tasm4-160592.html">Command line</a></li>
+                  <li><a href="tasm4-189366.html">Symbols &amp; expressions</a></li>
+                  <li><a href="tasm4-202140.html">Interfacing</a></li>
+                  <li><a href="tasm4-209306.html">Keywords</a></li>
+                  <li><a href="tasm4-212771.html">Error messages</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">GROUP            Define segment group                               Directive</span></span><br><span class="line"></span><br><span class="line">  <span class="ngb">GROUP</span> groupname segmentname [,segmentname]... ; Ideal mode</span><br><span class="line">  groupname <span class="ngb">GROUP</span> segmentname [,segmentname]... ; MASM mode</span><br><span class="line"></span><br><span class="line">    Associates groupname with one or more segments, so that all labels and</span><br><span class="line">    variables defined in those segments have their offsets computed</span><br><span class="line">    relative to the beginning of group groupname.</span><br><span class="line"></span><br><span class="line">    segmentname can be either a segment name defined previously with</span><br><span class="line">    SEGMENT or an expression starting with SEG.</span><br><span class="line"></span><br><span class="line">    In MASM mode, you must use a group <span class="ngb">override</span> whenever you access a</span><br><span class="line">    symbol in a segment that is part of a group.</span><br><span class="line">    In Ideal mode, any data item in a segment that is part of a group is</span><br><span class="line">    considered to be principally a member of the group, not of the</span><br><span class="line">    segment. An explicit segment override must be used for Turbo Assembler</span><br><span class="line">    to recognize the data item as a member of the segment.</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">    The name argument must not be in any other GROUP directive in any</span><br><span class="line">    source file.</span><br><span class="line"></span><br><span class="line">    The group name can be used in any ASSUME directive statements and can</span><br><span class="line">    also be used with segment overrides.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Notes:  A group&#39;s segments need not be contiguous. Segments not</span><br><span class="line">            belonging to the group can be loaded between segments that do.</span><br><span class="line">            There is a restriction in that the first byte of the first</span><br><span class="line">            segment in the group must not be greater than 65,535 bytes</span><br><span class="line">            away from the last byte of the last segment of the group. This</span><br><span class="line">            means that if all the segments of a group are contiguous, a</span><br><span class="line">            group can be no larger than 65,536 bytes, or 64K.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="tasm4-91545.html">SEGMENT</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-18252.html">ASSUME</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-143939.html">SEG</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-142011.html">OFFSET</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-7122.html">Ideal vs. MASM mode</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="tasm4-117604.html">Simplified</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:12</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

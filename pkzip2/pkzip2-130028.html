@@ -1,0 +1,127 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="pkzip2-style.css">
+    <title>PKZIP 2.0 Reference Guide » Guides » Error Levels</title>
+    <meta name="description" content="PKZIP 2.0 Reference Guide">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="pkzip2-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><span>Up</span></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">PKZIP</a></li>
+                  <li><a href="pkzip2-35456.html">PKUNZIP</a></li>
+                  <li><a href="pkzip2-49977.html">PKSFX/ZIP2EXE</a></li>
+                  <li><a href="pkzip2-58620.html">PK SAFE ANSI</a></li>
+                  <li><a href="pkzip2-60701.html">Introduction</a></li>
+                  <li><a href="pkzip2-69366.html">Configuration Files</a></li>
+                  <li><a href="pkzip2-76242.html">Addendum</a></li>
+                  
+                </ul>
+              </li>
+              <li>Guides</li>
+              <li>
+                <ul>
+                  <li><a href="pkzip2-82634.html">Backup Guide</a></li>
+                  <li><a href="pkzip2-88893.html">Archive Attribute</a></li>
+                  <li><a href="pkzip2-90931.html">Data Encryption</a></li>
+                  <li><a href="pkzip2-103374.html">Using List Files</a></li>
+                  <li><a href="pkzip2-112353.html">F.A.Q. (part I)</a></li>
+                  <li><a href="pkzip2-121188.html">F.A.Q. (part II)</a></li>
+                  <li><a href="pkzip2-130028.html">Error Levels</a></li>
+                  <li><a href="pkzip2-132429.html">Errors &amp; Warnings</a></li>
+                  
+                </ul>
+              </li>
+              <li>Credits</li>
+              <li>
+                <ul>
+                  <li><a href="pkzip2-153649.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">  <span class="ngb">Error Levels</span></span><br><span class="line"></span><br><span class="line">  In order to enhance the power of using PKZIP and PKUNZIP from within</span><br><span class="line">  another program or within a batch file, they return error levels.  These</span><br><span class="line">  error levels are listed below.</span><br><span class="line"></span><br><span class="line">  Please note that if testing error levels in a batch file, DOS tests the</span><br><span class="line">  error level not for equality, but for greater than or equal to.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKZIP</span></span><br><span class="line"></span><br><span class="line">     0     No error.</span><br><span class="line">     1     Bad file name or file specification.</span><br><span class="line">     2,3   Error in .ZIP file.</span><br><span class="line">     4-11  Insufficient Memory.</span><br><span class="line">     12    No files were found to add to the .ZIP file, or no files</span><br><span class="line">           were specified for deletion.</span><br><span class="line">     13    File not found.  The specified .ZIP file or list file was</span><br><span class="line">           not found.</span><br><span class="line">     14    Disk full.</span><br><span class="line">     15    .ZIP file is read-only and can not be modified.</span><br><span class="line">     16    Bad or illegal parameters specified. (help screen displayed)</span><br><span class="line">     17    Too many files.</span><br><span class="line">     18    Could not open file.</span><br><span class="line">     255   User pressed control-c or control-break</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKUNZIP</span></span><br><span class="line"></span><br><span class="line">     0     No error.</span><br><span class="line">     1     Warning error (such as failed CRC check).</span><br><span class="line">     2,3   Error in .ZIP file.</span><br><span class="line">     4-8   Insufficient Memory.</span><br><span class="line">     9     File not found.  No .ZIP files found.</span><br><span class="line">     10    Bad or illegal parameters specified. (help screen displayed)</span><br><span class="line">     11    No files found to extract/view etc.</span><br><span class="line">     50    Disk Full.</span><br><span class="line">     51    Unexpected EOF in .ZIP file.</span><br><span class="line">     255   User pressed control-c or control-break</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="ngb">ZIP2EXE</span></span><br><span class="line"></span><br><span class="line">     0     No error</span><br><span class="line">     1     Error in .ZIP file</span><br><span class="line">     2     Error in .ZIP file, use PKZIPFIX</span><br><span class="line">     3-4   Insufficient memory to process file</span><br><span class="line">     7     Can&#39;t open Source file</span><br><span class="line">     8     Error in .ZIP file</span><br><span class="line">     9     Disk full writing target file during EXE to ZIP process</span><br><span class="line">     11    Disk full writing target file during ZIP to EXE process</span><br><span class="line">     12    .ZIP file being converted contains a file compressed with a</span><br><span class="line">           method not supported by the version of PKSFX being</span><br><span class="line">           attached by ZIP2EXE</span><br><span class="line">     13    User answered &#34;NO&#34; in response to an &#34;overwrite(y/n)?&#34; prompt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKSFX</span></span><br><span class="line"></span><br><span class="line">     1     Warning error such as:</span><br><span class="line">           File fails CRC check, Unknown compression method.</span><br><span class="line">     3     Can&#39;t find .EXE file</span><br><span class="line">     4-8   Insufficient memory</span><br><span class="line">     9     Unable to located listfile</span><br><span class="line">     12    User aborted at comment pausing &#34;Extract now (y/n)?&#34; prompt</span><br><span class="line">     13    Error in .EXE file</span><br><span class="line">     50    Disk full</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="ngb">PKSFX/PKUNZIP Junior</span></span><br><span class="line"></span><br><span class="line">     1     Warning error such as:</span><br><span class="line">           File fails CRC check, Unknown compression method.</span><br><span class="line">     2     Can&#39;t find .EXE file</span><br><span class="line">     3     Error in .EXE file</span><br><span class="line">     4     File has a bad table</span><br><span class="line">     5     Can&#39;t create file</span><br><span class="line">     6     Disk full</span><br><span class="line">     7     Too many files</span><br><span class="line">     8     User aborted at comment pausing &#34;Extract now (y/n)?&#34; prompt</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:50</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

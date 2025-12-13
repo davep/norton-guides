@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4275054.html">
+    <link rel="next" href="rbint-4275863.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4275054.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4197937.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4275863.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn B808  U - Network - Relink Keyboard Handler                    </span>  [<span class="ngb">N</span>]</span><br><span class="line"></span><br><span class="line">   AX = B808h</span><br><span class="line">   ES:BX -&gt; INT 09 handler network should call after it finishes INT 09</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> this call replaces the address to which the network software chains on</span><br><span class="line">     an INT 09 without preserving the original value.  This allows a prior</span><br><span class="line">     handler to unlink, but does not allow a new handler to be added</span><br><span class="line">     such that the network gets the INT 09 first unless the new handler</span><br><span class="line">     completely takes over INT 09 and never chains.</span><br><span class="line">   this function is called by the DOS 3.2 KEYBxx.COM</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=B908h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

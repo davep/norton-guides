@@ -1,0 +1,132 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="int-style.css">
+    <title>Interrupts &amp; Ports » Dos Tables » Interrupts</title>
+    <meta name="description" content="Interrupts &amp; Ports">
+    <link rel="prev" href="int-765120.html">
+    <link rel="next" href="int-780131.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="int-about.html">About</a></li>
+
+
+          
+
+<li><a href="int-765120.html">Previous</a></li>
+
+
+          
+
+<li><a href="int-764057.html">Up</a></li>
+
+
+          
+
+<li><a href="int-780131.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Dos Tables</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Interrupts</a></li>
+                  <li><a href="int-50943.html">DOS functions</a></li>
+                  <li><a href="int-127442.html">DOS List formats</a></li>
+                  <li><a href="int-150514.html">DOS Error codes</a></li>
+                  <li><a href="int-154931.html">DOS Data Structures</a></li>
+                  
+                </ul>
+              </li>
+              <li>Ports, EMS</li>
+              <li>
+                <ul>
+                  <li><a href="int-155180.html">I/O ports</a></li>
+                  <li><a href="int-194469.html">EMS Error codes</a></li>
+                  <li><a href="int-196321.html">Ansi control sequences</a></li>
+                  <li><a href="int-202455.html">ASCII Chart</a></li>
+                  <li><a href="int-207580.html">Line-Drawing Chars</a></li>
+                  <li><a href="int-208398.html">Special Characters</a></li>
+                  <li><a href="int-210204.html">Color Chart</a></li>
+                  <li><a href="int-211689.html">Keyboard Codes</a></li>
+                  
+                </ul>
+              </li>
+              <li>Hardware</li>
+              <li>
+                <ul>
+                  <li><a href="int-224575.html">8237A-5 DMA Controller</a></li>
+                  <li><a href="int-225613.html">8259A Interrupt Controller</a></li>
+                  <li><a href="int-227010.html">8253-5 Programmable Interval Timer</a></li>
+                  <li><a href="int-228636.html">8255A-5 Programmable Peripheral Interface</a></li>
+                  <li><a href="int-229069.html">Serial Communication (RS-232)</a></li>
+                  <li><a href="int-230985.html">Net Bios</a></li>
+                  <li><a href="int-231105.html">Video</a></li>
+                  <li><a href="int-231243.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">        <span class="ngb">MODE 01h &#34;QUERY STREAM&#34; (valid only for those opcodes listed here)</span></span><br><span class="line"></span><br><span class="line">        A0h return logical cursor row in next byte</span><br><span class="line">        A1h return logical cursor column in next byte</span><br><span class="line">        A2h return top row of scrolling region in next byte</span><br><span class="line">        A3h return left column of scrolling region in next byte</span><br><span class="line">        A4h return row of physical window origin in next byte</span><br><span class="line">        A5h return column of physical window origin in next byte</span><br><span class="line">        A6h return height of physcial window in next byte</span><br><span class="line">        A7h return width of physical window in next byte</span><br><span class="line">        A8h return row of viewport origin in next byte</span><br><span class="line">        A9h return column of viewport origin in next byte</span><br><span class="line">        AAh return height of virtual screen in next byte</span><br><span class="line">        ABh return width of virtual screen in next byte</span><br><span class="line">        AFh return current video mode in next byte</span><br><span class="line">        C0h return current logical cursor position in next two bytes</span><br><span class="line">        C1h return top left corner of scrolling region in next two bytes</span><br><span class="line">        C2h return current window position in next two bytes</span><br><span class="line">        C3h return current window size in next two bytes</span><br><span class="line">        C4h return current viewport origin in next two bytes</span><br><span class="line">        C5h return current virtual screen size in next two bytes</span><br><span class="line">        D0h \ overwritten with D0h if frames may fall off screen edge</span><br><span class="line">        D1h /                  D1h if frames always displayed entirely</span><br><span class="line">        D2h \ overwritten with D2h if DESQview controls color palette</span><br><span class="line">        D3h /                  D3h if application changes color palette</span><br><span class="line">        D4h \ overwritten with D4h if window visible</span><br><span class="line">        D5h /                  D5h if window hidden</span><br><span class="line">        D6h \ overwritten with D6h if window has frame</span><br><span class="line">        D7h /                  D7h if window unframed</span><br><span class="line">        D8h \ overwritten with D8h if reading characters from window</span><br><span class="line">        D9h /                  D9h if reading attributes from window</span><br><span class="line">        DAh \ overwritten with DAh if using logical attributes</span><br><span class="line">        DBh /                  DBh if using physical attributes</span><br><span class="line">        DCh \ overwritten with DCh if TTY control char interpretation on</span><br><span class="line">        DDh /                  DDh if TTY control char interpretation off</span><br><span class="line">        DEh \ overwritten with DEh if writing both characters and attributes</span><br><span class="line">        DFh /                  DFh if leaving attributes untouched</span><br><span class="line">        E2h return current color in next byte</span><br><span class="line">        ECh get logical attributes for window contents</span><br><span class="line">            BYTE execute call if currently in specified video mode</span><br><span class="line">                bit 7   monochrome</span><br><span class="line">                bit 6   color text, EGA/VGA graphics</span><br><span class="line">                bit 5   medium-resolution CGA graphics</span><br><span class="line">                bit 4   high-resolution CGA graphics</span><br><span class="line">            BYTE which attributes to get</span><br><span class="line">                bit 7 unused???</span><br><span class="line">                bits 4-6 first attribute to get - 1</span><br><span class="line">                bits 0-3 # consecutive attributes</span><br><span class="line">            N BYTEs buffer to hold attributes</span><br><span class="line">        EDh get logical attributes for window frame</span><br><span class="line">            BYTE execute call if currently in video mode (see opcode ECh)</span><br><span class="line">            BYTE which attributes to get</span><br><span class="line">                bit 7 unused???</span><br><span class="line">                bits 4-6 first attribute to get - 1</span><br><span class="line">                bits 0-3 # consecutive attributes</span><br><span class="line">            N BYTEs buffer to hold attributes</span><br><span class="line">        EEh get characters for window frame</span><br><span class="line">            BYTE execute call if currently in video mode (see opcode ECh)</span><br><span class="line">            BYTE which attributes to get</span><br><span class="line">                bit 7 unused???</span><br><span class="line">                bits 4-6 first char to get - 1</span><br><span class="line">                bits 0-3 # consecutive chars</span><br><span class="line">            N BYTEs buffer to hold chars</span><br><span class="line">        EFh return current window name</span><br><span class="line">            BYTE    max length of returned name</span><br><span class="line">            N BYTEs buffer to hold window name</span><br><span class="line">        F3h return contents of input field</span><br><span class="line">            BYTE field number</span><br><span class="line">            N BYTEs buffer to hold field contents (size exactly equal to field</span><br><span class="line">                    size)</span><br><span class="line">        F5h get field table entry</span><br><span class="line">            BYTE field number</span><br><span class="line">            7-8 BYTEs buffer to hold field table entry</span><br><span class="line">        F6h get type of a field</span><br><span class="line">            BYTE field number</span><br><span class="line">            BYTE type</span><br><span class="line">        FCh get field table header</span><br><span class="line">            6 BYTEs buffer to store header</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:42</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

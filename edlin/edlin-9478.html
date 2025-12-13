@@ -1,0 +1,134 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="edlin-style.css">
+    <title>EDLIN » / » Commands</title>
+    <meta name="description" content="EDLIN">
+    <link rel="prev" href="edlin-8187.html">
+    <link rel="next" href="edlin-11629.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="edlin-about.html">About</a></li>
+
+
+          
+
+<li><a href="edlin-8187.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="edlin-11629.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>/</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Commands</a></li>
+                  <li><a href="edlin-23630.html">Parameters</a></li>
+                  <li><a href="edlin-25426.html">Messages</a></li>
+                  <li><a href="edlin-29042.html">Common</a></li>
+                  <li><a href="edlin-31544.html">Starting EDLIN</a></li>
+                  <li><a href="edlin-33858.html">Introduction</a></li>
+                  
+                </ul>
+              </li>
+              <li>*</li>
+              <li>
+                <ul>
+                  <li><a href="edlin-35220.html">DOS keys</a></li>
+                  <li><a href="edlin-37611.html">Comments</a></li>
+                  <li><a href="edlin-38617.html">Scripts</a></li>
+                  <li><a href="edlin-43102.html">Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">    <span class="ngb">Insert Lines command</span></span><br><span class="line"></span><br><span class="line">    Purpose:  Inserts lines of text immediately <span class="ngb">before</span> the specified line.</span><br><span class="line">              When you create a new file, you must enter the Insert Lines</span><br><span class="line">              command before text can be inserted.</span><br><span class="line"></span><br><span class="line">    Format:   [<span class="ngu">line</span>]<span class="ngb">I</span></span><br><span class="line"></span><br><span class="line">    Remarks:  If you do not specify line, or if you specify line as a period</span><br><span class="line">              (.), the insert is made immediately before the current line.</span><br><span class="line">              If the line number you specify is greater than the highest ex-</span><br><span class="line">              isting line number, or if you specify # as the line number,</span><br><span class="line">              the insertion is made after the last line in memory.</span><br><span class="line"></span><br><span class="line">              EDLIN displays the appropriate line number so that you can</span><br><span class="line">              enter more lines, ending each line by pressing Enter. During</span><br><span class="line">              the insert mode of operation, successive line numbers appear</span><br><span class="line">              automatically each time Enter is pressed.</span><br><span class="line"></span><br><span class="line">              You must press Ctrl-Break to discontinue the insert mode of</span><br><span class="line">              operation.</span><br><span class="line"></span><br><span class="line">              The line that follows the inserted lines becomes the current</span><br><span class="line">              line, even if the inserted lines are added to the end of the</span><br><span class="line">              lines in memory. The current line and any remaining lines are</span><br><span class="line">              renumbered.</span><br><span class="line"></span><br><span class="line">    Example:  Assume that you want to edit the following file. Line 2 is the</span><br><span class="line">              current line.</span><br><span class="line"></span><br><span class="line">              <span class="ngb">1: This is a sample file used to demonstrate</span></span><br><span class="line">              <span class="ngb">2:*line deletion</span></span><br><span class="line">              <span class="ngb">3: and dynamic line number generation.</span></span><br><span class="line"></span><br><span class="line">              If you want to insert text before line 3, the entry and imme-</span><br><span class="line">              diate response look like this:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">*3I</span></span><br><span class="line">              <span class="ngb">  3:*_</span></span><br><span class="line"></span><br><span class="line">              Now, if you want to insert two new lines of text, enter:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">*3I</span></span><br><span class="line">              <span class="ngb">  3:*First new line of text</span></span><br><span class="line">              <span class="ngb">  4:*Second new line of text</span></span><br><span class="line">              <span class="ngb">  5:*</span></span><br><span class="line"></span><br><span class="line">              and press Ctrl-Break.</span><br><span class="line"></span><br><span class="line">              The original line 3 is now renumbered to line 5.</span><br><span class="line"></span><br><span class="line">              If you display the file with a List Lines command, the file</span><br><span class="line">              looks like this:</span><br><span class="line"></span><br><span class="line">              <span class="ngb">1: This is a sample file used to demonstrate</span></span><br><span class="line">              <span class="ngb">2: line deletion</span></span><br><span class="line">              <span class="ngb">3: First new line of text</span></span><br><span class="line">              <span class="ngb">4: Second new line of text</span></span><br><span class="line">              <span class="ngb">5:*and dynamic line number generation.</span></span><br><span class="line"></span><br><span class="line">              If you had typed <span class="ngb">2I</span> or <span class="ngb">.I</span> or <span class="ngb">I</span> the two lines would appear</span><br><span class="line">              immediately before the current line.</span><br><span class="line"></span><br><span class="line">              If you had typed <span class="ngb">4 I</span> or <span class="ngb">#I</span> the two lines would appear at the</span><br><span class="line">              end of the file.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="edlin-29042.html">Common</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="edlin-23737.html">line</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:41</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

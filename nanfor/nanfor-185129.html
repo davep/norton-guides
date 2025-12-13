@@ -1,0 +1,128 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor-style.css">
+    <title>Nanforum Toolkit v3.05 Reference Guide » G-Z » Math</title>
+    <meta name="description" content="Nanforum Toolkit v3.05 Reference Guide">
+    <link rel="prev" href="nanfor-184249.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor-184249.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor-181545.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor-16449.html">Conversion</a></li>
+                  <li><a href="nanfor-30306.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor-59070.html">Date/Time</a></li>
+                  <li><a href="nanfor-102173.html">Environment</a></li>
+                  <li><a href="nanfor-109763.html">Event</a></li>
+                  <li><a href="nanfor-113206.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-137249.html">Game</a></li>
+                  <li><a href="nanfor-137802.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor-181545.html">Math</a></li>
+                  <li><a href="nanfor-186992.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor-223163.html">NetWare</a></li>
+                  <li><a href="nanfor-237863.html">String</a></li>
+                  <li><a href="nanfor-260934.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor-285956.html">Overview</a></li>
+                  <li><a href="nanfor-314363.html">Sample source code headers</a></li>
+                  <li><a href="nanfor-321056.html">Using CPMI</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_ROUND()</span></span><br><span class="line"> Rounds a number to a specific place</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_ROUND( &lt;nNumber&gt; [, &lt;nRoundToAmount&gt;           ;</span></span><br><span class="line">               <span class="fg15 bg1"> [, &lt;cRoundType&gt;  [, &lt;cRoundDirection&gt;   ;</span></span><br><span class="line">               <span class="fg15 bg1"> [, &lt;nAcceptableError&gt; ] ] ] ] )            -&gt; nNumber</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nNumber&gt;</span> is the number to round</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nRoundToAmount&gt;</span> is the fraction to round to or the number of places,</span><br><span class="line">     default is 2.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cRoundType&gt;</span> is the type of rounding desired</span><br><span class="line"></span><br><span class="line">        &#34;D&#34; for Decimal       (3 for thousandth, 1/1000)  (default)</span><br><span class="line">        &#34;F&#34; for Fraction      (3 for thirds, 1/3)</span><br><span class="line">        &#34;W&#34; for Whole numbers (3 for thousand, 1000)</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cRoundDirection&gt;</span> is the direction to round the number toward</span><br><span class="line"></span><br><span class="line">        &#34;U&#34; to round Up      1.31 -&gt;<span class="ngb">  1.4</span></span><br><span class="line">                            -1.31 -&gt;<span class="ngb"> -1.4</span></span><br><span class="line">        &#34;D&#34; to round Down    1.36 -&gt;<span class="ngb">  1.3</span></span><br><span class="line">                            -1.36 -&gt;<span class="ngb"> -1.3</span></span><br><span class="line">        &#34;N&#34; to round Normal  1.5  -&gt;<span class="ngb">  2</span></span><br><span class="line">                            -1.5  -&gt;<span class="ngb"> -2</span></span><br><span class="line">                             1.49 -&gt;<span class="ngb">  1</span></span><br><span class="line">                            -1.49 -&gt;<span class="ngb"> -1</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nAcceptableError&gt;</span> is the amount that is considered acceptable</span><br><span class="line">     to be within, i.e., if you&#39;re within this amount of the number</span><br><span class="line">     you don&#39;t need to round</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     The number, rounded as specified.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     This function will allow you to round a number.  The following can</span><br><span class="line">     be specified:</span><br><span class="line">       a. Direction (up, down or normal - normal is 4/5 convention)</span><br><span class="line">       b. Type (whole, decimal, fraction)</span><br><span class="line">       c. Amount (100&#39;s, 5 decimals, 16th, etc.)</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     // round normal to 2 decimal places</span><br><span class="line">     nDollars := FT_ROUND(nDollars)</span><br><span class="line"></span><br><span class="line">     // round normal to 6 decimal places</span><br><span class="line">     nIntRate := FT_ROUND(nIntRate, 6)</span><br><span class="line"></span><br><span class="line">     // round to nearest thousands</span><br><span class="line">     nPrice   := FT_ROUND(nPrice, 3, NEAREST_WHOLE_NUMBER)</span><br><span class="line"></span><br><span class="line">     // round Up to nearest third</span><br><span class="line">     nAmount  := FT_ROUND(nAmount, 3, NEAREST_FRACTION, ROUND_UP)</span><br><span class="line"></span><br><span class="line">     // round down to 3 decimals Within .005</span><br><span class="line">     nAvg     := FT_ROUND(nAvg, 3, , ROUND_DOWN, .005)</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> ROUND.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> David Husnian</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:48</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

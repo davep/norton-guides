@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-4403586.html">
+    <link rel="next" href="rbint-4405594.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-4403586.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-4320812.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-4405594.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 2F Fn CD08  - Intel Image Processing Interface - Screen Image        </span>  [<span class="ngb">P</span>]</span><br><span class="line"></span><br><span class="line">   AX = CD08h</span><br><span class="line">   CX:BX -&gt; structure (see #2743)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status (00h,80h-85h) (see #2740)</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=CD05h&#34;Image&#34;,AX=CD09h&#34;Image&#34;</span><br><span class="line"></span><br><span class="line">Format of IPI screen image structure:</span><br><span class="line">Offset Size    Description (Table 2743)</span><br><span class="line"> 00h   WORD    image source (0 = conventional memory, 1 = expanded memory)</span><br><span class="line"> 02h   DWORD   pointer to image data</span><br><span class="line"> 06h   WORD    horizontal position on paper of left edge (in 1200 dpi units)</span><br><span class="line"> 08h   WORD    vertical position on paper of top edge (in 1200 dpi units)</span><br><span class="line"> 0Ah   WORD    left cropping (currently must be zero)</span><br><span class="line"> 0Ch   WORD    top cropping (currently must be zero)</span><br><span class="line"> 0Eh   WORD    width (currently must be 8000h)</span><br><span class="line"> 10h   WORD    height (currently must be 8000h)</span><br><span class="line"> 12h   WORD    horizontal size of image in 1200 dpi units</span><br><span class="line"> 14h   WORD    vertical size of image in 1200 dpi units</span><br><span class="line"> 16h   WORD    aspect ratio (currently reserved)</span><br><span class="line"> 18h   WORD    initialization flag (if 01h, initialization is performed)</span><br><span class="line"> 1Ah   WORD    pixels per line of source data</span><br><span class="line"> 1Ch   WORD    number of scan lines in source data</span><br><span class="line"> 1Eh   WORD    number of scan lines in packet</span><br><span class="line"> 20h   WORD    bits per pixel (1,2,4,6, or 8)</span><br><span class="line"> 22h   WORD    pixels per byte (1,2,4, or 8)</span><br><span class="line"> 24h   WORD    compression type (currently only 00h [uncompressed] supported)</span><br><span class="line"> 26h   WORD    source page number (if in expanded memory)</span><br><span class="line"> 28h   WORD    source handle (if in expanded memory)</span><br><span class="line"> 2Ah   WORD    source offset (if in expanded memory)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

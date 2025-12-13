@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-6139727.html">
+    <link rel="next" href="rbint-6146770.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-6139727.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-6101071.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-6146770.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int E0  R - Conccp/m,dr Multiuser Dos - Execute Dos-compatible Functions </span>  [<span class="ngb">O</span>]</span><br><span class="line"></span><br><span class="line">   CL = 71h</span><br><span class="line">   DS:DX -&gt; parameter block (see #3764)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status (0000h successful, else error code)</span><br><span class="line">   may destroy SI,DI,DS</span><br><span class="line"></span><br><span class="line">(Table 3765)</span><br><span class="line">Values for DR &#34;execute DOS-compatible function&#34; function number:</span><br><span class="line"> 00h   &#34;fd_getdpb&#34; get disk information (see also INT 21/AH=32h)</span><br><span class="line"> 01h   &#34;fd_mkdir&#34;  create directory (see also INT 21/AH=39h)</span><br><span class="line"> 02h   &#34;fd_rmdir&#34;  remove directory (see also INT 21/AH=3Ah)</span><br><span class="line"> 03h   &#34;fd_chdir&#34;  change directory (see also INT 21/AH=3Bh)</span><br><span class="line"> 04h   &#34;fd_creat&#34;  create file (see also INT 21/AH=3Ch)</span><br><span class="line"> 05h   &#34;fd_open&#34;   open existing file (see also INT 21/AH=3Dh)</span><br><span class="line"> 06h   &#34;fd_close&#34;  close file (see also INT 21/AH=3Eh)</span><br><span class="line"> 07h   &#34;fd_read&#34;   read from file (see also INT 21/AH=3Fh)</span><br><span class="line"> 08h   &#34;fd_write&#34;  write to file (see also INT 21/AH=40h)</span><br><span class="line"> 09h   &#34;fd_delete&#34; delete file (see also INT 21/AH=41h)</span><br><span class="line"> 0Ah   &#34;fd_lseek&#34;  get/set file position (see also INT 21/AH=42h)</span><br><span class="line"> 0Bh   &#34;fd_chmod&#34;  get/set file attributes (see also INT 21/AH=43h)</span><br><span class="line"> 0Ch   &#34;fd_curdir&#34; get current directory (see also INT 21/AH=47h)</span><br><span class="line"> 0Dh   &#34;fd_sfirst&#34; find first matching file (see also INT 21/AH=4Eh)</span><br><span class="line"> 0Eh   &#34;fd_snext&#34;  find next matching file (see also INT 21/AH=4Fh)</span><br><span class="line"> 0Fh   &#34;fd_rename&#34; rename file (see also INT 21/AH=56h)</span><br><span class="line"> 10h   &#34;fd_gsfdate&#34;    get/set file date (see also INT 21/AX=5700h)</span><br><span class="line"> 11h   &#34;fd_mktemp&#34; make temporary file (see also INT 21/AH=5Ah)</span><br><span class="line"> 12h   &#34;fd_mknew&#34;  create new file (see also INT 21/AH=5Bh)</span><br><span class="line"> 13h   &#34;fd_lock&#34;   lock/unlock file data (see also INT 21/AH=5Ch)</span><br><span class="line"> 14h   &#34;fd_dup&#34;    duplicate file handle (see also INT 21/AH=45h)</span><br><span class="line"> 15h   &#34;fd_dup2&#34;   force duplicate file handle (see also INT 21/AH=46h)</span><br><span class="line"> 16h-19h ???</span><br><span class="line"> 1Ah   &#34;fd_ioctl&#34;  I/O control emulation</span><br><span class="line"> 1Bh   &#34;fd_commit&#34; commit file to disk (see also INT 21/AH=68h)</span><br><span class="line"> 1Ch   &#34;fd_expand&#34; expand file name (see also INT 21/AH=60h)</span><br><span class="line"> 1Dh   ???</span><br><span class="line"> 1Eh   ???</span><br><span class="line"> 1Fh   &#34;fd_sethandles&#34; set number of handles for calling process</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3764</span><br><span class="line"></span><br><span class="line">Format of DR &#34;execute DOS-compatible function&#34; parameter block:</span><br><span class="line">Offset Size    Description (Table 3764)</span><br><span class="line"> 00h   WORD    function number (see #3765)</span><br><span class="line">---function 00h---</span><br><span class="line"> 02h   WORD    drive</span><br><span class="line"> 04h   DWORD   -&gt; DPB (see #3766)</span><br><span class="line">---function 01h,02h,03h---</span><br><span class="line"> 02h   DWORD   -&gt; ASCIZ directory name</span><br><span class="line">---function 04h---</span><br><span class="line"> 02h   DWORD   -&gt; ASCIZ filename</span><br><span class="line"> 06h   WORD    file attributes</span><br><span class="line">---function 05h---</span><br><span class="line"> 02h   DWORD   -&gt; ASCIZ filename</span><br><span class="line"> 06h   WORD    open mode (see INT 21/AH=3Dh)</span><br><span class="line">---function 06h---</span><br><span class="line"> 02h   WORD    file handle</span><br><span class="line">---function 07h,08h---</span><br><span class="line"> 02h   WORD    file handle</span><br><span class="line"> 04h   DWORD   -&gt; buffer</span><br><span class="line"> 08h   WORD    number of bytes to read or write</span><br><span class="line">---function 09h---</span><br><span class="line"> 02h   DWORD   -&gt; ASCIZ filename</span><br><span class="line">---function 0Ah---</span><br><span class="line"> 02h   WORD    file handle</span><br><span class="line"> 04h   DWORD   (call) desired offset</span><br><span class="line">       (ret) new file position if function is successful</span><br><span class="line"> 08h   WORD    seek origin (offset is calculated from specified position)</span><br><span class="line">       00h start of file</span><br><span class="line">       01h current position</span><br><span class="line">       02h end of file</span><br><span class="line">---function 0Bh---</span><br><span class="line"> 02h   DWORD   -&gt; ASCIZ filename</span><br><span class="line"> 06h   WORD    (call) new file attributes or new file owner</span><br><span class="line">       (ret) current/new file attributes, depending on function</span><br><span class="line"> 08h   WORD    subfunction</span><br><span class="line">       00h get attribute</span><br><span class="line">       01h set attribute</span><br><span class="line">       02h get extended attributes</span><br><span class="line">       03h set extended attributes (and password)</span><br><span class="line">       04h get encrypted password</span><br><span class="line">       05h set extended attributes (and encrypted password)</span><br><span class="line">       06h get file owner</span><br><span class="line">       07h set file owner</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span> the password is taken from the first 8 bytes of the DTA</span><br><span class="line">---function 0Ch---</span><br><span class="line"> 02h   WORD    drive</span><br><span class="line"> 04h   DWORD   -&gt; 64-byte buffer for ASCIZ current directory path</span><br><span class="line">---function 0Dh---</span><br><span class="line"> 02h   DWORD   -&gt; ASCIZ filespec</span><br><span class="line"> 06h   WORD    file attributes</span><br><span class="line"> 08h   WORD    (call) size of buffer pointed at by current DTA</span><br><span class="line">       (ret) number of matching files returned???</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Note:</span>   if the volume label attribute is specified, the root</span><br><span class="line">             directory will be searched</span><br><span class="line">           if the buffer is at least 47 bytes, multiple matching</span><br><span class="line">             entries will be stored in the DTA (at 21 bytes per</span><br><span class="line">             entry)</span><br><span class="line">---function 0Eh---</span><br><span class="line"> 02h   WORD    number of additional matches to store in DTA</span><br><span class="line">       (normally set to 0, but if DTA is at least 47 bytes, can be</span><br><span class="line">         set to (DTAsize-21)/26 to return multiple matches)</span><br><span class="line">---function 0Fh---</span><br><span class="line"> 02h   DWORD   -&gt; ASCIZ filename</span><br><span class="line"> 06h   DWORD   -&gt; ASCIZ new name</span><br><span class="line">---function 10h---</span><br><span class="line"> 02h   WORD    file handle</span><br><span class="line"> 04h   WORD    subfunction</span><br><span class="line">       00h get date and time</span><br><span class="line">       01h set date and time</span><br><span class="line"> 06h   WORD    file date</span><br><span class="line"> 08h   WORD    file time</span><br><span class="line">---function 11h---</span><br><span class="line"> 02h   DWORD   -&gt; ASCIZ pathname + 13 extra bytes for generated filename</span><br><span class="line">       (if pathname does not end in backslash, one will be appended)</span><br><span class="line"> 06h   WORD    file attributes</span><br><span class="line">---function 12h---</span><br><span class="line"> 02h   DWORD   -&gt; ASCIZ filename</span><br><span class="line"> 06h   WORD    file attributes</span><br><span class="line">---function 13h---</span><br><span class="line"> 02h   WORD    file handle</span><br><span class="line"> 04h   DWORD   offset of start of region</span><br><span class="line"> 08h   DWORD   length of region to lock/unlock</span><br><span class="line"> 0Ch   WORD    subfunction (00h = lock, 01h = unlock)</span><br><span class="line">---function 14h---</span><br><span class="line"> 02h   WORD    file handle to be duplicated</span><br><span class="line">       (new file handle is returned as function return value)</span><br><span class="line">---function 15h---</span><br><span class="line"> 02h   WORD    file handle to be duplicated</span><br><span class="line"> 04h   WORD    file handle which is to become the duplicate</span><br><span class="line">---function 1Ah, form 1---</span><br><span class="line"> 02h   WORD    file handle</span><br><span class="line"> 04h   WORD    IOCTL function number (00h,01h,06h,07h,0Ah)</span><br><span class="line"> 06h   WORD    (ret) status</span><br><span class="line">---function 1Ah, form 2---</span><br><span class="line"> 02h   WORD    drive number</span><br><span class="line"> 04h   WORD    IOCTL function number (08h,09h,0Eh,0Fh)</span><br><span class="line"> 06h   WORD    (ret) status</span><br><span class="line">---function 1Ah, form 3---</span><br><span class="line"> 02h   WORD    file handle</span><br><span class="line"> 04h   WORD    IOCTL function number (02h,03h,54h)</span><br><span class="line"> 06h   DWORD   -&gt; buffer</span><br><span class="line"> 0Ah   WORD    (call) size of buffer in bytes</span><br><span class="line">       (ret) size of returned data</span><br><span class="line">---function 1Ah, form 4---</span><br><span class="line"> 02h   WORD    drive number</span><br><span class="line"> 04h   WORD    IOCTL function number (04h,05h)</span><br><span class="line"> 06h   DWORD   -&gt; buffer</span><br><span class="line"> 0Ah   WORD    (call) size of buffer in bytes</span><br><span class="line">       (ret) size of returned data</span><br><span class="line">---function 1Bh---</span><br><span class="line"> 02h   WORD    file handle of file to be committed to disk</span><br><span class="line">---function 1Ch---</span><br><span class="line"> 02h   DWORD   -&gt; ASCIZ relative filename</span><br><span class="line"> 06h   DWORD   -&gt; buffer for absolute filename</span><br><span class="line">---function 1Fh---</span><br><span class="line"> 02h   WORD    desired number of file handles for process</span><br><span class="line"></span><br><span class="line">Format of DR Multiuser DOS Disk Parameter Block (DPB):</span><br><span class="line">Offset Size    Description (Table 3766)</span><br><span class="line"> 00h   BYTE    drive number (00h = A:)</span><br><span class="line"> 01h   BYTE    relative unit number</span><br><span class="line"> 02h   WORD    sector size in bytes</span><br><span class="line"> 04h   BYTE    sectors per cluster - 1</span><br><span class="line"> 05h   BYTE    shift count to convert clusters into sectors</span><br><span class="line"> 06h   WORD    number of reserved sectors at beginning of drive</span><br><span class="line"> 08h   BYTE    number of FATs</span><br><span class="line"> 09h   WORD    number of root directory entries</span><br><span class="line"> 0Bh   WORD    number of first sector containing user data</span><br><span class="line"> 0Dh   WORD    number of clusterse on disk</span><br><span class="line"> 0Fh   BYTE    number of sectors per FAT</span><br><span class="line"> 10h   WORD    sector number of first directory sector</span><br><span class="line"> 12h  4 BYTEs  reserved</span><br><span class="line"> 16h   BYTE    media ID byte (see #1044)</span><br><span class="line"> 17h   BYTE    00h if disk accessed, FFh if not</span><br><span class="line"> 18h  6 BYTEs  reserved</span><br><span class="line"> 1Eh   WORD    number of free clusters on drive</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  this structure is a subset of the MS-DOS 3.x Drive Parameter Block</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #3764,#1045 at INT 21/AH=1Fh,#1083 at INT 21/AH=32h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

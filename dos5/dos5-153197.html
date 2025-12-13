@@ -1,0 +1,124 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Multiplex (Int 2Fh)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-152753.html">
+    <link rel="next" href="dos5-153886.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-152753.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-135422.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-153886.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 2Fh / 4B03h         Allocate Switcher ID                         DOS 5.0+</span></span><br><span class="line"></span><br><span class="line">    Returns a unique switcher identifier (in the range 01h through</span><br><span class="line">    0Fh). A task switcher (or controlling session manager) calls this</span><br><span class="line">    function on initialization and then uses the switcher identifier</span><br><span class="line">    to create session identifiers for programs that it manages. The</span><br><span class="line">    first-loaded task switcher is responsible for processing this</span><br><span class="line">    function.</span><br><span class="line"></span><br><span class="line">    Client programs must not call this function.</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX    = 4B03h</span><br><span class="line">                BX    = 00h   (Reserved, must be zero)</span><br><span class="line">                ES:DI = Address of service-function handler</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  AX = 00h</span><br><span class="line">                BX = New task switcher&#39;s identifier</span><br><span class="line">                or</span><br><span class="line">                BX = 00h</span><br><span class="line"></span><br><span class="line">    [...]</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-152753.html">4B02h</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="dos5-153886.html">4B04h</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

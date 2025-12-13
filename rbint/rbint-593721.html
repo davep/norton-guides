@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-592715.html">
+    <link rel="next" href="rbint-595364.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-592715.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-578992.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-595364.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 10 Fn 4E01  - Vesa Xga Bios Extensions - Return Xga Subsystem Informa</span>  [<span class="ngb">V</span>]</span><br><span class="line"></span><br><span class="line">   AX = 4E01h</span><br><span class="line">   DX = XGA handle (0 to number of XGAs-1)</span><br><span class="line">   ES:DI -&gt; 256-byte buffer for subsystem information (see #0069)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = 4Eh if function supported</span><br><span class="line">   AH = status</span><br><span class="line">       00h  function successful</span><br><span class="line">       else error code</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=4E00h,AX=4E02h</span><br><span class="line"></span><br><span class="line">Format of XGA subsystem information:</span><br><span class="line">Offset Size    Description (Table 0069)</span><br><span class="line"> 00h   DWORD   pointer to null-terminated board OEM string</span><br><span class="line"> 04h   DWORD   capabilities (see #0070)</span><br><span class="line"> 08h   DWORD   pointer to 8KB XGA ROM (or NULL)</span><br><span class="line"> 0Ch   DWORD   pointer to the XGA memory mapped registers</span><br><span class="line"> 10h   WORD    base address of XGA I/O registers (21x0h)</span><br><span class="line"> 12h   DWORD   pointer to start of physical video memory</span><br><span class="line">       (A000h:0000h or B000h:0000h)</span><br><span class="line"> 16h   DWORD   physical address of 4MB aperture (or NULL if none)</span><br><span class="line"> 1Ah   DWORD   physical address of 1MB aperture (or NULL if none)</span><br><span class="line"> 1Eh   DWORD   physical address of 64KB aperture (or NULL if not enabled)</span><br><span class="line"> 22h   DWORD   physical address of OEM aperture (or NULL if none)</span><br><span class="line"> 26h   WORD    size of OEM aperture in 64KByte units</span><br><span class="line"> 28h   DWORD   pointer to list of video modes</span><br><span class="line">       The list is a series of WORDs terminated by FFFFh</span><br><span class="line"> 2Ch   WORD    number of 64KB blocks on the board</span><br><span class="line"> 2Eh   DWORD   XGA manufacturer ID</span><br><span class="line">       byte 0 POS data index 1</span><br><span class="line">       byte 1 is index 2</span><br><span class="line">       byte 2 is 21xAh index 75h</span><br><span class="line"> 32h 206 BYTEs reserved</span><br><span class="line"></span><br><span class="line">Bitfields for XGA capabilities:</span><br><span class="line">Bit(s) Description (Table 0070)</span><br><span class="line"> 0-1   board bus architecture: 0=MCA, 1=ISA, 3=EISA</span><br><span class="line"> 2-3   reserved</span><br><span class="line"> 4-6   DMA Channel assigned for acquiring bus mastership (only for ISA bus)</span><br><span class="line"> 7 DMA Channel Status (ISA only). enabled if set</span><br><span class="line"> 8-31  reserved</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

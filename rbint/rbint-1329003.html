@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1328583.html">
+    <link rel="next" href="rbint-1329893.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1328583.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-1227085.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1329893.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 15 Fn 88  - System - Get Extended Memory Size (286+)                 </span>  [<span class="ngb">B</span>]</span><br><span class="line"></span><br><span class="line">   AH = 88h</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AX = number of contiguous KB starting at absolute address 100000h</span><br><span class="line">   CF set on error</span><br><span class="line">       AH = status</span><br><span class="line">       80h invalid command (PC,PCjr)</span><br><span class="line">       86h unsupported function (XT,PS30)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> TSRs which wish to allocate extended memory to themselves often hook</span><br><span class="line">     this call, and return a reduced memory size.  They are then free to</span><br><span class="line">     use the memory between the new and old sizes at will.</span><br><span class="line">   the standard BIOS only returns memory between 1MB and 16MB; use AH=C7h</span><br><span class="line">     for memory beyond 16MB</span><br><span class="line">   not all BIOSes correctly return the carry flag, making this call</span><br><span class="line">     unreliable unless one first checks whether it is supported through</span><br><span class="line">     a mechanism other than calling the function and testing CF</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AH=87h,AH=8Ah&#34;Phoenix&#34;,AH=C7h,AX=DA88h,AX=E801h,AX=E820h</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,115 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="cl5ie4-style.css">
+    <title>Clipper 5.00a » Internal Errors  V1.04 » Show » Internal Errors</title>
+    <meta name="description" content="Clipper 5.00a » Internal Errors  V1.04">
+    <link rel="prev" href="cl5ie4-1598.html">
+    <link rel="next" href="cl5ie4-2971.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="cl5ie4-about.html">About</a></li>
+
+
+          
+
+<li><a href="cl5ie4-1598.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="cl5ie4-2971.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Show</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Internal Errors</a></li>
+                  <li><a href="cl5ie4-27006.html">Accuracy ...</a></li>
+                  <li><a href="cl5ie4-28420.html">Credits ...</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">  <span class="ngb">Internal Error #333, ARRAY(0) &amp; STATICS$(0)</span></span><br><span class="line"></span><br><span class="line">  (#99608) Appears during creation of multi-dim array structures or use</span><br><span class="line">  of macros?  Very Mysterious &amp; Elusive.  Sometimes disappears on it&#39;s</span><br><span class="line">  own.  Try shuffling the code around.</span><br><span class="line"></span><br><span class="line">  (#100777) Error may be generated when the system cannot find enough</span><br><span class="line">  contiguous memory for a big array or large variable.  Declaring: STATIC</span><br><span class="line">  aJunk[1,2,3,4,5,6,7,8,9,10] can bomb.  Seems to have something to do</span><br><span class="line">  with STATIC declarations.</span><br><span class="line"></span><br><span class="line">  (#112790) This error occurs in DBU when it attempts to read long</span><br><span class="line">  directories into memory via the DIRECTORY() function.  Again, this is</span><br><span class="line">  the same problem.</span><br><span class="line"></span><br><span class="line">  (#118666) If you are being plagued by Internal Error 333, you may want    <span class="ngb">~</span></span><br><span class="line">  to try this fix from Jo French [74730,1751].</span><br><span class="line"></span><br><span class="line">  Instead of using methods to declare your array assigning an initial size,</span><br><span class="line">  like: LOCAL aBig[4000,8], try this:</span><br><span class="line"></span><br><span class="line">  LOCAL aBig := {}</span><br><span class="line"></span><br><span class="line">  FOR nX := 1 TO 4000</span><br><span class="line">     AADD(aBig, {}); ASIZE(aBig[nX],8)</span><br><span class="line">  NEXT nX</span><br><span class="line"></span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="cl5ie4-4913.html">Internal Error #442</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

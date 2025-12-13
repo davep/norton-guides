@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2203257.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2203257.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2061504.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 37  - Dos 2.x And 3.3+ Only - &#34;availdev&#34; - Specify \dev\ Prefix</span>  [<span class="ngb">D</span>]</span><br><span class="line"></span><br><span class="line">   AH = 37h</span><br><span class="line">   AL = subfunction</span><br><span class="line">       02h get availdev flag</span><br><span class="line"></span><br><span class="line">       <span class="ngb">Return:</span> DL = 00h \DEV\ must precede character device names</span><br><span class="line">              = nonzero \DEV\ is optional</span><br><span class="line">       03h set availdev flag</span><br><span class="line">       DL = new state</span><br><span class="line">           00h     \DEV\ is mandatory</span><br><span class="line">           nonzero \DEV\ is optional</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AL = status</span><br><span class="line">       00h successful</span><br><span class="line">       FFh unsupported subfunction</span><br><span class="line"></span><br><span class="line"><span class="ngb">Notes:</span> all versions of DOS from 2.00 allow \DEV\ to be prepended to device</span><br><span class="line">     names without generating an error even if the directory \DEV does</span><br><span class="line">     not actually exist (other paths generate an error if they do not</span><br><span class="line">     exist); DOS 2.x has an AVAILDEV= option in CONFIG.SYS to make \DEV</span><br><span class="line">     mandatory</span><br><span class="line">   although MS-DOS 3.3+, DR DOS 3.41+, and Novell DOS 7 accept these</span><br><span class="line">     calls, they have no effect, and AL=02h always returns DL=FFh (except</span><br><span class="line">     for Novell DOS 7, which leaves AX unchanged for both subfunctions)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

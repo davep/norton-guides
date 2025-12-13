@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-1003648.html">
+    <link rel="next" href="rbint-1004888.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-1003648.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-993233.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-1004888.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 14 Fn 8004  - Articom - Attach Asynchronous Resource                 </span>  [<span class="ngb">S</span>]</span><br><span class="line"></span><br><span class="line">   AX = 8004h</span><br><span class="line">   DX = port to redirect (COM1=0, COM2=1, ...)</span><br><span class="line">   CH = attach type</span><br><span class="line">   CL = adapter to use for attach, 0FFh to search all</span><br><span class="line">   ES:DI -&gt; attachment structure (see #0287)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = error code, if error (see #0286)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  The wildcard &#39;*&#39; is supported in the server and resource fields.  If</span><br><span class="line">     wild cards are used then the first matching available server is</span><br><span class="line">     attached.</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=8000h,AX=8003h,AX=8005h</span><br><span class="line"></span><br><span class="line">Format of ARTICOM attachment structure:</span><br><span class="line">Offset Size    Description (Table 0287)</span><br><span class="line"> 00h 16 BYTEs  server to look for attach</span><br><span class="line"> 10h 16 BYTEs  attach to resource name</span><br><span class="line"> 20h 16 BYTEs  username for attach</span><br><span class="line"> 30h 16 BYTEs  password for username or resource</span><br><span class="line"> 40h   BYTE    attach type</span><br><span class="line">       00h normal</span><br><span class="line">       01h queue if resource is in use (not yet supported in v1.00)</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

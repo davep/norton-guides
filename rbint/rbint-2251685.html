@@ -1,0 +1,105 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rbint-style.css">
+    <title>Ralf Brown » Lists » Interrupts</title>
+    <meta name="description" content="Ralf Brown">
+    <link rel="prev" href="rbint-2250787.html">
+    <link rel="next" href="rbint-2254878.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rbint-about.html">About</a></li>
+
+
+          
+
+<li><a href="rbint-2250787.html">Previous</a></li>
+
+
+          
+
+<li><a href="rbint-2204700.html">Up</a></li>
+
+
+          
+
+<li><a href="rbint-2254878.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Lists</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Comments</a></li>
+                  <li><a href="rbint-7995.html">Interrupts</a></li>
+                  <li><a href="rbint-15401.html">Glossary</a></li>
+                  <li><a href="rbint-64347.html">Memory</a></li>
+                  <li><a href="rbint-180090.html">CMOS</a></li>
+                  <li><a href="rbint-250757.html">86 Bugs</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line"><span class="ngu">Int 21 Fn 3F  U - Ifshlp.sys - Get Entry Point                           </span>  [<span class="ngb">-</span>]</span><br><span class="line"></span><br><span class="line">   AH = 3Fh</span><br><span class="line">   BX = file handle for device &#34;IFS$HLP$&#34;</span><br><span class="line">   CX = 0008h (size of buffer in bytes)</span><br><span class="line">   DS:DX -&gt; buffer for entry point record (see #1102)</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> CF clear if successful</span><br><span class="line">       AX = number of bytes actually read (0 if at EOF before call)</span><br><span class="line">   CF set on error</span><br><span class="line">       AX = error code (05h,06h) (see #1366 at AH=59h/BX=0000h)</span><br><span class="line">Program: IFSHLP.SYS is a support driver for Microsoft Windows for Workgroups</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> AX=4402h&#34;IFSHLP&#34;</span><br><span class="line"></span><br><span class="line">Format of IFSHLP.SYS entry point record:</span><br><span class="line">Offset Size    Description (Table 1102)</span><br><span class="line"> 00h  4 BYTEs  (call) required signature if called via IOCTL</span><br><span class="line">           70h E9h 34h 37h for Windows 3.11</span><br><span class="line">           70h E9h 35h 37h for Windows 3.11</span><br><span class="line">       (ret) signature 34h 37h 70h EFh (Windows 3.11)</span><br><span class="line">       (ret) signature 35h 37h 70h EFh (Windows95)</span><br><span class="line"> 04h   DWORD   (ret) pointer to FAR call entry point (see #1103)</span><br><span class="line"></span><br><span class="line">(Table 1103)</span><br><span class="line">Call IFSHLP.SYS entry point with:</span><br><span class="line">   STACK:  WORD    function number (00h-0Ch)</span><br><span class="line">           00h get ??? data</span><br><span class="line">           01h set interrupt intercepts (trap)</span><br><span class="line">           02h remove interrupt intercepts (untrap)</span><br><span class="line">           03h ??? LPT2</span><br><span class="line">           04h ??? LPT1</span><br><span class="line">           05h revector INT 2F to trap and remove trap for others</span><br><span class="line">           06h set ??? flag</span><br><span class="line">           07h clear ??? flag</span><br><span class="line">           08h get ??? flag word</span><br><span class="line">           ---Windows 3.11 only---</span><br><span class="line">           09h ???</span><br><span class="line">           0Ah ???</span><br><span class="line">           0Bh ???</span><br><span class="line">           0Ch get ???</span><br><span class="line">---if function 00h---</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> DX:AX -&gt; ??? data (see #1104)</span><br><span class="line">   BX destroyed</span><br><span class="line">---if function 01h---</span><br><span class="line">   STACK:  DWORD   new intercept (trap) address</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h successful</span><br><span class="line">       0001h failed (already set)</span><br><span class="line">       DX = 0000h</span><br><span class="line">   BX destroyed</span><br><span class="line"></span><br><span class="line"><span class="ngb">Note:</span>  the trap handler is called with a function number in BX, and the</span><br><span class="line">     original BX on top of the stack; a null handler must perform a</span><br><span class="line">     POP BX and an IRET</span><br><span class="line">---if function 02h---</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h successful</span><br><span class="line">       0001h failed (not set)</span><br><span class="line">   DX = 0000h</span><br><span class="line">   BX destroyed</span><br><span class="line">---if function 03h,04h---</span><br><span class="line">   STACK:  WORD    ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = 0000h</span><br><span class="line">   DX = 0000h</span><br><span class="line">   BX destroyed</span><br><span class="line">---if function 05h---</span><br><span class="line">   ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span>    BX destroyed</span><br><span class="line">---if function 06h---</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = 0001h and DX = 0000h if already set</span><br><span class="line">   AX,DX unchanged if successful</span><br><span class="line">   BX destroyed</span><br><span class="line">---if function 07h---</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = 0001h and DX = 0000h if not set</span><br><span class="line">   AX,DX unchanged if successful</span><br><span class="line">   BX destroyed</span><br><span class="line">---if function 08h---</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> DX = 0000h</span><br><span class="line">   AX = flags</span><br><span class="line">       bit 0: set/cleared by functions 06h and 07h</span><br><span class="line">       bit 1: trap is currently set (refer to functions 01h/02h)</span><br><span class="line">   BX destroyed</span><br><span class="line">---if function 09h---</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h successful</span><br><span class="line">       0001h failed (already called)</span><br><span class="line">   BX destroyed</span><br><span class="line">---if function 0Ah---</span><br><span class="line">   STACK:  WORD    ???</span><br><span class="line">   ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span>    BX destroyed</span><br><span class="line">---if function 0Bh---</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = status</span><br><span class="line">       0000h successful</span><br><span class="line">       0001h failed (not set)</span><br><span class="line">   BX destroyed</span><br><span class="line">---if function 0Ch---</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = 0000h</span><br><span class="line">   ES:BX -&gt; ??? data</span><br><span class="line">---if function &gt; 0Ch---</span><br><span class="line"></span><br><span class="line"><span class="ngb">Return:</span> AX = 0001h</span><br><span class="line">   DX = 0000h</span><br><span class="line">   BX destroyed</span><br><span class="line"></span><br><span class="line">Format of IFSHLP ??? data:</span><br><span class="line">Offset Size    Description (Table 1104)</span><br><span class="line"> 00h   DWORD   -&gt; DOS Swappable Data Area (see #1373,#1375)</span><br><span class="line"> 02h   WORD    ??? offset in DOS data segment?</span><br><span class="line"> 04h   WORD    offset in DOS data segment of current-PSP WORD</span><br><span class="line"> 06h   WORD    ???</span><br><span class="line"> 08h   WORD    ???</span><br><span class="line"> 0Ah   WORD    ???</span><br><span class="line"> 0Ch   DWORD   -&gt; DOS List of Lists (see #1313)</span><br><span class="line"> 10h   ???</span><br><span class="line"></span><br><span class="line"><span class="ngb">See Also:</span> #1103</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:52</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

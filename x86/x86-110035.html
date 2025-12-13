@@ -1,0 +1,169 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="x86-style.css">
+    <title>iAPx86 » CPU » Instruction set</title>
+    <meta name="description" content="iAPx86">
+    <link rel="prev" href="x86-109182.html">
+    <link rel="next" href="x86-111661.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="x86-about.html">About</a></li>
+
+
+          
+
+<li><a href="x86-109182.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="x86-111661.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>CPU</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Instruction set</a></li>
+                  <li><a href="x86-175915.html">Registers</a></li>
+                  <li><a href="x86-190707.html">Protection, privilege</a></li>
+                  <li><a href="x86-224627.html">Exceptions</a></li>
+                  <li><a href="x86-225699.html">Addressing modes</a></li>
+                  <li><a href="x86-229455.html">Opcodes</a></li>
+                  
+                </ul>
+              </li>
+              <li>FPU</li>
+              <li>
+                <ul>
+                  <li><a href="x86-245307.html">Instruction set</a></li>
+                  <li><a href="x86-307843.html">Registers, data types</a></li>
+                  
+                </ul>
+              </li>
+              <li>MMX</li>
+              <li>
+                <ul>
+                  <li><a href="x86-318646.html">Instruction set</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">POPF            Pop Flags from Stack                 Flags: O D I T S Z A P C</span></span><br><span class="line">                                                            * * * * * * * * *</span><br><span class="line"><span class="ngb">POPF</span>                                                 <span class="ngb">IOv86</span></span><br><span class="line"><span class="ngb">POPFD</span>  (CPU: 386+)                                   <span class="ngb">IOv86</span></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Logic</span>   POP eFLAGS</span><br><span class="line"></span><br><span class="line">    POPF/POPFD pops the word or doubleword on the top of the stack and</span><br><span class="line">    stores the value in the flags register. If the operand-size</span><br><span class="line">    attribute of the instruction is 16 bits, then a word is popped and</span><br><span class="line">    the value stored in FLAGS. If the operand-size attribute is 32</span><br><span class="line">    bits, then a doubleword is popped and the value stored in EFLAGS.</span><br><span class="line"></span><br><span class="line">    The RF and VM flags (bits 16 and 17 of EFLAGS) <span class="ngu">cannot</span> be changed</span><br><span class="line">    by the POPFD instruction.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Protected mode</span></span><br><span class="line">    The I/O privilege level (IOPL -- bits 12,13 of FLAGS) is changed</span><br><span class="line">    only when executing at privilege level zero (CPL=0). The interrupt</span><br><span class="line">    flag (IF) is changed only when executing at a level at least as</span><br><span class="line">    privileged as the IOPL (real-address mode is equivalent to CPL=0).</span><br><span class="line">    If a POPF instruction is executed with insufficient privilege, an</span><br><span class="line">    exception does not occur, but the privileged bits are not altered.</span><br><span class="line">    This instruction is IOPL-sensitive in V86 mode.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Note</span></span><br><span class="line">    Some assemblers support a POPF extension (POPFW) that forces a</span><br><span class="line">    16-bit word-style pop regardless of the code segment&#39;s size</span><br><span class="line">    attribute (80386+).</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Opcode      Format</span></span><br><span class="line">    9D          POPF</span><br><span class="line">    9D          POPFD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">Length and timing</span></span><br><span class="line">    Variations  Bytes   8088    186     286     386     486     Pentium</span><br><span class="line">    popf         1      12       8       5       5       9       6   NP</span><br><span class="line">    popfd        1       -       -       -       5       9       6   NP</span><br><span class="line"></span><br><span class="line">                             <span class="ngb">Protected Mode</span></span><br><span class="line"></span><br><span class="line">                Bytes                   286     386     486     Pentium</span><br><span class="line">    popf         1                       5       5       6       4   NP</span><br><span class="line">    popfd        1                       -       5       6       4   NP</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="x86-114130.html">PUSHF</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-72399.html">LAHF</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-135900.html">SAHF</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-26807.html">CLI</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-154576.html">STI</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-194054.html">IOPL</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="x86-179453.html">Flags</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:35:14</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,118 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="dos5-style.css">
+    <title>DOS 5.0 Ref. » DOS » Multiplex (Int 2Fh)</title>
+    <meta name="description" content="DOS 5.0 Ref.">
+    <link rel="prev" href="dos5-150298.html">
+    <link rel="next" href="dos5-152753.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="dos5-about.html">About</a></li>
+
+
+          
+
+<li><a href="dos5-150298.html">Previous</a></li>
+
+
+          
+
+<li><a href="dos5-135422.html">Up</a></li>
+
+
+          
+
+<li><a href="dos5-152753.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>DOS</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Functions (Int 21h)</a></li>
+                  <li><a href="dos5-135422.html">Multiplex (Int 2Fh)</a></li>
+                  <li><a href="dos5-159299.html">Interrupts 20h-28h</a></li>
+                  <li><a href="dos5-182062.html">Device Driver Fnx</a></li>
+                  <li><a href="dos5-221655.html">Structures</a></li>
+                  <li><a href="dos5-268064.html">Extended key codes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb">Int 2Fh / 4B01h         Build Notification Chain                     DOS 5.0+</span></span><br><span class="line"></span><br><span class="line">    Creates a linked list of notification-function handlers for global</span><br><span class="line">    client programs and for client programs running in the current</span><br><span class="line">    session. The task switcher calls this function to determine which</span><br><span class="line">    client programs are to be notified about changes to the session.</span><br><span class="line">    To receive notification, client programs must intercept Interrupt</span><br><span class="line">    2Fh and process Build Notification Chain when they receive the</span><br><span class="line">    function call.</span><br><span class="line"></span><br><span class="line">        <span class="ngu">Note    Use the task switcher API patch</span></span><br><span class="line"></span><br><span class="line">        <span class="ngb">Entry</span>   AX    = 4B01h</span><br><span class="line">                ES:BX = 0000:0000h</span><br><span class="line">                CX:DX = Address of service-function handler</span><br><span class="line"></span><br><span class="line">        <span class="ngb">Return</span>  ES:BX = Pointer to a SwCallBackInfo structure</span><br><span class="line">                or</span><br><span class="line">                ES:BX = 0000:0000h   No notification</span><br><span class="line"></span><br><span class="line">    [...]</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="dos5-259993.html">SwCallBackInfo</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:39</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

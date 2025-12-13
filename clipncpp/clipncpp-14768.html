@@ -1,0 +1,107 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="clipncpp-style.css">
+    <title>More Clipper Part One » C/C++ » Using C</title>
+    <meta name="description" content="More Clipper Part One">
+    <link rel="prev" href="clipncpp-13329.html">
+    <link rel="next" href="clipncpp-15669.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="clipncpp-about.html">About</a></li>
+
+
+          
+
+<li><a href="clipncpp-13329.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="clipncpp-15669.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>C/C++</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Using C</a></li>
+                  
+                </ul>
+              </li>
+              <li>FAQ</li>
+              <li>
+                <ul>
+                  <li><a href="clipncpp-29045.html">FAQ</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Important Design Considerations</span></span><br><span class="line"></span><br><span class="line"> Now that we have the technical pitfalls out the way, I would like to</span><br><span class="line"> cover a couple design issues that I think will help in writing C UDFs</span><br><span class="line"> for use with Clipper.</span><br><span class="line"></span><br><span class="line"> The goal is to isolate the Clipper Extend System interface and Memory</span><br><span class="line"> allocation routines in the C function.  This allows you to design the</span><br><span class="line"> C function so that it can be compiled as a Clipper UDF or as a stand</span><br><span class="line"> alone C program.  This will greatly improve the flexibility of the</span><br><span class="line"> function and aids the debugging process as well.  We will use a</span><br><span class="line"> #define to create a manifest constant for use as a flag that will be</span><br><span class="line"> tested with #ifdef and #ifundef compiler directives, to optionally</span><br><span class="line"> compile different parts of the code.</span><br><span class="line"></span><br><span class="line"> For example:</span><br><span class="line"></span><br><span class="line"> #define IS_CLIPPER</span><br><span class="line"></span><br><span class="line"> #ifdef IS_CLIPPER</span><br><span class="line"></span><br><span class="line">    &lt;Some Clipper related code&gt;</span><br><span class="line"></span><br><span class="line"> #else</span><br><span class="line"></span><br><span class="line">    &lt;C code that emulates the Clipper code above&gt;</span><br><span class="line"></span><br><span class="line"> #endif</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-13 13:34:37</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+
