@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-28777.html">
+    <link rel="next" href="rr-tips-35601.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-28777.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-35601.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Boxing memo&#39;s        Boxing Word-Wrapped Fields (intro)</span></span><br><span class="line"></span><br><span class="line"> R&amp;R-s line-draw feature enables you to insert line and corner characters</span><br><span class="line"> on report layouts to draw boxes around text and data fields. As long as a</span><br><span class="line"> field prints on a single line, the procedure is simple: insert horizontal</span><br><span class="line"> lines with left and right corner characters on the lines immediately above</span><br><span class="line"> and below the field, and then insert vertical line characters to the left</span><br><span class="line"> and right of the field, in line with the corner characters.</span><br><span class="line"></span><br><span class="line"> However, the technique illustrated above doesn&#39;t work when <span class="ngb">word-wrap</span></span><br><span class="line"> format causes field data to extend beyond a single line. Since the number</span><br><span class="line"> of lines that the word-wrapped field will occupy usually varies from</span><br><span class="line"> record to record, you cannot simply insert additional lines with</span><br><span class="line"> additional vertical line characters on the layout to create the sides of</span><br><span class="line"> lhe box. A record in which the word-wrapped data requires two lines will</span><br><span class="line"> need two lines with vertical line characters, while a record in which the</span><br><span class="line"> data requires three lines will need three lines with vertical line</span><br><span class="line"> characters. No matter how many vertical lines you use, some records end up</span><br><span class="line"> with vertical gaps in the box and some with blank lines within the box.</span><br><span class="line"></span><br><span class="line"> This article explains <span class="ngb">two techniques for drawing boxes around word-wrapped</span></span><br><span class="line"> fields. Both techniques involve calculating how many lines will be</span><br><span class="line"> occupied by the word-wrapped field and then using a calculated field to</span><br><span class="line"> produce the variable-length vertical lines that make up the two sides of</span><br><span class="line"> the box. The difference between the two techniques is how accurately and</span><br><span class="line"> how quickly they calculate the number of lines occupied by the field.</span><br><span class="line"></span><br><span class="line"> The first technique is a <span class="ngb">quick-and-dirty</span> approach that uses calculated</span><br><span class="line"> fields to determine the approximate number of lines the field data will</span><br><span class="line"> occupy. The technique is approximate since, in calculating the number of</span><br><span class="line"> lines, R&amp;R considers only the length of the data in the field. It does not</span><br><span class="line"> take account of the space added to the field when word-wrap leaves blank</span><br><span class="line"> space at the end of lines. Thus, while this technique has the advantage of</span><br><span class="line"> being simple and speedy, it may underestimate the number of lines required</span><br><span class="line"> by your field, especially if the field is not very wide.</span><br><span class="line"></span><br><span class="line"> The second technique is a <span class="ngb">more complicated method</span> that uses user-defined</span><br><span class="line"> functions to calculate exact how many lines the field will occupy. This</span><br><span class="line"> technique does account for the space added to fields by word-wrap, but in</span><br><span class="line"> order to do so, it uses three complex user-defined functions, two of which</span><br><span class="line"> are recursive. Thus, while this technique will always produce an accurate</span><br><span class="line"> count of the number of lines required by a word-wrapped field, it does so</span><br><span class="line"> at the expense of performance.</span><br><span class="line"></span><br><span class="line"> So that you can decide which technique suits your reports, we present them</span><br><span class="line"> both here, followed by an explanation of how to create a calculated field</span><br><span class="line"> that produces a variable-length vertical line and how to use this fïeld on</span><br><span class="line"> your report layout.</span><br><span class="line"></span><br><span class="line"> Note that these techniques will work only for word-wrapped character (not</span><br><span class="line"> memo) fields and only if these fields and the line/box characters that</span><br><span class="line"> surround them are printed in a fixed-width (not proportional) font that</span><br><span class="line"> has an integral (not fractional) pitch.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

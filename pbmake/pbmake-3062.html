@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="pbmake-style.css">
+    <title>PBMake 2.15 for Clipper, Xbase++, C and  » Intro » Introduction</title>
+    <meta name="description" content="PBMake 2.15 for Clipper, Xbase++, C and ">
+    <link rel="prev" href="pbmake-2373.html">
+    <link rel="next" href="pbmake-6470.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="pbmake-about.html">About</a></li>
+
+
+          
+
+<li><a href="pbmake-2373.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="pbmake-6470.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Intro</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Introduction</a></li>
+                  <li><a href="pbmake-9885.html">Getting Started</a></li>
+                  <li><a href="pbmake-11192.html">Blank Template</a></li>
+                  <li><a href="pbmake-16114.html">Example Template</a></li>
+                  <li><a href="pbmake-17946.html">Running It</a></li>
+                  
+                </ul>
+              </li>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-18702.html">PBMake Features</a></li>
+                  <li><a href="pbmake-36380.html">Supported Languages</a></li>
+                  <li><a href="pbmake-44844.html">Script Initializer Tool</a></li>
+                  <li><a href="pbmake-52818.html">GNU RCS Version Control Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>About</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-56275.html">MAKE.BAT</a></li>
+                  <li><a href="pbmake-58146.html">Problems</a></li>
+                  <li><a href="pbmake-60601.html">Support</a></li>
+                  <li><a href="pbmake-61056.html">Copyright</a></li>
+                  <li><a href="pbmake-61432.html">Register!</a></li>
+                  <li><a href="pbmake-62283.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">      If you are using a .CLP file to create one large object, that is</span><br><span class="line">      the first thing to change.</span><br><span class="line"></span><br><span class="line">      Instead, compile each source module into it&#39;s own object by</span><br><span class="line">      listing all of the source module names without their extensions</span><br><span class="line">      into the .MAK script following the examples I provided.</span><br><span class="line"></span><br><span class="line">      Then make a reference to each of the new files in your link</span><br><span class="line">      script instead of a single entry that references the single</span><br><span class="line">      object created by your .CLP file.</span><br><span class="line"></span><br><span class="line">      For example, if you were using a file named MYPROG.CLP that reads</span><br><span class="line">      like this:</span><br><span class="line"></span><br><span class="line">      prog1</span><br><span class="line">      prog2</span><br><span class="line">      prog3</span><br><span class="line">      another</span><br><span class="line">      andmore</span><br><span class="line">      common</span><br><span class="line">      used</span><br><span class="line">      function</span><br><span class="line"></span><br><span class="line">      It would create a single object named MYPROG.OBJ.</span><br><span class="line"></span><br><span class="line">      If you change any of the source modules, you have to recompile all</span><br><span class="line">      8 of them. Usually, this is a big waste of time, because only one</span><br><span class="line">      of them is different.</span><br><span class="line"></span><br><span class="line">      If you allow PBMake to compile each source module into it&#39;s own</span><br><span class="line">      object, there will be 8 objects, and PBMake will then be free to</span><br><span class="line">      only compile the one that changed.</span><br><span class="line"></span><br><span class="line">      This is how PBMake can save you time. By breaking the compile</span><br><span class="line">      process into smaller parts. Here is an example script for PBMake</span><br><span class="line">      that would create these smaller objects for you:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">┌────────────────────────────────────────────────────────────────────────────┐</span><br><span class="line">│                 PBMake 2.15 for Clipper, Xbase++, C and ASM                │</span><br><span class="line">│       Copyright (C) 1998 Phil Barnett, All Rights Reserved Worldwide       │</span><br><span class="line">│                           See PBMAKE.NG for help.                          │</span><br><span class="line">└────────────────────────────────────────────────────────────────────────────┛</span><br><span class="line"></span><br><span class="line">TARGET=MYPROG.EXE</span><br><span class="line"></span><br><span class="line">LINKFILE=MYPROG.LNK</span><br><span class="line"></span><br><span class="line">LINKER=BLINKER</span><br><span class="line"></span><br><span class="line">PROG1= PROG1   PROG2  PROG3 ANOTHER</span><br><span class="line">PROG1= ANDMORE COMMON USED  FUNCTION</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      The more complex your source code gets, the more time you save!</span><br><span class="line"></span><br><span class="line">      Now you are faced with a new problem. You need a way to assemble</span><br><span class="line">      all those parts.</span><br><span class="line"></span><br><span class="line">      With a .CLP file, you probably have been using something like:</span><br><span class="line"></span><br><span class="line">      CLIPPER @MYPROG.CLP</span><br><span class="line"></span><br><span class="line">      plink86 file MYPROG</span><br><span class="line"></span><br><span class="line">      Now that you have broken up the objects, one way to link them</span><br><span class="line">      would be:</span><br><span class="line"></span><br><span class="line">      rtlink file prog1,prog2,prog3,another,andmore,common,used,function</span><br><span class="line"></span><br><span class="line">      (or whatever linker you are using)</span><br><span class="line"></span><br><span class="line">      As you can see, that is going to get old in a hurry, and will</span><br><span class="line">      break the byte limit of the dos command line if it gets much</span><br><span class="line">      longer.</span><br><span class="line"></span><br><span class="line">      Fortunately, the linker manufacturers give us a better way.</span><br><span class="line"></span><br><span class="line">      As you have seen above, eliminating the .CLP file breaks the large</span><br><span class="line">      object into many smaller ones, but you still need to put them</span><br><span class="line">      together into an target/.EXE.</span><br><span class="line"></span><br><span class="line">      So, instead of a list of files that Clipper will compile into a</span><br><span class="line">      single large object, we will make a list of files the linker will</span><br><span class="line">      link together into an target/.EXE.</span><br><span class="line"></span><br><span class="line">      This called a linker script, and usually ends in the letters .LNK</span><br><span class="line"></span><br><span class="line">      A linker script for the example above (named MYPROG.LNK) would</span><br><span class="line">      look like:</span><br><span class="line"></span><br><span class="line">      OUTPUT MYPROG.EXE</span><br><span class="line">      FILE PROG1</span><br><span class="line">      FILE PROG2</span><br><span class="line">      FILE PROG3</span><br><span class="line">      FILE ANOTHER</span><br><span class="line">      FILE ANDMORE</span><br><span class="line">      FILE COMMON</span><br><span class="line">      FILE USED</span><br><span class="line">      FILE FUNCTION</span><br><span class="line"></span><br><span class="line">      If you created a file with the above contents you would tell the</span><br><span class="line">      linker to use it like:</span><br><span class="line"></span><br><span class="line">      rtlink @MYPROG.LNK</span><br><span class="line"></span><br><span class="line">      (or whatever linker you are using)</span><br><span class="line"></span><br><span class="line">      PBMake actually writes and executes a batch file that performs all</span><br><span class="line">      of these steps automatically. All you have to do is set up the</span><br><span class="line">      make script correctly, which is a simple process.</span><br><span class="line"></span><br><span class="line">      PBMake performs an incremental compile, and saves you time by</span><br><span class="line">      doing as little as possible but all that is necessary to compile a</span><br><span class="line">      fully up to date executable.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:34</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

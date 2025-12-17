@@ -1,0 +1,160 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor1-style.css">
+    <title>Nanforum Toolkit v2.1 Reference Guide » K-Z » NetWare</title>
+    <meta name="description" content="Nanforum Toolkit v2.1 Reference Guide">
+    <link rel="prev" href="nanfor1-263965.html">
+    <link rel="next" href="nanfor1-266362.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor1-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor1-263965.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor1-244609.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor1-266362.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-G</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor1-16484.html">Conversion</a></li>
+                  <li><a href="nanfor1-29683.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor1-57742.html">Database</a></li>
+                  <li><a href="nanfor1-69777.html">Date/Time</a></li>
+                  <li><a href="nanfor1-112880.html">Environment</a></li>
+                  <li><a href="nanfor1-127130.html">File I/O</a></li>
+                  <li><a href="nanfor1-147012.html">Game</a></li>
+                  
+                </ul>
+              </li>
+              <li>K-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-147565.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor1-191315.html">Math</a></li>
+                  <li><a href="nanfor1-196762.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor1-244609.html">NetWare</a></li>
+                  <li><a href="nanfor1-270533.html">String</a></li>
+                  <li><a href="nanfor1-292001.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-318858.html">Overview</a></li>
+                  <li><a href="nanfor1-348092.html">Rebuilding the Library</a></li>
+                  <li><a href="nanfor1-353717.html">Sample source code headers</a></li>
+                  <li><a href="nanfor1-360780.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_TTSABORT()</span></span><br><span class="line"> Abort explicit and implicit NetWare TTS transactions</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">    <span class="fg15 bg1"> FT_TTSABORT() -&gt; nResult</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">    None</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">      0 - Abort Successful (backout completed)</span><br><span class="line">    253 - Transaction Tracking disabled (no backout performed)</span><br><span class="line">    254 - Transaction ended, records locked (No backout performed)</span><br><span class="line">    255 - No explicit transactions active</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">   Consult your NetWare documentation for details on the NetWare</span><br><span class="line">   Transaction Tracking System.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">   nResult := FT_TTSABORT()</span><br><span class="line">   DO CASE</span><br><span class="line">      CASE nResult == 0</span><br><span class="line">         ? &#34;TTS aborted&#34;</span><br><span class="line">      CASE nResult == 253</span><br><span class="line">         ? &#34;Transction tracking, no backout performed&#34;</span><br><span class="line">      CASE nResult == 254</span><br><span class="line">         ? &#34;Transaction ended, records locked, no backout performed&#34;</span><br><span class="line">      CASE nResult == 255</span><br><span class="line">         ? &#34;No transactions active&#34;</span><br><span class="line">      OTHERWISE</span><br><span class="line">         ? &#34;Unknown result&#34;</span><br><span class="line">   ENDCASE</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> NWTTS2.ASM</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> James R. Zack</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor1-266362.html">FT_TTSAVAIL()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor1-267472.html">FT_TTSBEGIN()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor1-268601.html">FT_TTSEND()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor1-269644.html">FT_TTSSTAT()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:33</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

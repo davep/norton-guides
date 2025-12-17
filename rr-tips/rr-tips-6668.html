@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-2405.html">
+    <link rel="next" href="rr-tips-13662.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-2405.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-13662.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Cross-Tab reports</span></span><br><span class="line"></span><br><span class="line"> R&amp;R enables you to select a group field and create totals for each value</span><br><span class="line"> in that field. Cross-tabulating totals extend this capability by allowing</span><br><span class="line"> you to create totals for two fields at the same group level. Since the</span><br><span class="line"> resulting report resembles a table with totals tabulated down columns and</span><br><span class="line"> across rows, it&#39;s referred to as a cross-tab report.</span><br><span class="line"></span><br><span class="line"> For example, the following summary columnar report produces total sales</span><br><span class="line"> for each product sold by the sales representative. In addition, it</span><br><span class="line"> produces total sales for each product by all sales reps. But since sales</span><br><span class="line"> reps are grouped within products, it can&#39;t produce the total sales of all</span><br><span class="line"> products by each sales rep.</span><br><span class="line"></span><br><span class="line">                        WEEKLY SALES SUMMARY REPORT</span><br><span class="line">                        ===========================</span><br><span class="line"></span><br><span class="line"> Product/Sales Rep                                      Amount</span><br><span class="line"> -----------------                                      ------</span><br><span class="line"></span><br><span class="line"> CIP</span><br><span class="line">      Brenda                                              1200</span><br><span class="line">      Ellen                                               1850</span><br><span class="line">      Rob                                                 1425</span><br><span class="line">      Roger                                               1025</span><br><span class="line">                                                        ------</span><br><span class="line"> CIP - All reps                                           5500</span><br><span class="line"></span><br><span class="line"> dB Report Writer</span><br><span class="line">      Brenda                                               450</span><br><span class="line">      Ellen                                                675</span><br><span class="line">      Rob                                                  305</span><br><span class="line">      Roger                                                445</span><br><span class="line">                                                        ------</span><br><span class="line"> dB Report - All reps                                     1875</span><br><span class="line"></span><br><span class="line"> R&amp;R Report Writer</span><br><span class="line">      Brenda                                              9820</span><br><span class="line">      Ellen                                              11465</span><br><span class="line">      Rob                                                 8775</span><br><span class="line">      Roger                                              10450</span><br><span class="line">                                                        ------</span><br><span class="line"> R&amp;R Report Writer - All reps                            40510</span><br><span class="line"></span><br><span class="line">                                                        ======</span><br><span class="line"> All Products - All sales reps                           47885</span><br><span class="line"></span><br><span class="line"> Without using a cross-tab, you would have to create two separate reports</span><br><span class="line"> to produce totals by product and by sales rep. A cross-tab report enables</span><br><span class="line"> you to create both sets of totals on the same report. In addition, a</span><br><span class="line"> cross-tab is more compact and thus easier to read.</span><br><span class="line"></span><br><span class="line">                        WEEKLY SALES SUMMARY REPORT</span><br><span class="line">                        ===========================</span><br><span class="line"></span><br><span class="line">                  CIP      dB Report      R&amp;R Report    All Products</span><br><span class="line">                  ---      ---------      ----------    ------------</span><br><span class="line"></span><br><span class="line"> Brenda          1200            450            9820           11470</span><br><span class="line"></span><br><span class="line"> Ellen           1850            675           11465           13990</span><br><span class="line"></span><br><span class="line"> Rob             1425            205            8775           10505</span><br><span class="line"></span><br><span class="line"> Roger           1025            445           10450           11920</span><br><span class="line"></span><br><span class="line"> All Sales Reps  5500           1875           40510           47885</span><br><span class="line"></span><br><span class="line"> Note that in this example the crosstab computes sum totals. It is also</span><br><span class="line"> possible to create a crosstab with other totals such as counts, minimums,</span><br><span class="line"> and maximums. Use the following steps to create any crosstab report.</span><br><span class="line"></span><br><span class="line"> 1. <span class="ngb">SELECT A FIELD TO TOTAL</span></span><br><span class="line">    In this example, you are summing the amount contained in the database</span><br><span class="line">    field SALE_AMT. There is one record in the database for each product</span><br><span class="line">    sold. Each record includes three fields: SALES_REP contains the name of</span><br><span class="line">    the rep, PRODUCT contains the name of the product, and SALE_AMT</span><br><span class="line">    contains the dollar amount.</span><br><span class="line"></span><br><span class="line"> 2. <span class="ngb">SELECT THE TYPE OF TOTAL</span></span><br><span class="line">    R&amp;R offers five types of totals: Sum, Count, Average, Highest</span><br><span class="line">    (maximum), and Lowest (minimum).</span><br><span class="line"></span><br><span class="line"> 3. <span class="ngb">SELECT TWO FIELDS TO TABULATE</span></span><br><span class="line">    In this example, you want to tabulate totals by product and by sales</span><br><span class="line">    rep. These values are contained in the fields PRODUCT and SALES_REP.</span><br><span class="line"></span><br><span class="line"> 4. <span class="ngb">CREATE THE GROUP FIELD</span></span><br><span class="line">    From the two fields you selected to tabulate in step 3, determine which</span><br><span class="line">    one contains more values. In this example, there are four sales reps</span><br><span class="line">    and only three products, so the group field should be SALES_REP.</span><br><span class="line"></span><br><span class="line">    Use the /Sort-Group Sort-Fields command to enter SALES_REP as the level</span><br><span class="line">    one sort-group field. Since sales reps will each be on a separate row,</span><br><span class="line">    we will refer to SALES_REP as the ROW field, and PRODUCT as the COLUMN</span><br><span class="line">    field.</span><br><span class="line"></span><br><span class="line"> 5. <span class="ngb">CREATE THE COLUMN ALLOCATION FIELDS</span></span><br><span class="line">    For each value in the column field, you must create a calculated field.</span><br><span class="line">    These fields enable you to allocate the sale amount to the correct</span><br><span class="line">    product. You selected the field with the fewest values to be the column</span><br><span class="line">    field to minimize the number of fields created in this step.</span><br><span class="line"></span><br><span class="line">    A. This procedure applies to a crosstab of sums, averages, minimums,</span><br><span class="line">       and maximums. For counts, refer to step 5B. Select /Field Calculate</span><br><span class="line">       Create and enter the name CIP_Amount. Then enter the following</span><br><span class="line">       expression:</span><br><span class="line"></span><br><span class="line">       IIF(PRODUCT=&#34;CIP&#34;, SALE_AMT, 0)</span><br><span class="line"></span><br><span class="line">       Think of this action as adding a field to the database that contains</span><br><span class="line">       the amount only of the product is CIP, otherwise the field contains</span><br><span class="line">       0. Follow this procedure again for the two other products to create</span><br><span class="line">       the following fields:</span><br><span class="line"></span><br><span class="line">       dBR_Amount = IIF(PRODUCT=&#34;dBR&#34;, SALE_AMT, 0)</span><br><span class="line">       RnR_Amount - IIF(PRODUCT=&#34;R&amp;R&#34;, SALE_AMT, 0)</span><br><span class="line"></span><br><span class="line">    B. If you are producing a crosstab of counts, the calculated field</span><br><span class="line">       expression will be slightly different. In this example, if you were</span><br><span class="line">       counting the number of sales, the expressions would be as follows:</span><br><span class="line"></span><br><span class="line">       CIP_Count = IIF(PRODUCT=&#34;CIP&#34;, 1, 0)</span><br><span class="line">       dBR_Count = IIF(PRODUCT=&#34;dBR&#34;, 1, 0)</span><br><span class="line">       RnR_Count = IIF(PRODUCT=&#34;R&amp;R&#34;, 1, 0)</span><br><span class="line"></span><br><span class="line">       Think of this expression as adding one to the count if the sale was</span><br><span class="line">       for the product being counted. You would then complete steps six</span><br><span class="line">       through ten, substituting these field names wherever you see the</span><br><span class="line">       field names CIP_Amount, dBR_Amount, or RnR_Amount.</span><br><span class="line"></span><br><span class="line"> 6. <span class="ngb">CREATE THE CROSSTAB VALUES</span></span><br><span class="line">    The fields you created in step 5 contain detail information for each</span><br><span class="line">    sale. You must now create a total of each detail field, since the</span><br><span class="line">    crosstab contains totals for each sales rep.</span><br><span class="line"></span><br><span class="line">    Select /Field Total Create and enter the name CIP_X_Tab. To create the</span><br><span class="line">    sales rep total for CIP, select Sum, CIP_Amount, and 1. The other two</span><br><span class="line">    crosstab values are similarly calculated as follows:</span><br><span class="line"></span><br><span class="line">    dBR_X_Tab = SALES_REP Sub-Sum of dBR_Amount</span><br><span class="line">    RnR_X_Tab = SALES_REP Sub-Sum of RnR_Amount</span><br><span class="line"></span><br><span class="line"> 7. <span class="ngb">CREATE ROW TOTALS</span></span><br><span class="line">    The total for each sales rep is calculated by simply adding up the</span><br><span class="line">    three product totals.</span><br><span class="line"></span><br><span class="line">    Select /Field Calculate Create and enter the name Rep_Total. Then enter</span><br><span class="line">    the following expression.</span><br><span class="line"></span><br><span class="line">    CIP_X_Tab + dBR_X_Tab + RnR_X_Tab</span><br><span class="line"></span><br><span class="line"> 8. <span class="ngb">CREATE COLUMN TOTALS</span></span><br><span class="line">    Column totals are created the same way the crosstab values were in step</span><br><span class="line">    6, except with the GRAND reset level.</span><br><span class="line"></span><br><span class="line">    Select /Field Total Create and enter the name CIP_Total. To create the</span><br><span class="line">    sales rep total for CIP, select Sum, CIP_Amount, and Grand. Follow this</span><br><span class="line">    procedure again for the two other products to create the following</span><br><span class="line">    fields:</span><br><span class="line"></span><br><span class="line">    dBR_Total = Grand Sum of dBR_Amount</span><br><span class="line">    RnR_Total = Grand Sum of RnR_Amount</span><br><span class="line"></span><br><span class="line"> 9. <span class="ngb">CREATE THE GRAND TOTAL</span></span><br><span class="line">    The grand total in the lower right corner is both the total of the last</span><br><span class="line">    column and the total of the last row. You will use a calculated field</span><br><span class="line">    to define it as the addition of the three column totals.</span><br><span class="line"></span><br><span class="line">    Select /Field Calculate Create and enter the name Grand_Tot. Then enter</span><br><span class="line">    the following expression:</span><br><span class="line"></span><br><span class="line">    CIP_Total + dBR_Total + RnR_Total</span><br><span class="line"></span><br><span class="line"> 10. <span class="ngb">CREATE THE REPORT FORMAT</span></span><br><span class="line">    Now that all the necessary fields have been defined, create the</span><br><span class="line">    following report format. Create the lines with the /Line Create command</span><br><span class="line">    and insert fields with the F10 [Choices] key. Note that fields you will</span><br><span class="line">    insert are contained in angle brackets in this example. This completes</span><br><span class="line">    the crosstab.</span><br><span class="line"></span><br><span class="line"> --------------------------------------------------------------------------</span><br><span class="line"> Header                  WEEKLY SALES SUMMARY REPORT</span><br><span class="line"> Header</span><br><span class="line"> Header                   CIP       dB Report   R&amp;R Report     All Products</span><br><span class="line"> Header</span><br><span class="line"> 1SALE  &lt;sales rep&gt;  &lt;CIP_X_Tab&gt;  &lt;dBR_X_Tab&gt;  &lt;RnR_X_Tab&gt;     &lt;Rep_Total&gt;</span><br><span class="line"> 1SALE</span><br><span class="line"> Summar  All Reps     &lt;CIP_Total&gt;  &lt;dbR_Total&gt;  &lt;RnR_Total&gt;     &lt;Grand_Tot&gt;</span><br><span class="line"> --------------------------------------------------------------------------</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

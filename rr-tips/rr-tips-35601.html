@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-32335.html">
+    <link rel="next" href="rr-tips-37040.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-32335.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-37040.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Boxing memo&#39;s        Boxing Word-Wrapped Fields (#1 - approximate) </span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Determining approximate number of lines</span></span><br><span class="line"></span><br><span class="line"> An easy but approximate way to calculate the number of lines occupied by a</span><br><span class="line"> word-wrapped field is to test the field to see how many characters it</span><br><span class="line"> contains, to divide the number of characters by the field width (also in</span><br><span class="line"> characters), and to round up the result.</span><br><span class="line"></span><br><span class="line"> R&amp;R provides two functions that enable you to find out how many characters</span><br><span class="line"> of data are contained in a character field:</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">LEN</span></span><br><span class="line">   returns the length of a character field, counting trailing spaces</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">TRIM</span></span><br><span class="line">   Removes trailing spaces from a character expression</span><br><span class="line"></span><br><span class="line"> Using these two functions, you can create an expression that returns the</span><br><span class="line"> number of characters contained in any character field. For a character</span><br><span class="line"> field called CFIELD, the expression would be as follows:</span><br><span class="line"></span><br><span class="line">     len(trim(CFIELD))</span><br><span class="line"></span><br><span class="line"> When R&amp;R evaluates this expression, it first trims trailing spaces (if</span><br><span class="line"> any) from the CFIELD field; then it calculates the remaining number of</span><br><span class="line"> characters in the field.</span><br><span class="line"></span><br><span class="line"> The next step is to divide the value returned by this expression by the</span><br><span class="line"> width of the field in characters and to round this result up. The</span><br><span class="line"> following expression for a calculated field we will call LENGTH performs</span><br><span class="line"> these functions. In this expression, &#34;Width&#34; represents the width of</span><br><span class="line"> CFIELD in the report layout.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">int((len(trim(CFIELD)) + (Width - 1))) / Width</span></span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-6668.html">
+    <link rel="next" href="rr-tips-20279.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-6668.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-20279.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Multi-columnar reports</span></span><br><span class="line"></span><br><span class="line"> Many users have asked our support staff whether R&amp;R can format a multi-</span><br><span class="line"> column directory. An example of this format is the telephone book. Names</span><br><span class="line"> are printed in alphabetical order in four columns per page. Unlike a</span><br><span class="line"> normal report that prints names in a single column per page, the directory</span><br><span class="line"> format lists names down the first column, then down the second column,</span><br><span class="line"> etc.</span><br><span class="line"></span><br><span class="line"> There is a simple trick you can use to print this type of format. However,</span><br><span class="line"> there are a few restrictions. In most applications, these restrictions are</span><br><span class="line"> acceptable.</span><br><span class="line"></span><br><span class="line"> The first restriction is that you cannot sort or group records. If you</span><br><span class="line"> wish to have records sorted, you must sort the database in dBase before</span><br><span class="line"> running the report.</span><br><span class="line"></span><br><span class="line"> The second restriction is that you cannot use a query. If you want to</span><br><span class="line"> print only a subset of the records in the database, you will have to</span><br><span class="line"> extract the desired records into another database file using the dBase</span><br><span class="line"> COPY command.</span><br><span class="line"></span><br><span class="line"> The third and final restriction is that each column on the page must</span><br><span class="line"> contain the same number of entries. This means you cannot use the</span><br><span class="line"> word-wrap format, compress blank body lines, or insert blank lines at the</span><br><span class="line"> end of the body section.</span><br><span class="line"></span><br><span class="line"> The following six steps show you how to format a multi-column directory.</span><br><span class="line"></span><br><span class="line"> 1. <span class="ngb">FORMAT THE FIRST COLUMN</span></span><br><span class="line">    Insert fields in the body area to create the desired format of a</span><br><span class="line">    directory entry. These fields will produce the first column on the</span><br><span class="line">    page. At this time you may also create a page header and footer, if</span><br><span class="line">    desired.</span><br><span class="line"></span><br><span class="line"> 2. <span class="ngb">COMPUTE THE NUMBER OF ENTRIES PER COLUMN</span></span><br><span class="line">    You must compute the number of entries that will fit in one column on a</span><br><span class="line">    page. First use the /Print command to set the desired page length. Then</span><br><span class="line">    print a test-pattern to see how many entries fit on a page.</span><br><span class="line"></span><br><span class="line"> 3. <span class="ngb">SET A RELATION TO THE SECOND COLUMN</span></span><br><span class="line">    The fields used to format the second column come from relating the</span><br><span class="line">    database to itself. This creates two record pointers into the same</span><br><span class="line">    file. The second pointer must be n records ahead of the first pointer,</span><br><span class="line">    where n is the number of entries per column.</span><br><span class="line"></span><br><span class="line">    For example, if there is enough space for thirteen entries per column,</span><br><span class="line">    then the first record in column one is record 1, and the first record</span><br><span class="line">    in column two is record 14. (Record 14 is thirteen records ahead of</span><br><span class="line">    record 1.)</span><br><span class="line"></span><br><span class="line">                         Sample Two-Column Directory</span><br><span class="line">    ------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">     Ace Computer Forms (record #1)       Boston Computer Co. (record #14)</span><br><span class="line">     123 First Street                     413 Congress Street</span><br><span class="line">     Cambridge, MA  02142                 Boston, MA  02128</span><br><span class="line"></span><br><span class="line">     Acme Algorithms, Inc.                Computer Commuter Corp.</span><br><span class="line">     8826 B Street                        37 Oak Street</span><br><span class="line">     Burlington, MA  01803                Natick, MA  01760</span><br><span class="line"></span><br><span class="line">               .                                    .</span><br><span class="line">               .                                    .</span><br><span class="line">               .                                    .</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   ------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">    To set this relation, you must first create a calculated field to</span><br><span class="line">    calculate the desired record number. Select the /Field Calculate Create</span><br><span class="line">    command and enter the name Col_2_link. Then enter the following</span><br><span class="line">    expression, assuming the master database is named LIST.</span><br><span class="line"></span><br><span class="line">    RECNO(LIST) + 13</span><br><span class="line"></span><br><span class="line">    Now you can set the relation with the /Database Relation Set command.</span><br><span class="line">    Use Col_2_link as the linking field, select Exact-Lookup, select the</span><br><span class="line">    master database, enter COL2 as the alias, select &lt;&lt;RECNO&gt;&gt; as the</span><br><span class="line">    index, and then select Blank as the failure action.</span><br><span class="line"></span><br><span class="line"> 4. <span class="ngb">FORMAT THE SECOND COLUMN</span></span><br><span class="line">    Now you can format the second column by inserting fields from the COL2</span><br><span class="line">    database to the right of the first entry. Your screen should now look</span><br><span class="line">    something like this:</span><br><span class="line"></span><br><span class="line">       Header                  Sample Two-Column Directory</span><br><span class="line">       Header                  ---------------------------</span><br><span class="line">       Header</span><br><span class="line">       Body        &#39;XXXXXXXXXXXXXXXXXXX            &#39;XXXXXXXXXXXXXXXXXXX</span><br><span class="line">       Body        &#39;XXXXXXXXXXXXXXXXXXXXX          &#39;XXXXXXXXXXXXXXXXXXXXX</span><br><span class="line">       Body        &#39;XXXXXXXXX, &#39;X  &#39;XXXX           &#39;XXXXXXXXX, &#39;X  &#39;XXXX</span><br><span class="line">       Body</span><br><span class="line"></span><br><span class="line">    The left column &#39;XXXXXXXX&#39;s are fields from the LIST database, and the</span><br><span class="line">    right column &#39;XXXXXXX&#39;s are fields from the COL2 database.</span><br><span class="line"></span><br><span class="line"> 5. <span class="ngb">QUERY OUT DUPLICATES</span></span><br><span class="line">    In our two-column example, there is a need to eliminate every second</span><br><span class="line">    group of thirteen records from the master file. The reason for this is</span><br><span class="line">    that when a group of thirteen records from the master file is printed</span><br><span class="line">    in the first column, the next thirteen records from the related file</span><br><span class="line">    are printed in the second column.</span><br><span class="line"></span><br><span class="line">    For example, page one will include records 1-13 in the first column,</span><br><span class="line">    and records 14-26 in the second column. Then you want page two to print</span><br><span class="line">    records 27-39 in the first column and records 40-52 in the second</span><br><span class="line">    column. Therefore, you need to read records 1-13 from the master file,</span><br><span class="line">    and then skip to record 27 on page two.</span><br><span class="line"></span><br><span class="line">    How can you tell R&amp;R to read thirteen records and then skip the next</span><br><span class="line">    thirteen records?  The trick is to create a calculated field that</span><br><span class="line">    contains one value for the wanted records and another value for the</span><br><span class="line">    unwanted records. Then you can use a query to select the wanted</span><br><span class="line">    records.</span><br><span class="line"></span><br><span class="line">    Select the /Field Calculate Create command and enter the name Wanted.</span><br><span class="line">    Then enter the following expression:</span><br><span class="line"></span><br><span class="line">    MOD(INT((RECNO(LIST)-1)/13),2)</span><br><span class="line"></span><br><span class="line">    The best way to see how this works is to build a table of values for</span><br><span class="line">    each part of the formula.  Then you can see why the query will work.</span><br><span class="line"></span><br><span class="line">    In the following table, note the pattern in the last column. The</span><br><span class="line">    thirteen wanted records contain a 0, while the next thirteen unwanted</span><br><span class="line">    records contain a 1. As you can see, this pattern repeats every</span><br><span class="line">    thirteen records.</span><br><span class="line"></span><br><span class="line"> RECNO(LIST) RECNO(LIST)-1 INT(RECNO(LIST)-1/13) MOD(INT((RECNO(LIST)-1/13),2)</span><br><span class="line"> ----------- ------------- --------------------- -----------------------------</span><br><span class="line">      1            0                  0                         0</span><br><span class="line">      2            1                  0                         0</span><br><span class="line">      3            2                  0                         0</span><br><span class="line">      .            .                  .                         .</span><br><span class="line">      .            .                  .                         .</span><br><span class="line">      .            .                  .                         .</span><br><span class="line">     13           12                  0                         0</span><br><span class="line"></span><br><span class="line">     14           13                  1                         1</span><br><span class="line">     15           14                  1                         1</span><br><span class="line">     16           15                  1                         1</span><br><span class="line">      .            .                  .                         .</span><br><span class="line">      .            .                  .                         .</span><br><span class="line">      .            .                  .                         .</span><br><span class="line">     26           25                  1                         1</span><br><span class="line"></span><br><span class="line">     27           26                  2                         0</span><br><span class="line">      .            .                  .                         .</span><br><span class="line">      .            .                  .                         .</span><br><span class="line">      .            .                  .                         .</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    To finish this step, select the /Query command and create the query:</span><br><span class="line">    Select all records where (Wanted is equal to &#34;0&#34;).</span><br><span class="line"></span><br><span class="line"> 6. <span class="ngb">OPTIONALLY CREATE MORE COLUMNS</span></span><br><span class="line">    You can keep adding columns as long as there is enough room on the</span><br><span class="line">    page. To create another column, just repeat steps 3 through 5.</span><br><span class="line"></span><br><span class="line">    In step 3, add another calculated linking field, changing the</span><br><span class="line">    expression to skip an extra thirteen records for each additional</span><br><span class="line">    column. For example, for a three-column report, create a field named</span><br><span class="line">    Col_3_link defined by the expression RECNO(LIST) + 26.</span><br><span class="line"></span><br><span class="line">    In step 5, change the second number in the MOD function to the number</span><br><span class="line">    of columns in the report. For example, for a three-column report,</span><br><span class="line">    change the expression to MOD(INT((RECNO(LIST)-1_/13),3).</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

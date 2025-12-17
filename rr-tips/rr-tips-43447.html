@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-40797.html">
+    <link rel="next" href="rr-tips-49227.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-40797.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-49227.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Column shading       Put a shade under a column</span></span><br><span class="line"></span><br><span class="line"> R&amp;R has always allowed you to highlight selected data in a report by using</span><br><span class="line"> attributes such as bold, italic, and underscore. R&amp;R allows those of you</span><br><span class="line"> with laser printers to highlight selected areas of your report with</span><br><span class="line"> shading. The figures on the next page illustrate the two types of shading</span><br><span class="line"> explained here:</span><br><span class="line"></span><br><span class="line"> <span class="ngb">COLUMN SHADING</span></span><br><span class="line"></span><br><span class="line"> Column shading enables you to highlight one or more columns of data in a</span><br><span class="line"> report. The trick to producing this type of shading is to insert shading</span><br><span class="line"> characters (in this case extended ASCII character 176) immediately below</span><br><span class="line"> the data field(s) to be shaded. Then, using the /Line Print Height</span><br><span class="line"> command, you can assign the line with the shading characters a line height</span><br><span class="line"> of 0, which forces the shading characters to overprint the line above</span><br><span class="line"> them.</span><br><span class="line"></span><br><span class="line"> Follow the steps outlined below to do column shading</span><br><span class="line"></span><br><span class="line"> 1. First, we made sure that one of our printers has a font whose symbol</span><br><span class="line">    set includes one or more shading characters light enough to overprint</span><br><span class="line">    data without obscuring it. In this case, the HP LaserJet Il has a</span><br><span class="line">    12-point, 10-pitch Courier font with the PC-8 (also called IBM-US)</span><br><span class="line">    symbol set. In this symbol set, characters with decimal numbers 176,</span><br><span class="line">    177, and 178 are shading characters, of which character 176 is the</span><br><span class="line">    lightest. To make sure we would print the finished report on the right</span><br><span class="line">    printer, we used the /Print Destination Printer command to select the</span><br><span class="line">    HP LaserJet II.</span><br><span class="line"></span><br><span class="line"> 2. Next, we made sure that this font and any others we wanted to use in</span><br><span class="line">    the report were available. Because we wanted to use the Helvetica font</span><br><span class="line">    from the Microsoft Z font cartridge, we used the IPrint Font-File</span><br><span class="line">    command to attach the RRHP Z font information file (FIF) to the report.</span><br><span class="line">    This FIF gives R&amp;R information about both the internal Courier font</span><br><span class="line">    needed for the shading characters and all the fonts on the Z cartridge.</span><br><span class="line">    (Note that you do not need to attach a font information file if you</span><br><span class="line">    want to use only fonts internal to the printer.)</span><br><span class="line"></span><br><span class="line"> 3. After attaching the FIF, we pressed F8 to see if the ruler pitch</span><br><span class="line">    matched the pitch (number of characters per inch) of the font in which</span><br><span class="line">    the shading characters would print. In this case, the ruler pitch was</span><br><span class="line">    automatically set to 10, to correspond to the pitch of the report&#39;s</span><br><span class="line">    default font (the first font in the attached FIF). Since the Courier</span><br><span class="line">    font with the shading characters is a 10-pitch font, we did not have to</span><br><span class="line">    change the ruler pitch. We pressed Enter to retain the current pitch.</span><br><span class="line"></span><br><span class="line">    Note that if the ruler pitch is smaller than the pitch of the shading</span><br><span class="line">    font, your shading characters will print with gaps between them.</span><br><span class="line"></span><br><span class="line"> 4. Next, we created the report layout, typing text fields in the title</span><br><span class="line">    area and inserting data fields on the first body line. We used the</span><br><span class="line">    /Line Print Font command to apply 14-point Helvetica to the title line</span><br><span class="line">    and lO-point Helvetica to the data fields in the body area. We also</span><br><span class="line">    used /Line Print Attribute to make the title bold.</span><br><span class="line"></span><br><span class="line"> 5. Because Helvetica is a proportional font, one whose characters vary in</span><br><span class="line">    width, we weren&#39;t sure how much space each data field would ccupy on</span><br><span class="line">    the report. To maintain the columnar alignment of the report, we used</span><br><span class="line">    the /Field Width command to assign a width of 2 inches to the NAME</span><br><span class="line">    field. This width should be sufhcient to accommodate any name in the</span><br><span class="line">    database, but if a name is longer, R&amp;R will truncate it at 2 inches</span><br><span class="line">    instead of pushing the data in the HIREDATE and DEPT fields to the</span><br><span class="line">    right.</span><br><span class="line"></span><br><span class="line"> 6. To insert the shading characters, we moved down to the line immediately</span><br><span class="line">    below the NAME data field and pressed Shift F3 to display R&amp;R&#39;s</span><br><span class="line">    extended character screen. We moved the cursor to the lightest shading</span><br><span class="line">    character, pressed F3 to select it, and pressed F3 20 times to insert</span><br><span class="line">    20 of these characters on the report layout. Since the Courier font in</span><br><span class="line">    which these characters will print is 10 pitch (i.e. has 10 characters</span><br><span class="line">    per inch), these 20 characters will occupy 2 inches in the report,</span><br><span class="line">    exactly the width we assigned to the NAME data field.</span><br><span class="line"></span><br><span class="line"> 7. Because 12-point lO-pitch Courier is the default font for this report</span><br><span class="line">    (Font number 1 in the attached FIF), we did not need to explicitly</span><br><span class="line">    apply a font to the text field consisting of the shading characters.</span><br><span class="line">    (When a field is first entered or inserted on the report layout, the</span><br><span class="line">    default font is automatically applied to it.) However, to make sure, we</span><br><span class="line">    highlighted the shading field and pressed F4 to check that the field</span><br><span class="line">    would print in the correct font.</span><br><span class="line"></span><br><span class="line"> 8. Next, we used the /Line Print Height command to manually specify</span><br><span class="line">    heights for two lines on the report layout. We assigned a line height</span><br><span class="line">    of 12 points to the body line containing the data fields and a line</span><br><span class="line">    height of O (in any unit of measure) to the body line containing the</span><br><span class="line">    shading field. By making the line height of the data line the same as</span><br><span class="line">    the point size of the font applied to the shading characters (12</span><br><span class="line">    point), we forced the shading characters to overprint and completely</span><br><span class="line">    fill the line above them. (If we had not changed the height of the line</span><br><span class="line">    containing the data fields, the shading characters would have</span><br><span class="line">    overlapped, since the first body line would have automatically taken on</span><br><span class="line">    the height of the largest font on the line, Helvetica 10 point.)</span><br><span class="line"></span><br><span class="line"> 9. Finally, we used the /Print Preview command to preview the report</span><br><span class="line">    before we printed it. In the un-zoomed display, the shading obscured</span><br><span class="line">    the data. However, when we zoomed in closely, we could see both shading</span><br><span class="line">    and data. We could also check to see that the shading characters filled</span><br><span class="line">    the column completely, without gaps between lines or characters. After</span><br><span class="line">    exiting preview, we print the report to an HP LaserJet II, to produce</span><br><span class="line">    the output.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

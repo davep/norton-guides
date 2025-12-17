@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="pbmake-style.css">
+    <title>PBMake 2.15 for Clipper, Xbase++, C and  » Reference » PBMake Features</title>
+    <meta name="description" content="PBMake 2.15 for Clipper, Xbase++, C and ">
+    <link rel="prev" href="pbmake-29281.html">
+    <link rel="next" href="pbmake-32338.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="pbmake-about.html">About</a></li>
+
+
+          
+
+<li><a href="pbmake-29281.html">Previous</a></li>
+
+
+          
+
+<li><a href="pbmake-18702.html">Up</a></li>
+
+
+          
+
+<li><a href="pbmake-32338.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Intro</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Introduction</a></li>
+                  <li><a href="pbmake-9885.html">Getting Started</a></li>
+                  <li><a href="pbmake-11192.html">Blank Template</a></li>
+                  <li><a href="pbmake-16114.html">Example Template</a></li>
+                  <li><a href="pbmake-17946.html">Running It</a></li>
+                  
+                </ul>
+              </li>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-18702.html">PBMake Features</a></li>
+                  <li><a href="pbmake-36380.html">Supported Languages</a></li>
+                  <li><a href="pbmake-44844.html">Script Initializer Tool</a></li>
+                  <li><a href="pbmake-52818.html">GNU RCS Version Control Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>About</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-56275.html">MAKE.BAT</a></li>
+                  <li><a href="pbmake-58146.html">Problems</a></li>
+                  <li><a href="pbmake-60601.html">Support</a></li>
+                  <li><a href="pbmake-61056.html">Copyright</a></li>
+                  <li><a href="pbmake-61432.html">Register!</a></li>
+                  <li><a href="pbmake-62283.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">      ONERROR= is the Compile Failure directive. It allows you to use</span><br><span class="line">      PBMake in a way that when a compiler error is encountered, your</span><br><span class="line">      editor will be invoked and you will be fast forwarded to the point</span><br><span class="line">      in your source code where the error occured.</span><br><span class="line"></span><br><span class="line">      A note about Clipper, here... Clipper does NOT normally create a</span><br><span class="line">      DOS errorlevel on exit after failure. <span class="ngr"> You must place the /ES2 flag </span></span><br><span class="line">     <span class="ngr"> in the flag directive to use this error trap feature. </span></span><br><span class="line"></span><br><span class="line">      Here is an example for Clipper and Qedit:</span><br><span class="line"></span><br><span class="line">      FLAG= /M /N /W /ES2       ( or whatever flags you use + /ES2 )</span><br><span class="line"></span><br><span class="line">      ONERROR= CLIPPER Q -N</span><br><span class="line"></span><br><span class="line">      Here is an example for Clipper and MultiEdit:</span><br><span class="line"></span><br><span class="line">      FLAG= /M /N /W /ES2       ( or whatever flags you use + /ES2 )</span><br><span class="line"></span><br><span class="line">      ONERROR= CLIPPER ME /L</span><br><span class="line"></span><br><span class="line">      Here&#39;s how it works:</span><br><span class="line"></span><br><span class="line">      PBMake tells DOS to redirect the text output from your compiler</span><br><span class="line">      into a file.</span><br><span class="line"></span><br><span class="line">      When PBMake encounters a DOS error in the make process, it jumps</span><br><span class="line">      to the compiler error trap in MAKE.BAT file.</span><br><span class="line"></span><br><span class="line">      The compiler error trap executes PBERRLIN.EXE and passes in a</span><br><span class="line">      bunch of information from your .MAK file:</span><br><span class="line"></span><br><span class="line">      &lt;parm1&gt; = The redirected output from the compiler.</span><br><span class="line">                ( defaults to ${pbm}.err, override with ERRFILE= )</span><br><span class="line">      &lt;parm2&gt; = Batch file name to be created.</span><br><span class="line">                ( defaults to ${pbm}.bat, override with ERRBAT= )</span><br><span class="line">      &lt;parm3&gt; = The Compiler that created the error.</span><br><span class="line">      &lt;parm4&gt; = The DOS command that invokes your editor.</span><br><span class="line">      &lt;parm5&gt; = The directive that causes your editor to jump to a line.</span><br><span class="line"></span><br><span class="line">      When PBERRLIN.EXE executes it parses the &lt;parm1&gt; file looking for</span><br><span class="line">      two pieces of information. It determines the source module that</span><br><span class="line">      failed, and it determines the line number where the first error</span><br><span class="line">      originated. ( Please note that you are only supplying the 3,4 and</span><br><span class="line">      5 &lt;parms&gt; in the ONERROR= line. )</span><br><span class="line"></span><br><span class="line">      After PBERRLIN.EXE has the information it needs, it creates the file</span><br><span class="line">      named in &lt;parm2&gt;.</span><br><span class="line"></span><br><span class="line">      MAKE.BAT then executes the &lt;parm2&gt; file that was just created.</span><br><span class="line"></span><br><span class="line">      The &lt;parm2&gt; file contains the editor directive to edit the failed</span><br><span class="line">      compile source code and the directive to jump to the correct line</span><br><span class="line">      number. It also loads the error file as the second file, so if</span><br><span class="line">      there is more than one error, you can swap windows back and forth</span><br><span class="line">      to fix all the errors in one shot.</span><br><span class="line"></span><br><span class="line">      Fortunately, this takes longer to read about than to execute. It&#39;s</span><br><span class="line">      really quite fast and a very time saving feature.</span><br><span class="line"></span><br><span class="line">      The files in &lt;parm1&gt; and &lt;parm2&gt; are automatically added to the</span><br><span class="line">      CLEANUP= directive.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:34</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

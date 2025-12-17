@@ -1,0 +1,150 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="h_libng-style.css">
+    <title>H_LIB52 v1.0 Reference Guide Release 1.0 » N-V » Video</title>
+    <meta name="description" content="H_LIB52 v1.0 Reference Guide Release 1.0">
+    <link rel="prev" href="h_libng-100057.html">
+    <link rel="next" href="h_libng-102388.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="h_libng-about.html">About</a></li>
+
+
+          
+
+<li><a href="h_libng-100057.html">Previous</a></li>
+
+
+          
+
+<li><a href="h_libng-87925.html">Up</a></li>
+
+
+          
+
+<li><a href="h_libng-102388.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="h_libng-2278.html">Audit</a></li>
+                  <li><a href="h_libng-3223.html">Browse</a></li>
+                  <li><a href="h_libng-9340.html">Data Dictionary</a></li>
+                  <li><a href="h_libng-11856.html">Date</a></li>
+                  <li><a href="h_libng-18718.html">Error handling</a></li>
+                  <li><a href="h_libng-20375.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-M</li>
+              <li>
+                <ul>
+                  <li><a href="h_libng-25075.html">General</a></li>
+                  <li><a href="h_libng-47633.html">Get Reader</a></li>
+                  <li><a href="h_libng-53217.html">Help</a></li>
+                  <li><a href="h_libng-53790.html">INI Files</a></li>
+                  <li><a href="h_libng-55152.html">Keyboard</a></li>
+                  <li><a href="h_libng-55802.html">Menus/Prompts</a></li>
+                  
+                </ul>
+              </li>
+              <li>N-V</li>
+              <li>
+                <ul>
+                  <li><a href="h_libng-64916.html">Network</a></li>
+                  <li><a href="h_libng-69119.html">Printer</a></li>
+                  <li><a href="h_libng-73871.html">Security</a></li>
+                  <li><a href="h_libng-80827.html">String</a></li>
+                  <li><a href="h_libng-84103.html">TBrowse</a></li>
+                  <li><a href="h_libng-87925.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="h_libng-106378.html">About</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Restore region of the screen saved with H_SAVRGN()</span></span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">      <span class="fg15 bg1"> H_RSTRGN( &lt;cScreen&gt;, [ &lt;nTop&gt; ], [ &lt;nLeft&gt; ] ) -&gt; NIL</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments:</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;cScreen&gt;</span> is a screen region previously returned from H_SAVRGN().</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nTop&gt;</span> and <span class="ngb">&lt;nLeft&gt;</span> are optional parameters that define a new location</span><br><span class="line">     for the upper left corner of the screen area contained in <span class="ngb">&lt;cScreen&gt;</span>.</span><br><span class="line">     Allowable values are 0 through 255.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">     H_RSTRGN() returns NIL.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description:</span></span><br><span class="line"></span><br><span class="line">     H_RSTRGN() restores a screen region previously saved with</span><br><span class="line">     H_SAVRGN().  Calling H_RSTRGN() with &lt;cScreen&gt; as the only</span><br><span class="line">     parameter will restore the saved region to its original location.</span><br><span class="line">     &lt;nTop&gt; and &lt;nLeft&gt; may be used to define a new location for the</span><br><span class="line">     upper left corner of the saved region.</span><br><span class="line"></span><br><span class="line">     &lt;nTop&gt; and &lt;nLeft&gt; are dependent upon each other. You may not</span><br><span class="line">     specify one without the other.</span><br><span class="line"></span><br><span class="line">     H_RSTRGN() calls Clipper&#39;s RESTSCREEN().  Refer to the Clipper</span><br><span class="line">     documentation for more information regarding this function.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples:</span></span><br><span class="line"></span><br><span class="line">     The following example uses H_RSTRGN() to restore a saved portion</span><br><span class="line">     of the screen to different locations.</span><br><span class="line"></span><br><span class="line">     @ 00, 00, 24, 79 BOX &#34;111111111&#34;      // fill the screen with 1&#39;s</span><br><span class="line">     cScreen = H_SAVRGN(10, 10, 20, 30)   // save a region</span><br><span class="line">     @ 00, 00, 24, 79 BOX &#34;222222222&#34;      // fill the screen with 2&#39;s</span><br><span class="line">     H_RSTRGN(cScreen)                    // restore the 1&#39;s region</span><br><span class="line">     @ 00, 00, 24, 79 BOX &#34;222222222&#34;      // fill the screen with 2&#39;s</span><br><span class="line">     H_RSTRGN(cScreen, 15, 15)            // restore to a different location</span><br><span class="line">     @ 00, 00, 24, 79 BOX &#34;222222222&#34;      // fill the screen with 2&#39;s</span><br><span class="line">     H_RSTRGN(cScreen, 20, 60)            // restore to a different location</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> SCREGION.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author: </span> David A. Richardson</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              H_SAVRGN()
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:25</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

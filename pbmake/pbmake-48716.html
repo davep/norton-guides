@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="pbmake-style.css">
+    <title>PBMake 2.15 for Clipper, Xbase++, C and  » Reference » Script Initializer Tool</title>
+    <meta name="description" content="PBMake 2.15 for Clipper, Xbase++, C and ">
+    <link rel="prev" href="pbmake-46856.html">
+    <link rel="next" href="pbmake-50460.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="pbmake-about.html">About</a></li>
+
+
+          
+
+<li><a href="pbmake-46856.html">Previous</a></li>
+
+
+          
+
+<li><a href="pbmake-44844.html">Up</a></li>
+
+
+          
+
+<li><a href="pbmake-50460.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Intro</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Introduction</a></li>
+                  <li><a href="pbmake-9885.html">Getting Started</a></li>
+                  <li><a href="pbmake-11192.html">Blank Template</a></li>
+                  <li><a href="pbmake-16114.html">Example Template</a></li>
+                  <li><a href="pbmake-17946.html">Running It</a></li>
+                  
+                </ul>
+              </li>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-18702.html">PBMake Features</a></li>
+                  <li><a href="pbmake-36380.html">Supported Languages</a></li>
+                  <li><a href="pbmake-44844.html">Script Initializer Tool</a></li>
+                  <li><a href="pbmake-52818.html">GNU RCS Version Control Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>About</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-56275.html">MAKE.BAT</a></li>
+                  <li><a href="pbmake-58146.html">Problems</a></li>
+                  <li><a href="pbmake-60601.html">Support</a></li>
+                  <li><a href="pbmake-61056.html">Copyright</a></li>
+                  <li><a href="pbmake-61432.html">Register!</a></li>
+                  <li><a href="pbmake-62283.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">  If you transfer code back and forth from one machine to another, you</span><br><span class="line">  know how much work it is to keep all of the scripts working on both</span><br><span class="line">  machines. The problem begins when the two machines that have files in</span><br><span class="line">  different locations. For instance, if your compiler and .LIB directory</span><br><span class="line">  is on C: on one machine and on D: on another machine, then any fully</span><br><span class="line">  developed .MAK model would stop working as you transferred the code</span><br><span class="line">  from one machine to the next.</span><br><span class="line"></span><br><span class="line">  PBInit has relieved you of this problem by &#39;refreshing&#39; the .MAK files</span><br><span class="line">  from the environment of whichever machine you are on.</span><br><span class="line"></span><br><span class="line">  Simply run PBInit &lt;existingmakfile&gt;, and you will be prompted three</span><br><span class="line">  ways:</span><br><span class="line"></span><br><span class="line">  1. Abort, I didn&#39;t mean to do this.</span><br><span class="line">  2. Refresh, I just want to update the references in my .MAK file.</span><br><span class="line">  3. Delete this .MAK file and create a new one from scratch.</span><br><span class="line"></span><br><span class="line">  Pick #2, Refresh, and PBInit will:</span><br><span class="line"></span><br><span class="line">  1. Locate all of the LIB= and INCLUDE= lines in the existing .MAK file</span><br><span class="line">  2. Strip the path off of them</span><br><span class="line">  3. Use the current environment to find the files that were referred to</span><br><span class="line">  4. Find the correct path to each reference</span><br><span class="line">  5. Replace them back into the .MAK file with the corrected path</span><br><span class="line">     information for the current environment.</span><br><span class="line"></span><br><span class="line">  If PBInit can&#39;t find a referred to file in the current environment, a</span><br><span class="line">  comment will be placed in the .MAK file where the file was originally</span><br><span class="line">  referred to stating that the reference couldn&#39;t be found, like:</span><br><span class="line"></span><br><span class="line">  // LIB=SOMELIB not found in local directory or LIB= environment</span><br><span class="line"></span><br><span class="line">  or</span><br><span class="line"></span><br><span class="line">  // INCLUDE=SOME_CH not found in local directory or INCLUDE= environment</span><br><span class="line"></span><br><span class="line">  After correcting the environment, you can run the PBInit refresh</span><br><span class="line">  option again and PBInit will look up the full path and correct the</span><br><span class="line">  .MAK file.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:34</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

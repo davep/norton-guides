@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-37040.html">
+    <link rel="next" href="rr-tips-43447.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-37040.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-43447.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Boxing memo&#39;s        Creating a variable length vertical line</span></span><br><span class="line"></span><br><span class="line"> Once you have used either technique explained above to determine the</span><br><span class="line"> approximate or exact number of lines occupied by the data in a</span><br><span class="line"> word-wrapped character field, you can create a calculated field that</span><br><span class="line"> produces a vertical line whose length varies as the number of lines</span><br><span class="line"> varies. The trick to creating this field is to use the REPLICATE function</span><br><span class="line"> to replicate the vertical line character as many times as there are lines</span><br><span class="line"> of data and then to use the word-wrap field format to wrap this field down</span><br><span class="line"> rather than across the page.</span><br><span class="line"></span><br><span class="line"> To create this field, proceed as follows:</span><br><span class="line"></span><br><span class="line"> 1. Find out the <span class="ngb">ASCII number of the vertical line character</span> you want to</span><br><span class="line">    use by looking at your printer, font cartridge, or soft font manual.</span><br><span class="line">    These manuals usually contain symbol set charts that assign a number</span><br><span class="line">    from 33 to 254 to each printable character. For example, the chart of</span><br><span class="line">    the IBM PC symbol set found in the HP LaserJet 11 manual shows that the</span><br><span class="line">    number for the vertical bar character ( │ ) is 179</span><br><span class="line"></span><br><span class="line"> 2. <span class="ngb">Create a calculated field</span> (in this example, let&#39;s call it VLINE) that</span><br><span class="line">    will replicate the vertical line character once for each line of your</span><br><span class="line">    word-wrapped field. If the line character you are using is character</span><br><span class="line">    number 179 (the single vertical bar), the expression for this field</span><br><span class="line">    would be as follows, where LENGTH represents a calculated field that</span><br><span class="line">    returns the numbcr of lines in the field you want to</span><br><span class="line"></span><br><span class="line">       iif(LENGTH &gt; 0, replicate(chr(179), LENGTH), chr(179) )</span><br><span class="line"></span><br><span class="line">    Translated, this expressions means: &#34;If the length of the word-wrapped</span><br><span class="line">    field is greater than zero, print as many vertical line characters as</span><br><span class="line">    there are lines in the word-wrapped field; otherwise, print one</span><br><span class="line">    vertical line character&#34;. Use of the IIF function ensures that the</span><br><span class="line">    calculated field takes inlo account blank values in the word-wrapped</span><br><span class="line">    field; if the value is blank, the left and right sides of the box will</span><br><span class="line">    consist of just one vertical line character.</span><br><span class="line"></span><br><span class="line"> 3. Place the <span class="ngb">word-wrapped field on your report layout</span>. Use the F3 and</span><br><span class="line">    Shift F3 keys to select and insert the horizontal line and corner</span><br><span class="line">    characters for the box. Where you would insert the vertical line</span><br><span class="line">    character (that is, immediately before and after the word-wrapped</span><br><span class="line">    field), insert the VLINE calculated field you just created.</span><br><span class="line"></span><br><span class="line"> 4. Use the <span class="ngb">/Field Width</span> command to set the width of the VLINE field to 1</span><br><span class="line">    character. Use the <span class="ngb">/Field Format</span> command to ielect a word-wrapped</span><br><span class="line">    format. This width and format causes the field containing vertical bar</span><br><span class="line">    characters to wrap down rather than across the page.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

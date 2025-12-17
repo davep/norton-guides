@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-25310.html">
+    <link rel="next" href="rr-tips-27648.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-25310.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-27648.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Memo/scanned file    Put multiple records of a scanned file next to a memo</span></span><br><span class="line"></span><br><span class="line"> Do you know how to print data from a scanned file next to a word wrapped</span><br><span class="line"> memo field?</span><br><span class="line"></span><br><span class="line"> I want this:</span><br><span class="line"></span><br><span class="line">              Description        Responsibility</span><br><span class="line">     ──────────────────────────  ───────────────</span><br><span class="line">     This is a memo field which   Joe            &lt;-- from scanned</span><br><span class="line">     is word wrapped and I need   Nancy              file</span><br><span class="line">     to print the a multiple set  Bob</span><br><span class="line">     of names, one next to each   Jane</span><br><span class="line">     line of the memo field, if</span><br><span class="line">     there are that many ...</span><br><span class="line"></span><br><span class="line"> instead of this:</span><br><span class="line"></span><br><span class="line">             Description         Responsibility</span><br><span class="line">     ──────────────────────────  ───────────────</span><br><span class="line">     This is a memo field which   Joe</span><br><span class="line">     is word wrapped and I need</span><br><span class="line">     to print the a multiple set</span><br><span class="line">     of names, one next to each</span><br><span class="line">     line of the memo field, if</span><br><span class="line">     there are that many ...</span><br><span class="line">                                  Nancy</span><br><span class="line">                                  Bob</span><br><span class="line">                                  Jane</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Solution</span></span><br><span class="line"> There is a rather convoluted method that you might want to consider that</span><br><span class="line"> will allow you to get the desired effect. What you do is create a <span class="ngb">recursive</span></span><br><span class="line"> <span class="ngb">calculated field</span> that concatenates the name field from all of your records</span><br><span class="line"> together with some <span class="ngb">semicolons</span> (;) to provide the word wrap.</span><br><span class="line"></span><br><span class="line"> What you need is a recursive calculated field. Let&#39;s say you need all of</span><br><span class="line"> the names for a department to wrap. Then on a department group footer line</span><br><span class="line"> of your report you would place the memo and then next to it would be a</span><br><span class="line"> calculated field called WRAPNAME With the expression:</span><br><span class="line"></span><br><span class="line">   iif(DEPT&lt;&gt;previous(DEPT),trim(NAME),WRAPNAME+&#34;;&#34;+trim(NAME))</span><br><span class="line"></span><br><span class="line"> so that as we read the first name for the dept the value of WRAPNAME is</span><br><span class="line"> the first name. For each other name in the department we append the</span><br><span class="line"> current name to the wrapname, interspaced with a semicolon to force the</span><br><span class="line"> new line. The trim is used to remove trailing blanks. All you need for</span><br><span class="line"> this to work is <span class="ngb">new line on semicolon</span> set to <span class="ngb">yes</span> and a string of names</span><br><span class="line"> that is less than 254 characters.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

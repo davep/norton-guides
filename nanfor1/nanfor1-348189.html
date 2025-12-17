@@ -1,0 +1,142 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor1-style.css">
+    <title>Nanforum Toolkit v2.1 Reference Guide » Information » Rebuilding the Library</title>
+    <meta name="description" content="Nanforum Toolkit v2.1 Reference Guide">
+    
+    <link rel="next" href="nanfor1-353237.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor1-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="nanfor1-348092.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor1-353237.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-G</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor1-16484.html">Conversion</a></li>
+                  <li><a href="nanfor1-29683.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor1-57742.html">Database</a></li>
+                  <li><a href="nanfor1-69777.html">Date/Time</a></li>
+                  <li><a href="nanfor1-112880.html">Environment</a></li>
+                  <li><a href="nanfor1-127130.html">File I/O</a></li>
+                  <li><a href="nanfor1-147012.html">Game</a></li>
+                  
+                </ul>
+              </li>
+              <li>K-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-147565.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor1-191315.html">Math</a></li>
+                  <li><a href="nanfor1-196762.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor1-244609.html">NetWare</a></li>
+                  <li><a href="nanfor1-270533.html">String</a></li>
+                  <li><a href="nanfor1-292001.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-318858.html">Overview</a></li>
+                  <li><a href="nanfor1-348092.html">Rebuilding the Library</a></li>
+                  <li><a href="nanfor1-353717.html">Sample source code headers</a></li>
+                  <li><a href="nanfor1-360780.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">    <span class="ngb">The Nanforum Toolkit Master Makefile</span></span><br><span class="line"></span><br><span class="line">    This makefile will allow you to use RMAKE, provided with every</span><br><span class="line">    Clipper 5.0 package, to maintain your own copy of the Nanforum</span><br><span class="line">    Toolkit.  It is also a good example of how to use RMAKE on a</span><br><span class="line">    large project.  This is the exact copy used by the Nanforum Toolkit</span><br><span class="line">    librarian.</span><br><span class="line"></span><br><span class="line">    To use it, you must first understand what it does, and what your</span><br><span class="line">    limitations are.  A discussion of MAKE utlities is beyond the scope</span><br><span class="line">    of this comment; read the Clipper documentation, or the Norton Guide</span><br><span class="line">    file, for more information on RMAKE.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">*** Compilers and Assemblers you need</span></span><br><span class="line"></span><br><span class="line">    Note that currently, Nanforum Toolkit sources are written in</span><br><span class="line">    Assembly language, Clipper, and C.  Within the realm of assembly</span><br><span class="line">    language, our contributors have submitted code that is designed</span><br><span class="line">    for Borland&#39;s Turbo Assembler (TASM) and Microsoft&#39;s Macro Assembler</span><br><span class="line">    (MASM).  So, right now, in order to do a perfect re-build of the</span><br><span class="line">    Nanforum Toolkit, you must have these tools:</span><br><span class="line"></span><br><span class="line">         Microsoft C (v5.1 or later)</span><br><span class="line">         Microsoft Macro Assembler (v 5.1 or later)</span><br><span class="line">         Borland Turbo Assembler</span><br><span class="line">         CA-Clipper v5.01a or later</span><br><span class="line"></span><br><span class="line">    If you know much about assembly language, you can convert MASM</span><br><span class="line">    sources to TASM and vice versa, but that is up to you.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">*** Library Utility</span></span><br><span class="line"></span><br><span class="line">    In addition, you must have a library utility.  Microsoft supplies</span><br><span class="line">    LIB.EXE with its Compiler products, for example.  LIB will work</span><br><span class="line">    fine with this makefile.  Note that we assume a command line syntax</span><br><span class="line">    for library utilities that works like this:</span><br><span class="line"></span><br><span class="line">         lib &lt;libname&gt; -+ objname</span><br><span class="line"></span><br><span class="line">    Note the &#34;-+&#34; directive, indicating &#34;replace module.&#34;  If your</span><br><span class="line">    library utility does not support this syntax on the command line,</span><br><span class="line">    then you will have to edit the relevant lines in the makefile.</span><br><span class="line"></span><br><span class="line">    <span class="ngb">*** Assumptions about your environment</span></span><br><span class="line"></span><br><span class="line">    NFMAKE.RMK makes just a few assumptions about your environment:</span><br><span class="line"></span><br><span class="line">               Assumption            What to change if we&#39;re wrong</span><br><span class="line">               ----------            -----------------------------</span><br><span class="line"></span><br><span class="line">    Relevant environment             Either edit the makefile to</span><br><span class="line">    variables for each compiler/     set the envars, or setup your</span><br><span class="line">    assembler are already            autoexec.bat to set them on bootup.</span><br><span class="line">    set (i.e., LIB=, INCLUDE=)       See your compiler doc.</span><br><span class="line"></span><br><span class="line">    Microsoft C is being             Look for the .C source inference</span><br><span class="line">    used                             rule below, and change it to your</span><br><span class="line">                                     compiler, making sure your switches</span><br><span class="line">                                     are correct.  Note that some source</span><br><span class="line">                                     may not compile without MSC, so edits</span><br><span class="line">                                     may be required.  Try to use MSC.</span><br><span class="line"></span><br><span class="line">    Microsoft Assembler              Look for all occurences of MASM in</span><br><span class="line">    executable is called             this makefile and change them to</span><br><span class="line">    MASM.EXE                         whatever *you* call MASM.</span><br><span class="line"></span><br><span class="line">    Clipper compiler executable      Look for all occurences of &#34;Clipper&#34; in</span><br><span class="line">    is called CLIPPER.EXE            this makefile and change them to</span><br><span class="line">                                     whatever *you* call Clipper.</span><br><span class="line"></span><br><span class="line">    Microsoft C executable is        Look for all occurences of &#34;CL&#34; in this</span><br><span class="line">    called CL.EXE                    makefile and change them to whatever</span><br><span class="line">                                     *you* call CL.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="ngb">*** Customizing the Makefile</span></span><br><span class="line"></span><br><span class="line">    We have tried not to assume anything about your environment except</span><br><span class="line">    what is described above.  To achieve that flexibility, you must</span><br><span class="line">    check and set some macros that can be found just below this</span><br><span class="line">    documentation.  They are:</span><br><span class="line"></span><br><span class="line">         l         Path to the resulting library (i.e., \nanfor\lib)</span><br><span class="line">         o         Path to where .obj files should be put</span><br><span class="line">         s         Path to where the source code is found</span><br><span class="line">        c5         Path to Clipper 5.0 compiler .EXE</span><br><span class="line">        ma         Path to Microsoft Macro Assembler .EXE</span><br><span class="line">        ta         Path to Turbo Assembler .EXE</span><br><span class="line">        mc         Path to Microsoft C 5.1</span><br><span class="line">        ml         Path and name of library utility (i.e., \bin\lib)</span><br><span class="line"></span><br><span class="line">     Note that directory paths should *not* end in a backslash.</span><br><span class="line">     If you like to keep your .obj and source files in the same</span><br><span class="line">     directory, simply point the paths to the same place.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">*** What happens when you don&#39;t have a compiler</span></span><br><span class="line"></span><br><span class="line">     If RMAKE can&#39;t find the compiler in the directory you specified,</span><br><span class="line">     then the relevant files designed for that compiler will not be</span><br><span class="line">     built, and the resultant objs won&#39;t be replaced in your library.</span><br><span class="line">     You will get an error message.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">*** Suggestions for setting up a &#34;rebuilding environment&#34;</span></span><br><span class="line"></span><br><span class="line">     Should you want to rebuild, the following is suggested:</span><br><span class="line"></span><br><span class="line">     First, make sure you keep an unmodified NANFOR.LIB, downloaded</span><br><span class="line">     from the forum, in a safe place.  Do not modify it.</span><br><span class="line"></span><br><span class="line">     Next, create a directory structure like this</span><br><span class="line"></span><br><span class="line">     \nanfor</span><br><span class="line">         \obj</span><br><span class="line">         \src</span><br><span class="line"></span><br><span class="line">     Put this makefile in \nanfor, and all source code into</span><br><span class="line">     \nanfor\src.</span><br><span class="line"></span><br><span class="line">     Customize the makefile in \nanfor for your environment.</span><br><span class="line">     The default macros below assume you&#39;re using this arrangement.</span><br><span class="line"></span><br><span class="line">     Type RMAKE NFMAKE.RMK.  The .obj files should be left in</span><br><span class="line">     \nanfor\obj, and the new NANFOR.LIB should be in \nanfor.</span><br><span class="line"></span><br><span class="line">     Note that as new releases of the library come out, you may have</span><br><span class="line">     a lot of work incorporating additions and modifications.  So,</span><br><span class="line">     plan your rebuilding efforts carefully.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">*** Problems, bugs, support</span></span><br><span class="line"></span><br><span class="line">     Support for this makefile can be found on CompuServe, in the</span><br><span class="line">     CLIPPER Forum (NANFORUM).  Leave messages in section 5 (&#34;User</span><br><span class="line">     Lib&#34;).  Updates and patches will be posted in Library 5.</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor1-353237.html">Recompiling the Norton Guide</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:33</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

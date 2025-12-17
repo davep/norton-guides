@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » Read functions</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-75700.html">
+    <link rel="next" href="rr-tips-82478.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-75700.html">Previous</a></li>
+
+
+          
+
+<li><a href="rr-tips-75243.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-82478.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Reading a R&amp;R configuration file and retrieve printer names</span></span><br><span class="line"></span><br><span class="line"> Modified version of Concentric Functions</span><br><span class="line"></span><br><span class="line">////////////////////////////////////////////////////////////////////////////</span><br><span class="line">//</span><br><span class="line">// Provided by Concentric Data Systems, Inc. as an example. This Clipper</span><br><span class="line">// code has not been certified - use at your own risk. The Version 3 R&amp;R</span><br><span class="line">// configuration file structure is subject to change without notice.</span><br><span class="line">//</span><br><span class="line">// This function opens the configuration file specified, and fills a public</span><br><span class="line">// array of the same name with the eight printer names, leaving names blank</span><br><span class="line">// where not defined. For example, getprts(&#34;RR.CNF&#34;) fills an array named RR</span><br><span class="line">// with the names of the eight printers defined in the configuration file</span><br><span class="line">// named RR.CNF.</span><br><span class="line">//</span><br><span class="line">// Modified: 02-12-91 11:06am by Patrick T. Hurley</span><br><span class="line">//    better Clipper 5.0 support returns an array - no publics</span><br><span class="line">//    uses locals etc...</span><br><span class="line">//</span><br><span class="line">FUNCTION getprts ( cnfname )</span><br><span class="line">   LOCAL retval := ASIZE ( {}, 8 )</span><br><span class="line">   LOCAL data, dataptr, handle, printer, offset[8], rectype</span><br><span class="line"></span><br><span class="line">   // Add default argument...</span><br><span class="line">   IF ( cnfname == NIL )</span><br><span class="line">      cnfname := &#39;RR.CNF&#39;</span><br><span class="line">   ENDIF</span><br><span class="line"></span><br><span class="line">   IF !( &#39;.&#39; $ cnfname )</span><br><span class="line">      cnfname += &#39;.CNF&#39;                 //  append .CNF if necessary</span><br><span class="line">   ENDIF</span><br><span class="line"></span><br><span class="line">   handle := FOPEN ( cnfname, 0 )       //  open config file, read only</span><br><span class="line"></span><br><span class="line">   DO WHILE .T.                         //  get file offsets of printers</span><br><span class="line">      data := SPACE(768)                //  initialize an input buffer</span><br><span class="line">      rectype := readrec( handle, @data )    //  read the next record</span><br><span class="line">      IF ( rectype == 15 )              //  if it&#39;s a printer offset record</span><br><span class="line">         dataptr := 1                   //  initialize pointer to data</span><br><span class="line">         FOR printer = 1 TO 8           //  process eight printer offsets</span><br><span class="line">            //  convert long integer to number</span><br><span class="line">            // alot easier this way ( and faster... )</span><br><span class="line">            offset[printer] := BIN2L ( substr ( data, dataptr, 4 ) )</span><br><span class="line">            dataptr += 4                //  advance pointer to next offset</span><br><span class="line">         NEXT</span><br><span class="line">         EXIT</span><br><span class="line">      ENDIF</span><br><span class="line">   ENDDO</span><br><span class="line"></span><br><span class="line">   FOR printer = 1 TO 8                 //  process eight printers</span><br><span class="line">      IF ( offset[printer] # 0 )        //  if the printer is defined</span><br><span class="line">         FSEEK(handle, offset[printer], 0)   //   seek the definition</span><br><span class="line">         DO WHILE .T.                   //   loop until printer name record</span><br><span class="line">            data := SPACE(768)          //   initialize an input buffer</span><br><span class="line">            rectype := readrec(handle,@data)  //   read the next record</span><br><span class="line">            IF ( rectype == 260 )       //   if it&#39;s a printer name record</span><br><span class="line">               retval [ printer ] := ;</span><br><span class="line">                  SUBSTR(data,2,ASC(data))  //    place printer name into array</span><br><span class="line">               EXIT</span><br><span class="line">            ENDIF</span><br><span class="line">         ENDDO</span><br><span class="line">      ELSE                              //  otherwise printer isn&#39;t defined</span><br><span class="line">         retval [ printer ] := NIL      //  so place NIL or NULL?? I like NIL</span><br><span class="line">      ENDIF</span><br><span class="line">   NEXT</span><br><span class="line"></span><br><span class="line">RETURN retval                           //  return the printer array</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">/////////////////////////////////</span><br><span class="line">//</span><br><span class="line">// Function: readrec ( handle, buffer )</span><br><span class="line">//</span><br><span class="line">// Notes:    read next config file record</span><br><span class="line">//           return the record type</span><br><span class="line">//</span><br><span class="line">FUNCTION readrec ( handle, buffer )</span><br><span class="line">   LOCAL length, type</span><br><span class="line"></span><br><span class="line">   type := SPACE(2)                     //  initialize an input buffer</span><br><span class="line">   FREAD(handle, @type, 2)              //  read the record type code</span><br><span class="line">   type = BIN2W ( type )</span><br><span class="line">   length := SPACE(2)                   //  initialize an input buffer</span><br><span class="line">   FREAD(handle, @length, 2)            //  read the record length</span><br><span class="line">   length = BIN2W ( length )</span><br><span class="line">   FREAD(handle, @buffer, length)       //  read this record&#39;s data</span><br><span class="line">RETURN type                             //  return the record type code</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

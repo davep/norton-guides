@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-13662.html">
+    <link rel="next" href="rr-tips-22536.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-13662.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-22536.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">PCX in report   Make a R&amp;R report that contains .pcx graphics</span></span><br><span class="line"></span><br><span class="line"> Glenn Alcott has discovered an amazing trick which enables you to include</span><br><span class="line"> PCX files in R&amp;R reports (only on HP LaserJet and compatibles), using a</span><br><span class="line"> utility which first converts the PCX files into HP PCL code then</span><br><span class="line"> downloads the PCL code to the printer as a macro.</span><br><span class="line"></span><br><span class="line"> First, you have to get this utility (PCX2PCL), which is available in the</span><br><span class="line"> HPPER forum (HP Peripherals), Library 4, under the name 2PCL.ZIP. It also</span><br><span class="line"> includes a program to download the PCL code as a printer macro. Use the</span><br><span class="line"> utility to convert your PCX files (the documentation states that it may</span><br><span class="line"> have trouble with color or gray-scale PCX files, but you can convert</span><br><span class="line"> these to monochrome with a program such as Graphics Workshop, available</span><br><span class="line"> on the GRAPHSUPPORT forum). I found that it was unable to convert most</span><br><span class="line"> color files. In addition, you should be aware that it will probably be</span><br><span class="line"> difficult to control the size of the file when printed. Subject to these</span><br><span class="line"> limitations, however, it is a great find.</span><br><span class="line"></span><br><span class="line"> After the conversion, download the PCL file as a macro, using the</span><br><span class="line"> downloading program supplied with PCX2PCL. When downloading, you assign</span><br><span class="line"> the macro a number, which you will need to remember. The real trick comes</span><br><span class="line"> when you get into R&amp;R. You have to create a calculated field consisting</span><br><span class="line"> of the escape sequence to print the macro and place this field at the</span><br><span class="line"> spot on your report where you want the graphic to appear. Keep in mind</span><br><span class="line"> that R&amp;R has no idea that this is a graphic and will happily overwrite it</span><br><span class="line"> with text if you don&#39;t leave enough blank space around it. The expression</span><br><span class="line"> for the calculated field would be as follows:</span><br><span class="line"></span><br><span class="line">         chr(27)+&#34;&amp;fs#y3x1S&#34;</span><br><span class="line"></span><br><span class="line"> Be very careful to enter it exactly as given - correct case is essential.</span><br><span class="line"> The &#34;#&#34; in the expression should be replaced with the number which you</span><br><span class="line"> assigned to the macro when it was downloaded.</span><br><span class="line"></span><br><span class="line"> It&#39;s a good idea to test out the printing in any version of xBase before</span><br><span class="line"> going into R&amp;R, just to see what the result will look like. You can do</span><br><span class="line"> this with three commands:</span><br><span class="line"></span><br><span class="line">    SET DEVICE TO PRINT</span><br><span class="line">    @ x,y SAY CHR(27)+&#34;&amp;fs#y3x1S&#34;     &amp;&amp; replace # with macro ID number</span><br><span class="line">    EJECT</span><br><span class="line"></span><br><span class="line"> That&#39;s all there is to it, and it really works!</span><br><span class="line"></span><br><span class="line"> Glenn Alcott</span><br><span class="line"> CIS 76044,747</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

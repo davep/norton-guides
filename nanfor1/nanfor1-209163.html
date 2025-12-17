@@ -1,0 +1,129 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor1-style.css">
+    <title>Nanforum Toolkit v2.1 Reference Guide » K-Z » Menus/Prompts</title>
+    <meta name="description" content="Nanforum Toolkit v2.1 Reference Guide">
+    <link rel="prev" href="nanfor1-198849.html">
+    <link rel="next" href="nanfor1-211849.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor1-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor1-198849.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor1-196762.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor1-211849.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-G</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor1-16484.html">Conversion</a></li>
+                  <li><a href="nanfor1-29683.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor1-57742.html">Database</a></li>
+                  <li><a href="nanfor1-69777.html">Date/Time</a></li>
+                  <li><a href="nanfor1-112880.html">Environment</a></li>
+                  <li><a href="nanfor1-127130.html">File I/O</a></li>
+                  <li><a href="nanfor1-147012.html">Game</a></li>
+                  
+                </ul>
+              </li>
+              <li>K-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-147565.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor1-191315.html">Math</a></li>
+                  <li><a href="nanfor1-196762.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor1-244609.html">NetWare</a></li>
+                  <li><a href="nanfor1-270533.html">String</a></li>
+                  <li><a href="nanfor1-292001.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-318858.html">Overview</a></li>
+                  <li><a href="nanfor1-348092.html">Rebuilding the Library</a></li>
+                  <li><a href="nanfor1-353717.html">Sample source code headers</a></li>
+                  <li><a href="nanfor1-360780.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_ADDER()</span></span><br><span class="line"> Pop up a simple calculator</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">      <span class="fg15 bg1"> FT_Adder()</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">      None</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">      NIL .... but optionally places Total of calculation in active</span><br><span class="line">               Get variable using oGet:VARPUT()</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">      PopAdder() gives you an adding machine inside your Clipper 5.01</span><br><span class="line">      application. It has the basic functions add, subtract, multiply,</span><br><span class="line">      and divide. You may move it from one side of the screen to the</span><br><span class="line">      other. It even displays a scrollable tape, if you want it.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      The Help screen below gives a brief description of the operation</span><br><span class="line">      of the adder.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                  ┌─────── INSTRUCTIONS ───────┐</span><br><span class="line">                  │                            │</span><br><span class="line">                  │ All number keys as usual   │</span><br><span class="line">                  │ &lt;+&gt; &lt;-&gt; keys as usual      │</span><br><span class="line">                  │ &lt;SPACE&gt;─┬─shift &lt;+&gt; to &lt;*&gt; │</span><br><span class="line">                  │         └─shift &lt;-&gt; to &lt;/&gt; │</span><br><span class="line">                  │  &lt;D&gt;    change decimal pt. │</span><br><span class="line">                  │  &lt;M&gt;    move ADDER         │</span><br><span class="line">                  │  &lt;T&gt;    display tape       │</span><br><span class="line">                  │  &lt;S&gt;    scroll tape disp.  │</span><br><span class="line">                  │ &lt;DEL&gt;───┬─1st Clear entry  │</span><br><span class="line">                  │         └─2nd Clear ADDER  │</span><br><span class="line">                  │ &lt;ESC&gt;   to Quit            │</span><br><span class="line">                  │ &lt;F10&gt;   to Return Total    │</span><br><span class="line">                  │           to program       │</span><br><span class="line">                  │                            │</span><br><span class="line">                  └──── Any Key to Continue ───┛</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      A couple of notes about the adder:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      1.) It was designed to be used on an Enhanced keyboard with</span><br><span class="line">          separate &lt;DELETE&gt; key. &lt;DELETE&gt; is used to clear the adder.</span><br><span class="line">          However, it will still work on a Standard keyboard.</span><br><span class="line"></span><br><span class="line">      2.) It uses the &lt;SPACE&gt; bar to shift from Add/Subtract</span><br><span class="line">          mode to Multiply/Divide. That means the &lt;+&gt; and &lt;-&gt; keys</span><br><span class="line">          become the &lt;*&gt; and &lt;/&gt; keys.</span><br><span class="line"></span><br><span class="line">      3.) You do not have to display the tape. You may turn it on</span><br><span class="line">          at any time by pressing &lt;T&gt;. You may SCROLL back through</span><br><span class="line">          the tape once there are more than 16 entries in the</span><br><span class="line">          adder, by pressing &lt;S&gt;.</span><br><span class="line"></span><br><span class="line">      4.) To Quit the Adder just press &lt;ESC&gt;. To return your Total</span><br><span class="line">          to the application press &lt;F10&gt;. The adder will place the</span><br><span class="line">          Total in the active GET variable using oGet:VarPut(). The</span><br><span class="line">          adder will only return a Total to a numerical GET!</span><br><span class="line"></span><br><span class="line">      5.) There are many support functions that you might find</span><br><span class="line">          interesting. They are part of my personal library, but</span><br><span class="line">          are necessary to the operation of the adder.</span><br><span class="line">          You might want to pull these out to reduce the overall</span><br><span class="line">          size of the adder. Many are worth at least a little</span><br><span class="line">          time studying.</span><br><span class="line"></span><br><span class="line">      6.) To make FT_Adder a Hot key from inside your application</span><br><span class="line">          at the beginning of your application add the line:</span><br><span class="line"></span><br><span class="line">                 SET KEY K_ALT_A  TO FT_Adder</span><br><span class="line"></span><br><span class="line">          This will make &lt;ALT-A&gt; a key &#34;Hot&#34; and permit you to</span><br><span class="line">          Pop - Up the adder from anywhere in the application.</span><br><span class="line"></span><br><span class="line">      7.) If you use FT_SINKEY(), you can even have active hotkeys</span><br><span class="line">          in an INKEY().</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Header File:</span> INKEY.CH, SET.CH, SETCURS.CH, ACHOICE.CH</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> POPADDER.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Keith A. Wire</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:33</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

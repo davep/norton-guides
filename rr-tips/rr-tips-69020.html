@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-63948.html">
+    <link rel="next" href="rr-tips-71937.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-63948.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-71937.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Printing a text once at the top of a column</span></span><br><span class="line"></span><br><span class="line"> Here&#39;s a technique for printing the currency sign just once at the top of</span><br><span class="line"> a column of numbers, rather than repeating it beside every figure in the</span><br><span class="line"> column.</span><br><span class="line"></span><br><span class="line"> The R&amp;R Field Format Currency command (/FFC) includes the currency sign</span><br><span class="line"> each time the field is printed. The following table illustrates the</span><br><span class="line"> difference between printing currency signs always, the default behavior,</span><br><span class="line"> versus once.</span><br><span class="line"></span><br><span class="line">      ┌──────────────────────────────────────┐</span><br><span class="line">      │   Always                  Once       │</span><br><span class="line">      │   ------                 -----       │</span><br><span class="line">      │       $1                  $  1       │</span><br><span class="line">      │      $10                    10       │</span><br><span class="line">      │     $100                   100       │</span><br><span class="line">      └──────────────────────────────────────┛</span><br><span class="line"></span><br><span class="line"> There are two ways to produce once-only currency signs, depending on</span><br><span class="line"> whcther you want a fixed or floating dollar sign (steps 3a or 3b below).</span><br><span class="line"> The easiest way is to have the currency sign in a fixed column of the</span><br><span class="line"> report. The example above shows the dollar sign at a fixed location undcr</span><br><span class="line"> the letter O in Once.</span><br><span class="line"></span><br><span class="line"> 1. <span class="ngb">Create a counter</span></span><br><span class="line">    Use the Ficld Total Create command (/FTC) to make a field named COUNT.</span><br><span class="line">    Count any field that contains data in every record. Select the</span><br><span class="line">    appropriate reset level depending on how frequently you want the dollar</span><br><span class="line">    sign to print. For example, select Page to print it once on each page,</span><br><span class="line">    or select 1 to print it once per level-one group.</span><br><span class="line"></span><br><span class="line"> 2. <span class="ngb">Create a currency sign field</span></span><br><span class="line">    Use the Field Calculate Create command (/FCC) to create a field</span><br><span class="line">    containing the currency sign as in:</span><br><span class="line"></span><br><span class="line">       DollarSign = IIF (COUNT=1, &#34;$&#34;, &#34;&#34;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> 3a.<span class="ngb">Insert the currency sign field at a fixed position</span></span><br><span class="line">    Use the Field Insert command (/FI) to place the DollarSign field two</span><br><span class="line">    columns to the left of the numeric field to leave one space between the</span><br><span class="line">    fields.</span><br><span class="line">    If ÿou want to place the dollar sign next to the numeric field with no</span><br><span class="line">    spaces between the fields, you&#39;ll need to use the Print Options</span><br><span class="line">    Record-Layout command (/POR) to set the option Trim adjacent fields to</span><br><span class="line">    No. This prevents left alignment of the numbers.</span><br><span class="line"></span><br><span class="line"> 3b.<span class="ngb">Create and insert a floating currency sign</span></span><br><span class="line">    You may prefer a floating to a fixed currency sign, meaning that it&#39;s</span><br><span class="line">    always the same number of spaces in front of the number regardless of</span><br><span class="line">    the number of digits in the number. To make a floating dollar sign,</span><br><span class="line">    follow steps 1 and 2 as described above. Use the Field Calculate Create</span><br><span class="line">    command (/FCC) to create a calculated field containing the currency</span><br><span class="line">    sign and the number.</span><br><span class="line">    You&#39;ll need to specify the correct number of integer and decimal places</span><br><span class="line">    in the arguments to the STR function. In this example, the numeric</span><br><span class="line">    field contains three integer places and zero decimal places. Use the</span><br><span class="line">    Field Insert command (/FI) to insert the PrntAmount field on the report</span><br><span class="line">    in place of both the AMOUNT and the DollarSign fields. Since this is a</span><br><span class="line">    character field, use the Field Format Right command (/FFR) to</span><br><span class="line">    right-align the numbers.</span><br><span class="line"></span><br><span class="line">       PrntAmount = DollarSign + STR(AMOUNT, 3, O )</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

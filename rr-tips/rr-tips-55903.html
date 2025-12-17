@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-53431.html">
+    <link rel="next" href="rr-tips-62788.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-53431.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-62788.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">HP Envelopes         Printing Envelopes on the HP laserjet</span></span><br><span class="line"></span><br><span class="line"> This article is intended for all of you R&amp;R/HP LaserJet users who call</span><br><span class="line"> asking how to print envelopes with R&amp;R, as well as anyone else who is</span><br><span class="line"> tired of typing envelopes. Following the instructions given below, you can</span><br><span class="line"> use R&amp;R to print envelopes on any HP LaserJet that will accept either an</span><br><span class="line"> HP envelope tray or envelope feeder. If you don&#39;t have either of these</span><br><span class="line"> printer accessories, you can feed single envelopes into the printer</span><br><span class="line"> manually.</span><br><span class="line"></span><br><span class="line"> Basically, the procedure involves three steps:</span><br><span class="line"></span><br><span class="line"> 1. Customize your printer configuration by adding a printer control</span><br><span class="line">    sequence that specifies paper source, envelope size, and top margin</span><br><span class="line">    spacing.</span><br><span class="line"></span><br><span class="line"> 2. Create your report layout.</span><br><span class="line"></span><br><span class="line"> 3. Select the appropriate print options and print the report.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Using the envelope feeder</span></span><br><span class="line"></span><br><span class="line"> HP makes two envelope feeders, one for the LaserJet IID (HP part number</span><br><span class="line"> 33457A) and one for the LaserJet IIID (HP part number 33458A). Both are</span><br><span class="line"> stack feeders that can hold up to 50 envelopes at a time and that attach</span><br><span class="line"> above the printer&#39;s topmost paper tray. They support three envelope sizes:</span><br><span class="line"> Commercial 10 (41/8&#34; x 9112n), Monarch (3 7/8&#34; x 7112n), and International</span><br><span class="line"> DL (110 mm x 220 mm). For this article, we used the IIID feeder fflled</span><br><span class="line"> with Commercial 10 envelopes on a LaserJet IIID.</span><br><span class="line"></span><br><span class="line"> In order to use either envelope feeder with R&amp;R, you must first customize</span><br><span class="line"> your printer configuration.</span><br><span class="line"></span><br><span class="line"> Run <span class="ngb">RRSETUP</span> and select the Configuration option. Select the configuration</span><br><span class="line"> file you want to customize. Select the Printers command and select the</span><br><span class="line"> LaserJet IIID (either Duplex or Simplex) or add it to your list of</span><br><span class="line"> printers. Select Customize, and press PgDn twice to display the screen</span><br><span class="line"> with the auxiliary paper bin fields. Enter the following printer control</span><br><span class="line"> sequence in either of the &#34;Auxiliary paper bin&#34; fields, being careful to</span><br><span class="line"> use the letter I (which we have placed in italics for emphasis) after the</span><br><span class="line"> ampersand, the number 1 after the number 8, and the number O instead of</span><br><span class="line"> the letter o:</span><br><span class="line"></span><br><span class="line">    <span class="ngb">27,&#34;&amp;l81a6hOeOL&#34;</span></span><br><span class="line"></span><br><span class="line"> In this sequence, the 81a selects the Commercial 10 envelope size. If you</span><br><span class="line"> want to use Monarch size, use 80a instead. For DL envelopes, use 90a. The</span><br><span class="line"> other parts of the sequence should remain the same no matter what envelope</span><br><span class="line"> size you use: 6h selects the envelope feeder as the paper source; Oe sets</span><br><span class="line"> the top margin to O lines; OL disables the perforation skip.</span><br><span class="line"></span><br><span class="line"> Next, create your report layout. Insert name and address fields from your</span><br><span class="line"> database or type names and addresses as text fields. If your envelopes do</span><br><span class="line"> not have a printed return address, you can add the return address to the</span><br><span class="line"> layout. In most cases, the address fields should be on body lines. The</span><br><span class="line"> last line of the report should be a body line which is a new-page line</span><br><span class="line"> (use the /Line Print New-Page command).</span><br><span class="line"></span><br><span class="line"> Before you print the report, select the following /POP print option:</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Page length</span>: envelope length, e.g. 4 inches for COM 10</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Lines per inch</span>: whatever you want</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Top margin</span>: whatever you want, e.g. 0.6 inches for envelopes on which</span><br><span class="line">    you will print return addresses and 2 inches for envelopes with the</span><br><span class="line">    return address already printed (HP recommends at least 0.6 inch)</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Bottom margin</span>: doesn&#39;t matter</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Printer indent</span>: whatever you want, e.g. 0.6 inches for envelopes on</span><br><span class="line">    which you will print return addresses and 3.5 inches for envelopes on</span><br><span class="line">    which you print only the mailing address (again, HP recommends at least</span><br><span class="line">    0.6 inch)</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Pitch/Ruler pitch</span>: whatever you want</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Right margin</span>: doesn&#39;t matter</span><br><span class="line"></span><br><span class="line">    <span class="ngb">Orientation</span>: Landscape</span><br><span class="line"></span><br><span class="line"> Select the bin with the envelope sequence as the /POC &#34;Paper feed&#34; option.</span><br><span class="line"></span><br><span class="line"> Finally, fill the envelope feeder as explained in the HP manual. Envelopes</span><br><span class="line"> will be face up, with the top edge flush against the left side of the</span><br><span class="line"> paper guide.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Using the envelope tray</span></span><br><span class="line"></span><br><span class="line"> HP also makes several envelope trays, one for the LaserJet II or IID (HP</span><br><span class="line"> part number 92295F), which also works on the LaserJet III, and one for the</span><br><span class="line"> LaserJet IIP (HP part number 92275F), which will not work unless the IIP</span><br><span class="line"> has the optional Lower Cassette. For this article, we used a LaserJet II</span><br><span class="line"> tray with Commercial 10 envelopes on both a LaserJet II and LaserJet III.</span><br><span class="line"> This tray can hold up to 15 envelopes and is inserted in place of the</span><br><span class="line"> printer&#39;s regular paper tray. It supports envelopes from 3.4&#34; x 7&#34; to 7.4&#34;</span><br><span class="line"> x 10.5&#34; (this includes Commercial 10, Monarch, International DL, and CS</span><br><span class="line"> envelope sizes).</span><br><span class="line"></span><br><span class="line"> In order to use this envelope tray with R&amp;R, follow the instructions given</span><br><span class="line"> above for using the envelope feeder with your version of R&amp;R. However,</span><br><span class="line"> substitute the following printer control sequence for the auxiliary paper</span><br><span class="line"> bin sequence:</span><br><span class="line"></span><br><span class="line">    <span class="ngb">27,&#34;&amp;l81aOeOL&#34;</span></span><br><span class="line"></span><br><span class="line"> As indicated earlier, for printing envelopes that are not Commercial 10,</span><br><span class="line"> replace 81a in either sequence with the sequence for the envelope size you</span><br><span class="line"> are using: 80a for Monarch, 90a for DL, or 91a for CS.</span><br><span class="line"></span><br><span class="line"> Before you print the report, fill the envelope tray as explained in the HP</span><br><span class="line"> manual. Envelopes will be face up, with the top edge flush against the</span><br><span class="line"> left side of the paper guide.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Using manual feed</span></span><br><span class="line"></span><br><span class="line"> If you print so few envelopes that you don&#39;t want to invest in any printer</span><br><span class="line"> accessories, you can hand feed single envelopes into your printer by</span><br><span class="line"> following the instructions given above for using the envelope tray.</span><br><span class="line"> However, substitute the following printer control sequence for the</span><br><span class="line"> auxiliary paper bin sequence:</span><br><span class="line"></span><br><span class="line">    <span class="ngb">27,&#34;&amp;l81a2hOeOL&#34;</span></span><br><span class="line"></span><br><span class="line"> Again, if you are using envelopes that are not Commercial 10, replace 81a</span><br><span class="line"> in either sequence with the sequence for the envelope size you are using:</span><br><span class="line"> 80a for Monarch, 90a for DL, or 91a for C5.</span><br><span class="line"></span><br><span class="line"> Before you print your report, place a single envelope in the printer&#39;s</span><br><span class="line"> manual feed slot as explained in the HP manual. Adjust the paper guides to</span><br><span class="line"> hold the envelope, which should be face up with its top edge against the</span><br><span class="line"> left paper guide. After this first envelope has printed, the printer</span><br><span class="line"> Control Panel will display a message asking you to insert another envelope</span><br><span class="line"> of the specified size. For example, since we were using Commercial 10</span><br><span class="line"> envelopes, the message was PE FEED COM-10. Insert envelopes as you are</span><br><span class="line"> prompted for them.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Hints and cautions</span></span><br><span class="line"></span><br><span class="line"> In using all three methods of printing envelopes, we found only two</span><br><span class="line"> potential problems. First, we always got a top margin slightly larger (by</span><br><span class="line"> about a tenth of an inch) than the one we specified. We compensated for</span><br><span class="line"> this by specifying a smaller top margin than we actually wanted.</span><br><span class="line"></span><br><span class="line"> Second, we found that the quality of print on our envelopes was</span><br><span class="line"> significantly poorer than the quality of print on our regular paper.</span><br><span class="line"> Hewlett Packard&#39;s manuals give very specific guidelines for selecting</span><br><span class="line"> envelopes and adjusting the printer to improve print quality. We strongly</span><br><span class="line"> suggest that you follow these instructions.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

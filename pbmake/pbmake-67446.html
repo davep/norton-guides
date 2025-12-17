@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="pbmake-style.css">
+    <title>PBMake 2.15 for Clipper, Xbase++, C and  » About » Changes</title>
+    <meta name="description" content="PBMake 2.15 for Clipper, Xbase++, C and ">
+    <link rel="prev" href="pbmake-66895.html">
+    <link rel="next" href="pbmake-70888.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="pbmake-about.html">About</a></li>
+
+
+          
+
+<li><a href="pbmake-66895.html">Previous</a></li>
+
+
+          
+
+<li><a href="pbmake-62283.html">Up</a></li>
+
+
+          
+
+<li><a href="pbmake-70888.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Intro</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Introduction</a></li>
+                  <li><a href="pbmake-9885.html">Getting Started</a></li>
+                  <li><a href="pbmake-11192.html">Blank Template</a></li>
+                  <li><a href="pbmake-16114.html">Example Template</a></li>
+                  <li><a href="pbmake-17946.html">Running It</a></li>
+                  
+                </ul>
+              </li>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-18702.html">PBMake Features</a></li>
+                  <li><a href="pbmake-36380.html">Supported Languages</a></li>
+                  <li><a href="pbmake-44844.html">Script Initializer Tool</a></li>
+                  <li><a href="pbmake-52818.html">GNU RCS Version Control Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>About</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-56275.html">MAKE.BAT</a></li>
+                  <li><a href="pbmake-58146.html">Problems</a></li>
+                  <li><a href="pbmake-60601.html">Support</a></li>
+                  <li><a href="pbmake-61056.html">Copyright</a></li>
+                  <li><a href="pbmake-61432.html">Register!</a></li>
+                  <li><a href="pbmake-62283.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">  ONERROR= &lt;compiler&gt; &lt;editor&gt; &lt;editor directive&gt;</span><br><span class="line"></span><br><span class="line">    PBMake now includes a compiler error trap which makes your editor</span><br><span class="line">    jump directly to the line in your code which created the error.</span><br><span class="line"></span><br><span class="line">    Of course, you will have to use an editor that supports this, like</span><br><span class="line">    Qedit or MultiEdit. ( and many others )</span><br><span class="line"></span><br><span class="line">    PBMake also loads the error list at the same time as the source</span><br><span class="line">    module with the error. Now, you can work all of the errors found in</span><br><span class="line">    that source module in one pass by flipping back and forth between</span><br><span class="line">    the source and the error list.</span><br><span class="line"></span><br><span class="line">    You can set PBMake up to compile multiple languages and jump on</span><br><span class="line">    error to a different editor for each language.</span><br><span class="line"></span><br><span class="line">    PBErrLine is used to parse the captured output from the compiler and</span><br><span class="line">    then create a batch file which calls your editor to edit the correct</span><br><span class="line">    source code at the line number where the error occurred.</span><br><span class="line"></span><br><span class="line">    PBErrLine can correctly identify errors from Clipper, Microsoft C,</span><br><span class="line">    Turbo Assembler and Microsoft Assembler.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  PBInit now creates a small batch file named MK.BAT. MK.BAT is simply a</span><br><span class="line">  shortcut file that eliminates you needing to type MAKE FILENAME, since</span><br><span class="line">  that is what it contains. I guess I&#39;m just lazy.</span><br><span class="line"></span><br><span class="line">    So, assuming that you limit yourself to one executable per</span><br><span class="line">    directory, you can compile by typing:</span><br><span class="line"></span><br><span class="line">    MK &lt;Enter&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  PBMake now has a CLEANUP= directive which will delete junk and temp</span><br><span class="line">  files out of your working directory.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  More fine tuning for speed. Chopped out a bunch of redundant code.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  Updated this .NG file extensively.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  Added the DOS command line /LINK flag, which will cause the linker to</span><br><span class="line">  run even if the make engine does not think it needs to.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  New Features for PBInit!</span><br><span class="line"></span><br><span class="line">  Rather than it&#39;s original intent of creating a blank template for you</span><br><span class="line">  to start from, which it can still do, PBInit is now capable of</span><br><span class="line">  creating .MAK scripts directly from your link script. In fact, PBInit</span><br><span class="line">  has received a complete overhaul. PBInit can create a far more</span><br><span class="line">  comprehensive .MAK script that you would generally create for</span><br><span class="line">  yourself, including complete references to any .LIB file, all .CH</span><br><span class="line">  files used in your source code and the correct FLAG= lines for each</span><br><span class="line">  source code module.</span><br><span class="line"></span><br><span class="line">  PBInit now uses a small .INI file in the same directory as the</span><br><span class="line">  executable to set up the default compiler, editor and editor flag for</span><br><span class="line">  the jump to error feature. You do not need to have this file in your</span><br><span class="line">  working directory.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  PBMake now preprocesses your .LNK script with the same directives</span><br><span class="line">  that were passed in to the .MAK script.</span><br><span class="line"></span><br><span class="line">  This means that you can now use #IFDEF, #IFNDEF, #ELSE, #ENDIF,</span><br><span class="line">  #DEFINE and #UNDEF in your link scripts and they will be obeyed based</span><br><span class="line">  on the same rules that apply to PBMake .MAK scripts.</span><br><span class="line"></span><br><span class="line">  This will now work correctly in your link scripts:</span><br><span class="line"></span><br><span class="line">  #ifdef DEBUG</span><br><span class="line">     file CLD.LIB</span><br><span class="line">  #endif</span><br><span class="line"></span><br><span class="line">  Since PBMake now preprocesses your link script, it uses the processed</span><br><span class="line">  link script to link with instead of the real link script. If you want</span><br><span class="line">  to see the processed link script which is normally cleaned up after</span><br><span class="line">  immediately, simply place a /P on the make request line. The processed</span><br><span class="line">  link file will have the same name as the original link script with a</span><br><span class="line">  .PPL extension. (MYLINK.LNK becomes MYLINK.PPL)</span><br><span class="line"></span><br><span class="line">  PBInit now has the ability to refresh the paths on your INCLUDE= and</span><br><span class="line">  LIB= files in the .MAK script. This is useful if you take your make</span><br><span class="line">  files back and forth to two machines that are not set up identically.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:34</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

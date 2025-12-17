@@ -1,0 +1,160 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor1-style.css">
+    <title>Nanforum Toolkit v2.1 Reference Guide » A-G » Date/Time</title>
+    <meta name="description" content="Nanforum Toolkit v2.1 Reference Guide">
+    <link rel="prev" href="nanfor1-101496.html">
+    <link rel="next" href="nanfor1-104202.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor1-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor1-101496.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor1-69777.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor1-104202.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-G</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor1-16484.html">Conversion</a></li>
+                  <li><a href="nanfor1-29683.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor1-57742.html">Database</a></li>
+                  <li><a href="nanfor1-69777.html">Date/Time</a></li>
+                  <li><a href="nanfor1-112880.html">Environment</a></li>
+                  <li><a href="nanfor1-127130.html">File I/O</a></li>
+                  <li><a href="nanfor1-147012.html">Game</a></li>
+                  
+                </ul>
+              </li>
+              <li>K-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-147565.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor1-191315.html">Math</a></li>
+                  <li><a href="nanfor1-196762.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor1-244609.html">NetWare</a></li>
+                  <li><a href="nanfor1-270533.html">String</a></li>
+                  <li><a href="nanfor1-292001.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-318858.html">Overview</a></li>
+                  <li><a href="nanfor1-348092.html">Rebuilding the Library</a></li>
+                  <li><a href="nanfor1-353717.html">Sample source code headers</a></li>
+                  <li><a href="nanfor1-360780.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_MONTH()</span></span><br><span class="line"> Return Calendar or Fiscal Month Data</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_MONTH( [ &lt;dGivenDate&gt; ], [nMonthNum] ) -&gt; aDateInfo</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;dGivenDate&gt;</span> is any valid date in any date format.  Defaults</span><br><span class="line">     to current system date if not supplied.</span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nMonthNum&gt;</span> is a number from 1 to 12 signifying a month.</span><br><span class="line">     Defaults to current month if not supplied.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     A three element array containing the following data:</span><br><span class="line"></span><br><span class="line">        aDateInfo[1] - The year and month as a character string &#34;YYYYMM&#34;</span><br><span class="line">        aDateInfo[2] - The beginning date of the month</span><br><span class="line">        aDateInfo[3] - The ending date of the month</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     FT_MONTH() returns an array containing data about the month</span><br><span class="line">     containing the given date.</span><br><span class="line"></span><br><span class="line">     Normally the return data will be based on a year beginning</span><br><span class="line">     on January 1st with weeks beginning on Sunday.</span><br><span class="line"></span><br><span class="line">     The beginning of year date and/or beginning of week day can be</span><br><span class="line">     changed by using FT_DATECNFG(), which will affect all subsequent</span><br><span class="line">     calls to FT_MONTH() until another call to FT_DATECNFG().</span><br><span class="line"></span><br><span class="line">     The beginning of year date and beginning of week day may be reset</span><br><span class="line">     to January 1 and Sunday by calling FT_DATECNFG() with no</span><br><span class="line">     parameters.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     // get info about month containing 9/15/90</span><br><span class="line">     aDateInfo := FT_MONTH( CTOD(&#34;09/15/90&#34;) )</span><br><span class="line">     ? aDateInfo[1]   //  199009       (9th month)</span><br><span class="line">     ? aDateInfo[2]   //  09/01/90     beginning of month 9</span><br><span class="line">     ? aDateInfo[3]   //  09/30/90     end of week month 9</span><br><span class="line"></span><br><span class="line">     // get info about month 5 in year containing 9/15/90</span><br><span class="line">     aDateInfo := FT_MONTH( CTOD(&#34;09/15/90&#34;), 5 )</span><br><span class="line">     ? aDateInfo[1]   //  199005</span><br><span class="line">     ? aDateInfo[2]   //  05/01/90   beginning of month 5</span><br><span class="line">     ? aDateInfo[3]   //  05/31/90   end of month 5</span><br><span class="line"></span><br><span class="line">     // get info about month 5 in current year (1991)</span><br><span class="line">     aDateInfo := FT_MONTH( , 5 )</span><br><span class="line">     ? aDateInfo[1]   //  199105</span><br><span class="line">     ? aDateInfo[2]   //  05/01/91   beginning of month 5</span><br><span class="line">     ? aDateInfo[3]   //  05/31/91   end of month 5</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> MONTH.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Jo W. French dba Practical Computing</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor1-85382.html">FT_DATECNFG()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor1-106837.html">FT_WEEK()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor1-104202.html">FT_QTR()</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="nanfor1-111269.html">FT_YEAR()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:33</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

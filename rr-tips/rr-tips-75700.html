@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » Read functions</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    
+    <link rel="next" href="rr-tips-79408.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="rr-tips-75243.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-79408.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"><span class="ngb"> Reading a R&amp;R configuration file #1</span></span><br><span class="line"></span><br><span class="line"> I&#39;ve made this function myself, so that&#39;s why I put it first in the list. I</span><br><span class="line"> also think that it gives the most information.</span><br><span class="line"></span><br><span class="line">*┌───────────────────────────────────────────────────────────────────────────┐</span><br><span class="line">*│RRCnfInfo()     Parse interesting info from a RR.cnf file                  │</span><br><span class="line">*│                                                                           │</span><br><span class="line">*│Syntax:                                                                    │</span><br><span class="line">*│ RRCnfInfo( &lt;cCnfFile&gt; )                                                   │</span><br><span class="line">*│                                                                           │</span><br><span class="line">*│Parameters:                                                                │</span><br><span class="line">*│ &lt;cCnfFile&gt;     Name of the R&amp;R configuration file to be processed         │</span><br><span class="line">*│                                                                           │</span><br><span class="line">*│Returns:                                                                   │</span><br><span class="line">*│ &lt;aCnfInfo&gt;     Array with configuration info:                             │</span><br><span class="line">*│                [1,*]  Directory information                               │</span><br><span class="line">*│                       [1, 1]  Default data directory                      │</span><br><span class="line">*│                       [1, 2]  Default library directory                   │</span><br><span class="line">*│                       [1, 3]  Default work directory                      │</span><br><span class="line">*│                       [1, 4]  Default index directory                     │</span><br><span class="line">*│                       [1, 5]  Default soft font directory                 │</span><br><span class="line">*│                                                                           │</span><br><span class="line">*│                [2,*]  Default settings                                    │</span><br><span class="line">*│                       [2, 1]  Default index file extension                │</span><br><span class="line">*│                       [2, 2]  Default memo file extension                 │</span><br><span class="line">*│                       [2, 3]  Default FIF file                            │</span><br><span class="line">*│                       [2, 4]  Dos exit allowed (.T., .F.)                 │</span><br><span class="line">*│                                                                           │</span><br><span class="line">*│                [3,*]  Printer 1 settings                                  │</span><br><span class="line">*│                       [3, 1]  Printer name                                │</span><br><span class="line">*│                       [3, 2]  Printer type                                │</span><br><span class="line">*│                       [3, 3]  Start printer                               │</span><br><span class="line">*│                       [3, 4]  End printer                                 │</span><br><span class="line">*│                       [3, 5]  Bold ON                                     │</span><br><span class="line">*│                       [3, 6]  Bold OFF                                    │</span><br><span class="line">*│                       [3, 7]  Underline ON                                │</span><br><span class="line">*│                       [3, 8]  Underline OFF                               │</span><br><span class="line">*│                       [3, 9]  Italic ON                                   │</span><br><span class="line">*│                       [3,10]  Italic OFF                                  │</span><br><span class="line">*│                       [3,11]  10 CPI                                      │</span><br><span class="line">*│                       [3,12]  12 CPI                                      │</span><br><span class="line">*│                       [3,13]  Compressed                                  │</span><br><span class="line">*│                       [3,14]  Landscape mode                              │</span><br><span class="line">*│                       [3,15]  Portrait mode                               │</span><br><span class="line">*│                                                                           │</span><br><span class="line">*│                [4,*]  Printer 2 etc.                                      │</span><br><span class="line">*│                                                                           │</span><br><span class="line">*│                                                                           │</span><br><span class="line">*│ Developed by Ernst Peter Tamminga, CIS 100042,1760                        │</span><br><span class="line">*└───────────────────────────────────────────────────────────────────────────┛</span><br><span class="line"></span><br><span class="line">#include &#34;fileio.ch&#34;              // We need this for low level IO</span><br><span class="line">#define RECIDLEN    4             // Each record has a sort of header</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function RRCnfInfo( cCnfFile )</span><br><span class="line"></span><br><span class="line">local nHandle                     // For reading the .cnf file</span><br><span class="line">local lIsEof   := .F.             // Don&#39; try to read after the EOF</span><br><span class="line">local cRecId                      // The record identification + lenght</span><br><span class="line">local nRecType                    // Recordtype indication</span><br><span class="line">local nReclen                     // Data length of the record</span><br><span class="line">local cRecCont                    // Contents of the data part</span><br><span class="line">local nPrinter := 0               // Printer number offset in result</span><br><span class="line">local nOffset                     // Offset in resulting array</span><br><span class="line"></span><br><span class="line">                                  // The resulting array with contents</span><br><span class="line">local aCnfInfo := { array(5), array(4) }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                                       // Open .cnf file in shared/read mode</span><br><span class="line">if (( nHandle := fopen(cCnfFile, FO_READ + FO_SHARED)) &gt;= 0 )</span><br><span class="line"></span><br><span class="line">     do while !lIsEof                  // W&#39;ll handle all records</span><br><span class="line"></span><br><span class="line">        cRecId := space( RECIDLEN )    // Get the record header</span><br><span class="line"></span><br><span class="line">        fread( nHandle, @cRecId, RECIDLEN )</span><br><span class="line"></span><br><span class="line">                                       // 2 bytes is for ID#</span><br><span class="line">                                       // 2 bytes for data length</span><br><span class="line">        nRecType := bin2I( substr( cRecId, 1, 2 ) )</span><br><span class="line">        nRecLen  := bin2I( substr( cRecId, 3, 2 ) )</span><br><span class="line"></span><br><span class="line">        cRecCont := space( nRecLen )   // Read the record contents</span><br><span class="line"></span><br><span class="line">        fread( nHandle, @cRecCont, nRecLen )</span><br><span class="line"></span><br><span class="line">        do case                        // Dispatch interesting record types</span><br><span class="line"></span><br><span class="line">        case (nRecType == 2 )          // This record type if EOF</span><br><span class="line">           lIsEof := .T.</span><br><span class="line"></span><br><span class="line">                                       // First directory settings</span><br><span class="line">        case (nOffset := ascan( {11, 12, 13, 31, 20}, nRecType ) ) &gt; 0</span><br><span class="line">           aCnfInfo[1, nOffSet] := left( cRecCont, nRecLen-1 )</span><br><span class="line"></span><br><span class="line">                                       // Default settings</span><br><span class="line">        case (nOffset := ascan( {14, 17, 18}, nRecType ) ) &gt; 0</span><br><span class="line">           aCnfInfo[2, nOffSet] := left( cRecCont, nRecLen-1 )</span><br><span class="line"></span><br><span class="line">        case nRecType == 35            // Dos exit allowed</span><br><span class="line">           aCnfInfo[2, 4] := ( left(cRecCont, 1) == chr(0) )</span><br><span class="line"></span><br><span class="line">        case nRecType == 256           // Start new printer</span><br><span class="line">           aadd( aCnfInfo, array(15) )</span><br><span class="line">           nPrinter := len( aCnfInfo )</span><br><span class="line"></span><br><span class="line">                                       // Printer settings</span><br><span class="line">        case (nOffset := ascan( {260, 261, 262, 263, 273, ;</span><br><span class="line">                                 274, 275, 276, 277, 278, ;</span><br><span class="line">                                 268, 269, 270, 271, 272}, nRecType ) ) &gt; 0</span><br><span class="line">           aCnfInfo[nPrinter, nOffset] := substr( cRecCont, 2 )</span><br><span class="line"></span><br><span class="line">        endcase</span><br><span class="line"></span><br><span class="line">     enddo</span><br><span class="line"></span><br><span class="line">     fclose( nHandle )            // You&#39;re done</span><br><span class="line"></span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">return ( aCnfInfo )               // You want some? You&#39;ll get it</span><br><span class="line"></span><br><span class="line">*─────────────────────────────────────────────────────────────────────────────</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

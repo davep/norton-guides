@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-49227.html">
+    <link rel="next" href="rr-tips-55903.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-49227.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-55903.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Dot Leader Tabs      How to make dot leader line</span></span><br><span class="line"></span><br><span class="line"> Dot leader tabs are useful when you are creating, e.g. directories and</span><br><span class="line"> indexes. An example of a dot leader tab:</span><br><span class="line"></span><br><span class="line">   ┌─────────────────────────────────────────────────────────────────────┐</span><br><span class="line">   │ Article Title                                          Issue/Paqe   │</span><br><span class="line">   │                                                                     │</span><br><span class="line">   │ Common transforms............................................C-9    │</span><br><span class="line">   │ Data dictionary..............................................C-13   │</span><br><span class="line">   │ Dot leader tabs..............................................C-7    │</span><br><span class="line">   │ Group on number of records...................................C-ll   │</span><br><span class="line">   │ How one R&amp;R user produced mailing labels using IF/THEN logic C-2    │</span><br><span class="line">   └─────────────────────────────────────────────────────────────────────┛</span><br><span class="line"></span><br><span class="line"> Note how a variable number of dots is automatically inserted between each</span><br><span class="line"> topic and the corresponding page number. Since the dot leader tab involves</span><br><span class="line"> repeating a character a variable number of times, it is a good candidate</span><br><span class="line"> for both the REPLICATE function and the string concatenation.</span><br><span class="line"></span><br><span class="line"> We could use this technique to improve the appearance and readability of a</span><br><span class="line"> complete index of all articles that have appeared a magazine. To print</span><br><span class="line"> this report, we would create a database consisting of three character</span><br><span class="line"> fields, TITLE, ISSUE, and PAGE. Here is a sample report. Then we would</span><br><span class="line"> create two calculated fields, one to contain the title and dot leader and</span><br><span class="line"> the other to contain the issue and page number. The expressions that</span><br><span class="line"> define these fields are as follows.</span><br><span class="line"></span><br><span class="line">    Title Dots = TITLE - REPLICATE(&#39;.&#39;,80)</span><br><span class="line">    Issue Page = ISSUE + &#39;-&#39; + PAGE</span><br><span class="line"></span><br><span class="line"> The Issue Page field simply concatenates the ISSUE with a dash and the</span><br><span class="line"> PAGE. The Title Dots field is defined as the actual article title followed</span><br><span class="line"> by a string of 80 periods. There are two points of interest in the</span><br><span class="line"> expression. First, why use the minus (-) string concatenation operator</span><br><span class="line"> instead of the more common plus (+) operator? Second, why replicate the</span><br><span class="line"> period 80 times?</span><br><span class="line"></span><br><span class="line"> Since the titles vary in length, the shorter titles will have trailing</span><br><span class="line"> spaces that must somehow be removed. You can either use the TRIM function</span><br><span class="line"> with the plus operator, or use just the minus operator. We selected the</span><br><span class="line"> minus operator to avoid using the TRIM function.</span><br><span class="line"></span><br><span class="line"> The number of dots has to be sufficient to handle the shortest possible</span><br><span class="line"> title. We selected 80 because it is the page width in columns. This gives</span><br><span class="line"> us the flexibility to change the field width on the screen without running</span><br><span class="line"> out of dots.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

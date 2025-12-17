@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="pbmake-style.css">
+    <title>PBMake 2.15 for Clipper, Xbase++, C and  » Reference » PBMake Features</title>
+    <meta name="description" content="PBMake 2.15 for Clipper, Xbase++, C and ">
+    <link rel="prev" href="pbmake-20092.html">
+    <link rel="next" href="pbmake-22656.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="pbmake-about.html">About</a></li>
+
+
+          
+
+<li><a href="pbmake-20092.html">Previous</a></li>
+
+
+          
+
+<li><a href="pbmake-18702.html">Up</a></li>
+
+
+          
+
+<li><a href="pbmake-22656.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Intro</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Introduction</a></li>
+                  <li><a href="pbmake-9885.html">Getting Started</a></li>
+                  <li><a href="pbmake-11192.html">Blank Template</a></li>
+                  <li><a href="pbmake-16114.html">Example Template</a></li>
+                  <li><a href="pbmake-17946.html">Running It</a></li>
+                  
+                </ul>
+              </li>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-18702.html">PBMake Features</a></li>
+                  <li><a href="pbmake-36380.html">Supported Languages</a></li>
+                  <li><a href="pbmake-44844.html">Script Initializer Tool</a></li>
+                  <li><a href="pbmake-52818.html">GNU RCS Version Control Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>About</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-56275.html">MAKE.BAT</a></li>
+                  <li><a href="pbmake-58146.html">Problems</a></li>
+                  <li><a href="pbmake-60601.html">Support</a></li>
+                  <li><a href="pbmake-61056.html">Copyright</a></li>
+                  <li><a href="pbmake-61432.html">Register!</a></li>
+                  <li><a href="pbmake-62283.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">             <span class="ngb">These directives are not case sensitive.</span></span><br><span class="line"></span><br><span class="line">      EXEFILE=                        The target you are creating</span><br><span class="line">      TARGET=                         (a synonym for EXEFILE=)</span><br><span class="line"></span><br><span class="line">    <span class="ngb">+</span> LIB=                            Libraries that the target depends on</span><br><span class="line"></span><br><span class="line">      PRELINKCMD=                     Runs after compiler and before linker</span><br><span class="line"></span><br><span class="line">      LINKFILE=                       The linker script for the EXEFILE</span><br><span class="line">      LINKER=                         The linker you want to use</span><br><span class="line">      LINKER_SEP=                     Optional link file prefix</span><br><span class="line"></span><br><span class="line">    <span class="ngb">+</span> INCLUDE=                        The include files you depend on</span><br><span class="line">    <span class="ngb">+</span> INCLUDE1=  ...  INCLUDE99=      (can be different for each section)</span><br><span class="line"></span><br><span class="line">      PRECOMPILECMD=                  Runs before the first compile</span><br><span class="line"></span><br><span class="line">      COMPILER=                       Defaults to CLIPPER</span><br><span class="line">      COMPILER1=  ....  COMPILER99=   (can be different for each section)</span><br><span class="line"></span><br><span class="line">      ONERROR=                        This sets up PBMake so that when</span><br><span class="line">      ONERROR1=   ....   ONERROR99=   an error is encountered in the</span><br><span class="line">                                      compile process, it will jump to</span><br><span class="line">                                      the editor of your choice.</span><br><span class="line"></span><br><span class="line">      ERRFILE=                        Placing a file name here will</span><br><span class="line">                                      override the default of ${pbm}.err</span><br><span class="line"></span><br><span class="line">      ERRBAT=                         Placing a file name here will</span><br><span class="line">      ERRBAT1=   ...   ERRBAT99=      override the default of ${pbm}.bat</span><br><span class="line"></span><br><span class="line">    <span class="ngb">+</span> CLEANUP=                        Cleans up (deletes) temp files.</span><br><span class="line"></span><br><span class="line">      NONEED=                         Runs if there was nothing to do</span><br><span class="line">      SUCCESS=                        Runs if everything worked</span><br><span class="line">      FAILURE=                        Runs if something failed</span><br><span class="line"></span><br><span class="line">      SRCDIR=                         Where the source code resides</span><br><span class="line">      SRCDIR1=  ....  SRCDIR99=       (can be different for each section)</span><br><span class="line"></span><br><span class="line">      OBJDIR=                         Where the object code will go</span><br><span class="line">      OBJDIR1=  ....  OBJDIR99=       (can be different for each section)</span><br><span class="line"></span><br><span class="line">      SRCEXT=                         Defaults to .PRG for Clipper</span><br><span class="line">      SRCEXT1=  ....  SRCEXT99=       (can be different for each section)</span><br><span class="line"></span><br><span class="line">      OBJEXT=                         Defaults to .OBJ for Clipper</span><br><span class="line">      OBJEXT1=  ....  OBJEXT99=       (can be different for each section)</span><br><span class="line"></span><br><span class="line">      FLAG1=    ....  FLAG99=         The compiler flags for each section</span><br><span class="line"></span><br><span class="line">    <span class="ngb">+</span> PROG1=    ....  PROG99=         The source files to compile</span><br><span class="line"></span><br><span class="line">      #DEFINE                         Conditional Script Commands</span><br><span class="line">      #IFDEF</span><br><span class="line">      #IFNDEF</span><br><span class="line">      #ELSE</span><br><span class="line">      #ENDIF</span><br><span class="line">      #UNDEF</span><br><span class="line"></span><br><span class="line">    <span class="ngb">+</span> Denotes directives that can be used additively. This means</span><br><span class="line">      that if you need more of each type of these directives than will</span><br><span class="line">      conveniently fit on one line, you may add more and more of these</span><br><span class="line">      until all files are listed.</span><br><span class="line"></span><br><span class="line">      If you use any of the other directives more than once, PBMake will</span><br><span class="line">      use the last one read in.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:34</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

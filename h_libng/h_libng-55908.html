@@ -1,0 +1,137 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="h_libng-style.css">
+    <title>H_LIB52 v1.0 Reference Guide Release 1.0 » G-M » Menus/Prompts</title>
+    <meta name="description" content="H_LIB52 v1.0 Reference Guide Release 1.0">
+    
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="h_libng-about.html">About</a></li>
+
+
+          
+
+<li><span>Previous</span></li>
+
+
+          
+
+<li><a href="h_libng-55802.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-F</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="h_libng-2278.html">Audit</a></li>
+                  <li><a href="h_libng-3223.html">Browse</a></li>
+                  <li><a href="h_libng-9340.html">Data Dictionary</a></li>
+                  <li><a href="h_libng-11856.html">Date</a></li>
+                  <li><a href="h_libng-18718.html">Error handling</a></li>
+                  <li><a href="h_libng-20375.html">File I/O</a></li>
+                  
+                </ul>
+              </li>
+              <li>G-M</li>
+              <li>
+                <ul>
+                  <li><a href="h_libng-25075.html">General</a></li>
+                  <li><a href="h_libng-47633.html">Get Reader</a></li>
+                  <li><a href="h_libng-53217.html">Help</a></li>
+                  <li><a href="h_libng-53790.html">INI Files</a></li>
+                  <li><a href="h_libng-55152.html">Keyboard</a></li>
+                  <li><a href="h_libng-55802.html">Menus/Prompts</a></li>
+                  
+                </ul>
+              </li>
+              <li>N-V</li>
+              <li>
+                <ul>
+                  <li><a href="h_libng-64916.html">Network</a></li>
+                  <li><a href="h_libng-69119.html">Printer</a></li>
+                  <li><a href="h_libng-73871.html">Security</a></li>
+                  <li><a href="h_libng-80827.html">String</a></li>
+                  <li><a href="h_libng-84103.html">TBrowse</a></li>
+                  <li><a href="h_libng-87925.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="h_libng-106378.html">About</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Replace ACHOICE() with a Tbrowse object &amp; multiple features.</span></span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">      <span class="fg15 bg1"> H_Ach2tb( &lt;nToprow&gt;,&lt;nTopcol&gt;[,&lt;nBotrow&gt;][,&lt;nBotcol&gt;],&lt;aArrey&gt;,     ;</span></span><br><span class="line">            <span class="fg15 bg1"> [&lt;cBoxtype&gt;],[&lt;cBoxcolor&gt;],[&lt;cBoxtitle&gt;],[&lt;nTitlePos&gt;],        ;</span></span><br><span class="line">            <span class="fg15 bg1"> [&lt;cUselcolor&gt;],[&lt;cTitlecolor&gt;],[&lt;cBarcolor&gt;],[&lt;cHkcolor&gt;],     ;</span></span><br><span class="line">            <span class="fg15 bg1"> [&lt;lShadow&gt;],[&lt;lExecute&gt;],[&lt;nMsgrow&gt;],[&lt;nMsgcol&gt;],              ;</span></span><br><span class="line">            <span class="fg15 bg1"> [&lt;cMsg.color&gt;],[cElevbar],[cEbarcolor],[&lt;cEbarside&gt;],          ;</span></span><br><span class="line">            <span class="fg15 bg1"> [&lt;cNoSelcolor&gt;],[&lt;cTagch&gt;],[&lt;nStartelem&gt;],[&lt;lRscreen&gt;],        ;</span></span><br><span class="line">            <span class="fg15 bg1"> [&lt;nTimeout&gt;],[&lt;nTimeoutval&gt;],[&lt;cUserfunc&gt;],[&lt;cHelpTitle&gt;] )</span></span><br><span class="line">       <span class="fg15 bg1"> --&gt; nOption</span></span><br><span class="line"> <span class="fg15 bg1"> </span></span><br><span class="line"> <span class="ngb">Arguments:</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;nToprow&gt;</span>   is the top row of the box to be drawn.  Required.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;nTopcol&gt;</span>   is the top column of the box to be drawn.  Required.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;nBotrow&gt;</span>   is the bottom row of the box to be drawn.  The default is</span><br><span class="line">     <span class="ngb">&lt;nToprow&gt;</span>+Len(<span class="ngb">&lt;aArrey&gt;</span>)+1 or maxrow()-2, whichever is less.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;nBotcol&gt;</span>   is the bottom column of the box to be drawn.  The default</span><br><span class="line">     is <span class="ngb">&lt;nTopcol&gt;</span>+width of the widest element in <span class="ngb">&lt;aArrey&gt;</span> +2.</span><br><span class="line"></span><br><span class="line">     It&#39;s been pointed out that the number of commas required to default</span><br><span class="line">     the <span class="ngb">&lt;nBotrow&gt;</span> and <span class="ngb">&lt;nBotcol&gt;</span> params. is at least slightly confusing.</span><br><span class="line">     So, some documentation on the requirements:</span><br><span class="line">     Default both:                           7,9,,   ARRAY:</span><br><span class="line">     Default <span class="ngb">&lt;nBotrow&gt;</span>, specify <span class="ngb">&lt;nBotcol&gt;</span>:   7,9,,20 ARRAY:</span><br><span class="line">     Default <span class="ngb">&lt;nBotcol&gt;</span>, specify <span class="ngb">&lt;nBotrow&gt;</span>:   7,9,15, ARRAY:</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;aArrey&gt;</span>    is the arrey of options to present to the user.  Each</span><br><span class="line">     element can hold as many as five subelements, or as few as one.</span><br><span class="line">     Required.  Additional documentation below.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cnBoxtype&gt;</span> is the type of box to draw.  Uses DispBox().  The</span><br><span class="line">     default is a double-line box.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cBoxcolor&gt;</span> is the color with which to draw the box.  The default is</span><br><span class="line">     Setcolor().</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cBoxtitle&gt;</span> is title of the box drawn on <span class="ngb">&lt;nToprow&gt;</span>.  The default is</span><br><span class="line">     no title.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;nTitlepos&gt;</span>  is the starting column position (to the right of</span><br><span class="line">     <span class="ngb">&lt;nTopcol&gt;</span>) at which to draw <span class="ngb">&lt;cBoxtitle&gt;</span>.  The default is 1.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cUselcolor&gt;</span> is the color with which to draw unselected options.</span><br><span class="line">     The default is Setcolor().</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cTitlecolor&gt;</span> is the color with which to draw the box title.  The</span><br><span class="line">     default is yellow on red.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cBarcolor&gt;</span>  is the color with which to draw the selection bar.</span><br><span class="line">     The default is yellow on black.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cHkcolor&gt;</span>  is the default color with which to draw the hotkeys for</span><br><span class="line">     for each option.  This is used when no hotkey color is supplied</span><br><span class="line">     in <span class="ngb">&lt;aArrey&gt;</span>.  The default is hiwhite on the current background</span><br><span class="line">     color.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cShadow&gt;</span>   is a character string, either &#34;L&#34; or &#34;R&#34; (for left or</span><br><span class="line">     right) to designate the side of the box where a shadow will appear.</span><br><span class="line">     Leave this NIL to avoid drawing a shadow.  You might also leave</span><br><span class="line">     this NIL if you choose to use a .C or .ASM shadow function, which</span><br><span class="line">     is a good idea.  Shadoww(), included below, is flat-out SLOW.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;lExecute&gt;</span>  turn on/off execution of option when first letter is</span><br><span class="line">     pressed.  Rule:  setting in element 5 of each <span class="ngb">&lt;aArrey&gt;</span> subarray</span><br><span class="line">     overrides <span class="ngb">&lt;lexecute&gt;</span>.  If that element is left NIL, the <span class="ngb">&lt;lexecute&gt;</span></span><br><span class="line">     setting is used.  If <span class="ngb">&lt;lexecute&gt;</span> is not passed and element 5 is NIL,</span><br><span class="line">     auto execution is turned ON.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;nMsgrow&gt;</span>  is the row on which to draw a message for each option.</span><br><span class="line">     The default is two rows below the bottom of the box.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;nMsgcol&gt;</span>  is the column at which to draw a message for each option.</span><br><span class="line">     The default is <span class="ngb">&lt;nTopcol&gt;</span> +2.  To CENTER the message, pass &#34;C&#34;.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cMsgcolor&gt;</span>  is the default color with which to draw messages.  This</span><br><span class="line">     color is used when element 4 of each <span class="ngb">&lt;aArrey&gt;</span> subarray is left NIL.</span><br><span class="line">     The default is Setcolor().</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cElevbar&gt;</span>  is the ASCII character to use as the elevator bar drawn</span><br><span class="line">     on the box.  Leave this NIL to draw no elevator bar.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cEbarcolor&gt;</span>  is the color with which to draw the elevator bar.</span><br><span class="line">     This is ignored if <span class="ngb">&lt;cElevbar&gt;</span> is NIL.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cEbarside&gt;</span>  is a character string, either &#34;L&#34; or &#34;R&#34; (for left or</span><br><span class="line">     right) to designate the side of the box on which to draw the</span><br><span class="line">     elevator bar.  This is ignored if <span class="ngb">&lt;cElevbar&gt;</span> is NIL.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cNoselcolor&gt;</span>  is the color with which to draw unselectable options.</span><br><span class="line">     The default is white on black.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;cTagchar&gt;</span> is the ASCII character to use to draw tags that would</span><br><span class="line">     appear to the right of each option.  The default is *DIS*abled</span><br><span class="line">     tagging.  The default tag is &#34;√&#34; (chr(251)).</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;nStartelem&gt;</span>  is the number of the option where the selection bar</span><br><span class="line">     will first be placed.  Leave this NIL to begin at option 1.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;lRestscrn&gt;</span>  is a logical to designate whether or not the screen</span><br><span class="line">     coordinates occupied by the box and/or shadow should be restored</span><br><span class="line">     before H_Ach2tb() returns.  The default is .T.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;nTimeout&gt;</span>  is the number of seconds after which H_ACH2TB() will</span><br><span class="line">     timeout and return to the function/proced. which called it.  The</span><br><span class="line">     default is 0.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;nTimeoutVal&gt;</span> is an optional alternative numeric value H_ACH2TB() will</span><br><span class="line">     RETURN when/if it times out.  The default is the current element</span><br><span class="line">     number.</span><br><span class="line"></span><br><span class="line">  <span class="ngb">&lt;bUserfunc&gt;</span>  is a code block containing a function call to be</span><br><span class="line">     executed after each key press.  You need to write just two formal</span><br><span class="line">     parameters to allow the run-time passing of the key pressed and the</span><br><span class="line">     current element number, e.g.:</span><br><span class="line">               { |key,num| Myfunc( key,num [,other params.] ) }</span><br><span class="line">     Unlimited extra parameters may be passed.  Of course, make certain</span><br><span class="line">     to also write &#39;receptors&#39; for them in &#39;Myfunc()&#39; itself...as in the</span><br><span class="line">     above example.  The default is NO user function.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns:</span></span><br><span class="line"></span><br><span class="line">     the number of the selected option, or 0 if [Esc] is pressed.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description:</span></span><br><span class="line"></span><br><span class="line">     H_Ach2tb() is a greatly enhanced, fully featured, and now mouse-</span><br><span class="line">     supported replacement for Achoice(), based on a Tbrowse object.</span><br><span class="line">     Each element of &lt;aArray&gt; (the array you pass to it) is itself an</span><br><span class="line">     array.  Each element can solely composed of &#34;Option&#34; (below), but</span><br><span class="line">     may be composed as follows to take full advantage of the function&#39;s</span><br><span class="line">     features:</span><br><span class="line"></span><br><span class="line">         Option   ,     Message      ,HotKeyPos,HotKeyColor,Selectable</span><br><span class="line">     { &#34;Utilities&#34;,&#34;System Utilities&#34;, 3       ,&#34;+gr/b&#34;    ,.T. }</span><br><span class="line"></span><br><span class="line">     All elements except for the first, the option itself, are optional.</span><br><span class="line">     IF &#39;Message&#39; is NIL, no message is displayed.  &#39;HotKeyPos&#39; is the</span><br><span class="line">     position within &#39;Option&#39; of the hotkey.  In the example above, the</span><br><span class="line">     hotkey for &#39;Utilities&#39; is the first &#39;i&#39;, i.e., at position 3.  The</span><br><span class="line">     default is 1.  &#39;HotKeyColor&#39; is the color to use for the hotkey</span><br><span class="line">     display.  The default is hiwhite  on the current background color.</span><br><span class="line">     &#39;Selectable&#39; is a logical indicating whether or not that option can</span><br><span class="line">     be selected.  The default is .T.</span><br><span class="line"></span><br><span class="line">     The A_CHOICE() UDC in H_ACH2T.CH makes using H_ACH2TB() a breeze.</span><br><span class="line">     The myriad of parameters can be written in any order.  Only &lt;nToprow&gt;,</span><br><span class="line">     &lt;nTopcol&gt;, and &lt;aArrey&gt; are required.  See the example below.</span><br><span class="line"></span><br><span class="line">     There may be some confusion over &#39;unselected&#39; and &#39;unselectable&#39;</span><br><span class="line">     options.  The former refers to any option not currently covered</span><br><span class="line">     by the selection bar.  The latter refers to options you have</span><br><span class="line">     designated unselectable in subelement 5 of &lt;aArray&gt;, i.e., by</span><br><span class="line">     writing .F.</span><br><span class="line"></span><br><span class="line">     To enable tagging, pass any ASCII character as &lt;cTagchar&gt;.  To</span><br><span class="line">     tag/untag all options, press [SPACE].  To tag/untag individual</span><br><span class="line">     options, press [+] and [-] respectively.  On press of [+], browse</span><br><span class="line">     moves to the next element in the display.  To test for the tagged</span><br><span class="line">     status of an option, use the WAS_TAGGED() UDC in H_ACH2T.CH. To</span><br><span class="line">     check the entire array for tags, use Aeval() in conjunction with</span><br><span class="line">     Was_Tagged() as in the example below.  When tagging is enabled, the</span><br><span class="line">     string &#34;Tags&#34; will be written across the bottom row of the box in</span><br><span class="line">     hiwhite on the current background color.</span><br><span class="line"></span><br><span class="line">     Because H_ACH2TB() takes over the [SPACE],[+], and [-] keys, it saves</span><br><span class="line">     any SET KEY procedures you might have set them to, and restores same</span><br><span class="line">     on returning.  Any other procedures you might have SET KEYs to will</span><br><span class="line">     fly when H_ACH2TB() is called.</span><br><span class="line"></span><br><span class="line">     The piéce de resistance of H_ACH2TB() is its ability to execute</span><br><span class="line">     a user function designed entirely by you.  It is called after each</span><br><span class="line">     keypress, and because it is completely open-ended, extends the</span><br><span class="line">     the reach of H_ACH2TB() to the limits of Clipper.  See the docu-</span><br><span class="line">     mentation under &lt;bUserfunc&gt; above.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     Test compile:  CLIPPER H_ach2t /n/w/m/dH_TEST</span><br><span class="line">     Test link   :  RTLINK FI H_ach2t LIB nanfor /pll:base50</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples:</span></span><br><span class="line"></span><br><span class="line">  nOpt := A_CHOICE( 7,9,, ARRAY:t_array )   // the minimum</span><br><span class="line"></span><br><span class="line">  nOpt := A_CHOICE( 7,9,, ;</span><br><span class="line">            ARRAY:t_arrey ;</span><br><span class="line">            USERFUNC:{|a,b| UserFunc(a,b,any1)};</span><br><span class="line">            BOXTYPE:B_SINGLE  ;</span><br><span class="line">            BOXTITLE:title  ;</span><br><span class="line">            SHADOW:&#34;FT&#34; ;</span><br><span class="line">            TAGCHAR:chr(17) ;</span><br><span class="line">            REST_SCREEN:.F. ;</span><br><span class="line">            AUTOEXEC:.F. ;</span><br><span class="line">            MES_COLOR:MSG_COLOR ;</span><br><span class="line">            ELEVBAR:&#34;▒&#34; ;</span><br><span class="line">            NOSELCOLOR:&#34;bg/n&#34; ;</span><br><span class="line">            MES_COL:&#34;C&#34; )</span><br><span class="line"></span><br><span class="line">  Check only the RETURNed element for whether tagged:</span><br><span class="line">  IF( Was_Tagged(chr(17),t_arrey,nOpt), MoreProcessing(), )</span><br><span class="line"></span><br><span class="line">  Check entire &#39;t_arrey&#39;:</span><br><span class="line">  Aeval( t_arrey,{|e,n| IF( Was_Tagged(chr(17),t_arrey,n ), ;</span><br><span class="line">                            MoreProcessing(t_arrey),NIL ) } )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> ACH2TB.PRG</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author: </span> Steve Kolterman</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:25</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

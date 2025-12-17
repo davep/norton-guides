@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-27648.html">
+    <link rel="next" href="rr-tips-32335.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-27648.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-32335.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Simple bar graphs    How to make them with R&amp;R on nearly every printer</span></span><br><span class="line"></span><br><span class="line"> The replicate() function offers a handy tool for creating bar charts.</span><br><span class="line"> You can quicky adapt a sales analysis report into a bar chart.</span><br><span class="line"></span><br><span class="line">     ┌──────────────────────────────────────────────────────────┐</span><br><span class="line">     │                PRODUCT SALES IN JANUARY                  │</span><br><span class="line">     │                                                          │</span><br><span class="line">     │ Rick   │████████ 5 (33%)                                 │</span><br><span class="line">     │        │░░░░░░░░░░░░░░░░░░░░ 10 (67%)                    │</span><br><span class="line">     │        │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 15 (34%)          │</span><br><span class="line">     │        │                                                 │</span><br><span class="line">     │ Ellen  │██████████████ 6 (40%)                           │</span><br><span class="line">     │        │░░░░░░░░░░░░░░░░░░░░ 10 (67%)                    │</span><br><span class="line">     │        │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 16 (40%)        │</span><br><span class="line">     │        │                                                 │</span><br><span class="line">     │        │███████ 4 (26%)                                  │</span><br><span class="line">     │ Peter  │░░░░░░░░░ 5 (33%)                                │</span><br><span class="line">     │        │▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 9 (20%)                       │</span><br><span class="line">     │        │                                                 │</span><br><span class="line">     │        └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┛           │</span><br><span class="line">     │                  5        10        15                   │</span><br><span class="line">     │                                                          │</span><br><span class="line">     │                       Product                            │</span><br><span class="line">     │            dBr ████   R&amp;R ░░░░   Total ▓▓▓▓              │</span><br><span class="line">     └──────────────────────────────────────────────────────────┛</span><br><span class="line"></span><br><span class="line"> Note that to print this bar chart your printer must support the Extended</span><br><span class="line"> IBM Character Set. The followoing characters are used:</span><br><span class="line"></span><br><span class="line">          chr(176)  ░     chr(178) ▓       chr(219) █</span><br><span class="line"></span><br><span class="line"> The line and shading characters can be typed using <span class="ngb">[Shift-F3]</span> to select</span><br><span class="line"> and <span class="ngb">[F3]</span> to enter. You can alternatively type these characters by holding</span><br><span class="line"> down the [Alt] key, typing the character number on the numeric keypad, and</span><br><span class="line"> then releasing the [Alt] key.</span><br><span class="line"></span><br><span class="line"> To create the example bar chart, first create the sales analysis report</span><br><span class="line"> using standard ways of totalling the product sales for the two different</span><br><span class="line"> products.</span><br><span class="line"></span><br><span class="line"> You need to create two calculated fields to produce the bars. One field</span><br><span class="line"> produces a bar for each product detail record and the other field produces</span><br><span class="line"> a total bar for each sales rep. Using the /Field Calculate Create command,</span><br><span class="line"> enter the following calculated field expressions.</span><br><span class="line"></span><br><span class="line">  Detail_Bar =</span><br><span class="line">  replicate(iif(DETAIL-&gt;PRODUCTS=&#39;dBR&#39;,&#39;░&#39;, &#39;█&#39;), 2 * DETAIL-&gt;QUANTITY)</span><br><span class="line"></span><br><span class="line">  Total_Bar =</span><br><span class="line">  replicate(&#39;▓, 2 * SUBTOT-&gt;QUANTITY)</span><br><span class="line"></span><br><span class="line"> The expression for Detail Bar says &#34;replicate the shading character twice</span><br><span class="line"> as man~ times as the quantity sold, using the lighter shading character if</span><br><span class="line"> the product is dBR and the darker shading character if the product is</span><br><span class="line"> R&amp;R&#34;.</span><br><span class="line"></span><br><span class="line"> Note how you can scale the bar to an appropriate size. In this case the</span><br><span class="line"> graph would have been too compressed had we not multiplied the quantity by</span><br><span class="line"> two. If you are dealing in millions of dollars, divide by one million so</span><br><span class="line"> the bar will fit on a nice size graph.</span><br><span class="line"></span><br><span class="line"> Next, use the /Line commands to modify the report layout according to the</span><br><span class="line"> screen in Figure 5-2. Edit the report title and delete all of the fields</span><br><span class="line"> except DETAIL-&gt;SALESREP. Then enter the new text and insert the fields as</span><br><span class="line"> they appear on the screen.</span><br><span class="line"></span><br><span class="line"> When you insert the bar fields, the width is initially set to 20. Use the</span><br><span class="line"> /Field Width command to extend them to 40. Next to these fields insert the</span><br><span class="line"> quantity and % of total fields for reference.</span><br><span class="line"></span><br><span class="line"> Insert the quantity from the detail file and the % of sales rep total on</span><br><span class="line"> the body line. Insert the quantity from the subtotal file and the % of</span><br><span class="line"> company total on the sales rep group footer line (level 2).</span><br><span class="line"></span><br><span class="line"> Between the bar and number fields enter text fields that contain spaces</span><br><span class="line"> and parentheses (spaces are displayed as dots on the screen). Note how</span><br><span class="line"> automatic trim positions the quantity and % of total next to the bar</span><br><span class="line"> regardless of its width. Automatic trim removes extra spaces from a data</span><br><span class="line"> field when any other field is placed immediately to its right.</span><br><span class="line"></span><br><span class="line"> If needed, you can use a <span class="ngb">preprocessed total</span> to deterime the maximum sales</span><br><span class="line"> and use this preprocessed total to size the bar graph.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

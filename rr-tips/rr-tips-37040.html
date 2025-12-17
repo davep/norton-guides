@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-35601.html">
+    <link rel="next" href="rr-tips-40797.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-35601.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-40797.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Boxing memo&#39;s        Boxing Word-Wrapped Fields (#2 - exact) </span></span><br><span class="line"></span><br><span class="line"> A more difficult but <span class="ngb">exact way to calculate the number of lines</span> occupied</span><br><span class="line"> by a word-wrapped field is to read through a character field word by word,</span><br><span class="line"> determining how long each word is, how many words will fit on each line,</span><br><span class="line"> how many spaces will be added as a result of word-wrap and, therefore, how</span><br><span class="line"> many lines will be required. Because these calculations are complex enough</span><br><span class="line"> that you would not want to enter them in a calculated field expression</span><br><span class="line"> every time you want to draw a box, we&#39;ve created three user-defined</span><br><span class="line"> functions that will perform the calculations for you. Once you&#39;ve entered</span><br><span class="line"> the functions in your UDF library, you can use them ibn any report. Since</span><br><span class="line"> the first function calss the second, which calls the third, you need use</span><br><span class="line"> only the first of the UDF&#39;s listed below in your calculated field</span><br><span class="line"> expression.</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">Lines</span>: a UDF that returns the exact numer of lines occupied by the data</span><br><span class="line">   of a specified, word-wrapped, character field with a specified field</span><br><span class="line">   width</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">Tail</span>: a recursive UDF that returns a string consisting of the characters</span><br><span class="line">   remaining after line n of a word wrapped field has been processed, with</span><br><span class="line">   1 space added to the end of teh string for each line that has been</span><br><span class="line">   processed so far.</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">Wrapwidth</span>:  a recursive UDF that returns the number of characters of the</span><br><span class="line">   beginning of its string argument that will print on the next line.</span><br><span class="line"></span><br><span class="line"> Using these UDFs is much simpler than understanding them, so we&#39;ll focus</span><br><span class="line"> here on creating and using them (trust us, the expressions work). In</span><br><span class="line"> brief, you must add all three user-defined functions to your UDF library.</span><br><span class="line"> Then, you must create a calculated field that uses the Lines UDF to return</span><br><span class="line"> the number of lines required by the character field you want to box.</span><br><span class="line"></span><br><span class="line"> To add the UDFs to your UDF library, proceed as follows:</span><br><span class="line"></span><br><span class="line"> 1. <span class="ngb">Define the Wrapwidth UDF</span> by using the /Field Calculate User-Function</span><br><span class="line">    Create command to enter the following declaration:</span><br><span class="line"></span><br><span class="line">       Wrapwidth(c_data, n_width)</span><br><span class="line"></span><br><span class="line"> 2. When you are prompted, enter the following expression for the Wrapwidth</span><br><span class="line">    UDF:</span><br><span class="line"></span><br><span class="line">      iif(&#39; &#39;$substr(data,1,width),</span><br><span class="line">      iif(len(rtrim(data))&lt;=width,len(rtrim(data)),</span><br><span class="line">      iif(substr((data,width+1,1)=&#39; &#39;,width,wrapwidth(data,width-1))),width)</span><br><span class="line"></span><br><span class="line">     Note that R&amp;R will take some time after you press Return to evaluate</span><br><span class="line">     this expression.</span><br><span class="line"></span><br><span class="line"> 3. <span class="ngb">Define the Tail UDF</span> by selecting the create command again and entering</span><br><span class="line">    the following declaration:</span><br><span class="line"></span><br><span class="line">      Tail(c_data,n_width)</span><br><span class="line"></span><br><span class="line"> 4. When prompted, enter the following expression for the Tail UDF:</span><br><span class="line"></span><br><span class="line">       iif(len(ltrim(data)),tail(substr(ltrim(data),</span><br><span class="line">       wrapwidth(ltrim(data),width)+1+&#39; &#39;,width),data)</span><br><span class="line"></span><br><span class="line"> 5. <span class="ngb">Define the Lines UDF</span> by selecting the Create command again and entering</span><br><span class="line">    the following declaration:</span><br><span class="line"></span><br><span class="line">       Lines(c_data, n_width)</span><br><span class="line"></span><br><span class="line"> 6. When you are prompted, enter the following expression for the Lines</span><br><span class="line">    UDF:</span><br><span class="line"></span><br><span class="line">       len(tail(rtrim(replicate(&#39;*&#39;,len(DATA)-</span><br><span class="line">       len(ltrim(data)))+ltrim(DATA)),WIDTH))</span><br><span class="line"></span><br><span class="line"> 7. Select Quit to exit the User-Function Menu.</span><br><span class="line"></span><br><span class="line"> To create a calculated field that uses the Lines UDF to calculate the</span><br><span class="line"> number of lines occupied by a given word-wrapped character field, proceed</span><br><span class="line"> as follows:</span><br><span class="line"></span><br><span class="line"> 1. Select the /Field Calculate Create command.</span><br><span class="line"></span><br><span class="line"> 2. Enter a field name such as LENGTH for the calculated field that will</span><br><span class="line">    create the vertical line.</span><br><span class="line"></span><br><span class="line"> 3. Enter an expression such as the following, replacing &#34;Field&#34; with the</span><br><span class="line">    name of the character field you want to hox and &#34;Width&#34; with the width</span><br><span class="line">    of this field in characters on the report layout:</span><br><span class="line"></span><br><span class="line">       Lines (Field, Width)</span><br><span class="line"></span><br><span class="line">    For example, to create a vertical line field for the TITLE field that</span><br><span class="line">    has a character width of 50 on the report layout, you should enter the</span><br><span class="line">    following expression:</span><br><span class="line"></span><br><span class="line">       Lines (TITLE,50)</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

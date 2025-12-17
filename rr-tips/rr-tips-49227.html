@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-43447.html">
+    <link rel="next" href="rr-tips-53431.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-43447.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-53431.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Line shading  Put a shade under a line</span></span><br><span class="line"></span><br><span class="line"> In this case, instead of shading specific lines based on the content of</span><br><span class="line"> the lines (see the last paragraph for information about this type of</span><br><span class="line"> shading), we have shaded every other line to simulate &#34;green-bar&#34;</span><br><span class="line"> shading. This type of shading improves the readability of dense,</span><br><span class="line"> single-spaced listings because it helps the reader distinguish one line</span><br><span class="line"> from another.</span><br><span class="line"></span><br><span class="line"> Like the column shading repon, this report uses shading characters and</span><br><span class="line"> zero line height to shade lines containing data fields. In addition, it</span><br><span class="line"> uses R&amp;R&#39;s line logical feature to turn this shading on for alternate</span><br><span class="line"> lines.</span><br><span class="line"></span><br><span class="line"> To create this report, we followed the first five steps given for column</span><br><span class="line"> shading, then we continued with the steps outlined below:</span><br><span class="line"></span><br><span class="line"> 1. To insert the shading characters, we moved down to the line below the</span><br><span class="line">    data fields and pressed Shift F3 to display R&amp;R&#39;s extended character</span><br><span class="line">    screen. We moved the cursor to the lightest shading character,</span><br><span class="line">    pressed F3 to select it, and pressed F3 50 times to insert 50 of</span><br><span class="line">    these characters on the report layout. (If we had wanted the shading</span><br><span class="line">    to extend across the page, we could have filled the entire line, from</span><br><span class="line">    O to 8.5 inches.) Since the pitch of the font in which the shading</span><br><span class="line">    characters will print is the same as the ruler pitch (in this case,</span><br><span class="line">    10 characters per inch), the line of shading on the printed report</span><br><span class="line">    will start and stop exactly where the ruler line indicates.</span><br><span class="line"></span><br><span class="line"> 2. As in the column shading report, we did not need to apply a font to</span><br><span class="line">    the shading characters, because a new4 entered text field is</span><br><span class="line">    automatically assigned the default font for the report -- in this</span><br><span class="line">    case 12-point lO-pitch Courier.</span><br><span class="line"></span><br><span class="line"> 3. Again, we used the /Line Print Height command to manually specify</span><br><span class="line">    heights for the body lines on the report layout: 12 points for the</span><br><span class="line">    body line containing the data fields and O for the body line</span><br><span class="line">    containing the shading field. This forces the 12- point shading</span><br><span class="line">    characters to overprint and completely fill the line above them.</span><br><span class="line"></span><br><span class="line"> 4. Next, we used the /Field Calculate Create command to create a feld</span><br><span class="line">    called SHADE to control printing of the shading line. Since we want</span><br><span class="line">    the shading line to print for every other record, we need a</span><br><span class="line">    calculated field expression that will return alternating true and</span><br><span class="line">    false values or, since numeric fields can serve as logical fields,</span><br><span class="line">    alternating zero and non-zero values. The expression for SHADE uses</span><br><span class="line">    R&amp;R&#39;s MOD and RECNO functions to do just this:</span><br><span class="line"></span><br><span class="line">       MOD(RECNO(),2)</span><br><span class="line"></span><br><span class="line">    Used without a file alias argument, RECNO() returns the number of the</span><br><span class="line">    current composite record. The MOD function takes two arguments, a</span><br><span class="line">    dividend (in this case the value of RECNO) and a divisor (2), and</span><br><span class="line">    returns the remainder of the division.</span><br><span class="line"></span><br><span class="line">    Thus, the value of this expression in the first composite record of</span><br><span class="line">    the report will be MOD(1,2) or 1. The expression&#39;s value in the</span><br><span class="line">    second composite record will be MOD(2,2) or zero. The value in the</span><br><span class="line">    third composite record will be MOD(3,2) or 1, and so on. Since zero</span><br><span class="line">    is the same as a logical false value and one (or any non-zero value)</span><br><span class="line">    is a logical true value, this field can be used as a logical field to</span><br><span class="line">    control line printing.</span><br><span class="line"></span><br><span class="line"> 5. After creating the SHADE field, we used the /Line Print Logical</span><br><span class="line">    command to make the value of SHADE control the printing of the</span><br><span class="line">    shading line.</span><br><span class="line"></span><br><span class="line">    When the value of SHADE is 1, the line with the shading characters</span><br><span class="line">    will print. When the value of SHADE is 0, the line with the shading</span><br><span class="line">    characters will not print.</span><br><span class="line"></span><br><span class="line"> 6. Finally, as we did in the column shading report, we used the /Print</span><br><span class="line">    Preview command to preview the report before we printed it. We zoomed</span><br><span class="line">    in to make sure that the shading alternated as we intended and that</span><br><span class="line">    the shading characters filled the line without gaps or overlaps.</span><br><span class="line"></span><br><span class="line"> Note that the same technique could be used to highlight selected lines</span><br><span class="line"> of a report. In this report, for example, we could have shaded lines for</span><br><span class="line"> employees in a selected department or employees hired after a selected</span><br><span class="line"> date. In these cases, the expressions for the SHADE field might have</span><br><span class="line"> been as follows:</span><br><span class="line"></span><br><span class="line">    DEPT = nAdministration&#34;</span><br><span class="line">    or</span><br><span class="line">    HIREDATE &gt; = CTOD(&#34;O1/01/9O&#34;)</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

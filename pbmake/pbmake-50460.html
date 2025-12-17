@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="pbmake-style.css">
+    <title>PBMake 2.15 for Clipper, Xbase++, C and  » Reference » Script Initializer Tool</title>
+    <meta name="description" content="PBMake 2.15 for Clipper, Xbase++, C and ">
+    <link rel="prev" href="pbmake-48716.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="pbmake-about.html">About</a></li>
+
+
+          
+
+<li><a href="pbmake-48716.html">Previous</a></li>
+
+
+          
+
+<li><a href="pbmake-44844.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Intro</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Introduction</a></li>
+                  <li><a href="pbmake-9885.html">Getting Started</a></li>
+                  <li><a href="pbmake-11192.html">Blank Template</a></li>
+                  <li><a href="pbmake-16114.html">Example Template</a></li>
+                  <li><a href="pbmake-17946.html">Running It</a></li>
+                  
+                </ul>
+              </li>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-18702.html">PBMake Features</a></li>
+                  <li><a href="pbmake-36380.html">Supported Languages</a></li>
+                  <li><a href="pbmake-44844.html">Script Initializer Tool</a></li>
+                  <li><a href="pbmake-52818.html">GNU RCS Version Control Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>About</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-56275.html">MAKE.BAT</a></li>
+                  <li><a href="pbmake-58146.html">Problems</a></li>
+                  <li><a href="pbmake-60601.html">Support</a></li>
+                  <li><a href="pbmake-61056.html">Copyright</a></li>
+                  <li><a href="pbmake-61432.html">Register!</a></li>
+                  <li><a href="pbmake-62283.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">  The first section, [PBINIT], tells PBInit about your editor. When</span><br><span class="line">  PBMake encounters an error in your code, it will automatically load</span><br><span class="line">  the error list and the code in question into your editor. This</span><br><span class="line">  sections tells PBMake what compiler you are using, so the error can be</span><br><span class="line">  correctly parsed. It also tells PBMake what editor and the command to</span><br><span class="line">  jump to a line number. This information is used in the automatic</span><br><span class="line">  creation of .MAK files.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[PBINIT]</span><br><span class="line">COMPILER=CLIPPER</span><br><span class="line">EDITOR=Q</span><br><span class="line">LINEFLAG=-N</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  After the first section, there are 5 sections which are used to create</span><br><span class="line">  link scripts (.LNK). They are [CLIPPER], [C], [TASM], [MASM] and [XPP].</span><br><span class="line"></span><br><span class="line">  Each of these sections are divided into two parts, signified by the</span><br><span class="line">  {PRE} and {POST} position locators.</span><br><span class="line"></span><br><span class="line">  When building a linker script, there is generally some linker commands</span><br><span class="line">  that you need to put ahead of the object references, and in general,</span><br><span class="line">  your library references go after your object reference. These two</span><br><span class="line">  sections can be defaulted here and every time you build a link script,</span><br><span class="line">  the {PRE} and {POST} sections will be included automatically as your</span><br><span class="line">  default link script. If you need PBInit to always overlay your source</span><br><span class="line">  code, include the {OVERLAY} command.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  Here is an example with the CLIPPER section filled in. Please note the</span><br><span class="line">  extra library calls that are commented out. You can uncomment them or</span><br><span class="line">  delete them, based on each link script&#39;s needs. This makes it easy for</span><br><span class="line">  you to create a &#39;standard&#39; link script here in the .INI file and use</span><br><span class="line">  it as the basis for all your future link scripts without a bunch of</span><br><span class="line">  copying and editing.</span><br><span class="line"></span><br><span class="line">[CLIPPER]</span><br><span class="line">{OVERLAY}</span><br><span class="line">{PRE}</span><br><span class="line">NOBELL</span><br><span class="line"></span><br><span class="line">BLINKER MESSAGE WINK</span><br><span class="line">BLINKER INCREMENTAL OFF</span><br><span class="line">BLINKER EXECUTABLE CLIPPER //F:99  //E:0</span><br><span class="line">BLINKER EXECUTABLE EXTENDED 1500</span><br><span class="line"># BLINKER EXECUTABLE COMPRESS 1</span><br><span class="line"></span><br><span class="line">BLINKER HOST MESSAGE ON</span><br><span class="line"></span><br><span class="line">STACK 7168</span><br><span class="line"></span><br><span class="line">SEARCH BLXRATEX,BLXCLP52</span><br><span class="line">{POST}</span><br><span class="line">#BEGIN</span><br><span class="line"></span><br><span class="line">#  file cmxdbt52.obj</span><br><span class="line">#  file cmx52.obj</span><br><span class="line"></span><br><span class="line">#  lib cm52</span><br><span class="line">#  lib cmx52</span><br><span class="line"></span><br><span class="line">#END</span><br><span class="line"></span><br><span class="line"># lib nanfor</span><br><span class="line"></span><br><span class="line"># Search mrwindow</span><br><span class="line"># @mrdmax</span><br><span class="line"># fi mrdump.lib</span><br><span class="line"></span><br><span class="line">#@CL520MIN</span><br><span class="line">@CL520MID</span><br><span class="line">#@CL520MAX</span><br><span class="line"></span><br><span class="line"># MODULE EXITSTATE,GETAPPLYKE,_EXITSTATE,GETACTIVE,READVAR</span><br><span class="line"></span><br><span class="line">#fi cld</span><br><span class="line"></span><br><span class="line">#@cm</span><br><span class="line">#@cmx</span><br><span class="line"></span><br><span class="line">#begin</span><br><span class="line">#  lib TPOVL52</span><br><span class="line">#end</span><br><span class="line">#search TPBLX52</span><br><span class="line"></span><br><span class="line">#@TPBLX.lnk</span><br><span class="line"></span><br><span class="line">#BEGIN</span><br><span class="line">#  lib FLEX52</span><br><span class="line">#END</span><br><span class="line"></span><br><span class="line">#BEGIN</span><br><span class="line">#  lib FUNCK</span><br><span class="line">#END</span><br><span class="line"></span><br><span class="line">#lib LLIBCA</span><br><span class="line"></span><br><span class="line">#lib CTp</span><br><span class="line">#FI CTUSp</span><br><span class="line"></span><br><span class="line">[C]</span><br><span class="line">{PRE}</span><br><span class="line">{POST}</span><br><span class="line"></span><br><span class="line">[TASM]</span><br><span class="line">{PRE}</span><br><span class="line">{POST}</span><br><span class="line"></span><br><span class="line">[MASM]</span><br><span class="line">{PRE}</span><br><span class="line">{POST}</span><br><span class="line"></span><br><span class="line">[XPP]</span><br><span class="line">{PRE}</span><br><span class="line">{POST}</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:34</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

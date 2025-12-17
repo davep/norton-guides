@@ -1,0 +1,142 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor1-style.css">
+    <title>Nanforum Toolkit v2.1 Reference Guide » A-G » File I/O</title>
+    <meta name="description" content="Nanforum Toolkit v2.1 Reference Guide">
+    <link rel="prev" href="nanfor1-140806.html">
+    <link rel="next" href="nanfor1-143010.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor1-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor1-140806.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor1-127130.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor1-143010.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-G</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor1-16484.html">Conversion</a></li>
+                  <li><a href="nanfor1-29683.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor1-57742.html">Database</a></li>
+                  <li><a href="nanfor1-69777.html">Date/Time</a></li>
+                  <li><a href="nanfor1-112880.html">Environment</a></li>
+                  <li><a href="nanfor1-127130.html">File I/O</a></li>
+                  <li><a href="nanfor1-147012.html">Game</a></li>
+                  
+                </ul>
+              </li>
+              <li>K-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-147565.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor1-191315.html">Math</a></li>
+                  <li><a href="nanfor1-196762.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor1-244609.html">NetWare</a></li>
+                  <li><a href="nanfor1-270533.html">String</a></li>
+                  <li><a href="nanfor1-292001.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-318858.html">Overview</a></li>
+                  <li><a href="nanfor1-348092.html">Rebuilding the Library</a></li>
+                  <li><a href="nanfor1-353717.html">Sample source code headers</a></li>
+                  <li><a href="nanfor1-360780.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_FSELECT()</span></span><br><span class="line"> Select a text file workarea</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_FSELECT( [ &lt;nArea&gt; ] ) -&gt; nArea</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nArea&gt;</span> is the text file workarea to select.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     The current selected text file area.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     This function selects a text file &#34;workarea&#34; from 1 to 10.  A</span><br><span class="line">     file may or may not be open in the selected area.</span><br><span class="line"></span><br><span class="line">     Passing 0 for &lt;nArea&gt; selects the next available workarea, similar</span><br><span class="line">     to Clipper&#39;s SELECT 0 command.</span><br><span class="line"></span><br><span class="line">     Each file is opened in its own &#34;workarea&#34;, similar to the concept</span><br><span class="line">     used by dbf files.  As provided, a maximum of 10 files (in 10</span><br><span class="line">     workareas) can be opened (assuming there are sufficient file</span><br><span class="line">     handles available).  That number may be increased by modifying</span><br><span class="line">     the #define TEXT_WORKAREAS in the C source code and recompiling.</span><br><span class="line"></span><br><span class="line">     All the FT_F*() file functions operate on the file in the currently</span><br><span class="line">     selected text file workarea.</span><br><span class="line"></span><br><span class="line">     Text file workareas are separate from and independent of Clipper&#39;s</span><br><span class="line">     database workareas.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     FT_FSELECT(1)</span><br><span class="line">     nFile1 := FT_FUSE( &#34;temp.c&#34; )</span><br><span class="line">     ? FT_FLASTRE()                 // no. of lines in temp.c</span><br><span class="line">     FT_FSELECT(2)</span><br><span class="line">     nFile2 := FT_FUSE( &#34;temp.h&#34; )</span><br><span class="line">     ? FT_FLASTRE()                 // no. of lines in temp.h</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> FTTEXT.C</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Brice de Ganahl and Steve Larsen</span><br></pre>
+  
+  
+  
+    <nav class="seeAlso">
+      <ul>
+        <li>See Also:</li>
+        
+          <li>
+            
+              <a href="nanfor1-143773.html">FT_FUSE()</a>
+            
+          </li>
+        
+      </ul>
+    </nav>
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:33</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-20279.html">
+    <link rel="next" href="rr-tips-24089.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-20279.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-24089.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Copy calcutaled fields between reports</span></span><br><span class="line"></span><br><span class="line"> Although a direct copy of calculated fields is not possible, there is a</span><br><span class="line"> way to do it using a <span class="ngb">dummy user defined function</span></span><br><span class="line"></span><br><span class="line"> 1. Retrieve the report that has the orginal field</span><br><span class="line"></span><br><span class="line"> 2. Create a new UDF with /Field Calculate User Function Create</span><br><span class="line">    Pick any name of the UDF you like, e.g. <span class="ngb">Clone()</span> For the formula use the</span><br><span class="line">    <span class="ngb">F10</span> key to select the expression of the calculated field that you</span><br><span class="line">    want clone. Surround this expression in quotes to make it a text</span><br><span class="line">    string. There is no need to save this report.</span><br><span class="line"></span><br><span class="line"> 3. Retrieve the destination report</span><br><span class="line">    Use /Field Calculate Create and give it a name. For the expression use</span><br><span class="line">    <span class="ngb">F10</span> and select User Function Formula. Select <span class="ngb">Clone()</span> and then just</span><br><span class="line">    remove the quotes.</span><br><span class="line"></span><br><span class="line"> Your field is copied!</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Empty reports</span></span><br><span class="line"> Although the above is a bit cumbersome, it works. A good option is to</span><br><span class="line"> follow a strategy that limits the number of times you would like to use</span><br><span class="line"> to copy trick.</span><br><span class="line"> </span><br><span class="line"> A working strategy is to create <span class="ngb">empty reports</span>, that include the necessary</span><br><span class="line"> database structure (master + related) and all mostly required calculated</span><br><span class="line"> and total fields. I seldomly start with a complete new report. If you</span><br><span class="line"> have discovered a new &#39;general purpose&#39; calculated field, add it to the</span><br><span class="line"> master empty report, so the next time you will have this field available.</span><br><span class="line"></span><br><span class="line"> Distribute these reports in a seperate library and flag this library at</span><br><span class="line"> the user site with a ReadOnly attribute (attrib +r xxx.rp1) to prohibit</span><br><span class="line"> the user from overwriting your masters.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

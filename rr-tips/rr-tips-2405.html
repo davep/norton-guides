@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-2142.html">
+    <link rel="next" href="rr-tips-6668.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-2142.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-6668.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Box on HP       Make a real gray scale box on a HP laserjet</span></span><br><span class="line"></span><br><span class="line"> The following user-defined functions are provided to users of R&amp;R Report</span><br><span class="line"> Writer by Concentric Data Systems, Inc. You may use and distribute these</span><br><span class="line"> functions as you wish. Bear in mind that these functions are hardware</span><br><span class="line"> specific and do not work in all report situations, so read the directions</span><br><span class="line"> below carefully. On the other hand, used properly, these functions are</span><br><span class="line"> quite powerful and may satisfy many application needs.</span><br><span class="line"></span><br><span class="line"> ───────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> BOX.UDF is a collection of R&amp;R Version 5 user-defined functions for</span><br><span class="line"> creating lines, boxes, and shading on a Hewlett Packard PCL compatible</span><br><span class="line"> laser printer. Lines, box borders, and the area within boxes can be any</span><br><span class="line"> degree of gray-scale shading from 0 (invisible) to 100 (solid).</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">_hline</span>        Type: Character</span><br><span class="line">   _hline(c_w,c_t,c_b) = CHR(27)+&#34;*c&#34;+w+&#34;h*c&#34;+t+&#34;v*c&#34;+b+&#34;g2P&#34;</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">_pop</span>          Type: Character</span><br><span class="line">   _pop() = CHR(27)+&#34;&amp;f1S&#34;</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">_position</span>     Type: Character</span><br><span class="line">   _position(c_h,c_v) = CHR(27)+&#34;&amp;a&#34;+h+&#34;h&#34;+v+&#34;V&#34;</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">_push</span>         Type: Character</span><br><span class="line">   _push() = CHR(27)+&#34;&amp;f0S&#34;</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">_shade</span>        Type: Character</span><br><span class="line">   _shade(c_w,c_h,c_s) = CHR(27)+&#34;*c&#34;+w+&#34;h*c&#34;+h+&#34;v*c&#34;+s+&#34;g2P&#34;</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">_vline</span>        Type: Character</span><br><span class="line">   _vline(c_h,c_t,c_b) = CHR(27)+&#34;*c&#34;+h+&#34;v*c&#34;+t+&#34;h*c&#34;+b+&#34;g2P&#34;</span><br><span class="line"></span><br><span class="line"> ■ <span class="ngb">BOX</span>           Type: Character</span><br><span class="line">   BOX(c_w,c_h,c_t,c_b,c_s) =</span><br><span class="line">   IIF(t#&#34;0&#34;.AND.b#&#34;0&#34;,IIF(w#&#34;0&#34;,_hline(w,t,b)+IIF(h#&#34;0&#34;,_vline(h,t,b)+</span><br><span class="line">   _push()+_position(&#34;+&#34;+LTRIM(STR(MAX(0,VAL(w)-VAL(t)))),&#34;+0&#34;)+_vline(h,t,b)+</span><br><span class="line">   _pop()+_push()+_position(&#34;+0&#34;,&#34;+&#34;+LTRIM(STR(MAX(0,VAL(h)-VAL(t)))))+</span><br><span class="line">   _hline(w,t,b)+_pop(),&#34;&#34;),IIF(h#&#34;0&#34;,_vline(h,t,b),&#34;&#34;)),&#34;&#34;)+</span><br><span class="line">   IIF(s#&#34;0&#34;.AND.w#&#34;0&#34;.AND.h#&#34;0&#34;,_shade(w,h,s),&#34;&#34;)</span><br><span class="line"></span><br><span class="line"> ───────────────────────────────────────────────────────────────────────────</span><br><span class="line"> When you create a calculated field using BOX, place it on the report</span><br><span class="line"> layout as close to the left margin as possible, and set the field width as</span><br><span class="line"> wide as possible. This is necessary to insure that the escape sequence is</span><br><span class="line"> not truncated.</span><br><span class="line"></span><br><span class="line"> All arguments to the BOX function are character strings. So, either place</span><br><span class="line"> the desired value within quotes, e.g. &#34;100&#34;, or else use the STR function,</span><br><span class="line"> e.g. STR(100). Note that there are 720 decipoints per inch.</span><br><span class="line"></span><br><span class="line"> BOX(w, h, t, b, s)</span><br><span class="line"></span><br><span class="line"> w = width, the width of the box, line, or shaded area in decipoints,</span><br><span class="line">     or 0 for a vertical line</span><br><span class="line"></span><br><span class="line"> h = height, the height of the box, line, or shaded area in decipoints,</span><br><span class="line">     or 0 for a horizontal line</span><br><span class="line"></span><br><span class="line"> t = thickness, the box or line thickness in decipoints, or 0 for a shaded</span><br><span class="line">     area with no border</span><br><span class="line"></span><br><span class="line"> b = border, the gray-scale density of the line or box border from 1 to 99,</span><br><span class="line">     or 0 for a shaded area with no border, or 100 for a solid line or border</span><br><span class="line"></span><br><span class="line"> s = shading, the gray-scale density within the box or rectangular area</span><br><span class="line">     from 1 to 99, or 0 for a box with no shading within</span><br><span class="line"></span><br><span class="line"> A workaround for boxes you want closer to the right margin is to create a</span><br><span class="line"> calculated field expression in the following format, which stores the</span><br><span class="line"> current printer cursor position, moves it to the right a specified number</span><br><span class="line"> of decipoints (999 in this example), prints the box, and then restores the</span><br><span class="line"> cursor to its original position:</span><br><span class="line"></span><br><span class="line">      _push()+_position(&#34;+999&#34;,&#34;0&#34;)+BOX(...)+_pop</span><br><span class="line"></span><br><span class="line"> Note also that in R&amp;R Version 4 you can overlap fields on the report</span><br><span class="line"> layout and that you can set line heights to 0 points. These are useful</span><br><span class="line"> tricks for over-printing report data with boxes and shading. Otherwise,</span><br><span class="line"> R&amp;R will leave space on the report as if the calculated field containing</span><br><span class="line"> the box escape sequence contained actual report data.</span><br><span class="line"></span><br><span class="line"> The UDFs called by the BOX UDF, namely _push, _position, _hline, _vline,</span><br><span class="line"> and _pop, may be useful in other applications. Study the BOX UDF formula</span><br><span class="line"> to see how they are used. In fact, you could implement them directly in a</span><br><span class="line"> dBASE, Fox, Clipper, Quicksilver UDF and use them in your programs for</span><br><span class="line"> other applications.</span><br><span class="line"></span><br><span class="line"> Another hint is that variable sized lines, boxes, and shaded areas can be</span><br><span class="line"> created by computing the arguments to the BOX function. For example, you</span><br><span class="line"> might pre-process a count to see how many records there are, and multiply</span><br><span class="line"> that number by the record height in decipoints to create a variable height</span><br><span class="line"> shaded area dependent on the number of records in the group!</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

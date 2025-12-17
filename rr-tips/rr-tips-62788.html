@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-55903.html">
+    <link rel="next" href="rr-tips-63948.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-55903.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-63948.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">How to insert a blank line every so many records</span></span><br><span class="line"></span><br><span class="line"> For some reports, it is desirable to insert a blank line after every</span><br><span class="line"> so-many records, e.g. for readability of the list:</span><br><span class="line"></span><br><span class="line">     ┌────────────────────────────────────────────────────────┐</span><br><span class="line">     │  Account name                     Date         Amount  █</span><br><span class="line">     │  ────────────────────────────    ────────  ──────────  █</span><br><span class="line">     │  General &amp; administrative        93.01.01      427,00  █</span><br><span class="line">     │  Software development            93.02.01     2180,00  █</span><br><span class="line">     │  Printing &amp; advertising          93.02.15      738,25  █</span><br><span class="line">     │                                                        █</span><br><span class="line">     │  Travel &amp; entertainment          93.01.15     1420,87  █</span><br><span class="line">     │  Miscellaneous credits           93.02.28      410,66  █</span><br><span class="line">     │  Photography                     93.03.01     1370,27  █</span><br><span class="line">     │                                                        █</span><br><span class="line">     │  Equipment &amp; maintanance         93.03.10      172,83  █</span><br><span class="line">     └▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█</span><br><span class="line"></span><br><span class="line"> In order to group on a number of records, create a calculated field whos</span><br><span class="line"> value changes after every n records:</span><br><span class="line"></span><br><span class="line">    REC_GROUP = int((recno()-1)/n)</span><br><span class="line"></span><br><span class="line"> Change n in the number of records you want a blank line after. The</span><br><span class="line"> composite record number recno() is unique for the total report. Normally</span><br><span class="line"> you would use the recno() function to retrieve the current record number</span><br><span class="line"> of a file in the report.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

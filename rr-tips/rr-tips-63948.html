@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » How to</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-62788.html">
+    <link rel="next" href="rr-tips-69020.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-62788.html">Previous</a></li>
+
+
+          
+
+<li><a href="index.html">Up</a></li>
+
+
+          
+
+<li><a href="rr-tips-69020.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">Odd or even          Producing left/right Odd or Even page number</span></span><br><span class="line"></span><br><span class="line"> Testing a number to see whether it&#39;s odd or even enables some</span><br><span class="line"> interesting applications.</span><br><span class="line"></span><br><span class="line"> The key to determining whether a number is odd or even, is to determine</span><br><span class="line"> whether it&#39;s evenly divisible by two. If there&#39;s no remainder when divided</span><br><span class="line"> by two, a number is evcn. If there&#39;s a remainder of one when divided by</span><br><span class="line"> two, a number is odd. To make this task easy, we&#39;ll use the MOD function,</span><br><span class="line"> which returns the remainder of a division.</span><br><span class="line"></span><br><span class="line"> The logic in the paragraph above in two user-defined functions. This tip</span><br><span class="line"> a useful application of this technique to test for odd and even page</span><br><span class="line"> numbers.</span><br><span class="line"></span><br><span class="line">    ODD(n_number) =</span><br><span class="line">       MOD(numer,2)=1</span><br><span class="line"></span><br><span class="line">    EVEN(n_number) =</span><br><span class="line">       MOD(number,2)=0</span><br><span class="line"></span><br><span class="line"> Next, there is an interesting technique for enhancing the appearance of</span><br><span class="line"> reports that will be published in &#34;booklet&#34; format with double-sided</span><br><span class="line"> facing pages.</span><br><span class="line"></span><br><span class="line"> When designing the page layout for a book-style report, you&#39;ll probably</span><br><span class="line"> want the page numbers to appear on the outside edge of the page. Since the</span><br><span class="line"> binding is on the left side, this means you want the page number to appear</span><br><span class="line"> at the right margin of odd-numbered pages and at the left margin of</span><br><span class="line"> even-numbered pages. The next example shows how the page number might</span><br><span class="line"> appear in odd/even page headers.</span><br><span class="line"></span><br><span class="line">     ╔═════════════════════════════════════════════════════╗</span><br><span class="line">     ║  ┌──────────────────────┐ ┌──────────────────────┐  ║</span><br><span class="line">     ║  │ Page 2               │ │              Page 3  │  ║</span><br><span class="line">     ║  │ ---------------------│ │--------------------- │  ║</span><br><span class="line">     ║  │ ... ... ....     ... │ │... ... ....      ... │  ║</span><br><span class="line">     ║  │ ... ... ....     ... │ │... ... ....      ... │  ║</span><br><span class="line">     ║  │ ... ... ....     ... │ │... ... ....      ... │  ║</span><br><span class="line">     ║  │                ----- │ │                ----- │  ║</span><br><span class="line">     ║  │                ..... │ │                ..... │  ║</span><br><span class="line">     ║  │                      │ │                      │  ║</span><br><span class="line">     ║  └──────────────────────┛ └──────────────────────┛  ║</span><br><span class="line">     ╚═════════════════════════════════════════════════════╝</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> The following seven steps enable you to create alternating page headers</span><br><span class="line"> with page numbers as illustrated</span><br><span class="line"></span><br><span class="line"> 1. <span class="ngb">Create the page number</span></span><br><span class="line">    Use the Field Calculate Create command (/FCC) to create a calculated</span><br><span class="line">    field containing the page number as it appears in the figure. Enter the</span><br><span class="line">    field name and expression as specified before.</span><br><span class="line">    The page number is created by appending to the word Page the current</span><br><span class="line">    page number returned by the PAGENO function. The page number must be</span><br><span class="line">    converted to a character string by the STR function, and the leading</span><br><span class="line">    spaces must be removed by the LTRIM function.</span><br><span class="line"></span><br><span class="line"> 2. <span class="ngb">Create two header lines</span></span><br><span class="line">    Use the Line Create Header Page command (/LCHP) to create a page header</span><br><span class="line">    line on which to place the page number. You can use the up and down</span><br><span class="line">    arrow keys to position the line within the page header area, and then</span><br><span class="line">    press Enter. Select Insert from the Line menu to insert another page</span><br><span class="line">    header line and then select Quit to return to the report layout.</span><br><span class="line"></span><br><span class="line"> 3. <span class="ngb">Insert the page number</span></span><br><span class="line">    Use the Field Insert command (/FI) to place the page number at the left</span><br><span class="line">    margin of the page header line you created in step 2. The Page field</span><br><span class="line">    will be automatically highlighted in the Field menu, since it will be</span><br><span class="line">    the most rcccnt field you created. Just press Enter to insert it at the</span><br><span class="line">    current cursor position. Then move the cursor down to the second page</span><br><span class="line">    header line you created in step 2 and insert the page number field</span><br><span class="line">    again.</span><br><span class="line"></span><br><span class="line"> 4. <span class="ngb">Position the &#34;odd&#34; page number</span></span><br><span class="line">    Use the Move command (/M) to place the second page number at the right</span><br><span class="line">    margin. A shortcut in the Move command is to press F10 and select Right</span><br><span class="line">    from the pop-up menu. Press Enter when you are finished positioning the</span><br><span class="line">    field.</span><br><span class="line"></span><br><span class="line"> 5. ^bFormat the &#34;odd&#34; page number<span class="ngb"></span></span><br><span class="line">    Use the Field Format Right command (/FFR) to right-align the page</span><br><span class="line">    number held. This will ensure that it always abuts the right margin</span><br><span class="line">    regardlcss of the number of digits in the page number.</span><br><span class="line"></span><br><span class="line"> 6. <span class="ngb">Create line-logical fields</span></span><br><span class="line">    Use the Field Calculate Create command (/FCC) to create two logical</span><br><span class="line">    fields that control whether the odd or the even page header line will</span><br><span class="line">    appear on the current page. Enter the logical expressions as specified</span><br><span class="line">    before, which use the ODD and EVEN user-defined functions presented in</span><br><span class="line">    Free Expressions.</span><br><span class="line"></span><br><span class="line"> 7. <span class="ngb">Apply line-logical fields</span></span><br><span class="line">    With the cursor still on the second page header line, use the Line</span><br><span class="line">    Print Logical command (/LPL) to select the OddPage field and then press</span><br><span class="line">    Enter to select the current line. Next, move the cursor up to the first</span><br><span class="line">    page header line and select the Logical command again. This time select</span><br><span class="line">    the EvenPage field and press Enter to select the current line. Select</span><br><span class="line">    Quit to return to the report layout.</span><br><span class="line">    Line logicals are indicated by bold line-type indicators, e.g. Header.</span><br><span class="line">    To verify the line logical expressions, press Shift-F4 to display the</span><br><span class="line">    Line Logical Status box and use the up and down arrow keys to verify</span><br><span class="line">    other lines.</span><br><span class="line"></span><br><span class="line"> The odd/even page headers are now complete. Your report can be viewed</span><br><span class="line"> using the Print Go command (/PG) and saved with the Report Save command</span><br><span class="line"> (/RS). Note that you can apply this technique to page footers as well as</span><br><span class="line"> page headers.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

@@ -1,0 +1,129 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor1-style.css">
+    <title>Nanforum Toolkit v2.1 Reference Guide » A-G » DOS/BIOS</title>
+    <meta name="description" content="Nanforum Toolkit v2.1 Reference Guide">
+    <link rel="prev" href="nanfor1-34659.html">
+    <link rel="next" href="nanfor1-36755.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor1-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor1-34659.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor1-29683.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor1-36755.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-G</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor1-16484.html">Conversion</a></li>
+                  <li><a href="nanfor1-29683.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor1-57742.html">Database</a></li>
+                  <li><a href="nanfor1-69777.html">Date/Time</a></li>
+                  <li><a href="nanfor1-112880.html">Environment</a></li>
+                  <li><a href="nanfor1-127130.html">File I/O</a></li>
+                  <li><a href="nanfor1-147012.html">Game</a></li>
+                  
+                </ul>
+              </li>
+              <li>K-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-147565.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor1-191315.html">Math</a></li>
+                  <li><a href="nanfor1-196762.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor1-244609.html">NetWare</a></li>
+                  <li><a href="nanfor1-270533.html">String</a></li>
+                  <li><a href="nanfor1-292001.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-318858.html">Overview</a></li>
+                  <li><a href="nanfor1-348092.html">Rebuilding the Library</a></li>
+                  <li><a href="nanfor1-353717.html">Sample source code headers</a></li>
+                  <li><a href="nanfor1-360780.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_FLOPTST()</span></span><br><span class="line"> Test diskette drive status</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">     <span class="fg15 bg1"> FT_FLOPTST( &lt;nDrive&gt; ) -&gt; nStatus</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">     <span class="ngb">&lt;nDrive&gt;</span> is the diskette drive number, 0 = A:, 1 = B:</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">     -1 - Wrong Parameters</span><br><span class="line">      0 - Drive Loaded and ready to read or write</span><br><span class="line">      1 - Drive Door Open or Diskette inserted upside down</span><br><span class="line">      2 - Diskette is unformatted</span><br><span class="line">      3 - Write protected</span><br><span class="line">      4 - Undetermined</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">     FT_FLOPTST() is designed as a full replacement for ISDRIVE().  Where</span><br><span class="line">     ISDRIVE() returns just .T. or .F. depending if the diskette drive is</span><br><span class="line">     ready or not, FT_FLOPTST() returns a numeric code designating the</span><br><span class="line">     diskette drive&#39;s status.</span><br><span class="line"></span><br><span class="line">     FT_FLOPTST() is particularly useful in backup and restore programs</span><br><span class="line">     that need to test the floppy drive before writing/reading from a</span><br><span class="line">     floppy disk.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">     iStatus := FT_FLOPTST( 1 )</span><br><span class="line"></span><br><span class="line">     DO CASE</span><br><span class="line">        CASE iStatus == 1</span><br><span class="line">           Qout( &#34;The door to drive A is open.&#34; )</span><br><span class="line">        CASE iStatus == 2</span><br><span class="line">           Qout( &#34;The diskette in drive A is not formatted.&#34; )</span><br><span class="line">        CASE iStatus == 3</span><br><span class="line">           Qout( &#34;The diskette in drive A is write-protected.&#34; )</span><br><span class="line">        CASE iStatus == 4</span><br><span class="line">           Qout( &#34;Something is wrong with drive A, but I don&#39;t know what.&#34; )</span><br><span class="line">     ENDCASE</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> FLOPTST.ASM</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Joseph LaCour</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:33</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

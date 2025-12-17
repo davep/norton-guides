@@ -1,0 +1,129 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="nanfor1-style.css">
+    <title>Nanforum Toolkit v2.1 Reference Guide » K-Z » Video</title>
+    <meta name="description" content="Nanforum Toolkit v2.1 Reference Guide">
+    <link rel="prev" href="nanfor1-314416.html">
+    <link rel="next" href="nanfor1-316543.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="nanfor1-about.html">About</a></li>
+
+
+          
+
+<li><a href="nanfor1-314416.html">Previous</a></li>
+
+
+          
+
+<li><a href="nanfor1-292001.html">Up</a></li>
+
+
+          
+
+<li><a href="nanfor1-316543.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>A-G</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Array</a></li>
+                  <li><a href="nanfor1-16484.html">Conversion</a></li>
+                  <li><a href="nanfor1-29683.html">DOS/BIOS</a></li>
+                  <li><a href="nanfor1-57742.html">Database</a></li>
+                  <li><a href="nanfor1-69777.html">Date/Time</a></li>
+                  <li><a href="nanfor1-112880.html">Environment</a></li>
+                  <li><a href="nanfor1-127130.html">File I/O</a></li>
+                  <li><a href="nanfor1-147012.html">Game</a></li>
+                  
+                </ul>
+              </li>
+              <li>K-Z</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-147565.html">Keyboard/Mouse</a></li>
+                  <li><a href="nanfor1-191315.html">Math</a></li>
+                  <li><a href="nanfor1-196762.html">Menus/Prompts</a></li>
+                  <li><a href="nanfor1-244609.html">NetWare</a></li>
+                  <li><a href="nanfor1-270533.html">String</a></li>
+                  <li><a href="nanfor1-292001.html">Video</a></li>
+                  
+                </ul>
+              </li>
+              <li>Information</li>
+              <li>
+                <ul>
+                  <li><a href="nanfor1-318858.html">Overview</a></li>
+                  <li><a href="nanfor1-348092.html">Rebuilding the Library</a></li>
+                  <li><a href="nanfor1-353717.html">Sample source code headers</a></li>
+                  <li><a href="nanfor1-360780.html">Credits</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"> <span class="ngb">FT_SHADOW()</span></span><br><span class="line"> Draw a non-destructive shadow on the screen</span><br><span class="line">──────────────────────────────────────────────────────────────────────────────</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Syntax</span></span><br><span class="line"></span><br><span class="line">    <span class="fg15 bg1"> FT_SHADOW( &lt;nTop&gt;, &lt;nLeft&gt;, &lt;nBottom&gt;, &lt;nRight&gt;, &lt;nAttr&gt; ) -&gt; NIL</span></span><br><span class="line"></span><br><span class="line"> <span class="ngb">Arguments</span></span><br><span class="line"></span><br><span class="line">    <span class="ngb">&lt;nTop&gt;</span>    is the top row of the shadow area.</span><br><span class="line">    <span class="ngb">&lt;nLeft&gt;</span>   is the upper left column of the shadow area.</span><br><span class="line">    <span class="ngb">&lt;nBottom&gt;</span> is the bottom row of the shadow area.</span><br><span class="line">    <span class="ngb">&lt;nRight&gt;</span>  is the lower right column of the shadow area.</span><br><span class="line">    <span class="ngb">&lt;nAttr&gt;</span>   is the screen attribute to use for drawing the shadow.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Returns</span></span><br><span class="line"></span><br><span class="line">    NIL</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Description</span></span><br><span class="line"></span><br><span class="line">    This function allows you to implement the popular &#34;shadow effect.&#34;  It</span><br><span class="line">    draws a shadow using the specified screen coordinates.  The entire</span><br><span class="line">    specified region is shadowed.</span><br><span class="line"></span><br><span class="line">    *** INTERNALS ALERT ***  This function uses several Clipper internal</span><br><span class="line">    routines.  If using internals scares you, then stay away from this</span><br><span class="line">    function, you gutless weasel.  The use of the internals helps to make</span><br><span class="line">    the function more well-behaved.  Clipper&#39;s display context is not</span><br><span class="line">    violated -- if you use dispbegin() before drawing the shadow, it will</span><br><span class="line">    not appear until the corresponding call to dispend().  This makes for</span><br><span class="line">    much smoother screen i/o if you have several screen objects that</span><br><span class="line">    you wish to shadow.</span><br><span class="line"></span><br><span class="line">    The source code is written to TASM IDEAL mode.</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Examples</span></span><br><span class="line"></span><br><span class="line">    FT_Shadow(10,10,10,50, 8)  // draw a dim shadow</span><br><span class="line"></span><br><span class="line">    FT_Shadow(10,10,10,40,47)  // draw a green shadow</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Source:</span> SHADOW.ASM</span><br><span class="line"></span><br><span class="line"> <span class="ngb">Author:</span> Ted Means</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:33</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

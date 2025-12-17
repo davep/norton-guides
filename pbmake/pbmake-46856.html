@@ -1,0 +1,126 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="pbmake-style.css">
+    <title>PBMake 2.15 for Clipper, Xbase++, C and  » Reference » Script Initializer Tool</title>
+    <meta name="description" content="PBMake 2.15 for Clipper, Xbase++, C and ">
+    <link rel="prev" href="pbmake-45935.html">
+    <link rel="next" href="pbmake-48716.html">
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="pbmake-about.html">About</a></li>
+
+
+          
+
+<li><a href="pbmake-45935.html">Previous</a></li>
+
+
+          
+
+<li><a href="pbmake-44844.html">Up</a></li>
+
+
+          
+
+<li><a href="pbmake-48716.html">Next</a></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Intro</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">Introduction</a></li>
+                  <li><a href="pbmake-9885.html">Getting Started</a></li>
+                  <li><a href="pbmake-11192.html">Blank Template</a></li>
+                  <li><a href="pbmake-16114.html">Example Template</a></li>
+                  <li><a href="pbmake-17946.html">Running It</a></li>
+                  
+                </ul>
+              </li>
+              <li>Reference</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-18702.html">PBMake Features</a></li>
+                  <li><a href="pbmake-36380.html">Supported Languages</a></li>
+                  <li><a href="pbmake-44844.html">Script Initializer Tool</a></li>
+                  <li><a href="pbmake-52818.html">GNU RCS Version Control Support</a></li>
+                  
+                </ul>
+              </li>
+              <li>About</li>
+              <li>
+                <ul>
+                  <li><a href="pbmake-56275.html">MAKE.BAT</a></li>
+                  <li><a href="pbmake-58146.html">Problems</a></li>
+                  <li><a href="pbmake-60601.html">Support</a></li>
+                  <li><a href="pbmake-61056.html">Copyright</a></li>
+                  <li><a href="pbmake-61432.html">Register!</a></li>
+                  <li><a href="pbmake-62283.html">Changes</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line"></span><br><span class="line">  You bet! And it is a very smart mechanism, indeed.</span><br><span class="line"></span><br><span class="line">  First, PBInit checks to see if the .MAK name you are about to create</span><br><span class="line">  already exists. If it does, you can abort, refresh it, or delete it</span><br><span class="line">  and start a new one.</span><br><span class="line"></span><br><span class="line">  Next, PBInit scans for .LNK files in the current directory. If it</span><br><span class="line">  finds more than one, you must choose one. If there is only one, PBInit</span><br><span class="line">  continues without prompting.</span><br><span class="line"></span><br><span class="line">  Once PBInit has determined which link file you are going to use, it</span><br><span class="line">  opens it and reads it into memory. As it reads it in, it seperates it</span><br><span class="line">  into categories, such as source references and library references and</span><br><span class="line">  lines that have no bearing on .MAK script creation.</span><br><span class="line"></span><br><span class="line">  After PBInit has determined all of the source files which were pointed</span><br><span class="line">  to in the .LNK file you are using as a template, each source file is</span><br><span class="line">  opened and completely scanned for #INCLUDE references. Now, PBInit has</span><br><span class="line">  built three sets of files. The SOURCE set, the LIB set and the INCLUDE</span><br><span class="line">  set.</span><br><span class="line"></span><br><span class="line">  At this point, PBInit uses the CLIPPER compiler on each source module,</span><br><span class="line">  trying different flag combinations from the most difficult to the most</span><br><span class="line">  forgiving. Each file in the SOURCE set is subcategorized according to</span><br><span class="line">  these flag combinations. Here is the list of FLAG= testing.</span><br><span class="line"></span><br><span class="line">  /N is tested to see if you need it.</span><br><span class="line"></span><br><span class="line">  Then, in the following order (with or without the /N flag as</span><br><span class="line">  determined in the previous step)</span><br><span class="line"></span><br><span class="line">  /M /W /ES2</span><br><span class="line">  /M /W /A /ES2</span><br><span class="line">  /M /W /V /ES2</span><br><span class="line">  /M /W /A /V /ES2</span><br><span class="line">  /M /ES2</span><br><span class="line">  /M</span><br><span class="line"></span><br><span class="line">  Once this process finishes, the path to each file in the INCLUDE set</span><br><span class="line">  and the LIB set is located.</span><br><span class="line"></span><br><span class="line">  PBInit then reads your default data from the PBMAKE.INI file, such as</span><br><span class="line">  the editor you have set up to jump to when an error is encountered.</span><br><span class="line"></span><br><span class="line">  Finally, with all of this information that has been collected and</span><br><span class="line">  determined, the .MAK file is written and you return to DOS.</span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:34</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+

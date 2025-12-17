@@ -1,0 +1,111 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="generator" content="ng2web v1.5.1 (ngdb v1.2.0)">
+    <link rel="stylesheet" type="text/css" href="rr-tips-style.css">
+    <title>R&amp;R Tips &amp; Techniques » Main » Read functions</title>
+    <meta name="description" content="R&amp;R Tips &amp; Techniques">
+    <link rel="prev" href="rr-tips-85606.html">
+    
+    
+  </head>
+
+  <body>
+
+    <header>
+      <nav class="box">
+        <ul>
+          
+
+<li><a href="../index.html">Guides</a></li>
+
+
+          
+
+<li><a href="rr-tips-about.html">About</a></li>
+
+
+          
+
+<li><a href="rr-tips-85606.html">Previous</a></li>
+
+
+          
+
+<li><a href="rr-tips-75243.html">Up</a></li>
+
+
+          
+
+<li><span>Next</span></li>
+
+
+        </ul>
+      </nav>
+    </header>
+
+    <div id="body">
+
+      
+        <nav class="menu box">
+          <ul>
+              <li>Main</li>
+              <li>
+                <ul>
+                  <li><a href="index.html">How to</a></li>
+                  <li><a href="rr-tips-73172.html">Naming conventions</a></li>
+                  <li><a href="rr-tips-75243.html">Read functions</a></li>
+                  <li><a href="rr-tips-103671.html">Anomalies</a></li>
+                  
+                </ul>
+              </li>
+              <li>Background</li>
+              <li>
+                <ul>
+                  <li><a href="rr-tips-104973.html">Credits</a></li>
+                  <li><a href="rr-tips-106279.html">Addresses</a></li>
+                  
+                </ul>
+              </li>
+          </ul>
+        </nav>
+      
+
+      <div id="entry" class="box">
+        
+  
+  
+    <pre class="entry"><span class="line">* Provided by Concentric Data Systems, Inc. as an example. This Clipper</span><br><span class="line">* code has not been certified - use at your own risk. The Version 3 R&amp;R</span><br><span class="line">* report library file structure is subject to change without notice.</span><br><span class="line">*</span><br><span class="line">* This function opens the report library specified, and creates a public</span><br><span class="line">* array of report names with the same name as the report library. For</span><br><span class="line">* example, getreps(&#34;RRORDERS&#34;) creates an array named RRORDERS containing</span><br><span class="line">* the report names in RRORDERS.RP1.</span><br><span class="line"></span><br><span class="line">FUNCTION getreps</span><br><span class="line">PARAMETERS libname</span><br><span class="line">PRIVATE buffer, bufptr, chunk, handle, numreps, partdone, partlen, replen,;</span><br><span class="line">                repnum, size</span><br><span class="line"></span><br><span class="line">libname = IIF(UPPER(RIGHT(libname, 4)) =;</span><br><span class="line">        &#34;.RP1&#34;, libname, libname + &#34;.RP1&#34;)  &amp;&amp; append .RP1 if necessary</span><br><span class="line">handle = FOPEN(libname, 0)                  &amp;&amp; open report library, read-only</span><br><span class="line">FSEEK(handle, 19, 0)                        &amp;&amp; position to chunk size</span><br><span class="line">buffer = SPACE(2)                           &amp;&amp; initialize an input buffer</span><br><span class="line">FREAD(handle, @buffer, 2)                   &amp;&amp; read chunk size (binary integer)</span><br><span class="line">bufptr = 1                                                                      &amp;&amp; point to first byte</span><br><span class="line">size =;</span><br><span class="line">        (ASC(SUBSTR(buffer,bufptr+0,1))*2560)+;</span><br><span class="line">        (ASC(SUBSTR(buffer,bufptr+1,1))*2561)  &amp;&amp; convert binary to numeric</span><br><span class="line">size = IIF(size = 0, 32, size)              &amp;&amp; zero means 32 bytes</span><br><span class="line">buffer = SPACE(size)                        &amp;&amp; reinitialize input buffer</span><br><span class="line"></span><br><span class="line">bufptr = size + 1                           &amp;&amp; prime variables to...</span><br><span class="line">chunk = 1                                                                       &amp;&amp;  ...read second chunk</span><br><span class="line">readchunk(@bufptr,@buffer,;</span><br><span class="line">        @chunk,handle,size)                 &amp;&amp; read next chunk</span><br><span class="line"></span><br><span class="line">                                                                                        &amp;&amp; now pointing to number of</span><br><span class="line">                                                                                        &amp;&amp;  reports (binary integer)</span><br><span class="line">numreps =;</span><br><span class="line">        (ASC(SUBSTR(buffer,bufptr+0,1))*2560)+;</span><br><span class="line">        (ASC(SUBSTR(buffer,bufptr+1,1))*2561)  &amp;&amp; convert binary to numeric</span><br><span class="line">bufptr = bufptr + 2                         &amp;&amp; point to next byte of input</span><br><span class="line"></span><br><span class="line">IF numreps &gt; 0                              &amp;&amp; if there are any reports</span><br><span class="line">        libname = LEFT(libname, LEN(libname)-4) &amp;&amp;  remove the .RP1 extension</span><br><span class="line">        IF &#39;\&#39; $ libname                    &amp;&amp;  remove the path</span><br><span class="line">                libname =;</span><br><span class="line">                        SUBSTR(libname,RAT(&#39;\&#39;,libname)+1)</span><br><span class="line">        ENDIF</span><br><span class="line">        PUBLIC &amp;libname.[numreps]           &amp;&amp;  create a report name array</span><br><span class="line">ENDIF</span><br><span class="line"></span><br><span class="line">repnum = 1                                                                      &amp;&amp; init count of names processed</span><br><span class="line">DO WHILE repnum &lt;= numreps                  &amp;&amp; process each report name</span><br><span class="line">        replen = ASC(SUBSTR(buffer, bufptr, 1)) &amp;&amp; get length of name (binary byte)</span><br><span class="line">        bufptr = bufptr + 5                 &amp;&amp; point to report name</span><br><span class="line">        readchunk(@bufptr,@buffer,;</span><br><span class="line">                @chunk,handle,size)         &amp;&amp; read next chunk if necessary</span><br><span class="line">        partlen = MIN((size+1)-bufptr, replen)  &amp;&amp; get length of portion of</span><br><span class="line">                                                                                        &amp;&amp;  name in current chunk</span><br><span class="line">        &amp;libname.[repnum] =;</span><br><span class="line">                SUBSTR(buffer, bufptr, partlen)  &amp;&amp; store portion of name</span><br><span class="line">        bufptr = bufptr + partlen           &amp;&amp; update input buffer pointer</span><br><span class="line">        readchunk(@bufptr,@buffer,;</span><br><span class="line">                @chunk,handle,size)         &amp;&amp; read next chunk if necessary</span><br><span class="line">        partdone = partlen                  &amp;&amp; store length of portion of name</span><br><span class="line">        DO WHILE partdone &lt; replen          &amp;&amp; if there&#39;s more to the name</span><br><span class="line">                partlen = MIN((size+1)-bufptr,;</span><br><span class="line">                        replen-partlen)     &amp;&amp; get length of next part of name</span><br><span class="line">                partdone = partdone + partlen    &amp;&amp; update length of portion of name</span><br><span class="line">                &amp;libname.[repnum] =;</span><br><span class="line">                 &amp;libname.[repnum] +;</span><br><span class="line">                 SUBSTR(buffer, bufptr, partlen) &amp;&amp; concatenate rest of name</span><br><span class="line">                bufptr = bufptr + partlen        &amp;&amp; update input buffer pointer</span><br><span class="line">                readchunk(@bufptr,@buffer,;</span><br><span class="line">                        @chunk,handle,size)      &amp;&amp; read next chunk if necessary</span><br><span class="line">        ENDDO</span><br><span class="line">        repnum = repnum + 1                 &amp;&amp; update count of names processed</span><br><span class="line">ENDDO</span><br><span class="line">FCLOSE(handle)</span><br><span class="line">RETURN numreps</span><br><span class="line"></span><br><span class="line">*******************************</span><br><span class="line">FUNCTION   readchunk                        &amp;&amp; read next library file chunk</span><br><span class="line">PARAMETERS bufptr, buffer,;</span><br><span class="line">                   chunk, handle, size</span><br><span class="line">*******************************</span><br><span class="line">IF bufptr &gt; size                            &amp;&amp; if beyond end of chunk</span><br><span class="line">        FSEEK(handle, chunk * size, 0)      &amp;&amp;  seek file position of next chunk</span><br><span class="line">        FREAD(handle, @buffer, size)        &amp;&amp;  read next chunk</span><br><span class="line">        bufptr = bufptr - size              &amp;&amp;  reset input buffer pointer</span><br><span class="line">        chunk =;</span><br><span class="line">                (ASC(SUBSTR(buffer, 1, 1)) * 2562)+;</span><br><span class="line">                (ASC(SUBSTR(buffer, 3, 1)) * 2561)+;</span><br><span class="line">                (ASC(SUBSTR(buffer, 2, 1)) * 2560)</span><br><span class="line">                                            &amp;&amp;  get next chunk # (binary 3-byte)</span><br><span class="line">        bufptr = bufptr + 3                 &amp;&amp;  move pointer beyond chunk number</span><br><span class="line">ENDIF</span><br><span class="line">RETURN .T.</span><br><span class="line"></span><br></pre>
+  
+  
+  
+
+
+      </div>
+
+    </div>
+
+    
+      <footer>
+        <nav class="box">
+          <dl>
+            <dt>Generated</dt><dd>2025-12-17 13:53:57</dd>
+            <dt>Generator</dt><dd><a href="https://ng2web.davep.dev">ng2web v1.5.1 (ngdb v1.2.0)</a></dd>
+          </dl>
+        </nav>
+      </footer>
+    
+
+  </body>
+
+</html>
+
